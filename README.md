@@ -1,3 +1,7 @@
+I am translating the English textbook Linear Algebra Done Wrong into Chinese, Using LaTeX.
+
+本书使用的模板：
+
 # zhbook
 
 中文书籍 LaTeX 模板
