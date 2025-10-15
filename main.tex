@@ -1,0 +1,229 @@
+% !TEX program = xelatex
+% 使用 texlive 完整编译:
+% xelatex -> bibtex -> xelatex -> xelatex
+% zhbook 中文书籍 LaTeX 模板
+
+%--- 正文前后都没有空白页 ---
+\documentclass[openany,twoside,zihao=-4,,fontset=windows]{zhbook}
+% print 用于打印, 封面等生成空白页
+
+%--- 正文前后都有空白页, 正文一章结束可空白页使新的一章是在奇数页开始 ---
+% \documentclass[twoside,openright,zihao=-4]{zhbook}
+
+
+% 书籍信息设置
+% \vspace{5ex}
+
+
+\title{「倒叙」的线性代数}  % 标题
+\subtitle{——\textbf{{\tinro
+Linear Algebra
+Done Wrong}} 翻译版}  % 副标题
+
+
+\author{Sergei Treil~（谢尔盖·特雷伊）\\ 布朗大学数学系 }  % 作者姓名
+\bioinfo{译者}{董耀择\\南京大学匡亚明学院2025级本科生} 
+
+\date{\today}  % 日期
+\version{1.1}  % 版本
+ % 其他信息
+
+
+
+\extrainfo{\plogo \\[8pt] 出版社}
+
+% 通用虚拟出版商标志
+\newcommand{\plogo}{\fbox{$\mathfrak{NaN}$}}
+
+
+%----- 设置英文字体 -----
+%\usepackage{newtxtext}  %New TX font for text
+%\setmainfont{TeX Gyre Termes}  %Times New Roman 的开源复刻版本
+%\setsansfont{TeX Gyre Heros}  %Helvetica 的开源复刻版本
+%\setmonofont{TeX Gyre Cursor}  %Courier New 的开源复刻版本
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+%\setmonofont{Courier New}
+\newfontfamily{\tinro}{Times New Roman}
+%----- 设置数学字体 -----
+%\usepackage{newtxmath}
+%\usepackage{mathptmx}
+
+%----- 添加其他宏包 -----
+%\usepackage[notcite,notref]{showkeys}
+\usepackage{listings}
+\usepackage{subfig}
+
+%----- 取消链接颜色和方框 -----
+%\hypersetup{hidelinks}
+
+%----- 参考文献格式 -----
+%\bibliographystyle{plain} % abbrv, unsrt, siam
+\bibliographystyle{thuthesis-numeric}
+%\bibliographystyle{thuthesis-author-year}
+
+%----- 参考文献引用格式 -----
+\usepackage[numbers,sort&compress]{natbib}
+%\usepackage[numbers,super,square,sort&compress]{natbib}
+%\usepackage[authoryear,sort&compress]{natbib}
+\def\bibfont{\small}  % 修改参考文献字体
+\setlength{\bibsep}{7pt plus 3pt minus 3pt}  % 调整参考文献间距
+
+%----- 制作索引 -----
+\usepackage{imakeidx}
+\makeindex[columns=2,intoc=true,title={索~~引}]
+%\indexsetup{level=\chapter*}
+
+% 使用 zhmakeindex 按照中文拼音排序
+%\usepackage[noautomatic]{imakeidx}
+%\makeindex[columns=2,intoc=true,title={索~~引}]
+
+
+%----- 调整列表项的间距 -----
+%\setlength{\itemsep}{3pt}
+
+%----- 调整页面避免出现过大空白 -----
+%\raggedbottom
+
+%----- 定义符号描述命令  -----
+\newcommand{\nameditem}[3][]{
+\noindent\hspace{2em}\makebox[0.2\textwidth][l]{#2}{{#3}
+\hfill\makebox[0.2\textwidth][l]{#1}\hspace*{2em}}\par}
+
+%----- 插入 PDF 文件命令 -----
+%\includepdf[pages=-]{pdfname.pdf}
+
+%----- 微分算子 -----
+\newcommand*{\dif}{\mathop{}\!\mathrm{d}}
+
+%----- 自定义命令 -----
+\newcommand{\CC}{\ensuremath{\mathbb{C}}}
+\newcommand{\RR}{\ensuremath{\mathbb{R}}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\bA}{\boldsymbol{A}}
+\newcommand{\ii}{\mathrm{i}\mkern1mu}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\dx}[1][x]{\mathop{}\!\mathrm{d}#1}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+
+\begin{document}
+
+
+% 生成封面
+\maketitle
+
+% 插入封面 PDF文件
+%\thispagestyle{empty}
+%\includepdf{cover.pdf}
+%\cleardoublepage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\frontmatter
+%\pagenumbering{Roman} % 摘要页码为大写罗马数字
+
+%%%%%%%%%%%%%%%%%%%%%% 前言 %%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{part/preface}
+
+%%%%%%%%%%%%%%%%% 中文摘要内容和关键字  %%%%%%%%%%%%%%
+
+%\input{part/cnabstract}
+
+%%%%%%%%%%%%%%%%% 英文摘要内容和关键字 %%%%%%%%%%%%%%
+
+%\input{part/enabstract}
+
+%%%%%%%%%%%%%%%%%%%%%%% 目录 %%%%%%%%%%%%%%%%%%%%%%%
+
+% 生成目录
+\maketoc
+
+% 生成插图清单, 如不需要可以注释
+% \makelof
+
+% 生成表格清单, 如不需要可以注释
+% \makelot
+
+%%%%%%%%%%%%%%%%%%%% 主要符号表 %%%%%%%%%%%%%%%%%%%%%
+
+% 如不需要可以注释
+% \input{part/denotation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mainmatter
+
+%%%%%%%%%%%%%%%%%%%% 正文内容 %%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\input{part/chap01}
+
+
+% \input{part/chap02}
+
+
+% \input{part/chap03}
+
+
+% \input{part/chap04}
+
+
+% \input{part/chap05}
+
+
+% \input{part/chap06}
+
+
+% \input{part/chap07}
+
+
+% \input{part/chap08}
+
+
+% \input{part/chap09}
+
+
+%%%%%%%%%%%%%%%%%%%%%% 参考文献 %%%%%%%%%%%%%%%%%%%%%
+
+% 生成参考文献, 两种方式任选一种
+
+% 第一种方式, 使用 bib 文件
+%\nocite{*}  % 可以显示全部参考文献
+% \bibliography{reference}
+
+%--------------------------------------------------%
+
+% 第二种方式, 手动添加文献信息
+%\input{part/bibliography}
+
+
+%%%%%%%%%%%%%%%%%%%%%% 附录 %%%%%%%%%%%%%%%%%%%%%%%%
+
+% 添加附录, 如不需要可以注释
+% \input{part/appendix}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\backmatter  % 结束章节自动编号
+
+%%%%%%%%%%%%%%%%%%%%%% 索引  %%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+\printindex
+
+
+%%%%%%%%%%%%%%%%%%%%%%% 后记 %%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{part/epilogue}
+
+
+\end{document}
+
+
