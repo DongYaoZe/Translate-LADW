@@ -78,7 +78,7 @@ $$
 
 \textbf{注释}~ 正如我们上面提到的，向量空间的公理仅仅是（实数或复数）数字的代数运算的熟悉规则，所以如果我们把标量（数字）当作向量，所有公理都会被满足！因此，实数集 $\mathbb{R}$ 是一个实向量空间，复数集 $\mathbb{C}$ 是一个复向量空间。
 
-更重要的是，由于在上面的例子中，所有向量运算（加法和标量乘法）都是逐个元素执行的，因此对于这些例子，向量空间的公理自动满足，因为它们对于标量是满足的（你能看出为什么吗？）。所以，我们不必检查公理，而是自动获得了这些例子确实是向量空间的事实！
+更重要的是，由于在上面的例子中，所有向量运算（加法和标量乘法）都是逐个元素执行的，因此对于这些例子，向量空间的公理自动满足，因为它们对于标量是满足的（你能看出为什么吗？）。所以，我们不必检验公理，而是自动获得了这些例子确实是向量空间的事实！
 
 同样的情况也适用于下一个例子，即多项式，其中多项式的系数起着条目的作用。
 
@@ -169,7 +169,7 @@ $$
 $$
 的和。
 
-\textbf{定义}~ 向量系统 $\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_n \in V$ 称为 $V$ 的\textbf{基}（或\textbf{基底}），如果任何向量 $\mathbf{v} \in V$ 都可以唯一地表示为线性组合
+\textbf{定义}~ 向量系统 $\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_n \in V$ 称为 $V$ 的\textbf{基}(base)（或\textbf{基底}），如果任何向量 $\mathbf{v} \in V$ 都可以唯一地表示为线性组合
 $$
 \mathbf{v} = \alpha_1 \mathbf{v}_1 + \alpha_2 \mathbf{v}_2 + \dots + \alpha_n \mathbf{v}_n = \sum_{k=1}^n \alpha_k \mathbf{v}_k.
 $$
@@ -257,14 +257,14 @@ $$x_1 \mathbf{v}_1 + x_2 \mathbf{v}_2 + \dots + x_p \mathbf{v}_p = \mathbf{0}$$
 
 \textbf{命题 2.6.}~ 向量系统 $\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_p \in V$ 是线性相关的，当且仅当其中一个向量 $\mathbf{v}_k$ 可以表示为其他向量的线性组合，
 \begin{equation}\nonumber
-\mathbf{v}_k = \sum_{j=1, j \neq k}^p \beta_j \mathbf{v}_j ~~~~~~~~\quad (2.1)
+ (2.1)\quad \mathbf{v}_k = \sum_{j=1, j \neq k}^p \beta_j \mathbf{v}_j
 \end{equation}
 
 
 \textbf{证明}~ 
  假设系统 $\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_p$ 是线性相关的。那么存在不全为零的标量 $\alpha_k$（$\sum_{k=1}^p |\alpha_k| \neq 0$），使得 
 $$\alpha_1 \mathbf{v}_1 + \alpha_2 \mathbf{v}_2 + \dots + \alpha_p \mathbf{v}_p = \mathbf{0}.$$
-设 $k$ 是 $\alpha_k \neq 0$ 的索引。那么，将除 $\alpha_k \mathbf{v}_k$ 之外的所有项移到右侧，我们得到 $$\alpha_k \mathbf{v}_k = -\sum_{j=1, j \neq k}^p \alpha_j \mathbf{v}_j.$$
+设 $k$ 是 $\alpha_k \neq 0$ 的下标。那么，将除 $\alpha_k \mathbf{v}_k$ 之外的所有项移到右侧，我们得到 $$\alpha_k \mathbf{v}_k = -\sum_{j=1, j \neq k}^p \alpha_j \mathbf{v}_j.$$
 将两边除以 $\alpha_k$，我们得到 (2.1) 式，其中 $\beta_j = -\alpha_j / \alpha_k$。
 
 另一方面，如果 (2.1) 式成立，则 $\mathbf{0}$ 可以表示为非平凡线性组合 
@@ -351,15 +351,15 @@ c) $n \times n$ 反对称矩阵 ($A^T = -A$)。
 单词“变换”（transformation）、“映射”（map, mapping）、“算子”（operator）、“函数”（function）这些词都表示同一个概念。
 } (transformation)$T$ 是一个规则，它为每个自变量（输入）$x \in X$ 分配一个值（输出）$y = T(x) \in Y$。
 
-集合 $X$ 称为 $T$ 的\textbf{定义域}（domain），集合 $Y$ 称为 $T$ 的\textbf{目标空间}（target space）或\textbf{上域}（codomain）。
+集合 $X$ 称为 $T$ 的\textbf{定义域}(domain)，集合 $Y$ 称为 $T$ 的\textbf{目标空间}(target space)或\textbf{上域}(codomain)。
 
 我们写 $T: X \to Y$ 来表示 $T$ 是一个定义域为 $X$、目标空间为 $Y$ 的变换。
 
 \textbf{定义}~  设 $V$，$W$ 为向量空间（在同一域 $\mathbb{F}$ 上）。变换 $T: V \to W$ 称为\textbf{线性}的，如果
 
-1. $T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})$ $\forall \mathbf{u}, \mathbf{v} \in V$；
+1. $T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})$ $\quad \forall \mathbf{u}, \mathbf{v} \in V$；
 
-2. $T(\alpha \mathbf{v}) = \alpha T(\mathbf{v})$ 对所有 $\mathbf{v} \in V$ 和所有标量 $\alpha \in \mathbb{F}$。
+2. $T(\alpha \mathbf{v}) = \alpha T(\mathbf{v})$ 对所有 $\mathbf{v} \in V$ 和所有标量 $\alpha \in \mathbb{F}$.
 
 
 性质 1 和 2 一起等价于以下一个性质：
@@ -376,7 +376,7 @@ $$ T(p) := p' \quad \forall p \in \mathbb{P}_n. $$
 因为 $(f+g)' = f' + g'$ 且 $(\alpha f)' = \alpha f'$，这是一个线性变换。
 
 
-\textbf{示例}~ 
+\textbf{示例}~
 \textbf{旋转}: 在这个例子中，$V = W = \mathbb{R}^2$（通常的坐标平面），一个变换 $T_\gamma : \mathbb{R}^2 \to \mathbb{R}^2$ 将 $\mathbb{R}^2$ 中的一个向量逆时针旋转 $\gamma$ 弧度。由于 $T_\gamma$ 整体将平面旋转，它也整体旋转了用于定义两个向量之和的平行四边形（平行四边形法则）。因此，线性变换的性质 1 成立。也很容易看出性质 2 也为真。
 
 
@@ -465,7 +465,7 @@ $$
 因此，如果 $\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_n$ 是 $V$ 中的生成集（特别地，如果它是基），并且 $T$ 和 $T_1$ 是(具有相同定义域和目标空间的)两个线性变换 ($T, T_1: V \to W$) 并且 $$T \mathbf{v}_k = T_1 \mathbf{v}_k, k = 1, 2, \dots, n,$$ 
 则 $T = T_1$。
 
-这个命题的证明是微不足道的，留作练习。
+这个命题的证明是显然的，留作练习。
 
 \textbf{3.4. 结论}
 \begin{itemize}
@@ -499,25 +499,25 @@ $T \mathbf{v}$ 的表示比 $T(\mathbf{v})$更常用。
 
 3.1. 乘法：
 
-a) $\begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{pmatrix} \begin{pmatrix} 1 \\ 3 \\ 2 \end{pmatrix}$；
+a) $\begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{pmatrix} \begin{pmatrix} 1 \\ 3 \\ 2 \end{pmatrix}$;
 
-b) $\begin{pmatrix} 1 & 2 \\ 0 & 1 \\ 2 & 0 \end{pmatrix} \begin{pmatrix} 1 \\ 3 \end{pmatrix}$；
+b) $\begin{pmatrix} 1 & 2 \\ 0 & 1 \\ 2 & 0 \end{pmatrix} \begin{pmatrix} 1 \\ 3 \end{pmatrix}$;
 
-c) $\begin{pmatrix} 1 & 2 & 0 & 0 \\ 0 & 1 & 2 & 0 \\ 0 & 0 & 1 & 2 \\ 0 & 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} 1 \\ 2 \\ 3 \\ 4 \end{pmatrix}$；
+c) $\begin{pmatrix} 1 & 2 & 0 & 0 \\ 0 & 1 & 2 & 0 \\ 0 & 0 & 1 & 2 \\ 0 & 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} 1 \\ 2 \\ 3 \\ 4 \end{pmatrix}$;
 
-d) $\begin{pmatrix} 1 & 2 & 0 \\ 0 & 1 & 2 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{pmatrix} \begin{pmatrix} 1 \\ 2 \\ 3 \\ 4 \end{pmatrix}$。
+d) $\begin{pmatrix} 1 & 2 & 0 \\ 0 & 1 & 2 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{pmatrix} \begin{pmatrix} 1 \\ 2 \\ 3 \\ 4 \end{pmatrix}$.
 
 3.2. 找到 $\mathbb{R}^2$ 中关于直线 $x_1 = 3x_2$ 的反射的线性变换的矩阵。
 
 3.3. 对于以下每个线性变换，找到它的矩阵：
 
-a) $T: \mathbb{R}^2 \to \mathbb{R}^3$ 定义为 $T(\begin{pmatrix} x \\ y \end{pmatrix}) = \begin{pmatrix} x + 2y \\ 2x - 5y \\ 7y \end{pmatrix}$；
+a) $T: \mathbb{R}^2 \to \mathbb{R}^3$ 定义为 $T(\begin{pmatrix} x \\ y \end{pmatrix}) = \begin{pmatrix} x + 2y \\ 2x - 5y \\ 7y \end{pmatrix}$;
 
-b) $T: \mathbb{R}^4 \to \mathbb{R}^3$ 定义为 $T(x_1, x_2, x_3, x_4)^T = (x_1 + x_2 + x_3 + x_4, x_2 - x_4, x_1 + 3x_2 + 6x_4)^T$；
+b) $T: \mathbb{R}^4 \to \mathbb{R}^3$ 定义为 $T(x_1, x_2, x_3, x_4)^T = (x_1 + x_2 + x_3 + x_4, x_2 - x_4, x_1 + 3x_2 + 6x_4)^T$;
 
-c) $T: \mathbb{P}_n \to \mathbb{P}_n$, $T f(t) = f'(t)$（在标准基 $1, t, t^2, \dots, t^n$ 下找到矩阵）；
+c) $T: \mathbb{P}_n \to \mathbb{P}_n$, $T f(t) = f'(t)$（在标准基 $1, t, t^2, \dots, t^n$ 下找到矩阵）;
 
-d) $T: \mathbb{P}_n \to \mathbb{P}_n$, $T f(t) = 2 f(t) + 3 f'(t) - 4 f''(t)$（同样在标准基 $1, t, t^2, \dots, t^n$ 下找到矩阵）。
+d) $T: \mathbb{P}_n \to \mathbb{P}_n$, $T f(t) = 2 f(t) + 3 f'(t) - 4 f''(t)$（同样在标准基 $1, t, t^2, \dots, t^n$ 下找到矩阵）.
 
 3.4. 找到表示 $\mathbb{R}^3$ 中变换的 $3 \times 3$ 矩阵，这些变换：
 
@@ -545,7 +545,7 @@ c) 定义 $T(x + {\rm i} y) = 2x - y + {\rm i} (x - 3y)$。证明这个变换不
 \section{线性变换，作为向量空间}
 
 我们可以对线性变换进行哪些运算？我们总是可以在一个线性变换上乘上一个标量，也即，如果我们有一个线性变换 $T: V \to W$ 和一个标量 $\alpha$，我们可以定义一个新的变换 $\alpha T$ 为 $$(\alpha T) \mathbf{v} = \alpha (T \mathbf{v})~~\forall \mathbf{v} \in V.$$
-可以很容易地检查出 $\alpha T$ 也是一个线性变换：
+可以很容易地检验， $\alpha T$ 也是一个线性变换：
 %fill
 
 
@@ -557,7 +557,7 @@ $= \alpha (\alpha_1 T \mathbf{v}_1 + \alpha_2 T \mathbf{v}_2)$（根据$T$的线
 $= \alpha_1 \alpha T \mathbf{v}_1 +\alpha_2  \alpha T \mathbf{v}_2  = \alpha_1( \alpha T) \mathbf{v}_1 +\alpha_2( \alpha T) \mathbf{v}_2   $
 
 如果 $T_1$ 和 $T_2$ 是具有相同定义域和目标空间的线性变换 ($T_1: V \to W$ 和 $T_2: V \to W$，或简写为 $T_1, T_2: V \to W$)，那么我们可以将这些变换相加，即定义一个新的变换 $T = (T_1 + T_2): V \to W$ 为 $$(T_1 + T_2) \mathbf{v} = T_1 \mathbf{v} + T_2 \mathbf{v}~~\forall \mathbf{v} \in V.$$
-可以很容易地检查出变换 $T_1 + T_2$ 是线性的，只需重复上面关于 $\alpha T$ 线性的推理即可。
+可以很容易地检验出变换 $T_1 + T_2$ 是线性的，只需重复上面关于 $\alpha T$ 线性的推理即可。
 
 因此，如果我们固定向量空间 $V$ 和 $W$ 并考虑从 $V$ 到 $W$ 的所有线性变换的集合（我们将其表示为 $\mathcal{L}(V, W)$），我们可以定义 $\mathcal{L}(V, W)$ 上的 2 个运算：标量乘法和加法。可以很容易地证明这些运算满足向量空间公理，该公理在第 1 节中定义。
 
@@ -648,7 +648,7 @@ $$\sin \gamma = \frac{\text{第二个坐标}}{\text{长度}} = \frac{1}{\sqrt{3^
 将所有内容收集起来，我们得到
 $$T = R_\gamma T_0 R_{-\gamma} = \frac{1}{\sqrt{10}} \begin{pmatrix} 3 & -1 \\ 1 & 3 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \frac{1}{\sqrt{10}} \begin{pmatrix} 3 & 1 \\ -1 & 3 \end{pmatrix} $$
 $$= \frac{1}{10} \begin{pmatrix} 3 & -1 \\ 1 & 3 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \begin{pmatrix} 3 & 1 \\ -1 & 3 \end{pmatrix}$$
-最后一步是进行矩阵乘法得到最终结果。
+最后一步是进行矩阵乘法以得到最终结果。
 
 
 \textbf{5.3. 矩阵乘法的性质}
@@ -659,7 +659,7 @@ $$= \frac{1}{10} \begin{pmatrix} 3 & -1 \\ 1 & 3 \end{pmatrix} \begin{pmatrix} 1
 
 2. 分配律：$A(B + C) = AB + AC$, $(A + B)C = AC + BC$，只要每个等式的任一侧有定义。
 
-3. 可以提取标量乘数：$A(\alpha B) = (\alpha A) B = \alpha (AB) = \alpha AB$。
+3. 可以提取标量系数：$A(\alpha B) = (\alpha A) B = \alpha (AB) = \alpha AB$。
 
 这些性质很容易证明。可以证明对应于线性变换的性质，然后它们几乎自然地从定义中得出。线性变换的性质然后蕴含了矩阵乘法的性质。
 
@@ -704,7 +704,7 @@ $$
 如果你不熟悉代数运算，还有另一种方法。我们可以考虑两个线性变换$T$和$T_1$，它们作用于 $M_{n \times m}$ 到 $\mathbb{F} = \mathbb{F}^1$，由 
 $T(X) = \text{trace}(AX)$ 和 $T_1(X) = \text{trace}(XA)$
 定义。
-为了证明该定理，只需检查 $T=T_1$ 即可；当 $X=B$ 时，等式即给出该定理。
+为了证明该定理，只需检验 $T=T_1$ 即可；当 $X=B$ 时，等式即给出该定理。
 %fill
 
 \textbf{练习}~
@@ -805,7 +805,7 @@ $$R_\gamma = \begin{pmatrix} \cos \gamma & -\sin \gamma \\ \sin \gamma & \cos \g
 
 4. 行向量 $(1, 1)$ 是右可逆但不是左可逆的。列向量 $(1/2, 1/2)^T$ 是一个可能的右逆。
 
-\textbf{注释 6.2} 可逆矩阵\textbf{必须}是方阵（待会证明）。而且，如果一个方阵 $A$ 既有左逆又有右逆，那么它就是可逆的。所以，只需检查 $A A^{-1} = I$ 或 $A^{-1} A = I$ 其中一个即可。
+\textbf{注释 6.2} 可逆矩阵\textbf{必须}是方阵（待会证明）。而且，如果一个方阵 $A$ 既有左逆又有右逆，那么它就是可逆的。所以，只需检验 $A A^{-1} = I$ 或 $A^{-1} A = I$ 其中一个即可。
 
 这个事实将在后面证明。在此之前，我们不会使用它。我在这里呈现它只是为了阻止学生尝试错误的证明方向。
 
@@ -864,7 +864,7 @@ $$A^T (A^{-1})^T = (A^{-1} A)^T = I^T = I.$$
 
 \textbf{例子}~
 
-1. $A: \mathbb{F}^{n+1} \to P^\mathbb{F}_n$ （$P^\mathbb{F}_n$ 是 $\sum_{k=0}^n a_k t^k$, $\alpha_k \in \mathbb{F}$ 的形式的 $n$ 次多项式集）定义为 
+1. $A: \mathbb{F}^{n+1} \to \mathbb{P}^\mathbb{F}_n$ （$\mathbb{P}^\mathbb{F}_n$ 是 $\sum_{k=0}^n a_k t^k$, $\alpha_k \in \mathbb{F}$ 的形式的 $n$ 次多项式集）定义为 
 $$A \mathbf{e}_1 = 1, A \mathbf{e}_2 = t, \dots, A \mathbf{e}_n = t^{n-1}, A \mathbf{e}_{n+1} = t^n.$$
 
 根据定理 6.7，$A$ 是同构，所以 $\mathbb{P}^\mathbb{F}_n \cong \mathbb{F}^{n+1}$。
@@ -892,7 +892,7 @@ $$A \mathbf{x} = \mathbf{y}$$
 
 注意，$B(\mathbf{y})$ 对所有 $\mathbf{y} \in Y$ 都有定义，因此我们定义了一个变换 $B: Y \to X$。
 
-让我们检查 $B$ 是否是线性变换。我们需要证明 $B(\alpha \mathbf{y}_1 + \beta \mathbf{y}_2) = \alpha B(\mathbf{y}_1) + \beta B(\mathbf{y}_2)$。设 $\mathbf{x}_k := B(\mathbf{y}_k)$, $k = 1, 2$，即
+让我们检验 $B$ 是否是线性变换。我们需要证明 $B(\alpha \mathbf{y}_1 + \beta \mathbf{y}_2) = \alpha B(\mathbf{y}_1) + \beta B(\mathbf{y}_2)$。设 $\mathbf{x}_k := B(\mathbf{y}_k)$, $k = 1, 2$，即
 $A \mathbf{x}_k = \mathbf{y}_k$, $k = 1, 2$。那么
 $$A(\alpha \mathbf{x}_1 + \beta \mathbf{x}_2) = \alpha A \mathbf{x}_1 + \beta A \mathbf{x}_2 = \alpha \mathbf{y}_1 + \beta \mathbf{y}_2,$$
 这意味着
@@ -961,11 +961,11 @@ c) $A$, $B$ 和 $A+B$ 都可逆。
 
 $\alpha \mathbf{u} + \beta \mathbf{v} \in V_0$ 对所有 $\mathbf{u}, \mathbf{v} \in V_0$，以及所有标量 $\alpha, \beta$。
 
-请注意，子空间 $V_0 \subset V$ 连同从 $V$ 继承的运算（向量加法和标量乘法），是一个向量空间。实际上，由于 $V$ 非空，它至少包含 1 个向量 $\mathbf{v}$，并且由于 $\mathbf{0} = 0\mathbf{v}$，所以上述条件 1.意味着零向量 $\mathbf{0}$ 在 $V$ 中。此外，对于任何 $\mathbf{v} \in V$，它的加法逆元 $-\mathbf{v}$ 由 $-\mathbf{v} = (-1)\mathbf{v}$ 给出，所以再次根据性质 1.$-\mathbf{v} \in V$。向量空间的其余公理之所以成立，是因为所有运算都源于向量空间 $V$。唯一可能出错的是某个运算的结果不属于 $V_0$。但子空间的定义禁止了这一点！
+请注意，子空间 $V_0 \subset V$ 连同从 $V$ 继承的运算（向量加法和标量乘法），是一个向量空间。实际上，由于 $V$ 非空，它至少包含 1 个向量 $\mathbf{v}$，并且由于 $\mathbf{0} = 0\mathbf{v}$，所以上述条件 1.意味着零向量 $\mathbf{0}$ 在 $V$ 中。此外，对于任何 $\mathbf{v} \in V$，它的加法逆元 $-\mathbf{v}$ 由 $-\mathbf{v} = (-1)\mathbf{v}$ 给出，所以再次根据性质 1，$-\mathbf{v} \in V$。向量空间的其余公理之所以成立，是因为所有运算都源于向量空间 $V$。唯一可能出错的是某个运算的结果不属于 $V_0$。但子空间的定义禁止了这一点！
 
 现在我们来看一些例子：
 
-1. 空间 $V$ 的\textbf{平凡}子空间，即 $V$ 本身和 $\{\mathbf{0}\}$（仅包含零向量的子空间）。注意，空集 $\emptyset$ 不是向量空间，因为它不包含零向量，所以它不是子空间。
+1. 空间 $V$ 的\textbf{平凡}(trivial)子空间，即 $V$ 本身和 $\{\mathbf{0}\}$（仅包含零向量的子空间）。注意，空集 $\emptyset$ 不是向量空间，因为它不包含零向量，所以它不是子空间。
 
 任何线性变换 $A: V \to W$ 都可以关联以下两个子空间：
 
@@ -979,7 +979,7 @@ $\alpha \mathbf{u} + \beta \mathbf{v} \in V_0$ 对所有 $\mathbf{u}, \mathbf{v}
 
 4. 给定向量系统 $\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_r \in V$，它的\textbf{线性张成}(linear span)（有时简单称为\textbf{张成}）$\mathcal{L}\{\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_r\}$ 是 $V$ 中所有可以表示为向量 $\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_r$ 的线性组合 $\mathbf{v} = \alpha_1 \mathbf{v}_1 + \alpha_2 \mathbf{v}_2 + \dots + \alpha_r \mathbf{v}_r$ 的向量的集合。符号 $\text{span}\{\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_r\}$ 也用于代替 $\mathcal{L}\{\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_r\}$。
 
-可以很容易地检查出在所有这些例子中我们确实得到了子空间。我们将此作为读者的练习。其中一些陈述将在本书后面证明。
+可以很容易地检验出在所有这些例子中我们确实得到了子空间。我们将此作为读者的练习。其中一些陈述将在本书后面证明。
 
 
 \textbf{练习}~
