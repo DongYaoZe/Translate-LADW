@@ -4,28 +4,28 @@
 % zhbook 中文书籍 LaTeX 模板
 
 %--- 正文前后都没有空白页 ---
-\documentclass[openany,twoside,zihao=-4,,fontset=windows]{zhbook}
+%\documentclass[openany,twoside,zihao=-4,,fontset=windows]{zhbook}
 % print 用于打印, 封面等生成空白页
 
 %--- 正文前后都有空白页, 正文一章结束可空白页使新的一章是在奇数页开始 ---
-% \documentclass[twoside,openright,zihao=-4]{zhbook}
+\documentclass[twoside,openright,zihao=-4]{zhbook}
 
 
 % 书籍信息设置
 % \vspace{5ex}
 
 
-\title{「倒叙」的线性代数}  % 标题
+\title{「错位」的线性代数}  % 标题
 \subtitle{——\textbf{{\tinro
 Linear Algebra
 Done Wrong}} 翻译版}  % 副标题
 
 
-\author{Sergei Treil~（谢尔盖·特雷伊）\\ 布朗大学数学系 }  % 作者姓名
+\author{[美]Sergei Treil~（谢尔盖·特雷伊）\\ 布朗大学数学系 }  % 作者姓名
 \bioinfo{译者}{董耀择\\南京大学匡亚明学院2025级本科生} 
 
 \date{\today}  % 日期
-\version{2.2}  % 版本
+\version{9.0}  % 版本
  % 其他信息
 
 
@@ -97,27 +97,53 @@ Done Wrong}} 翻译版}  % 副标题
 \newcommand*{\dif}{\mathop{}\!\mathrm{d}}
 
 %----- 自定义命令 -----
-\newcommand{\CC}{\ensuremath{\mathbb{C}}}
-\newcommand{\RR}{\ensuremath{\mathbb{R}}}
-\newcommand{\A}{\mathcal{A}}
+
 \newcommand{\bA}{\boldsymbol{A}}
-\newcommand{\ii}{\mathrm{i}\mkern1mu}
 \newcommand{\abs}[1]{\lvert#1\rvert}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\dx}[1][x]{\mathop{}\!\mathrm{d}#1}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\PPP}{\mathcal{P}}
+\newcommand{\SSS}{\mathcal{S}}
+\newcommand{\LL}{\mathcal{L}}
+
+\newcommand{\CC}{\ensuremath{\mathbb{C}}}
+\newcommand{\RR}{\ensuremath{\mathbb{R}}}
+\newcommand{\FF}{\ensuremath{\mathbb{F}}}
+\newcommand{\PP}{\ensuremath{\mathbb{P}}}
+
+
+\newcommand{\ii}{\mathrm{i}\mkern1mu}
+
+\newcommand{\uu}{\mathbf{u}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\ww}{\mathbf{w}}
+\newcommand{\ee}{\mathbf{e}}
+\newcommand{\bb}{\mathbf{b}}
+\newcommand{\aaa}{\mathbf{a}}
+\newcommand{\xx}{\mathbf{x}}
+\newcommand{\yy}{\mathbf{y}}
+\newcommand{\zz}{\mathbf{z}}
+\newcommand{\oo}{\mathbf{0}}
+\newcommand{\ff}{\mathbf{f}}
 
 \begin{document}
 
-
+% \let\cleardoublepage\clearpage
 % 生成封面
-\maketitle
+% \maketitle
+
+
+
 
 % 插入封面 PDF文件
-%\thispagestyle{empty}
-%\includepdf{cover.pdf}
-%\cleardoublepage
+\thispagestyle{empty}
+\includepdf[pages=-]{cover.pdf} % 或 [pages={1-2}]
+\cleardoublepage
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -168,25 +194,25 @@ Done Wrong}} 翻译版}  % 副标题
 \input{part/chap02}
 
 
-% \input{part/chap03}
+\input{part/chap03}
 
 
-% \input{part/chap04}
+\input{part/chap04}
 
 
-% \input{part/chap05}
+\input{part/chap05}
 
 
-% \input{part/chap06}
+\input{part/chap06}
 
 
-% \input{part/chap07}
+\input{part/chap07}
 
 
-% \input{part/chap08}
+\input{part/chap08}
 
 
-% \input{part/chap09}
+\input{part/chap09}
 
 
 %%%%%%%%%%%%%%%%%%%%%% 参考文献 %%%%%%%%%%%%%%%%%%%%%
@@ -221,7 +247,7 @@ Done Wrong}} 翻译版}  % 副标题
 
 %%%%%%%%%%%%%%%%%%%%%%% 后记 %%%%%%%%%%%%%%%%%%%%%%%%
 
-% \input{part/epilogue}
+\input{part/epilogue}
 
 
 \end{document}
