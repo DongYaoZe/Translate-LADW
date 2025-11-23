@@ -125,40 +125,46 @@
         format = \linespread{1.0}\sffamily\heiti\chapfont\centering,
         nameformat = {},
         titleformat = {},
-        number = \arabic{chapter},
+        numbering = false,   % 关闭章节编号
+        number = \relax,     % 不输出编号
         numberformat = {},
-        aftername = \quad,
+        aftername = {},      % 章节名前后不再加“第x章”，也不需要空格
         beforeskip = {6pt},
         afterskip = {24pt},
         %pagestyle = main,
     },
     section = {
         format = \linespread{1.0}\sffamily\heiti\zihao{-3}\raggedright,
+        numbering = false,
+        number = \relax,
         numberformat = {},
-        aftername = \quad,
+        aftername = {},
         beforeskip = {18pt},
         afterskip = {6pt},
     },
     subsection = {
         format = \linespread{1.0}\sffamily\heiti\zihao{4}\raggedright,
+        numbering = false,
+        number = \relax,
         numberformat = {},
-        aftername = \quad,
-        beforeskip = {12pt},
-        afterskip = {6pt},
+        aftername = {},
+        beforeskip = {8pt},
+        afterskip = {4pt},
     },
     subsubsection = {
         format = \linespread{1.0}\sffamily\heiti\zihao{-4}\raggedright,
+        numbering = false,
+        number = \relax,
         numberformat = {},
-        aftername = \quad,
-        beforeskip = {12pt},
-        afterskip = {6pt},
+        aftername = {},
+        beforeskip = {8pt},
+        afterskip = {3pt},
     },
     appendix = {
-        numbering = true,
-        number = \Alph{chapter},
+        numbering = false,   % 附录也不编号；如需附录单独保留编号，改为 true 即可
+        number = \relax,
     },
 }
-
 %---------- 算法宏包及设置 ----------
 \RequirePackage{algorithm,algorithmicx}
 \RequirePackage{algpseudocode}
@@ -170,10 +176,19 @@
 %\renewcommand{\appendixname}{附录}
 
 %---------- 定义页眉页脚 ----------
+% \newcommand{\headstyle}{%
+%     % \fancyhead[C]{\fangsong\zihao{5} \@title}
+%     \fancyhead[RO,LE]{\fangsong\zihao{5}$\cdot$\:\thepage\:$\cdot$}
+%     \fancyhead[LO,RE]{\fangsong\zihao{5}\nouppercase{\leftmark}}
+% }
+
+%---------- 定义页眉页脚 ----------
+%---------- 定义页眉页脚 ----------
 \newcommand{\headstyle}{%
-    % \fancyhead[C]{\fangsong\zihao{5} \@title}
-    \fancyhead[RO,LE]{\fangsong\zihao{5}$\cdot$\:\thepage\:$\cdot$}
-    \fancyhead[LO,RE]{\fangsong\zihao{5}\nouppercase{\leftmark}}
+    % 左侧偶数页 (Even pages): 页码在左, chapter 在右
+    \fancyhead[LE]{\fangsong\zihao{5}$\cdot$\:\thepage\:$\cdot$\hfill\fangsong\zihao{5}\nouppercase{\leftmark}}
+    % 右侧奇数页 (Odd pages): section 在左, 页码在右
+    \fancyhead[RO]{\fangsong\zihao{5}\nouppercase{\rightmark}\hfill\fangsong\zihao{5}$\cdot$\:\thepage\:$\cdot$}
 }
 
 %---------- 设置页脚样式 ----------
@@ -511,4 +526,40 @@
     \oldbibliography{#1}%
 }
 
+
+% 导言区里定义一个环境
+% \newenvironment{smallex}{
+%   \begingroup
+%     \zihao{-4}% 比正文小一号（正文一般是 \zihao{-3}）
+%     \linespread{1.0}\selectfont% 行距稍微紧一些，可按需要调成 0.9~1.1
+%     \setlength{\parskip}{0pt}% 段前后不要额外间距（可选）
+% }{%
+%   \endgroup
+% }
+
+\usepackage{tcolorbox}
+
+% 定义题目环境
+% \newtcolorbox{smallex}{
+%     colback=white,
+%     colframe=black,
+%     boxrule=0.5pt,
+%     arc=0pt,
+%     left=6pt,
+%     right=6pt,
+%     top=3pt,
+%     bottom=3pt,
+%     before skip=6pt,
+%     after skip=6pt,
+%     fontupper=\small\linespread{1.2}\selectfont
+% }
+
+\newenvironment{exer}
+  {%
+   \par\vspace{6pt} % 环境前的垂直间距
+   \linespread{1.0}\zihao{5}\selectfont % 设置行距和字号
+   \setlength{\leftskip}{4em}   % 设置段落整体左缩进2字符
+   \setlength{\parindent}{-2em}  % 设置首行反向缩进2字符，形成悬挂效果
+  }
+  {\par\vspace{6pt}} % 环境后的垂直间距
 % End of file `zhbook.cls'.
