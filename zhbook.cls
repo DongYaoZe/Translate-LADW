@@ -267,12 +267,22 @@
 % \setlength{\belowbottomsep}{0pt}
 
 %---------- 数学定理设置 ----------
-\newtheoremstyle{zhbook}{0.5\topsep}{0.5\topsep}%
-{\kaishu}{}{\sffamily\heiti}{.}{5pt plus 1pt minus 1pt}{}%%
+% 样式1：zhbook (楷书，用于定理、引理)
+\newtheoremstyle{zhbook}{3pt}{3pt}%
+{\kaishu}{2em}{\sffamily\heiti}{.}{5pt plus 1pt minus 1pt}%
+{\ifx\relax#3\relax\thmname{#1}\thmnumber{ #2}\else\thmname{#3}\fi}% <--- 修改了这里
+
+% 样式2：zhbooknormal (正文字体，用于推论、定义等)
+\newtheoremstyle{zhbooknormal}{3pt}{3pt}%
+{\normalfont}{2em}{\sffamily\heiti}{.}{5pt plus 1pt minus 1pt}%
+{\ifx\relax#3\relax\thmname{#1}\thmnumber{ #2}\else\thmname{#3}\fi}
+
 %\theoremstyle{plain}
-\theoremstyle{zhbook}
+\theoremstyle{zhbook} % 这里的环境使用楷书
 \newtheorem{theorem}{定理}[chapter]
 \newtheorem{lemma}{引理}[chapter]
+
+\theoremstyle{zhbooknormal} % 修改：切换到正文字体样式，但保留缩进和紧凑间距
 \newtheorem{corollary}{推论}[chapter]
 \newtheorem{definition}{定义}[chapter]
 \newtheorem{proposition}{命题}[chapter]
@@ -289,8 +299,8 @@
     \par\pushQED{\qed}%
     %\normalfont \topsep6\p@\@plus6\p@\relax
     \normalfont \topsep3\p@\@plus3\p@\relax
-    \trivlist\item[\hskip\labelsep
-    \bfseries #1\@addpunct{\,:\,}]\ignorespaces
+    \trivlist\item[\hskip\labelsep\hskip2em % 修改：此处增加 \hskip2em 实现首行缩进
+    \sffamily\heiti #1\@addpunct{\,:\,}]\ignorespaces % 修改：将 \bfseries 改为 \sffamily\heiti (黑体)
 }{%
     \popQED\endtrivlist\@endpefalse
 }
@@ -363,12 +373,13 @@
         \vspace*{1\baselineskip}  % blank space after title
 
         {\large\kaishu\renewcommand{\arraystretch}{1.2}%
-        \begin{tabular}{c}
-        \ifx\@author\empty{}\else 作者：\@author \\ \fi
-        %\ifx\@institute\undefined{}\else 机构：\@institute \\ \fi
-        \ifx\@date\empty{}\else 日期：\@date \\ \fi
-        \ifx\@version\undefined{}\else 版本：\@version \\ \fi
+        \begin{tabular}{l}
+        \ifx\@author\empty{}\else 作\hspace{2em}者：\@author \\ \fi
         \ifx\@bioinfo\undefined{}\else \@bioinfo \\ \fi
+
+        %\ifx\@institute\undefined{}\else 机构：\@institute \\ \fi
+        \ifx\@date\empty{}\else 发布日期：\@date \\ \fi
+        \ifx\@version\undefined{}\else 当前版本：\@version \\ \fi
         \end{tabular}}
 
         \vspace*{\fill}%
@@ -558,7 +569,7 @@
   {%
    \par\vspace{6pt} % 环境前的垂直间距
    \linespread{1.0}\zihao{5}\selectfont % 设置行距和字号
-   \setlength{\leftskip}{4em}   % 设置段落整体左缩进2字符
+   \setlength{\leftskip}{2em}   % 设置段落整体左缩进2字符
    \setlength{\parindent}{-2em}  % 设置首行反向缩进2字符，形成悬挂效果
   }
   {\par\vspace{6pt}} % 环境后的垂直间距
