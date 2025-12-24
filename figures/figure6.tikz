@@ -1,0 +1,46 @@
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, 
+               left delimiter=(, right delimiter=),
+               nodes in empty cells,
+               nodes={anchor=center, minimum size=1.6em, inner sep=0pt},
+               column sep=0pt, row sep=0pt]
+  {
+    0 & 1 &   &   &   &   &   &   &   &   &   &   &   &   \\
+      & 0 & 1 &   &   &   &   &   &   &   &   &   &   &   \\
+      &   & 0 & 1 &   &   &   &   &   &   &   &   &   &   \\
+      &   &   & 0 & 1 &   &   &   &   &   &   &   &   &   \\
+      &   &   &   & 0 &   &   &   &   &   &   &   &   &   \\
+      &   &   &   &   & 0 & 1 &   &   &   &   &   &   &   \\
+      &   &   &   &   &   & 0 & 1 &   &   &   &   &   &   \\
+      &   &   &   &   &   &   & 0 &   &   &   &   &   &   \\
+      &   &   &   &   &   &   &   & 0 & 1 &   &   &   &   \\
+      &   &   &   &   &   &   &   &   & 0 &   &   &   &   \\
+      &   &   &   &   &   &   &   &   &   & 0 & 1 &   &   \\
+      &   &   &   &   &   &   &   &   &   &   & 0 &   &   \\
+      &   &   &   &   &   &   &   &   &   &   &   & 0 &   \\
+      &   &   &   &   &   &   &   &   &   &   &   &   & 0 \\
+  };
+  \coordinate (corner1) at (m-5-5.south east);
+  \coordinate (corner2) at (m-8-8.south east);
+  \coordinate (corner3) at (m-10-10.south east);
+  \coordinate (corner4) at (m-12-12.south east);
+  \coordinate (corner5) at (m-13-13.south east);
+  \draw (corner1) -- (m-5-1.south west -| m.west); 
+  \draw (corner1) -- (m-1-5.north east |- m.north);
+  \draw (corner1) -| (corner2) -| (corner1);
+  \draw (corner2) -| (corner3) -| (corner2);
+  \draw (corner3) -| (corner4) -| (corner3);
+  \draw (corner4) -| (corner5) -| (corner4);
+  \draw (corner5) -| (m-14-14.north east);
+  \draw (corner5) |- (m-14-14.south west);
+  \node at (m-11-4) {\large 0};
+  \node at (m-5-11) {\large 0};
+  \begin{scope}[shift={($(m.north west) + (-4.5, 0)$)}]
+    \foreach \row [count=\i] in {6, 4, 2, 1, 1} {
+        \foreach \col in {1,...,\row} {
+            \filldraw[black] (\col*0.5, -\i*0.5) circle (1.5pt);
+        }
+    }
+  \end{scope}
+\end{tikzpicture}%
+
