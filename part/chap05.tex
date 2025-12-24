@@ -1,0 +1,1367 @@
+
+
+
+\chapter{第五章~~内积空间}
+
+内积空间的理论仅针对实空间和复空间进行发展，因此本章中的 $\FF$ 始终代表 $\RR$ 或 $\CC$；其结果通常不能推广到任意域上的向量空间。
+
+本章中的大部分内容在实数和复数情况下都成立（且表述相同）。在实数和复数情况存在差异的罕见情况下，我将明确说明所考虑的情况：否则，所有内容对两种情况都适用。
+
+最后，当公式对复数和实数情况都适用时，我们将使用复数情况的公式；在实数情况下，这些公式也能给出正确的结果，尽管有时会显得稍微复杂一些。
+
+\section{1. $\RR^n$ 与 $\CC^n$ 中的内积~~内积空间}
+
+\subsection{1.1. $\RR^n$ 中的内积和范数}
+
+在二维和三维空间中，\index{fanshu@范数!oujilide@欧几里得 (在 $\mathbb{R}^n$ 或 $\mathbb{C}^n$ 中)}我们通过勾股定理定义了向量 $\xx$ 的长度（即其终点到原点的距离），例如在 $\RR^3$ 中，向量的长度定义为 
+$$\| \xx \| = \sqrt{x_1^2 + x_2^2 + x_3^2}.$$
+自然地，我们可以将这个公式推广到所有正整数 $n$，定义向量 $\xx \in \RR^n$ 的\textbf{范数}\index{fanshu@范数}(norm)为 $$\| \xx \| = \sqrt{x_1^2 + x_2^2 + \dots + x_n^2}.$$
+这里的“范数”一词只是“长度”一词的一种更专业的说法。
+
+
+在 $\RR^3$ 中，我们定义了\textbf{点积}(dot product)为 $\xx \cdot \yy = x_1 y_1 + x_2 y_2 + x_3 y_3$，其中 $\xx = (x_1, x_2, x_3)^T$ , $\yy = (y_1, y_2, y_3)^T$.~
+
+类似地，在 $\RR^n$ 中，可以定义两个向量 $\xx = (x_1, x_2, \dots, x_n)^T$, $\yy = (y_1, y_2, \dots, y_n)^T$ 的\textbf{内积}(inner product)\footnote{
+虽然$\xx \cdot \yy$的记法和“点积”的术语都经常用于表示内积，但在下文中我们将会看到，为什么我更喜欢
+$(\xx, \yy)$的记法。}（记作 $(\xx, \yy)$）为：
+$$(\xx, \yy) := x_1 y_1 + x_2 y_2 + \dots + x_n y_n = \yy^T \xx$$
+因此，$\| \xx \| = \sqrt{(\xx, \xx)}.$
+
+注意，$\yy^T \xx = \xx^T \yy$，我们使用 $\yy^T \xx$ 的记法只是为了保持一致性。
+
+\subsection{1.2. $\CC^n$ 中的内积和范数}
+
+现在我们来定义 $\CC^n$ 的范数和内积。正如我们之前所见，从谱理论的角度来看，复数空间 $\CC^n$ 是最自然的。即使我们从具有实系数的矩阵（或实向量空间上的算子）开始，特征值也可能是复数，这时我们就需要在一个复数空间中进行运算。
+
+对于复数 $z = x + \ii y$，我们有 $|z|^2 = x^2 + y^2 = z\overline{z}$.~如果复数 $\zz \in C^n$ 表示为：
+$$\zz = \begin{pmatrix} z_1 \\ z_2 \\ \vdots \\ z_n \end{pmatrix} = \begin{pmatrix} x_1 + \ii y_1 \\ x_2 + \ii y_2 \\ \vdots \\ x_n + \ii y_n \end{pmatrix}$$
+那么可以自然地定义其\textbf{范数} $\| \zz \|$ 为：
+
+$$\| \zz \|^2 = \sum_{k=1}^n (x_k^2 + y_k^2) = \sum_{k=1}^n |z_k|^2.$$
+我们尝试定义一个 $\CC^n$ 上的内积，使得 $\| \zz \|^2 = (\zz, \zz)$.~一种选择是定义 $(\zz, \ww)$ 为：
+$$(\zz, \ww) = z_1 \overline{w}_1 + z_2 \overline{w}_2 + \dots + z_n \overline{w}_n = \sum_{k=1}^n z_k \overline{w}_k,$$
+我们将此定义为 $\CC^n$ 中的\textbf{标准内积}。
+
+为了简化记法，让我们引入一个新概念。
+对于矩阵 $A$，我们定义其\textbf{埃尔米特伴随}(Hermitian adjoint)（或简称\textbf{伴随}）\index{bansui@伴随!suanzide@算子的}$A^*$ 为 $A^* = \overline{A^T}$，这意味着我们对矩阵进行转置，然后取每个元素的复共轭（注：如果让这两个步骤颠倒也可以得到一样的结果）。注意，对于实数矩阵 $A$，有 $A^* = A^T$.~
+
+使用 $A^*$ 的概念，我们可以将 $\CC^n$ 中的标准内积写成 
+$$(\zz, \ww) = \ww^* \zz.$$
+
+{\heiti 注记}~~很容易看出，我们也可以定义一个形式上与之不同的 $\CC^n$ 内积，使得 $\| \zz \|^2 = (\zz, \zz)$，即内积定义为 
+$$(\zz, \ww)_1 = \overline{z}_1 w_1 + \overline{z}_2 w_2 + \dots + \overline{z}_n w_n = \zz^T \ww.$$
+我们还没有明确说明希望内积满足什么性质，但 $\ww^* \zz$ 和 $\zz^* \ww$ 是给出 $\| \zz \|^2 = (\zz, \zz)$ 的唯一合理的选择。
+
+注意，上述两个内积的选择本质上是等价的：它们之间的唯一区别在于记法，因为 $(\zz, \ww)_1 = (\ww, \zz)$.~
+
+虽然第二个内积选择看起来更自然，但第一个内积 $(\zz, \ww) = \ww^* \zz$ 使用更广泛，因此我们将采用它。
+
+\subsection{1.3. 内积空间}
+
+我们在 $\RR^n$ 和 $\CC^n$ 中定义的内积满足以下性质：
+
+1. \textbf{（共轭）对称性}：$(\xx, \yy) = \overline{(\yy, \xx)}$；注意，对于实数空间，此性质就是对称性，$(\xx, \yy) = (\yy, \xx)$；
+
+2. \textbf{线性性质}：$(\alpha \xx + \beta \yy, \zz) = \alpha (\xx, \zz) + \beta (\yy, \zz)$ 对所有向量 $\xx, \yy, \zz$ 和所有标量 $\alpha, \beta$ 成立；
+
+3. \textbf{非负性}：$(\xx, \xx) \ge 0 \quad \forall \xx$ 成立；
+
+4. \textbf{非退化性}：$(\xx, \xx) = 0$ 当且仅当 $\xx = \oo$.~
+
+设 $V$ 是一个（复数或实数）向量空间。\textbf{内积}是这样一个函数，它为每对向量 $\xx, \yy$ 分配一个标量，记作 $(\xx, \yy)$，并满足上述性质 1-4。
+
+注意，对于实数空间 $V$，我们假定 $(\xx, \yy)$ 始终是实数；对于复数空间，内积 $(\xx, \yy)$ 可以是复数。
+
+一个带有内积的向量空间 $V$ 被称为\textbf{内积空间}\index{neijikongjian@内积空间}(inner product space)。给定一个内积空间，我们可以定义其上的范数
+$$\| \xx \| = \sqrt{(\xx, \xx)}.$$
+
+\subsubsection{1.3.1. 例子}
+
+{\heiti 例子1.1.} \index{neiji@内积!zaicn@在 $\mathbb{C}^n$ 中}设 $V$ 为 $\RR^n$ 或 $\CC^n$.~我们已经定义了内积 $(\xx, \yy) = \yy^* \xx = \sum_{k=1}^n  x_k\overline{y_k}$.~
+
+这个内积称为 $\RR^n$ 或 $\CC^n$ 中的\textbf{标准内积}(standard inner product)。
+
+我们将符号 $\FF$ 用来同时表示 $\CC$ 和 $\RR$.~当我们在 $\FF^n$ 上有一些陈述时，这意味着该陈述对 $\RR^n$ 和 $\CC^n$ 都成立。
+
+{\heiti 例子1.2.} 设 $V$ 为次数最多为 $n$ 的多项式空间 $\PP_n$.~定义内积为 
+$$(f, g) = \int_{-1}^1 f(t) \overline{g(t)}\dif t.$$
+
+很容易验证上述性质 1-4 得到满足。
+
+这个定义对复数和实数情况都有效。在实数情况下，我们只允许有实系数多项式，并且不需要取复共轭。
+
+我们回顾一下，对于方阵 $A$，其\textbf{迹}定义为对角线元素之和，$$\trace A := \sum_{k=1}^n a_{k,k}.$$
+
+{\heiti 例子1.3.} 对于 $m \times n$ 矩阵空间 $M_{m \times n}$，我们定义所谓的\textbf{弗罗贝尼乌斯内积}(Frobenius inner product)为 
+$$(A, B) = \trace(B^* A).$$
+再次，很容易验证性质 1-4 得到满足，即我们确实定义了一个内积。
+
+注意，$$\trace(B^* A) = \sum_{j,k} A_{j,k}\overline{B}_{j,k} .$$
+这意味着此内积与 $\CC^{mn}$ 中的标准内积一致。
+
+\subsection{1.4. 内积的性质}
+
+\index{neiji@内积!chouxiang@抽象}我们在本节中得到的陈述对任何抽象域上的内积空间都是成立的，而不仅仅是 $\FF^n$.~为了证明它们，我们仅使用内积的性质 1-4。
+
+首先，我们注意到性质 1 和 2 暗示了：
+
+2'. $(\xx, \alpha \yy + \beta \zz) = \overline{\alpha} (\xx, \yy) + \overline{\beta} (\xx, \zz)$ 
+
+   
+的确，对于复数空间：
+
+$(\xx, \alpha \yy + \beta \zz) = \overline{(\alpha \yy + \beta \zz, \xx)} = \overline{\alpha (\yy, \xx) + \beta (\zz, \xx)} = \overline{\alpha} \overline{(\yy, \xx)} + \overline{\beta} \overline{(\zz, \xx)} = \overline{\alpha} (\xx, \yy) + \overline{\beta} (\xx, \zz)$
+
+同时还注意到性质 2 暗示了对于所有向量 $\xx$：$$(\oo, \xx) = (\xx, \oo) = 0.$$
+
+\begin{lemma}[\normalfont\heiti 引理 1.4\nopunct]  设 $\xx$ 是内积空间 $V$ 中的一个向量。则 $\xx = \oo$ 当且仅当
+  $$(1.1)\quad (\xx, \yy) = \oo \quad \forall \yy \in V.$$\end{lemma}
+
+
+\begin{proof}由于 $(\oo, \yy) = 0$，我们只需要证明 $(1.1) \quad \forall \yy \in V$ 蕴含 $\xx = \oo$.~将 $\yy = \xx$ 代入 $(1.1)$，我们得到 $(\xx, \xx) = \oo$，因此 $\xx = \oo$.~\end{proof}
+
+将上述引理应用于差值 $\xx - \yy$，我们得到以下：
+
+{\heiti 推论 1.5.} 设 $\xx, \yy$ 是内积空间 $V$ 中的向量。则 $\xx = \yy$ 当且仅当 
+$$(\xx, \zz) = (\yy, \zz) \quad \forall \zz \in V$$ 成立。
+
+以下推论非常简单，但将被大量使用：
+
+{\heiti 推论 1.6.} 假设两个算子 $A, B: X \to Y$ 满足 
+$$(A\xx, \yy) = (B\xx, \yy) \quad \forall \xx \in X, \forall \yy \in Y.$$
+则 $A = B$.
+
+\begin{proof}根据上一个推论（固定 $\xx$ 并考虑所有可能的 $\yy$），我们得到 $A\xx = B\xx$.~由于这对所有 $\xx \in X$ 都成立，因此算子 $A$ 和 $B$ 是相同的。\end{proof}
+
+以下性质将范数和内积联系起来。
+
+\begin{theorem}[\normalfont\heiti 定理 1.7\nopunct]  (柯西-施瓦茨不等式)
+$$|(\xx, \yy)| \le \|\xx\| \cdot \|\yy\|.$$\end{theorem}
+
+\begin{proof}我们将给出的证明不是最短的，但它显示了证明主要思想的来源。
+
+我们先考虑实数情况。如果 $\yy = \oo$，则该陈述是平凡的，因此我们可以假设 $\yy \ne \oo$.~根据内积的性质，对于所有标量 $t$，有：
+$$\oo \le \|\xx - t\yy\|^2 = (\xx - t\yy, \xx - t\yy) = \|\xx\|^2 - 2t(\xx, \yy) + t^2 \|\yy\|^2.$$
+特别地，该不等式对于 $t = \frac{(\xx, \yy)}{\|\yy\|^2}$ 应该成立，
+\footnote{
+这是上述二次多项式取得最小值的点：例如，可以通过对 $t$ 取导数并令其等于 0 来计算。
+}
+并且在该点该不等式变为：
+$$0 \le \|\xx\|^2 - 2 \frac{(\xx, \yy)^2}{\|\yy\|^2} + \frac{(\xx, \yy)^2}{\|\yy\|^2} = \|\xx\|^2 - \frac{(\xx, \yy)^2}{\|\yy\|^2},$$
+这正是我们需要证明的不等式。
+
+处理复数情况有几种可能的方法。一种方法是将 $\xx$ 替换为 $\alpha \xx$，其中 $\alpha$ 是一个模为 1 的复常数，使得 $(\alpha \xx, \yy)$ 为实数，然后对实数情况重复证明。
+
+另一种可能性是再次考虑 
+\begin{equation} \notag
+\begin{split}
+0 \le \|\xx - t\yy\|^2 
+=&\  (\xx - t\yy, \xx - t\yy) = (\xx, \xx - t\yy) - t(\yy, \xx - t\yy) \\
+=&\  \|\xx\|^2 - t(\yy, \xx) - \overline{t}(\xx, \yy) + |t|^2 \|\yy\|^2.\end{split}\end{equation}
+将 $t = \frac{(\xx, \yy)}{\|\yy\|^2} = \frac{\overline{(\yy, \xx)}}{\|\yy\|^2}$ 代入该不等式，我们得到：
+$$0 \le \|\xx\|^2 - \frac{|(\xx, \yy)|^2}{\|\yy\|^2}$$
+这就是我们想要的不等式。\end{proof}
+
+注意，上述段落实际上是定理的完整形式证明。在此之前的推理只是为了解释为什么我们需要选择这个特定的 $t$ 值。
+
+柯西-施瓦茨不等式的直接推论是以下引理。
+
+\begin{lemma}[\normalfont\heiti 引理 1.8\nopunct]  (三角不等式)
+
+对于内积空间 $V$ 中的任意向量 $\xx, \yy$，有 $$\|\xx + \yy\| \le \|\xx\| + \|\yy\|.$$\end{lemma}
+
+\begin{proof}
+$\|\xx + \yy\|^2 = (\xx + \yy, \xx + \yy) = \|\xx\|^2 + \|\yy\|^2 + (\xx, \yy) + (\yy, \xx)$
+
+$\le \|\xx\|^2 + \|\yy\|^2 + |(\xx, \yy)| + |(\yy, \xx)| = \|\xx\|^2 + \|\yy\|^2 + 2 |(\xx, \yy)|$
+
+$\le \|\xx\|^2 + \|\yy\|^2 + 2 \|\xx\| \cdot \|\yy\| = (\|\xx\| + \|\yy\|)^2$.\end{proof}
+
+以下\textbf{极化恒等式}(polarization identities)允许我们从范数重构内积：
+
+\begin{lemma}[\normalfont\heiti 引理 1.9\nopunct]  (极化恒等式)
+对于 $\xx, \yy \in V$：
+$$(\xx, \yy) = \frac{1}{4} (\|\xx + \yy\|^2 - \|\xx - \yy\|^2)$$
+ 如果 $V$ 是一个实内积空间，
+$$(\xx, \yy) = \frac{1}{4} \sum_{\alpha = \pm 1, \pm i} \alpha \|\xx + \alpha \yy\|^2$$
+ 如果 $V$ 是一个复内积空间。\end{lemma}
+
+该引理可以通过直接计算来证明。我们把它留给读者作为练习。
+
+范数在内积空间中的另一个重要性质也可以通过直接计算来验证。
+
+\begin{lemma}[\normalfont\heiti 引理 1.10\nopunct]  (平行四边形恒等式)对于任意向量 $\uu, \vv$：
+$$\|\uu + \vv\|^2 + \|\uu - \vv\|^2 = 2(\|\uu\|^2 + \|\vv\|^2).$$\end{lemma}
+
+在二维空间中，这个引理将平行四边形的边与其对角线的长度联系起来，这就是其名称的由来。它是平面几何中一个众所周知的结论。
+
+\subsection{1.5. 范数~~赋范空间}
+
+我们之前已经证明，范数 $\|\vv\|$ 满足以下性质：
+
+1. \textbf{齐次性}：$\|\alpha \vv\| = |\alpha| \cdot \|\vv\|$ 对所有向量 $\vv$ 和所有标量 $\alpha$ 成立。
+
+2. \textbf{三角不等式}：$\|\uu + \vv\| \le \|\uu\| + \|\vv\|$.~
+
+3. \textbf{非负性}：$\|\vv\| \ge 0$ 对所有向量 $\vv$ 成立。
+
+4. \textbf{非退化性}：$\|\vv\| = 0$ 当且仅当 $\vv = \oo$.~
+
+假设在一个向量空间 $V$ 中，我们为每个向量 $\vv$ 分配一个数字 $\|\vv\|$，并且它满足上述性质 1-4。那么我们称函数 $\vv \mapsto \|\vv\|$ 是一个\textbf{范数}。一个配备了范数的向量空间 $V$ 被称为\textbf{赋范空间}\index{fufankongjian@赋范空间}(normed space)。
+
+任何内积空间都是赋范空间，因为范数 $\|\vv\| = \sqrt{(\vv, \vv)}$ 满足上述性质 1-4。然而，也存在许多其他的赋范空间。例如，给定 $p$，$1 \le p < \infty$，我们可以在 $\RR^n$ 或 $\CC^n$ 上定义范数 $\| \cdot \|_p$ 为：
+$$\|\xx\|_p = (|x_1|^p + |x_2|^p + \dots + |x_n|^p)^{1/p} = \left( \sum_{k=1}^n |x_k|^p \right)^{1/p}.$$
+我们还可以定义范数 $\| \cdot \|_\infty$ ($p = \infty$) 为：
+$$\|\xx\|_\infty = \max\{|x_k| : k = 1, 2, \dots, n\}.$$
+当 $p=2$ 时，范数 $\| \cdot \|_2$ 与由内积得到的常规范数一致。
+
+为了验证 $\| \cdot \|_p$ 确实是一个范数，我们需要验证它满足上述所有性质 1-4。性质 1, 3, 4 非常容易验证，我们将其留作读者练习。当 $p=1$ 和 $p=\infty$ 时，三角不等式很容易验证（并且我们在前面已经对 $p=2$ 证明了）。
+
+对于所有其他的 $p$，可以验证三角不等式都是成立的，但证明并不简单，我们在此不予呈现。
+$\| \cdot \|_p$ 的三角不等式甚至有一个特殊的名字：它被称为\textbf{闵可夫斯基不等式}，以德国数学家 H. Minkowski 的名字命名。
+
+注意，当 $p \ne 2$ 时，范数 $\| \cdot \|_p$ 不能由内积得到。很容易看出，该范数不是由 $\RR^n$ ($\CC^n$) 中的\textbf{标准}内积得到的。但我们将声称一个更强的结论！我们声称\textbf{不可能}引入一个产生范数 $\| \cdot \|_p, \quad p \ne 2$ 的内积。
+
+这个陈述实际上很容易证明。根据引理 1.10，任何由内积产生的范数都必须满足平行四边形恒等式。
+很容易看出，当 $p \ne 2$ 时，平行四边形恒等式对范数 $\| \cdot \|_p$ 不成立，我们可以在 $\RR^2$ 中很容易地找到一个反例，这进而会在所有其他空间中产生反例。
+
+事实上，如下面的定理所述，平行四边形恒等式完全刻画了由内积产生的范数。
+
+\begin{theorem}[\normalfont\heiti 定理 1.11\nopunct] 赋范空间中的一个范数当且仅当它满足平行四边形恒等式 
+$$\|\uu + \vv\|^2 + \|\uu - \vv\|^2 = 2(\|\uu\|^2 + \|\vv\|^2) \quad \forall \uu, \vv \in V$$
+时，才能由某个内积产生。\end{theorem}
+ 
+引理 1.10 断言，由内积产生的范数满足平行四边形恒等式。
+
+反向蕴含更复杂。如果我们给出一个范数，并且该范数来自一个内积，那么没有余地；这个内积必须由极化恒等式给出（见引理 1.9）。但是，我们需要证明 （我们从极化恒等式得到的）$(\xx, \yy)$确实是一个内积，即它满足内积的所有性质。
+
+事实上，可以验证，如果范数满足平行四边形恒等式，那么从极化恒等式得到的 $(\xx, \yy)$ 确实是一个内积（即满足内积的所有性质）。然而，证明有点过于复杂，我们在此不予呈现。
+
+\begin{exer} {\heiti 练习}~
+
+1.1. 计算
+ \\
+ $(3 + 2\ii)(5 - 3\ii), \quad  \quad \frac{2 - 3\ii}{1 - 2\ii}, \quad  \quad \ReR\left(\frac{2 - 3\ii}{1 - 2\ii}\right) , \quad  \quad (1 + 2\ii)^3, \quad  \quad \ImI((1 + 2\ii)^3)$.
+
+1.2. 对于向量 $\xx = (1, 2\ii, 1 + \ii)^T$ 和 $\yy = (\ii, 2 - \ii, 3)^T$，计算：
+\\
+    a) $(\xx, \yy), \quad \|\xx\|^2, \quad \|\yy\|^2, \quad \|\yy\|$；
+    \\
+    b) $(3\xx, 2\ii \yy), \quad (2\xx, \ii\xx + 2\yy)$；
+    \\
+    c) $\|\xx + 2\yy\|$.~
+    \\
+    {\heiti 注记：} 完成部分 a) 后，你可以不实际计算所有向量，而只通过使用内积的性质来完成部分 b) 和 c)。
+    
+1.3. 设 $\|\uu\| = 2$, $\|\vv\| = 3$, $(\uu, \vv) = 2 + \ii$.~计算 
+$$\|\uu + \vv\|^2, \quad \|\uu - \vv\|^2, \quad (\uu + \vv, \uu - \ii \vv), \quad (\uu + 3\ii \vv, 4\ii \uu).$$
+
+1.4. 证明在内积空间中，对于向量 $\xx, \yy$ 有 
+$$\|\xx \pm \yy\|^2 = \|\xx\|^2 + \|\yy\|^2 \pm 2 \ReR(\xx, \yy).$$
+回忆 $\ReR z = \frac{1}{2}(z + \overline{z})$.
+
+1.5. 解释为什么下面每个定义都不是给定向量空间上的内积：
+\\
+    a) $(\xx, \yy) = x_1 y_1 - x_2 y_2$ 在 $\RR^2$ 上；
+    \\
+    b) $(A, B) = \trace(A + B)$ 在 $2 \times 2$ 实矩阵空间上；
+    \\
+    c) $(f, g) = \int_0^1 f'(t) \overline{g(t)} \mathrm{d}t$ 在多项式空间上；$f'(t)$ 表示导数。
+    
+1.6. \textbf{(柯西-施瓦茨不等式中的等号)} 证明 $$|(\xx, \yy)| = \|\xx\| \cdot \|\yy\|$$
+当且仅当其中一个向量是另一个向量的倍数。
+\\
+    {\heiti 提示：} 分析柯西-施瓦茨不等式的证明。
+    
+1.7. 证明内积空间 $V$ 中的平行四边形恒等式：$$\|\xx + \yy\|^2 + \|\xx - \yy\|^2 = 2(\|\xx\|^2 + \|\yy\|^2).$$
+
+1.8. 设 $\vv_1, \vv_2, \dots, \vv_n$ 是内积空间 $V$ 中的一个生成集（特别地，一组基）。证明：
+\\
+    a) 如果 $(\xx, \vv) = 0 \quad \forall \vv \in V$ 成立，则 $\xx = \oo$；
+    \\
+    b) 如果 $(\xx, \vv_k) = 0 \quad \forall k$，则 $\xx = \oo$；
+    \\
+    c) 如果 $(\xx, \vv_k) = (\yy, \vv_k) \quad \forall k$，则 $\xx = \yy$.~
+    
+1.9. 考虑范数 $\| \cdot \|_p$（在 1.5 节中引入）的 $\RR^2$ 空间。对于 $p = 1, 2, \infty$，在范数 $\| \cdot \|_p$ 下绘制“单位球”$B_p$：
+$$B_p := \{\xx \in R^2 : \|\xx\|_p \le 1\}.$$
+你能猜测其他 $p$ 的球 $B_p$ 是什么样的吗？
+\end{exer}
+
+
+\section{2. 正交性~~正交与标准正交基}
+
+{\heiti 定义 2.1.} 
+两个向量 $\uu$ 和 $\vv$ 被称为\textbf{正交}(orthogonal)（也称为\textbf{垂直}(perpendicular)）如果 $(\uu, \vv) = 0$.~我们将用 $\uu \perp \vv$ 来表示向量是正交的。
+
+注意，对于正交向量 $\uu$ 和 $\vv$，我们有以下所谓的\textbf{勾股定理}(Pythagorean identity)：
+$$\|\uu + \vv\|^2 = \|\uu\|^2 + \|\vv\|^2\quad\text{  如果  }\quad \uu \perp \vv.$$
+证明是简单直接的计算：
+$$\|\uu + \vv\|^2 = (\uu + \vv, \uu + \vv) = (\uu, \uu) + (\vv, \vv) + (\uu, \vv) + (\vv, \uu) = \|\uu\|^2 + \|\vv\|^2$$
+（$(\uu, \vv) = (\vv, \uu) = 0$ 是因为正交性）。
+
+{\heiti 定义 2.2.} 我们说向量 $\vv$ 正交于子空间 $E$，如果 $\vv$ 正交于 $E$ 中的所有向量 $\ww$.~
+
+我们说子空间 $E$ 和 $F$ 是正交的，如果 $E$ 中的所有向量都正交于 $F$，即 $E$ 中的所有向量都正交于 $F$ 中的所有向量。
+
+以下引理显示了如何检查一个向量是否正交于一个子空间。
+
+\begin{lemma}[\normalfont\heiti 引理 2.3\nopunct] 设 $E$ 由向量 $\vv_1, \vv_2, \dots, \vv_r$ 生成。则 $\vv \perp E$ 当且仅当 
+$$\vv \perp \vv_k \quad \forall k = 1, 2, \dots, r$$ 成立。\end{lemma}
+
+\begin{proof}根据定义，如果 $\vv \perp E$，则 $\vv$ 正交于 $E$ 中的所有向量。特别地，$\vv \perp \vv_k$ 对 $k = 1, 2, \dots, r$ 成立。
+
+另一方面，设 $\vv \perp \vv_k$ 对 $k = 1, 2, \dots, r$ 成立。由于向量 $\vv_k$ 生成 $E$，则 $E$ 中的任何向量 $\ww$ 都可以表示为线性组合 $\ww = \sum_{k=1}^r \alpha_k \vv_k$.~那么 
+$$(\vv, \ww) = \sum_{k=1}^r \alpha_k (\vv, \vv_k) = 0,$$
+ 因此，$\vv \perp \ww$.\end{proof}
+
+{\heiti 定义 2.4.} 向量组 $\vv_1, \vv_2, \dots, \vv_n$ 被称为\textbf{正交}的，如果任意两个向量相互正交（即 $(\vv_j, \vv_k) = 0$ 当 $j \ne k$ 时）。
+
+如果此外 $\|\vv_k\| = 1 \quad \forall k$ 成立，则我们称该向量组为\textbf{标准正交}(orthonormal)的\footnote{译者注：有些书上也称作“\textbf{幺正}”的。}
+
+\begin{lemma}[\normalfont\heiti 引理 2.5\nopunct] (广义勾股定理)设 $\vv_1, \vv_2, \dots, \vv_n$ 是一个正交向量组。则：
+$$\left\| \sum_{k=1}^n \alpha_k \vv_k \right\|^2 = \sum_{k=1}^n |\alpha_k|^2 \|\vv_k\|^2$$
+当 $\|\vv_k\| = 1$ 时，该公式显得特别简单。\end{lemma}
+
+\begin{proof}[\normalfont\heiti 引理 2.5的证明~\nopunct]
+$$\left\| \sum_{k=1}^n \alpha_k \vv_k \right\|^2 = \left( \sum_{k=1}^n \alpha_k \vv_k, \sum_{j=1}^n \alpha_j \vv_j \right) = \sum_{k=1}^n \sum_{j=1}^n \alpha_k \overline{\alpha_j} (\vv_k, \vv_j)$$ 
+由于正交性，当 $j \ne k$ 时，$(\vv_k, \vv_j) = 0$.~因此，我们只需要对 $j=k$ 的项求和，这就得到了：
+$$\sum_{k=1}^n |\alpha_k|^2 (\vv_k, \vv_k) = \sum_{k=1}^n |\alpha_k|^2 \|\vv_k\|^2.$$\end{proof}
+
+{\heiti 推论 2.6.} 任何一个不含零向量的正交向量组 $\vv_1, \vv_2, \dots, \vv_n$ 是线性无关的。
+
+\begin{proof}假设存在 $\alpha_1, \alpha_2, \dots, \alpha_n$，使得$\sum_{k=1}^n \alpha_k \vv_k = \oo$.~那么根据广义勾股定理（引理 2.5），有 
+$$0 = \|\oo\|^2 = \sum_{k=1}^n |\alpha_k|^2 \|\vv_k\|^2.$$
+由于 $\|\vv_k\| \ne 0$（因为 $\vv_k \ne \oo$），我们得出 
+$$\alpha_k = 0 \quad \forall k$$
+ 成立，因此只有平凡线性组合才得到 $\oo$.~\end{proof}
+
+{\heiti 注记}~~在后续讨论中，我们通常将“正交向量组”的含义理解为“不含零向量的正交向量组”。由于零向量 $\oo$ 正交于一切向量，它可以随时添加到任何正交向量组中，但考虑含有零向量的正交向量组并没有太大意义。
+
+\subsection{2.1. 正交和标准正交基}
+
+{\heiti 定义 2.7.} 一个既正交（或标准正交），同时又是基的向量组，称为正交（或标准正交）基。\index{ji@基!zhengjiao@正交}\index{ji@基!biaozhunzhengjiao@标准正交}
+
+在 $\dim V = n$ 的情况下，任何包含 $n$ 个非零向量的正交向量组显然是一组正交基。
+
+正如我们之前研究过的，要找到向量在某组基下的坐标，需要解一个线性方程组。然而，对于一组正交基，找到向量的坐标要容易得多。具体来说，假设 $\vv_1, \vv_2, \dots, \vv_n$ 是一组正交基，且 $$\xx = \alpha_1 \vv_1 + \alpha_2 \vv_2 + \dots + \alpha_n \vv_n = \sum_{j=1}^n \alpha_j \vv_j.$$
+将方程两边分别与 $\vv_1$ 作内积，我们得到 
+$$(\xx, \vv_1) = \left(\sum_{j=1}^n \alpha_j \vv_j, \vv_1\right) = \sum_{j=1}^n \alpha_j (\vv_j, \vv_1) = \alpha_1 (\vv_1, \vv_1) = \alpha_1 \|\vv_1\|^2$$
+ （所有内积 $(\vv_j, \vv_1) = 0$ 当 $j \ne 1$ 时）。因此，
+ $$\alpha_1 = \frac{(\xx, \vv_1)}{\|\vv_1\|^2}.$$
+ 类似地，将两边分别与 $\vv_k$ 作内积，我们得到 
+ $$(\xx, \vv_k) = \left(\sum_{j=1}^n \alpha_j \vv_j, \vv_k\right) = \sum_{j=1}^n \alpha_j (\vv_j, \vv_k) = \alpha_k (\vv_k, \vv_k) = \alpha_k \|\vv_k\|^2,$$
+  因此：
+$$(2.1)\quad \alpha_k = \frac{(\xx, \vv_k)}{\|\vv_k\|^2}.$$
+因此，
+
+\fbox{\begin{minipage}{0.9\textwidth}
+要找到向量在一组正交基下的坐标，无需求解线性方程组，坐标可由公式 (2.1) 确定。
+\end{minipage}}
+\\
+当 $\|\vv_k\| = 1$ 时，这个公式对于标准正交基尤为简单。
+
+具体来说，如果 $\vv_1, \vv_2, \dots, \vv_n$ 是一组标准正交基，则任何向量 $\vv$ 可以表示为：
+$$(2.2) \quad \vv = \sum_{k=1}^n (\vv, \vv_k) \vv_k.$$
+这个公式有时被称为（一个简化的版本(a baby version)）\textbf{抽象正交傅里叶分解}\index{fuliyefenjie@傅里叶分解!chouxiangzhengjiao@抽象, 正交}(abstract orthogonal
+Fourier decomposition)。经典的（非抽象）傅里叶分解处理的是具体的标准正交系统（正弦和余弦，或复指数）。我们将这个公式称为“简化版本”，因为真实的傅里叶分解处理的是无限的标准正交系统。
+
+{\heiti 注记 2.8.} 标准正交基的重要性在于，如果我们固定了内积空间 $V$ 中的一组标准正交基，我们就可以像处理 $\FF^n$ 中的向量一样处理该基下的坐标。具体来说，正如本书开头所讨论的（参见第一章的注记 2.4），如果我们有一个具有基 $\vv_1, \vv_2, \dots, \vv_n$ 的向量空间 $V$（在域 $\FF$ 上），那么我们可以通过处理基 $\vv_1, \vv_2, \dots, \vv_n$ 下坐标向量列的标准向量运算（向量加法和标量乘法），以完全相同的方式进行。\footnote{这是一个非常重要的注记，它允许我们将关于标准内积空间 $\FF^n$ 的任何陈述转换到具有标准正交基 $\vv_1, \vv_2, \dots, \vv_n$ 的内积空间。}
+
+如练习 2.3 所示，如果我们有一内积空间 $V$ 中的\textbf{标准正交}基，我们可以通过取这些坐标向量列并计算这些向量列在 $\CC^n$ 或 $\RR^n$ 中的标准内积来计算 $V$ 中两个向量的内积。
+
+如下文第 3 节所示，任何有限维内积空间都有一组标准正交基。因此，在有限维情况下，标准内积空间 $\CC^n$（或实数情况下的 $\RR^n$）实质上是唯一的有限维内积空间。
+
+\begin{exer} {\heiti 练习}~
+
+2.1. 找出 $\RR^4$ 中所有正交于向量 $(1, 1, 1, 1)^T$ 和 $(1, 2, 3, 4)^T$ 的向量。
+
+2.2. 设 $A$ 是一个 $m \times n$ 实数矩阵。描述 $( \Ran A^T )^\perp$ 和 $( \Ran A )^\perp$.~
+
+2.3. 设 $\vv_1, \vv_2, \dots, \vv_n$ 是 $V$ 中的一组标准正交基。
+\\
+    a) 证明对于任意 $\xx = \sum_{k=1}^n \alpha_k \vv_k$, $\yy = \sum_{k=1}^n \beta_k \vv_k$，有 
+    $$(\xx, \yy) = \sum_{k=1}^n \alpha_k \overline{\beta_k}.$$
+    \\
+    b) 从 a) 推导出\textbf{帕塞瓦尔恒等式}(Parseval’s identity)：$$(\xx, \yy) = \sum_{k=1}^n (\xx, \vv_k)\overline{(\yy, \vv_k)}.$$
+    \\
+    c) 现在假设 $\vv_1, \vv_2, \dots, \vv_n$ 仅仅是一组正交基，而不是标准正交基。你能写出在这种情况下帕塞瓦尔恒等式吗？
+    \\
+这个问题表明，如果我们有一组标准正交基，我们可以像使用 $\CC^n$ （或 $\RR^n$）中的标准坐标一样使用该基下的坐标。
+\\
+下面的问题表明，我们可以通过声明一组基为标准正交基来定义一个内积。
+
+2.4. 设 $V$ 是一个向量空间， $\vv_1, \vv_2, \dots, \vv_n$ 是 $V$ 中的一组基。对于 $\xx = \sum_{k=1}^n \alpha_k \vv_k$, $\yy = \sum_{k=1}^n \beta_k \vv_k$，定义 $\langle \xx, \yy \rangle := \sum_{k=1}^n \alpha_k \overline{\beta_k}$.~
+\\
+证明 $\langle \xx, \yy \rangle$ 定义了 $V$ 上的一个内积。
+
+
+2.5. 设 $A$ 是一个 $m \times n$ 实矩阵。请描述 $\FF^m$ 中所有正交于 $\Ran A$ 的向量的集合。\end{exer}
+
+
+\section{3. 正交投影和格拉姆-施密特正交化}
+
+回想一下二维平面几何中正交投影的定义，人们可以引入以下定义。设 $E$ 是内积空间 $V$ 的一个子空间。
+
+{\heiti 定义 3.1}~~对于向量 $\vv$，它到子空间 $E$ 的\textbf{正交投影}(orthogonal projection)\index{touying@投影!zhengjiao@正交} $P_E \vv$ 是一个向量 $\ww$，满足：
+
+1. $\ww \in E$；
+
+2. $\vv - \ww \perp E$.~
+
+\noindent
+我们将使用记号 $\ww = P_E \vv$ 表示正交投影。
+
+在引入一个对象之后，自然要问：
+
+1. 该对象是否存在？
+
+2. 该对象是否唯一？
+
+3. 如何找到它？
+
+我们将首先证明投影是唯一的。然后我们将给出一个找到投影的方法，证明它的存在性。
+
+下面的定理表明了为什么正交投影很重要，同时这也证明了它的唯一性。
+
+\begin{theorem}[\normalfont\heiti 定理 3.2\nopunct] 正交投影 $\ww = P_E \vv$ 使 $\vv$ 到 $E$ 的距离最小化，即对于所有 $\xx \in E$，$$\|\vv - \ww\| \leq \|\vv - \xx\|.$$
+而且，如果对于某个 $\xx \in E$，有
+$$\|\vv - \ww\| = \|\vv - \xx\|,$$
+则 $\xx = \ww$.~\end{theorem}
+
+\begin{proof}设 $\yy = \ww - \xx$.~那么 
+$$\vv - \xx = \vv - \ww + \ww - \xx = \vv - \ww + \yy.$$
+由于 $\vv - \ww \perp E$，所以 $\yy \perp \vv - \ww$，因此根据勾股定理 
+$$\|\vv - \xx\|^2 = \|\vv - \ww\|^2 + \|\yy\|^2 \geq \|\vv - \ww\|^2.$$
+注意，当且仅当 $\yy = \oo$，即 $\xx = \ww$ 时，等号成立。\end{proof}
+
+下面的命题表明，如果我们知道 $E$ 中的一组正交基，我们就能找到 $E$ 上的正交投影。
+
+{\heiti 命题 3.3}~~设 $\{\vv_1, \vv_2, \dots, \vv_r\}$ 是 $E$ 的一组正交基。那么向量 $\vv$ 到 $E$ 的正交投影 $P_E \vv$ 由以下公式给出：
+$$P_E \vv = \sum_{k=1}^r \alpha_k \vv_k, \quad \text{其中} \quad \alpha_k = \frac{(\vv, \vv_k)}{\|\vv_k\|^2}.$$
+换句话说，
+$$ (3.1)\quad P_E \vv = \sum_{k=1}^r \frac{(\vv, \vv_k)}{\|\vv_k\|^2} \vv_k.$$
+
+注意，$\alpha_k$ 的公式与 (2.1) 一致，即如果将这个公式应用于一个正交系统（而不是基）就可以得到其张成的子空间上的投影。
+
+{\heiti 注记 3.4.}~~由公式 (3.1) 可知，正交投影 $P_E$ 是一个线性变换。
+
+也可以直接从正交投影的定义和唯一性看出其线性。事实上，容易验证，对于任意向量 $\xx$ 和 $\yy$ 以及常数 $\alpha$ 和 $\beta$，向量 $\alpha \xx + \beta \yy - (\alpha P_E \xx - \beta P_E \yy)$ 与 $E$ 中的任何向量都正交，因此根据定义， $P_E(\alpha \xx + \beta \yy) = \alpha P_E \xx + \beta P_E \yy$.
+
+{\heiti 注记 3.5. }~回忆在 $\CC^n$ 和 $\RR^n$ 中内积的定义，可以从上述公式 (3.1) 得到将 $\CC^n$ (或 $\RR^n$) 中的向量投影到 $E$ 上的正交投影矩阵 $P_E$ ，它由下式给出：
+$$(3.2)\quad P_E = \sum_{k=1}^{r} \frac{1}{\| \vv_k \|^2} \vv_k \vv_k^*$$
+其中列向量 $\vv_1, \vv_2, \ldots, \vv_r$ 构成 $E$ 中的一组正交基。
+
+
+\begin{proof}[\normalfont\heiti 命题 3.3 的证明~\nopunct]设 
+$$\ww := \sum_{k=1}^r \alpha_k \vv_k,\quad \text{其中} \quad \alpha_k = \frac{(\vv, \vv_k)}{\|\vv_k\|^2}.$$
+我们想证明 $\vv - \ww \perp E$.~根据引理 2.3，只要证明 $\vv - \ww \perp \vv_k, \quad \forall k = 1, 2, \dots, n$ 即可。计算内积，我们得到对于 $k = 1, 2, \dots, r$，
+\begin{equation} \notag
+\begin{split}
+ (\vv - \ww, \vv_k) =&\ (\vv, \vv_k) - (\ww, \vv_k) = (\vv, \vv_k) - (\sum_{j=1}^r \alpha_j \vv_j, \vv_k)  \\
+=&\  (\vv, \vv_k) - \alpha_k (\vv_k, \vv_k) = (\vv, \vv_k) - \frac{(\vv, \vv_k)}{\|\vv_k\|^2} \|\vv_k\|^2 = 0.
+\end{split}
+\end{equation}\end{proof}
+
+
+因此，如果我们知道 $E$ 中的一组正交基，我们就可以找到到 $E$ 的正交投影。特别地，由于任何只包含一个向量的系统都是正交系统，我们也知道了如何进行到一维空间上的正交投影。
+
+但是如果我们只知道 $E$ 的一组基，我们该如何找到正交投影呢？幸运的是，存在一个简单的算法，可以把一组基化为正交基。
+
+\subsection{3.1. 格拉姆-施密特正交化方法}
+
+\index{gelamushimitezhengjiaohua@格拉姆-施密特正交化}假设我们有一个线性无关系统 $\{\xx_1, \xx_2, \dots, \xx_n\}$.~格拉姆-施密特方法从这个系统出发构造一个正交系统 $\{\vv_1, \vv_2, \dots, \vv_n\}$，使得 
+$$\spanL\{\xx_1, \xx_2, \dots, \xx_n\} = \spanL\{\vv_1, \vv_2, \dots, \vv_n\}.$$
+而且，对于所有 $r \leq n$，都有 
+$$\spanL\{\xx_1, \xx_2, \dots, \xx_r\} = \spanL\{\vv_1, \vv_2, \dots, \vv_r\}.$$
+
+现在我们来描述这个算法。
+
+\textbf{步骤 1}~~令 $\vv_1 := \xx_1$.~记 $E_1 := \spanL\{\xx_1\} = \spanL\{\vv_1\}$.
+
+\textbf{步骤 2}~~定义 $\vv_2$ 为
+$$\vv_2 := \xx_2 - P_{E_1} \xx_2 = \xx_2 - \frac{(\xx_2, \vv_1)}{\|\vv_1\|^2} \vv_1.$$
+定义 $E_2 := \spanL\{\vv_1, \vv_2\}$.~注意 $\spanL\{\xx_1, \xx_2\} = E_2$.~
+
+\textbf{步骤 3}~~定义 $\vv_3$ 为
+$$\vv_3 := \xx_3 - P_{E_2} \xx_3 = \xx_3 - \frac{(\xx_3, \vv_1)}{\|\vv_1\|^2} \vv_1 - \frac{(\xx_3, \vv_2)}{\|\vv_2\|^2} \vv_2.$$
+令 $E_3 := \spanL\{\vv_1, \vv_2, \vv_3\}$.~注意 $\spanL\{\xx_1, \xx_2, \xx_3\} = E_3$.~也注意 $\xx_3 \notin E_2$ 所以 $\vv_3 \neq 0$.~
+
+$\cdots$
+
+\textbf{步骤 $r+1$}~~假设我们已经完成了过程的 $r$ 步，构造了一个正交系统（包含非零向量）$\{\vv_1, \vv_2, \dots, \vv_r\}$，使得 $E_r := \spanL\{\vv_1, \vv_2, \dots, \vv_r\} = \spanL\{\xx_1, \xx_2, \dots, \xx_r\}$.~定义
+$$\vv_{r+1} := \xx_{r+1} - P_{E_r} \xx_{r+1} = \xx_{r+1} - \sum_{k=1}^r \frac{(\xx_{r+1}, \vv_k)}{\|\vv_k\|^2} \vv_k.$$
+注意 $\xx_{r+1} \notin E_r$ 所以 $\vv_{r+1} \neq 0$.~
+
+$\cdots$
+
+继续进行这个算法有限次，我们将得到一个正交系统 $\{\vv_1, \vv_2, \dots, \vv_n\}$.~
+
+\subsection{3.2. 一个例子}
+
+假设我们有向量
+$$\xx_1 = (1, 1, 1)^T, \quad \xx_2 = (0, 1, 2)^T, \quad \xx_3 = (1, 0, 2)^T,$$
+ 我们想通过格拉姆-施密特方法来正交化它们。第一步定义 
+ $$\vv_1 = \xx_1 = (1, 1, 1)^T.$$
+第二步我们得到 
+$$\vv_2 = \xx_2 - P_{E_1} \xx_2 = \xx_2 - \frac{(\xx_2, \vv_1)}{\|\vv_1\|^2} \vv_1.$$
+计算 
+$$(\xx_2, \vv_1) = (\begin{pmatrix} 0 \\ 1 \\ 2 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}) = 3, \|\vv_1\|^2 = 3,$$
+我们得到
+$$\vv_2 = \begin{pmatrix} 0 \\ 1 \\ 2 \end{pmatrix} - \frac{3}{3} \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} = \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}.$$
+最后，定义 
+$$\vv_3 = \xx_3 - P_{E_2} \xx_3 = \xx_3 - \frac{(\xx_3, \vv_1)}{\|\vv_1\|^2} \vv_1 - \frac{(\xx_3, \vv_2)}{\|\vv_2\|^2} \vv_2.$$
+计算 
+$$(\begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}) = 3,\quad (\begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix}, \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}) = 1, \quad \|\vv_1\|^2 = 3,\quad \|\vv_2\|^2 = 2.$$
+ ( $\|\vv_1\|^2$ 已经计算过了) 我们得到
+$$\vv_3 = \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix} - \frac{3}{3} \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} - \frac{1}{2} \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}  = \begin{pmatrix} 1/2 \\ -1 \\ 1/2 \end{pmatrix}.$$
+% = \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix} - \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} - \begin{pmatrix} -1/2 \\ 0 \\ 1/2 \end{pmatrix}
+
+{\heiti 注记}~~由于对某个向量乘以一个标量不改变向量组正交性，因此可以将由格拉姆-施密特正交化得到的向量 $\vv_k$ 乘以任意非零数。
+
+特别地，在许多理论构造中，人们通过将向量 $\vv_k$ 除以它们各自的范数 $\|\vv_k\|$ 来\textbf{归一化}它们。然后得到的结果系统将是标准正交的，并且公式会更简单。
+
+另一方面，在进行计算时，人们可能希望避免出现分数项。办法是将向量乘以各项分母数字的最小公倍数。因此，可以将上面例子中的向量 $\vv_3$ 替换为 $(1, -2, 1)^T$.~
+
+\subsection{3.3. 正交补~~正交分解 $V = E \oplus E^\perp$}
+
+{\heiti 定义}~~对于子空间 $E$，其\textbf{正交补}\index{zhengjiaobu@正交补}(orthogonal complement) $E^\perp$ 是所有与 $E$ 正交的向量的集合，
+$$E^\perp := \{\xx : \xx \perp E\}.$$
+
+如果 $\xx, \yy \perp E$，则对于任意线性组合都有 $\alpha \xx + \beta \yy \perp E$（你能看出为什么吗？）。因此 $E^\perp$ 是一个子空间。
+
+根据正交投影的定义，任何内积空间 $V$ 中的向量都可以唯一地表示为 
+$$\vv = \vv_1 + \vv_2, \quad \vv_1 \in E, \quad \vv_2 \perp E (\text{等价地},  \vv_2 \in E^\perp)$$
+（其中显然 $\vv_1 = P_E \vv$）。
+
+这个陈述通常被象征性地写成 $V = E \oplus E^\perp$，\index{zhengjiaofenjie@正交分解}这意味着任何向量都可以进行上述\textbf{正交分解}，并且分解是唯一的。
+
+以下命题给出了正交补的一个重要性质。
+
+{\heiti 命题 3.6}~~对于子空间 $E$，$$(E^\perp)^\perp = E.$$
+
+证明留给读者作为练习，见下面的练习 3.12。
+
+\begin{exer} {\heiti 练习}~
+
+3.1. 将向量 $(1, 2, -2)^T, \quad (1, -1, 4)^T, \quad (2, 1, 1)^T$ 格拉姆-施密特正交化。
+
+3.2. 将向量 $(1, 2, 3)^T, \quad (1, 3, 1)^T$ 格拉姆-施密特正交化。写出到由这两个向量张成的二维子空间的\textbf{正交投影}矩阵。
+
+3.3. 将上一个问题中得到的正交系统补全为 $\RR^3$ 中的一组正交基，即向系统中添加一些向量（有多少个？）以得到一组正交基。
+\\
+你能描述如何将一个正交系统补全为一般情况 （$\RR^n$ 或 $\CC^n$ ）中的一组正交基吗？
+
+3.4. 求向量 $(2, 3, 1)^T$ 到由向量 $(1, 2, 3)^T, \quad (1, 3, 1)^T$ 张成的子空间的距离。注意，只计算到子空间的距离，而不是正交投影。
+
+3.5. 找到向量 $(1, 1, 1, 1)^T$ 到由向量 $\vv_1 = (1, 3, 1, 1)^T$ 和 $\vv_2 = (2, -1, 1, 0)^T$ 张成的子空间的\textbf{正交投影}（注意 $\vv_1 \perp \vv_2$）。
+
+3.6. 求向量 $(1, 2, 3, 4)^T$ 到由向量 $\vv_1 = (1, -1, 1, 0)^T$ 和 $\vv_2 = (1, 2, 1, 1)^T$ 张成的子空间的距离（注意 $\vv_1 \perp \vv_2$）。能否在不实际计算投影的情况下找到距离？这将简化计算。
+
+3.7. 判断正误：如果 $E$ 是 $V$ 的子空间，则有 $\dim E + \dim(E^\perp) = \dim V$.~证明你的结论。
+
+3.8. 设 $P$ 是到内积空间$V$ 的子空间 $E$ 的正交投影，$\dim V = n, \quad \dim E = r$.~找出它的特征值和特征向量（特征子空间）。找出每个特征值的代数重数和几何重数。
+
+3.9. （使用特征值计算行列式）。
+\\
+a) 求到由向量 $(1, 1, \dots, 1)^T$ 张成的一维子空间的\textbf{正交投影}矩阵；
+\\
+b) 设 $A$ 是一个所有项均为 1 的 $n \times n$ 矩阵。计算它的特征值和重数（使用上一个问题）；
+\\
+c) 计算矩阵 $A-I$（即主对角线全为零，其他所有元素都为 1 的矩阵）的特征值（和重数）；
+\\
+d) 计算 $\det(A-I)$.~
+
+3.10. （勒让德多项式(Legendre’s polynomials)）：设内积在多项式空间上由 $(f, g) = \int_{-1}^1 f(t)g(t)\dif t$ 定义。
+将格拉姆-施密特正交化应用于系统 $\{1, t, t^2, t^3\}$.~
+\\
+勒让德多项式是所谓的正交多项式的特例，它们在数学的许多分支中起着重要作用。
+
+3.11. 设 $P$ 是到子空间 $E$ 的正交投影。证明：
+\\
+a) 矩阵 $P$ 是\textbf{自伴随}的，即 $P^* = P$.~
+\\
+b) $P^2 = P$.~
+\\
+{\heiti 注：} 以上 2 个性质完全刻画了正交投影，即满足这些性质的任何矩阵都是某个正交投影的矩阵。我们稍后将讨论这一点。
+
+
+3.12. 证明对于子空间 $E$，有 $(E^\perp)^\perp = E$.~
+{\heiti 提示：} 很容易看出 $E$ 正交于 $E^\perp$（为什么？）。为了证明任何正交于 $E^\perp$ 的向量 $\xx$ 属于 $E$，使用上面第 3.3 节中的分解 $V = E \oplus E^\perp$.~
+
+3.13. 假设 $P$ 是到子空间 $E$ 的正交投影，而 $Q$ 是到其正交补 $E^\perp$ 的正交投影。
+\\
+a) $P+Q$ 和 $PQ$ 是什么？
+\\
+b) 证明 $P-Q$ 是它自己的逆。\end{exer}
+
+
+\section{4. 最小二乘解~~正交投影的公式}
+正如第二章第 2 节所讨论的，方程 $$A\xx = \bb$$
+有解当且仅当 $\bb \in \Ran A$.~但对于无解的方程该怎么办？
+
+这似乎是一个愚蠢的问题，因为如果没有解，那么就没有解。但是，在一些实际情况中，常会出现我们要解一个没有解的方程。例如，从实验中得到一个线性方程，如果没有任何误差，那么右侧 $\bb$ 属于列空间 $\Ran A$，方程是相容的。但是在现实生活中，无法避免测量误差，所以一个理论上应该相容的方程可能没有解。那么，在这种情况下我们能做什么？
+
+\subsection{4.1.最小二乘解} 
+
+最简单的想法是写出误差 
+$$\|A\xx - \bb\|$$
+ 并尝试找到能最小化它的 $\xx$.~如果我们能找到一个 $\xx$ 使得误差为 $0$，那么系统就是相容的，我们就得到了精确解。否则，我们就得到所谓的\textbf{最小二乘解}\index{zuixiaoerchengjie@最小二乘解}(least square solution)。
+ 
+ \textbf{最小二乘}这个术语源于最小化 $\|A\xx - \bb\|$ ，这等价于最小化 
+ $$\|A\xx - \bb\|^2 = \sum_{k=1}^m |(A\xx)_k - \bb _k|^2 = \sum_{k=1}^m |\sum_{j=1}^n A_{k,j} x_j - \bb_k|^2,$$
+ 即最小化线性函数平方和。
+ 
+有几种方法可以找到最小二乘解。如果我们处于 $\RR^n$ 中，并且所有项都是实数，我们可以忽略绝对值。然后我们可以对每个变量 $x_j$ 取偏导数，并找到所有偏导数都为 $0$ 的地方，这将给我们最小值。
+
+\subsubsection{4.1.1. 几何方法}
+
+然而，有一个更简单的寻找最小值的方法。即，如果我们考虑所有可能的向量 $\xx$，那么 $A\xx$ 会给出 $\Ran A$ 中的所有可能向量，所以最小化 $\|A\xx - \bb\|$ 就是找到从 $\bb$ 到 $\Ran A$ 的距离。因此， $\|A\xx - \bb\|$ 的值最小当且仅当 $A\xx = P_{\Ran A} \bb$，其中 $P_{\Ran A}$ 表示到列空间 $\Ran A$ 的正交投影。
+
+所以，为了找到最小二乘解，我们只需要解方程 $$A\xx = P_{\Ran A} \bb.$$
+
+如果我们知道 $\Ran A$ 中的一组正交基 $\{\vv_1, \vv_2, \dots, \vv_n\}$，我们可以通过公式 
+$$P_{\Ran A} \bb = \sum_{k=1}^n \frac{(\bb, \vv_k)}{\|\vv_k\|^2} \vv_k$$
+来找到向量 $P_{\Ran A} \bb$.~\\
+如果我们只知道 $\Ran A$ 中的一组基，我们需要使用格拉姆-施密特正交化来从它得到一组正交基。
+
+因此，理论上，问题已经解决了，但解决方案并不那么简单：它涉及格拉姆-施密特正交化，这在计算上可能很繁杂。幸运的是，存在一个更简单的解决方案。
+
+\subsubsection{4.1.2. 正规方程}
+
+即，$A\xx$ 是正交投影 $P_{\Ran A} \bb$ 当且仅当 $\bb - A\xx \perp \Ran A$（对所有 $\xx$，$A\xx \in \Ran A$）。
+
+如果 $\aaa_1, \aaa_2, \dots, \aaa_n$ 是 $A$ 的列，那么条件 $A \xx \perp \Ran A$ 可以重写为 
+$$\bb - A\xx \perp \aaa_k, \quad \forall k = 1, 2, \dots, n.$$
+这意味着 
+$$0 = (\bb - A\xx, \aaa_k) = \aaa_k^*(\bb - A\xx), \quad \forall k = 1, 2, \dots, n.$$
+将行 $\aaa_k^*$ 拼接起来，我们得到这些方程等价于
+$$A^*(\bb - A\xx) = \oo,$$
+这反过来等价于所谓的\textbf{正规方程}(normal equation) 
+$$A^*A\xx = A^*\bb.$$
+该方程的解给出了 $A\xx = \bb$ 的最小二乘解。
+
+注意，当且仅当 $A^*A$ 可逆时，最小二乘解是唯一的。
+
+\subsection{4.2. 正交投影公式}
+
+如上所述，如果 $\xx$ 是\textbf{正规方程} $A^*A\xx = A^*\bb$ 的解（即 $A\xx = \bb$ 的最小二乘解），那么 $A\xx = P_{\Ran A} \bb$.~所以，为了找到 $\bb$ 到列空间 $\Ran A$ 的正交投影，我们需要解正规方程 $A^*A\xx = A^*\bb$，然后将解乘以 $A$.~
+
+如果算子 $A^*A$ 可逆，则正规方程 $A^*A\xx = A^*\bb$ 的解由 $\xx = (A^*A)^{-1}A^*\bb$ 给出，因此正交投影 $P_{\Ran A} \bb$ 可以计算为 
+$$P_{\Ran A} \bb = A(A^*A)^{-1}A^*\bb.$$
+由于这对所有 $\bb$ 都成立，
+$$P_{\Ran A} = A(A^*A)^{-1}A^*$$
+就是到 $\Ran A$ 的正交投影矩阵的公式。
+
+下面的定理意味着，对于一个 $m \times n$ 矩阵 $A$，矩阵 $A^*A$ 是可逆的当且仅当 $\rank A = n$.~
+
+\begin{theorem}[\normalfont\heiti 定理 4.1\nopunct] 对于一个 $m \times n$ 矩阵 $A$，
+$$\Ker A = \Ker(A^*A).$$\end{theorem}
+
+确实，根据秩定理，当且仅当 $\rank A = n$ 时，$\Ker A = \{\oo\}$.~所以，当且仅当 $\rank A = n$ 时，$\Ker (A^*A)= \{\oo\}$.~因为$A^*A$矩阵是方阵，故而，当且仅当 $\rank A = n$ 时，矩阵 $A^*A$ 是可逆的。
+
+我们把定理的证明留给读者。要证明 $\Ker A = \Ker(A^*A)$，需要证明两个包含关系 $\Ker(A^*A) \subseteq \Ker A$ 和 $\Ker A \subseteq \Ker(A^*A)$.~其中一个包含关系是平凡的，对于另一个，使用事实 
+$$\|A\xx\|^2 = (A\xx, A\xx) = (A^*A\xx, \xx).$$ 
+
+\subsection{4.3. 一个例子：直线拟合}
+
+让我们引入几个最小二乘解自然出现的例子。假设我们知道两个量 $x$ 和 $y$ 之间的关系由线性规律 $y = a + bx$ 给出。系数 $a$ 和 $b$ 是未知的，我们希望通过实验数据找到它们。
+
+假设我们进行了 $n$ 次实验，得到了 $n$ 对 $(x_k, y_k)$，$k=1, 2, \dots, n$.~理想情况下，所有点 $(x_k, y_k)$ 都应该在一条直线上，但由于测量误差，通常不会这样：点通常接近某条直线，但并不完全在其上面。这时最小二乘解就能用上了！
+
+理想情况下，系数 $a$ 和 $b$ 应该满足方程
+$$a + bx_k = y_k, \quad k = 1, 2, \dots, n$$
+（注意这里，$x_k$ 和 $y_k$ 是一些固定的数字，而未知数是 $a$ 和 $b$）。如果可以直接求出这样的 $a$ 和 $b$，那就是非常幸运的。如果不行，标准做法是最小化总的二次误差 $$\sum_{k=1}^n |a + bx_k - y_k|^2.$$
+但是，最小化这个误差恰好是求解系统
+$$\begin{pmatrix} 1 & x_1 \\ 1 & x_2 \\ \vdots & \vdots \\ 1 & x_n \end{pmatrix} \begin{bmatrix} a \\ b \end{bmatrix} = \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix}$$
+的最小二乘解（回忆$x_k$ 和 $y_k$ 是一些给定的数字，未知数是 $a$ 和 $b$）。
+
+\subsubsection{4.3.1. 一个例子}
+
+假设我们的数据 $(x_k, y_k)$ 由数对 $$(-2, 4), \quad (-1, 2), \quad (0, 1), \quad (2, 1), \quad (3, 1)$$
+组成。那么我们需要求解方程
+$$\begin{pmatrix} 1 & -2 \\ 1 & -1 \\ 1 & 0 \\ 1 & 2 \\ 1 & 3 \end{pmatrix} \begin{bmatrix} a \\ b \end{bmatrix} = \begin{pmatrix} 4 \\ 2 \\ 1 \\ 1 \\ 1 \end{pmatrix}$$
+的最小二乘解。
+那么 $$A^*A = \begin{pmatrix} 1 & 1 & 1 & 1 & 1 \\ -2 & -1 & 0 & 2 & 3 \end{pmatrix} \begin{pmatrix} 1 & -2 \\ 1 & -1 \\ 1 & 0 \\ 1 & 2 \\ 1 & 3 \end{pmatrix} = \begin{pmatrix} 5 & 2 \\ 2 & 18 \end{pmatrix},$$
+并且 
+$$A^*\bb = \begin{pmatrix} 1 & 1 & 1 & 1 & 1 \\ -2 & -1 & 0 & 2 & 3 \end{pmatrix} \begin{pmatrix} 4 \\ 2 \\ 1 \\ 1 \\ 1 \end{pmatrix} = \begin{pmatrix} 9 \\ -5 \end{pmatrix}.$$
+所以正规方程 $A^*A\xx = A^*\bb$ 被重写为
+$$\begin{pmatrix} 5 & 2 \\ 2 & 18 \end{pmatrix} \begin{pmatrix} a \\ b \end{pmatrix} = \begin{pmatrix} 9 \\ -5 \end{pmatrix}.$$
+该方程的解是 
+$$a = 2, \quad b = -1/2,$$
+因此最佳拟合直线是 
+$$y = 2 - \frac{1}{2}x.$$
+
+\subsection{4.4. 其他例子：曲线和平面拟合}
+
+最小二乘法不限于直线拟合。它也可以应用于更一般的曲线，以及更高维度中的曲面。这里唯一的限制是我们要寻找的参数必须是线性的。一般算法如下：
+
+1. 找到理想情况下数据精确拟合时应该满足的方程；
+
+2. 将这些方程写成一个线性系统，其中未知数是我们想要寻找的参数。注意，系统不一定是一致的（通常不是）；
+
+3. 找到该系统的最小二乘解。
+
+\subsubsection{4.4.1. 曲线拟合例子}
+
+例如，假设我们知道 $x$ 和 $y$ 之间的关系由二次函数 $y = a + bx + cx^2$ 给出，所以我们想为数据拟合出一个抛物线 $y = a + bx + cx^2$ ，那么我们的未知数 $a, b, c$ 应该满足方程
+$$a + bx_k + cx_k^2 = y_k, \quad k = 1, 2, \dots, n$$
+或者，以矩阵形式
+$$\begin{pmatrix} 1 & x_1 & x_1^2 \\ 1 & x_2 & x_2^2 \\ \vdots & \vdots & \vdots \\ 1 & x_n & x_n^2 \end{pmatrix} \begin{pmatrix} a \\ b \\ c \end{pmatrix} = \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix}.$$
+例如，对于上例中的数据，我们需要求解方程
+$$\begin{pmatrix} 1 & -2 & 4 \\ 1 & -1 & 1 \\ 1 & 0 & 0 \\ 1 & 2 & 4 \\ 1 & 3 & 9 \end{pmatrix} \begin{pmatrix} a \\ b \\ c \end{pmatrix} = \begin{pmatrix} 4 \\ 2 \\ 1 \\ 1 \\ 1 \end{pmatrix}$$
+的最小二乘解，
+那么 
+$$A^*A = \begin{pmatrix} 1 & 1 & 1 & 1 & 1 \\ -2 & -1 & 0 & 2 & 3 \\ 4 & 1 & 0 & 4 & 9 \end{pmatrix} \begin{pmatrix} 1 & -2 & 4 \\ 1 & -1 & 1 \\ 1 & 0 & 0 \\ 1 & 2 & 4 \\ 1 & 3 & 9 \end{pmatrix} = \begin{pmatrix} 5 & 2 & 18 \\ 2 & 18 & 26 \\ 18 & 26 & 114 \end{pmatrix},$$
+并且 
+$$A^*\bb = \begin{pmatrix} 1 & 1 & 1 & 1 & 1 \\ -2 & -1 & 0 & 2 & 3 \\ 4 & 1 & 0 & 4 & 9 \end{pmatrix} \begin{pmatrix} 4 \\ 2 \\ 1 \\ 1 \\ 1 \end{pmatrix} = \begin{pmatrix} 9 \\ -5 \\ 31 \end{pmatrix}.$$
+因此，正规方程 $A^*A\xx = A^*\bb$ 是
+$$\begin{pmatrix} 5 & 2 & 18 \\ 2 & 18 & 26 \\ 18 & 26 & 114 \end{pmatrix} \begin{pmatrix} a \\ b \\ c \end{pmatrix} = \begin{pmatrix} 9 \\ -5 \\ 31 \end{pmatrix}$$
+它有且仅有一解 
+$$a = 86/77, \quad b = -62/77, \quad c = 43/154.$$
+因此，
+$$y = \frac{86}{77} - \frac{62}{77}x + \frac{43}{154}x^2$$
+是最佳拟合抛物线。
+
+\subsubsection{4.4.2. 平面拟合}
+
+再举一个例子，我们拟合一个平面 $z = a + bx + cy$ 到数据 $$(x_k, y_k, z_k) \in \RR^3, \quad k=1, 2, \dots, n.$$在精确拟合的情况下，我们应该有的方程是
+$$a + bx_k + cy_k = z_k, \quad k=1, 2, \dots, n,$$
+或者，矩阵形式
+$$\begin{pmatrix} 1 & x_1 & y_1 \\ 1 & x_2 & y_2 \\ \vdots & \vdots & \vdots \\ 1 & x_n & y_n \end{pmatrix} \begin{pmatrix} a \\ b \\ c \end{pmatrix} = \begin{pmatrix} z_1 \\ z_2 \\ \vdots \\ z_n \end{pmatrix}.$$
+所以，为了找到最佳拟合平面，我们需要找到这个系统（未知数是 $a, b, c$）的最小二乘解。
+
+\begin{exer} {\heiti 练习}~
+
+4.1. 求解方程组 $$\begin{pmatrix} 1 & 0 \\ 0 & 1 \\ 1 & 1 \end{pmatrix} \xx = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}$$ 的最小二乘解。
+
+4.2. 找到矩阵 $$\begin{pmatrix} 1 & 1 \\ 2 & -1 \\ -2 & 4 \end{pmatrix}$$ 的列空间的\textbf{正交投影}矩阵 $P$.~\\
+使用两种方法：格拉姆-施密特正交化和投影公式。
+\\
+比较所得结果。
+
+4.3. 找到点 $(-2, 4), (-1, 3), (0, 1), (2, 0)$ 的最佳直线拟合（最小二乘解）。
+
+4.4. 将平面 $z = a + bx + cy$ 拟合到四个点 $(1, 1, 3), (0, 3, 6), (2, 1, 5), (0, 0, 0)$.~
+\\
+为此：
+\\
+a) 找出 4 个关于 3 个未知数 $a, b, c$ 的方程，使得平面通过所有 4 个点（这个系统不一定有解）；
+\\
+b) 找到该系统的最小二乘解。
+
+4.5. \textbf{最小范数解}~~设方程 $A\xx = \bb$ 有解，并且设 $A$ 有非平凡的核（因此解不唯一）。证明：
+\\
+a) 存在唯一一个 $A\xx = \bb$ 的解 $\xx_0$，它最小化范数 $\|\xx\|$，即存在唯一的 $\xx_0$ 使得 $A\xx_0 = \bb$ 且 $\|\xx_0\| \leq \|\xx\|$ 对于任何满足 $A\xx = \bb$ 的 $\xx$.~
+\\
+b) $\xx_0 = P_{(\Ker A)^\perp} \xx$ 对于任何满足 $A\xx = \bb$ 的 $\xx$.~
+
+4.6. \textbf{最小范数的最小二乘解}~~将上一问题应用于方程 $A\xx = P_{\Ran A} \bb$，证明 $A \xx = \bb$ 的一个最小范数的最小二乘解 $\xx_0$ 存在且唯一。
+\\
+a) 存在唯一的最小二乘解 $\xx_0$ 最小化范数 $\|\xx\|$.~
+\\
+b) $x_0 = P_{(\Ker A)^\perp} \xx$ 对于任何 $A\xx = \bb$ 的最小二乘解 $\xx$.~
+\end{exer}
+
+
+
+\section{5. 线性变换的伴随，基本子空间的再次回顾}
+
+\subsection{5.1. 伴随矩阵与伴随算子}
+
+让我们回忆一下，对于一个 $m \times n$ 矩阵 $A$，其\textbf{共轭转置}（或简单地说\textbf{伴随}）$A^*$ 定义为 $A^* := \overline{A^T}$.~换句话说，矩阵 $A^*$ 是通过转置矩阵 $A^T$ 然后取每个元素的复共轭得到的。
+
+以下恒等式是伴随矩阵的主要性质：
+
+\fbox{$
+(A\xx, \yy) = (\xx, A^*\yy)\quad \forall \xx \in \CC^n, \forall \yy \in \CC^m.
+$}\\
+在证明这个恒等式之前，让我们引入一些有用的公式。回忆一下，对于转置矩阵我们有恒等式 $(AB)^T = B^T A^T$.~由于对于复数 $z$ 和 $w$ 我们有 $\overline{zw} = \overline{z}\overline{w}$，所以对于伴随有恒等式 $$(AB)^* = B^*A^*.$$
+
+同样，由于 $(A^T)^T = A$ 且 $\overline{\overline{z}} = z$，
+$$(A^*)^* = A.$$
+
+现在，我们准备证明正主恒等式：$$(A\xx, \yy) = \yy^*A\xx = (A^*\yy)^*\xx = (\xx, A^*\yy);$$
+这里第一个和最后一个等式遵循内积在 $\FF^n$ 中的定义，而中间的等式遵循事实 $$(A^*\xx)^* = \xx^*(A^*)^* = \xx^*A.$$
+
+
+\subsubsection{5.1.1. 伴随的唯一性}
+
+上述恒等式 $(A\xx, \yy) = (\xx, A^*\yy)$ 在其他地方通常用作对伴随算子的定义。让我们首先注意到伴随算子是唯一的：如果一个矩阵 $B$ 满足 
+$$(A\xx, \yy) = (\xx, B\yy) \quad \forall \xx, \yy,$$
+则 $B = A^*$.~确实，根据 $A^*$ 的定义，对于给定的 $\yy$，我们有 
+$$(\xx, A^*\yy) = (\xx, B\yy) \quad \forall \xx,$$
+因此根据推论 1.5， $A^*\yy = B\yy$.~由于这对所有 $\yy$ 都成立，即这是线性变换，因此矩阵 $A^*$ 和 $B$ 是相等的。
+
+
+\subsubsection{5.1.2. 抽象环境下的伴随变换}
+
+前面提到过，恒等式 $(A\xx, \yy) = (\xx, A^*\yy)$ 可用于在抽象环境中定义伴随算子，其中 $A: V \to W$ 是作用在一个内积空间到另一个内积空间上的算子。即，我们定义 $A^*: W \to V$ 为满足 $$(A\xx, \yy) = (\xx, A^*\yy) \quad \forall \xx \in V, \forall \yy \in W$$
+的算子。为什么这样的算子存在？我们可以简单地构造它：考虑 $V$ 中的一组标准正交基 $\{\vv_1, \vv_2, \dots, \vv_n\}$ 和 $W$ 中的一组标准正交基 $\{\ww_1, \ww_2, \dots, \ww_m\}$.~如果 $[A]_{\B\A}$ 是这两组基下 $A$ 的矩阵，我们以定义其矩阵 $[A^*]_{\A\B}$来定义算子 $A^*$：
+$$[A^*]_{\A\B} = ([A]_{\B\A})^*.$$
+我们将该算子是伴随算子的证明留给读者作为练习。
+
+注意，上述第 5.1.1 节中的推理意味着伴随算子是唯一的。
+
+\subsubsection{5.1.3. 有用的公式}
+
+下面我们给出将广泛使用的伴随算子（矩阵）的性质。我们将证明留给读者作为练习。
+
+1. $(A + B)^* = A^* + B^*$；
+
+2. $(\alpha A)^* = \overline{\alpha} A^*$；
+
+3. $(AB)^* = B^*A^*$；
+
+4. $(A^*)^* = A$；
+
+5. $(\yy, A\xx) = (A^*\yy, \xx)$.~
+
+\subsection{5.2. 基本子空间之间的关系}
+
+
+\begin{theorem}[\normalfont\heiti 定理 5.1\nopunct] 设 $A: V \to W$ 是从一个内积空间作用到另一个内积空间上的算子。那么
+
+1. $\Ker A^* = (\Ran A)^\perp$；
+
+2. $\Ker A = (\Ran A^*)^\perp$；
+
+3. $\Ran A = (\Ker A^*)^\perp$；
+
+4. $\Ran A^* = (\Ker A)^\perp$.~\end{theorem}
+
+{\heiti 注记}~~在第二章第 7 节，基本子空间的定义（如文献中常见的那样）使用 $A^T$ 而不是 $A^*$.~当然，对于实数矩阵，两者并无区别，所以在实数情况下，本定理给出了那里定义的基本子空间的几何描述。
+
+第八章第 3 节（定理 3.7）给出了使用 $A^T$ 定义的基本子空间的几何解释。本定理中的公式与定理 5.1 中的公式基本相同，只是解释略有不同。
+
+\begin{proof}[\normalfont\heiti 定理 5.1 的证明~\nopunct]首先，我们注意到，对于子空间 $E$，我们有 $(E^\perp)^\perp = E$，所以陈述 1 和 3 ，陈述 2 和 4 都是等价的。最后，陈述 2 恰好是将算子 $A$ 替换为 $A^*$ 的陈述 1（这里我们使用了 $(A^*)^* = A$ 的事实）。
+
+因此，我们只需要证明陈述 1。
+
+我们将为此陈述提供两种证明：“矩阵”证明和“不变”（或“坐标无关”）证明。
+
+在“矩阵”证明中，我们假设 $A$ 是一个 $m \times n$ 矩阵，即 $A: \FF^n \to \FF^m$.~一般情况总可以通过选取 $V$ 和 $W$ 中的标准正交基来简化为这种情况。
+
+设 $\aaa_1, \aaa_2, \dots, \aaa_n$ 是 $A$ 的列。注意，$\xx \in (\Ran A)^\perp$ 当且仅当 $\xx \perp \aaa_k$（即 $(\xx, \aaa_k) = 0$）$\forall k = 1, 2, \dots, n$.~
+
+根据 $\FF^n$ 中内积的定义，这意味着 
+$$0 = (\xx, \aaa_k) = \aaa_k^* \xx \quad \forall k = 1, 2, \dots, n.$$
+由于 $\aaa_k^*$ 是 $A^*$ 的第 $k$ 行，上述 $n$ 个等式等价于方程 
+$$A^*\xx = \oo.$$
+所以，我们证明了 $\xx \in (\Ran A)^\perp$ 当且仅当 $A^*\xx = \oo$，而这恰好是定理 1 的陈述。
+
+现在，让我们给出“坐标无关”的证明。$\xx \in (\Ran A)^\perp$ 的含义是 $\xx$ 正交于所有形式为 $A\yy$ 的向量，即 
+$$(\xx, A\yy) = 0 \quad \forall \yy.$$
+由于 $(\xx, A\yy) = (A^*\xx, \yy)$，这个恒等式等价于 
+$$(A^*\xx, \yy) = 0 \quad \forall \yy,$$
+并且根据引理 1.4，这当且仅当 $A^*\xx = \oo$.~所以我们证明了 $\xx \in (\Ran A)^\perp$ 当且仅当 $A^*\xx = \oo$，而这恰好是定理 1 的陈述。\end{proof}
+
+\subsection{5.3. 线性变换的“本质”部分}
+
+上述定理使得算子 $A$ 的结构以及基本子空间的几何学更加清晰。从该定理可以得出，算子 $A$ 可以表示为到 $\Ran A^*$ 的正交投影与从 $\Ran A^*$ 到 $\Ran A$ 的同构的组合。
+
+确实，设 $\widetilde{A}: \Ran A^* \to \Ran A$ 是 $A$ 对定义域 $\Ran A^*$ 和目标空间 $\Ran A$ 的限制，
+$$\widetilde{A}\xx = A\xx, \quad \forall \xx \in \Ran A^*.$$
+由于 $\Ker A = (\Ran A^*)^\perp$，我们有 
+$$A\xx = AP_{\Ran A^*}\xx = \widetilde{A}P_{\Ran A^*}\xx \quad \forall \xx \in X;$$
+这里使用了 $\xx - P_{\Ran A^*}\xx \in (\Ran A^*)^\perp = \Ker A$ 的事实。因此我们可以写成 
+$$(5.1)\quad A = \widetilde{A}P_{\Ran A^*} \quad \forall \xx \in X,$$
+或者等价地说，$A = \widetilde{A}P_{\Ran A^*}$.~
+
+还需注意，$\widetilde{A}: \Ran A^* \to \Ran A$ 是一个可逆变换。首先我们注意到 $\Ker \widetilde{A} = \{\oo\}$：如果 $\xx \in \Ran A^*$ 且 $\widetilde{A}\xx = A\xx = \oo$，那么 $\xx \in \Ker A = (\Ran A^*)^\perp$，所以 $\xx \in \Ran A^* \cap (\Ran A^*)^\perp$，因此 $\xx = \oo$.~然后为了证明 $\widetilde{A}$ 是满射的(surjective)，必须确保 $\widetilde{A}$ 是满射的。但这直接从 (5.1) 得出：$$\Ran \widetilde{A} = \widetilde{A}(\Ran A^*) = A P_{\Ran A^*} X = AX = \Ran A.$$
+
+同构 $\widetilde{A}$ 有时被称为算子 $A$ 的“本质部分”(essential part)（非标准术语）。
+
+“本质部分” $\widetilde{A}: \Ran A^* \to \Ran A$ 是一个同构，这隐含了以下“复数”秩定理：$\rank A = \rank A^*$.~但是，当然，这个定理也来自一组基本事实：取复共轭不改变矩阵的秩，$\rank A = \rank \overline{A}$.~
+
+\begin{exer} {\heiti 练习}~
+
+5.1. 证明对于方阵 $A$，$\det(A^*) = \overline{\det(A)}$ 成立。
+
+5.2. 找出矩阵 
+$$A = \begin{pmatrix} 1 & 1 & 1 \\ 1 & 3 & 2 \\ 2 & 4 & 3 \end{pmatrix}.$$
+的所有四组基本子空间的\textbf{正交投影}矩阵。注意，实际上只需要计算其中两个投影。如果你选择合适的两个，其他的 2 个可以很容易地从它们得到（回想一下，投影到 $E$ 和 $E^\perp$ 的关系）。
+
+5.3. 设 $A$ 是一个 $m \times n$ 矩阵。证明 $\Ker A = \Ker(A^*A)$.~
+\\
+为此你需要证明两个包含关系 $\Ker(A^*A) \subseteq \Ker A$ 和 $\Ker A \subseteq \Ker(A^*A)$.~其中一个包含关系是平凡的，对于另一个，使用事实
+$$\|A\xx\|^2 = (A\xx, A\xx) = (A^*A\xx, \xx).$$ 
+
+5.4. 使用等式 $\Ker A = \Ker(A^*A)$ 来证明：
+\\
+a) $\rank A = \rank(A^*A)$；
+\\
+b) 如果 $A\xx = \oo$ 只有平凡解，则 $A$ 是左可逆的。（你只需要写出一个左逆的公式）。
+
+5.5. 假设矩阵 $A$ 的 $A^*A$ 是可逆的，因此到 $\Ran A$ 的正交投影由公式 $A(A^*A)^{-1}A^*$ 给出。你能写出到其他 3 组基本子空间（$\Ker A$, $\Ker A^*$, $\Ran A^*$）的正交投影的公式吗？
+
+5.6. 设矩阵 $P$ 是自伴随的 ($P^* = P$) 并且 $P^2 = P$.~证明 $P$ 是一个正交投影的矩阵。
+{\heiti 提示：} 考虑分解 $\xx = \xx_1 + \xx_2$, $\xx_1 \in \Ran P$, $\xx_2 \perp \Ran P$，并证明 $P\xx_1 = \xx_1$, $P\xx_2 = \oo$.~对于其中一个等式，你将需要用到自伴随性，对于另一个等式，你需要用到 $P^2 = P$ 的性质。\end{exer}
+
+
+\section{6. 等距同构和酉算子~~酉矩阵和正交矩阵}
+
+\subsection{6.1. 基本定义}
+
+
+{\heiti 定义}~~算子 $U: X \to Y$ 被称为\textbf{等距同构}\index{dengjutonggou@等距同构}(isometry)，如果它保持范数，即 
+$$\|U\xx\| = \|\xx\| \quad \forall \xx \in X.$$
+
+以下定理表明等距同构保持内积：
+
+\begin{theorem}[\normalfont\heiti 定理 6.1\nopunct] 算子 $U: X \to Y$ 是等距同构当且仅当它保持内积，即当且仅当 
+$$(\xx, \yy) = (U\xx, U\yy) \quad \forall \xx, \yy \in X.$$\end{theorem}
+
+\begin{proof}证明使用了极化恒等式（第 5 章引理 1.9）。例如，如果 $X$ 是复数空间，
+\begin{equation} \notag
+\begin{split}
+ (U\xx, U\yy) 
+=&\ \frac{1}{4} \sum_{\alpha = \pm 1, \pm i} \alpha \|U\xx + \alpha U\yy\|^2      \\
+=&\ \frac{1}{4} \sum_{\alpha = \pm 1, \pm i} \alpha \|U(\xx + \alpha \yy)\|^2  \\
+=&\ \frac{1}{4} \sum_{\alpha = \pm 1, \pm i} \alpha \|\xx + \alpha \yy\|^2 = (\xx, \yy). \\
+\end{split}
+\end{equation}
+
+类似地，对于实数空间 $X$，
+\begin{equation} \notag
+\begin{split}
+  (U\xx, U\yy) 
+=&\ 
+ \frac{1}{4} (\|U\xx + U\yy\|^2 - \|U\xx - U\yy\|^2) 
+         \\
+=&\   \frac{1}{4} (\|U(\xx+\yy)\|^2 - \|U(\xx-\yy)\|^2)  \\
+=&\   \frac{1}{4} (\|\xx+\yy\|^2 - \|\xx-\yy\|^2) = (\xx, \yy). \\
+\end{split}
+\end{equation}\end{proof}
+
+ 
+\begin{lemma}[\normalfont\heiti 引理 6.2\nopunct] 算子 $U: X \to Y$ 是等距同构当且仅当 $U^*U = I$.~\end{lemma}
+
+\begin{proof}如果 $U^*U = I$，那么根据伴随算子的定义，
+$$(\xx, \xx) = (U^*U\xx, \xx) = (U\xx, U\xx) \quad \forall \xx \in X.$$
+因此 $\|\xx\| = \|U\xx\|,$所以 $U$ 是等距同构。
+
+另一方面，如果 $U$ 是等距同构，那么根据伴随算子的定义和定理 6.1，对于所有 $\xx \in X$，
+$$(U^*U\xx, \yy) = (U\xx, U\yy) = (\xx, \yy) \quad \forall \yy \in X,$$
+因此根据推论 1.5， $U^*U\xx = \xx$.~由于这对所有 $\xx \in X$ 都成立，所以 $U^*U = I$.~\end{proof}
+
+上面的引理意味着等距同构总是左可逆的（$U^*$ 是左逆）。
+
+{\heiti 定义}~~等距同构 $U: X \to Y$ 被称为\textbf{酉算子}\index{yousuanzi@酉算子}(unitary operator)，如果它是可逆的。
+
+{\heiti 命题 6.3}~~等距同构 $U: X \to Y$ 是酉算子当且仅当 $\dim X = \dim Y$.~
+
+\begin{proof}由于 $U$ 是等距同构，它是左可逆的，并且由于 $\dim X = \dim Y$，它是可逆的（左可逆的方阵是可逆的）。
+
+另一方面，如果 $U: X \to Y$ 是可逆的，那么 $\dim X = \dim Y$（只有方阵才是可逆的，同构的空间具有相等的维度）。\end{proof}
+
+一个方阵 $U$ 被称为\textbf{酉}矩阵，如果 $U^*U = I$，即酉矩阵是作用在 $\FF^n$ 上的酉算子的矩阵。
+
+实数项的酉矩阵被称为\textbf{正交}矩阵。一个正交矩阵可以解释为作用在实数空间 $\RR^n$ 上的酉算子的矩阵。
+
+酉算子的几个性质：
+
+1. 对于酉变换 $U$, $U^{-1} = U^*$；
+
+2. 如果 $U$ 是酉的，那么 $U^* = U^{-1}$ 也必须是酉的；
+
+3. 如果 $U$ 是等距同构，并且 $\{\vv_1, \vv_2, \dots, \vv_n\}$ 是一组标准正交基，那么 $\{U\vv_1,$ $ U\vv_2, \dots, U\vv_n\}$ 是一个标准正交系统。而且，如果 $U$ 是酉的，$\{U\vv_1, U\vv_2, \dots, U\vv_n\}$ 是一组标准正交基。
+
+4. 酉算子的乘积也是酉算子。
+
+\subsection{6.2. 例子}
+
+首先，让我们注意到，
+
+\fbox{\begin{minipage}{0.9\textwidth}
+一个矩阵 $U$ 是等距同构当且仅当它的列构成一个标准正交系统。
+\end{minipage}}
+
+\noindent 通过计算乘积 $U^*U$ 可以很容易地检验这一点。可以很容易地检验出旋转矩阵 $$\begin{pmatrix} \cos \alpha & -\sin \alpha \\ \sin \alpha & \cos \alpha \end{pmatrix}$$
+ 的列彼此正交，并且每列的范数都为 1。因此，旋转矩阵是等距同构，并且由于它是方阵，所以它是酉的。由于旋转矩阵的所有元素都是实数，它是一个正交矩阵。
+ 
+下一个例子更抽象。
+设 $X$ 和 $Y$ 是内积空间，$\dim X = \dim Y = n$，并且设 $\{\xx_1, \xx_2, \dots, \xx_n\}$ 和 $\{\yy_1, \yy_2, \dots, \yy_n\}$ 分别是 $X$ 和 $Y$ 中的标准正交基。定义一个算子 $U: X \to Y$ 为 
+$$U\xx_k = \yy_k, \quad k = 1, 2, \dots, n.$$
+由于对于向量 $\xx = \sum_{k=1}^n c_k \xx_k$,
+$$\|\xx\|^2 = \sum_{k=1}^n |c_k|^2$$ 且
+$$\|U\xx\|^2 = \|\sum_{k=1}^n c_k \yy_k\|^2 = \sum_{k=1}^n |c_k|^2,$$
+我们可以得出 $\|U\xx\| = \|\xx\| \quad \forall \xx \in X$，所以 $U$ 是一个酉算子。
+
+\subsection{6.3. 酉算子的性质}
+
+{\heiti 命题 6.4}~~设 $U$ 是一个酉矩阵。那么
+
+1. $|\det U| = 1$.~特别地，对于正交矩阵 $\det U = \pm 1$；
+
+2. 如果 $\lambda$ 是 $U$ 的一个特征值，那么 $|\lambda| = 1$.~
+
+{\heiti 注记}~~注意，对于正交矩阵，特征值（不像行列式）不一定必须是实数。我们老朋友，旋转矩阵就是一个例子。
+
+
+\begin{proof}[\normalfont\heiti 命题 6.4 的证明~\nopunct]设 $\det U = z$.~由于 $\det(U^*) = \det(U)$，见问题 5.1，我们有 
+$$|z|^2 = \overline{z} = \det(U^*U) = \det I = 1,$$
+所以 $|\det U| = |z| = 1$.~陈述 1 证毕。
+
+为了证明陈述 2，我们注意到如果 $U\xx = \lambda \xx$，那么 
+$$\|U\xx\| = \|\lambda \xx\| = |\lambda|\|\xx\|,$$
+所以 $|\lambda| = 1$.~\end{proof}
+
+\subsection{6.4. 酉等价算子}
+
+{\heiti 定义}~~算子（矩阵）$A$ 和 $B$ 被称为\textbf{酉等价}的(unitarily equivalent)，如果存在一个酉算子 $U$ 使得 $A = UBU^*$.~
+
+由于对于酉 $U$ 我们有 $U^{-1} = U^*$，任何两个酉等价的矩阵也是相似的。
+
+反之则不然，我们很容易构造出一对相似但不酉等价的矩阵。
+
+下面的命题提供了一种构造反例的方法。
+
+{\heiti 命题 6.5}~~矩阵 $A$ 酉等价于一个对角矩阵当且仅当它具有一组\textbf{正交}（或标准正交）的特征向量基。
+
+\begin{proof}设 $A$ 与对角矩阵 $D$ 酉等价，即 $A = UDU^*$.~设 $B\xx = \lambda \xx$.~那么 $AU\xx = UBU^*U\xx = U B\xx = U(\lambda \xx) = \lambda U\xx$，即 $U\xx$ 是 $A$ 的特征向量。
+
+所以，设 $A$ 具有由特征向量 $\uu_1, \uu_2, \dots, \uu_n$ 组成的\textbf{正交}基。通过将每个向量 $\uu_k$ 除以其范数（如果需要），我们可以假设系统 $\{\uu_1, \uu_2, \dots, \uu_n\}$ 是一组\textbf{标准正交}基。设 $D$ 是 $A$ 在基 $B = \{\uu_1, \uu_2, \dots, \uu_n\}$ 下的矩阵。显然，$D$ 是一个对角矩阵。
+
+设 $U$ 为以 $\uu_1, \uu_2, \dots, \uu_n$ 为列的矩阵。由于列向量构成了标准正交基， $U$ 是酉的。标准坐标变换公式意味着 $$A = [A]_{\SSS\SSS} = [I]_{\SSS\B}[A]_{\B\B}[I]_{\B\SSS} = UDU^{-1},$$
+并且由于 $U$ 是酉的，$A = UDU^*$.~\end{proof}
+
+\begin{exer} {\heiti 练习}~
+
+
+6.1. 对以下矩阵进行\textbf{正交对角化}，即对每个矩阵 $A$，找出酉矩阵 $U$ 和对角矩阵 $D$，使得 $A = UDU^*$：
+$$\begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}, \quad \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}, \quad \begin{pmatrix} 0 & 2 & 2 \\ 2 & 0 & 2 \\ 2 & 2 & 0 \end{pmatrix}.$$
+
+6.2. 判断正误：一个矩阵酉等价于一个对角矩阵当且仅当它具有一组\textbf{正交}的特征向量基。
+
+6.3. 证明极化恒等式 
+\\
+$(A\xx, \yy) = \frac{1}{4} [ (A(\xx+\yy), \xx+\yy) - (A(\xx-\yy), \xx-\yy) ]$（实数情况，$A=A^*$），
+\\
+以及
+\\
+$(A\xx, \yy) = \frac{1}{4} \sum_{\alpha = \pm 1, \pm i} \alpha (A(\xx+\alpha \yy), \xx+\alpha \yy)$（复数情况，$A$ 任意）。
+
+6.4. 证明酉（正交）矩阵的乘积也是酉（正交）的。
+
+6.5. 设 $U: X \to X$ 是一个有限维内积空间上的线性变换。证明或证伪：
+\\
+a) 如果 $\|U\xx\| = \|\xx\| \quad \forall \xx \in X$，那么 $U$ 是酉的。
+\\
+b) 如果 $\|U\ee_k\| = \|\ee_k\|$, $k=1, 2, \dots, n$ 对于某组标准正交基 $\{\ee_1, \ee_2, \dots, \ee_n\}$，那么 $U$ 是酉的。
+
+
+6.6. 设 $A$ 和 $B$ 是酉等价的 $n \times n$ 矩阵。
+\\
+a) 证明 $\trace(A^*A) = \trace(B^*B)$.~
+\\
+b) 用 a) 证明 $$\sum_{j,k=1}^n |A_{j,k}|^2 = \sum_{j,k=1}^n |B_{j,k}|^2.$$
+\\
+c) 用 b) 证明矩阵 
+$$\begin{pmatrix} 1 & 2 \\ 2 & \ii \end{pmatrix} \text{和} \begin{pmatrix} \ii & 4 \\ 1 & 1 \end{pmatrix}$$
+不是酉等价的。
+
+6.7. 以下哪些矩阵对是酉等价的：
+\\
+a) $\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$ 和 $\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$.~
+\\
+b) $\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$ 和 $\begin{pmatrix} 0 & 1/2 \\ 1/2 & 0 \end{pmatrix}$.~
+\\
+c) $\begin{pmatrix} 0 & 1 & 0 \\ -1 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}$ 和 $\begin{pmatrix} 2 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 0 \end{pmatrix}$.~
+\\
+d) $\begin{pmatrix} 0 & 1 & 0 \\ -1 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}$ 和 $\begin{pmatrix} 1 & 0 & 0 \\ 0 & -\ii & 0 \\ 0 & 0 & \ii \end{pmatrix}$.~
+\\
+e) $\begin{pmatrix} 1 & 1 & 0 \\ 0 & 2 & 2 \\ 0 & 0 & 3 \end{pmatrix}$ 和 $\begin{pmatrix} 1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 3 \end{pmatrix}$.~
+\\
+{\heiti 提示：} 很容易排除不酉等价的矩阵：记住酉等价矩阵是相似的，而相似矩阵的迹、行列式和特征值是相同的。
+\\
+同样，前面的问题有助于排除非酉等价矩阵。
+\\
+一个矩阵酉等价于一个对角矩阵当且仅当它具有一组特征向量的正交基。
+
+6.8. 设 $U$ 是一个行列式为 1 的 $2 \times 2$ 正交矩阵。证明 $U$ 是一个旋转矩阵。
+
+6.9. 设 $U$ 是一个行列式为 1 的 $3 \times 3$ 正交矩阵。证明：
+\\
+a) $1$ 是 $U$ 的一个特征值。
+\\
+b) 如果 $\{\vv_1, \vv_2, \vv_3\}$ 是一组标准正交基，使得 $U\vv_1 = \vv_1$（记住 $1$ 是一个特征值），那么在基 $\{\vv_1, \vv_2, \vv_3\}$ 下 $U$ 的矩阵是 $$\begin{pmatrix} 1 & 0 & 0 \\ 0 & \cos \alpha & -\sin \alpha \\ 0 & \sin \alpha & \cos \alpha \end{pmatrix},$$
+其中 $\alpha$ 是某个角度。
+\\
+{\heiti 提示：} 证明，由于 $\vv_1$ 是 $U$ 的特征向量，1 下方的所有元素必须为零，并且由于 $\vv_1$ 也是 $U^*$的特征向量（为什么？），1 右侧的所有元素也必须为零。然后证明下方的 $2 \times 2$ 矩阵是一个行列式为 1 的正交矩阵，并用上一问题的结论。
+\end{exer}
+
+\section{7. $\RR^n$ 中的刚性运动}
+
+$\RR^n$ 中的一个\textbf{刚性运动}(rigid motion)是一个变换 $f: V \to V$，它保持点之间的距离，即 
+$$\|f(\xx) - f(\yy)\| = \|\xx - \yy\| \quad \forall \xx, \yy \in V.$$
+注意，定义中我们没有假设变换 $f$ 是线性的。显然，任何酉变换都是刚性运动。另一个刚性运动的例子是平移（移位）$\aaa \in V$，$f(\xx) = \xx + \aaa$.
+
+下面的定理是主要结论，它表明任何实内积空间中的刚性运动都是正交变换和平移的组合。
+
+\begin{theorem}[\normalfont\heiti 定理 7.1\nopunct] 设 $f$ 是实内积空间 $X$ 中的一个刚性运动，设 $T(\xx) := f(\xx) - f(\oo)$.~那么 $T$ 是一个正交变换。\end{theorem}
+
+为了证明这个定理，我们需要一个简单的引理。
+
+\begin{lemma}[\normalfont\heiti 引理 7.2\nopunct] 设 $T$ 如定理 7.1 中所定义。那么对于所有 $\xx, \yy \in X$：
+
+1. $\|T\xx\| = \|\xx\|$；
+
+2. $\|T(\xx) - T(\yy)\| = \|\xx - \yy\|$；
+
+3. $(T\xx, T\yy) = (\xx, \yy)$.~\end{lemma}
+
+\begin{proof}为了证明陈述 1，注意到 
+$$\|T(\xx)\| = \|f(\xx) - f(\oo)\| = \|\xx - \oo\| = \|\xx\|.$$
+陈述 2 源于以下恒等式链：
+\begin{equation} \notag
+\begin{split}
+\|T(\xx) - T(\yy)\| 
+=&\   \|(f(\xx) - f(\oo)) - (f(\yy) - f(\oo))\| \\
+=&\   \|f(\xx) - f(\yy)\| = \|\xx - \yy\|.
+\end{split}
+\end{equation}
+
+另一种解释是 $T$ 是两个刚性运动的组合（先是 $f$，然后是平移 $-f(\oo)$），并且可以很容易地看出刚性运动的组合也还是刚性运动。由于 $T(\oo) = \oo$，并且 $\|T(\xx)\| = \|T(\xx) - T(\oo)\|$，所以陈述 1 可以视为陈述 2 的一个特例。
+
+为了证明陈述 3，让我们注意到在实内积空间中
+$$\|T(\xx) - T(\yy)\|^2 = \|T(\xx)\|^2 + \|T(\yy)\|^2 - 2(T(\xx), T(\yy)),$$
+并且 
+$$\|\xx - \yy\|^2 = \|\xx\|^2 + \|\yy\|^2 - 2(\xx, \yy).$$
+回想一下 $\|T(\xx) - T(\yy)\| = \|\xx - \yy\|$ 并且 $\|T(\xx)\| = \|\xx\|, \quad \|T(\yy)\| = \|\yy\|$，我们立即得到了期望的结论。\end{proof}
+
+\begin{proof}[\normalfont\heiti 定理 7.1 的证明~\nopunct]首先，注意到对于所有 $\xx \in X$, 
+$$\quad \|T\xx\| = \|f(\xx) - f(\oo)\| = \|\xx - \oo\| = \|\xx\|,$$
+所以 $T$ 保持范数，$\|T\xx\| = \|\xx\|$.~
+
+我们想说由于$\|T\xx\| = \|\xx\|$，所以 $T$ 是一个等距同构，但要能够得到这一点，我们还需证明 $T$ 是一个线性变换。
+
+为此，让我们在 $X$ 中固定一组标准正交基 $\{\ee_1, \ee_2, \dots, \ee_n\}$，并设 $\bb_k := T(\ee_k),  k=1, 2, \dots, n$.~由于 $T$ 保持内积（引理 7.2 的陈述 3），我们可以得出 $\{\bb_1, \bb_2, \dots, \bb_n\}$ 是一个标准正交系统。事实上，由于 $\dim X = n$（因为基 $\{\ee_1, \ee_2, \dots, \ee_n\}$ 包含 $n$ 个向量），我们可以得出 $\{\bb_1, \bb_2, \dots, \bb_n\}$ 是一组标准正交\textbf{基}。
+
+设 $\xx = \sum_{k=1}^n \alpha_k \ee_k$.~回忆一下，根据抽象正交傅里叶分解 (2.2)，我们有 
+$\alpha_k = (\xx, \ee_k).$
+将抽象正交傅里叶分解 (2.2) 应用于 $T(\xx)$ 和标准正交基 $\{\bb_1, \bb_2, \dots, \bb_n\}$，我们得到 
+$$T(\xx) = \sum_{k=1}^n (T(\xx), \bb_k) \bb_k.$$
+由于 
+$$(T(\xx), \bb_k) = (T(\xx), T(\ee_k)) = (\xx, \ee_k) = \alpha_k,$$
+我们得到 
+$$T(\sum_{k=1}^n \alpha_k \ee_k) = \sum_{k=1}^n \alpha_k \bb_k.$$
+这意味着 $T$ 是一个线性变换，其在基 $\{\ee_1, \ee_2, \dots, \ee_n\}$ 和 $\{\bb_1, \bb_2, \dots, \bb_n\}$ 下的矩阵是单位矩阵，$[T]_{B,S} = I$.~
+
+另一种证明 $T$ 是线性变换的方法是进行以下直接计算：
+\begin{equation} \notag
+\begin{split}
+&\ \|T(\xx + \alpha \yy) - (T(\xx) + \alpha T(\yy))\|^2  = \|(T(\xx + \alpha \yy) - T(\xx)) - \alpha T(\yy)\|^2    \\
+=&\ \|T(\xx + \alpha \yy) - T(\xx)\|^2 + \alpha^2 \|T(\yy)\|^2 - 2\alpha (T(\xx + \alpha \yy) - T(\xx), T(\yy))  \\
+=&\  \|\xx + \alpha \yy - \xx\|^2 + \alpha^2\|\yy\|^2 - 2\alpha(T(\xx+\alpha \yy), T(\yy)) + 2\alpha(T(\xx), T(\yy)) \\
+=&\  \|\alpha \yy\|^2 + \alpha^2\|\yy\|^2 - 2\alpha(\xx+\alpha \yy, \yy) + 2\alpha(\xx, \yy)  \\
+=&\  \alpha^2\|\yy\|^2 + \alpha^2\|\yy\|^2 - 2\alpha(\xx, \yy) - 2\alpha^2(\yy, \yy) + 2\alpha(\xx, \yy)= 0. 
+\end{split}
+\end{equation}
+ 因此 
+$$T(\xx+\alpha \yy) = T(\xx) + \alpha T(\yy),$$
+这意味着 $T$ 是线性的（取 $\xx=\oo$ 或 $\alpha=1$ 即可得到线性变换定义中的两个性质）。
+
+所以，$T$ 是一个满足 $\|T\xx\| = \|\xx\|$ 的线性变换，即 $T$ 是一个等距同构。由于 $T: X \to X$， $T$ 是一个酉变换（见命题 6.3）。这完成了证明，因为一个正交变换仅仅是一个实内积空间中的酉变换。\end{proof}
+
+\begin{exer} {\heiti 练习}~
+
+7.1. 在 $\CC^n$ 中给出一个刚性运动 $T$, $T(\oo)=\oo$，但 $T$ 不是线性变换。\end{exer}
+
+ 
+\section{8. 复化与反复化}
+
+本节可能比本章的其余部分更抽象一些，首次阅读时可以跳过。
+
+\subsection{8.1. 反复化}
+
+\subsubsection{8.1.1. 向量空间的复化}
+
+任何复数向量空间都可以解释为一个实向量空间：我们只需要忘记我们可以乘以复数，并且只允许乘以实数。
+
+例如，空间 $\CC^n$ \textbf{典型地}被对应为实向量空间 $\RR^{2n}$：每个复数坐标 $z_k = x_k + \ii y_k$ 给出两个实坐标 $x_k$ 和 $y_k$.~
+
+“典型地”在这里意味着这是一种标准、最自然地对应 $\CC^n$ 和 $\RR^{2n}$ 的方式。注意，虽然上述定义给了我们一种从复数坐标得到实数坐标的典型方法，但它并没有说明坐标的排序。
+
+事实上，有两种标准的方法来排序坐标 $x_k, y_k$.~一种方法是先取所有实部，然后取所有虚部，所以排序是 $x_1, x_2, \dots, x_n, y_1, y_2, \dots, y_n$.~另一种标准选择是排序 $x_1, y_1, x_2, y_2, $ $\dots, x_n, y_n$.~本节的内容不依赖于坐标的排序选择，所以读者不必担心选择排序。
+
+\subsubsection{8.1.2. 内积的复化}
+
+结果表明，如果我们有一个复内积（在一个复数空间中），我们可以以典型的方式从中得到一个实内积：实际上，你可能已经在不知不觉中做过了。即，考虑 $\CC^n$ 的上述例子，它典型地被对应为 $\RR^{2n}$.~设 $(\xx, \yy)_{\CC}$ 表示 $\CC^n$ 中的标准内积，$(\xx, \yy)_{\RR}$ 表示 $\RR^{2n}$ 中的标准内积（注意 $\RR^n$ 中的标准内积不依赖于坐标的排序）。那么（见下面的练习 8.1）
+$$(8.1)\quad (\xx, \yy)_{\RR} = \ReR((\xx, \yy)_{\CC})$$
+ 
+这个公式可以用于典型地从复内积中定义一个实内积，在一般情况下也是如此。即，很容易核验出，如果 $(\xx, \yy)_{\CC}$ 是一个复内积空间中的内积，那么 $(\xx, \yy)_{\RR}$ （定义为 (8.1) ）是一个实内积（在其相应的实空间上）。
+
+总结一下，我们可以说，
+
+\fbox{\begin{minipage}{0.9\textwidth}
+要对一个复内积空间进行反复化，我们只需“忘记”我们可以乘以复数，即我们只允许乘以实数。被反复化空间中的典型实内积由公式 (8.1) 给出。
+\end{minipage}}
+
+
+{\heiti 注记}~~任何作用在 $\CC^n$ 上的（复）线性变换（或更广泛地说，在复向量空间上）都会产生一个实线性变换：这仅仅是因为如果 $T(\alpha \xx + \beta \yy) = \alpha T \xx + \beta T \yy$ 对 $\alpha, \beta \in \CC$ 成立，那么它当然对 $\alpha, \beta \in \RR$ 也成立。
+
+反之则不成立，即作用在 $\CC^n$ 的反复化 $\RR^{2n}$ 上的（实数）线性变换并不总是产生 $\CC^n$ 的（复数）线性变换（在抽象情况下也是一样）。
+
+例如，如果考虑 $n=1$ 的情况，那么乘以一个复数 $z$（复数空间 $\CC^1$ 中的线性变换的一般形式）被视为 $\RR^2$ 中的线性变换时，具有一个非常特殊的结构（你能描述它吗？）。
+
+\subsection{8.2. 复化}
+
+我们也可以做相反的事情，即从一个实空间得到一个复空间：实际上，你可能已经做过了，而没有太在意。
+
+即，给定一个实内积空间 $\RR^n$，我们可以从它得到一个复空间 $\CC^n$，方法是允许复数坐标（在两种情况下都使用标准内积）。在这种情况下，空间 $\RR^n$ 将是 $\CC^n$ 的一个\textbf{实子空间}\footnote{
+实子空间是指在实数加法和实数乘法下封闭的集合。
+}，由具有实数坐标的向量组成。
+
+抽象地说，这个构造可以描述如下：给定一个实向量空间 $X$，我们可以将其复化 $X_{\CC}$ 定义为所有对 $[\xx_1, \xx_2], \quad \xx_1, \xx_2 \in X$ 的集合，其中加法和实数 $\alpha$ 的乘法是逐坐标定义的：
+$$[\xx_1, \xx_2] + [\yy_1, \yy_2] = [\xx_1 + \yy_1, \xx_2 + \yy_2], \quad \alpha [\xx_1, \xx_2] = [\alpha \xx_1, \alpha \xx_2].$$
+如果 $X = \RR^n$，那么向量 $\xx_1$ 由 $\CC^n$ 中复数坐标的实部组成，向量 $\xx_2$ 由虚部组成。因此，非正式地说，我们可以将对 $[\xx_1, \xx_2]$ 写成 $\xx_1 + \ii\xx_2$.~
+
+为了定义复数乘法，我们定义 $\ii$ 的乘法为 
+$$\ii[\xx_1, \xx_2] = [-\xx_2, \xx_1]$$
+（将 $[\xx_1, \xx_2]$ 写成 $\xx_1 + \ii \xx_2$ 时，我们可以看到它必须这样定义），并使用第二分配律 $(\alpha + \beta )\vv = \alpha \vv + \beta \vv$ 来定义任意复数的乘法。
+
+如果 $X$ 是一个内积空间，我们还可以将内积扩展到 $X_{\CC}$：
+$$([\xx_1, \xx_2], [\yy_1, \yy_2])_{X_{\CC}} = (\xx_1, \yy_1)_X + (\xx_2, \yy_2)_X.$$
+
+要看到一切都定义良好，最简单的方法是固定一组基（在实内积空间的情况下是标准正交基），然后检验坐标表示下会发生什么。我们可以看到，如果我们把向量 $\xx_1$ 看作由复数坐标的实部组成的向量，把向量 $\xx_2$ 看作由坐标的虚部组成的向量，那么这个构造恰好是 $\RR^n$ 的标准复化（通过允许复数坐标），正如上面描述的那样。
+
+我们可以用坐标无关的方式来解释这个构造，而不必选取基并处理坐标，这意味着结果不依赖于基的选择。
+
+所以，思考复化的最简单方法可能是这样的：
+
+\fbox{\begin{minipage}{0.9\textwidth}
+要构造一个实向量空间 $X$ 的复化，我们可以选取一组基（如果 $X$ 是实内积空间，则选取一组标准正交基），然后处理坐标，允许复数坐标。结果空间不依赖于基的选择；我们可以通过标准的坐标变换公式从一个坐标集得到另一个。
+\end{minipage}}
+
+注意，任何实空间 $X$ 中的线性变换 $T$ 都会产生其复化 $X_{\CC}$ 中的一个线性变换 $T_{\CC}$.~
+
+看到这一点最简单的方法是固定 $X$ 中的一组基（如果 $X$ 是实内积空间，则选取一组标准正交基），并以坐标表示进行处理：在这种情况下，$T_{\CC}$ 与 $T$ 具有相同的矩阵。在抽象表示中，我们可以写成 
+$$T_{\CC}[\xx_1, \xx_2] = [T\xx_1, T\xx_2].$$
+另一方面，并非所有 $X_{\CC}$ 中的线性变换都可以从 $X$ 中的变换得到；如果我们进行坐标复化，只有具有实数矩阵的变换才有效。
+
+请注意，这与第 8.1 节中描述的反复化的情景完全相反。
+
+细心的读者可能已经注意到，复化和反复化的操作不是彼此的逆。首先，空间及其复化具有相同的维度，而一个 $n$ 维空间反复化的维度为 $2n$.~此外，正如我们刚才讨论的，实数和复数线性变换之间的关系在这些情况下是完全相反的。
+
+在下一节中，我们将讨论一个操作，在某种意义上是反复化的逆。
+
+\subsection{8.3. 向实数空间引入复数结构}
+
+本节介绍的构造仅适用于偶数维的实数空间。
+
+\subsubsection{8.3.1. 引入复数结构的初等方法}
+
+设 $X$ 是一个 $2n$ 维的实内积空间。我们想通过引入 $X$ 上的复数结构来逆转反复化过程，即对应这个空间与一个复数空间，使其反复化（见第 8.1 节）得到原始空间 $X$.~最简单的想法是固定 $X$ 中的一组标准正交基，然后将该基下的坐标分成两半。
+
+我们将一半坐标（例如，坐标 $x_1, x_2, \dots, x_n$）视为复数坐标的实部，并将其余部分视为虚部。然后我们需要将实部和虚部组合起来：例如，如果我们让 $x_1, x_2, \dots, x_n$ 作为实部，$x_{n+1}, x_{n+2}, \dots, x_{2n}$ 作为虚部，那么可以定义复数坐标 $z_k = x_k + \ii x_{n+k}$.~
+
+当然，结果通常取决于标准正交基的选择，以及我们如何分割实数坐标为实部和虚部，以及如何将它们组合起来。
+
+从 8.1 节描述的反复化构造也可以看出，所有实内积空间 $X$ 上的复数结构都可以通过这种方式获得。
+
+\subsubsection{8.3.2. 从初等到抽象构造复数结构}
+
+
+上述构造可以用抽象的、坐标无关的方式来描述。即，设我们将空间 $X$ 分解为 $X = E \oplus E^\perp$，其中 $E$ 是一个子空间，$\dim E = n$（因此 $\dim E^\perp = n$），并且设 $U_0: E \to E^\perp$ 是一个酉（更确切地说，是正交的，因为我们的空间是实数的）变换。
+
+注意，如果 $\{\vv_1, \vv_2, \dots, \vv_n\}$ 是 $E$ 中的一组标准正交基，那么系统 $\{U_0 \vv_1, U_0 \vv_2,$ $ \dots, U_0 \vv_n\}$ 是 $E^\perp$ 中的一组标准正交基，因此 
+$$\{\vv_1, \vv_2, \dots, \vv_n, U_0 \vv_1, U_0 \vv_2, \dots, U_0 \vv_n\}$$
+是整个空间 $X$ 中的一组标准正交基。
+
+如果 $x_1, x_2, \dots, x_{2n}$ 是该基下向量 $\xx$ 的坐标，并且我们将 $x_k + \ii x_{n+k}$, $k=1, 2, \dots, n$ 作为 $\xx$ 的复数坐标，那么 $\ii$ 的乘法由正交变换 $U$ 表示，该变换在子空间 $E, E^\perp$ 的正交基下由块对角矩阵 
+$$U = \begin{pmatrix} \oo & -U_0^* \\ U_0 & \oo \end{pmatrix}$$
+ 给出。这意味着 
+$$\ii \begin{pmatrix} \xx_1 \\ \xx_2 \end{pmatrix} = U \begin{pmatrix} \xx_1 \\ \xx_2 \end{pmatrix} = \begin{pmatrix} \oo & -U_0^* \\ U_0 & \oo \end{pmatrix} \begin{pmatrix} \xx_1 \\ \xx_2 \end{pmatrix},$$
+$\xx_1 \in E,  \xx_2 \in E^\perp.$
+
+显然，$U$ 是一个正交变换，且 $U^2 = -I$.~因此，任何实内积空间 $X$ 上的复数结构都由满足 $U^2 = -I$ 的正交变换 $U$ 给出；变换 $U$ 赋予了我们虚数单位 $\ii$ 的乘法。
+
+反之亦然，即任何满足 $U^2 = -I$ 的正交变换 $U$ 都可以给出一个实内积空间 $X$ 上的复结构。让我们来解释一下。
+
+\subsubsection{8.3.3. 复结构的抽象构造}
+
+
+我们先考虑一个抽象的解释。要定义一个复结构，我们需要定义向量与复数的乘法（最初我们只能与实数相乘）。实际上，我们只需要定义与 $\ii$ 的乘法，其余的运算将从原实空间中的线性性质推导出来。而与 $\ii$ 的乘法由满足 $U^2 = -I$ 的正交变换 $U$ 给出。也就是说，如果与 $\ii$ 的乘法由 $U$ 给出，即 $\ii\xx = U\xx$，那么复数乘法必须由下式定义：
+$$(8.2)\quad( \alpha + \beta \ii ) \xx := \alpha \xx + \beta U \xx = (\alpha I + \beta U) \xx, \quad \alpha, \beta \in \RR, \quad \xx \in X.$$
+我们将使用这个公式来定义复数乘法。
+
+不难核验出，对于由 (8.2) 定义的复数乘法，所有复向量空间的公理都得到了满足。例如，可以利用实空间 $X$ 中的线性性质，并注意到，关于代数运算（加法和乘法），形式为 $$\alpha I + \beta U, \quad \alpha, \beta \in \RR,$$
+的线性变换的行为方式与复数 $\alpha + \beta \ii$ 完全相同，即这样的变换给了我们复数域的一个\textbf{表示}。
+
+这意味着首先，形式为 $\alpha I + \beta U$ 的变换的和与积是相同形式的变换，并且为了得到结果的系数 $\alpha, \beta$，我们可以对相应的复数执行运算并取结果的实部和虚部。注意，这里我们需要 $U^2 = -I$ 的恒等式，但我们不需要 $U$ 是正交变换的事实。
+
+因此，我们得到了一个复向量空间的结构。为了得到一个复\textbf{内积}空间，我们需要引入一个复内积，使得原始实内积是它的实部。
+
+我们在这里确实没有其他选择：注意到对于复内积 $$\ImI(\xx, \yy) = \ReR[-\ii(\xx, \yy)_{\RR}] = \ReR((\xx, \ii \yy)_{\RR}),$$
+我们发现定义复内积的唯一方法是
+$$(8.3)\quad (\xx, \yy)_{\CC} := (\xx, \yy)_{\RR} + \ii(\xx, U\yy)_{\RR}.$$
+
+我们来证明这是一个内积。我们需要 $U^* = -U$ 的事实，见下面的练习 8.4（这里的 $U^*$ 是指相对于原始实内积的伴随）。
+
+为了证明 $(\yy, \xx)_{\CC} = \overline{(\xx, \yy)_{\CC}}$，我们使用恒等式 $U^* = -U$ 和实内积的对称性：
+\begin{equation} \notag
+\begin{split}
+(\yy, \xx)_{\CC} =&\   (\yy, \xx)_{\RR} + \ii(\yy, U\xx)_{\CC} \\
+=&\ (\xx, \yy)_{\RR} + \ii(U\xx, \yy)_{\RR}   \\
+=&\ (\xx, \yy)_{\RR} - \ii(\xx, U\yy)_{\RR}   \\
+=&\ \overline{(\xx, \yy)_{\RR} + \ii(\xx, U\yy)_{\RR} } \\
+=&\ \overline{ (\xx, \yy)_{\CC}}.
+\end{split}
+\end{equation}
+
+为了证明复内积的线性性质，让我们首先注意到 $(\xx, \yy)_{\CC}$ 在第一个（实际上是每个）参数上是\textbf{实线性}的，即对于 $\alpha, \beta \in \RR$，$( \alpha \xx + \beta \yy, \zz )_{\CC} = \alpha (\xx, \zz)_{\CC} + \beta (\yy, \zz)_{\CC}$；这是正确的，因为右侧的每个加数在参数上都是实线性的。
+
+使用 $(\xx, \yy)_{\CC}$ 的实线性以及 $U^* = -U$（这意味着 $(U\xx, \yy)_{\RR} = -(\xx, U\yy)_{\RR}$）以及 $U$ 的正交性，我们得到以下等式链：
+\begin{equation} \notag
+\begin{split}
+(\alpha I + \beta U)\xx, \yy)_{\CC} =&\      (\alpha \xx, \yy)_{\CC} + \beta (U\xx, \yy)_{\CC}  \\
+=&\  \alpha (\xx, \yy)_{\CC} + \beta [(U\xx, \yy)_{\RR} + \ii(U\xx, U\yy)_{\RR}] \\
+=&\ \alpha (\xx, \yy)_{\CC} + \beta [-(\xx, U\yy)_{\RR} + \ii(\xx, \yy)_{\RR}]   \\
+=&\ \alpha (\xx, \yy)_{\CC} + \beta \ii [(\xx, \yy)_{\RR} + \ii(\xx, U\yy)_{\RR}]   \\
+=&\ \alpha (\xx, \yy)_{\CC} + \beta \ii (\xx, \yy)_{\CC}  \\
+=&\ (\alpha + \beta \ii)(\xx, \yy)_{\CC}  .
+\end{split}
+\end{equation}
+这证明了\textbf{复}线性。
+
+最后，为了证明 $(\xx, \xx)_{\CC}$ 的非负性，让我们注意到（见练习 8.3）$(\xx, U\xx)_{\RR} = 0$，所以 
+$$(\xx, \xx)_{\CC} = (\xx, \xx)_{\RR} = \|\xx\|^2 \geq 0.$$
+
+\subsubsection{8.3.4. 通过初等方法进行的抽象构造}
+
+对于不习惯如此“高明”和抽象的证明的读者，还有另一种更实际的解释。
+
+即，可以证明（见练习 8.5），存在一个子空间 $E$，$\dim E = n$（回想一下 $\dim X = 2n$），使得在分解 $X = E \oplus E^\perp$ 下 $U$ 的矩阵由块对角矩阵 
+$$U = \begin{pmatrix} \oo & -U_0^* \\ U_0 & \oo \end{pmatrix}$$
+给出，其中 $U_0: E \to E^\perp$ 是某个正交变换。
+
+设 $\{\vv_1, \vv_2, \dots, \vv_n\}$ 是 $E$ 中的一组标准正交基。那么 $\{U_0 \vv_1, U_0 \vv_2, \dots, U_0 \vv_n\}$ 是 $E^\perp$ 中的一组标准正交基，所以 
+$$\{\vv_1, \vv_2, \dots, \vv_n, U_0 \vv_1, U_0 \vv_2, \dots, U_0 \vv_n\}$$
+是整个空间 $X$ 中的一组标准正交基。考虑该基下的坐标 $x_1, x_2, \dots, x_{2n}$，并将 $x_k + \ii x_{n+k}$, $k=1, 2, \dots, n$ 作为 $\xx$ 的复数坐标，那么 $\ii$ 的乘法由变换 $U$ 来表示：它对于 $\xx \in E$ 是平凡的，对于 $\yy \in E^\perp$ 也是平凡的，因此它对于所有实数线性组合 $\alpha \xx + \beta \yy$ 都成立，即对于 $X$ 中的所有向量都成立。
+
+但这意味着抽象复数结构的引入以及相应的初等方法给出了相同的结果！而且，由于初等方法清楚地给出复数结构，抽象方法也给出了相同的复数结构。
+
+\begin{exer} {\heiti 练习}~
+
+8.1. 证明公式 (8.1)。即，证明如果
+$$\xx = (z_1, z_2, \dots, z_n)^T, \quad \yy = (w_1, w_2, \dots, w_n)^T,$$
+$z_k = x_k + \ii y_k$, $w_k = u_k + \ii v_k$, $x_k, y_k, u_k, v_k \in \RR$，那么 
+$$\ReR(\sum_{k=1}^n z_k \overline{w}_k) = \sum_{k=1}^n x_k u_k + \sum_{k=1}^n y_k v_k.$$
+
+8.2. 证明如果 $(\xx, \yy)_{\CC}$ 是复内积空间中的内积，那么由 (8.1) 定义的 $(\xx, \yy)_{\RR}$ 是一个实内积空间。
+
+8.3. 设 $U$ 是一个满足 $U^2 = -I$ 的正交变换（在实内积空间 $X$ 中）。证明对于所有 $\xx \in X$， 
+$$U\xx \perp \xx.$$
+
+8.4. 证明，如果 $U$ 是一个满足 $U^2 = -I$ 的正交变换，那么 $U^* = -U$.~
+
+8.5. 设 $U$ 是一个满足 $U^2 = -I$ 的实内积空间中的正交变换。证明在这种情况下 $\dim X = 2n$，并且存在一个子空间 $E \subset X$，$\dim E = n$，以及一个正交变换 $U_0: E \to E^\perp$，使得在 $X = E \oplus E^\perp$ 的分解下，$U$ 由块对角矩阵 
+$$U = \begin{pmatrix} \oo & -U_0^* \\ U_0 & \oo \end{pmatrix}$$
+给出。这个陈述可以很容易地从第六章定理 5.1 得到，如果我们注意到 $\RR^2$ 中的唯一满足 $R_\alpha^2 = -I$ 的旋转$R_\alpha$是角度为 $\pm \pi/2$ 的旋转。\\
+但是，可以找到一个初等的证明，而无需使用该定理。例如，该陈述在 $\dim X = 2$ 时是平凡的：在这种情况下，我们可以选任何一维子空间作为 $E$，见练习 8.3。\\
+然后，不难证明，这样的变换于 $\RR^2$ 中 $U$ 不存在，并且我们可以通过归纳 $\dim X$ 来完成证明。\end{exer}
+
+
+
+

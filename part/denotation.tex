@@ -1,0 +1,148 @@
+\begin{denotation}
+
+\textbf{说明}：
+本符号表为译者基于原书内容梳理而成，旨在为读者提供一个快速查阅的索引。原书中虽然大部分符号都能通过上下文语境自然理解，但通过列表盘点，可以更直观地呈现全书的数学语言体系。
+\vspace{0.5em}
+
+表中“最早出现在”仅为大致位置参考（精确到章节，如需具体页码请移步“索引”），旨在帮助读者定位相关定义的引入背景。初学者完全不必逐条阅读或刻意背诵这些符号，\emph{在实际阅读中遇到又不明白时再回查即可}，也可以直接跳过本节。
+
+\vspace{1em}
+% 自定义命令格式：\nameditem[位置]{符号}{描述}
+
+%-------- 逻辑与通用符号 --------
+
+\nameditem[\textbf{最早出现在（章 .节）}]{\textbf{符号}}{\textbf{描述}}
+
+\nameditem{$x \in A$}{元素 $x$ 属于集合 $A$}
+\nameditem{$A \subset B$}{集合 $A$ 包含于集合 $B$（子集）}
+\nameditem{$A \subsetneq B$}{\parbox[t]{17em}{集合 $A$ 真包含于集合 $B$，真子集（$A \neq B$）}}
+\nameditem{$\forall$}{对于所有（全称量词）}
+\nameditem{$\exists$}{存在（存在量词）}
+% \nameditem[1.1]{$\alpha \vv$}{标量 $\alpha$ 与向量 $\vv$ 的乘法}
+\nameditem{$:=$}{\parbox[t]{17em}{定义符号。 $A:=B$ 表示“将 $B$ 作为 $A$ 的定义”，自此以后 $A$ 与 $B$ 视为同一表达式。}}
+\nameditem{$\square$}{\parbox[t]{17em}{证明结束 (Quod Erat Demonstrandum, Q.E.D.)}}
+\nameditem{$\lim$}{\parbox[t]{17em}{极限符号，如 $\lim_{n\to\infty} x_n$、$\lim_{\varepsilon\to0^+} A_\varepsilon$ 等}}
+\nameditem{$\prod$}{\parbox[t]{17em}{连乘记号：$\displaystyle\prod_{k=1}^n a_k = a_1a_2\cdots a_n$}}
+\vspace{1em}
+
+%-------- 第1章：基本概念 --------
+\nameditem[1.1]{$\RR$}{实数域}
+\nameditem[1.1]{$\CC$}{复数域}
+\nameditem[1.1]{$\FF$}{任意域，一般的标量域，通常为 $\RR$ 或 $\CC$}
+\nameditem[1.1]{$\RR^{n}, \CC^n, \FF^n$}{$n$ 维实/复/一般向量空间}
+\nameditem[1.1]{$\vv, \xx, \yy$}{\parbox[t]{17em}{粗体小写字母，表示列向量，一般写作 $\vv = (v_1,\dots,v_n)^T$.~本书中所有向量默认都是列向量}}
+\nameditem[1.1]{$\oo$}{零向量或零矩阵}
+\nameditem[1.1]{$V, W, X, Y$}{一般的（有限维）向量空间}
+\nameditem[1.1]{$M_{m \times n}$}{$m \times n$ 矩阵的集合}
+\nameditem[1.1]{$A = (a_{j,k})_{m \times n}^n$}{以 $a_{j,k}$ 为元素的矩阵}
+\nameditem[1.1]{$A^T$}{矩阵 $A$ 的转置}
+\nameditem[1.2]{$\ee_k$}{标准基向量（第 $k$ 个分量为 1，其余为 0）}
+\nameditem[1.3]{$T: V \to W$}{从空间 $V$ 到 $W$ 的线性变换}
+\nameditem{$\xx \mapsto \yy$}{元素间的映射关系（$\xx$ 被映射为 $\yy$）}
+\nameditem[1.5]{$T_1 T_2$ 或 $T_1 \circ T_2$}{线性变换（算子）的复合/乘积}
+\nameditem[1.5]{$R_\gamma$}{绕原点逆时针旋转 $\gamma$ 角的变换矩阵}
+\nameditem[1.5]{$\trace(A), \text{tr}(A)$}{矩阵 $A$ 的迹（对角元之和）}
+\nameditem[1.6]{$I$ 或 $I_V$}{单位矩阵，或空间 $V$ 上的恒等算子}
+\nameditem[1.6]{$A^{-1}$}{矩阵或算子 $A$ 的逆}
+\nameditem[1.6]{$V\cong W$}{向量空间$V$和 $W$同构}
+\nameditem[1.7]{$\Ker  A,\Null A$}{算子 $A$ 的核 (Kernel) 或零空间}
+\nameditem[1.7]{$\Ran A$}{算子 $A$ 的像空间}
+\nameditem[1.7]{$\LL\{\vv_1, \dots, \vv_n\}$}{\parbox[t]{17em}{向量系统 $\vv_1, \dots, \vv_n$ 的线性张成，有时也用$\spanL$替代$\LL$}}
+\vspace{1em}
+
+%-------- 第2章：线性方程组 --------
+\nameditem[2.1]{$A\xx = \bb$}{线性方程组的矩阵形式}
+\nameditem[2.2]{$E$}{初等矩阵}
+\nameditem[2.2]{$A_e$}{矩阵的阶梯形 (Echelon form)}
+\nameditem[2.2]{$A_{re}$}{简化阶梯形 (Reduced Echelon form)}
+\nameditem[2.5]{$\dim V$}{向量空间 $V$ 的维数}
+\nameditem[2.7]{$\rank A$}{矩阵 $A$ 的秩}
+\nameditem[2.8]{$\mathcal{B} = \{\bb_1, \dots, \bb_n\}$}{向量空间的一组基 $\mathcal{B}$ }
+\nameditem[2.8]{$[T]_{\mathcal{B}}$}{线性变换 $T$ 在基 $\mathcal{B}$ 下的矩阵表示}
+\nameditem[2.8]{$A \sim B$}{矩阵 $A$ 与 $B$ 相似 ($B = Q A Q^{-1}$)}
+\vspace{1em}
+
+%-------- 第3章：行列式 --------
+\nameditem[3.1]{$\det A$}{矩阵 $A$ 的行列式}
+\nameditem[3.1]{$D(\vv_1, \dots, \vv_n)$}{作为列向量函数的行列式}
+\nameditem[3.3]{$\diag\{a_1, \dots, a_n\}$}{对角元素为 $a_1, \dots, a_n$ 的对角矩阵}
+\nameditem[3.3]{$*$}{\parbox[t]{17em}{矩阵中不关心的，未具体指明的或任意的元素（通配符）}}
+\nameditem[3.4]{$\text{Perm}(n)$}{$n$ 个元素的所有排列的集合}
+\nameditem[3.4]{$K(\sigma)$}{排列 $\sigma$ 的逆序对数量}
+\nameditem[3.4]{$\sign(\sigma)$}{排列 $\sigma$ 的符号（$1$ 或 $-1$）}
+\nameditem[3.5]{$A_{j,k}$}{\parbox[t]{17em}{矩阵的余子式 (Cofactor)，$A_{j,k} = (-1)^{j+k}C_{j,k}$}}
+\nameditem[3.5]{$C_{j,k}$}{矩阵的代数余子式 (Minor)}
+% \nameditem[3.5]{$C$}{余子式矩阵 (Cofactor matrix)}
+\nameditem[3.5]{$C^T$}{\parbox[t]{17em}{伴随矩阵 (Classical Adjoint) /代数余子式矩阵}}
+\vspace{1em}
+
+%-------- 第4章：谱理论导论 --------
+\nameditem[4.1]{$\lambda$}{特征值}
+\nameditem[4.1]{$\sigma(A)$}{算子 $A$ 的谱（所有特征值的集合）}
+\nameditem[4.1]{$\det(A - \lambda I)$}{$A$ 的特征多项式}
+% \nameditem[4.2]{$m_a(\lambda)$}{特征值 $\lambda$ 的代数重数}
+% \nameditem[4.2]{$m_g(\lambda)$}{特征值 $\lambda$ 的几何重数}
+\vspace{1em}
+
+%-------- 第5章：内积空间 --------
+\nameditem[5.1]{$\overline{z}$}{复数 $z$ 的共轭}
+\nameditem[5.1]{$\ReR(z), \ImI(z)$}{复数 $z$ 的实部与虚部}
+\nameditem[5.1]{$(\xx, \yy)$}{向量 $\xx$ 与 $\yy$ 的内积}
+\nameditem[5.1]{$A^*$}{\parbox[t]{17em}{矩阵 $A$ 的共轭转置，即$A^*=\overline{A}^T$，埃尔米特伴随}}
+\nameditem[5.1]{$\|\xx\|, \|\xx\|_2$}{向量的范数（通常指欧几里得范数）}
+\nameditem[5.1]{$\|\xx\|_p$}{向量的 $p$-范数 ($(\sum |x_k|^p)^{1/p}$)}
+\nameditem[5.1]{$\|\xx\|_\infty$}{向量的 $\infty$-范数 (最大值范数)}
+\nameditem[5.2]{$\xx \perp \yy$}{向量 $\xx$ 与 $\yy$ 正交（垂直）}
+\nameditem[5.3]{$E^\perp$}{子空间 $E$ 的正交补}
+\nameditem[5.3]{$V = E \oplus E^\perp$}{正交分解，其中$\oplus$为直和}
+\nameditem[5.3]{$P_E \vv$}{\parbox[t]{17em}{向量 $\vv$ 在子空间 $E$ 上的正交投影。 $P_E: X\to E$ 是满足 $\vv-P_E\vv\in E^\perp$ 的线性算子}}
+\nameditem[5.6]{$U$}{酉 (Unitary)矩阵，保持内积的线性算子 }
+\vspace{1em}
+
+%-------- 第6章：内积空间中的算子结构 --------
+% \nameditem[6.2]{$A \ge 0$}{算子 $A$ 是（半）正定的}
+\nameditem[6.3]{$\sqrt{A}, A^{1/2}$}{正定算子 $A$ 的平方根}
+\nameditem[6.3]{$|A|$}{算子 $A$ 的模，定义为 $\sqrt{A^*A}$}
+\nameditem[6.3]{$\sigma_k$}{奇异值}
+\nameditem[6.3]{$\Sigma$}{对角上为非负奇异值的对角矩阵}
+\nameditem[6.3]{$\delta_{k,j}$}{克罗内克 (Kronecker) 符号}
+\nameditem[6.4]{$\|A\|$}{算子（矩阵）$A$ 的算子范数}
+\nameditem[6.4]{$\|A\|\cdot \|A^{-1}\|$}{矩阵 $A$ 的条件数 (也作$\kappa(A)$)}
+\nameditem[6.4]{$\Delta \bb$}{向量 $\bb$ 的微小扰动}
+\nameditem[6.4]{$A^+$}{摩尔-彭罗斯伪逆}
+\nameditem[6.6]{$\mathcal{V}(t)$}{一族随参数 $t$ 连续变化的基}
+\vspace{1em}
+
+%-------- 第7章：双线性型与二次型 --------
+\nameditem[7.1]{$L(\xx, \yy)$}{双线性型}
+\nameditem[7.1]{$Q[\xx]$}{由双线性型或算子生成的二次型}
+% \nameditem[7.4]{$\Delta_k$}{矩阵的主子式 (Principal minor)}
+\nameditem[7.4]{$\codim E$}{子空间$E$ 的余维度，$\codim E = \dim(E^\perp)$}
+\vspace{1em}
+
+%-------- 第8章：对偶空间与张量 --------
+\nameditem[8.1]{$\deg p$}{多项式 $p$ 的次数}
+\nameditem[8.1]{$V'$}{向量空间 $V$ 的对偶空间}
+\nameditem[8.1]{$\langle \xx, \ff \rangle$}{对偶配对（线性泛函 $\ff$ 作用于向量 $\xx$）}
+\nameditem[8.2]{$A'$}{线性变换 $A$ 的对偶（转置）变换}
+\nameditem[8.5]{$\vv \otimes \ww$}{线性泛函 $\vv$ 和 $\ww$ 的张量积}
+\nameditem[8.5]{$V \otimes W$}{向量空间 $V$ 和 $W$ 的张量积}
+\vspace{1em}
+
+%-------- 第9章：高级谱理论 --------
+\nameditem[9.1]{$p(A)$}{矩阵多项式}
+\nameditem[9.3]{$E_\lambda$}{特征值 $\lambda$ 对应的广义特征子空间}
+\nameditem[9.4]{$N$}{幂零算子 ($\exists k \in \mathbb{N}_+ \text{ s.t. } N^k = \oo$)}
+\nameditem[9.4]{$\mathcal{C}$}{广义特征向量循环 (Cycle)}
+\nameditem[9.4]{$J, J_k(\lambda)$}{若尔当块 (Jordan block)}
+
+
+\vspace{2em}
+\nameditem{\textbf{缩写}}{\textbf{全称}}
+% \nameditem{LHS / RHS}{Left/Right Hand Side, 等式左边/右边}
+% \nameditem{RREF}{Reduced Row Echelon Form, 简化行阶梯形}
+\nameditem{SVD}{Singular Value Decomposition, 奇异值分解}
+\nameditem{iff}{if and only if, 当且仅当}
+% \nameditem{Q.E.D.}{Quod Erat Demonstrandum, 证明完毕}
+
+\end{denotation}

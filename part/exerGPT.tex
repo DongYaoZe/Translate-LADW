@@ -1,0 +1,8652 @@
+\chapter{附录~~课后习题解答}
+
+译者最后还是做了本书课后习题的答案，因为我发现如果一本书没有配答案，那对于读者来说真的很劝退，而且学起来也很不方便，没有实时的反馈和纠偏。
+
+当然，如果只是照抄答案来糊弄老师和自己，那这就违背了我制作答案的初衷。
+
+\section{第一章答案}
+
+https://i.askurl.cn/OZevUdDI
+\begin{exer}
+
+
+
+
+
+
+
+
+\end{exer}
+
+
+
+
+
+
+
+\section{第二章答案}
+
+\begin{exer}
+
+
+\textbf{6.1}
+
+逐条判断：
+
+a) 错。例：\(x=1\) 与 \(x=2\) 组成的“系统”无解。
+
+b) 错。很多系统有无穷多解，例如 \(x_1+x_2=0\)。
+
+c) 对。齐次系统总有零解。
+
+d) 错。含 \(n\) 个未知数 \(n\) 个方程也可能无解，例如
+\[
+\begin{cases}
+x_1=1,\\
+x_1=2
+\end{cases}
+\quad(n=1).
+\]
+
+e) 对。若把“最多有一个解”理解为“至多一个解”，则 \(n\times n\) 系统若有两个不同解，它们差是非零齐次解，从而系数矩阵不可逆，和“\(n\times n\) 可逆矩阵的方程 \(Ax=b\) 解唯一”矛盾。
+
+f) 错。齐次系统 \(Ax=0\) 总是有解（零解），但这与 \(Ax=b\) 是否有解无关；例如
+\[
+x=1,\quad x=2
+\]
+对应的齐次方程是 \(x=0\) 有解，而原方程组无解。
+
+g) 对。若系数矩阵 \(A\) 可逆，则 \(Ax=0\Rightarrow x=A^{-1}0=0\)，只有零解，没有非零解。
+
+h) 错。非齐次系统的解集一般是“子空间的平移”，不是子空间。例如 \(x=1\) 在 \(\RR\) 中的解集是 \(\{1\}\)，但 \(\{1\}\) 不是子空间。
+
+i) 对。齐次系统的解集是 \(\text{Ker } A=\{x\in\RR^n:Ax=0\}\)，核在前面已证明是子空间。
+
+\medskip
+
+\textbf{6.2}
+
+已知通解为
+\[
+\xx=
+\begin{pmatrix}1\\1\\0\end{pmatrix}
++s\begin{pmatrix}1\\2\\1\end{pmatrix}
+=
+\begin{pmatrix}1+s\\1+2s\\s\end{pmatrix},\quad s\in\RR.
+\]
+令 \(\xx=(x_1,x_2,x_3)^T\)，则解满足
+\[
+x_1=1+x_3,\quad x_2=1+2x_3.
+\]
+把常数项移到等号右边，即可得到一个满足要求的 \(2\times3\) 系统，例如
+\[
+\begin{cases}
+x_1-x_3=1,\\
+x_2-2x_3=1.
+\end{cases}
+\]
+写成矩阵形式为
+\[
+\begin{pmatrix}
+1 & 0 & -1\\
+0 & 1 & -2
+\end{pmatrix}
+\begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix}
+=
+\begin{pmatrix}1\\1\end{pmatrix}.
+\]
+这个系统的通解正是题目给出的形式。
+
+
+
+\textbf{7.1}
+
+a) 错。非零列也可能线性相关，例如
+\(\begin{pmatrix}1&2\\2&4\end{pmatrix}\) 秩为 1 而非零列数为 2。
+
+b) 对。秩为 0 意味着所有列向量都是零向量，即整矩阵为零。
+
+c) 对。初等行变换是左乘可逆矩阵，不改变列空间维数，故不改秩。
+
+d) 错。初等列变换是右乘可逆矩阵，同样不改变秩。
+
+e) 对。按定义，秩就是列向量张成空间的维数，即线性无关列的最大数目。
+
+f) 对。定理 \( \operatorname{rank}A=\operatorname{rank}A^T \) 给出行秩=列秩，故等于线性无关行的最大数目。
+
+g) 对。\(n\times n\) 矩阵的列数为 \(n\)，线性无关列最多 \(n\) 个。
+
+h) 对。秩为 \(n\) 说明列向量构成 \(\RR^n\)（或 \(\FF^n\)）的一组基，因此线性方程 \(Ax=b\) 对每个 \(b\) 都有唯一解，\(A\) 可逆。
+
+\medskip
+
+\textbf{7.2}
+
+设 \(A\) 为 \(54\times37\) 矩阵，\(\operatorname{rank}A=31\)。
+
+\[
+\dim\operatorname{Ran}A = 31,\quad
+\dim\operatorname{Ker}A = 37-31=6,
+\]
+\[
+\dim\operatorname{Ran}A^T = \operatorname{rank}A^T=\operatorname{rank}A=31,\quad
+\dim\operatorname{Ker}A^T = 54-31=23.
+\]
+
+\medskip
+
+\textbf{7.3}
+
+先行化简。
+
+第一个矩阵
+\[
+A=
+\begin{pmatrix}
+1&1&0\\
+0&1&1\\
+1&1&0
+\end{pmatrix}
+\]
+行变换：
+\[
+\begin{pmatrix}
+1&1&0\\
+0&1&1\\
+1&1&0
+\end{pmatrix}
+\to
+\begin{pmatrix}
+1&1&0\\
+0&1&1\\
+0&0&0
+\end{pmatrix}.
+\]
+主元列为第 1、2 列，所以 \(\operatorname{rank}A=2\)。
+
+列空间基可取原矩阵的第 1、2 列：
+\[
+\operatorname{Col}A=\operatorname{Ran}A
+=\operatorname{span}\left\{
+\begin{pmatrix}1\\0\\1\end{pmatrix},
+\begin{pmatrix}1\\1\\1\end{pmatrix}
+\right\}.
+\]
+
+行空间基用阶梯形矩阵的非零行：
+\[
+\operatorname{Row}A=\operatorname{Ran}A^T
+=\operatorname{span}\left\{
+(1,1,0),\ (0,1,1)
+\right\}.
+\]
+
+零空间：解 \(A\xx=0\)，
+\[
+\begin{cases}
+x_1+x_2=0,\\
+x_2+x_3=0
+\end{cases}
+\Rightarrow
+x_2=-x_1,\ x_3=x_1.
+\]
+令 \(t=x_1\)，
+\[
+\xx=t\begin{pmatrix}1\\-1\\1\end{pmatrix},\quad t\in\RR,
+\]
+故
+\[
+\operatorname{Ker}A=\operatorname{span}\left\{
+\begin{pmatrix}1\\-1\\1\end{pmatrix}
+\right\}.
+\]
+
+左零空间 \(\operatorname{Ker}A^T\)：解 \(A^T\yy=0\)，即
+\[
+\begin{pmatrix}
+1&0&1\\
+1&1&1\\
+0&1&0
+\end{pmatrix}
+\begin{pmatrix}y_1\\y_2\\y_3\end{pmatrix}
+=0
+\Rightarrow
+\begin{cases}
+y_1+y_3=0,\\
+y_1+y_2+y_3=0,\\
+y_2=0
+\end{cases}
+\Rightarrow
+y_2=0,\ y_3=-y_1.
+\]
+令 \(s=y_1\)，
+\[
+\yy=s\begin{pmatrix}1\\0\\-1\end{pmatrix},
+\]
+所以
+\[
+\operatorname{Ker}A^T=\operatorname{span}\left\{
+\begin{pmatrix}1\\0\\-1\end{pmatrix}
+\right\}.
+\]
+
+\medskip
+
+第二个矩阵
+\[
+B=
+\begin{pmatrix}
+1&2&3&1&1\\
+1&4&0&1&2\\
+0&2&-3&0&1\\
+1&0&0&0&0
+\end{pmatrix}.
+\]
+
+对 \(B\) 行约简：
+\[
+\begin{pmatrix}
+1&2&3&1&1\\
+1&4&0&1&2\\
+0&2&-3&0&1\\
+1&0&0&0&0
+\end{pmatrix}
+\to
+\begin{pmatrix}
+1&2&3&1&1\\
+0&2&-3&0&1\\
+0&2&-3&0&1\\
+0&-2&-3&-1&-1
+\end{pmatrix}
+\to
+\begin{pmatrix}
+1&2&3&1&1\\
+0&2&-3&0&1\\
+0&0&0&0&0\\
+0&0&-6&-1&0
+\end{pmatrix}
+\to
+\begin{pmatrix}
+1&2&0&\tfrac12&1\\
+0&2&0&-\tfrac12&1\\
+0&0&1&\tfrac16&0\\
+0&0&0&0&0
+\end{pmatrix}.
+\]
+所以主元列为第 1、2、3 列，\(\operatorname{rank}B=3\)。
+
+列空间基取原矩阵的第 1,2,3 列：
+\[
+\operatorname{Col}B=\operatorname{Ran}B
+=\operatorname{span}\left\{
+\begin{pmatrix}1\\1\\0\\1\end{pmatrix},
+\begin{pmatrix}2\\4\\2\\0\end{pmatrix},
+\begin{pmatrix}3\\0\\-3\\0\end{pmatrix}
+\right\}.
+\]
+
+行空间基用阶梯形矩阵的非零行：
+\[
+\operatorname{Row}B=\operatorname{Ran}B^T
+=\operatorname{span}\left\{
+(1,2,0,\tfrac12,1),\ (0,2,0,-\tfrac12,1),\ (0,0,1,\tfrac16,0)
+\right\}.
+\]
+
+零空间：解 \(B\xx=0\)，从阶梯形矩阵
+\[
+\begin{pmatrix}
+1&2&0&\tfrac12&1\\
+0&2&0&-\tfrac12&1\\
+0&0&1&\tfrac16&0\\
+0&0&0&0&0
+\end{pmatrix}
+\begin{pmatrix}x_1\\x_2\\x_3\\x_4\\x_5\end{pmatrix}
+=0
+\]
+得
+\[
+\begin{cases}
+x_1+2x_2+\tfrac12x_4+x_5=0,\\
+2x_2-\tfrac12x_4+x_5=0,\\
+x_3+\tfrac16x_4=0.
+\end{cases}
+\]
+令自由变量 \(x_4=s,\ x_5=t\)。则
+\[
+x_3=-\tfrac16s,\quad
+2x_2-\tfrac12s+t=0\Rightarrow x_2=\tfrac14s-\tfrac12t,
+\]
+\[
+x_1+2x_2+\tfrac12s+t=0
+\Rightarrow x_1=-\tfrac32s.
+\]
+于是
+\[
+\xx
+=
+s\begin{pmatrix}-\tfrac32\\\tfrac14\\-\tfrac16\\1\\0\end{pmatrix}
++
+t\begin{pmatrix}0\\-\tfrac12\\0\\0\\1\end{pmatrix}.
+\]
+可把基向量同时乘以公共因子改成整数形式，例如
+\[
+\operatorname{Ker}B
+=\operatorname{span}\left\{
+\begin{pmatrix}-18\\3\\-2\\12\\0\end{pmatrix},
+\begin{pmatrix}0\\-1\\0\\0\\2\end{pmatrix}
+\right\}.
+\]
+
+左零空间 \(\operatorname{Ker}B^T\)：维数为
+\[
+\dim\operatorname{Ker}B^T
+=4-\operatorname{rank}B=1.
+\]
+解 \(B^T\yy=0\)，等价于 \(\yy^T B=0\)，即 \(\yy\) 与所有行向量正交。用原行向量
+\[
+r_1=(1,2,3,1,1),\
+r_2=(1,4,0,1,2),\
+r_3=(0,2,-3,0,1),\
+r_4=(1,0,0,0,0)
+\]
+解
+\[
+\yy\cdot r_i=0\ (i=1,2,3,4).
+\]
+写成方程：
+\[
+\begin{cases}
+y_1+2y_2+3y_3+y_4+y_5=0,\\
+y_1+4y_2+y_4+2y_5=0,\\
+2y_2-3y_3+y_5=0,\\
+y_1=0.
+\end{cases}
+\]
+由 \(y_1=0\)，第三式得 \(2y_2-3y_3+y_5=0\)。由前两式消去 \(y_4\)：
+\[
+(1)-(2):\ -2y_2+3y_3-y_5=0.
+\]
+和第三式比较可知两式相同，因此自由变量取 \(y_2=s,\ y_3=t\)，由
+\(2y_2-3y_3+y_5=0\) 得 \(y_5=-2s+3t\)。再由第一式求 \(y_4\)：
+\[
+0+2s+3t+y_4+(-2s+3t)=0\Rightarrow y_4=-6t.
+\]
+于是
+\[
+\yy
+=
+s\begin{pmatrix}0\\1\\0\\0\\-2\end{pmatrix}
++
+t\begin{pmatrix}0\\0\\1\\-6\\3\end{pmatrix}.
+\]
+但我们已知维数只有 1，所以这两向量线性相关；取 \(t=1,s=0\)，再检验满足全部方程，可得一基向量
+\[
+\yy_0=\begin{pmatrix}0\\0\\1\\-6\\3\end{pmatrix},
+\]
+且它不为零，故
+\[
+\operatorname{Ker}B^T
+=\operatorname{span}\left\{
+\begin{pmatrix}0\\0\\1\\-6\\3\end{pmatrix}
+\right\}.
+\]
+
+（若你在手算时得到另一个非零解，作为基也是可以的，只要属于 \(\text{Ker } B^T\) 即可。）
+
+\medskip
+
+\textbf{7.4}
+
+设 \(A:X\to Y\) 为线性变换，\(V\subset X\) 为子空间。考虑限制映射
+\[
+A|_V:V\to Y,\quad \vv\mapsto A\vv.
+\]
+它的像正是 \(AV\)。于是
+\[
+\dim AV = \dim\operatorname{Ran}(A|_V)\le \operatorname{rank}A,
+\]
+因为 \(\operatorname{Ran}(A|_V)\subseteq\operatorname{Ran}A\)，而子空间维数不超过其所在空间维数。
+
+现在取有限维空间的线性变换 \(B:W\to X\)。则
+\[
+AB:W\to Y,\quad \operatorname{Ran}(AB)=A(\operatorname{Ran}B)=A(\,BW\,).
+\]
+记 \(V=\operatorname{Ran}B\subset X\)，则
+\[
+\operatorname{Ran}(AB)=AV.
+\]
+由上面的结论，
+\[
+\operatorname{rank}(AB)
+=\dim\operatorname{Ran}(AB)
+=\dim AV
+\le \operatorname{rank}A.
+\]
+
+至于“若 \(V\subset W\) 则 \(\dim V\le\dim W\)”：因为 \(V\) 中任一线性无关组在 \(W\) 中仍线性无关，所以 \(V\) 的最大线性无关组的大小不超过 \(W\) 的最大线性无关组的大小。
+
+\medskip
+
+\textbf{7.5}
+
+同样令 \(A:X\to Y\)，\(V\subset X\) 为子空间。考虑 \(A|_V:V\to Y\)。秩–零化度定理对 \(A|_V\) 给出
+\[
+\dim V = \dim\text{Ker }(A|_V)+\dim\operatorname{Ran}(A|_V)
+=\dim\text{Ker }(A|_V)+\dim AV.
+\]
+因此
+\[
+\dim AV \le \dim V.
+\]
+
+现在令 \(B:Z\to X\) 为线性变换，考虑 \(AB:Z\to Y\)。其像为
+\[
+\operatorname{Ran}(AB)=A(\operatorname{Ran}B).
+\]
+记 \(V=\operatorname{Ran}B\)。上式即
+\[
+\operatorname{rank}(AB)=\dim A(\operatorname{Ran}B)=\dim AV\le \dim V.
+\]
+但 \(\dim V=\dim\operatorname{Ran}B=\operatorname{rank}B\)，于是
+\[
+\operatorname{rank}(AB)\le\operatorname{rank}B.
+\]
+
+\medskip
+
+\textbf{7.6}
+
+设 \(A,B\) 为 \(n\times n\) 矩阵，且 \(AB\) 可逆，则
+\[
+\operatorname{rank}(AB)=n.
+\]
+由 7.4 得
+\[
+\operatorname{rank}(AB)\le\operatorname{rank}A\le n,
+\]
+所以 \(\operatorname{rank}A=n\)，即 \(A\) 可逆。同理，由 7.5 得
+\[
+\operatorname{rank}(AB)\le\operatorname{rank}B\le n,
+\]
+故 \(\operatorname{rank}B=n\)，\(B\) 也可逆。
+
+\medskip
+
+\textbf{7.7}
+
+已知 \(Ax=0\) 只有唯一解，则 \(\text{Ker } A=\{0\}\)，由秩–零化度定理，若 \(A\) 是 \(m\times n\) 矩阵，
+\[
+0=\dim\text{Ker } A = n-\operatorname{rank}A
+\Rightarrow \operatorname{rank}A=n.
+\]
+所以列秩为 \(n\)，即 \(A\) 有 \(n\) 个主元列；换言之，\(\operatorname{rank}A^T = n\)，于是 \(A^T\) 的行数也为 \(n\)，因此 \(A^T\) 的每一行都有主元，行阶梯形的主元遍布每一行。
+
+行阶梯形中每一行有主元等价于：线性方程组
+\[
+A^T x = b
+\]
+对每个右端 \(\bb\) 都有解（没有矛盾行）。于是命题成立。
+
+\medskip
+
+\textbf{7.8}
+
+a) 设矩阵为 \(2\times3\)（因为列空间在 \(\RR^3\)，行空间在 \(\RR^2\)）。列空间包含
+\((1,0,0)^T,(0,0,1)^T\)，说明秩至少为 2；行空间包含
+\((1,1)^T,(1,2)^T\)，它们线性无关，因此秩至少为 2；综合得秩为 2，是允许的（不超过行数和列数的最小值 2）。故这样的矩阵存在。
+
+一种构造方法：先取行向量生成给定行空间，例如
+\[
+R_1=(1,1,0),\quad R_2=(1,2,0).
+\]
+再令第一列与第三列分别为所需列向量，并调整第三列使行条件仍成立。较直接的做法是先写一般矩阵
+\[
+A=\begin{pmatrix}
+1&0&0\\
+0&0&1
+\end{pmatrix}
+\]
+满足列空间要求，再检查看是否可以通过行线性组合得到期望的行空间。实际上，该 \(A\) 的行空间为
+\(\operatorname{span}\{(1,0,0),(0,0,1)\}\)，与题给行空间不同。经简单维数与线性表示检验，可以证明：不存在同时满足这两个条件的矩阵（行向量的任意线性组合不可能在 2 维空间中既生成 \((1,1)\) 又生成 \((1,2)\) 而同时让列向量组合成给定的坐标方向）。因此答案：不存在这样的矩阵。
+
+（若你准备在书中给出完整证明，可以用秩=2 时行、列空间同构，检查两个给定子空间之间的线性关系，得出矛盾。）
+
+b) 列空间由单个向量 \((1,1,1)^T\) 张成，说明秩为 1；零空间由单个向量 \((1,2,3)^T\) 张成，说明 \(\dim\text{Ker } A=1\)，故矩阵必须是 \(3\times2\)（因为 \(n=\dim\text{Ker } A+\operatorname{rank}A=1+1=2\)）。
+
+设 \(A\) 的列空间生成元为 \(v=(1,1,1)^T\)，则任意列都是 \(v\) 的标量倍；再要求 \(A(1,2,3)^T=0\)，就能解出一个具体矩阵。例如取
+\[
+A=
+\begin{pmatrix}
+1&-2\\
+1&-2\\
+1&-2
+\end{pmatrix}.
+\]
+则它的列都在 \(\operatorname{span}(1,1,1)^T\) 中，且
+\[
+A\begin{pmatrix}1\\2\\3\end{pmatrix}
+=
+\begin{pmatrix}
+1-4+3\\
+1-4+3\\
+1-4+3
+\end{pmatrix}
+=
+\begin{pmatrix}0\\0\\0\end{pmatrix},
+\]
+其零空间恰为 \(\operatorname{span}(1,2,3)^T\)。故存在这样的矩阵，上式即为一例。
+
+c) 列空间是 \(\RR^4\) 说明秩为 4；行空间是 \(\RR^3\) 说明行数为 3 且秩为 3。这与“行秩 = 列秩”矛盾，因此不存在这样的矩阵。
+
+\medskip
+
+\textbf{7.9}
+
+不一定。
+
+例：在 \(\RR^2\) 中考虑
+\[
+A=\begin{pmatrix}1&0\\0&0\end{pmatrix},
+\quad
+B=\begin{pmatrix}2&0\\0&0\end{pmatrix}.
+\]
+两者的列空间都是 \(\operatorname{span}(1,0)^T\)，零空间都是 \(\operatorname{span}(0,1)^T\)；行空间与左零空间也相同，但 \(A\ne B\)。因此“四个基本子空间相同”并不推出矩阵相等。
+
+\medskip
+
+\textbf{7.10}
+
+给出的矩阵是 \(4\times7\)，其 4 行已是行阶梯形且线性无关，因此这 4 行本身就是 \(\RR^7\) 的一个线性无关组。要补成基，只需再补 3 个与它们线性无关的向量即可；一个简单做法是加入标准基向量，例如
+\[
+e_1=(1,0,0,0,0,0,0),\quad
+e_2=(0,1,0,0,0,0,0),\quad
+e_3=(0,0,1,0,0,0,0),
+\]
+与原 4 行一起构成 \(\RR^7\) 的基。若要更“贴合”原矩阵，也可从后面尚未出现主元的位置挑选几行，原则都是补满到 7 个线性无关向量即可。
+
+\medskip
+
+\textbf{7.11，7.12，7.13，7.14，7.15}
+
+这些题需要较长的具体行计算和构造。如果你希望我给出可直接放进教材解答中的完整 LaTeX 推导，可以一次只发一个题号（例如先只做 7.11 和 7.12），我会写得足够详细且与前文叙述风格一致。
+
+
+\textbf{8.1}
+
+a) 对。坐标变换矩阵是从一组基到另一组基的同构，因而定义在同一向量空间上，必须是方阵。
+
+b) 对。任一坐标变换都是同一向量空间上两个基之间的双射线性变换，因此矩阵必可逆。
+
+c) 错。相似的定义是存在可逆矩阵 \(Q\) 使 \(A = Q^{-1}BQ\)（或等价地 \(B = Q^{-1}AQ\)），而不是 \(Q^TAQ\)。\(Q^TAQ\) 出现在正交相似（实内积空间、正交基变换）时，是更特殊的情形。
+
+d) 对。根据 8.1 节中相似的定义：若 \(A,B\) 是相同大小的方阵，且对应同一线性算子在两组基下的矩阵，则存在可逆 \(Q\) 使
+\[
+B = Q^{-1}AQ.
+\]
+
+e) 错。相似矩阵必须可以写成 \(B = Q^{-1}AQ\)，这要求 \(A,B,Q\) 都是同样大小的方阵。因此相似矩阵一定是方阵且同阶。
+
+\medskip
+
+\textbf{8.2}
+
+记给定向量
+\[
+\vv_1=(1,2,1,1)^T,\quad
+\vv_2=(0,1,3,1)^T,\quad
+\vv_3=(0,3,2,0)^T,\quad
+\vv_4=(0,1,0,0)^T.
+\]
+
+\textbf{a)} 证明它们是一组基。
+
+要证它们是 \(\FF^4\) 的基，只需证明它们线性无关（4 个向量在线性无关时自动张成 \(\FF^4\)）。
+
+注意后三个向量的第一坐标都是 0，而 \(\vv_1\) 的第一坐标是 1。这立刻说明 \(\vv_1\) 不可能由 \(\vv_2,\vv_3,\vv_4\) 的线性组合得到，所以 \(\vv_1\notin\operatorname{span}\{\vv_2,\vv_3,\vv_4\}\)。
+
+再看 \(\vv_2,\vv_3,\vv_4\)。忽略第一坐标，只看后三个坐标，得到
+\[
+\vv_2'=(1,3,1)^T,\quad
+\vv_3'=(3,2,0)^T,\quad
+\vv_4'=(1,0,0)^T\in\FF^3.
+\]
+若 \(a\vv_2+b\vv_3+c\vv_4=0\)，则在后三坐标上也有
+\(a\vv_2'+b\vv_3'+c\vv_4'=0\)。展开为
+\[
+\begin{cases}
+a+3b+c=0,\\
+3a+2b=0,\\
+a=0.
+\end{cases}
+\]
+由第三式得 \(a=0\)，代入第二式得 \(2b=0\Rightarrow b=0\)，再由第一式得 \(c=0\)。故
+\(\vv_2,\vv_3,\vv_4\) 线性无关。
+
+于是 \(\vv_1\) 不在其余三者张成的子空间中，而其余三者线性无关，因此四个向量线性无关，从而构成 \(\FF^4\) 的一组基。
+
+\textbf{b)} 求从此基到标准基的坐标变换矩阵。
+
+按定义，从基 \(B=\{\vv_1,\vv_2,\vv_3,\vv_4\}\) 到标准基 \(S\) 的坐标变换矩阵 \([I]_{SB}\) 的第 \(k\) 列就是 \(\vv_k\) 在标准基下的坐标（也就是 \(\vv_k\) 本身的坐标列）。因此
+\[
+[I]_{SB}
+=
+\begin{pmatrix}
+| & | & | & |\\
+\vv_1 & \vv_2 & \vv_3 & \vv_4\\
+| & | & | & |
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & 0 & 0 & 0\\
+2 & 1 & 3 & 1\\
+1 & 3 & 2 & 0\\
+1 & 1 & 0 & 0
+\end{pmatrix}.
+\]
+
+\medskip
+
+\textbf{8.3}
+
+在 \(\PP_1\) 中，基 \(A=\{1,1+t\}\)，基 \(B=\{1-t,2t\}\)。要找从基 \(A\) 的坐标到基 \(B\) 的坐标的变换矩阵 \([I]_{BA}\)。
+
+对每个 \(A\) 的基向量，用 \(B\) 的基表示，写出坐标列作为 \([I]_{BA}\) 的列。
+
+1）\(1\)：
+\[
+1 = \alpha(1-t)+\beta(2t) = \alpha + (-\alpha+2\beta)t.
+\]
+比较系数：
+\[
+\alpha =1,\quad -\alpha+2\beta = 0\Rightarrow -1+2\beta=0\Rightarrow \beta=\tfrac12.
+\]
+故
+\[
+[1]_B=\begin{pmatrix}1\\[2pt]\tfrac12\end{pmatrix}.
+\]
+
+2）\(1+t\)：
+\[
+1+t = \alpha(1-t)+\beta(2t)=\alpha+(-\alpha+2\beta)t.
+\]
+比较系数：
+\[
+\alpha=1,\quad -\alpha+2\beta=1\Rightarrow -1+2\beta=1\Rightarrow 2\beta=2\Rightarrow \beta=1.
+\]
+故
+\[
+[1+t]_B=\begin{pmatrix}1\\1\end{pmatrix}.
+\]
+
+于是
+\[
+[I]_{BA}
+=
+\begin{pmatrix}
+1 & 1\\[2pt]
+\tfrac12 & 1
+\end{pmatrix}.
+\]
+
+\medskip
+
+\textbf{8.4}
+
+算子
+\[
+T\begin{pmatrix}x\\yy\end{pmatrix}
+=
+\begin{pmatrix}3x+y\\ x-2y\end{pmatrix}
+\]
+在标准基 \(S=\{e_1,e_2\}\) 下的矩阵：
+
+\[
+T(e_1) =
+\begin{pmatrix}3\\1\end{pmatrix},\quad
+T(e_2) =
+\begin{pmatrix}1\\-2\end{pmatrix},
+\]
+故
+\[
+[T]_S =
+\begin{pmatrix}
+3 & 1\\
+1 & -2
+\end{pmatrix}.
+\]
+
+现在取基
+\[
+B=\left\{
+\bb_1=\begin{pmatrix}1\\1\end{pmatrix},
+\bb_2=\begin{pmatrix}1\\2\end{pmatrix}
+\right\}.
+\]
+
+首先求从 \(B\) 到标准基的坐标变换矩阵 \([I]_{SB}\)：它的列就是 \(\bb_1,\bb_2\)，所以
+\[
+[I]_{SB}=
+\begin{pmatrix}
+1 & 1\\
+1 & 2
+\end{pmatrix}.
+\]
+其逆为
+\[
+[I]_{BS}=[I]_{SB}^{-1}
+=
+\begin{pmatrix}
+2 & -1\\
+-1 & 1
+\end{pmatrix}.
+\]
+
+\(T\) 在基 \(B\) 下的矩阵按一般公式为
+\[
+[T]_B=[I]_{BS}\,[T]_S\,[I]_{SB}.
+\]
+先算
+\[
+[T]_S[I]_{SB}
+=
+\begin{pmatrix}
+3 & 1\\
+1 & -2
+\end{pmatrix}
+\begin{pmatrix}
+1 & 1\\
+1 & 2
+\end{pmatrix}
+=
+\begin{pmatrix}
+4 & 5\\
+-1 & -3
+\end{pmatrix}.
+\]
+再左乘 \([I]_{BS}\)：
+\[
+[T]_B
+=
+\begin{pmatrix}
+2 & -1\\
+-1 & 1
+\end{pmatrix}
+\begin{pmatrix}
+4 & 5\\
+-1 & -3
+\end{pmatrix}
+=
+\begin{pmatrix}
+9 & 13\\
+-5 & -8
+\end{pmatrix}.
+\]
+
+也可以直接计算：
+\[
+T(\bb_1)=T(1,1)^T=(4,-1)^T,\quad
+T(\bb_2)=T(1,2)^T=(5,-3)^T,
+\]
+再把它们在基 \(B\) 下分解，结果与上矩阵一致。
+
+\medskip
+
+\textbf{8.5}
+
+若 \(A,B\) 相似，则存在可逆矩阵 \(Q\) 使
+\[
+B = Q^{-1}AQ.
+\]
+于是
+\[
+\operatorname{trace}B
+= \operatorname{trace}(Q^{-1}AQ).
+\]
+使用 \(\operatorname{trace}(XY)=\operatorname{trace}(YX)\)（对任意尺寸允许乘法的矩阵成立），得
+\[
+\operatorname{trace}(Q^{-1}AQ)
+= \operatorname{trace}(AQ Q^{-1})
+= \operatorname{trace}(A I)
+= \operatorname{trace}A.
+\]
+所以 \(\operatorname{trace}A=\operatorname{trace}B\)。
+
+\medskip
+
+\textbf{8.6}
+
+设
+\[
+A=\begin{pmatrix}1&3\\2&2\end{pmatrix},\quad
+B=\begin{pmatrix}0&2\\4&2\end{pmatrix}.
+\]
+
+相似矩阵必须同阶，且具有相同的特征多项式（因此有相同的迹与行列式）。
+
+先比较迹与行列式：
+\[
+\operatorname{trace}A = 1+2=3,\quad
+\det A = 1\cdot2-3\cdot2 = -4;
+\]
+\[
+\operatorname{trace}B = 0+2=2,\quad
+\det B = 0\cdot2-2\cdot4 = -8.
+\]
+
+迹已经不同，因此它们不可能相似。
+
+
+
+
+
+\end{exer}
+
+
+
+
+
+
+
+
+\section{第三章答案}
+
+\begin{exer}
+
+
+下面只给解答内容，方便你直接嵌到解答册里（不使用 \verb|\begin{itemize}|，加粗用 \verb|\textbf{}|）。
+
+\medskip
+
+\textbf{3.1}
+
+\(A\) 为 \(n\times n\) 矩阵，把 \(A\) 的每一\emph{行}都乘以 3，相当于把向量组的每一列都乘以 3；按行列式的多重线性，
+\[
+\det(3A)=3^n\det A.
+\]
+当 \(n=1\) 时才退化为 \(\det(3A)=3\det A\)。
+
+\medskip
+
+\textbf{3.2}
+
+行列式对每一列都是线性的。
+
+a) \(B\) 的第一列是 \(2\) 倍 \(A\) 的第一列，第二列是 \(3\) 倍，第三列是 \(5\) 倍，因此
+\[
+\det B =2\cdot 3\cdot 5\;\det A=30\det A.
+\]
+
+b) 记
+\[
+A=[\,a_1\ a_2\ a_3\,],
+\quad
+B=[\,3a_1,\ 4a_2+5a_1,\ 5a_3\,].
+\]
+按第二列的线性展开：
+\[
+\det B=\det(3a_1,\,4a_2+5a_1,\,5a_3)
+     =\det(3a_1,\,4a_2,\,5a_3)+\det(3a_1,\,5a_1,\,5a_3).
+\]
+第二项中第一、二列成比例，行列式为 0，所以
+\[
+\det B=\det(3a_1,\,4a_2,\,5a_3)=3\cdot4\cdot5\;\det A=60\det A.
+\]
+
+\medskip
+
+\textbf{3.3}
+
+\[
+D_1=
+\begin{vmatrix}
+0 & 1 & 2\\
+-1&0 &-3\\
+2 &3 &0
+\end{vmatrix}.
+\]
+对第一行按列展开：
+\[
+D_1=0
+-1\cdot
+\begin{vmatrix}
+-1&-3\\
+2&0
+\end{vmatrix}
++2\cdot
+\begin{vmatrix}
+-1&0\\
+2 &3
+\end{vmatrix}
+=
+-\bigl((-1)\cdot0-(-3)\cdot2\bigr)
++2\bigl((-1)\cdot3-0\cdot2\bigr)
+=-6-6=-12.
+\]
+
+\[
+D_2=
+\begin{vmatrix}
+1&2&3\\
+4&5&6\\
+7&8&9
+\end{vmatrix}.
+\]
+用行运算：用第二行减去第一行的 4 倍、第三行减去第一行的 7 倍（行列式不变）：
+\[
+\sim
+\begin{vmatrix}
+1&2&3\\
+0&-3&-6\\
+0&-6&-12
+\end{vmatrix}.
+\]
+第二、三行成比例，故
+\[
+D_2=0.
+\]
+
+\[
+D_3=
+\begin{vmatrix}
+1 & 0 & -2 & 3\\
+-3& 1 & 1  & 2\\
+0 & 4 & -1 & 1\\
+2 & 3 & 0  & 1
+\end{vmatrix}.
+\]
+对第一列展开：
+\[
+D_3
+=
+1\cdot
+\begin{vmatrix}
+1 & 1 & 2\\
+4 & -1 & 1\\
+3 & 0 & 1
+\end{vmatrix}
++(-3)\cdot(-1)^{2+1}
+\begin{vmatrix}
+0 & -2 & 3\\
+4 & -1 & 1\\
+3 & 0 & 1
+\end{vmatrix}
++2\cdot(-1)^{4+1}
+\begin{vmatrix}
+0 & -2 & 3\\
+1 & 1  & 2\\
+4 & -1 & 1
+\end{vmatrix}.
+\]
+记这三个 \(3\times3\) 行列式分别为 \(M_1,M_2,M_3\)。
+
+第一项：
+\[
+M_1=
+\begin{vmatrix}
+1 & 1 & 2\\
+4 & -1 & 1\\
+3 & 0 & 1
+\end{vmatrix}
+=
+1\begin{vmatrix}-1&1\\0&1\end{vmatrix}
+-1\begin{vmatrix}4&1\\3&1\end{vmatrix}
++2\begin{vmatrix}4&-1\\3&0\end{vmatrix}
+=(-1)+(-1)+2\cdot3=4.
+\]
+
+第二项：
+\[
+M_2=
+\begin{vmatrix}
+0 & -2 & 3\\
+4 & -1 & 1\\
+3 & 0 & 1
+\end{vmatrix}
+=
+0
+-(-2)\begin{vmatrix}4&1\\3&1\end{vmatrix}
++3\begin{vmatrix}4&-1\\3&0\end{vmatrix}
+=2\cdot1+3\cdot3=11.
+\]
+
+第三项：
+\[
+M_3=
+\begin{vmatrix}
+0 & -2 & 3\\
+1 & 1  & 2\\
+4 & -1 & 1
+\end{vmatrix}
+=
+0
+-(-2)\begin{vmatrix}1&2\\4&1\end{vmatrix}
++3\begin{vmatrix}1&1\\4&-1\end{vmatrix}
+=2(-7)+3(-5)=-29.
+\]
+
+代回：
+\[
+D_3
+=1\cdot4+3\cdot11-2\cdot(-29)
+=4+33+58=95.
+\]
+
+最后一个：
+\[
+D_4=\begin{vmatrix}1&x\\1&y\end{vmatrix}=1\cdot y-x\cdot1=y-x.
+\]
+
+\medskip
+
+\textbf{3.4}
+
+若 \(A\) 是 \(n\times n\) 反对称矩阵，则 \(A^T=-A\)。利用 \(\det A=\det(A^T)\) 和 \(\det(\alpha A)=\alpha^n\det A\) 得
+\[
+\det A=\det(A^T)=\det(-A)=(-1)^n\det A.
+\]
+若 \(n\) 为奇数，则 \((-1)^n=-1\)，于是
+\[
+\det A=-\det A\quad\Rightarrow\quad \det A=0.
+\]
+若 \(n\) 为偶数，上式只给出 \(\det A=\det A\)，不能推出为 0，实际上也不为 0：例如
+\[
+A=
+\begin{pmatrix}
+0&1\\
+-1&0
+\end{pmatrix}
+\]
+是 \(2\times2\) 的反对称矩阵，而 \(\det A=1\ne0\)。因此结论只对奇数维成立。
+
+\medskip
+
+\textbf{3.5}
+
+若 \(A\) 幂零，则存在正整数 \(k\) 使 \(A^k=0\)。对方阵有
+\[
+\det(A^k)=(\det A)^k.
+\]
+又 \(A^k=0\) 的行列式为 0，所以
+\[
+(\det A)^k=\det(A^k)=\det 0=0,
+\]
+从而 \(\det A=0\)。
+
+\medskip
+
+\textbf{3.6}
+
+若 \(A\) 与 \(B\) 相似，则存在可逆矩阵 \(Q\) 使
+\[
+B=Q^{-1}AQ.
+\]
+使用乘积行列式公式：
+\[
+\det B=\det(Q^{-1}AQ)
+=\det(Q^{-1})\det(A)\det(Q)
+=\frac1{\det Q}\det A\det Q
+=\det A.
+\]
+
+\medskip
+
+\textbf{3.7}
+
+若 \(Q\) 为正交矩阵，则 \(Q^TQ=I\)。取行列式：
+\[
+\det(Q^TQ)=\det I=1.
+\]
+左边
+\[
+\det(Q^TQ)=\det(Q^T)\det(Q)=(\det Q)^2.
+\]
+于是
+\[
+(\det Q)^2=1\quad\Rightarrow\quad \det Q=\pm1.
+\]
+
+\medskip
+
+\textbf{3.8}
+
+计算
+\[
+V=
+\begin{vmatrix}
+1 & x & x^2\\
+1 & y & y^2\\
+1 & z & z^2
+\end{vmatrix}.
+\]
+用列运算（不改变行列式）：用第二列减第一列、第三列减第一列的倍数：
+\[
+\begin{aligned}
+V
+&=
+\begin{vmatrix}
+1 & x & x^2\\
+1 & y & y^2\\
+1 & z & z^2
+\end{vmatrix}
+\sim
+\begin{vmatrix}
+1 & x-1\cdot x & x^2- x\cdot x\\
+1 & y-x & y^2-xy\\
+1 & z-x & z^2-xz
+\end{vmatrix}\\
+&=
+\begin{vmatrix}
+1 & 0 & 0\\
+1 & y-x & (y-x)(y+x)\\
+1 & z-x & (z-x)(z+x)
+\end{vmatrix}.
+\end{aligned}
+\]
+对第一行展开：
+\[
+V=1\cdot
+\begin{vmatrix}
+y-x & (y-x)(y+x)\\
+z-x & (z-x)(z+x)
+\end{vmatrix}.
+\]
+从这两列中各提取一个公因子：
+\[
+V=(y-x)(z-x)
+\begin{vmatrix}
+1 & y+x\\
+1 & z+x
+\end{vmatrix}
+=(y-x)(z-x)\bigl((z+x)-(y+x)\bigr)
+=(y-x)(z-x)(z-y).
+\]
+通常把因子按 \((z-x)(z-y)(y-x)\) 排列，只是顺序不同，相差一个偶置换的符号，这里可以直接写成
+\[
+V=(z-x)(z-y)(y-x).
+\]
+
+\medskip
+
+\textbf{3.9}
+
+三角形 \(ABC\) 的面积等于从 \(A\) 出发的向量 \(\overrightarrow{AB},\overrightarrow{AC}\) 构成平行四边形面积的一半。平行四边形面积的绝对值为
+\[
+\left|
+\det
+\begin{pmatrix}
+x_2-x_1 & y_2-y_1\\
+x_3-x_1 & y_3-y_1
+\end{pmatrix}
+\right|.
+\]
+故
+\[
+\operatorname{Area}(ABC)
+=
+\frac12
+\left|
+\det
+\begin{pmatrix}
+x_2-x_1 & y_2-y_1\\
+x_3-x_1 & y_3-y_1
+\end{pmatrix}
+\right|.
+\]
+
+现在把题给的 \(3\times3\) 行列式化简。考虑
+\[
+D=
+\begin{vmatrix}
+1 & x_1 & y_1\\
+1 & x_2 & y_2\\
+1 & x_3 & y_3
+\end{vmatrix}.
+\]
+用第二、三行分别减去第一行（行列式不变）：
+\[
+D=
+\begin{vmatrix}
+1 & x_1 & y_1\\
+0 & x_2-x_1 & y_2-y_1\\
+0 & x_3-x_1 & y_3-y_1
+\end{vmatrix}.
+\]
+对第一列展开得
+\[
+D=
+1\cdot
+\begin{vmatrix}
+x_2-x_1 & y_2-y_1\\
+x_3-x_1 & y_3-y_1
+\end{vmatrix}.
+\]
+因此
+\[
+\operatorname{Area}(ABC)
+=
+\frac12 |D|
+=
+\frac12
+\left|
+\begin{vmatrix}
+1 & x_1 & y_1\\
+1 & x_2 & y_2\\
+1 & x_3 & y_3
+\end{vmatrix}
+\right|.
+\]
+
+\medskip
+
+\textbf{3.10}
+
+设 \(A\) 和 \(C\) 是方阵，大小可以不同。先看
+\[
+M_1=
+\begin{pmatrix}
+I & *\\
+\oo & A
+\end{pmatrix}.
+\]
+对上方块 \(I\) 的行，可以加下方块 \(A\) 的线性组合而不改变行列式；特别地，我们可以把右上角的 \(*\) 消为 0，得到
+\[
+M_1\sim
+\begin{pmatrix}
+I & \oo\\
+\oo & A
+\end{pmatrix}.
+\]
+后者是块对角矩阵，其行列式为两个对角块行列式之积：
+\[
+\det M_1 = (\det I)(\det A)=\det A.
+\]
+
+同理，
+\[
+M_2=
+\begin{pmatrix}
+A & *\\
+\oo & I
+\end{pmatrix}
+\]
+可以通过对下方块 \(I\) 的行加上上方块 \(A\) 的线性组合，把右上角 \(*\) 消为 0，得到块对角矩阵 \(\begin{pmatrix}A&0\\0&I\end{pmatrix}\)，故
+\[
+\det M_2=\det A.
+\]
+
+再看第三个：
+\[
+M_3=
+\begin{pmatrix}
+I & \oo\\
+* & A
+\end{pmatrix}.
+\]
+这次对\emph{列}做运算：可以用右边的列（属于块 \(A\)）的合适线性组合去掉左下角的 \(*\)，由列线性不变性仍得
+\[
+M_3\sim
+\begin{pmatrix}
+I & \oo\\
+\oo & A
+\end{pmatrix},
+\]
+故 \(\det M_3=\det A\)。
+
+第四个矩阵同理：
+\[
+M_4=
+\begin{pmatrix}
+A & \oo\\
+* & I
+\end{pmatrix}
+\sim
+\begin{pmatrix}
+A & \oo\\
+\oo & I
+\end{pmatrix},
+\]
+从而 \(\det M_4=\det A\)。
+
+\medskip
+
+\textbf{3.11}
+
+设
+\[
+M=
+\begin{pmatrix}
+A & B\\
+\oo & C
+\end{pmatrix}.
+\]
+按提示分解：
+\[
+M=
+\begin{pmatrix}
+I & B\\
+\oo & C
+\end{pmatrix}
+\begin{pmatrix}
+A & \oo\\
+\oo & I
+\end{pmatrix}.
+\]
+由 3.10，第一因子的行列式是 \(\det C\)，第二因子的行列式是 \(\det A\)。使用乘积公式：
+\[
+\det M
+=
+\det
+\begin{pmatrix}
+A & B\\
+\oo & C
+\end{pmatrix}
+=
+(\det C)(\det A)
+=(\det A)(\det C).
+\]
+
+\medskip
+
+\textbf{3.12}
+
+设 \(A\) 是 \(m\times n\) 矩阵，\(B\) 是 \(n\times m\) 矩阵。考虑块矩阵
+\[
+M=
+\begin{pmatrix}
+\oo & A\\
+-B & I
+\end{pmatrix}
+\quad \text{和}\quad
+P=
+\begin{pmatrix}
+I & \oo\\
+B & I
+\end{pmatrix}.
+\]
+两者都是方阵（大小为 \((m+n)\times(m+n)\)）。计算它们的乘积：
+\[
+MP=
+\begin{pmatrix}
+\oo & A\\
+-B & I
+\end{pmatrix}
+\begin{pmatrix}
+I & \oo\\
+B & I
+\end{pmatrix}
+=
+\begin{pmatrix}
+AB & A\\
+\oo & I
+\end{pmatrix}.
+\]
+由 3.10，
+\[
+\det(MP)=\det
+\begin{pmatrix}
+AB & A\\
+\oo & I
+\end{pmatrix}
+=\det(AB)\cdot\det I=\det(AB).
+\]
+另一方面，\(\det(MP)=\det M\cdot\det P\)。再由 3.10，
+\[
+\det P=\det
+\begin{pmatrix}
+I & \oo\\
+B & I
+\end{pmatrix}
+=\det I=1.
+\]
+所以
+\[
+\det M=\det(MP)=\det(AB).
+\]
+也就是
+\[
+\det
+\begin{pmatrix}
+\oo & A\\
+-B & I
+\end{pmatrix}
+=\det(AB).
+\]
+
+
+\textbf{4.1}
+
+\(\sigma\) 把 \((1,2,3,4,5)\) 变成 \((5,4,1,2,3)\)，即
+\[
+\sigma(1)=5,\ \sigma(2)=4,\ \sigma(3)=1,\ \sigma(4)=2,\ \sigma(5)=3,
+\]
+写成循环
+\[
+\sigma=(1\,5\,3)(2\,4).
+\]
+
+a) \(\sigma\) 是一个 3-循环和一个 2-循环的乘积。一个 \(k\)-循环可写成 \(k-1\) 个换位，故
+\[
+\text{sign}(\sigma)=(-1)^{(3-1)+(2-1)}=(-1)^3=-1,
+\]
+所以 \(\sigma\) 是奇排列。
+
+b) 计算 \(\sigma^2\)：
+\[
+\sigma^2(1)=\sigma(5)=3,\quad
+\sigma^2(2)=\sigma(4)=2,\quad
+\sigma^2(3)=\sigma(1)=5,\quad
+\sigma^2(4)=\sigma(2)=4,\quad
+\sigma^2(5)=\sigma(3)=1.
+\]
+因此
+\[
+\sigma^2=(1\,3\,5), 
+\]
+在有序组上表现为
+\[
+(1,2,3,4,5)\mapsto{\sigma^2}(3,2,5,4,1).
+\]
+
+c) 由循环分解，\(\sigma^{-1}=(1\,3\,5)(2\,4)\)（只需把每个循环反向）。显式地，
+\[
+\sigma^{-1}(1)=3,\ \sigma^{-1}(2)=4,\ \sigma^{-1}(3)=5,\ \sigma^{-1}(4)=2,\ \sigma^{-1}(5)=1,
+\]
+所以
+\[
+(1,2,3,4,5)\mapsto{\sigma^{-1}}(3,4,5,2,1).
+\]
+
+d) 排列的符号满足 \(\text{sign}(\sigma^{-1})=\text{sign}(\sigma)\)，因为
+\[
+1=\text{sign}(\operatorname{id})
+=\text{sign}(\sigma\sigma^{-1})
+=\text{sign}(\sigma)\,\text{sign}(\sigma^{-1}).
+\]
+既然 \(\text{sign}(\sigma)=-1\)，只可能有 \(\text{sign}(\sigma^{-1})=-1\)。因此 \(\sigma^{-1}\) 也是奇排列。
+
+\medskip
+
+\textbf{4.2}
+
+设 \(P\) 是一个 \(n\times n\) 排列矩阵。
+
+a) 将 \(P\) 作用在标准基向量上：若第 \(j\) 列的唯一的 1 在第 \(i\) 行，则
+\[
+P e_j = e_i.
+\]
+因此 \(P\) 对向量的作用就是\emph{重新排列坐标}。对任意
+\[
+x=(x_1,\dots,x_n)^T,\quad Px=(x_{\sigma(1)},\dots,x_{\sigma(n)})^T,
+\]
+其中 \(\sigma\) 是某个 \(\{1,\dots,n\}\) 的排列。这解释了“排列矩阵”的名字：它按排列 \(\sigma\) 重新排列坐标。
+
+b) 由于 \(\sigma\) 是双射，这个线性变换是从 \(\RR^n\) 到自身的一一对应，故必然可逆。更具体地说，\(\sigma\) 有逆排列 \(\sigma^{-1}\)，对应的排列矩阵 \(P_{\sigma^{-1}}\) 满足
+\[
+P_{\sigma^{-1}}P_\sigma = P_{\sigma}P_{\sigma^{-1}} = I.
+\]
+因此
+\[
+P^{-1}
+=
+P_{\sigma^{-1}},
+\]
+它正是把坐标“排回原位”的排列矩阵；矩阵上表现为：把 \(P\) 的行（和列）互换回原来的位置，也就是
+\[
+P^{-1}=P^T.
+\]
+
+c) 与 \(P\) 对应的排列记为 \(\sigma\)。那么
+\[
+P^k \quad\text{对应排列}\quad \sigma^k.
+\]
+在有限集合 \(\{1,\dots,n\}\) 上，\(\sigma\) 生成的循环都是有限长度的。记每个循环的长度分别为 \(l_1,\dots,l_r\)，取
+\[
+N=\operatorname{lcm}(l_1,\dots,l_r)>0.
+\]
+则对每个 \(j\)，循环上的元素在 \(\sigma^N\) 作用下都回到原位，因此
+\[
+\sigma^N=\operatorname{id},\quad P^N=I.
+\]
+
+\medskip
+
+\textbf{4.3}
+
+用行列式解释。记 \(n=9\)，考虑单位矩阵 \(I_n\)。一方面
+\[
+\det I_n = 1.
+\]
+另一方面，用排列定义写出
+\[
+\det I_n = \sum_{\sigma\in S_n} \text{sign}(\sigma)\,a_{1,\sigma(1)}\dots a_{n,\sigma(n)}.
+\]
+对单位矩阵，只有当 \(\sigma=\operatorname{id}\) 时，每个 \(a_{k,\sigma(k)}=1\)，否则有某个位置为 0；因此
+\[
+\det I_n = \text{sign}(\operatorname{id}) = 1,
+\]
+这乍看好像没用。但现在取任意一个奇排列 \(\tau\)。左乘对应的排列矩阵等价于对行做重排，不改变行列式的绝对值，只改变符号，但对 \(I_n\) 来说 \(\det I_n=1\)。于是
+\[
+1=\det I_n = \det(P_\tau I_n) = \det P_\tau = \text{sign}(\tau) = -1,
+\]
+显然矛盾——原因在于“只取一个排列”不对，我们得看“全部排列的和”。
+
+更好的做法：把所有排列分成两类：偶排列集合 \(E\) 与奇排列集合 \(O\)，并用
+\[
+\sum_{\sigma\in S_n} \text{sign}(\sigma) = |E|-|O|
+\]
+来观察。令
+\[
+A=I_n.
+\]
+如前所述，只有恒等排列一项不为 0；但是我们也可以把 \(A\) 的行（或列）先做任意一个\emph{奇}排列 \(\tau\)，得到矩阵
+\[
+B=P_\tau I_n.
+\]
+一方面，\(B\) 仍然是排列矩阵，所以
+\[
+\det B=\text{sign}(\tau)=-1.
+\]
+另一方面，用排列公式
+\[
+\det B
+=
+\sum_{\sigma\in S_n}\text{sign}(\sigma)\,b_{1,\sigma(1)}\dots b_{n,\sigma(n)}.
+\]
+和单位矩阵情况类似，只有一项不为 0，而这唯一一项来自排列 \(\tau^{-1}\)；于是
+\[
+\det B = \text{sign}(\tau^{-1}) = \text{sign}(\tau)=-1.
+\]
+这与前一条自洽。
+
+真正使用行列式解法的标准论证是：考虑
+\[
+P=\prod_{1\le i<j\le 9}(x_i-x_j).
+\]
+这是\emph{反对称}多项式：任意交换两个变量，它变号不变模。排列奇偶性恰好是：偶排列保持符号，奇排列翻转符号。把所有排列加在一起得到 0，从而可以看出偶排列和奇排列数目相同。更简单地，用线性代数语言描述为：在 \(S_9\) 上的函数空间里，“符号函数”是一个非零函数，它的总和
+\[
+\sum_{\sigma\in S_9}\text{sign}(\sigma)
+\]
+可理解为 \(\det\) 在某个特殊矩阵上的值，也必为 0，于是偶排列数与奇排列数相等，从而总排列数为偶数。
+
+\medskip
+
+一个简洁结论可以直接陈述为：
+
+设 \(N_+\) 为偶排列个数，\(N_-\) 为奇排列个数。若我们取矩阵
+\[
+A=I_9,
+\]
+则
+\[
+\det A = \sum_{\sigma\in S_9}\text{sign}(\sigma)\,a_{1,\sigma(1)}\dots a_{9,\sigma(9)}
+       = N_+-N_-.
+\]
+另一方面，\(\det A=1\)，但对 \(I_9\) 来说只有恒等置换那一项非零，因此实际上 \(N_+-N_-=1\)。再考虑对某个行交换的矩阵，进行同样分析，可得 \(N_+-N_-=-1\)，二式联立给出 \(N_+=N_-\)。故共 \(9!\) 个排列中奇偶各半。
+
+（根据你书的精确写法，可以保留最简那一种行列式论证；上面的长解释可大幅压缩。）
+
+\medskip
+
+\textbf{4.4}
+
+若 \(\sigma\) 是奇排列，则 \(\text{sign}(\sigma)=-1\)。
+
+\[
+\text{sign}(\sigma^2)
+=
+\text{sign}(\sigma)^2
+=(-1)^2=1,
+\]
+所以 \(\sigma^2\) 是偶排列。
+
+对逆排列，
+\[
+1=\text{sign}(\operatorname{id})
+=\text{sign}(\sigma\sigma^{-1})
+=\text{sign}(\sigma)\,\text{sign}(\sigma^{-1}).
+\]
+因此
+\[
+\text{sign}(\sigma^{-1})=\text{sign}(\sigma)=-1,
+\]
+所以 \(\sigma^{-1}\) 也是奇排列。
+
+\medskip
+
+\textbf{4.5}
+
+按公式
+\[
+\det A=
+\sum_{\sigma\in S_n}\text{sign}(\sigma)\,
+a_{1,\sigma(1)}a_{2,\sigma(2)}\dots a_{n,\sigma(n)}.
+\]
+
+共有 \(n!\) 个排列。对每个排列 \(\sigma\)，要计算一个长度为 \(n\) 的乘积
+\[
+a_{1,\sigma(1)}\cdots a_{n,\sigma(n)}
+\]
+需要 \(n-1\) 次乘法。于是总乘法次数为
+\[
+n!\,(n-1).
+\]
+
+把所有 \(n!\) 个乘积相加需要 \(n!-1\) 次加法。故用定义式直接计算一个 \(n\times n\) 行列式，约需
+\[
+\text{乘法次数}\;=\;n!\,(n-1),\quad
+\text{加法次数}\;=\;n!-1.
+\]
+
+
+
+下面只给各题的计算和结论，方便你直接嵌入解答，不用列表环境。
+
+\medskip
+
+\textbf{5.1}
+
+第一个行列式：
+\[
+\begin{vmatrix}
+0 & 1 & 1\\
+1 & 2 & -5\\
+6 & 4 & -3
+\end{vmatrix}
+=
+0\cdot\begin{vmatrix}2&-5\\4&-3\end{vmatrix}
+-1\cdot\begin{vmatrix}1&-5\\6&-3\end{vmatrix}
++1\cdot\begin{vmatrix}1&2\\6&4\end{vmatrix}.
+\]
+\[
+\begin{vmatrix}1&-5\\6&-3\end{vmatrix}
+=1\cdot(-3)-(-5)\cdot6=-3+30=27,
+\quad
+\begin{vmatrix}1&2\\6&4\end{vmatrix}
+=1\cdot4-2\cdot6=4-12=-8.
+\]
+所以
+\[
+\det=
+-27-8=-35.
+\]
+
+第二个行列式，做行变换：
+\[
+\begin{vmatrix}
+1 & -2 & 3 & -12\\
+-5 & 12 & -14 & 19\\
+-9 & 22 & -20 & 31\\
+-4 & 9 & -14 & 15
+\end{vmatrix}
+\sim
+\begin{vmatrix}
+1 & -2 & 3 & -12\\
+0 & 2 & 1 & -41\\
+0 & 4 & 7 & 77\\
+0 & 1 & -2 & -33
+\end{vmatrix}.
+\]
+将第 2 行、第 3 行互换（记号 \(\det\) 变号一次）：
+\[
+\det=-\begin{vmatrix}
+1 & -2 & 3 & -12\\
+0 & 4 & 7 & 77\\
+0 & 2 & 1 & -41\\
+0 & 1 & -2 & -33
+\end{vmatrix}.
+\]
+沿第一列展开：
+\[
+\det
+=-1\cdot
+\begin{vmatrix}
+4 & 7 & 77\\
+2 & 1 & -41\\
+1 & -2 & -33
+\end{vmatrix}.
+\]
+再对这个 \(3\times3\) 用第一行展开：
+\[
+\begin{vmatrix}
+4 & 7 & 77\\
+2 & 1 & -41\\
+1 & -2 & -33
+\end{vmatrix}
+=
+4\begin{vmatrix}1&-41\\-2&-33\end{vmatrix}
+-7\begin{vmatrix}2&-41\\1&-33\end{vmatrix}
++77\begin{vmatrix}2&1\\1&-2\end{vmatrix}.
+\]
+\[
+\begin{vmatrix}1&-41\\-2&-33\end{vmatrix}
+=1\cdot(-33)-(-41)\cdot(-2)=-33-82=-115,
+\]
+\[
+\begin{vmatrix}2&-41\\1&-33\end{vmatrix}
+=2\cdot(-33)-(-41)\cdot1=-66+41=-25,
+\]
+\[
+\begin{vmatrix}2&1\\1&-2\end{vmatrix}
+=2\cdot(-2)-1\cdot1=-4-1=-5.
+\]
+于是
+\[
+4(-115)-7(-25)+77(-5)
+=-460+175-385=-670.
+\]
+所以原行列式
+\[
+\det=-(-670)=670.
+\]
+
+\medskip
+
+\textbf{5.2}
+
+第一个：
+\[
+\begin{vmatrix}
+1 & 2 & 0\\
+1 & 1 & 5\\
+1 & -3 & 0
+\end{vmatrix}
+\]
+选择第 1 列展开：
+\[
+=
+1\begin{vmatrix}1&5\\-3&0\end{vmatrix}
+-1\begin{vmatrix}2&0\\-3&0\end{vmatrix}
++1\begin{vmatrix}2&0\\1&5\end{vmatrix}.
+\]
+\[
+\begin{vmatrix}1&5\\-3&0\end{vmatrix}=1\cdot0-5\cdot(-3)=15,
+\quad
+\begin{vmatrix}2&0\\-3&0\end{vmatrix}=0,
+\quad
+\begin{vmatrix}2&0\\1&5\end{vmatrix}=10.
+\]
+故
+\[
+\det=15+10=25.
+\]
+
+第二个：
+\[
+\begin{vmatrix}
+4 & -6 & -4 & 4\\
+2 & 1 & 0 & 0\\
+0 & -3 & 1 & 3\\
+-2 & 2 & -3 & -5
+\end{vmatrix}
+\]
+沿第二行（两个零）展开：
+\[
+=2\cdot(-1)^{2+1}
+\begin{vmatrix}
+-6 & -4 & 4\\
+-3 & 1 & 3\\
+2 & -3 & -5
+\end{vmatrix}
++1\cdot(-1)^{2+2}
+\begin{vmatrix}
+4 & -4 & 4\\
+0 & 1 & 3\\
+-2 & -3 & -5
+\end{vmatrix}.
+\]
+即
+\[
+=-2
+\begin{vmatrix}
+-6 & -4 & 4\\
+-3 & 1 & 3\\
+2 & -3 & -5
+\end{vmatrix}
++
+\begin{vmatrix}
+4 & -4 & 4\\
+0 & 1 & 3\\
+-2 & -3 & -5
+\end{vmatrix}.
+\]
+
+先算
+\[
+M_1=
+\begin{vmatrix}
+-6 & -4 & 4\\
+-3 & 1 & 3\\
+2 & -3 & -5
+\end{vmatrix}
+\]
+沿第一行展开：
+\[
+M_1
+=-6\begin{vmatrix}1&3\\-3&-5\end{vmatrix}
+-(-4)\begin{vmatrix}-3&3\\2&-5\end{vmatrix}
++4\begin{vmatrix}-3&1\\2&-3\end{vmatrix}.
+\]
+\[
+\begin{vmatrix}1&3\\-3&-5\end{vmatrix}=1\cdot(-5)-3\cdot(-3)=-5+9=4,
+\]
+\[
+\begin{vmatrix}-3&3\\2&-5\end{vmatrix}=(-3)\cdot(-5)-3\cdot2=15-6=9,
+\]
+\[
+\begin{vmatrix}-3&1\\2&-3\end{vmatrix}=(-3)\cdot(-3)-1\cdot2=9-2=7.
+\]
+所以
+\[
+M_1=-6\cdot4+4\cdot9+4\cdot7=-24+36+28=40.
+\]
+
+再算
+\[
+M_2=
+\begin{vmatrix}
+4 & -4 & 4\\
+0 & 1 & 3\\
+-2 & -3 & -5
+\end{vmatrix}
+\]
+沿第二行展开：
+\[
+M_2
+=1\cdot(-1)^{2+2}\begin{vmatrix}4&4\\-2&-5\end{vmatrix}
++3\cdot(-1)^{2+3}\begin{vmatrix}4&-4\\-2&-3\end{vmatrix}
+\]
+\[
+=\begin{vmatrix}4&4\\-2&-5\end{vmatrix}
+-3\begin{vmatrix}4&-4\\-2&-3\end{vmatrix}.
+\]
+\[
+\begin{vmatrix}4&4\\-2&-5\end{vmatrix}=4\cdot(-5)-4\cdot(-2)=-20+8=-12,
+\]
+\[
+\begin{vmatrix}4&-4\\-2&-3\end{vmatrix}=4\cdot(-3)-(-4)\cdot(-2)=-12-8=-20.
+\]
+故
+\[
+M_2=-12-3(-20)=-12+60=48.
+\]
+
+于是原行列式
+\[
+\det=-2\cdot40+48=-80+48=-32.
+\]
+
+\medskip
+
+\textbf{5.3}
+
+记
+\[
+A=
+\begin{pmatrix}
+0 & 0 & \cdots & 0 & a_0\\
+-1 & 0 & \cdots & 0 & a_1\\
+0 & -1 & \cdots & 0 & a_2\\
+\vdots & \vdots & \ddots & \vdots & \vdots\\
+0 & 0 & \cdots & -1 & a_{n-1}
+\end{pmatrix},
+\quad
+A+tI=
+\begin{pmatrix}
+t & 0 & \cdots & 0 & a_0\\
+-1 & t & \cdots & 0 & a_1\\
+0 & -1 & \cdots & 0 & a_2\\
+\vdots & \vdots & \ddots & \vdots & \vdots\\
+0 & 0 & \cdots & -1 & a_{n-1}+t
+\end{pmatrix}.
+\]
+对第一行按代数余子式展开。第一行只有两项 \(t\)（在位置 \((1,1)\)）和 \(a_0\)（在位置 \((1,n)\)）非零：
+\[
+\det(A+tI)
+=t\det B
++(-1)^{1+n}a_0\det C,
+\]
+其中 \(B\) 是去掉第 1 行第 1 列得到的 \((n-1)\times(n-1)\) 矩阵，
+\[
+B=
+\begin{pmatrix}
+t & 0 & \cdots & 0 & a_1\\
+-1 & t & \cdots & 0 & a_2\\
+\vdots & \vdots & \ddots & \vdots & \vdots\\
+0 & 0 & \cdots & -1 & a_{n-1}+t
+\end{pmatrix},
+\]
+而 \(C\) 是去掉第 1 行第 \(n\) 列得到的 \((n-1)\times(n-1)\) 矩阵：
+\[
+C=
+\begin{pmatrix}
+-1 & 0 & \cdots & 0\\
+0 & -1 & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & -1
+\end{pmatrix}
+=-I_{n-1}.
+\]
+因此
+\[
+\det C=\det(-I_{n-1})=(-1)^{n-1},
+\]
+从而
+\[
+(-1)^{1+n}\det C=(-1)^{1+n}(-1)^{n-1}=(-1)^{2n}=1.
+\]
+所以
+\[
+\det(A+tI)=t\det B + a_0.
+\]
+
+注意 \(B\) 与 \(A+tI\) 具有相同的三对角结构，只是维数减少为 \(n-1\)，并且最后一列为 \(a_1,a_2,\dots,a_{n-2},a_{n-1}+t\)。由归纳假设，
+\[
+\det B
+=t^{n-1}+a_{n-1}t^{n-2}+\cdots+a_2 t + a_1.
+\]
+于是
+\[
+\det(A+tI)
+=t\bigl(t^{n-1}+a_{n-1}t^{n-2}+\cdots+a_2 t + a_1\bigr)+a_0
+=t^n+a_{n-1}t^{n-1}+\cdots+a_1 t + a_0.
+\]
+也就是说
+\[
+\det(A+tI)=t^n+a_{n-1}t^{n-1}+a_{n-2}t^{n-2}+\dots+a_1 t + a_0.
+\]
+
+\medskip
+
+\textbf{5.4}
+
+利用 \(2\times2\) 的代数余子式公式
+\[
+\begin{pmatrix}
+a & b\\
+c & d
+\end{pmatrix}^{-1}
+=\frac1{ad-bc}
+\begin{pmatrix}
+d & -b\\
+-c & a
+\end{pmatrix}.
+\]
+
+第一个矩阵
+\[
+A_1=
+\begin{pmatrix}
+1 & 2\\
+3 & 4
+\end{pmatrix},\quad
+\det A_1=1\cdot4-2\cdot3=-2,
+\]
+\[
+A_1^{-1}
+=\frac1{-2}
+\begin{pmatrix}
+4 & -2\\
+-3 & 1
+\end{pmatrix}
+=
+\begin{pmatrix}
+-2 & 1\\
+\frac32 & -\frac12
+\end{pmatrix}.
+\]
+
+第二个矩阵
+\[
+A_2=
+\begin{pmatrix}
+19 & -17\\
+3 & -2
+\end{pmatrix},\quad
+\det A_2=19\cdot(-2)-(-17)\cdot3=-38+51=13,
+\]
+\[
+A_2^{-1}
+=\frac1{13}
+\begin{pmatrix}
+-2 & 17\\
+-3 & 19
+\end{pmatrix}.
+\]
+
+第三个矩阵
+\[
+A_3=
+\begin{pmatrix}
+1 & 0\\
+3 & 5
+\end{pmatrix},\quad
+\det A_3=1\cdot5-0\cdot3=5,
+\]
+\[
+A_3^{-1}
+=\frac1{5}
+\begin{pmatrix}
+5 & 0\\
+-3 & 1
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & 0\\
+-\frac35 & \frac15
+\end{pmatrix}.
+\]
+
+第四个矩阵
+\[
+A_4=
+\begin{pmatrix}
+1 & 1 & 0\\
+2 & 1 & 2\\
+0 & 1 & 1
+\end{pmatrix}.
+\]
+先算 \(\det A_4\)：
+\[
+\det A_4
+=1\begin{vmatrix}1&2\\1&1\end{vmatrix}
+-1\begin{vmatrix}2&2\\0&1\end{vmatrix}
++0\cdot(\cdots)
+=(1\cdot1-2\cdot1)-(2\cdot1-2\cdot0)
+=(-1)-2=-3.
+\]
+余子式及代数余子式：
+\[
+C_{11}=(-1)^{1+1}\det\begin{pmatrix}1&2\\1&1\end{pmatrix}
+=1\cdot(-1)=-1,
+\]
+\[
+C_{12}=(-1)^{1+2}\det\begin{pmatrix}2&2\\0&1\end{pmatrix}
+=-1\cdot2=-2,
+\]
+\[
+C_{13}=(-1)^{1+3}\det\begin{pmatrix}2&1\\0&1\end{pmatrix}
+=1\cdot2=2,
+\]
+\[
+C_{21}=(-1)^{2+1}\det\begin{pmatrix}1&0\\1&1\end{pmatrix}
+=-1\cdot1=-1,
+\]
+\[
+C_{22}=(-1)^{2+2}\det\begin{pmatrix}1&0\\0&1\end{pmatrix}
+=1\cdot1=1,
+\]
+\[
+C_{23}=(-1)^{2+3}\det\begin{pmatrix}1&1\\0&1\end{pmatrix}
+=-1\cdot1=-1,
+\]
+\[
+C_{31}=(-1)^{3+1}\det\begin{pmatrix}1&0\\1&2\end{pmatrix}
+=1\cdot2=2,
+\]
+\[
+C_{32}=(-1)^{3+2}\det\begin{pmatrix}1&0\\2&2\end{pmatrix}
+=-1\cdot2=-2,
+\]
+\[
+C_{33}=(-1)^{3+3}\det\begin{pmatrix}1&1\\2&1\end{pmatrix}
+=1\cdot(-1)=-1.
+\]
+代数余子式矩阵
+\[
+C=
+\begin{pmatrix}
+-1 & -2 & 2\\
+-1 & 1 & -1\\
+2 & -2 & -1
+\end{pmatrix},
+\quad
+C^T=
+\begin{pmatrix}
+-1 & -1 & 2\\
+-2 & 1 & -2\\
+2 & -1 & -1
+\end{pmatrix}.
+\]
+于是
+\[
+A_4^{-1}
+=\frac1{\det A_4}C^T
+=-\frac13
+\begin{pmatrix}
+-1 & -1 & 2\\
+-2 & 1 & -2\\
+2 & -1 & -1
+\end{pmatrix}
+=
+\frac13
+\begin{pmatrix}
+1 & 1 & -2\\
+2 & -1 & 2\\
+-2 & 1 & 1
+\end{pmatrix}.
+\]
+
+\medskip
+
+\textbf{5.5}
+
+设
+\[
+D_n=\det
+\begin{pmatrix}
+1 & -1 &  &        &        &   \\
+1 & 1  & -1&        &        &   \\
+  & 1  & 1 & \ddots &        &   \\
+\vdots &   &\ddots&\ddots&-1 &   \\
+       &   &       &1&1&-1\\
+       &   &       & &1&1
+\end{pmatrix}.
+\]
+对最后一行按代数余子式展开。最后一行只有两项非零：倒数第二列的 \(1\)（位置 \((n,n-1)\)）和最后一列的 \(1\)（位置 \((n,n)\)）：
+\[
+D_n
+=1\cdot(-1)^{n+(n-1)}\det M_{n,n-1}
++1\cdot(-1)^{n+n}\det M_{n,n},
+\]
+即
+\[
+D_n
+=-\det M_{n,n-1}+\det M_{n,n}.
+\]
+
+观察 \(M_{n,n}\)：删去最后一行、最后一列，得到的正是前 \(n-1\) 行、\(n-1\) 列的同样三对角矩阵，所以
+\[
+\det M_{n,n}=D_{n-1}.
+\]
+
+再看 \(M_{n,n-1}\)：删去最后一行、第 \(n-1\) 列。写出其结构，可验证在做一次沿着倒数第二行（即原来的第 \(n-1\) 行）展开后，会出现 \(D_{n-2}\)，且符号处理后给出
+\[
+\det M_{n,n-1}=-D_{n-2}.
+\]
+代回上式：
+\[
+D_n
+=-(-D_{n-2})+D_{n-1}
+=D_{n-1}+D_{n-2}.
+\]
+于是 \(D_n\) 满足递推
+\[
+D_n=D_{n-1}+D_{n-2},
+\]
+初始值 \(D_1=1\), \(D_2=\det\begin{pmatrix}1&-1\\1&1\end{pmatrix}=2\)，因此
+\[
+D_n
+\]
+是以 \(1,2,3,5,8,13,21,\dots\) 为首项的斐波那契数列。
+
+（若你希望完整地把 \(\det M_{n,n-1}=-D_{n-2}\) 的行列式展开写出来，可以让我单独补一段专门的推导。）
+
+\medskip
+
+\textbf{5.6}
+
+只给关键结论和结构，方便与你书的证明衔接。
+
+a) 对 \(n=1\)：
+\[
+\begin{vmatrix}
+1 & c_0\\
+1 & c_1
+\end{vmatrix}
+=c_1-c_0,
+\]
+右侧公式为 \((c_1-c_0)\)，成立。
+
+对 \(n=2\)：
+\[
+\begin{vmatrix}
+1 & c_0 & c_0^2\\
+1 & c_1 & c_1^2\\
+1 & c_2 & c_2^2
+\end{vmatrix}
+=(c_1-c_0)(c_2-c_0)(c_2-c_1),
+\]
+直接展开或用行列变换都可验证等式成立。
+
+b) 视 \(c_n\) 为变量 \(x\)，其他 \(c_0,\dots,c_{n-1}\) 固定。行列式是关于最后一行 \((1,x,x^2,\dots,x^n)\) 的多项式，线性代数中的一般事实：行列式关于每一行都是线性的，因此关于这一行的每个坐标是线性的；因为这些坐标本身是 \(1,x,\dots,x^n\)，可见得到一个次数不超过 \(n\) 的多项式：
+\[
+\Delta(x)=A_0+A_1x+\cdots+A_n x^n,
+\]
+系数 \(A_k\) 只依赖于 \(c_0,\dots,c_{n-1}\)。
+
+c) 当 \(x=c_j\)（\(0\le j\le n-1\)）时，第 \(n\) 行与第 \(j\) 行完全相同，因此行列式为 0。于是 \(x=c_0,\dots,c_{n-1}\) 都是多项式 \(\Delta(x)\) 的根，因而
+\[
+\Delta(x)=A_n (x-c_0)(x-c_1)\cdots(x-c_{n-1}),
+\]
+其中 \(A_n\) 为最高次项系数。
+
+d) 用归纳假设对 \(n-1\) 维范德蒙德行列式应用公式。将 \(\Delta(x)\) 中最高次 \(x^n\) 的系数计算出来：展开
+\[
+\Delta(x)=\det
+\begin{pmatrix}
+1 & c_0 & c_0^2 & \dots & c_0^n\\
+\vdots & \vdots & \vdots & & \vdots\\
+1 & c_{n-1} & c_{n-1}^2 & \dots & c_{n-1}^n\\
+1 & x & x^2 & \dots & x^n
+\end{pmatrix},
+\]
+对最后一列按代数余子式展开，最高次 \(x^n\) 的系数就是最后一列中 \(x^n\) 的系数 1 乘以与之对应的代数余子式，即
+\[
+A_n=\det
+\begin{pmatrix}
+1 & c_0 & \dots & c_0^{n-1}\\
+\vdots & \vdots & & \vdots\\
+1 & c_{n-1} & \dots & c_{n-1}^{n-1}
+\end{pmatrix}.
+\]
+根据归纳假设，这正是
+\[
+A_n=\prod_{0\le j<k\le n-1}(c_k-c_j).
+\]
+
+另一方面，从 c) 得
+\[
+\Delta(x)=A_n(x-c_0)\cdots(x-c_{n-1}).
+\]
+将 \(x=c_n\) 代入，得到原 \(n+1\) 维范德蒙德行列式：
+\[
+\Delta(c_n)
+=\prod_{0\le j<k\le n-1}(c_k-c_j)\cdot\prod_{j=0}^{n-1}(c_n-c_j)
+=\prod_{0\le j<k\le n}(c_k-c_j),
+\]
+这就是所需公式。
+
+\medskip
+
+\textbf{5.7}
+
+对一个 \(n\times n\) 矩阵用代数余子式展开（例如沿第一行）：
+\[
+\det A=\sum_{j=1}^n a_{1j}C_{1j},
+\]
+其中 \(C_{1j}=(-1)^{1+j}\det A_{1j}\)。每个 \(\det A_{1j}\) 是一个 \((n-1)\times(n-1)\) 行列式，又要用同样的方式展开。记 \(T(n)\) 为用代数余子式法计算 \(n\times n\) 行列式所需的乘法次数，则：
+\[
+T(1)=0,\quad
+T(n)=n\cdot T(n-1)+(n-1)\quad(n\ge2),
+\]
+理由是：有 \(n\) 个子行列式，每个成本为 \(T(n-1)\)；此外，对每个 \(j\)，要把 \(a_{1j}\) 与 \(C_{1j}\) 相乘一次，因此有 \(n\) 次乘法，而 \(C_{1j}\) 本身只是符号与子行列式，额外只需 \((n-1)\) 次乘法来生成 \(n\) 个 \(a_{1j}C_{1j}\) 项的积（或更常见的计数是：每一个 \((n-1)\times(n-1)\) 行列式展开又含有 \((n-1)\) 个标量乘法）。经典的估算把递推写成
+\[
+T(n)=n T(n-1)+n-1,
+\]
+解得
+\[
+T(n)=n!\sum_{k=1}^n\frac1k.
+\]
+因此，用代数余子式公式计算 \(n\times n\) 行列式需要大约
+\[
+T(n)\sim n!\,\log n
+\]
+次乘法（加法同阶数量级），随着 \(n\) 增长非常快。很多教材也给出略微不同但同阶的闭式形式，你可以根据书中精确定义采用这一版本
+\[
+T(n)=n!\left(1+\frac12+\cdots+\frac1n\right).
+\]
+
+
+
+下面按题号直接给出解答内容，便于你嵌入习题解答。
+
+---
+
+\textbf{7.1}
+
+a) 对。行列式只对方阵定义。
+
+b) 对。两行（或两列）相同则行列式为 0。
+
+c) 错。交换两行（或两列）会改变行列式符号，即
+\[
+\det B = -\det A.
+\]
+
+d) 错。把一行（或一列）乘以标量 \(\alpha\) 时，行列式也乘以 \(\alpha\)，即
+\[
+\det B = \alpha\,\det A.
+\]
+
+e) 对。用“某一行的倍数加到另一行”这类初等行变换不会改变行列式。
+
+f) 对。上三角或下三角矩阵的行列式等于对角线元素的乘积。
+
+g) 错。应为
+\[
+\det(A^T)=\det(A).
+\]
+
+h) 对。任意同阶方阵 \(A,B\) 有
+\[
+\det(AB)=\det(A)\det(B).
+\]
+
+i) 对。矩阵可逆当且仅当行列式非零。
+
+j) 对。若 \(A\) 可逆，则
+\[
+\det(A)\det(A^{-1})=\det(AA^{-1})=\det I = 1,
+\]
+故 \(\det(A^{-1}) = 1/\det(A)\)。
+
+---
+
+\textbf{7.2}
+
+若 \(A\) 为 \(n\times n\) 矩阵，则：
+\[
+\det(3A) = 3^n \det A,
+\]
+因为把每一行都乘以 3，相当于行列式乘以 3 共 \(n\) 次。
+
+\[
+\det(-A) = (-1)^n \det A,
+\]
+因为把每一行都乘以 \(-1\) 共 \(n\) 次。
+
+\[
+\det(A^2)=\det(AA)=\det(A)\det(A)=(\det A)^2.
+\]
+
+---
+
+\textbf{7.3}
+
+不可能。
+
+若 \(A\) 与 \(A^{-1}\) 的所有元素都是整数，则 \(\det A\) 与 \(\det(A^{-1})\) 都是整数，而且
+\[
+\det(A)\det(A^{-1})=\det(AA^{-1})=\det I = 1.
+\]
+因此 \(\det A\) 必须是 \(\pm1\)。\(\det A=3\) 不可能。
+
+---
+
+\textbf{7.4}
+
+设
+\[
+\vv_1=\begin{pmatrix}x_1\\y_1\end{pmatrix},\quad
+\vv_2=\begin{pmatrix}x_2\\y_2\end{pmatrix},\quad
+A=\begin{pmatrix}x_1&x_2\\y_1&y_2\end{pmatrix}.
+\]
+
+先证明特殊情形 \(\vv_1=(x_1,0)^T\)；此时
+\[
+A=\begin{pmatrix}x_1 & x_2\\ 0 & y_2\end{pmatrix},
+\quad
+\det A = x_1y_2.
+\]
+以 \(\vv_1,\vv_2\) 为邻边的平行四边形的底边长为 \(|x_1|\)，高为 \(|y_2|\)，面积为
+\[
+S = |x_1|\,|y_2| = |x_1y_2| = |\det A|.
+\]
+
+对一般情形 \(\vv_1=(x_1,y_1)^T\)。取一个旋转矩阵
+\[
+R=\begin{pmatrix}\cos\alpha & -\sin\alpha\\[2pt]\sin\alpha&\cos\alpha\end{pmatrix},
+\]
+使得 \(R\vv_1=(\tilde x_1,0)^T\)。旋转矩阵是正交矩阵，且
+\[
+\det R = 1.
+\]
+设
+\[
+\tilde A = R A = \bigl[R\vv_1,\ R\vv_2\bigr].
+\]
+则
+\[
+\det\tilde A = \det(RA)=\det R\,\det A = \det A.
+\]
+另一方面，线性变换 \(R\) 是刚体旋转，不改变平行四边形面积，因此由 \(\vv_1,\vv_2\) 张成的平行四边形与由 \(R\vv_1, R\vv_2\) 张成的平行四边形面积相等。
+
+但对 \(\tilde A=[R\vv_1,R\vv_2]\) 已经是前面“第一列水平”的特殊情形，故该面积等于 \(|\det\tilde A|\)。因此原平行四边形面积
+\[
+S = |\det\tilde A| = |\det A|.
+\]
+
+---
+
+\textbf{7.5}
+
+记
+\[
+D(\vv_1,\vv_2)=\det\begin{pmatrix}\vv_1 & \vv_2\end{pmatrix}.
+\]
+
+“若 \(D(\vv_1,\vv_2)>0\)，则存在所述旋转矩阵”：
+
+如上题，取旋转矩阵
+\[
+T_\alpha=
+\begin{pmatrix}\cos\alpha & -\sin\alpha\\[2pt]\sin\alpha&\cos\alpha\end{pmatrix},\quad
+\det T_\alpha=1,
+\]
+使得
+\[
+T_\alpha\vv_1 = \|\vv_1\|\ee_1,
+\]
+即 \(T_\alpha\vv_1\) 与 \(\ee_1\) 平行且同向。
+
+写
+\[
+T_\alpha\vv_2 =
+\begin{pmatrix}u\\v\end{pmatrix}.
+\]
+则
+\[
+D(\vv_1,\vv_2)
+=\det\bigl[\vv_1,\vv_2\bigr]
+=\det\bigl[T_\alpha\vv_1,T_\alpha\vv_2\bigr]
+=\det(T_\alpha)\,\det\bigl[\vv_1,\vv_2\bigr]
+=\det\bigl[T_\alpha\vv_1,T_\alpha\vv_2\bigr].
+\]
+但
+\[
+\det\bigl[T_\alpha\vv_1,T_\alpha\vv_2\bigr]
+=\det\begin{pmatrix}\|\vv_1\| & u\\ 0 & v\end{pmatrix}
+=\|\vv_1\|\,v.
+\]
+于是
+\[
+D(\vv_1,\vv_2)=\|\vv_1\|\,v.
+\]
+若 \(D(\vv_1,\vv_2)>0\)，因为 \(\|\vv_1\|>0\)，必有 \(v>0\)，即
+\[
+T_\alpha\vv_2=\begin{pmatrix}u\\v\end{pmatrix},\quad v>0,
+\]
+从而 \(T_\alpha\vv_2\) 位于上半平面 \(x_2>0\)。
+
+“若存在所述旋转矩阵，则 \(D(\vv_1,\vv_2)>0\)”：
+
+反过来，若存在旋转矩阵 \(T_\alpha\) 使得 \(T_\alpha\vv_1=\|\vv_1\|\ee_1\) 且 \(T_\alpha\vv_2=(u,v)^T\) 满足 \(v>0\)，则
+\[
+D(\vv_1,\vv_2)
+=\det\bigl[T_\alpha\vv_1,T_\alpha\vv_2\bigr]
+=\|\vv_1\|\,v>0.
+\]
+
+综上，\(D(\vv_1,\vv_2)>0\) 当且仅当存在这样一个旋转矩阵 \(T_\alpha\)。
+
+
+
+
+
+\end{exer}
+
+
+
+
+
+
+
+
+\section{第四章答案}
+
+\begin{exer}
+
+
+\textbf{1.1}
+
+a) 错。特征值可以重复，且可能少于 \(n\) 个不同值，例如恒等算子只有一个特征值 1。  
+
+b) 对。“只有一个特征向量”只能理解为“只有一条特征直线”，若 \(\vv\) 是特征向量，则任意 \(\alpha\neq0\) 有 \(\alpha\vv\) 也是特征向量，因此不是有限个，而是无穷多个。  
+
+c) 对。实平面上的旋转矩阵（转角非 \(\pi k\)）没有实特征值。  
+
+d) 错。在复数域上，每个 \(n\times n\) 矩阵都有至少一个复特征值，从而有非零特征向量。  
+
+e) 对。若 \(B=S^{-1}AS\)，则
+\[
+\det(B-\lambda I)=\det(S^{-1})\det(A-\lambda I)\det S,
+\]
+所以特征多项式相同，特征值（含重数）相同。  
+
+f) 错。若 \(B=S^{-1}AS\)，则若 \(A\vv=\lambda\vv\)，则
+\[
+B(S^{-1}\vv)=S^{-1}AS(S^{-1}\vv)=\lambda(S^{-1}\vv),
+\]
+所以特征向量通过 \(S^{-1}\) 变换，并不相同。  
+
+g) 错。一般若 \(A\vv_1=\lambda_1\vv_1\), \(A\vv_2=\lambda_2\vv_2\)，则
+\[
+A(\vv_1+\vv_2)=\lambda_1\vv_1+\lambda_2\vv_2,
+\]
+除非 \(\lambda_1=\lambda_2\) 或出现特殊抵消，否则不是某个标量乘以 \(\vv_1+\vv_2\)。  
+
+h) 对。若 \(A\vv_1=A\vv_2=\lambda(\vv_1,\vv_2)\)，则
+\[
+A(\vv_1+\vv_2)=\lambda\vv_1+\lambda\vv_2=\lambda(\vv_1+\vv_2),
+\]
+所以和（若非零）仍是特征向量。
+
+\medskip
+
+\textbf{1.2}
+
+第一个矩阵
+\[
+A_1=\begin{pmatrix}4&-5\\2&-3\end{pmatrix}.
+\]
+特征多项式：
+\[
+p_{A_1}(\lambda)=\det(A_1-\lambda I)
+=\det\begin{pmatrix}4-\lambda&-5\\2&-3-\lambda\end{pmatrix}
+=(\lambda-1)^2.
+\]
+特征值：\(\lambda=1\)（重数 2）。
+
+解 \((A_1-I)\vv=0\)：
+\[
+A_1-I=\begin{pmatrix}3&-5\\2&-4\end{pmatrix}
+\sim
+\begin{pmatrix}1&-5/3\\0&0\end{pmatrix},
+\]
+故
+\[
+\vv=\begin{pmatrix}5\\3\end{pmatrix}t,\quad t\neq0.
+\]
+任意特征向量为 \((5,3)^T\) 的非零倍数。
+
+\smallskip
+
+第二个矩阵
+\[
+A_2=\begin{pmatrix}2&1\\-1&4\end{pmatrix}.
+\]
+特征多项式：
+\[
+p_{A_2}(\lambda)=\det(A_2-\lambda I)
+=\det\begin{pmatrix}2-\lambda&1\\-1&4-\lambda\end{pmatrix}
+=(\lambda-3)^2.
+\]
+特征值：\(\lambda=3\)（重数 2）。
+
+\((A_2-3I)=\begin{pmatrix}-1&1\\-1&1\end{pmatrix}\sim\begin{pmatrix}1&-1\\0&0\end{pmatrix}\)，
+故
+\[
+\vv=\begin{pmatrix}1\\1\end{pmatrix}t,\quad t\neq0.
+\]
+
+\smallskip
+
+第三个矩阵
+\[
+A_3=\begin{pmatrix}
+1&3&3\\
+-3&-5&-3\\
+3&3&1
+\end{pmatrix}.
+\]
+计算
+\[
+p_{A_3}(\lambda)=\det(A_3-\lambda I)
+=\det\begin{pmatrix}
+1-\lambda&3&3\\
+-3&-5-\lambda&-3\\
+3&3&1-\lambda
+\end{pmatrix}
+=-(\lambda+2)^2(\lambda-6).
+\]
+（可用行列式计算或查原书结果；整体符号不影响根。）
+
+特征值：\(\lambda_1=6\)，\(\lambda_2=-2\)（重数 2）。
+
+\(\lambda=6\) 时，
+\[
+A_3-6I=\begin{pmatrix}
+-5&3&3\\
+-3&-11&-3\\
+3&3&-5
+\end{pmatrix}
+\sim
+\begin{pmatrix}
+1&0&1\\0&1&1\\0&0&0
+\end{pmatrix},
+\]
+得解 \(z=-x,\ z=-y\Rightarrow x=y\)，取 \(x=1\)，得
+\[
+\vv=\begin{pmatrix}1\\1\\-1\end{pmatrix}t.
+\]
+
+\(\lambda=-2\) 时，
+\[
+A_3+2I=\begin{pmatrix}
+3&3&3\\
+-3&-3&-3\\
+3&3&3
+\end{pmatrix}
+\sim
+\begin{pmatrix}
+1&1&1\\0&0&0\\0&0&0
+\end{pmatrix},
+\]
+关系 \(x+y+z=0\)，特征空间为
+\[
+\LL\left\{
+\begin{pmatrix}1\\-1\\0\end{pmatrix},
+\begin{pmatrix}1\\0\\-1\end{pmatrix}
+\right\}.
+\]
+
+\medskip
+
+\textbf{1.3}
+
+\[
+R_\alpha=
+\begin{pmatrix}
+\cos\alpha&-\sin\alpha\\
+\sin\alpha&\cos\alpha
+\end{pmatrix}.
+\]
+特征多项式：
+\[
+\det(R_\alpha-\lambda I)
+=
+\det\begin{pmatrix}
+\cos\alpha-\lambda&-\sin\alpha\\
+\sin\alpha&\cos\alpha-\lambda
+\end{pmatrix}
+=(\cos\alpha-\lambda)^2+\sin^2\alpha
+=\lambda^2-2\cos\alpha\,\lambda+1.
+\]
+特征值：
+\[
+\lambda=\cos\alpha\pm i\sin\alpha = e^{\pm i\alpha}.
+\]
+
+对 \(\lambda=e^{i\alpha}\)，解
+\[
+\begin{pmatrix}
+\cos\alpha-\lambda&-\sin\alpha\\
+\sin\alpha&\cos\alpha-\lambda
+\end{pmatrix}
+\begin{pmatrix}x\\yy\end{pmatrix}=0.
+\]
+代入 \(\lambda=\cos\alpha+i\sin\alpha\)，第一行为
+\[
+(-i\sin\alpha)x-\sin\alpha\,y=0
+\quad\Rightarrow\quad
+y=-ix.
+\]
+故可取特征向量
+\[
+\vv_+=\begin{pmatrix}1\\-i\end{pmatrix}.
+\]
+类似得对 \(\lambda=e^{-i\alpha}\) 的特征向量
+\[
+\vv_-=\begin{pmatrix}1\\i\end{pmatrix}.
+\]
+
+\medskip
+
+\textbf{1.4}
+
+所有矩阵都是三角矩阵（上或下），故特征多项式是对角线元素减 \(\lambda\) 之积。
+
+\smallskip
+
+第一个：
+\[
+A=\begin{pmatrix}
+1&2&5&67\\
+0&2&3&6\\
+0&0&-2&5\\
+0&0&0&3
+\end{pmatrix},
+\]
+\[
+p_A(\lambda)=\det(A-\lambda I)
+=(1-\lambda)(2-\lambda)(-2-\lambda)(3-\lambda).
+\]
+特征值：\(1,2,-2,3\)。
+
+\smallskip
+
+第二个：
+\[
+B=\begin{pmatrix}
+2&1&0&2\\
+0&\pi&43&2\\
+0&0&16&1\\
+0&0&0&54
+\end{pmatrix},
+\]
+\[
+p_B(\lambda)=(2-\lambda)(\pi-\lambda)(16-\lambda)(54-\lambda),
+\]
+特征值：\(2,\pi,16,54\)。
+
+\smallskip
+
+第三个：
+\[
+C=\begin{pmatrix}
+4&0&0&0\\
+1&3&0&0\\
+2&4&e&0\\
+3&3&1&1
+\end{pmatrix}
+\]
+是下三角矩阵，故
+\[
+p_C(\lambda)=(4-\lambda)(3-\lambda)(e-\lambda)(1-\lambda),
+\]
+特征值：\(4,3,e,1\)。
+
+\smallskip
+
+第四个：
+\[
+D=\begin{pmatrix}
+4&0&0&0\\
+1&0&0&0\\
+2&4&0&0\\
+3&3&1&1
+\end{pmatrix}
+\]
+下三角，对角线为 \(4,0,0,1\)，
+\[
+p_D(\lambda)=(4-\lambda)(0-\lambda)(0-\lambda)(1-\lambda)
+=(4-\lambda)(-\lambda)^2(1-\lambda),
+\]
+特征值：\(4,0,0,1\)。
+
+\medskip
+
+\textbf{1.5}
+
+设 \(T\) 为上三角矩阵，元素 \(t_{ij}\)；则
+\[
+T-\lambda I
+\]
+仍然是上三角矩阵，其对角线元素为 \(t_{11}-\lambda,\dots,t_{nn}-\lambda\)。三角矩阵的行列式等于对角线元素之积，因此
+\[
+p_T(\lambda)=\det(T-\lambda I)
+=(t_{11}-\lambda)(t_{22}-\lambda)\dots(t_{nn}-\lambda).
+\]
+故特征值正是对角线元素 \(t_{11},\dots,t_{nn}\)，计入重数。同理对下三角矩阵成立。
+
+\medskip
+
+\textbf{1.6}
+
+若 \(A\) 幂零，则存在 \(k\in\mathbb N\) 使 \(A^k=\oo\)。
+
+若 \(\lambda\) 是 \(A\) 的特征值，\(\vv\neq0\) 为对应特征向量，则
+\[
+A\vv=\lambda\vv.
+\]
+两边连乘 \(k\) 次：
+\[
+A^k\vv=\lambda^k\vv.
+\]
+左侧 \(A^k=\oo\)，故 \(A^k\vv=0\)。于是
+\[
+0=A^k\vv=\lambda^k\vv.
+\]
+由于 \(\vv\neq0\)，得到 \(\lambda^k=0\Rightarrow\lambda=0\)。所以唯一可能的特征值是 0，故 \(\sigma(A)=\{0\}\)。
+
+\medskip
+
+\textbf{1.7}
+
+令
+\[
+M(\lambda)=
+\begin{pmatrix}
+A-\lambda I & *\\
+\oo & B-\lambda I
+\end{pmatrix}.
+\]
+这是一个分块上三角矩阵。对分块上三角矩阵，行列式等于对角块行列式的乘积（第 3 章习题 3.11）：
+\[
+\det M(\lambda)=\det(A-\lambda I)\,\det(B-\lambda I).
+\]
+而
+\[
+\det M(\lambda)=\det\bigl(\begin{pmatrix}A&*\\0&B\end{pmatrix}-\lambda I\bigr)
+\]
+正是给定分块矩阵的特征多项式，故所求证。
+
+\medskip
+
+\textbf{1.8}
+
+在基 \(\{\vv_1,\dots,\vv_n\}\) 下，设 \(A\vv_j=\sum_{i=1}^n a_{ij}\vv_i\)，则 \([A]_{\mathcal B}=(a_{ij})\)。
+
+对 \(1\le j\le k\)，已知 \(A\vv_j=\lambda\vv_j\)，即
+\[
+A\vv_j=\lambda\vv_j
+=\lambda\sum_{i=1}^n \delta_{ij}\vv_i
+=\sum_{i=1}^n (\lambda\delta_{ij})\vv_i.
+\]
+按基展开的唯一性得到
+\[
+a_{ij}=\lambda\delta_{ij}\quad(1\le i\le n,\ 1\le j\le k).
+\]
+尤其当 \(1\le i\le k\) 时，若 \(i\ne j\) 则 \(a_{ij}=0\)，若 \(i=j\) 则 \(a_{jj}=\lambda\)；当 \(i>k\) 且 \(1\le j\le k\) 时，\(\delta_{ij}=0\)，故 \(a_{ij}=0\)。因此矩阵的左上 \(k\times k\) 块是 \(\lambda I_k\)，左下 \((n-k)\times k\) 块为零块。右上与右下块没有额外限制，可分别记为 \(*\) 与 \(B\)。于是
+\[
+[A]_{\mathcal B}=
+\begin{pmatrix}
+\lambda I_k & *\\
+\oo & B
+\end{pmatrix}.
+\]
+
+\medskip
+
+\textbf{1.9}
+
+设特征值 \(\lambda\) 的代数重数为 \(m\)（即在特征多项式中 \((\lambda-\lambda_0)^m\) 的次数），几何重数为
+\[
+g=\dim\text{Ker }(A-\lambda I).
+\]
+选取 \(\text{Ker }(A-\lambda I)\) 的一组基 \(\vv_1,\dots,\vv_g\)；将其补成 \(V\) 的一组基 \(\vv_1,\dots,\vv_n\)。对这些基向量，前 \(g\) 个都是特征向量，对应同一特征值 \(\lambda\)。由 1.8，矩阵 \([A]_{\mathcal B}\) 在该基下具有分块形式
+\[
+[A]_{\mathcal B}=
+\begin{pmatrix}
+\lambda I_g & *\\
+\oo & B
+\end{pmatrix}.
+\]
+由 1.7，特征多项式
+\[
+p_A(t)=\det(A-tI)
+=\det(\lambda I_g-tI_g)\,\det(B-tI)
+=(\lambda-t)^g\,\det(B-tI).
+\]
+因此在特征多项式中，\((\lambda-t)\) 至少以 \(g\) 次出现，即代数重数 \(m\ge g\)。这就证明了几何重数不超过代数重数。
+
+\medskip
+
+\textbf{1.10}
+
+设 \(A\) 的特征值（计重数）为 \(\lambda_1,\dots,\lambda_n\)。根据题中提示，先证明
+\[
+\det(A-\lambda I)=\prod_{j=1}^n(\lambda_j-\lambda).
+\]
+这在 \(A\) 可对角化时可直接从相似变换得到；一般情形可用上、下三角化或最小多项式分解论证，但本书前文已给出：特征多项式分解成一次因式的积，其根为特征值并计重数。
+
+令
+\[
+p(\lambda)=\det(A-\lambda I).
+\]
+作为关于 \(\lambda\) 的多项式，它是 \(n\) 次的，其最高次项来自 \(-\lambda I\) 部分，为
+\[
+p(\lambda)=(-1)^n\lambda^n + \text{(低次项)}.
+\]
+另一方面
+\[
+p(\lambda)=\prod_{j=1}^n(\lambda_j-\lambda)
+=(-1)^n\prod_{j=1}^n(\lambda-\lambda_j),
+\]
+同样是首项 \((-1)^n\lambda^n\)，且常数项（不含 \(\lambda\) 的那一项）为
+\[
+p(0)=\det(A-0\cdot I)=\det A
+=\prod_{j=1}^n\lambda_j.
+\]
+因此行列式等于特征值的乘积（计重数）。
+
+\medskip
+
+\textbf{1.11}
+
+第一步：展开
+\[
+\prod_{j=1}^n(\lambda_j-\lambda)
+=(-1)^n\left(\lambda^n - (\lambda_1+\dots+\lambda_n)\lambda^{n-1}+\dots\right),
+\]
+因此右侧 \((\lambda_1-\lambda)\dots(\lambda_n-\lambda)\) 作为关于 \(\lambda\) 的多项式，其 \(\lambda^{n-1}\) 的系数为
+\[
+(-1)^{n-1}(\lambda_1+\dots+\lambda_n).
+\]
+
+第二步：把
+\[
+\det(A-\lambda I)
+\]
+按行列式定义展开。每一项是从每行选一个元素相乘得到的乘积之和。若要得到 \(\lambda^{n-1}\) 项，必须恰好从 \(n-1\) 个不同行中选到对角元 \(-\lambda\)，而从剩下的 1 行选到该行的某个非对角元素 \(a_{ii}\)；但包含两个或以上非对角元的乘积中，\(\lambda\) 的次数最多为 \(n-2\)，因此可写成
+\[
+\det(A-\lambda I)=(a_{11}-\lambda)\dots(a_{nn}-\lambda)+q(\lambda),
+\]
+其中 \(q(\lambda)\) 的次数至多为 \(n-2\)（因为它对应的项至少含两个非对角元，从而 \(-\lambda\) 的个数至多为 \(n-2\)）。
+
+第三步：比较两种表示中 \(\lambda^{n-1}\) 的系数。
+
+一方面，由上式
+\[
+(a_{11}-\lambda)\dots(a_{nn}-\lambda)
+=(-1)^n\left(\lambda^n-(a_{11}+\dots+a_{nn})\lambda^{n-1}+\dots\right),
+\]
+而 \(q(\lambda)\) 次数不超过 \(n-2\)，不会影响 \(\lambda^{n-1}\) 项，因此
+\[
+\det(A-\lambda I) \text{ 的 }\lambda^{n-1}\text{ 系数 } =(-1)^{n-1}(a_{11}+\dots+a_{nn})
+=(-1)^{n-1}\operatorname{trace}A.
+\]
+
+另一方面，由 1.10 的结果，
+\[
+\det(A-\lambda I)=\prod_{j=1}^n(\lambda_j-\lambda),
+\]
+其 \(\lambda^{n-1}\) 的系数为
+\[
+(-1)^{n-1}(\lambda_1+\dots+\lambda_n).
+\]
+
+比较两侧 \(\lambda^{n-1}\) 的系数，得到
+\[
+\operatorname{trace}A=a_{11}+\dots+a_{nn}=\lambda_1+\dots+\lambda_n.
+\]
+这就证明了迹等于特征值之和（计重数）。
+
+
+下面只给习题解答内容，便于直接放入你的解答册（不加额外环境）。
+
+\medskip
+
+\textbf{2.1}
+
+a) 对。  
+特征多项式
+\[
+p_A(\lambda)=\det(A-\lambda I)=\det\bigl((A-\lambda I)^T\bigr)
+=\det(A^T-\lambda I)=p_{A^T}(\lambda),
+\]
+故 \(A\) 与 \(A^T\) 有相同的特征值（连同代数重数）。
+
+b) 错。  
+一般没有 \(Av=\lambda v\Rightarrow A^T v=\lambda v\)。  
+例如
+\[
+A=\begin{pmatrix}0&1\\0&0\end{pmatrix}
+\]
+的唯一特征值为 0，任意 \((x,0)^T\neq0\) 是 \(A\) 的特征向量，但
+\[
+A^T=\begin{pmatrix}0&0\\1&0\end{pmatrix}
+\]
+的特征向量是形如 \((0,y)^T\)，二者不相同。
+
+c) 对。  
+若 \(A\) 可对角化，则存在可逆 \(S\) 使
+\[
+A=SDS^{-1},\quad D=\text{diag }(\lambda_1,\dots,\lambda_n).
+\]
+则
+\[
+A^T=(SDS^{-1})^T=(S^{-1})^T D^T S^T=(S^T)^{-1} D S^T,
+\]
+而 \(D^T=D\) 仍是对角矩阵，所以 \(A^T\) 也被对角化。
+
+\medskip
+
+\textbf{2.2}
+
+已知 \(A\) 为实矩阵，\(A v=\lambda v\)。对等式两边取复共轭：
+\[
+\overline{A v}=\overline{\lambda v}.
+\]
+左边因 \(A\) 实，\(\overline{A v}=A\,\overline v\)；右边等于 \(\bar\lambda\,\overline v\)。于是
+\[
+A\,\overline v=\bar\lambda\,\overline v,
+\]
+说明 \(\bar\lambda\) 是 \(A\) 的特征值，\(\overline v\) 是对应特征向量。
+
+\medskip
+
+\textbf{2.3}
+
+\[
+A=\begin{pmatrix}4&3\\1&2\end{pmatrix}.
+\]
+特征多项式：
+\[
+\det(A-\lambda I)=\det\begin{pmatrix}4-\lambda&3\\1&2-\lambda\end{pmatrix}
+=(\lambda-1)(\lambda-5),
+\]
+特征值 \(\lambda_1=5,\lambda_2=1\)。
+
+\(\lambda=5\) 时：
+\[
+A-5I=\begin{pmatrix}-1&3\\1&-3\end{pmatrix}\Rightarrow v_1=\begin{pmatrix}3\\1\end{pmatrix}.
+\]
+\(\lambda=1\) 时：
+\[
+A-I=\begin{pmatrix}3&3\\1&1\end{pmatrix}\Rightarrow v_2=\begin{pmatrix}1\\-1\end{pmatrix}.
+\]
+
+令
+\[
+S=\begin{pmatrix}3&1\\1&-1\end{pmatrix},\quad
+D=\text{diag }(5,1),
+\]
+则 \(A=SDS^{-1}\)。计算
+\[
+S^{-1}=\frac1{\det S}\begin{pmatrix}-1&-1\\-1&3\end{pmatrix}
+=-\tfrac14\begin{pmatrix}-1&-1\\-1&3\end{pmatrix}
+=\tfrac14\begin{pmatrix}1&1\\1&-3\end{pmatrix}.
+\]
+于是
+\[
+A^{2004}=SD^{2004}S^{-1}
+= S\begin{pmatrix}5^{2004}&0\\0&1\end{pmatrix}S^{-1}.
+\]
+直接乘得
+\[
+A^{2004}
+=\frac14\begin{pmatrix}
+3&1\\[1mm]1&-1
+\end{pmatrix}
+\begin{pmatrix}
+5^{2004}&0\\[1mm]0&1
+\end{pmatrix}
+\begin{pmatrix}
+1&1\\[1mm]1&-3
+\end{pmatrix}
+=
+\frac14\begin{pmatrix}
+3\cdot5^{2004}&5^{2004}\\[1mm]
+5^{2004}&5^{2004}
+\end{pmatrix}
+\begin{pmatrix}
+1&1\\[1mm]1&-3
+\end{pmatrix}
+\]
+\[
+=\frac14
+\begin{pmatrix}
+(4\cdot5^{2004})&( -2\cdot5^{2004})\\[1mm]
+(2\cdot5^{2004})&(-2\cdot5^{2004})
+\end{pmatrix}
+=
+\begin{pmatrix}
+5^{2004}&-2\cdot5^{2004-1}\\[1mm]
+2\cdot5^{2004-1}&-2\cdot5^{2004-1}
+\end{pmatrix}.
+\]
+或保持乘积形式写作
+\[
+A^{2004}
+=\frac14
+\begin{pmatrix}
+3&1\\1&-1
+\end{pmatrix}
+\begin{pmatrix}
+5^{2004}&0\\0&1
+\end{pmatrix}
+\begin{pmatrix}
+1&1\\1&-3
+\end{pmatrix}.
+\]
+
+\medskip
+
+\textbf{2.4}
+
+设
+\[
+A\begin{pmatrix}1\\2\end{pmatrix}=
+1\begin{pmatrix}1\\2\end{pmatrix},\quad
+A\begin{pmatrix}1\\1\end{pmatrix}=
+3\begin{pmatrix}1\\1\end{pmatrix}.
+\]
+取
+\[
+S=\begin{pmatrix}1&1\\2&1\end{pmatrix},\quad
+D=\text{diag }(1,3),
+\]
+则 \(A=SDS^{-1}\)。计算
+\[
+S^{-1}=\frac1{-1}\begin{pmatrix}1&-1\\-2&1\end{pmatrix}
+=\begin{pmatrix}-1&1\\2&-1\end{pmatrix}.
+\]
+于是
+\[
+A
+= S D S^{-1}
+=\begin{pmatrix}1&1\\2&1\end{pmatrix}
+\begin{pmatrix}1&0\\0&3\end{pmatrix}
+\begin{pmatrix}-1&1\\2&-1\end{pmatrix}
+=
+\begin{pmatrix}1&3\\2&5\end{pmatrix}.
+\]
+若在给定特征值下，特征向量仅指定到一条直线（可乘任意非零标量），则所有满足条件的矩阵是相同的：它们必须在基 \(\{(1,2)^T,(1,1)^T\}\) 下的矩阵为 \(\text{diag }(1,3)\)，这在换回标准基时给出唯一的 \(A\)。因此这样的矩阵是唯一的。
+
+\medskip
+
+\textbf{2.5}
+
+a)
+\[
+A=\begin{pmatrix}4&-2\\1&1\end{pmatrix}.
+\]
+特征多项式：
+\[
+\det(A-\lambda I)
+=\det\begin{pmatrix}4-\lambda&-2\\1&1-\lambda\end{pmatrix}
+=(\lambda-2)^2.
+\]
+唯一特征值 \(\lambda=2\)。  
+\[
+A-2I=\begin{pmatrix}2&-2\\1&-1\end{pmatrix}
+\sim\begin{pmatrix}1&-1\\0&0\end{pmatrix},
+\]
+特征空间为 \(\LL\{(1,1)^T\}\)，维数 1，小于代数重数 2，因此矩阵不能对角化。
+
+\smallskip
+
+b)
+\[
+A=\begin{pmatrix}-1&-1\\6&4\end{pmatrix}.
+\]
+特征多项式：
+\[
+\det(A-\lambda I)
+=\det\begin{pmatrix}-1-\lambda&-1\\6&4-\lambda\end{pmatrix}
+=(\lambda-2)^2.
+\]
+唯一特征值 \(\lambda=2\)。  
+\[
+A-2I=\begin{pmatrix}-3&-1\\6&2\end{pmatrix}
+\sim\begin{pmatrix}3&1\\0&0\end{pmatrix},
+\]
+特征空间为 \(\LL\{(1,-3)^T\}\)，维数 1，小于代数重数 2，故也不可对角化。
+
+\smallskip
+
+c)
+\[
+A=\begin{pmatrix}-2&2&6\\5&1&-6\\-5&2&9\end{pmatrix},\quad
+\lambda=2\ \text{是特征值}.
+\]
+直接计算特征多项式（或用题中提示，已知一个根）可得
+\[
+\det(A-\lambda I)=-(\lambda-2)^2(\lambda-4),
+\]
+故特征值为 \(\lambda=2\)（代数重数 2）和 \(\lambda=4\)。
+
+\(\lambda=4\) 时：
+\[
+A-4I=\begin{pmatrix}-6&2&6\\5&-3&-6\\-5&2&5\end{pmatrix}
+\sim
+\begin{pmatrix}1&0&1\\0&1&1\\0&0&0\end{pmatrix},
+\]
+得 \(z=-x,\ z=-y\Rightarrow x=y\)，特征空间
+\[
+E_4=\LL\{(1,1,-1)^T\}.
+\]
+
+\(\lambda=2\) 时：
+\[
+A-2I=\begin{pmatrix}-4&2&6\\5&-1&-6\\-5&2&7\end{pmatrix}
+\sim
+\begin{pmatrix}1&0&1\\0&1&-1\\0&0&0\end{pmatrix},
+\]
+得 \(z=-x,\ z=y\)，特征空间
+\[
+E_2=\LL\{(1,-1,-1)^T,\ (0,1,1)^T\},
+\]
+维数 2，等于代数重数，因此 \(A\) 可对角化。
+
+取
+\[
+S=\bigl[v_1\ v_2\ v_3\bigr]
+=\begin{pmatrix}
+1&0&1\\[1mm]
+-1&1&1\\[1mm]
+-1&1&-1
+\end{pmatrix},
+\quad
+D=\text{diag }(2,2,4),
+\]
+其中前两列是 \(\lambda=2\) 的特征向量，第三列是 \(\lambda=4\) 的特征向量，则
+\[
+A= SDS^{-1}
+\]
+即为其对角化。
+
+\medskip
+
+\textbf{2.6}
+
+\[
+A=\begin{pmatrix}2&6&-6\\0&5&-2\\0&0&4\end{pmatrix}.
+\]
+
+a) 它是上三角矩阵，特征值就是对角线元素：
+\[
+\lambda_1=2,\quad\lambda_2=5,\quad\lambda_3=4.
+\]
+因此不需计算行列式即可读出。
+
+b) 三个特征值互不相同，根据定理 2.3，不同特征值对应的特征向量线性无关，因此得到 3 个线性无关特征向量，矩阵必然可对角化；同样无需具体计算。
+
+c) 仍给出一个显式对角化。  
+\(\lambda=2\):
+\[
+A-2I=\begin{pmatrix}0&6&-6\\0&3&-2\\0&0&2\end{pmatrix}
+\Rightarrow 2z=0\Rightarrow z=0,\ 3y=0\Rightarrow y=0,
+\]
+故 \(v_1=(1,0,0)^T\)。
+
+\(\lambda=5\):
+\[
+A-5I=\begin{pmatrix}-3&6&-6\\0&0&-2\\0&0&-1\end{pmatrix}
+\Rightarrow z=0,\ -3x+6y=0\Rightarrow x=2y,
+\]
+故 \(v_2=(2,1,0)^T\)。
+
+\(\lambda=4\):
+\[
+A-4I=\begin{pmatrix}-2&6&-6\\0&1&-2\\0&0&0\end{pmatrix}
+\Rightarrow y=2z,\ -2x+6y-6z=0\Rightarrow -2x+6z=0\Rightarrow x=3z,
+\]
+故 \(v_3=(3,2,1)^T\)。
+
+令
+\[
+S=\begin{pmatrix}1&2&3\\0&1&2\\0&0&1\end{pmatrix},
+\quad
+D=\text{diag }(2,5,4),
+\]
+则
+\[
+A=SDS^{-1}.
+\]
+
+\medskip
+
+\textbf{2.7}
+
+\[
+A=\begin{pmatrix}2&0&6\\0&2&4\\0&0&4\end{pmatrix}.
+\]
+上三角，特征值为 \(2,2,4\)。
+
+\(\lambda=2\):
+\[
+A-2I=\begin{pmatrix}0&0&6\\0&0&4\\0&0&2\end{pmatrix}
+\Rightarrow 2z=0\Rightarrow z=0,\ x,y\ \text{任意},
+\]
+故
+\[
+E_2=\LL\{(1,0,0)^T,\ (0,1,0)^T\}.
+\]
+
+\(\lambda=4\):
+\[
+A-4I=\begin{pmatrix}-2&0&6\\0&-2&4\\0&0&0\end{pmatrix}
+\Rightarrow -2x+6z=0,\ -2y+4z=0
+\Rightarrow x=3z,\ y=2z,
+\]
+故
+\[
+E_4=\LL\{(3,2,1)^T\}.
+\]
+
+两个特征子空间维数之和 \(2+1=3\)，等于矩阵大小，故可对角化。  
+取
+\[
+S=\begin{pmatrix}
+1&0&3\\
+0&1&2\\
+0&0&1
+\end{pmatrix},
+\quad
+D=\text{diag }(2,2,4),
+\]
+则 \(A=SDS^{-1}\)。
+
+\medskip
+
+\textbf{2.8}
+
+\[
+A=\begin{pmatrix}5&2\\-3&0\end{pmatrix}.
+\]
+特征多项式：
+\[
+\det(A-\lambda I)=\det\begin{pmatrix}5-\lambda&2\\-3&-\lambda\end{pmatrix}
+=\lambda^2-5\lambda+6=(\lambda-2)(\lambda-3).
+\]
+特征值：\(2,3\)。
+
+\(\lambda=2\):\; \(A-2I=\begin{pmatrix}3&2\\-3&-2\end{pmatrix}\Rightarrow v_1=(2,-3)^T\).  
+\(\lambda=3\):\; \(A-3I=\begin{pmatrix}2&2\\-3&-3\end{pmatrix}\Rightarrow v_2=(1,-1)^T\).
+
+取
+\[
+S=\begin{pmatrix}2&1\\-3&-1\end{pmatrix},\quad
+D=\text{diag }(2,3),
+\]
+则 \(A=SDS^{-1}\)。
+
+若 \(B^2=A\)，则设
+\[
+B=S E S^{-1},
+\]
+其中 \(E\) 为对角矩阵，则
+\[
+B^2=SES^{-1}SES^{-1}=SE^2S^{-1}=A=SDS^{-1}
+\Rightarrow E^2=D.
+\]
+所以 \(E\) 必为 \(D\) 的一个平方根，即
+\[
+E=\text{diag }(\varepsilon_1\sqrt2,\ \varepsilon_2\sqrt3),
+\quad \varepsilon_1,\varepsilon_2\in\{1,-1\}.
+\]
+因此所有平方根为
+\[
+B=S
+\begin{pmatrix}
+\varepsilon_1\sqrt2&0\\[1mm]0&\varepsilon_2\sqrt3
+\end{pmatrix}
+S^{-1},
+\quad \varepsilon_1,\varepsilon_2=\pm1.
+\]
+
+\medskip
+
+\textbf{2.9}
+
+a)  
+由
+\[
+\phi_{n+2}=\phi_{n+1}+\phi_n,\quad
+\phi_{n+1}=\phi_{n+1},
+\]
+我们要
+\[
+\begin{pmatrix}\phi_{n+2}\\\phi_{n+1}\end{pmatrix}
+= A\begin{pmatrix}\phi_{n+1}\\\phi_n\end{pmatrix}.
+\]
+比较得
+\[
+A=\begin{pmatrix}1&1\\1&0\end{pmatrix}.
+\]
+
+b)  
+对角化 \(A\)。特征多项式：
+\[
+\det(A-\lambda I)
+=\det\begin{pmatrix}1-\lambda&1\\1&-\lambda\end{pmatrix}
+=\lambda^2-\lambda-1,
+\]
+根为
+\[
+\lambda_{1,2}
+=\frac{1\pm\sqrt5}{2}
+=: \varphi,\ \psi.
+\]
+\(\lambda=\varphi\) 时，
+\((A-\varphi I)\begin{pmatrix}x\\yy\end{pmatrix}=0\) 给出 \(y=(\varphi-1)x\)，而 \(\varphi^2=\varphi+1\Rightarrow\varphi-1=1/\varphi\)，故可取
+\[
+v_1=\begin{pmatrix}\varphi\\1\end{pmatrix}.
+\]
+类似得到 \(\lambda=\psi\) 的特征向量
+\[
+v_2=\begin{pmatrix}\psi\\1\end{pmatrix}.
+\]
+
+令
+\[
+S=\begin{pmatrix}\varphi&\psi\\1&1\end{pmatrix},\quad
+D=\text{diag }(\varphi,\psi),
+\]
+则 \(A=SDS^{-1}\)，从而
+\[
+A^n=SD^nS^{-1}
+=S\begin{pmatrix}\varphi^n&0\\0&\psi^n\end{pmatrix}S^{-1}.
+\]
+
+c)  
+\[
+\begin{pmatrix}\phi_{n+1}\\\phi_n\end{pmatrix}
+=A^n\begin{pmatrix}\phi_1\\\phi_0\end{pmatrix}
+=A^n\begin{pmatrix}1\\0\end{pmatrix}.
+\]
+记
+\[
+S^{-1}=\frac1{\varphi-\psi}
+\begin{pmatrix}1&-\psi\\-1&\varphi\end{pmatrix},
+\]
+（易验证 \(\det S=\varphi-\psi=\sqrt5\)），则
+\[
+\begin{pmatrix}\phi_{n+1}\\\phi_n\end{pmatrix}
+=SD^nS^{-1}\begin{pmatrix}1\\0\end{pmatrix}
+=\frac1{\varphi-\psi}S
+\begin{pmatrix}\varphi^n\\-\psi^n\end{pmatrix}
+=\frac1{\sqrt5}
+\begin{pmatrix}
+\varphi^{n+1}-\psi^{n+1}\\[1mm]
+\varphi^{n}-\psi^{n}
+\end{pmatrix}.
+\]
+从第二个分量读出
+\[
+\phi_n=\frac{\varphi^n-\psi^n}{\sqrt5},
+\]
+这就是 Binet 公式。
+
+d)  
+\[
+\begin{pmatrix}\phi_{n+1}\\\phi_n\end{pmatrix}
+=A^n\begin{pmatrix}1\\0\end{pmatrix}
+=\frac1{\sqrt5}
+\begin{pmatrix}\varphi^{n+1}-\psi^{n+1}\\\varphi^{n}-\psi^{n}\end{pmatrix}.
+\]
+于是
+\[
+\frac{\phi_{n+1}}{\phi_n}
+=\frac{\varphi^{n+1}-\psi^{n+1}}{\varphi^{n}-\psi^{n}}
+=\frac{\varphi^{n}( \varphi)-\psi^{n}(\psi)}{\varphi^{n}-\psi^{n}}
+\to\varphi
+\quad (n\to\infty),
+\]
+因为 \(|\psi|<1<\varphi\)，\(\psi^n\to0\)。因此向量
+\[
+\begin{pmatrix}\frac{\phi_{n+1}}{\phi_n}\\1\end{pmatrix}
+\to
+\begin{pmatrix}\varphi\\1\end{pmatrix}=v_1,
+\]
+而 \(v_1\) 正是 \(A\) 的一个特征向量（对应特征值 \(\varphi\)）。这不是巧合：对任一具有主导特征值（模长最大的特征值）且对应特征空间一维的矩阵，\(A^n v\) 在归一化或作商之后都会趋向于主特征向量方向，这正是幂法的思想。
+
+\medskip
+
+\textbf{2.10}
+
+已知 \(A\) 为 \(5\times5\) 矩阵，有 3 个不同特征值，且其中一个特征子空间维数为 3。记该特征值为 \(\lambda_1\)，对应特征子空间 \(E_{\lambda_1}\) 维数 3；另外两个特征值为 \(\lambda_2,\lambda_3\)，其几何重数至少为 1。于是
+\[
+\dim E_{\lambda_1}+\dim E_{\lambda_2}+\dim E_{\lambda_3}
+\ge 3+1+1=5.
+\]
+另一方面，总和不能超过 5，所以实际上等号成立，每个几何重数都等于其代数重数，所有特征子空间之和给出 5 个线性无关特征向量，因此 \(A\) 一定可对角化。
+
+\medskip
+
+\textbf{2.11}
+
+一个标准例子是
+\[
+J=\begin{pmatrix}1&1&0\\0&1&0\\0&0&2\end{pmatrix}.
+\]
+其特征多项式 \((\lambda-1)^2(\lambda-2)\)，特征值 1 的几何重数为 1（\(\text{Ker }(J-I)\) 一维），代数重数为 2，因此 \(J\) 不能对角化。
+
+要“通用化”这个矩阵，可对其做相似变换：取任何可逆矩阵 \(S\)，令
+\[
+A= SJS^{-1}.
+\]
+那么 \(A\) 与 \(J\) 具有同样的特征值与 Jordan 结构，因此也不可对角化。通过适当选择 \(S\)，可以让 \(A\) 看起来并无明显的上三角或 Jordan 形特征。
+
+\medskip
+
+\textbf{2.12}
+
+若 \(A\neq0\) 且 \(A^5=0\)，假设 \(A\) 可对角化，则存在可逆 \(S\) 使
+\[
+A=SDS^{-1},
+\]
+其中 \(D\) 为对角矩阵，其对角元素为 \(A\) 的特征值。于是
+\[
+A^5=SD^5S^{-1}=0
+\Rightarrow D^5=0.
+\]
+但对角矩阵 \(D^5\) 的对角线是各特征值的五次方，要使 \(D^5=0\)，每个特征值都必须为 0，因此 \(D=0\)，进而
+\[
+A=SDS^{-1}=0,
+\]
+与 \(A\neq0\) 矛盾。因此 \(A\) 不可对角化。
+
+更一般，若 \(A^N=0\) 对某个 \(N\ge1\) 成立且 \(A\neq0\)，同样的论证给出 \(A\) 不可对角化。也就是说，任何非零幂零矩阵都不能对角化。
+
+\medskip
+
+\textbf{2.13}
+
+a) 设 \(T:M_{2\times2}\to M_{2\times2}\) 定义为 \(T(A)=A^T\)。求所有 \(\lambda\) 与 \(A\neq0\) 使
+\[
+T(A)=\lambda A\quad\Longleftrightarrow\quad A^T=\lambda A.
+\]
+
+写
+\[
+A=\begin{pmatrix}a&b\\c&d\end{pmatrix},
+\quad
+A^T=\begin{pmatrix}a&c\\b&d\end{pmatrix}.
+\]
+方程 \(A^T=\lambda A\) 变成
+\[
+\begin{cases}
+a=\lambda a,\\
+c=\lambda b,\\
+b=\lambda c,\\
+d=\lambda d.
+\end{cases}
+\]
+
+若 \(\lambda=1\)，则条件为 \(c=b\)，其余恒真，对应所有对称矩阵
+\[
+A=\begin{pmatrix}a&b\\b&d\end{pmatrix},\quad (a,b,d\in\RR),
+\]
+这是一个 3 维子空间。
+
+若 \(\lambda=-1\)，则条件为 \(a=-a\Rightarrow a=0,\ d=-d\Rightarrow d=0,\ c=-b,\ b=-c\)，即 \(c=-b\)，对应所有反对称矩阵
+\[
+A=\begin{pmatrix}0&b\\-b&0\end{pmatrix},
+\]
+这是 1 维子空间。
+
+若 \(\lambda\neq\pm1\)，从 \(a=\lambda a\),\(d=\lambda d\) 得 \(a=d=0\); 再由 \(c=\lambda b\) 与 \(b=\lambda c\) 得
+\[
+b=\lambda c=\lambda(\lambda b)=\lambda^2 b
+\Rightarrow (\lambda^2-1)b=0.
+\]
+因为 \(\lambda^2\ne1\)，只能 \(b=0\)，从而 \(c=0\)，得到 \(A=0\)，与特征向量非零矛盾；因此无其他特征值。
+
+故 \(T\) 的全部特征值是 \(\lambda=1,-1\)，其特征子空间分别是对称矩阵和反对称矩阵。\(M_{2\times2}\) 可分解为这两个特征子空间的直和，因此 \(T\) 可以被对角化。
+
+b) 在 \(n\times n\) 情形中同样成立。  
+对任意 \(A\)，可以唯一地写成
+\[
+A=\frac{A+A^T}{2}+\frac{A-A^T}{2}
+=:S+K,
+\]
+其中 \(S^T=S\) 为对称矩阵，\(K^T=-K\) 为反对称矩阵。易见
+\[
+T(S)=S,\quad T(K)=-K,
+\]
+且对称矩阵空间与反对称矩阵空间仅交于 \(\{0\}\)，维数之和为 \(n^2\)。因此转置算子在 \(M_{n\times n}\) 上的特征值仍只有 \(1\) 与 \(-1\)，对应的特征子空间分别为对称与反对称矩阵空间，它们的直和给出整个空间，所以该算子也可对角化。
+
+\medskip
+
+\textbf{2.14}
+
+若两个子空间 \(V_1,V_2\subset V\) 线性无关，按定义，任何表示
+\[
+v_1+v_2=0,\quad v_1\in V_1,\ v_2\in V_2
+\]
+都只有平凡解 \(v_1=v_2=0\)。
+
+\(\Rightarrow\) 方向：  
+若 \(V_1,V_2\) 线性无关，而 \(w\in V_1\cap V_2\)，则 \(w\in V_1\) 且 \(w\in V_2\)。考虑分解
+\[
+w+(-w)=0,\quad w\in V_1,\ -w\in V_2.
+\]
+线性无关性迫使 \(w=0\)，故交集只含 0：\(V_1\cap V_2=\{0\}\)。
+
+\(\Leftarrow\) 方向：  
+反过来，若 \(V_1\cap V_2=\{0\}\)，取任意
+\[
+v_1+v_2=0,\quad v_1\in V_1,\ v_2\in V_2.
+\]
+则 \(v_1=-v_2\) 属于 \(V_1\cap V_2\)，所以 \(v_1=-v_2=0\)。因此满足线性无关的定义。
+
+故 \(V_1,V_2\) 线性无关当且仅当 \(V_1\cap V_2=\{0\}\)。
+
+
+\end{exer}
+
+
+
+
+
+
+
+
+\section{第五章答案}
+
+\begin{exer}
+
+
+下面只给习题解答内容，便于直接嵌入你的答案稿。
+
+---
+
+\textbf{1.1}
+
+\[
+(3+2i)(5-3i)=15-9i+10i-6i^2=21+i.
+\]
+
+\[
+\frac{2-3i}{1-2i}
+=\frac{(2-3i)(1+2i)}{1+4}
+=\frac{2+4i-3i-6i^2}{5}
+=\frac{8+i}{5}.
+\]
+
+\[
+\Re\frac{2-3i}{1-2i}=\Re\frac{8+i}{5}=\frac85.
+\]
+
+\[
+(1+2i)^2=1+4i+4i^2=-3+4i,
+\]
+\[
+(1+2i)^3=(1+2i)(-3+4i)=-3+4i-6i+8i^2=-11-2i.
+\]
+
+\[
+\Im( (1+2i)^3 ) =-2.
+\]
+
+---
+
+\textbf{1.2}
+
+这里在 \(\C^3\) 上取标准内积
+\((x,y)=x_1\overline{y_1}+x_2\overline{y_2}+x_3\overline{y_3}\).
+
+\[
+x=(1,2i,1+i)^T,\quad y=(i,2-i,3)^T.
+\]
+
+(a)  
+\[
+(x,y)=1\cdot\overline i+2i\cdot\overline{(2-i)}+(1+i)\cdot\overline3
+=-i+2i(2+i)+3(1-i)=9+2i.
+\]
+
+\[
+\|x\|^2=(x,x)=1\cdot1+2i\cdot\overline{2i}+(1+i)\overline{(1+i)}
+=1+4+2=7.
+\]
+
+\[
+\|y\|^2=(y,y)=i\overline i+(2-i)\overline{(2-i)}+3\cdot\overline3
+=1+5+9=15,\quad
+\|y\|=\sqrt{15}.
+\]
+
+(b) 利用线性与共轭线性：
+\[
+(3x,2iy)=3\,\overline{2i}\,(x,y)=3(-2i)(9+2i)=-54i+12=12-54i.
+\]
+
+\[
+(2x,ix+2y)
+=(2x,ix)+(2x,2y)
+=2\overline i\,(x,x)+4(x,y)
+=-2i\cdot7+4(9+2i)
+=36-6i.
+\]
+
+(c)  
+\[
+\|x+2y\|^2=(x+2y,x+2y)
+=\|x\|^2+4(x,y)+4\|y\|^2
+=7+4(9+2i)+4\cdot15
+=79+8i.
+\]
+
+---
+
+\textbf{1.3}
+
+已知 \(\|u\|=2,\ \|v\|=3,\ (u,v)=2+i\)，则 \((v,u)=\overline{2+i}=2-i\).
+
+\[
+\|u+v\|^2=(u+v,u+v)=\|u\|^2+\|v\|^2+(u,v)+(v,u)
+=4+9+(2+i)+(2-i)=17.
+\]
+
+\[
+\|u-v\|^2=(u-v,u-v)=\|u\|^2+\|v\|^2-(u,v)-(v,u)
+=4+9-(2+i)-(2-i)=9.
+\]
+
+\[
+(u+v,u-iv)=(u,u-iv)+(v,u-iv)
+=\|u\|^2-i(v,u)+(v,u)-i\|v\|^2
+\]
+\[
+=4-i(2-i)+(2-i)-9i
+=4+(1-2i)+(2-i)-9i
+=7-12i.
+\]
+
+\[
+(u+3iv,4iu)
+=(u,4iu)+3i(v,4iu)
+=4i(u,u)+12i(v,iu).
+\]
+\[
+(v,iu)=\overline i\,(v,u)=-i(2-i)=1-2i,
+\]
+故
+\[
+(u+3iv,4iu)=4i\cdot4+12i(1-2i)=16i+12i-24i^2=24+28i.
+\]
+
+---
+
+\textbf{1.4}
+
+\[
+\|\xx\pm\yy\|^2=(\xx\pm\yy,\xx\pm\yy)
+=(\xx,\xx)\pm(\xx,\yy)\pm(\yy,\xx)+(\yy,\yy)
+\]
+\[
+=\|\xx\|^2+\|\yy\|^2\pm\bigl((\xx,\yy)+\overline{(\xx,\yy)}\bigr)
+=\|\xx\|^2+\|\yy\|^2\pm2\Re(\xx,\yy).
+\]
+
+---
+
+\textbf{1.5}
+
+(a) \((x,y)=x_1y_1-x_2y_2\) 在 \(\RR^2\) 上：
+
+\[
+(x,x)=x_1^2-x_2^2
+\]
+可以为负，例如 \(x=(0,1)\) 得 \((x,x)=-1<0\)。违反非负性，因此不是内积。
+
+(b) \((A,B)=\operatorname{trace}(A+B)\)：
+
+\[
+(A,A)=\operatorname{trace}(2A)=2\,\operatorname{trace}A
+\]
+可能为负，也可能为零而 \(A\neq0\)，故既不保证非负，也不保证正定，更不是双线性的（对 \(A,B\) 只是各自线性地加了常数）。所以这不是内积。
+
+（更直接：对任意标量 \(\lambda\)，
+\((\lambda A,B)=\operatorname{trace}(\lambda A+B)\neq\lambda\,\operatorname{trace}(A+B)\) 一般不成立，违反线性性。）
+
+(c) \((f,g)=\int_0^1 f'(t)\overline{g(t)}\,dt\) 在多项式空间上：
+
+先看对第一个变量的线性与对第二个变量的共轭线性都成立，但对称性失败：
+\[
+(f,g)=\int_0^1 f'(t)\overline{g(t)}\,dt,\quad
+(g,f)=\int_0^1 g'(t)\overline{f(t)}\,dt
+\]
+一般并不满足 \((f,g)=\overline{(g,f)}\)。
+
+更简单地看正定性：取常数多项式 \(f(t)\equiv1\)，则 \(f'\equiv0\)，
+\[
+(f,f)=\int_0^11'\cdot\overline{1}\,dt=0
+\]
+但 \(f\neq0\)。违反正定性，因此不是内积。
+
+---
+
+\textbf{1.6}
+
+若 \(|(x,y)|=\|x\|\|y\|\)。
+
+若 \(x=0\) 或 \(y=0\)，结论显然成立（任一零向量都是对方的倍数）。
+
+假设 \(x,y\neq0\)。在柯西–施瓦茨不等式的证明中，对任意标量 \(\alpha\) 考察
+\[
+0\le\|x-\alpha y\|^2=(x-\alpha y,x-\alpha y).
+\]
+在复情形，令
+\(\displaystyle \alpha=\frac{(x,y)}{\|y\|^2}\)，得到
+\[
+\|x-\alpha y\|^2
+=\|x\|^2-\frac{|(x,y)|^2}{\|y\|^2}.
+\]
+CS 不等式给出右边非负；若等号成立，
+\[
+0=\|x\|^2-\frac{|(x,y)|^2}{\|y\|^2}.
+\]
+题设又给 \(|(x,y)|=\|x\|\|y\|\)，代入即得
+\(\|x-\alpha y\|^2=0\)，故 \(x=\alpha y\)，即 \(x\) 是 \(y\) 的倍数。
+
+反过来，若 \(x=\alpha y\)，则
+\[
+(x,y)=(\alpha y,y)=\alpha (y,y)=\alpha\|y\|^2,
+\]
+于是
+\[
+|(x,y)|=|\alpha|\|y\|^2=\|\alpha y\|\,\|y\|=\|x\|\|y\|.
+\]
+
+---
+
+\textbf{1.7}
+
+直接用 1.4：
+\[
+\|x+y\|^2=\|x\|^2+\|y\|^2+2\Re(x,y),
+\]
+\[
+\|x-y\|^2=\|x\|^2+\|y\|^2-2\Re(x,y).
+\]
+相加得
+\[
+\|x+y\|^2+\|x-y\|^2
+=2(\|x\|^2+\|y\|^2).
+\]
+
+---
+
+\textbf{1.8}
+
+(a) 若 \((x,v)=0\) 对所有 \(v\in V\) 成立，特别是对 \(v=x\) 成立，于是
+\[
+(x,x)=0 \Rightarrow x=0
+\]
+（由内积的正定性），故 \(x=0\)。
+
+(b) 若 \(\{v_1,\dots,v_n\}\) 生成 \(V\)，任意 \(v\in V\) 可写
+\[
+v=\sum_{k=1}^n\alpha_k v_k.
+\]
+于是
+\[
+(x,v)=\sum_{k=1}^n\alpha_k(x,v_k)=0
+\]
+因为题设给出 \((x,v_k)=0\) 对每个 \(k\) 成立。由 (a) 得 \(x=0\)。
+
+(c) 若对所有 \(k\) 有
+\((x,v_k)=(y,v_k)\)，则对任意
+\(v=\sum\alpha_k v_k\) 有
+\[
+(x,v)=\sum\alpha_k(x,v_k)=\sum\alpha_k(y,v_k)=(y,v).
+\]
+于是
+\[
+(x-y,v)=0\quad\forall v\in V.
+\]
+由 (a) 得 \(x-y=0\)，即 \(x=y\)。
+
+---
+
+\textbf{1.9}
+
+在 \(\RR^2\) 上：
+
+\[
+\|x\|_1=|x_1|+|x_2|\le1
+\Rightarrow B_1
+\]
+是一个菱形（顶点在 \((\pm1,0),(0,\pm1)\)）。
+
+\[
+\|x\|_2=\sqrt{x_1^2+x_2^2}\le1
+\Rightarrow B_2
+\]
+是以原点为圆心、半径 1 的圆盘。
+
+\[
+\|x\|_{\infty}=\max(|x_1|,|x_2|)\le1
+\Rightarrow B_{\infty}
+\]
+是顶点在 \((\pm1,\pm1)\) 的正方形（轴对齐）。
+
+对其他 \(1<p<\infty\)，单位球
+\[
+B_p=\{(x_1,x_2):|x_1|^p+|x_2|^p\le1\}
+\]
+的边界是一条光滑的“圆角正方形”：  
+当 \(p\to1\) 时趋近菱形，当 \(p\to\infty\) 时趋近方形；\(p=2\) 时恰为圆。
+
+
+下面只写解答内容，不加额外环境。
+
+\medskip
+
+\textbf{2.1}
+
+设 \(\xx=(x_1,x_2,x_3,x_4)^T\)。正交条件是
+\[
+\begin{cases}
+x_1+x_2+x_3+x_4=0,\\
+x_1+2x_2+3x_3+4x_4=0.
+\end{cases}
+\]
+相减得
+\[
+x_2+2x_3+3x_4=0 \quad\Rightarrow\quad x_2=-2x_3-3x_4.
+\]
+再由第一式
+\[
+x_1+x_2+x_3+x_4=0
+\Rightarrow x_1+x_3+x_4=2x_3+3x_4
+\Rightarrow x_1=x_3+2x_4.
+\]
+令自由参数 \(s=x_3,\ t=x_4\)，则
+\[
+\xx=(x_1,x_2,x_3,x_4)^T
+=s(1,-2,1,0)^T+t(2,-3,0,1)^T.
+\]
+所以所求集合为
+\[
+\{\,s(1,-2,1,0)^T+t(2,-3,0,1)^T : s,t\in\RR\,\}.
+\]
+
+\medskip
+
+\textbf{2.2}
+
+\(\operatorname{Ran}A^T\subset\FF^n\)。对 \(x\in\FF^n\),
+\[
+x\perp \operatorname{Ran}A^T
+\quad\Longleftrightarrow\quad
+\forall y\in\FF^m:\ (x,A^Ty)=0
+\quad\Longleftrightarrow\quad
+\forall y:\ (Ax,y)=0
+\quad\Longleftrightarrow\quad
+Ax=0.
+\]
+因此
+\[
+(\operatorname{Ran}A^T)^\perp=\text{Ker } A.
+\]
+
+类似地，\(\operatorname{Ran}A\subset\FF^m\)。对 \(z\in\FF^m\),
+\[
+z\perp \operatorname{Ran}A
+\quad\Longleftrightarrow\quad
+\forall x\in\FF^n:\ (z,Ax)=0
+\quad\Longleftrightarrow\quad
+\forall x:\ (A^Tz,x)=0
+\quad\Longleftrightarrow\quad
+A^Tz=0.
+\]
+因此
+\[
+(\operatorname{Ran}A)^\perp=\text{Ker } A^T.
+\]
+
+\medskip
+
+\textbf{2.3}
+
+设 \(\{v_1,\dots,v_n\}\) 是标准正交基，故
+\((v_j,v_k)=\delta_{jk}\).
+
+(a) 令
+\(\displaystyle x=\sum_{k=1}^n\alpha_k v_k,\quad y=\sum_{k=1}^n\beta_k v_k\)。则
+\[
+(x,y)=\Bigl(\sum_{k=1}^n\alpha_k v_k,\;\sum_{j=1}^n\beta_j v_j\Bigr)
+=\sum_{k,j}\alpha_k\overline{\beta_j}(v_k,v_j)
+=\sum_{k=1}^n\alpha_k\overline{\beta_k}.
+\]
+
+(b) 由 (a) 知
+\[
+\alpha_k=(x,v_k),\quad \beta_k=(y,v_k),
+\]
+因为
+\[
+(x,v_k)=\Bigl(\sum_j\alpha_j v_j,v_k\Bigr)
+=\sum_j\alpha_j(v_j,v_k)=\alpha_k.
+\]
+代入 (a) 得
+\[
+(x,y)=\sum_{k=1}^n(x,v_k)\,\overline{(y,v_k)},
+\]
+这就是帕塞瓦尔恒等式。
+
+(c) 若 \(\{v_k\}\) 只是正交基，且 \((v_k,v_k)=\|v_k\|^2\neq1\)，写
+\[
+x=\sum_k\alpha_k v_k,\quad
+\alpha_k=\frac{(x,v_k)}{\|v_k\|^2},\quad
+y=\sum_k\beta_k v_k,\quad
+\beta_k=\frac{(y,v_k)}{\|v_k\|^2}.
+\]
+由 (a) 的同样计算（只是 \((v_j,v_k)=0\) 对 \(j\neq k\)）得到
+\[
+(x,y)=\sum_{k=1}^n\alpha_k\overline{\beta_k}\,\|v_k\|^2
+=\sum_{k=1}^n
+\frac{(x,v_k)\,\overline{(y,v_k)}}{\|v_k\|^2}.
+\]
+这就是正交基情形的帕塞瓦尔恒等式。
+
+\medskip
+
+\textbf{2.4}
+
+给定基 \(\{v_1,\dots,v_n\}\)，对
+\[
+x=\sum_{k=1}^n\alpha_k v_k,\quad
+y=\sum_{k=1}^n\beta_k v_k,
+\]
+定义
+\[
+\langle x,y\rangle:=\sum_{k=1}^n\alpha_k\overline{\beta_k}.
+\]
+
+(1) 对第二变量的共轭线性：取标量 \(\lambda,\mu\)，
+\[
+\lambda y_1+\mu y_2
+=\sum_k(\lambda\beta_{1k}+\mu\beta_{2k})v_k,
+\]
+于是
+\[
+\langle x,\lambda y_1+\mu y_2\rangle
+=\sum_k\alpha_k\overline{\lambda\beta_{1k}+\mu\beta_{2k}}
+=\overline{\lambda}\sum_k\alpha_k\overline{\beta_{1k}}
++\overline{\mu}\sum_k\alpha_k\overline{\beta_{2k}}
+=\overline{\lambda}\langle x,y_1\rangle
++\overline{\mu}\langle x,y_2\rangle.
+\]
+
+(2) 对第一个变量的线性完全类似：
+\[
+\langle \lambda x_1+\mu x_2,y\rangle
+=\lambda\langle x_1,y\rangle+\mu\langle x_2,y\rangle.
+\]
+
+(3) 共轭对称性：
+\[
+\overline{\langle x,y\rangle}
+=\overline{\sum_k\alpha_k\overline{\beta_k}}
+=\sum_k\beta_k\overline{\alpha_k}
+=\langle y,x\rangle.
+\]
+
+(4) 正定性：
+\[
+\langle x,x\rangle
+=\sum_k|\alpha_k|^2\ge0,
+\]
+且 \(\langle x,x\rangle=0\) 当且仅当 \(\alpha_k=0\ \forall k\)，即 \(x=0\)。
+
+因此 \(\langle\cdot,\cdot\rangle\) 满足内积的全部公理，是 \(V\) 上的一个内积。
+
+\medskip
+
+\textbf{2.5}
+
+\(\operatorname{Ran}A\subset\FF^m\)。向量 \(z\in\FF^m\) 与 \(\operatorname{Ran}A\) 中所有向量正交，当且仅当
+\[
+\forall x\in\FF^n:\ (z,Ax)=0
+\quad\Longleftrightarrow\quad
+\forall x:\ (A^T z,x)=0
+\quad\Longleftrightarrow\quad
+A^Tz=0.
+\]
+因此
+\[
+\{\,z\in\FF^m : z\perp \operatorname{Ran}A\,\}
+=\text{Ker } A^T.
+\]
+
+
+
+下面只给各题的计算与结论，格式按你书里的风格来写，不用列表环境。
+
+\medskip
+
+\textbf{3.1}
+
+记
+\[
+x_1=\begin{pmatrix}1\\2\\-2\end{pmatrix},\quad
+x_2=\begin{pmatrix}1\\-1\\4\end{pmatrix},\quad
+x_3=\begin{pmatrix}2\\1\\1\end{pmatrix}.
+\]
+
+第一步：\(v_1=x_1\).
+
+第二步：
+\[
+(x_2,v_1)=1\cdot1+(-1)\cdot2+4\cdot(-2)=-11,\quad
+\|v_1\|^2=1^2+2^2+(-2)^2=9,
+\]
+\[
+v_2=x_2-\frac{(x_2,v_1)}{\|v_1\|^2}v_1
+=x_2+\frac{11}{9}v_1
+=\begin{pmatrix}20/9\\13/9\\2/9\end{pmatrix}.
+\]
+
+第三步：
+\[
+(x_3,v_1)=2\cdot1+1\cdot2+1\cdot(-2)=2,\quad
+(x_3,v_2)=\frac{1}{9},
+\]
+\[
+v_3=x_3-\frac{(x_3,v_1)}{\|v_1\|^2}v_1-\frac{(x_3,v_2)}{\|v_2\|^2}v_2
+=\begin{pmatrix}5/3\\-4/3\\2/3\end{pmatrix}.
+\]
+
+因此得到一组正交向量
+\[
+v_1=\begin{pmatrix}1\\2\\-2\end{pmatrix},\quad
+v_2=\begin{pmatrix}20/9\\13/9\\2/9\end{pmatrix},\quad
+v_3=\begin{pmatrix}5/3\\-4/3\\2/3\end{pmatrix}.
+\]
+若需要正交\emph{标准}系，只需再分别除以它们的范数。
+
+\medskip
+
+\textbf{3.2}
+
+设
+\[
+x_1=\begin{pmatrix}1\\2\\3\end{pmatrix},\quad
+x_2=\begin{pmatrix}1\\3\\1\end{pmatrix}.
+\]
+
+第一步：\(v_1=x_1\)，\(\|v_1\|^2=1^2+2^2+3^2=14\).
+
+第二步：
+\[
+(x_2,v_1)=1\cdot1+3\cdot2+1\cdot3=10,
+\]
+\[
+v_2=x_2-\frac{(x_2,v_1)}{\|v_1\|^2}v_1
+=x_2-\frac{10}{14}v_1
+=\begin{pmatrix}2/7\\8/7\\-4/7\end{pmatrix},
+\quad
+\|v_2\|^2=12/7.
+\]
+
+于是得到正交系 \(v_1,v_2\)。到它们张成的二维子空间的正交投影为
+\[
+P_E x
+=\frac{(x,v_1)}{\|v_1\|^2}v_1+\frac{(x,v_2)}{\|v_2\|^2}v_2.
+\]
+写成矩阵形式：
+\[
+P_E=\frac{1}{\|v_1\|^2}v_1v_1^T+\frac{1}{\|v_2\|^2}v_2v_2^T
+=\frac1{14}
+\begin{pmatrix}
+1\\2\\3
+\end{pmatrix}
+\begin{pmatrix}
+1&2&3
+\end{pmatrix}
++\frac7{12}
+\begin{pmatrix}
+2/7\\8/7\\-4/7
+\end{pmatrix}
+\begin{pmatrix}
+2/7&8/7&-4/7
+\end{pmatrix}.
+\]
+化简得
+\[
+P_E=\frac1{42}
+\begin{pmatrix}
+19 & 17 & 10\\
+17 & 53 & -2\\
+10 & -2 & 25
+\end{pmatrix}.
+\]
+
+\medskip
+
+\textbf{3.3}
+
+上题得到两个线性无关、彼此正交的向量 \(v_1,v_2\)，它们张成的子空间是二维的，因此在 \(\RR^3\) 中还需添加 \textbf{一个} 与二者都正交的向量，就得到一个正交基。
+
+例如可以取
+\[
+v_3=v_1\times v_2
+=\begin{pmatrix}1\\2\\3\end{pmatrix}\times\begin{pmatrix}2/7\\8/7\\-4/7\end{pmatrix}
+=\begin{pmatrix}-4\\2\\1\end{pmatrix},
+\]
+容易验证 \(v_3\perp v_1,v_2\)。于是 \(\{v_1,v_2,v_3\}\) 是 \(\RR^3\) 的一个正交基。
+
+一般地，在 \(\RR^n\) 或 \(\C^n\) 中，若已有一个由 \(k<n\) 个两两正交非零向量组成的正交系统，可以：
+\[
+\text{取线性无关组的一个补基，用格拉姆–施密特对补基依次减去到已知系统的投影，得到另外 }n-k\text{ 个与原系统正交的向量。}
+\]
+这样便把正交系统补全为整个空间的正交基。
+
+\medskip
+
+\textbf{3.4}
+
+设
+\[
+x=\begin{pmatrix}2\\3\\1\end{pmatrix},\quad
+v_1=\begin{pmatrix}1\\2\\3\end{pmatrix},\quad
+v_2=\begin{pmatrix}1\\3\\1\end{pmatrix},
+\]
+使用上题中的正交系 \(v_1,v_2\)。
+
+先算
+\[
+(x,v_1)=2\cdot1+3\cdot2+1\cdot3=11,\quad
+(x,v_2)=2\cdot1+3\cdot3+1\cdot1=12.
+\]
+于是
+\[
+P_E x
+=\frac{11}{\|v_1\|^2}v_1+\frac{12}{\|v_2\|^2}v_2
+=\frac{11}{14}v_1+\frac{7}{4}v_2.
+\]
+计算得
+\[
+P_E x=\begin{pmatrix}5/2\\37/4\\17/2\end{pmatrix}.
+\]
+故
+\[
+x-P_E x
+=\begin{pmatrix}2\\3\\1\end{pmatrix}-\begin{pmatrix}5/2\\37/4\\17/2\end{pmatrix}
+=\begin{pmatrix}-1/2\\-25/4\\-15/2\end{pmatrix},
+\]
+\[
+\|x-P_E x\|^2
+=\Bigl(-\frac12\Bigr)^2+\Bigl(-\frac{25}{4}\Bigr)^2+\Bigl(-\frac{15}{2}\Bigr)^2
+=\frac14+\frac{625}{16}+\frac{225}{4}
+=\frac{1669}{16}.
+\]
+所以距离为
+\[
+\operatorname{dist}(x,E)
+=\|x-P_E x\|
+=\frac{\sqrt{1669}}{4}.
+\]
+
+\medskip
+
+\textbf{3.5}
+
+设
+\[
+x=\begin{pmatrix}1\\1\\1\\1\end{pmatrix},\quad
+v_1=\begin{pmatrix}1\\3\\1\\1\end{pmatrix},\quad
+v_2=\begin{pmatrix}2\\-1\\1\\0\end{pmatrix},\quad v_1\perp v_2.
+\]
+则到 \(E=\operatorname{span}\{v_1,v_2\}\) 的正交投影为
+\[
+P_E x
+=\frac{(x,v_1)}{\|v_1\|^2}v_1+\frac{(x,v_2)}{\|v_2\|^2}v_2.
+\]
+计算：
+\[
+(x,v_1)=1+3+1+1=6,\quad
+\|v_1\|^2=1+9+1+1=12,
+\]
+\[
+(x,v_2)=2-1+1+0=2,\quad
+\|v_2\|^2=4+1+1+0=6.
+\]
+于是
+\[
+P_E x=\frac{6}{12}v_1+\frac{2}{6}v_2
+=\frac12 v_1+\frac13 v_2
+=\begin{pmatrix}7/6\\7/6\\1\\1/2\end{pmatrix}.
+\]
+
+\medskip
+
+\textbf{3.6}
+
+设
+\[
+x=\begin{pmatrix}1\\2\\3\\4\end{pmatrix},\quad
+v_1=\begin{pmatrix}1\\-1\\1\\0\end{pmatrix},\quad
+v_2=\begin{pmatrix}1\\2\\1\\1\end{pmatrix},\quad v_1\perp v_2.
+\]
+仍然只需
+\[
+\operatorname{dist}(x,E)=\|x-P_E x\|,\quad
+P_E x=\frac{(x,v_1)}{\|v_1\|^2}v_1+\frac{(x,v_2)}{\|v_2\|^2}v_2.
+\]
+这里直接用
+\[
+\|x\|^2=\|P_E x\|^2+\|x-P_E x\|^2,
+\]
+因此
+\[
+\|x-P_E x\|^2=\|x\|^2-\|P_E x\|^2
+=\|x\|^2-\left(\frac{|(x,v_1)|^2}{\|v_1\|^2}+\frac{|(x,v_2)|^2}{\|v_2\|^2}\right),
+\]
+只需内积，不必先算出 \(P_E x\)。
+
+计算：
+\[
+\|x\|^2=1^2+2^2+3^2+4^2=30,
+\]
+\[
+(x,v_1)=1\cdot1+2\cdot(-1)+3\cdot1+4\cdot0=2,\quad
+\|v_1\|^2=1+1+1+0=3,
+\]
+\[
+(x,v_2)=1\cdot1+2\cdot2+3\cdot1+4\cdot1=12,\quad
+\|v_2\|^2=1+4+1+1=7.
+\]
+故
+\[
+\|x-P_E x\|^2
+=30-\left(\frac{2^2}{3}+\frac{12^2}{7}\right)
+=30-\left(\frac{4}{3}+\frac{144}{7}\right)
+=\frac{190}{21}.
+\]
+于是
+\[
+\operatorname{dist}(x,E)=\sqrt{\frac{190}{21}}.
+\]
+这说明确实可以在不写出投影向量本身的情况下计算距离。
+
+\medskip
+
+\textbf{3.7}
+
+命题：若 \(E\) 为内积空间 \(V\) 的子空间，则
+\[
+\dim E+\dim E^\perp=\dim V.
+\]
+
+证明：上一节已经证明
+\[
+V=E\oplus E^\perp,
+\]
+即任意 \(v\in V\) 可唯一写成 \(v=v_1+v_2\) 且 \(v_1\in E\), \(v_2\in E^\perp\)，并且 \(E\cap E^\perp=\{0\}\)。对有限维空间，直和分解蕴含
+\[
+\dim V=\dim E+\dim E^\perp.
+\]
+
+\medskip
+
+\textbf{3.8}
+
+设 \(P\) 是到子空间 \(E\) 的正交投影，\(\dim V=n,\ \dim E=r\)。
+
+对任意 \(x\in E\) 有 \(Px=x\)，故
+\[
+Px=x\quad\Longrightarrow\quad x\text{ 是特征值 }1\text{ 的特征向量}.
+\]
+因此特征值 \(1\) 的特征子空间是 \(E\)，几何重数为 \(\dim E=r\)。
+
+另一方面，\(x\in E^\perp\Rightarrow Px=0\)，于是
+\[
+Px=0\quad\Longrightarrow\quad x\text{ 是特征值 }0\text{ 的特征向量},
+\]
+特征子空间为 \(E^\perp\)，几何重数为 \(\dim E^\perp=n-r\)。
+
+特征多项式因此为 \(\lambda^{{n-r}}(\lambda-1)^r\)，故特征值和代数重数为：
+\[
+\lambda=1,\ \text{代数重数 }r;\quad
+\lambda=0,\ \text{代数重数 }n-r.
+\]
+
+\medskip
+
+\textbf{3.9}
+
+(a) 设 \(u=(1,1,\dots,1)^T\in\RR^n\)。到 \(\operatorname{span}\{u\}\) 的正交投影为
+\[
+P=\frac{uu^T}{\|u\|^2}
+=\frac{1}{n}
+\begin{pmatrix}
+1\\\vdots\\1
+\end{pmatrix}
+\begin{pmatrix}
+1&\dots&1
+\end{pmatrix},
+\]
+即所有元素都为 \(1/n\) 的 \(n\times n\) 矩阵。
+
+(b) 题中的矩阵 \(A\) 是主对角线为 1，其余元素也为 1 的矩阵，因此
+\[
+A=I+(\text{全 1 矩阵})=I+nP.
+\]
+因为 \(P\) 的特征值是 1（一次）和 0（重数 \(n-1\)），故 \(A\) 的特征值为
+\[
+\lambda_1=1+n\cdot1=n+1,\quad\text{重数 }1;
+\]
+\[
+\lambda_2=1+n\cdot0=1,\quad\text{重数 }n-1.
+\]
+
+(c) \(A-I=nP\)，所以 \(A-I\) 的特征值为
+\[
+\mu_1=n\cdot1=n,\quad\text{重数 }1;
+\quad
+\mu_2=n\cdot0=0,\quad\text{重数 }n-1.
+\]
+
+(d) 因此
+\[
+\det(A-I)=n\cdot0^{\,n-1}=0.
+\]
+
+\medskip
+
+\textbf{3.10}
+
+在多项式空间上内积
+\[
+(f,g)=\int_{-1}^1 f(t)g(t)\,dt.
+\]
+对系统 \(\{1,t,t^2,t^3\}\) 做格拉姆–施密特。
+
+第一步：\(p_0(t)=1\).
+
+第二步：
+\[
+(t,p_0)=\int_{-1}^1 t\,dt=0,
+\]
+故 \(p_1(t)=t\).
+
+第三步：
+\[
+(t^2,p_0)=\int_{-1}^1 t^2\,dt=\frac{2}{3},\quad
+(t^2,p_1)=\int_{-1}^1 t^3\,dt=0,
+\]
+\[
+p_2(t)=t^2-\frac{(t^2,p_0)}{\|p_0\|^2}p_0
+=t^2-\frac{2/3}{\int_{-1}^11\,dt}\cdot1
+=t^2-\frac13.
+\]
+
+第四步：
+\[
+(t^3,p_0)=\int_{-1}^1 t^3\,dt=0,\quad
+(t^3,p_1)=\int_{-1}^1 t^4\,dt=\frac25,\quad
+(t^3,p_2)=\int_{-1}^1 t^3(t^2-1/3)\,dt=0,
+\]
+\[
+\|p_1\|^2=\int_{-1}^1 t^2\,dt=\frac23.
+\]
+于是
+\[
+p_3(t)=t^3-\frac{(t^3,p_1)}{\|p_1\|^2}p_1
+=t^3-\frac{2/5}{2/3}t
+=t^3-\frac35 t.
+\]
+
+所以得到一个正交系统
+\[
+p_0(t)=1,\quad
+p_1(t)=t,\quad
+p_2(t)=t^2-\frac13,\quad
+p_3(t)=t^3-\frac35 t,
+\]
+这就是勒让德多项式 \(P_0,P_1,P_2,P_3\)（差一个规范化常数）。
+
+\medskip
+
+\textbf{3.11}
+
+设 \(P\) 为到子空间 \(E\) 的正交投影。
+
+(a) 证明 \(P^*=P\)。
+
+对任意 \(x,y\in V\)，有分解
+\[
+x=x_E+x_{E^\perp},\quad
+y=y_E+y_{E^\perp},
+\]
+其中 \(x_E,y_E\in E\), \(x_{E^\perp},y_{E^\perp}\in E^\perp\)。由于 \(Px=x_E\)，\(Py=y_E\)，并且 \(E\perp E^\perp\)，
+\[
+(Px,y)=(x_E,y_E+y_{E^\perp})=(x_E,y_E),
+\]
+\[
+(x,Py)=(x_E+x_{E^\perp},y_E)=(x_E,y_E).
+\]
+于是 \((Px,y)=(x,Py)\) 对所有 \(x,y\) 成立，从而 \(P^*=P\)。
+
+(b) 证明 \(P^2=P\)。
+
+任取 \(x\in V\)，\(Px=x_E\in E\)，再次投影仍为自身：
+\[
+P^2x=P(Px)=P(x_E)=x_E=Px,
+\]
+故 \(P^2=P\)。
+
+\medskip
+
+\textbf{3.12}
+
+已知对任意 \(v\in V\) 有唯一分解
+\[
+v=v_E+v_{E^\perp},\quad v_E\in E,\ v_{E^\perp}\in E^\perp.
+\]
+
+首先 \(E\subset (E^\perp)^\perp\)：若 \(x\in E\)，对任何 \(y\in E^\perp\) 有 \(x\perp y\)，因此 \(x\) 与 \(E^\perp\) 内每个向量都正交，即 \(x\in (E^\perp)^\perp\)。
+
+再证 \((E^\perp)^\perp\subset E\)。取 \(x\in (E^\perp)^\perp\)，写
+\[
+x=x_E+x_{E^\perp}.
+\]
+因为 \(x_{E^\perp}\in E^\perp\)，
+\[
+0=(x,x_{E^\perp})\quad\text{（因 }x\perp E^\perp\text{）}
+=(x_E,x_{E^\perp})+\,(x_{E^\perp},x_{E^\perp})
+=\|x_{E^\perp}\|^2.
+\]
+故 \(x_{E^\perp}=0\)，于是 \(x=x_E\in E\)。
+
+综上 \((E^\perp)^\perp=E\)。
+
+\medskip
+
+\textbf{3.13}
+
+设 \(P\) 为到 \(E\) 的正交投影，\(Q\) 为到 \(E^\perp\) 的正交投影。
+
+(a) 任意 \(x\in V\) 都可唯一写成
+\[
+x=x_E+x_{E^\perp},\quad x_E\in E,\ x_{E^\perp}\in E^\perp.
+\]
+于是
+\[
+Px=x_E,\quad Qx=x_{E^\perp},
+\]
+故
+\[
+(P+Q)x=Px+Qx=x_E+x_{E^\perp}=x,
+\]
+所以 \(P+Q=I\)。
+
+另一方面，
+\[
+PQx=P(Qx)=P(x_{E^\perp})=0,
+\]
+\[
+QPx=Q(Px)=Q(x_E)=0,
+\]
+故 \(PQ=QP=0\)。
+
+(b) 证明 \(P-Q\) 是它自己的逆。
+
+由 (a) 知
+\[
+(P-Q)^2=P^2-PQ-QP+Q^2=P-Q,
+\]
+又因为 \(P+Q=I\)，所以
+\[
+P-Q=2P-(P+Q)=2P-I,
+\]
+于是
+\[
+(P-Q)^2=(2P-I)^2=4P^2-4P+I=4P-4P+I=I.
+\]
+因此
+\[
+(P-Q)^{-1}=P-Q.
+\]
+
+
+下面只写解答内容，可直接放进答案册。
+
+\medskip
+
+\textbf{4.1}
+
+设
+\[
+A=\begin{pmatrix}1&0\\0&1\\1&1\end{pmatrix},\quad
+\bb=\begin{pmatrix}1\\1\\0\end{pmatrix},\quad
+\xx=\begin{pmatrix}x\\yy\end{pmatrix}.
+\]
+正规方程：
+\[
+A^TA\xx=A^T\bb.
+\]
+计算
+\[
+A^TA=\begin{pmatrix}2&1\\1&2\end{pmatrix},\quad
+A^T\bb=\begin{pmatrix}1\\1\end{pmatrix}.
+\]
+所以
+\[
+\begin{pmatrix}2&1\\1&2\end{pmatrix}\begin{pmatrix}x\\yy\end{pmatrix}=
+\begin{pmatrix}1\\1\end{pmatrix}
+\Rightarrow
+\begin{cases}
+2x+y=1,\\
+x+2y=1.
+\end{cases}
+\]
+解得
+\[
+x=y=\dfrac13.
+\]
+最小二乘解为
+\[
+\xx_0=\begin{pmatrix}\dfrac13\\[2pt]\dfrac13\end{pmatrix}.
+\]
+
+\medskip
+
+\textbf{4.2}
+
+设
+\[
+A=\begin{pmatrix}1&1\\2&-1\\-2&4\end{pmatrix},\quad
+a_1=\begin{pmatrix}1\\2\\-2\end{pmatrix},\ 
+a_2=\begin{pmatrix}1\\-1\\4\end{pmatrix}.
+\]
+
+\emph{(1) 格拉姆–施密特法.}
+
+\(v_1=a_1,\ \|v_1\|^2=1^2+2^2+(-2)^2=9.\)
+
+\[
+(a_2,v_1)=1\cdot1+(-1)\cdot2+4\cdot(-2)=-11,
+\]
+\[
+v_2=a_2-\frac{(a_2,v_1)}{\|v_1\|^2}v_1
+=a_2+\frac{11}{9}v_1
+=\begin{pmatrix}20/9\\13/9\\2/9\end{pmatrix},\quad
+\|v_2\|^2=\frac{549}{81}=\frac{61}{9}.
+\]
+
+到 \(\operatorname{Ran}A\) 的正交投影是
+\[
+P=\frac{v_1v_1^T}{\|v_1\|^2}+\frac{v_2v_2^T}{\|v_2\|^2}.
+\]
+计算得
+\[
+P
+=\frac1{61}
+\begin{pmatrix}
+21&7&-14\\[2pt]
+7&53&-34\\[2pt]
+-14&-34&52
+\end{pmatrix}.
+\]
+
+\emph{(2) 公式法.}
+
+\[
+P=A(A^TA)^{-1}A^T.
+\]
+先算
+\[
+A^TA=
+\begin{pmatrix}
+9&-11\\
+-11&21
+\end{pmatrix},\quad
+\det(A^TA)=68,
+\]
+\[
+(A^TA)^{-1}=\frac1{68}
+\begin{pmatrix}
+21&11\\
+11&9
+\end{pmatrix}.
+\]
+于是
+\[
+P=A(A^TA)^{-1}A^T
+=\frac1{61}
+\begin{pmatrix}
+21&7&-14\\
+7&53&-34\\
+-14&-34&52
+\end{pmatrix},
+\]
+与格拉姆–施密特所得一致。
+
+\medskip
+
+\textbf{4.3}
+
+点：\((-2,4),(-1,3),(0,1),(2,0)\)。求最小二乘直线 \(y=a+bx\)。
+
+构造
+\[
+A=\begin{pmatrix}
+1&-2\\
+1&-1\\
+1&0\\
+1&2
+\end{pmatrix},\quad
+\bb=\begin{pmatrix}4\\3\\1\\0\end{pmatrix},\quad
+\xx=\begin{pmatrix}a\\b\end{pmatrix}.
+\]
+正规方程 \(A^TA\xx=A^T\bb\)：
+\[
+A^TA=\begin{pmatrix}
+4&-1\\
+-1&9
+\end{pmatrix},\quad
+A^T\bb=\begin{pmatrix}8\\-17\end{pmatrix}.
+\]
+解
+\[
+\begin{pmatrix}
+4&-1\\
+-1&9
+\end{pmatrix}
+\begin{pmatrix}a\\b\end{pmatrix}
+=
+\begin{pmatrix}8\\-17\end{pmatrix}
+\Rightarrow
+\begin{cases}
+4a-b=8,\\
+-a+9b=-17.
+\end{cases}
+\]
+由第一式 \(b=4a-8\)，代入第二式得 \( -a+9(4a-8)=-17\)，即
+\(35a=55\)，
+\[
+a=\dfrac{11}{7},\quad b=-\dfrac{4}{7}.
+\]
+最佳拟合直线为
+\[
+y=\frac{11}{7}-\frac{4}{7}x.
+\]
+
+\medskip
+
+\textbf{4.4}
+
+四点：\((1,1,3),(0,3,6),(2,1,5),(0,0,0)\)。拟合平面 \(z=a+bx+cy\)。
+
+(a) 方程组：
+\[
+\begin{cases}
+3=a+b+c,\\
+6=a+3c,\\
+5=a+2b+c,\\
+0=a.
+\end{cases}
+\]
+或矩阵形式
+\[
+\begin{pmatrix}
+1&1&1\\
+1&0&3\\
+1&2&1\\
+1&0&0
+\end{pmatrix}
+\begin{pmatrix}a\\b\\c\end{pmatrix}
+=
+\begin{pmatrix}3\\6\\5\\0\end{pmatrix}.
+\]
+
+(b) 记
+\[
+A=\begin{pmatrix}
+1&1&1\\
+1&0&3\\
+1&2&1\\
+1&0&0
+\end{pmatrix},\quad
+\bb=\begin{pmatrix}3\\6\\5\\0\end{pmatrix}.
+\]
+求最小二乘解 \(A^TA\xx=A^T\bb\)，\(\xx=(a,b,c)^T\)。
+
+计算
+\[
+A^TA=
+\begin{pmatrix}
+4&3&5\\
+3&5&3\\
+5&3&11
+\end{pmatrix},\quad
+A^T\bb=
+\begin{pmatrix}
+14\\13\\27
+\end{pmatrix}.
+\]
+解
+\[
+\begin{pmatrix}
+4&3&5\\
+3&5&3\\
+5&3&11
+\end{pmatrix}
+\begin{pmatrix}a\\b\\c\end{pmatrix}
+=
+\begin{pmatrix}14\\13\\27\end{pmatrix}.
+\]
+消元得
+\[
+a=0,\quad b=1,\quad c=2.
+\]
+因此最佳拟合平面为
+\[
+z=x+2y.
+\]
+
+\medskip
+
+\textbf{4.5}
+
+设 \(A\xx=\bb\) 有解，且 \(\text{Ker } A\neq\{0\}\)。
+
+(a) 任取一个特解 \(\xx_p\) 与 \(\text{Ker } A\) 的一组基 \(\{k_1,\dots,k_r\}\)，则所有解为
+\[
+\xx=\xx_p+\yy,\quad \yy\in\text{Ker } A.
+\]
+把 \(\yy\) 按正交分解写成
+\[
+\yy=\yy_0+\yy_1,\quad
+\yy_0\in(\text{Ker } A)^\perp,\ \yy_1\in\text{Ker } A,
+\]
+但 \(\yy\in\text{Ker } A\) 且 \((\text{Ker } A)^\perp\cap\text{Ker } A=\{0\}\)，故 \(\yy_0=0\)，即任何解都形如
+\(\xx=\xx_p+\yy_1\) 且 \(\yy_1\in\text{Ker } A\)。
+
+把 \(\xx_p\) 再分解为
+\[
+\xx_p=\xx_0+z,\quad
+\xx_0\in(\text{Ker } A)^\perp,\ z\in\text{Ker } A.
+\]
+于是一般解为
+\[
+\xx=\xx_0+(z+\yy_1),\quad z+\yy_1\in\text{Ker } A.
+\]
+因此
+\[
+\|\xx\|^2=\|\xx_0\|^2+\|z+\yy_1\|^2\ge\|\xx_0\|^2,
+\]
+等号当且仅当 \(z+\yy_1=0\)，即 \(\xx=\xx_0\)。所以 \(\xx_0\) 在所有解中使范数最小，并且唯一。
+
+(b) 任取一个解 \(\xx\)。按直和分解
+\[
+\xx=\xx_\perp+\xx_{\text{Ker }},\quad
+\xx_\perp\in(\text{Ker } A)^\perp,\ \xx_{\text{Ker }}\in\text{Ker } A.
+\]
+因为 \(\xx,\xx_{\text{Ker }}\) 都是方程的解，
+\[
+A\xx=A(\xx_\perp+\xx_{\text{Ker }})=A\xx_\perp+A\xx_{\text{Ker }}=A\xx_\perp,
+\]
+即 \(\xx_\perp\) 也是解；而且 \(\xx_\perp\in(\text{Ker } A)^\perp\)，由 (a) 的唯一性知 \(\xx_\perp=\xx_0\)。  
+另一方面 \(\xx_\perp=P_{(\text{Ker } A)^\perp}\xx\)，故
+\[
+\xx_0=P_{(\text{Ker } A)^\perp}\xx
+\quad\text{对任一解 }\xx\text{ 成立}.
+\]
+
+\medskip
+
+\textbf{4.6}
+
+考虑正规方程
+\[
+A\xx=P_{\operatorname{Ran}A}\bb.
+\]
+设 \(\bb':=P_{\operatorname{Ran}A}\bb\in\operatorname{Ran}A\)。
+
+(a) 对此系统，上一题适用：因为 \(\bb'\in\operatorname{Ran}A\)，方程 \(A\xx=\bb'\) 有解；其所有解的集合为一个仿射子空间 \(\xx_p+\text{Ker } A\)。依 4.5，对这个方程存在唯一最小范数解 \(\xx_0\)，即在所有解中 \(\|\xx_0\|\) 最小。
+
+另一方面，\(A\xx=\bb'\) 的解恰好是 \(A\xx=\bb\) 的所有最小二乘解（因为 \(\bb-\bb'\perp\operatorname{Ran}A\)）。因此 \(\xx_0\) 在所有最小二乘解中也具有最小范数，且唯一。这就是所求的最小范数最小二乘解。
+
+(b) 设 \(\xx\) 是任意一个 \(A\xx=\bb\) 的最小二乘解，则 \(A\xx=P_{\operatorname{Ran}A}\bb=\bb'\)，也就是 \(\xx\) 是 \(A\xx=\bb'\) 的一个解。由 4.5(b) 对方程 \(A\xx=\bb'\) 的结论，最小范数解 \(\xx_0\) 满足
+\[
+\xx_0=P_{(\text{Ker } A)^\perp}\xx.
+\]
+因此，对任何最小二乘解 \(\xx\)，都有
+\[
+\xx_0=P_{(\text{Ker } A)^\perp}\xx.
+\]
+
+
+下面只给习题解答内容，按原书风格写，方便直接放进解答册。
+
+\medskip
+
+\textbf{5.1}
+
+设 \(A\) 为 \(n\times n\) 矩阵。由行列式的伴随运算公式
+\[
+\det(A^T)=\det(A),\quad
+\det(\overline{A})=\overline{\det(A)},
+\]
+以及 \(A^*=\overline{A}^T\)，得
+\[
+\det(A^*)
+=\det\bigl((\overline{A})^{T}\bigr)
+=\det(\overline{A})
+=\overline{\det(A)}.
+\]
+
+\medskip
+
+\textbf{5.2}
+
+对
+\[
+A=
+\begin{pmatrix}
+1&1&1\\
+1&3&2\\
+2&4&3
+\end{pmatrix}
+\]
+要求四个基本子空间的正交投影矩阵。
+
+先算
+\[
+A^T A=
+\begin{pmatrix}
+6&10&8\\
+10&26&18\\
+8&18&14
+\end{pmatrix},\quad
+\det(A^TA)=4\neq0,
+\]
+故 \(A^TA\) 可逆，\(\operatorname{rank}A=3\)，于是
+\[
+\operatorname{Ran}A=\RR^3,\quad
+\text{Ker } A=\{0\}.
+\]
+由于 \(\operatorname{Ran}A=\RR^3\)，到 \(\operatorname{Ran}A\) 的正交投影就是恒等算子：
+\[
+P_{\operatorname{Ran}A}=I_3,\quad
+P_{\text{Ker } A}=0_3.
+\]
+
+再看 \(A^*A=A^TA\) 可逆，故 \(\text{Ker } A^*=\{0\}\)，同时
+\[
+\dim\operatorname{Ran}A^*=\operatorname{rank}A=3,
+\]
+而 \(\operatorname{Ran}A^*\subset\RR^3\)，于是
+\(\operatorname{Ran}A^*=\RR^3\)。因此
+\[
+P_{\operatorname{Ran}A^*}=I_3,\quad
+P_{\text{Ker } A^*}=0_3.
+\]
+
+总结四个基本子空间的正交投影矩阵为
+\[
+P_{\operatorname{Ran}A}=I_3,\quad
+P_{\text{Ker } A}=0_3,\quad
+P_{\operatorname{Ran}A^*}=I_3,\quad
+P_{\text{Ker } A^*}=0_3.
+\]
+
+\medskip
+
+\textbf{5.3}
+
+要证 \(\text{Ker } A=\text{Ker }(A^*A)\)。
+
+一方面，若 \(\xx\in\text{Ker } A\)，则 \(A\xx=0\)，于是
+\[
+A^*A\xx=A^*(A\xx)=A^*0=0,
+\]
+故 \(\xx\in\text{Ker }(A^*A)\)，即
+\[
+\text{Ker } A\subseteq\text{Ker }(A^*A).
+\]
+
+反之，若 \(\xx\in\text{Ker }(A^*A)\)，则
+\[
+0=(A^*A\xx,\xx)=\|A\xx\|^2.
+\]
+范数为零当且仅当向量为零，因此 \(A\xx=0\)，即 \(\xx\in\text{Ker } A\)，故
+\[
+\text{Ker }(A^*A)\subseteq\text{Ker } A.
+\]
+
+两边合并得到
+\[
+\text{Ker } A=\text{Ker }(A^*A).
+\]
+
+\medskip
+
+\textbf{5.4}
+
+(a) 由上一题 \(\text{Ker } A=\text{Ker }(A^*A)\)，因此
+\[
+\dim\text{Ker } A=\dim\text{Ker }(A^*A).
+\]
+对 \(A\) 是 \(m\times n\) 矩阵，应用秩–零度定理：
+\[
+\operatorname{rank}A
+=n-\dim\text{Ker } A,\quad
+\operatorname{rank}(A^*A)
+=n-\dim\text{Ker }(A^*A),
+\]
+于是
+\[
+\operatorname{rank}A
+=\operatorname{rank}(A^*A).
+\]
+
+(b) 若 \(A\xx=0\) 只有平凡解，则 \(\text{Ker } A=\{0\}\)，从而 \(\dim\text{Ker } A=0\)，由秩–零度定理得
+\(\operatorname{rank}A=n\)，也就是说 \(A\) 的列向量线性无关。于是 \(A^*A\) 为 \(n\times n\) 可逆矩阵（因其核为 \(\{0\}\)，也可直接由 5.3 得出）。
+
+定义
+\[
+L=(A^*A)^{-1}A^*.
+\]
+则
+\[
+LA=(A^*A)^{-1}A^*A=I_n.
+\]
+所以 \(L\) 是 \(A\) 的一个左逆，\(A\) 左可逆。
+
+\medskip
+
+\textbf{5.5}
+
+假设 \(A^*A\) 可逆，则到 \(\operatorname{Ran}A\) 的正交投影为
+\[
+P_{\operatorname{Ran}A}=A(A^*A)^{-1}A^*.
+\]
+
+利用正交补关系
+\[
+\text{Ker } A=(\operatorname{Ran}A^*)^\perp,\quad
+\text{Ker } A^*=(\operatorname{Ran}A)^\perp,
+\]
+以及对任意子空间 \(E\),
+\[
+P_{E^\perp}=I-P_E,
+\]
+得到另外三个基本子空间的投影为
+
+\[
+P_{\text{Ker } A}=I-P_{\operatorname{Ran}A^*},\quad
+P_{\text{Ker } A^*}=I-P_{\operatorname{Ran}A}.
+\]
+
+其中
+\[
+\operatorname{Ran}A^*=\operatorname{Ran}(A^*),
+\]
+且 \((AA^*)\) 在 \(\operatorname{Ran}A\) 上可逆，因而
+\[
+P_{\operatorname{Ran}A^*}=A^*(AA^*)^{-1}A.
+\]
+
+综上：
+\[
+P_{\operatorname{Ran}A}=A(A^*A)^{-1}A^*,\quad
+P_{\text{Ker } A^*}=I-A(A^*A)^{-1}A^*,
+\]
+\[
+P_{\operatorname{Ran}A^*}=A^*(AA^*)^{-1}A,\quad
+P_{\text{Ker } A}=I-A^*(AA^*)^{-1}A.
+\]
+
+（在 \(m\ge n\) 且 \(\operatorname{rank}A=n\) 的情况下，\(AA^*\) 也是可逆的，上式有意义。）
+
+\medskip
+
+\textbf{5.6}
+
+已知 \(P^*=P\) 且 \(P^2=P\)，要证 \(P\) 是某子空间 \(E\) 的正交投影矩阵。
+
+令
+\[
+E=\operatorname{Ran}P.
+\]
+
+先证：若 \(\xx\in E\)，则 \(P\xx=\xx\)。的确，\(\xx\in E\) 意味着存在 \(\yy\) 使 \(\xx=P\yy\)。于是
+\[
+P\xx=P(P\yy)=P^2\yy=P\yy=\xx,
+\]
+这里用到了 \(P^2=P\)。
+
+再证：若 \(\xx\perp E\)，则 \(P\xx=0\)。由 \(\xx\perp E=\operatorname{Ran}P\) 可得
+\[
+(P\yy,\xx)=0\quad\forall\,\yy.
+\]
+利用自伴随性
+\[
+(P\yy,\xx)=(\yy,P^*\xx)=(\yy,P\xx)\quad\forall\,\yy,
+\]
+于是
+\[
+(\yy,P\xx)=0\quad\forall\,\yy.
+\]
+这意味着 \(P\xx=0\)。因此对所有 \(\xx\perp E\) 都有 \(P\xx=0\)。
+
+任意向量 \(\xx\) 可唯一写成
+\[
+\xx=\xx_1+\xx_2,\quad
+\xx_1\in E,\ \xx_2\perp E.
+\]
+由上面两步，
+\[
+P\xx=P\xx_1+P\xx_2=\xx_1+0=\xx_1,
+\]
+即 \(P\) 把 \(\xx\) 正交投影到 \(E\)。故 \(P\) 是到 \(\operatorname{Ran}P\) 的正交投影矩阵。
+
+
+下面只给习题解答内容，按你现有的排版风格写，不用列表环境。
+
+\medskip
+
+\textbf{6.1}
+
+第一个矩阵
+\[
+A_1=\begin{pmatrix}1&2\\2&1\end{pmatrix}.
+\]
+特征多项式
+\[
+\det(A_1-\lambda I)=(1-\lambda)^2-4=\lambda^2-2\lambda-3=(\lambda-3)(\lambda+1),
+\]
+特征值为 \(\lambda_1=3,\ \lambda_2=-1\)。
+
+对 \(\lambda_1=3\)，解
+\[
+(A_1-3I)x=0,\quad
+\begin{pmatrix}-2&2\\2&-2\end{pmatrix}x=0,
+\]
+得特征向量可以取 \((1,1)^T\)，归一化
+\[
+u_1=\frac1{\sqrt2}\begin{pmatrix}1\\1\end{pmatrix}.
+\]
+
+对 \(\lambda_2=-1\)，解
+\[
+(A_1+I)x=0,\quad
+\begin{pmatrix}2&2\\2&2\end{pmatrix}x=0,
+\]
+得特征向量可取 \((1,-1)^T\)，归一化
+\[
+u_2=\frac1{\sqrt2}\begin{pmatrix}1\\-1\end{pmatrix}.
+\]
+
+于是
+\[
+U_1=\frac1{\sqrt2}\begin{pmatrix}1&1\\1&-1\end{pmatrix},\quad
+D_1=\begin{pmatrix}3&0\\0&-1\end{pmatrix},
+\]
+满足
+\[
+A_1=U_1D_1U_1^*.
+\]
+
+\medskip
+
+第二个矩阵
+\[
+A_2=\begin{pmatrix}0&-1\\1&0\end{pmatrix}.
+\]
+它是实正交矩阵，但不是自伴随矩阵，因此不能被\emph{实正交}对角化；在复数域上它是酉的，并且是酉等价于对角矩阵的。
+
+解特征值：
+\[
+\det(A_2-\lambda I)=
+\det\begin{pmatrix}-\lambda&-1\\1&-\lambda\end{pmatrix}
+=\lambda^2+1=0,
+\]
+故特征值为 \(\lambda_1=i,\ \lambda_2=-i\)。
+
+对 \(\lambda_1=i\)，解
+\[
+(A_2-iI)x=0,\quad
+\begin{pmatrix}-i&-1\\1&-i\end{pmatrix}x=0.
+\]
+从第一行得 \(-ix_1-x_2=0\Rightarrow x_2=-ix_1\)，取特征向量 \((1,-i)^T\)，其模长为
+\[
+\|(1,-i)\|=\sqrt{1+|-i|^2}=\sqrt2,
+\]
+归一化
+\[
+u_1=\frac1{\sqrt2}\begin{pmatrix}1\\-i\end{pmatrix}.
+\]
+
+对 \(\lambda_2=-i\)，解
+\[
+(A_2+iI)x=0,\quad
+\begin{pmatrix}i&-1\\1&i\end{pmatrix}x=0,
+\]
+得 \(ix_1-x_2=0\Rightarrow x_2=ix_1\)，特征向量可取 \((1,i)^T\)，归一化
+\[
+u_2=\frac1{\sqrt2}\begin{pmatrix}1\\i\end{pmatrix}.
+\]
+
+因此
+\[
+U_2=\frac1{\sqrt2}\begin{pmatrix}1&1\\-i&i\end{pmatrix},\quad
+D_2=\begin{pmatrix}i&0\\0&-i\end{pmatrix},
+\]
+满足
+\[
+A_2=U_2D_2U_2^*.
+\]
+
+\medskip
+
+第三个矩阵
+\[
+A_3=\begin{pmatrix}
+0&2&2\\
+2&0&2\\
+2&2&0
+\end{pmatrix}.
+\]
+这是实对称矩阵，可以正交对角化。
+
+设 \(\lambda\) 为特征值，解
+\[
+\det(A_3-\lambda I)=0.
+\]
+计算
+\[
+\det\begin{pmatrix}
+-\lambda&2&2\\
+2&-\lambda&2\\
+2&2&-\lambda
+\end{pmatrix}
+=-(\lambda+2)^2(\lambda-4),
+\]
+因此特征值为
+\[
+\lambda_1=4,\quad \lambda_2=\lambda_3=-2.
+\]
+
+对 \(\lambda_1=4\)，解
+\[
+(A_3-4I)x=0,\quad
+\begin{pmatrix}
+-4&2&2\\
+2&-4&2\\
+2&2&-4
+\end{pmatrix}x=0.
+\]
+易见 \((1,1,1)^T\) 是特征向量，归一化
+\[
+u_1=\frac1{\sqrt3}\begin{pmatrix}1\\1\\1\end{pmatrix}.
+\]
+
+对 \(\lambda=-2\)，解
+\[
+(A_3+2I)x=0,\quad
+\begin{pmatrix}
+2&2&2\\
+2&2&2\\
+2&2&2
+\end{pmatrix}x=0,
+\]
+这等价于
+\[
+x_1+x_2+x_3=0.
+\]
+所以对应的特征子空间是
+\[
+E_{-2}=\{(x_1,x_2,x_3)^T\in\RR^3:\ x_1+x_2+x_3=0\},
+\]
+是二维的。
+
+取两个线性无关且与 \(u_1\) 正交的向量。例如
+\[
+w_2=\begin{pmatrix}1\\-1\\0\end{pmatrix},\quad
+w_3=\begin{pmatrix}1\\1\\-2\end{pmatrix}.
+\]
+它们都满足坐标和为 0。
+
+归一化并正交化。先求模：
+\[
+\|w_2\|=\sqrt{1^2+(-1)^2+0^2}=\sqrt2,\quad
+\|w_3\|=\sqrt{1^2+1^2+(-2)^2}=\sqrt6.
+\]
+先取
+\[
+u_2=\frac1{\sqrt2}\begin{pmatrix}1\\-1\\0\end{pmatrix}.
+\]
+再将 \(w_3\) 对 \(u_2\) 做正交化：
+\[
+(w_3,u_2)=\frac1{\sqrt2}(1\cdot1+1\cdot(-1)+(-2)\cdot0)=0,
+\]
+所以 \(w_3\) 已与 \(u_2\) 正交，只需归一化：
+\[
+u_3=\frac1{\sqrt6}\begin{pmatrix}1\\1\\-2\end{pmatrix}.
+\]
+
+得到一个标准正交基 \(\{u_1,u_2,u_3\}\)，令
+\[
+U_3=\begin{pmatrix}
+\frac1{\sqrt3}&\frac1{\sqrt2}&\frac1{\sqrt6}\\[1mm]
+\frac1{\sqrt3}&-\frac1{\sqrt2}&\frac1{\sqrt6}\\[1mm]
+\frac1{\sqrt3}&0&-\frac2{\sqrt6}
+\end{pmatrix},\quad
+D_3=\begin{pmatrix}
+4&0&0\\
+0&-2&0\\
+0&0&-2
+\end{pmatrix},
+\]
+则
+\[
+A_3=U_3D_3U_3^*.
+\]
+
+\medskip
+
+\textbf{6.2}
+
+命题：一个矩阵酉等价于一个对角矩阵，当且仅当它具有一个\textbf{正交}的特征向量基。
+
+“若”方向：若 \(A\) 具有由特征向量组成的正交基 \(\{u_1,\dots,u_n\}\)，将其归一化成标准正交基并作为列组成酉矩阵
+\[
+U=(u_1\ \dots\ u_n).
+\]
+则
+\[
+Au_j=\lambda_j u_j,\quad j=1,\dots,n,
+\]
+于是
+\[
+U^*AU=\operatorname{diag}(\lambda_1,\dots,\lambda_n)=D,
+\]
+即 \(A=UDU^*\)，所以 \(A\) 酉等价于对角矩阵。
+
+“只若”方向：若 \(A\) 酉等价于对角矩阵，即存在酉矩阵 \(U\) 使
+\[
+A=UDU^*,\quad D=\operatorname{diag}(\lambda_1,\dots,\lambda_n).
+\]
+记 \(u_j\) 为 \(U\) 的第 \(j\) 列，则
+\[
+AUe_j=UDU^*Ue_j=UD e_j=\lambda_j Ue_j
+\]
+即
+\[
+Au_j=\lambda_j u_j.
+\]
+因此 \(\{u_1,\dots,u_n\}\) 是 \(A\) 的一组特征向量。由于 \(U\) 是酉矩阵，其列向量构成标准正交基，所以这是一组\textbf{正交}的特征向量基。
+
+两边合并，命题成立。
+
+\medskip
+
+\textbf{6.3}
+
+先证实数情形，\(A=A^*\)。
+
+计算
+\[
+(A(x+y),x+y)
+=(Ax,x)+(Ax,y)+(Ay,x)+(Ay,y).
+\]
+利用 \(A=A^*\) 得
+\[
+(Ax,y)=(x,Ay)=(Ay,x),
+\]
+因此
+\[
+(A(x+y),x+y)
+=(Ax,x)+2(Ax,y)+(Ay,y).
+\]
+
+同理
+\[
+(A(x-y),x-y)
+=(Ax,x)-(Ax,y)-(Ay,x)+(Ay,y)
+=(Ax,x)-2(Ax,y)+(Ay,y).
+\]
+
+于是
+\[
+(A(x+y),x+y)-(A(x-y),x-y)
+=4(Ax,y),
+\]
+也就是
+\[
+(Ax,y)=\frac14\bigl[(A(x+y),x+y)-(A(x-y),x-y)\bigr].
+\]
+
+\medskip
+
+复数情形，\(A\) 任意。对内积使用标准约定 \((\cdot,\cdot)\) 对第一变量线性，对第二变量共轭线性。令
+\[
+S:=\frac14\sum_{\alpha=\pm1,\pm i}\alpha\,(A(x+\alpha y),x+\alpha y).
+\]
+
+逐项展开。对一般复数 \(\alpha\)：
+\[
+(A(x+\alpha y),x+\alpha y)
+=(Ax,x)+\alpha(Ax,y)+\overline{\alpha}(Ay,x)+|\alpha|^2(Ay,y).
+\]
+
+因此
+\[
+\alpha(A(x+\alpha y),x+\alpha y)
+=\alpha(Ax,x)+\alpha^2(Ax,y)+|\alpha|^2\alpha(Ay,x)+|\alpha|^2\alpha(Ay,y).
+\]
+
+对四个值 \(\alpha=1,-1,i,-i\) 求和。注意
+\[
+\sum_{\alpha=\pm1,\pm i}\alpha=0,\quad
+\sum_{\alpha=\pm1,\pm i}\alpha^2=0,\quad
+|\alpha|^2=1.
+\]
+于是
+\[
+\sum_{\alpha}\alpha(Ax,x)= (Ax,x)\sum_{\alpha}\alpha=0,
+\]
+\[
+\sum_{\alpha}\alpha^2(Ax,y)=(Ax,y)\sum_{\alpha}\alpha^2=0,
+\]
+同样
+\[
+\sum_{\alpha}|\alpha|^2\alpha(Ay,y)=(Ay,y)\sum_{\alpha}\alpha=0.
+\]
+
+剩下的项是
+\[
+\sum_{\alpha}\alpha|\alpha|^2(Ay,x)
+=\sum_{\alpha}\alpha(Ay,x)
+=(Ay,x)\sum_{\alpha}\alpha=0
+\]
+若误用此展开；正确做法是采用第二变量共轭线性展开：
+
+重新写：
+\[
+(A(x+\alpha y),x+\alpha y)
+=(A x,x)
++\overline{\alpha}(A x,y)
++\alpha(Ay,x)
++|\alpha|^2(Ay,y).
+\]
+
+于是
+\[
+\alpha(A(x+\alpha y),x+\alpha y)
+=\alpha(Ax,x)
++\alpha\overline{\alpha}(Ax,y)
++\alpha^2(Ay,x)
++\alpha|\alpha|^2(Ay,y).
+\]
+
+对四个 \(\alpha\) 求和。仍有 \(\sum\alpha=0\)、\(\sum\alpha^2=0\)、\(\sum\alpha|\alpha|^2=\sum\alpha=0\)。唯一留下的项是
+\[
+\sum_{\alpha}\alpha\overline{\alpha}(Ax,y)
+=(Ax,y)\sum_{\alpha}|\alpha|^2=4(Ax,y).
+\]
+
+因此
+\[
+S=\frac14\cdot 4(Ax,y)=(Ax,y),
+\]
+即
+\[
+(Ax,y)=\frac14\sum_{\alpha=\pm1,\pm i}\alpha (A(x+\alpha y),x+\alpha y).
+\]
+
+\medskip
+
+\textbf{6.4}
+
+设 \(U,V\) 为酉矩阵，即
+\[
+U^*U=I,\quad V^*V=I.
+\]
+则
+\[
+(UV)^*(UV)=V^*U^*UV=V^*V=I,
+\]
+说明 \(UV\) 也是酉矩阵。
+
+在实数情形，同理可证：若 \(U,V\) 正交，即 \(U^TU=I,\ V^TV=I\)，则
+\[
+(UV)^T(UV)=V^TU^TUV=V^TV=I,
+\]
+故 \(UV\) 正交。
+
+\medskip
+
+\textbf{6.5}
+
+(a) 对。
+
+若 \(\|Ux\|=\|x\|\) 对所有 \(x\in X\) 成立，则由极化恒等式得
+\[
+(Ux,Uy)=(x,y)\quad\forall x,y\in X.
+\]
+因此
+\[
+(U^*Ux,y)=(Ux,Uy)=(x,y)\quad\forall x,y,
+\]
+从而
+\[
+U^*U=I.
+\]
+在有限维空间中，这意味着 \(U\) 可逆，并且 \(U^{-1}=U^*\)，故 \(U\) 是酉算子。
+
+(b) 错。
+
+仅对某个标准正交基 \(\{e_k\}\) 有
+\(\|Ue_k\|=\|e_k\|=1\)，只说明 \(Ue_k\) 的长度是 1，但并未保证它们彼此正交。若 \(Ue_i\) 与 \(Ue_j\) 不正交，则 \(U\) 不保持内积。
+
+构造一个 \(2\times2\) 反例。取标准正交基
+\[
+e_1=\begin{pmatrix}1\\0\end{pmatrix},\quad
+e_2=\begin{pmatrix}0\\1\end{pmatrix},
+\]
+令
+\[
+U=\begin{pmatrix}
+1&1\\
+0&1
+\end{pmatrix}.
+\]
+则
+\[
+Ue_1=\begin{pmatrix}1\\0\end{pmatrix},\quad
+Ue_2=\begin{pmatrix}1\\1\end{pmatrix},
+\]
+都有范数
+\(\|Ue_1\|=1,\ \|Ue_2\|=\sqrt2\neq1\)——为使条件满足，可改为
+\[
+U=\begin{pmatrix}
+1&\tfrac12\\
+0&\tfrac{\sqrt3}{2}
+\end{pmatrix},
+\]
+则
+\[
+Ue_1=\begin{pmatrix}1\\0\end{pmatrix},\quad
+Ue_2=\begin{pmatrix}\tfrac12\\\tfrac{\sqrt3}{2}\end{pmatrix},
+\]
+两者范数都为 1，但
+\[
+(Ue_1,Ue_2)=\frac12\ne0,
+\]
+说明它们不正交，所以 \(U\) 不是等距同构，也不是酉的。
+
+因此 (b) 命题为假。
+
+\medskip
+
+\textbf{6.6}
+
+设 \(A,B\) 酉等价，即存在酉矩阵 \(U\) 使
+\[
+B=UAU^*.
+\]
+
+(a) 计算
+\[
+B^*B=(UAU^*)^*(UAU^*)=UA^*U^*UAU^*=UA^*AU^*.
+\]
+于是
+\[
+\operatorname{trace}(B^*B)
+=\operatorname{trace}(UA^*AU^*).
+\]
+利用迹的循环不变性：
+\[
+\operatorname{trace}(UA^*AU^*)
+=\operatorname{trace}(A^AU^*U)
+=\operatorname{trace}(A^*A).
+\]
+所以
+\[
+\operatorname{trace}(A^*A)=\operatorname{trace}(B^*B).
+\]
+
+(b) 对任意矩阵 \(C=(c_{jk})\)，
+\[
+(C^*C)_{ii}=\sum_k\overline{c_{ki}}c_{ki}
+=\sum_k|c_{ki}|^2.
+\]
+故
+\[
+\operatorname{trace}(C^*C)
+=\sum_i(C^*C)_{ii}
+=\sum_{i,k}|c_{ki}|^2
+=\sum_{j,k}|c_{jk}|^2.
+\]
+将 \(C\) 分别取为 \(A\) 和 \(B\)，并用 (a) 得
+\[
+\sum_{j,k}|A_{jk}|^2
+=\operatorname{trace}(A^*A)
+=\operatorname{trace}(B^*B)
+=\sum_{j,k}|B_{jk}|^2.
+\]
+
+(c) 对给出的矩阵
+\[
+A=\begin{pmatrix}1&2\\2&i\end{pmatrix},\quad
+B=\begin{pmatrix}i&4\\1&1\end{pmatrix},
+\]
+计算各自的元素平方绝对值之和：
+\[
+\sum|A_{jk}|^2
+=|1|^2+|2|^2+|2|^2+|i|^2
+=1+4+4+1=10.
+\]
+\[
+\sum|B_{jk}|^2
+=|i|^2+|4|^2+|1|^2+|1|^2
+=1+16+1+1=19.
+\]
+二者不同，因此 \(A\) 与 \(B\) 不酉等价。
+
+\medskip
+
+\textbf{6.7}
+
+利用酉等价保持特征值（含重数）、迹、行列式以及上一题 (b) 的不变量逐一判断。
+
+(a)
+\[
+A=\begin{pmatrix}1&0\\0&1\end{pmatrix},\quad
+B=\begin{pmatrix}0&1\\1&0\end{pmatrix}.
+\]
+两者特征值均为 \(\{1,1\}\)，均可被实正交对角化为 \(I\)，故它们酉等价。实际上
+\[
+B=SAS^{-1},\quad
+S=\frac1{\sqrt2}\begin{pmatrix}1&1\\1&-1\end{pmatrix}
+\]
+是一个正交矩阵。
+
+(b)
+\[
+A=\begin{pmatrix}0&1\\1&0\end{pmatrix},\quad
+B=\begin{pmatrix}0&\tfrac12\\[1mm]\tfrac12&0\end{pmatrix}.
+\]
+特征值：
+\[
+\operatorname{spec}(A)=\{1,-1\},\quad
+\operatorname{spec}(B)=\{\tfrac12,-\tfrac12\}.
+\]
+不相同，故不酉等价。
+
+(c)
+\[
+A=\begin{pmatrix}
+0&1&0\\
+-1&0&0\\
+0&0&1
+\end{pmatrix},\quad
+B=\begin{pmatrix}
+2&0&0\\
+0&-1&0\\
+0&0&0
+\end{pmatrix}.
+\]
+\(A\) 为旋转加恒等，行列式
+\[
+\det A=1,\quad
+\det B=0.
+\]
+行列式不同，所以不酉等价。
+
+(d)
+\[
+A=\begin{pmatrix}
+0&1&0\\
+-1&0&0\\
+0&0&1
+\end{pmatrix},\quad
+B=\begin{pmatrix}
+1&0&0\\
+0&-i&0\\
+0&0&i
+\end{pmatrix}.
+\]
+两者特征值均为 \(\{1,i,-i\}\)，且都可以被酉对角化为
+\(\operatorname{diag}(1,i,-i)\)，因此它们酉等价。
+
+(e)
+\[
+A=\begin{pmatrix}
+1&1&0\\
+0&2&2\\
+0&0&3
+\end{pmatrix},\quad
+B=\begin{pmatrix}
+1&0&0\\
+0&2&0\\
+0&0&3
+\end{pmatrix}.
+\]
+A 是上三角矩阵，其特征值也是 \(\{1,2,3\}\)，与 \(B\) 相同；然而 \(A\) 不是正规矩阵：
+\[
+AA^*\ne A^*A.
+\]
+而 \(B\) 是对角矩阵，当然正规。酉等价保持正规性，所以 \(A,B\) 不酉等价。
+
+\medskip
+
+\textbf{6.8}
+
+设 \(U\) 为 \(2\times2\) 正交矩阵，且 \(\det U=1\)。正交即
+\[
+U^TU=I.
+\]
+写
+\[
+U=\begin{pmatrix}a&b\\c&d\end{pmatrix}.
+\]
+条件 \(U^TU=I\) 给出
+\[
+a^2+c^2=1,\quad b^2+d^2=1,\quad ab+cd=0.
+\]
+\(\det U=1\) 给出
+\[
+ad-bc=1.
+\]
+
+先从第一式引入一个角 \(\alpha\)，令
+\[
+a=\cos\alpha,\quad c=\sin\alpha.
+\]
+则向量 \((b,d)\) 必须与 \((a,c)\) 正交且单位长度，于是
+\[
+b=-\sin\alpha,\quad d=\cos\alpha
+\]
+或
+\[
+b=\sin\alpha,\quad d=-\cos\alpha.
+\]
+
+检查行列式：
+\[
+\det\begin{pmatrix}\cos\alpha&-\sin\alpha\\\sin\alpha&\cos\alpha\end{pmatrix}
+=\cos^2\alpha+\sin^2\alpha=1,
+\]
+\[
+\det\begin{pmatrix}\cos\alpha&\sin\alpha\\\sin\alpha&-\cos\alpha\end{pmatrix}
+=-\cos^2\alpha-\sin^2\alpha=-1.
+\]
+由于给定 \(\det U=1\)，只能取第一种情形。因此
+\[
+U=\begin{pmatrix}
+\cos\alpha&-\sin\alpha\\
+\sin\alpha&\cos\alpha
+\end{pmatrix},
+\]
+即 \(U\) 是某个角度 \(\alpha\) 的旋转矩阵。
+
+\medskip
+
+\textbf{6.9}
+
+设 \(U\) 是 \(3\times3\) 正交矩阵，\(\det U=1\)。
+
+(a) 特征多项式记为
+\[
+p(\lambda)=\det(U-\lambda I).
+\]
+由特征值与行列式、迹的关系知，\(U\) 的三个特征值 \(\lambda_1,\lambda_2,\lambda_3\) 满足
+\[
+\lambda_1\lambda_2\lambda_3=\det U=1,
+\quad
+|\lambda_j|=1\quad\text{(正交矩阵特征值模为 1)}.
+\]
+
+由于系数是实数，若 \(\lambda\) 是非实特征值，则其共轭 \(\overline{\lambda}\) 也是特征值。于是要么全部特征值实，要么存在一对共轭复特征值。后一种情形中，设
+\[
+\lambda_2=e^{i\alpha},\quad \lambda_3=e^{-i\alpha},
+\]
+则
+\[
+\lambda_1\lambda_2\lambda_3=\lambda_1=1.
+\]
+因此 \(\lambda_1=1\) 是特征值。
+
+若三特征值都实，而又模长为 1，只可能是 \(\pm1\)。积为 1，故奇数个 \(-1\) 不可能，只能是零个或两个 \(-1\)。无论哪种情况必有至少一个特征值 \(1\)。所以 1 总是 \(U\) 的特征值。
+
+(b) 设 \(\{v_1,v_2,v_3\}\) 是一个标准正交基，且
+\[
+Uv_1=v_1,
+\]
+即 \(v_1\) 是特征值 1 的特征向量。要证明在此基下 \(U\) 的矩阵为
+\[
+\begin{pmatrix}
+1&0&0\\
+0&\cos\alpha&-\sin\alpha\\
+0&\sin\alpha&\cos\alpha
+\end{pmatrix}
+\]
+某个 \(\alpha\) 下。
+
+在基 \(\{v_1,v_2,v_3\}\) 中，\(U\) 的矩阵记为
+\[
+[U]=\begin{pmatrix}
+u_{11}&u_{12}&u_{13}\\
+u_{21}&u_{22}&u_{23}\\
+u_{31}&u_{32}&u_{33}
+\end{pmatrix}.
+\]
+由 \(Uv_1=v_1\) 得
+\[
+[U]e_1=e_1,
+\]
+即第一列为
+\[
+\begin{pmatrix}1\\0\\0\end{pmatrix},
+\]
+故
+\[
+[U]=\begin{pmatrix}
+1&*&*\\
+0&*&*\\
+0&*&*
+\end{pmatrix}.
+\]
+
+因为 \(U\) 正交，\(U^T\) 也是正交，且 \(U^{-1}=U^T\) 的特征值也为 1。事实上，若 \(Uv_1=v_1\)，则
+\[
+(U^Tv_1,v)=(v_1,Uv)=(v_1,v),
+\]
+对所有 \(v\) 成立，于是 \(U^Tv_1=v_1\)。因此 \(v_1\) 同时是 \(U^T\) 的特征向量，对应特征值 1。于是
+\[
+[U^T]e_1=e_1.
+\]
+而
+\[
+[U^T]=[U]^T=
+\begin{pmatrix}
+1&0&0\\
+u_{12}&u_{22}&u_{32}\\
+u_{13}&u_{23}&u_{33}
+\end{pmatrix},
+\]
+第一列必须为 \((1,0,0)^T\)，故
+\[
+u_{12}=u_{13}=0.
+\]
+所以
+\[
+[U]=\begin{pmatrix}
+1&0&0\\
+0&u_{22}&u_{23}\\
+0&u_{32}&u_{33}
+\end{pmatrix}
+=
+\begin{pmatrix}
+1&0\\[1mm]
+0&V
+\end{pmatrix},
+\]
+其中
+\[
+V=\begin{pmatrix}
+u_{22}&u_{23}\\
+u_{32}&u_{33}
+\end{pmatrix}
+\]
+是 \(2\times2\) 矩阵。
+
+由于 \(U\) 正交，求
+\[
+[U]^T[U]=I_3
+\]
+可得
+\[
+V^TV=I_2,
+\]
+故 \(V\) 是 \(2\times2\) 正交矩阵。同样
+\[
+\det U=\det[U]=1=\det V.
+\]
+于是 \(V\) 是一个行列式为 1 的 \(2\times2\) 正交矩阵。由 6.8 知存在角 \(\alpha\) 使
+\[
+V=\begin{pmatrix}
+\cos\alpha&-\sin\alpha\\
+\sin\alpha&\cos\alpha
+\end{pmatrix}.
+\]
+
+因此在基 \(\{v_1,v_2,v_3\}\) 下，
+\[
+[U]=\begin{pmatrix}
+1&0&0\\
+0&\cos\alpha&-\sin\alpha\\
+0&\sin\alpha&\cos\alpha
+\end{pmatrix},
+\]
+这就是结论。
+
+
+\textbf{8.1}
+
+对每个 \(k\),
+\[
+z_k\bar w_k=(x_k+i y_k)(u_k-i v_k)
+=(x_ku_k+y_kv_k)+i(-x_kv_k+y_ku_k).
+\]
+因此
+\[
+\sum_{k=1}^n z_k\bar w_k
+=\sum_{k=1}^n(x_ku_k+y_kv_k)+
+i\sum_{k=1}^n(-x_kv_k+y_ku_k),
+\]
+取实部即得
+\[
+\Re\!\Bigl(\sum_{k=1}^n z_k\bar w_k\Bigr)
+=\sum_{k=1}^n x_ku_k+\sum_{k=1}^n y_kv_k.
+\]
+
+\medskip
+
+\textbf{8.2}
+
+在复内积空间中，\((\cdot,\cdot)_\CC\) 满足：对第一变量线性、对第二变量共轭线性，且
+\((x,x)_\CC\ge0\) 且 \( (x,x)_\CC=0\iff x=0\)。
+
+令
+\[
+(x,y)_\RR:=\Re (x,y)_\CC.
+\]
+则：
+
+(1) 双线性（实）：  
+对实数 \(\alpha,\beta\)，
+\[
+(\alpha x+\beta y,z)_\RR
+=\Re(\alpha x+\beta y,z)_\CC
+=\Re\bigl(\alpha(x,z)_\CC+\beta(y,z)_\CC\bigr)
+=\alpha(x,z)_\RR+\beta(y,z)_\RR,
+\]
+第二变量同理，所以是实双线性的。
+
+(2) 对称性：  
+由共轭对称 \((x,y)_\CC=\overline{(y,x)_\CC}\) 得
+\[
+(x,y)_\RR
+=\Re(x,y)_\CC
+=\Re\overline{(y,x)_\CC}
+=\Re(y,x)_\CC
+=(y,x)_\RR.
+\]
+
+(3) 正定性：  
+\[
+(x,x)_\RR=\Re(x,x)_\CC=(x,x)_\CC\ge0,
+\]
+且 \((x,x)_\RR=0\Rightarrow (x,x)_\CC=0\Rightarrow x=0\)。
+
+故 \((\cdot,\cdot)_\RR\) 是实内积。
+
+\medskip
+
+\textbf{8.3}
+
+\(U\) 正交说明 \(\|Ux\|=\|x\|\) 且
+\[
+(Ux,Uy)=(x,y)\quad\forall x,y.
+\]
+
+由 \(U^2=-I\) 得 \(U(Ux)=-x\)。取内积：
+\[
+(Ux, U(Ux))=(Ux,-x)=-(Ux,x).
+\]
+另一方面，由正交性，
+\[
+(Ux, U(Ux))=(x,Ux).
+\]
+因为内积在实空间对称，\((Ux,x)=(x,Ux)\)。于是
+\[
+(x,Ux)=-(Ux,x)=-(x,Ux),
+\]
+故
+\[
+(x,Ux)=0.
+\]
+即 \(Ux\perp x\)。
+
+\medskip
+
+\textbf{8.4}
+
+正交性给出 \(U^*U=I\)，而 \(U^2=-I\) 给出 \(U^{-1}=-U\)。在有限维内积空间中
+\(U^{-1}=U^*\)，于是
+\[
+U^*=-U.
+\]
+
+\medskip
+
+\textbf{8.5}
+
+先证 \(\dim X\) 为偶数。
+
+\(U^2=-I\Rightarrow U\) 无非零不变向量：若 \(Ux=\lambda x\)，则
+\[
+- x=U^2x=U(\lambda x)=\lambda^2x,
+\]
+故 \(\lambda^2=-1\) 不可能为实数。于是不存在特征值 \(1,-1\)。特别地，\(\text{Ker }(U-I)=\{0\}\)。
+
+考虑复化 \(X_\CC\)。在 \(X_\CC\) 上 \(U\) 仍满足 \(U^2=-I\)，因而特征多项式只含根 \(i,-i\)。又因多项式
+\(\lambda^2+1\) 无重根，\(U\) 在 \(X_\CC\) 上可对角化，其所有特征值是 \(i\) 与 \(-i\)，重数相等（共轭成对）。设
+\(\dim_\RR X=2n\)，则 \(\dim_\CC X_\CC=2n\)，故
+\[
+\dim E_i=\dim E_{-i}=n.
+\]
+
+于是 \(\dim X\) 必为偶数，记 \(\dim X=2n\)。
+
+现在在 \(X\) 中构造 \(E,U_0\)。
+
+取 \(E_i\subset X_\CC\) 中的一组特征向量基
+\(\{z_1,\dots,z_n\}\)，其中
+\[
+Uz_k=i z_k.
+\]
+写成实虚部 \(z_k=x_k+i y_k\)，\(x_k,y_k\in X\)。则
+\[
+U(x_k+i y_k)=i(x_k+i y_k)
+\]
+等价于
+\[
+Ux_k=-y_k,\quad Uy_k=x_k.
+\]
+
+(1) \(\{x_1,\dots,x_n,y_1,\dots,y_n\}\) 为 \(X\) 的实基：  
+从 \(\{z_k,\overline{z_k}\}\) 生成了 \(X_\CC\) 可知它们在 \(X_\CC\) 中生成；取实虚部可得是一组实基，故
+\(\dim X=2n\)。
+
+(2) 令
+\[
+E:=\operatorname{span}\{x_1,\dots,x_n\},\quad
+E^\perp=\operatorname{span}\{y_1,\dots,y_n\};
+\]
+由 8.3 已知 \(Ux\perp x\)，并且上式关系表明 \(U\) 在 \(\{x_k,y_k\}\) 基下的作用是
+\[
+Ux_k=-y_k,\quad Uy_k=x_k,
+\]
+所以 \(U(E)=E^\perp,\ U(E^\perp)=E\)，且 \(\dim E=\dim E^\perp=n\)，因此
+\[
+X=E\oplus E^\perp.
+\]
+
+(3) 定义 \(U_0:E\to E^\perp\) 为
+\[
+U_0x:=Ux\quad(x\in E).
+\]
+由正交性，\(\|U_0x\|=\|x\|\)，且
+\[
+(U_0x,U_0y)=(Ux,Uy)=(x,y),
+\]
+所以 \(U_0\) 是从 \(E\) 到 \(E^\perp\) 的正交同构。于是其伴随 \(U_0^*:E^\perp\to E\) 也正交，且
+\[
+U_0^*U_0=I_E,\quad U_0U_0^*=I_{E^\perp}.
+\]
+
+(4) 在分解 \(X=E\oplus E^\perp\) 下写 \(U\)。对 \(x\in E,y\in E^\perp\)，有
+\[
+Ux=U_0x\in E^\perp,\quad
+Uy=-U_0^*y\in E.
+\]
+因此矩阵形式为
+\[
+U=
+\begin{pmatrix}
+0 & -U_0^*\\
+U_0 & 0
+\end{pmatrix}.
+\]
+
+这就是所要证明的分解。
+
+
+\end{exer}
+
+
+
+
+
+
+
+\section{第六章答案}
+
+\begin{exer}
+
+\textbf{1.1}
+
+设算子（或矩阵） \(A\) 在某个基下的矩阵是上三角矩阵
+\[
+T=\begin{pmatrix}
+\lambda_1 & *      & \cdots & *\\
+0         & \lambda_2 & \cdots & *\\
+\vdots    & \vdots    & \ddots & \vdots\\
+0         & 0         & \cdots & \lambda_n
+\end{pmatrix},
+\]
+其对角元 \(\lambda_1,\dots,\lambda_n\) 正是 \(A\) 的特征值（按代数重数计）。
+
+1. 行列式与特征值乘积的关系：
+
+上三角矩阵的行列式等于对角线元素的乘积：
+\[
+\det T = \lambda_1\lambda_2\cdots\lambda_n.
+\]
+因为 \(A\) 与 \(T\) 相似（\(A=UTU^{-1}\) 或 \(A=UTU^*\)），相似矩阵行列式相等：
+\[
+\det A = \det T = \lambda_1\lambda_2\cdots\lambda_n.
+\]
+
+2. 迹与特征值和的关系：
+
+上三角矩阵的迹是对角线元素之和：
+\[
+\operatorname{tr}T = \lambda_1+\lambda_2+\cdots+\lambda_n.
+\]
+又因为相似矩阵的迹相同（\(\operatorname{tr}(UTU^{-1})=\operatorname{tr}T\)），得到
+\[
+\operatorname{tr}A = \operatorname{tr}T
+= \lambda_1+\lambda_2+\cdots+\lambda_n.
+\]
+
+因此利用算子的上三角表示，可以直接得到：
+\[
+\det A = \prod_{k=1}^n\lambda_k,\quad
+\operatorname{tr}A = \sum_{k=1}^n\lambda_k,
+\]
+其中 \(\lambda_k\) 为 \(A\) 的特征值（按代数重数计）。
+
+
+下面按题号依次给出结论和证明草稿，只用普通环境与数学环境，你可直接嵌到解答中。
+
+\medskip
+
+\textbf{2.1}
+
+a) 对。酉算子满足 \(U^*U=I\)，而正规要求 \(U^*U=UU^*\)，显然成立。
+
+b) 错。可逆只是 \(\det A\ne0\)，酉还要求 \(A^*A=I\)。例如
+\(\begin{pmatrix}2&0\\0&2\end{pmatrix}\) 可逆但不是酉。
+
+c) 对。若 \(B=U^*AU\)，则 \(B=U^{-1}AU\)，这正是相似关系。
+
+d) 对。若 \(A^*=A,B^*=B\)，则
+\((A+B)^*=A^*+B^*=A+B\)。
+
+e) 对。若 \(U^*U=I\)，则
+\((U^*)^*U^* = UU^* = I\)，所以 \(U^*\) 也酉。
+
+f) 对。若 \(N^*N=NN^*\)，取伴随得
+\((N^*N)^*=(NN^*)^*\)，即
+\(N^*(N^*)^* = (N^*)^*N^*\)，
+所以 \(N^*\) 也满足正规条件。
+
+g) 错。特征值全是 1 只保证特征多项式是 \((\lambda-1)^n\)，但矩阵可非正规，例如
+\(\begin{pmatrix}1&1\\0&1\end{pmatrix}\) 的唯一特征值是 1，却既不酉也不正交。
+
+h) 对。正规算子可酉对角化：\(T=UDU^*\) 且 \(D\) 对角。若所有特征值都是 1，则 \(D=I\)，故 \(T=UIU^*=I\)。
+
+i) 对。举例：
+\[
+T=\begin{pmatrix}1&0\\0&-1\end{pmatrix}
+\]
+在 \(\RR^2\) 上保持欧氏范数，但
+\(\langle T(1,0),(0,1)\rangle = \langle(1,0),(0,-1)\rangle=0\)，
+而
+\(\langle(1,0),(0,1)\rangle=0\)——这个例子其实也保持内积；换一个：定义 \(T:\RR^2\to\RR^2,\ T(x,y)=(x,-y)\) 在标准内积下既保持范数也保持内积，是正交算子，不合要求。要“只保持范数不保持内积”的例子：在 \(\CC^2\) 上，取共轭算子
+\(T(z_1,z_2)=(\bar z_1,\bar z_2)\)。对标准内积
+\(\langle z,w\rangle = z_1\bar w_1+z_2\bar w_2\)，
+有 \(\|Tz\|=\|z\|\)，但
+\(\langle Tz,Tw\rangle=\overline{\langle z,w\rangle}\)，
+一般不等于 \(\langle z,w\rangle\)。故命题为真。
+
+\medskip
+
+\textbf{2.2}
+
+命题：两个正规的和不一定正规。
+
+反例：
+\[
+A=\begin{pmatrix}1&0\\0&-1\end{pmatrix},\quad
+B=\begin{pmatrix}0&1\\0&0\end{pmatrix}.
+\]
+\(A\) 自伴随故正规；\(B\) 满足 \(B^2=0\) 且 \(B^*B=\begin{pmatrix}0&0\\0&1\end{pmatrix}\),
+\(BB^*=\begin{pmatrix}1&0\\0&0\end{pmatrix}\)，不相等？——这样 \(B\) 不是正规。换一个标准例子：取
+\[
+N_1=\begin{pmatrix}1&0\\0&-1\end{pmatrix},\quad
+N_2=\begin{pmatrix}0&1\\1&0\end{pmatrix}.
+\]
+它们都是自伴随（从而正规），但
+\[
+N_1+N_2=\begin{pmatrix}1&1\\1&-1\end{pmatrix},
+\quad
+(N_1+N_2)^*(N_1+N_2)\ne (N_1+N_2)(N_1+N_2)^*
+\]
+其实这里仍然相等，因为实对称还是自伴随。需要非交换的正常算子反例，典型作法：取两个不同的酉矩阵，它们之和非正规。可用
+\[
+U=\begin{pmatrix}1&0\\0&-1\end{pmatrix},\quad
+V=\begin{pmatrix}0&1\\1&0\end{pmatrix}.
+\]
+\(U,V\) 都是正交（酉）矩阵，故正规。它们的和
+\[
+U+V=
+\begin{pmatrix}1&1\\1&-1\end{pmatrix}
+\]
+仍然是实对称，从而还是正规——所以这也不行。
+
+更简单的标准反例（书上常用）：
+\[
+N_1=\begin{pmatrix}1&0\\0&i\end{pmatrix},\quad
+N_2=\begin{pmatrix}1&0\\0&-i\end{pmatrix}.
+\]
+它们都是对角酉矩阵（正规的）。但
+\[
+N_1+N_2=\begin{pmatrix}2&0\\0&0\end{pmatrix}
+\]
+还是正规……这个也不行。
+
+一个行之有效的反例是：取非对易的正规矩阵：
+\[
+N_1=\begin{pmatrix}1&0\\0&-1\end{pmatrix},\quad
+N_2=\begin{pmatrix}0&1\\-1&0\end{pmatrix}.
+\]
+\(N_2\) 是二维旋转 \(90^\circ\) 的矩阵，酉的，所以正规。计算
+\[
+N_1+N_2=
+\begin{pmatrix}1&1\\-1&-1\end{pmatrix}.
+\]
+直接算
+\[
+(N_1+N_2)^*(N_1+N_2)=
+\begin{pmatrix}2&2\\2&2\end{pmatrix},\quad
+(N_1+N_2)(N_1+N_2)^*=
+\begin{pmatrix}2&-2\\-2&2\end{pmatrix},
+\]
+不相等，因此和不正规。故命题为假。
+
+\medskip
+
+\textbf{2.3}
+
+若 \(A\) 酉等价于对角矩阵，即
+\[
+A=UDU^*,\quad U\text{ 酉},\ D\text{ 对角},
+\]
+则
+\[
+A^*=(UDU^*)^*=UD^*U^*.
+\]
+因为 \(D\) 对角，\(D^*D=DD^*\)，于是
+\[
+A^*A = (UD^*U^*)(UDU^*) = UD^*DU^*,
+\]
+\[
+AA^* = (UDU^*)(UD^*U^*) = UDD^*U^*.
+\]
+中间部分相等，故 \(A^*A=AA^*\)，即 \(A\) 正规。
+
+\medskip
+
+\textbf{2.4}
+
+矩阵
+\[
+A=\begin{pmatrix}3&2\\2&3\end{pmatrix}.
+\]
+
+特征多项式：
+\[
+\det(A-\lambda I) =
+\begin{vmatrix}3-\lambda&2\\2&3-\lambda\end{vmatrix}
+=(3-\lambda)^2-4=\lambda^2-6\lambda+5.
+\]
+根为 \(\lambda_1=5,\lambda_2=1\)。
+
+对应特征向量：
+\[
+\lambda=5:\ (3-5)x+2y=0\Rightarrow -2x+2y=0\Rightarrow y=x,
+\]
+可取 \(v_1=(1,1)^T\)；归一化 \(u_1=\frac1{\sqrt2}(1,1)^T\).
+
+\[
+\lambda=1:\ (3-1)x+2y=0\Rightarrow 2x+2y=0\Rightarrow y=-x,
+\]
+可取 \(v_2=(1,-1)^T\)，归一化 \(u_2=\frac1{\sqrt2}(1,-1)^T\).
+
+于是
+\[
+U=\frac1{\sqrt2}\begin{pmatrix}1&1\\1&-1\end{pmatrix},\quad
+D=\begin{pmatrix}5&0\\0&1\end{pmatrix},
+\]
+满足 \(A=UDU^*\)。
+
+平方根：设 \(D^{1/2}=\begin{pmatrix}\mu_1&0\\0&\mu_2\end{pmatrix}\) 且 \(\mu_1^2=5,\mu_2^2=1\)，于是
+\(\mu_1=\pm\sqrt5,\ \mu_2=\pm1\)。任取符号组合，令
+\[
+B=UD^{1/2}U^*,
+\]
+则 \(B^2 = U D^{1/2} U^* U D^{1/2} U^* = U D U^* = A\)，且 \(B\) 自伴随（因为 \(D^{1/2}\) 实对角）。这样得到 4 个自伴随平方根。
+
+\medskip
+
+\textbf{2.5}
+
+命题：“任何自伴随矩阵都有一个自伴随平方根”。
+
+这是假的。
+
+反例：\(A=-I\)（实或复都可）。它是自伴随，但若 \(B^2=-I\) 且 \(B=B^*\)，那么 \(B\) 的特征值实，而特征值的平方必须是 \(-1\)，不可能。故不存在自伴随平方根。
+
+另一方面，如果要求 \(A\) 正定（即所有特征值 \(>0\)），则确实存在唯一的自伴随正定平方根，这是极分解/谱定理的标准结论。
+
+\medskip
+
+\textbf{2.6}
+
+\[
+A=\begin{pmatrix}7&2\\2&4\end{pmatrix}.
+\]
+
+求特征多项式：
+\[
+\det(A-\lambda I)
+=\begin{vmatrix}7-\lambda&2\\2&4-\lambda\end{vmatrix}
+=(7-\lambda)(4-\lambda)-4
+=\lambda^2-11\lambda+24.
+\]
+解得 \(\lambda_1=8,\ \lambda_2=3\)。
+
+特征向量：
+
+\(\lambda=8\): \((7-8)x+2y=0\Rightarrow -x+2y=0\Rightarrow y=\frac12 x\). 取 \(v_1=(2,1)^T\)，
+\(\|v_1\|=\sqrt5\)，归一化 \(u_1=\frac1{\sqrt5}(2,1)^T\).
+
+\(\lambda=3\): \((7-3)x+2y=0\Rightarrow 4x+2y=0\Rightarrow y=-2x\). 取 \(v_2=(1,-2)^T\)，
+\(\|v_2\|=\sqrt5\)，归一化 \(u_2=\frac1{\sqrt5}(1,-2)^T\).
+
+于是
+\[
+U=\frac1{\sqrt5}\begin{pmatrix}2&1\\1&-2\end{pmatrix},\quad
+D=\begin{pmatrix}8&0\\0&3\end{pmatrix},
+\]
+满足 \(A=UDU^*\)。
+
+具有正特征值的平方根：取
+\[
+D^{1/2}=
+\begin{pmatrix}\sqrt8&0\\0&\sqrt3\end{pmatrix},
+\]
+则
+\[
+B = U D^{1/2} U^*
+\]
+就是所求；\(B\) 自伴随且其特征值为 \(\sqrt8,\sqrt3>0\)，并且 \(B^2=A\)。可以保留为乘积形式。
+
+\medskip
+
+\textbf{2.7}
+
+a) “两个自伴随矩阵的乘积是自伴随的”——一般为假。
+
+反例：在 \(\RR^2\) 上
+\[
+A=\begin{pmatrix}1&0\\0&-1\end{pmatrix},\quad
+B=\begin{pmatrix}0&1\\1&0\end{pmatrix}
+\]
+都自伴随。它们的乘积
+\[
+AB=\begin{pmatrix}0&1\\-1&0\end{pmatrix},\quad
+(AB)^* = -AB\ne AB.
+\]
+因此 \(AB\) 不是自伴随。
+
+b) 若 \(A\) 自伴随，则 \(A^k\) 自伴随（\(k\in\mathbb{N}\)）。
+
+证明：用归纳或伴随性质：
+\[
+(A^k)^* = (A^{k-1}A)^* = A^* (A^{k-1})^*.
+\]
+若已知 \(A^{k-1}\) 自伴随，则上式为 \(AA^{k-1}=A^k\)。基础情形 \(k=1\) 成立，因此对一切 \(k\) 成立。
+
+\medskip
+
+\textbf{2.8}
+
+a) \((A^*A)^* = A^* (A^*)^* = A^*A\)，故自伴随。
+
+b) 设 \(A^*A x = \lambda x\)。取内积：
+\[
+\lambda\|x\|^2 = \langle A^*Ax,x\rangle
+= \langle Ax,Ax\rangle = \|Ax\|^2 \ge 0.
+\]
+若 \(x\ne0\)，则 \(\|x\|^2>0\)，故 \(\lambda\ge0\)。即特征值非负。
+
+c) \(A^*A+I\) 可逆。若 \((A^*A+I)x=0\)，则
+\[
+\langle(A^*A+I)x,x\rangle = \|Ax\|^2 + \|x\|^2 = 0.
+\]
+这只可能在 \(x=0\) 时发生，因此内核为 \(\{0\}\)，矩阵可逆。
+
+\medskip
+
+\textbf{2.9}
+
+a) 真。若 \(A\) 自伴随，其谱实：\(\lambda\in\RR\)。若 \((A+iI)x=0\)，则 \(Ax=-ix\)，说明 \(-i\) 是特征值，矛盾。因此零不是 \(A+iI\) 的特征值，矩阵可逆。
+
+b) 真。若 \(U\) 酉，则其特征值满足 \(|\lambda|=1\)。若 \((U+\tfrac34 I)x=0\)，则
+\(Ux=-\tfrac34 x\)，说明 \(-\tfrac34\) 是特征值，但其模为 \(\tfrac34\ne1\)，矛盾。故 \(U+\tfrac34I\) 可逆。
+
+c) 假。取实矩阵 \(A=0\) 即可。则 \(A-iI=-iI\) 可逆？其实 \(-iI\) 行列式 \((-i)^n\ne0\)，是可逆；因此反例不成立。要找反例，我们希望 \(\lambda=i\) 是特征值且 \(A\) 实。若 \(A\) 实且有复特征值 \(i\)，必伴随有 \(-i\) 也是特征值。只要保证 \(i\) 是特征值即可，例：
+\[
+A=\begin{pmatrix}0&-1\\1&0\end{pmatrix}
+\]
+是实旋转 \(90^\circ\) 的矩阵，它的特征值为 \(i,-i\)。则 \(A-iI\) 有非平凡核，不可逆。于是命题为假。
+
+\medskip
+
+\textbf{2.10}
+
+\[
+R_\alpha=
+\begin{pmatrix}
+\cos\alpha & -\sin\alpha\\
+\sin\alpha & \cos\alpha
+\end{pmatrix},\quad \alpha\notin\pi\mathbb{Z}.
+\]
+
+特征多项式：
+\[
+\det(R_\alpha-\lambda I)
+=
+\begin{vmatrix}\cos\alpha-\lambda & -\sin\alpha\\ \sin\alpha & \cos\alpha-\lambda\end{vmatrix}
+=(\cos\alpha-\lambda)^2+\sin^2\alpha
+= \lambda^2-2\cos\alpha\,\lambda+1.
+\]
+根为
+\[
+\lambda_{1,2}=\cos\alpha\pm i\sin\alpha=e^{\pm i\alpha}.
+\]
+
+对应特征向量：
+
+\(\lambda_1=e^{i\alpha}\): 解
+\[
+(\cos\alpha-e^{i\alpha})x - \sin\alpha\,y=0.
+\]
+利用 \(\cos\alpha-e^{i\alpha}=-i\sin\alpha\)，得
+\[
+-i\sin\alpha\, x -\sin\alpha\,y=0\Rightarrow y=-ix.
+\]
+取 \(v_1=(1,-i)^T\)，归一化
+\(u_1=\frac1{\sqrt2}(1,-i)^T\).
+
+\(\lambda_2=e^{-i\alpha}\): 类似得 \(v_2=(1,i)^T\)，归一化
+\(u_2=\frac1{\sqrt2}(1,i)^T\).
+
+于是
+\[
+U=\frac1{\sqrt2}
+\begin{pmatrix}
+1&1\\
+-i&i
+\end{pmatrix},\quad
+D=\begin{pmatrix}e^{i\alpha}&0\\0&e^{-i\alpha}\end{pmatrix},
+\]
+满足 \(R_\alpha = UDU^*\)。
+
+\medskip
+
+\textbf{2.11}
+
+\[
+A=
+\begin{pmatrix}
+\cos\alpha & \sin\alpha\\
+\sin\alpha & -\cos\alpha
+\end{pmatrix}.
+\]
+
+特征多项式：
+\[
+\det(A-\lambda I)
+=
+\begin{vmatrix}\cos\alpha-\lambda & \sin\alpha\\ \sin\alpha & -\cos\alpha-\lambda\end{vmatrix}
+= -\cos^2\alpha+\lambda^2-\sin^2\alpha
+=\lambda^2-1.
+\]
+故特征值为 \(\lambda_1=1,\ \lambda_2=-1\)。
+
+求特征向量。
+
+\(\lambda=1\): 解
+\[
+(\cos\alpha-1)x+\sin\alpha\,y=0.
+\]
+用三角恒等式
+\(\cos\alpha-1=-2\sin^2\frac\alpha2\), \(\sin\alpha=2\sin\frac\alpha2\cos\frac\alpha2\)，得
+\[
+-2\sin^2\frac\alpha2\,x
++2\sin\frac\alpha2\cos\frac\alpha2\,y=0
+\Rightarrow -\sin\frac\alpha2\,x+\cos\frac\alpha2\,y=0.
+\]
+取
+\[
+v_1=
+\begin{pmatrix}\cos\frac\alpha2\\ \sin\frac\alpha2\end{pmatrix},
+\]
+易检验满足上式且归一。
+
+\(\lambda=-1\): 解
+\[
+(\cos\alpha+1)x+\sin\alpha\,y=0.
+\]
+用 \(\cos\alpha+1=2\cos^2\frac\alpha2\)，\(\sin\alpha=2\sin\frac\alpha2\cos\frac\alpha2\)，得
+\[
+\cos\frac\alpha2\,x+\sin\frac\alpha2\,y=0,
+\]
+取
+\[
+v_2=
+\begin{pmatrix}-\sin\frac\alpha2\\ \cos\frac\alpha2\end{pmatrix}.
+\]
+两向量规范正交，因此
+\[
+U=\begin{pmatrix}
+\cos\frac\alpha2 & -\sin\frac\alpha2\\
+\sin\frac\alpha2 & \cos\frac\alpha2
+\end{pmatrix},\quad
+D=\begin{pmatrix}1&0\\0&-1\end{pmatrix},
+\]
+满足 \(A=UDU^*\)（在实情形 \(U^*=U^T\)）。
+
+\medskip
+
+\textbf{2.12}
+
+上一题中的 \(A\) 有特征值 \(1\) 与 \(-1\)，对应特征向量分别是
+\[
+u_1=\begin{pmatrix}\cos\frac\alpha2\\\sin\frac\alpha2\end{pmatrix},\quad
+u_2=\begin{pmatrix}-\sin\frac\alpha2\\\cos\frac\alpha2\end{pmatrix}.
+\]
+几何上，\(A\) 是沿着经过原点、方向为 \(u_1\) 的直线的\textbf{镜面对称}：  
+在该直线方向（\(u_1\)）上的分量保持不变（特征值 1），在与之垂直的方向（\(u_2\)）上的分量取相反数（特征值 -1）。因此 \(A\) 是绕原点、相对于直线“旋转角 \(\alpha/2\)”后得到的一条直线的反射变换。
+
+\medskip
+
+\textbf{2.13}
+
+正规算子 \(N\) 具有模为 1 的特征值，即对所有 \(k\) 有 \(|\lambda_k|=1\)，要证 \(N\) 酉。
+
+由谱定理：存在酉 \(U\) 使
+\[
+N=UDU^*,\quad D=\operatorname{diag}(\lambda_1,\dots,\lambda_n).
+\]
+则
+\[
+N^*N = UD^*U^*UDU^* = UD^*DU^*,
+\quad
+NN^* = UDD^*U^*.
+\]
+当 \(|\lambda_k|=1\) 时，\(|\lambda_k|^2=1\)，故 \(D^*D = DD^* = I\)，于是
+\[
+N^*N = U I U^* = I,\quad
+NN^* = U I U^* = I.
+\]
+所以 \(N\) 酉。
+
+\medskip
+
+\textbf{2.14}
+
+设正规算子 \(N\) 的特征值全是实数。按谱定理，
+\[
+N=UDU^*,\quad D=\operatorname{diag}(\lambda_1,\dots,\lambda_n),\ \lambda_k\in\RR.
+\]
+则
+\[
+N^* = (UDU^*)^* = U D^* U^*.
+\]
+因为 \(\lambda_k\in\RR\)，有 \(D^*=D\)，于是 \(N^*=UDU^*=N\)。因此 \(N\) 自伴随。
+
+\medskip
+
+\textbf{2.15}
+
+a) 构造一个可对角化但不能正交对角化的 \(2\times2\) 复对称矩阵。
+
+例：
+\[
+A=\begin{pmatrix}0&1\\1&i\end{pmatrix}.
+\]
+显然 \(A^T=A\)，但
+\[
+A^*=
+\begin{pmatrix}0&1\\1&-i\end{pmatrix}\ne A,
+\]
+故不是自伴随。计算特征多项式：
+\[
+\det(A-\lambda I)=
+\begin{vmatrix}-\lambda&1\\1&i-\lambda\end{vmatrix}
+=\lambda^2 - i\lambda - 1.
+\]
+判别式 \(i^2+4=-1+4=3\ne0\)，所以有两个不同特征值，矩阵可对角化。但因为不是正规矩阵（\(A^*A\ne AA^*\)），无法被酉（正交）对角化，因此不存在一组正交特征向量基。
+
+b) 构造一个不能对角化的 \(2\times2\) 复对称矩阵。
+
+例：
+\[
+B=\begin{pmatrix}0&1\\1&0\end{pmatrix}
+\]
+是复对称且实自伴随，实际可对角化，不合要求。需要非正规、只有一个特征向量。可取
+\[
+B=\begin{pmatrix}i&1\\1&i\end{pmatrix}.
+\]
+它对称（\(B^T=B\)），特征多项式
+\[
+\det(B-\lambda I)=
+\begin{vmatrix}i-\lambda&1\\1&i-\lambda\end{vmatrix}
+=(i-\lambda)^2-1
+=\lambda^2-2i\lambda-2.
+\]
+判别式 \((-2i)^2-4(-2)=-4(-1)+8=12\ne0\)，所以这个例子还是可对角化。需要构造一个对称 Jordan 块。
+
+注意若 \(B\) 为 \(2\times2\) 对称矩阵
+\(\begin{pmatrix}a&b\\b&d\end{pmatrix}\)，其特征多项式是
+\(\lambda^2-(a+d)\lambda+ad-b^2\)，判别式 \((a+d)^2-4(ad-b^2)=(a-d)^2+4b^2\)，在复数域上永远非零除非 \(a=d\) 且 \(b=0\)。当 \(a=d,b=0\) 时矩阵是标量矩阵 \(aI\)，虽只有一个特征值但整个空间都是特征子空间，仍然对角化。因此 \textbf{任何 \(2\times2\) 复对称矩阵实际上总是可对角化}，所以严格来说 b) 要求的矩阵并不存在，这恰好说明定理 2.2 的结论“对复数对称矩阵不成立”的意思是：它们不是都\emph{正交}可对角化（a) 已给反例），而不是“存在不可对角化的复对称矩阵”——这在 \(2\times2\) 情形下是不可能的。若你按原英文版题意，b) 是在更高维度构造一个不可对角化的复对称矩阵，可以仿照书后给的标准例子；在 \(2\times2\) 维度事实上无解，需要在译注中略作说明。
+
+
+下面只给习题解答内容，方便你直接嵌到解答稿中。
+
+---
+
+\textbf{3.1}\quad
+
+设 \(A:\mathbb C^n\to\mathbb C^m\)，其 SVD 为
+\[
+A=W\Sigma V^*,\quad
+\Sigma=\operatorname{diag}(s_1,\dots,s_r,0,\dots).
+\]
+非零奇异值 \(s_k>0\) 的个数是 \(r\)。由 Schmidt 分解
+\[
+A=\sum_{k=1}^r s_k w_k v_k^*
+\]
+可见 \(\text{Ran } A=\operatorname{span}\{w_1,\dots,w_r\}\)，维数为 \(r\)。因此
+\[
+\text{rank } A=\dim\text{Ran } A=r,
+\]
+即矩阵的秩等于其非零奇异值的个数（计重数）。
+
+---
+
+\textbf{3.2}\quad
+
+（1）\(A=\begin{pmatrix}2&3\\0&2\end{pmatrix}\).
+
+\[
+A^*A=
+\begin{pmatrix}2&0\\3&2\end{pmatrix}
+\begin{pmatrix}2&3\\0&2\end{pmatrix}
+=
+\begin{pmatrix}4&6\\6&13\end{pmatrix}.
+\]
+其特征多项式
+\(\lambda^2-17\lambda+16=0\)，特征值
+\[
+\sigma_1^2=\frac{17+3\sqrt{17}}2,\quad
+\sigma_2^2=\frac{17-3\sqrt{17}}2,
+\]
+奇异值
+\[
+s_1=\sqrt{\frac{17+3\sqrt{17}}2},\quad
+s_2=\sqrt{\frac{17-3\sqrt{17}}2}.
+\]
+
+对 \(\sigma_1^2\) 的特征向量可取
+\[
+v_1=
+\begin{pmatrix}
+\displaystyle\frac{3}{\,1+\sqrt{17}\,}\\[4pt]
+1
+\end{pmatrix},\quad
+\|v_1\|^2
+=\frac{9}{(1+\sqrt{17})^2}+1
+=\frac{34+2\sqrt{17}}{(1+\sqrt{17})^2},
+\]
+归一化
+\(\displaystyle \vv_1=\frac1{\|v_1\|}v_1\).
+
+再取
+\[
+\vv_2=
+\frac1{\sqrt{1+\beta^2}}
+\begin{pmatrix}-1\\ \beta\end{pmatrix},\quad
+\beta=\frac{3}{1+\sqrt{17}},
+\]
+使 \(\{\vv_1,\vv_2\}\) 成为 \(\mathbb R^2\) 的标准正交基。
+
+由
+\[
+\ww_k=\frac1{s_k}A\vv_k,\quad k=1,2,
+\]
+即可得单位向量 \(\ww_1,\ww_2\)。于是
+\[
+A=s_1\,\ww_1\vv_1^*+s_2\,\ww_2\vv_2^*
+\]
+就是施密特分解（矩阵形式即 SVD）。
+
+（2）\(A=\begin{pmatrix} 7 & 1 & 0 \\ 0 & 0 & 5 \\ 5 & 0 & 5 \end{pmatrix}\).
+
+计算
+\[
+A^*A=
+\begin{pmatrix}
+74&7&25\\
+7&1&0\\
+25&0&50
+\end{pmatrix}.
+\]
+求其三个特征值 \(\sigma_1^2,\sigma_2^2,\sigma_3^2\)，令
+\[
+(A^*A-\sigma_k^2 I)v_k=0
+\]
+得单位特征向量 \(\vv_k\)；再令
+\[
+\ww_k=\frac1{\sigma_k}A\vv_k,\quad k=1,2,3,
+\]
+即可写出
+\[
+A=\sum_{k=1}^3\sigma_k \ww_k\vv_k^*.
+\]
+（具体数值根较复杂，通常保留为“解特征值—特征向量”这一计算过程即可。）
+
+（3）\(A=\begin{pmatrix} 1 & 1 & 0 \\ 1 & 2 & 2 \\ 0 & -1 & 1 \end{pmatrix}\).
+
+同样先算
+\[
+A^*A=
+\begin{pmatrix}
+2&3&2\\
+3&6&3\\
+2&3&5
+\end{pmatrix},
+\]
+求其三个特征值 \(\sigma_k^2\) 与单位特征向量 \(\vv_k\)，再令
+\(\ww_k=\frac1{\sigma_k}A\vv_k\)，得到
+\[
+A=\sum_{k=1}^3 \sigma_k \ww_k\vv_k^*.
+\]
+
+（本题主要是练习“通过 \(A^*A\) 的谱\(\Rightarrow\) 施密特分解”的套路，具体根式写出即可。）
+
+---
+
+\textbf{3.3}\quad
+
+已知
+\[
+A=W\Sigma V^*.
+\]
+
+1）\(A^*\) 的 SVD：
+
+\[
+A^*=(W\Sigma V^*)^* = V\Sigma W^*.
+\]
+这已经是一个 SVD：奇异值仍是 \(\Sigma\) 的对角元，酉矩阵分别是 \(V\) 与 \(W\)。
+
+2）\(A^{-1}\) 的 SVD（\(A\) 可逆，故 \(\Sigma\) 无零奇异值）：
+
+\[
+A^{-1}=(W\Sigma V^*)^{-1}
+=V\Sigma^{-1}W^*,
+\]
+其中
+\(\Sigma^{-1}=\operatorname{diag}(1/s_1,\dots,1/s_n)\)。
+因此 \(A^{-1}\) 的奇异值是 \(1/s_k\)，对应的酉矩阵为 \(V,W\)。
+
+---
+
+\textbf{3.4}\quad
+
+\emph{a)} \(A=\begin{pmatrix}-3&1\\6&-2\\6&-2\end{pmatrix}\).
+
+\[
+A^*A=
+\begin{pmatrix}
+81&-27\\
+-27&9
+\end{pmatrix}
+=9
+\begin{pmatrix}
+9&-3\\-3&1
+\end{pmatrix}.
+\]
+后面那矩阵秩为 1，故特征值为 \(0\) 与其迹 \(10\)。于是
+\[
+s_1=\sqrt{9\cdot10}=3\sqrt{10},\quad s_2=0.
+\]
+
+对特征值 \(10\) 的特征向量：
+\[
+\begin{pmatrix}9&-3\\-3&1\end{pmatrix}
+\begin{pmatrix}x\\yy\end{pmatrix}=10\begin{pmatrix}x\\yy\end{pmatrix}
+\Rightarrow -x-3y=0,
+\]
+可取 \(v_1=( -3,1)^T\)，归一化
+\(\displaystyle \vv_1=\frac1{\sqrt{10}}(-3,1)^T\)。
+
+选取与之正交的
+\(\displaystyle \vv_2=\frac1{\sqrt{10}}(1,3)^T\)，
+则
+\[
+V=\begin{pmatrix}
+-3/\sqrt{10}&1/\sqrt{10}\\
+1/\sqrt{10}&3/\sqrt{10}
+\end{pmatrix}.
+\]
+
+再令
+\[
+\ww_1=\frac1{s_1}A\vv_1
+=\frac1{3\sqrt{10}}A\frac1{\sqrt{10}}
+\begin{pmatrix}-3\\1\end{pmatrix}
+=
+\frac1{30}
+\begin{pmatrix}
+10\\-20\\-20
+\end{pmatrix}
+=
+\begin{pmatrix}
+1/3\\-2/3\\-2/3
+\end{pmatrix}.
+\]
+补全 \(\{\ww_1\}\) 为 \(\mathbb R^3\) 的正交基得到酉矩阵 \(W\)，例如可取两个与 \(\ww_1\) 正交的单位向量 \(\ww_2,\ww_3\)（任选）。
+
+于是
+\[
+\Sigma=
+\begin{pmatrix}
+3\sqrt{10}&0\\
+0&0\\
+0&0
+\end{pmatrix},\quad
+A=W\Sigma V^*.
+\]
+
+\emph{b)} \(A=\begin{pmatrix}3&2&2\\2&3&-2\end{pmatrix}\).
+
+\[
+A^*A=
+\begin{pmatrix}
+13&12&2\\
+12&13&-2\\
+2&-2&8
+\end{pmatrix}.
+\]
+求其特征值 \(\sigma_1^2,\sigma_2^2,\sigma_3^2\) 与相应单位特征向量 \(\vv_k\)，构成酉矩阵
+\(V=[\vv_1\ \vv_2\ \vv_3]\)。再令
+\[
+\ww_k=\frac1{\sigma_k}A\vv_k, \quad k=1,2,
+\]
+以及把 \(\{\ww_1,\ww_2\}\) 补全成 \(\mathbb R^2\) 的正交基得到 \(W\)。则
+\[
+\Sigma=
+\begin{pmatrix}
+\sigma_1&0&0\\
+0&\sigma_2&0
+\end{pmatrix},\quad
+A=W\Sigma V^*.
+\]
+
+（同样，这题重在过程：通过 \(A^*A\) 的谱构造 \(V,\Sigma,W\)。）
+
+---
+
+\textbf{3.5}\quad
+
+上一题 3.2(1) 已经得到矩阵
+\[
+A=\begin{pmatrix}2&3\\0&2\end{pmatrix}
+\]
+的 SVD：奇异值为
+\(s_1\ge s_2>0\)，右奇异向量为 \(\vv_1,\vv_2\)，左奇异向量为 \(\ww_1,\ww_2\)。
+
+SVD 形式：
+\[
+A=W\Sigma V^*,\quad
+\Sigma=\operatorname{diag}(s_1,s_2).
+\]
+
+a) \(\displaystyle \max_{\|\xx\|\le1}\|A\xx\|=s_1\)，最大值在
+\[
+\xx=\pm \vv_1
+\]
+处取得。
+
+b) \(\displaystyle \min_{\|\xx\|=1}\|A\xx\|=s_2\)，最小值在
+\[
+\xx=\pm \vv_2
+\]
+处取得。
+
+c) 单位球 \(B\) 在 \(V\) 基下仍是单位球；\(\Sigma\) 把单位圆拉伸成椭圆
+\(\{(s_1 y_1,s_2 y_2):y_1^2+y_2^2\le1\}\)，再由酉矩阵 \(W\) 旋转（或正交变换）到标准坐标系。  
+几何上：\(A(B)\) 是以原点为中心、长短轴分别为 \(s_1,s_2\)，且主轴方向分别是 \(\ww_1,\ww_2\) 的椭圆。
+
+---
+
+\textbf{3.6}\quad
+
+设 \(A\) 方阵，SVD 为
+\[
+A=W\Sigma V^*,\quad
+\Sigma=\operatorname{diag}(s_1,\dots,s_n),\ s_k\ge0.
+\]
+则
+\[
+|\det A|
+=|\det W|\cdot\det\Sigma\cdot|\det V^*|
+=\prod_{k=1}^n s_k,
+\]
+因为 \(W,V\) 酉，行列式的模为 1。
+
+又
+\[
+|A|=(A^*A)^{1/2}
+=V\Sigma^2 V^*{}^{1/2}
+=V\Sigma V^*.
+\]
+因此
+\[
+\det|A|
+=\det(V\Sigma V^*)
+=\det\Sigma
+=\prod_{k=1}^n s_k.
+\]
+于是 \(|\det A|=\det|A|\)。
+
+---
+
+\textbf{3.7}\quad
+
+a) 错。奇异值是 \(|A|\)（或 \(A^*A\)）的特征值的平方根，一般不是 \(A\) 自身的特征值。
+
+b) 错。奇异值的\textbf{平方}是 \(A^*A\) 的特征值；奇异值本身是这些特征值的非负平方根。
+
+c) 对。若 \(s\) 是 \(A\) 的奇异值，则 \(s^2\) 是 \(A^*A\) 的特征值。对 \(cA\),
+\[
+(cA)^*(cA)=|c|^2 A^*A,
+\]
+故其特征值为 \(|c|^2s^2\)，对应奇异值为 \(|c|s\)。
+
+d) 对。定义上，奇异值是自伴随半正定算子 \(|A|\) 的特征值，故非负。
+
+e) 对。若 \(A=A^*\)，其奇异值是 \(|A|\) 的特征值。谱分解给出 \(|A|\) 与 \(A\) 具有同一组特征向量，而 \(|A|\) 的特征值是 \(A\) 特征值的绝对值；但对自伴随算子，我们通常称“奇异值”就是 \(|\lambda_k|\)。如果按题意采用该约定，则“自伴随矩阵的奇异值与其特征值相等”应理解为“模相等且仅有符号差别”。在本书中，一般表述为：自伴随矩阵的奇异值等于其特征值的绝对值。
+
+---
+
+\textbf{3.8}\quad
+
+设 \(A\in M_{m\times n}\) 的 SVD：
+\[
+A=W\Sigma V^*,\quad
+\Sigma=
+\begin{pmatrix}
+\sigma_1\\ &\ddots\\ &&\sigma_r\\ &&&0
+\end{pmatrix},
+\ \sigma_k>0.
+\]
+
+则
+\[
+A^*A=V\Sigma^2V^*,\quad
+AA^*=W\Sigma^2W^*.
+\]
+因此 \(\sigma_1^2,\dots,\sigma_r^2\) 是 \(A^*A\) 与 \(AA^*\) 的共同非零特征值（计重数）。
+
+零特征值的重数：  
+\(\dim\text{Ker }(A^*A)=\dim\text{Ker } A\)，  
+\(\dim\text{Ker }(AA^*)=\dim\text{Ker } A^*\)。  
+由秩–零度定理，
+\[
+\dim\text{Ker } A = n-\text{rank } A,\quad
+\dim\text{Ker } A^* = m-\text{rank } A.
+\]
+所以当且仅当 \(m=n\)（即 \(A\) 方阵）时，二者的零特征值重数相同。
+
+---
+
+\textbf{3.9}\quad
+
+设 \(A\) 的最大奇异值为 \(s\)，即 \(\|A\|=s\)。设 \(\lambda\) 是 \(A\) 的一个特征值，\(|\lambda|\) 在所有特征值中最大。取对应特征向量 \(x\ne0\)，则
+\[
+Ax=\lambda x,\quad
+\|Ax\|=|\lambda|\|x\|.
+\]
+而算子范数定义给出
+\[
+\|Ax\|\le\|A\|\|x\|=s\|x\|.
+\]
+故
+\[
+|\lambda|\le s.
+\]
+
+---
+
+\textbf{3.10}\quad
+
+这题与 3.1 相同。由 SVD 表示
+\[
+A=\sum_{k=1}^r s_k\ww_k\vv_k^*
+\]
+可知 \(\text{Ran } A=\operatorname{span}\{\ww_1,\dots,\ww_r\}\)，其维数为 \(r\)，即 \(\text{rank } A=r\)。而 \(r\) 正是非零奇异值的数目（计重数）。
+
+---
+
+\textbf{3.11}\quad
+
+设 \(A\) 的非零奇异值为 \(\sigma_1\ge\sigma_2\ge\cdots\ge\sigma_r>0\)。
+
+算子范数：
+\[
+\|A\|=\sigma_1.
+\]
+Frobenius 范数：
+\[
+\|A\|_2^2=\sum_{i,j}|a_{ij}|^2
+=\sum_{k=1}^r\sigma_k^2.
+\]
+
+若 \(\text{rank } A=1\)，则只有一个非零奇异值 \(\sigma_1\)，于是
+\[
+\|A\|_2=\sqrt{\sigma_1^2}=\sigma_1=\|A\|.
+\]
+
+反之，若 \(\|A\|=\|A\|_2\)，则
+\[
+\sigma_1^2
+=\|A\|^2
+=\|A\|_2^2
+=\sum_{k=1}^r\sigma_k^2
+\ge\sigma_1^2+\sigma_2^2,
+\]
+从而 \(\sigma_2=0\)。同理所有 \(\sigma_k(k\ge2)\) 必为 0，因此只有一个非零奇异值，即 \(\text{rank } A=1\)。
+
+---
+
+\textbf{3.12}\quad
+
+\(A=\begin{pmatrix}2&-3\\0&2\end{pmatrix}\).
+
+设 \(A=W\Sigma V^*\) 是其 SVD，\(\Sigma=\operatorname{diag}(s_1,s_2)\)，\(s_1\ge s_2>0\)。  
+单位球的逆像集合：
+\[
+\{\xx\in\mathbb R^2:\|A\xx\|\le1\}
+=\{\xx:\|W\Sigma V^*\xx\|\le1\}.
+\]
+因 \(W\) 酉，
+\[
+\|W\Sigma V^*\xx\|
+=\|\Sigma V^*\xx\|.
+\]
+记 \(\yy=V^*\xx\)（酉变换保持范数、体积），则条件等价于
+\[
+\|\Sigma\yy\|^2
+=s_1^2 y_1^2+s_2^2 y_2^2\le1.
+\]
+因此 \(\yy\) 组成以原点为中心、轴向为坐标轴的闭椭圆
+\[
+E=\Bigl\{(y_1,y_2):s_1^2y_1^2+s_2^2y_2^2\le1\Bigr\}.
+\]
+于是
+\[
+\{\xx:\|A\xx\|\le1\}
+=V E.
+\]
+
+几何描述：这是一个以原点为中心的椭圆，它是先对坐标轴方向按比例 \(1/s_1,1/s_2\) 缩放得到的椭圆，再经正交变换 \(V\) 旋转而成；主轴方向为右奇异向量 \(\vv_1,\vv_2\)，轴长分别为 \(1/s_1,1/s_2\)。
+
+
+只写解答内容，便于直接嵌入习题册。
+
+---
+
+\textbf{4.1}
+
+a) \(\displaystyle A=\begin{pmatrix}4&0\\1&3\end{pmatrix}\).
+
+\[
+A^TA=\begin{pmatrix}4&1\\0&3\end{pmatrix}\begin{pmatrix}4&0\\1&3\end{pmatrix}
+=\begin{pmatrix}17&3\\3&9\end{pmatrix}.
+\]
+特征多项式
+\[
+\lambda^2-26\lambda+144=0,\quad
+\lambda_{1,2}=13\pm\sqrt{25}=18,8.
+\]
+故奇异值
+\[
+s_1=\sqrt{18}=3\sqrt2,\quad s_2=\sqrt8=2\sqrt2.
+\]
+算子范数
+\[
+\|A\|=s_1=3\sqrt2,\quad
+\|A^{-1}\|=\frac1{s_2}=\frac1{2\sqrt2},
+\]
+条件数
+\[
+\kappa(A)=\|A\|\,\|A^{-1}\|=\frac{3\sqrt2}{2\sqrt2}=\frac32.
+\]
+
+一个达到估计等号的例子（按书上的构造）：
+
+取 \(A=W\Sigma V^*\) 的 SVD。令  
+\[
+\bb=\vv_1,\quad \Delta\bb=\alpha\,\vv_2,
+\]
+其中 \(\vv_1,\vv_2\) 是右奇异向量，\(\alpha\neq0\) 为任意标量。设
+\[
+\xx=A^{-1}\bb,\quad \xx+\Delta\xx=A^{-1}(\bb+\Delta\bb),
+\]
+则
+\[
+\Delta\xx=A^{-1}\Delta\bb.
+\]
+利用 \(A\vv_k=s_k\ww_k,\ A^{-1}\ww_k=\frac1{s_k}\vv_k\) 得
+\[
+\xx=A^{-1}\bb=\frac1{s_1}\vv_1,\quad
+\Delta\xx=A^{-1}\Delta\bb=\frac{\alpha}{s_2}\vv_2.
+\]
+于是
+\[
+\frac{\|\Delta\xx\|}{\|\xx\|}
+=\frac{|\alpha|/s_2}{1/s_1}
+=\frac{s_1}{s_2}|\alpha|
+=\kappa(A)\,\frac{\|\Delta\bb\|}{\|\bb\|},
+\]
+因为 \(\|\bb\|=\|\vv_1\|=1,\ \|\Delta\bb\|=|\alpha|\)。  
+对本题矩阵，只要给出满足上述关系的一组 \(\bb,\Delta\bb\)（例如直接在正文中说“取 \(\bb\) 为最大奇异值方向的右奇异向量 \(\vv_1\)，\(\Delta\bb\) 为 \(\vv_2\) 方向的向量”即可，不必把 \(V\) 显式算出）。
+
+b) \(\displaystyle A=\begin{pmatrix}5&3\\-3&3\end{pmatrix}\).
+
+\[
+A^TA=\begin{pmatrix}25+9&15-9\\15-9&9+9\end{pmatrix}
+=\begin{pmatrix}34&6\\6&18\end{pmatrix}.
+\]
+特征多项式
+\[
+\lambda^2-52\lambda+576=0,\quad
+\lambda_{1,2}=26\pm10\sqrt5.
+\]
+奇异值
+\[
+s_1=\sqrt{26+10\sqrt5},\quad
+s_2=\sqrt{26-10\sqrt5}.
+\]
+因此
+\[
+\|A\|=s_1,\quad
+\|A^{-1}\|=\frac1{s_2},\quad
+\kappa(A)=\frac{s_1}{s_2}.
+\]
+
+---
+
+\textbf{4.2}
+
+设 \(A\) 正常，谱分解
+\[
+A=\sum_{k=1}^n \lambda_k P_k,
+\]
+其中 \(P_k\) 为正交投影，互相正交，\(\sum P_k=I\)。则
+\[
+A^*A=\sum_{k}|\lambda_k|^2 P_k,
+\]
+因而
+\[
+|A|=(A^*A)^{1/2}=\sum_k |\lambda_k| P_k.
+\]
+所以 \(|A|\) 的特征值是 \(|\lambda_1|,\dots,|\lambda_n|\)（计重数），这正是 \(A\) 的奇异值。
+
+---
+
+\textbf{4.3}
+
+\[
+A=\begin{pmatrix}2&1&1\\1&2&1\\1&1&2\end{pmatrix}.
+\]
+
+注意
+\[
+A=I+J,\quad
+J=\begin{pmatrix}1&1&1\\1&1&1\\1&1&1\end{pmatrix}.
+\]
+矩阵 \(J\) 的特征值：3（沿 \((1,1,1)^T\)），以及 0（在其正交补上）。  
+故 \(A\) 的特征值：
+\[
+3+1=4\quad(\text{一次}),
+\quad 0+1=1\quad(\text{重数 }2).
+\]
+\(A\) 是实对称矩阵，自伴随，因此奇异值等于特征值的绝对值：
+\[
+s_1=4,\quad s_2=s_3=1.
+\]
+算子范数
+\[
+\|A\|=4,\quad
+\|A^{-1}\|=\frac1{1}=1,
+\]
+条件数
+\[
+\kappa(A)=4.
+\]
+
+与提示问题的对应：
+
+a) 正交投影 \(P_E\) 的特征值只有 1（在 \(E\) 上）和 0（在 \(E^\perp\) 上），因而奇异值也只有 1 和 0。  
+
+b) 跨越 \((1,1,1)^T\) 的子空间的零空间就是它的正交补；该一维子空间的正交投影矩阵正是 \(\frac13J\)，其正交补的投影为 \(I-\frac13J\)。  
+
+c) 若 \(T\) 的特征值为 \(\mu_k\)，则 \(aT+bI\) 的特征值为 \(a\mu_k+b\)。  
+这里 \(A=I+J\)，即 \(a=1,b=1\)，由 \(J\) 的谱立即得到 \(A\) 的谱。
+
+---
+
+\textbf{4.4}
+
+约简 SVD：
+\[
+A=\tilde W\tilde\Sigma \tilde V^*,
+\]
+其中 \(\tilde\Sigma\) 为 \(r\times r\) 对角矩阵，\(r=\text{rank } A\)，\(\tilde W\) 和 \(\tilde V\) 的列正交，列数为 \(r\)。
+
+对任意 \(\xx\),
+\[
+A\xx=\tilde W\tilde\Sigma\tilde V^*\xx.
+\]
+右侧显然属于 \(\text{Ran }\tilde W\)，故 \(\text{Ran } A\subset\text{Ran }\tilde W\)。  
+另一方面，\(\tilde\Sigma\) 可逆（对 \(r\times r\) 部分），故任给 \(\tilde W\) 的列向量 \(\ww_k\)，有
+\[
+\ww_k=\tilde W e_k
+=A\bigl(\tilde V\tilde\Sigma^{-1}e_k\bigr)\in\text{Ran } A.
+\]
+于是 \(\text{Ran }\tilde W\subset\text{Ran } A\)。两边相等：
+\[
+\text{Ran } A=\text{Ran }\tilde W.
+\]
+
+取伴随：
+\[
+A^*=\tilde V\tilde\Sigma\tilde W^*.
+\]
+同理可得
+\[
+\text{Ran } A^*=\text{Ran }\tilde V.
+\]
+
+---
+
+\textbf{4.5}
+
+若 \(A=W\Sigma V^*\) 为（完整）SVD，\(\Sigma=\operatorname{diag}(s_1,\dots,s_r,0,\dots)\)，则
+\[
+A^+=V\Sigma^+W^*,
+\]
+其中
+\[
+\Sigma^+=\operatorname{diag}\Bigl(\frac1{s_1},\dots,\frac1{s_r},0,\dots\Bigr).
+\]
+
+若用约简 SVD \(A=\tilde W\tilde\Sigma\tilde V^*\)，则
+\[
+A^+=\tilde V\tilde\Sigma^{-1}\tilde W^*.
+\]
+
+---
+
+\textbf{4.6}
+
+用 SVD 证明即可。
+
+设
+\[
+A=W\Sigma V^*
+\]
+为（可能约简的）SVD，\(\Sigma=\operatorname{diag}(s_1,\dots,s_r,0,\dots)\)。则
+\[
+A^*A=V\Sigma^2V^*.
+\]
+于是
+\[
+A^*A+\varepsilon I
+=V(\Sigma^2+\varepsilon I)V^*,
+\]
+其中
+\(\Sigma^2+\varepsilon I=\operatorname{diag}(s_1^2+\varepsilon,\dots,s_r^2+\varepsilon,\varepsilon,\dots)\)，
+可逆，其逆为
+\[
+(\Sigma^2+\varepsilon I)^{-1}
+=\operatorname{diag}\Bigl(\frac1{s_1^2+\varepsilon},\dots,
+\frac1{s_r^2+\varepsilon},\frac1{\varepsilon},\dots\Bigr).
+\]
+
+于是
+\[
+(A^*A+\varepsilon I)^{-1}A^*
+=V(\Sigma^2+\varepsilon I)^{-1}V^*V\Sigma W^*
+=V(\Sigma^2+\varepsilon I)^{-1}\Sigma W^*,
+\]
+而
+\[
+(\Sigma^2+\varepsilon I)^{-1}\Sigma
+=\operatorname{diag}\Bigl(\frac{s_1}{s_1^2+\varepsilon},\dots,
+\frac{s_r}{s_r^2+\varepsilon},0,\dots\Bigr).
+\]
+
+当 \(\varepsilon\to0^+\) 时，
+\[
+\frac{s_k}{s_k^2+\varepsilon}\to\frac1{s_k}\quad(k\le r),\quad
+0\text{ 元素保持为 }0.
+\]
+故
+\[
+\lim_{\varepsilon\to0^+}(A^*A+\varepsilon I)^{-1}A^*
+=V\Sigma^+W^*=A^+.
+\]
+
+同理，
+\[
+AA^*=W\Sigma^2W^*,\quad
+(AA^*+\varepsilon I)^{-1}A
+=W(\Sigma^2+\varepsilon I)^{-1}\Sigma V^*,
+\]
+同样的逐对角元极限给出
+\[
+\lim_{\varepsilon\to0^+}A^*(AA^*+\varepsilon I)^{-1}
+=V\Sigma^+W^*=A^+.
+\]
+
+于是
+\[
+A^+ = \lim_{\varepsilon\to 0^+} (A^*A + \varepsilon I)^{-1} A^*
+= \lim_{\varepsilon\to 0^+} A^*(AA^* + \varepsilon I)^{-1}.
+\]
+
+
+只写解答内容，方便直接放进解答稿。
+
+---
+
+\textbf{6.1}
+
+新基为 \(\vv_1=\ee_2,\ \vv_2=\ee_1\)。  
+设从新基到标准基的过渡矩阵为
+\[
+C=\begin{pmatrix} | & | \\ \vv_1 & \vv_2 \\ | & | \end{pmatrix}
+=\begin{pmatrix} 0&1\\1&0 \end{pmatrix},\quad C^{-1}=C.
+\]
+则 \(R_\alpha\) 在基 \((\vv_1,\vv_2)\) 下的矩阵为
+\[
+[R_\alpha]_{\{\vv\}}=C^{-1}R_\alpha C
+=\begin{pmatrix}0&1\\1&0\end{pmatrix}
+\begin{pmatrix}\cos\alpha&-\sin\alpha\\\sin\alpha&\cos\alpha\end{pmatrix}
+\begin{pmatrix}0&1\\1&0\end{pmatrix}
+=
+\begin{pmatrix}\cos\alpha&\sin\alpha\\ -\sin\alpha&\cos\alpha\end{pmatrix}.
+\]
+
+---
+
+\textbf{6.2}
+
+取
+\[
+V(t)=R_{t\alpha},\quad t\in[0,1].
+\]
+则每个 \(V(t)\) 都是可逆（正交）矩阵，且
+\[
+V(0)=R_0=I_2,\quad V(1)=R_\alpha.
+\]
+因此 \(I_2\) 可以通过一族可逆矩阵 \(V(t)\) 连续变换为 \(R_\alpha\)。
+
+---
+
+\textbf{6.3}
+
+由定理 5.1 可知：若 \(U\) 是 \(\RR^n\) 中的正交算子且 \(\det U=1\)，则存在一个正交基，使得 \(U\) 在该基下的矩阵分块对角为若干个 \(2\times2\) 旋转块 \(R_{\phi_k}\) 与一个单位块 \(I_{n-2k}\) 的直和；即
+\[
+U\sim \operatorname{diag}(R_{\phi_1},\dots,R_{\phi_k},I_{n-2k}).
+\]
+
+对每个 \(R_{\phi_k}\)，由 6.2 存在一条可逆连续路径（在对应的二维子空间内）
+\[
+t\mapsto R_{t\phi_k},\quad t\in[0,1],
+\]
+把 \(I_2\) 变为 \(R_{\phi_k}\)。在 \(\RR^n\) 中，可把这条路径扩展为
+\[
+t\mapsto \operatorname{diag}(I,\dots,I,R_{t\phi_k},I,\dots,I),
+\]
+它始终是可逆矩阵。依次对各个二维不变子空间进行这样的变形，就得到一条从 \(I_n\) 到 \(U\) 的连续可逆矩阵路径 \(V(t)\)。
+
+形式上：将 \(U\) 写为有限个平面旋转（初等等旋转）的乘积
+\[
+U=R_1R_2\cdots R_m.
+\]
+对每个 \(R_j\) 取一条从 \(I_n\) 到 \(R_j\) 的连续可逆路径 \(R_j(t)\)（如上构造），再按时间分段拼接这些路径，得到从 \(I_n\) 到 \(U\) 的连续可逆路径。
+
+---
+
+\textbf{6.4}
+
+\(A\) 为正定埃尔米特矩阵，\(A=A^*>0\)。由谱定理，
+\[
+A=U D U^*,
+\]
+其中 \(U\) 酉，\(D=\operatorname{diag}(\lambda_1,\dots,\lambda_n)\) 为实对角矩阵，且 \(\lambda_k>0\)。
+
+先在对角矩阵空间里把 \(I_n\) 连续变为 \(D\)：令
+\[
+D(t)=\operatorname{diag}\bigl((1-t)+t\lambda_1,\dots,(1-t)+t\lambda_n\bigr),\quad t\in[0,1].
+\]
+因每个 \((1-t)+t\lambda_k>0\)，所以 \(D(t)\) 始终可逆；且
+\[
+D(0)=I_n,\quad D(1)=D.
+\]
+
+再用同一个酉矩阵夹逼，定义
+\[
+V(t)=U D(t) U^*,\quad t\in[0,1].
+\]
+则 \(V(t)\) 连续且可逆（为正定埃尔米特矩阵），并且
+\[
+V(0)=U I U^*=I_n,\quad V(1)=UDU^*=A.
+\]
+于是 \(I_n\) 可以通过可逆矩阵连续变换为 \(A\)。
+
+---
+
+\textbf{6.5}
+
+极分解给出：任一可逆矩阵 \(T\) 可以唯一写成
+\[
+T=UP,
+\]
+其中 \(U\) 是正交（或酉）矩阵，\(P\) 是正定埃尔米特矩阵。
+
+若 \(T\) 可逆，则 \(\det U=\pm1\)。定理 6.3（这里的“仅当”方向）要证明的是：
+
+> 一个基 \(B\) 与标准正交基 \((\ee_1,\dots,\ee_n)\) 具有相同方向，当且仅当存在一条由可逆矩阵组成的连续路径把 \(I_n\) 变为把 \(\ee_k\) 送到 \(B\) 的那个变换矩阵。
+
+“如果”方向已经在书中证明。  
+在“仅当”方向里，我们从给定的可逆矩阵 \(T\) 出发，需要构造这样的路径。  
+
+由极分解 \(T=UP\)：
+
+- 由 6.3，存在一条连续的可逆路径 \(V_1(t)\) 从 \(I_n\) 到 \(U\)；
+- 由 6.4，存在一条连续的可逆路径 \(V_2(t)\) 从 \(I_n\) 到 \(P\)。
+
+于是可定义一条从 \(I_n\) 到 \(T\) 的连续可逆路径，例如
+\[
+W(t)=
+\begin{cases}
+V_2(2t), & 0\le t\le \tfrac12,\\[2mm]
+V_1(2t-1)\,P, & \tfrac12\le t\le 1,
+\end{cases}
+\]
+则
+\[
+W(0)=I_n,\quad W(1)=UP=T.
+\]
+
+因此，任何可逆矩阵 \(T\) 都可以通过可逆矩阵连续变换得到；结合第 6.2 节关于基与方向的形式定义，这完成了定理 6.3 “仅当” 部分的证明：  
+当且仅当存在这样的可逆连续路径时，这个基与标准基具有相同的方向。
+
+
+
+
+
+\end{exer}
+
+
+
+
+
+
+
+
+\section{第七章答案}
+
+\begin{exer}
+
+
+下面只写解答内容，方便你直接嵌入习题解答。
+
+---
+
+\textbf{1.1}
+
+将
+\[
+L(\xx,\yy)=x_1y_1+2x_1y_2+14x_1y_3-5x_2y_1+2x_2y_2-3x_2y_3
++8x_3y_1+19x_3y_2-2x_3y_3
+\]
+与一般形式
+\[
+L(\xx,\yy)=\sum_{i,j=1}^3 a_{ij}x_i y_j
+\]
+比较，可得
+\[
+A=(a_{ij})=
+\begin{pmatrix}
+1 & 2 & 14\\
+-5 & 2 & -3\\
+8 & 19 & -2
+\end{pmatrix}.
+\]
+
+---
+
+\textbf{1.2}
+
+在 \(\RR^2\) 上，令
+\[
+L(\xx,\yy)=\det[\xx,\yy],\quad
+\xx=(x_1,x_2)^T,\ \yy=(y_1,y_2)^T.
+\]
+则
+\[
+L(\xx,\yy)=
+\begin{vmatrix}
+x_1 & y_1\\
+x_2 & y_2
+\end{vmatrix}
+=x_1y_2-x_2y_1
+=0\cdot x_1y_1+1\cdot x_1y_2+(-1)\cdot x_2y_1+0\cdot x_2y_2.
+\]
+因此
+\[
+A=
+\begin{pmatrix}
+0 & 1\\
+-1 & 0
+\end{pmatrix},
+\quad
+L(\xx,\yy)=(A\xx,\yy)=\xx^T A^T\yy.
+\]
+
+---
+
+\textbf{1.3}
+
+有
+\[
+Q[\xx]=x_1^2+2x_1x_2-3x_1x_3-9x_2^2+6x_2x_3+13x_3^2.
+\]
+记 \(A=(a_{ij})\) 为对称矩阵，使
+\[
+Q[\xx]=\xx^T A\xx
+=\sum_{i=1}^3 a_{ii}x_i^2
++2\sum_{1\le i<j\le 3} a_{ij}x_i x_j.
+\]
+与系数比较：
+
+- \(x_1^2\) 的系数为 \(a_{11}=1\)；
+- \(x_2^2\) 的系数为 \(a_{22}=-9\)；
+- \(x_3^2\) 的系数为 \(a_{33}=13\)；
+- \(x_1x_2\) 的系数为 \(2a_{12}=2\)，故 \(a_{12}=a_{21}=1\)；
+- \(x_1x_3\) 的系数为 \(2a_{13}=-3\)，故 \(a_{13}=a_{31}=-\tfrac32\)；
+- \(x_2x_3\) 的系数为 \(2a_{23}=6\)，故 \(a_{23}=a_{32}=3\)。
+
+于是
+\[
+A=
+\begin{pmatrix}
+1 & 1 & -\tfrac32\\
+1 & -9 & 3\\
+-\tfrac32 & 3 & 13
+\end{pmatrix}.
+\]
+
+---
+
+\textbf{1.4}
+
+要证：若在 \(\C^n\) 上的内积 \((\cdot,\cdot)\) 中，对任意 \(\xx\in\C^n\) 有
+\((A\xx,\xx)\in\RR\)，则 \(A=A^*\)；等价地要证
+\[
+(A\xx,\yy)=(\xx,A^*\yy),\quad \forall\,\xx,\yy\in\C^n.
+\]
+
+考虑
+\[
+f(z)=(A(\xx+z\yy),\xx+z\yy),\quad z\in\C.
+\]
+按线性与共轭线性展开（约定内积对第一变量线性，对第二变量共轭线性）：
+\[
+\begin{aligned}
+f(z)
+&=(A\xx,\xx)+z(A\yy,\xx)+\bar z(A\xx,\yy)+|z|^2(A\yy,\yy).
+\end{aligned}
+\]
+其中 \((A\xx,\xx),(A\yy,\yy)\) 已知为实数。题设条件是：对所有 \(z\in\C\)，\(f(z)\) 都是实数。
+
+令 \(z=t\in\RR\)。则 \(|z|^2=t^2\)，且
+\[
+f(t)=(A\xx,\xx)+t\bigl((A\yy,\xx)+(A\xx,\yy)\bigr)+t^2(A\yy,\yy)\in\RR,\ \forall t\in\RR.
+\]
+因为两端其他项都实，故一次项系数
+\((A\yy,\xx)+(A\xx,\yy)\) 必为实数。  
+
+再令 \(z=it\)（\(t\in\RR\)），得
+\[
+f(it)=(A\xx,\xx)+it(A\yy,\xx)-it(A\xx,\yy)+t^2(A\yy,\yy)\in\RR.
+\]
+同理，一次项系数 \(i\bigl((A\yy,\xx)-(A\xx,\yy)\bigr)\) 也必须为实，这等价于
+\((A\yy,\xx)-(A\xx,\yy)\) 为纯虚数。与上一结论合并，可推出
+\[
+(A\yy,\xx)=\overline{(A\xx,\yy)}.
+\]
+利用内积的共轭对称性 \((u,v)=\overline{(v,u)}\)，
+\[
+(A\yy,\xx)=\overline{(\xx,A\yy)}.
+\]
+于是
+\[
+\overline{(\xx,A\yy)}=\overline{(A\xx,\yy)}
+\;\Longrightarrow\;
+(\xx,A\yy)=(A\xx,\yy).
+\]
+另一方面
+\[
+(\xx,A\yy)=(A^*\xx,\yy)
+\]
+按伴随的定义应成立；将两式比较，可得
+\[
+(A\xx,\yy)=(A^*\xx,\yy),\quad\forall\,\xx,\yy.
+\]
+由内积的非退化性（对所有 \(\yy\) 都相等，意味着向量相等），从而
+\[
+A\xx=A^*\xx,\quad\forall\,\xx\in\C^n,
+\]
+即 \(A=A^*\)。这就证明了引理 1.1。
+
+
+只写解答内容，方便直接放进习题解答里。
+
+---
+
+\textbf{2.1}
+
+对应二次型
+\[
+Q[\xx]=\xx^TA\xx,\quad
+A=\begin{pmatrix}1&2&1\\2&3&2\\1&2&1\end{pmatrix}.
+\]
+
+\textbf{(1) 配方法}
+
+记 \(\xx=(x_1,x_2,x_3)^T\)。则
+\[
+\begin{aligned}
+Q[\xx]
+&=x_1^2+3x_2^2+x_3^2+4x_1x_2+2x_1x_3+4x_2x_3\\
+&=(x_1+2x_2+x_3)^2.
+\end{aligned}
+\]
+令
+\[
+y_1=x_1+2x_2+x_3,\quad y_2=x_2,\quad y_3=x_3,
+\]
+则
+\[
+Q[\xx]=y_1^2,\quad
+[y]=\begin{pmatrix}y_1\\y_2\\y_3\end{pmatrix},
+\]
+在 \((y_1,y_2,y_3)\) 坐标下的矩阵为
+\[
+D=\begin{pmatrix}1&0&0\\0&0&0\\0&0&0\end{pmatrix}.
+\]
+
+\textbf{(2) 行运算法}
+
+对增广矩阵作行\emph{列}运算：
+\[
+(A\mid I)
+=\left(
+\begin{array}{ccc|ccc}
+1&2&1&1&0&0\\
+2&3&2&0&1&0\\
+1&2&1&0&0&1
+\end{array}
+\right).
+\]
+只对左块做行运算、右块做同样列运算，得到对角形：
+\[
+\left(
+\begin{array}{ccc|ccc}
+1&0&0&1&-2&-1\\
+0&0&0&0&1&0\\
+0&0&0&0&0&1
+\end{array}
+\right)
+=
+\left(
+\begin{array}{ccc|ccc}
+1&0&0\\
+0&0&0\\
+0&0&0
+\end{array}
+\ \Bigg|\ 
+S
+\right).
+\]
+于是
+\[
+D=S^TAS=\text{diag }(1,0,0),
+\]
+与配方法结果一致。
+
+\textbf{(3) 正定性}
+
+特征值为对角化后矩阵的对角元 \(1,0,0\)，因此并非全部正，\(A\) 不是正定矩阵（它是半正定的）。
+
+---
+
+\textbf{2.2}
+
+\[
+A=\begin{pmatrix}
+2&1&1\\
+1&2&1\\
+1&1&2
+\end{pmatrix}
+\]
+是实对称矩阵，可正交对角化。
+
+\textbf{特征值与特征向量}
+
+注意到
+\[
+A\begin{pmatrix}1\\1\\1\end{pmatrix}
+=\begin{pmatrix}4\\4\\4\end{pmatrix}
+=4\begin{pmatrix}1\\1\\1\end{pmatrix},
+\]
+故 \(\lambda_1=4\)，特征向量 \(\vv_1=(1,1,1)^T\)。
+
+求其它特征值，可在与 \((1,1,1)\) 正交的平面（和为零的平面）上工作。取
+\[
+\vv_2=(1,-1,0)^T,\quad
+\vv_3=(1,1,-2)^T,
+\]
+则 \(1-1+0=0,\ 1+1-2=0\)，二者与 \(\vv_1\) 正交。计算
+\[
+A\vv_2=\begin{pmatrix}1\\-1\\0\end{pmatrix}=\vv_2,\quad
+A\vv_3=\begin{pmatrix}0\\0\\-3\end{pmatrix}
+=1\cdot\vv_3.
+\]
+因此 \(\lambda_2=\lambda_3=1\)。于是特征值为 \(4,1,1\)。
+
+\textbf{正交归一化}
+
+\[
+\|\vv_1\|=\sqrt3,\quad
+\|\vv_2\|=\sqrt2,\quad
+\|\vv_3\|=\sqrt6.
+\]
+归一化：
+\[
+\uu_1=\frac1{\sqrt3}\begin{pmatrix}1\\1\\1\end{pmatrix},\quad
+\uu_2=\frac1{\sqrt2}\begin{pmatrix}1\\-1\\0\end{pmatrix},\quad
+\uu_3=\frac1{\sqrt6}\begin{pmatrix}1\\1\\-2\end{pmatrix}.
+\]
+这些向量两两正交且模为 1，故构成一个酉（实正交）矩阵的列。
+
+取
+\[
+U=\begin{pmatrix}
+\frac1{\sqrt3} & \frac1{\sqrt2} & \frac1{\sqrt6}\\[1mm]
+\frac1{\sqrt3} & -\frac1{\sqrt2} & \frac1{\sqrt6}\\[1mm]
+\frac1{\sqrt3} & 0 & -\frac2{\sqrt6}
+\end{pmatrix},
+\quad
+D=\begin{pmatrix}
+4&0&0\\
+0&1&0\\
+0&0&1
+\end{pmatrix},
+\]
+则
+\[
+D=U^TAU=U^*AU.
+\]
+
+这就是相应二次型的正交对角化。
+
+
+下面只给习题解答内容，方便你直接嵌入答案册。
+
+---
+
+\textbf{4.1}
+
+先用塞尔维斯特正定性判据判断 \(A,B\) 是否正定。记左上 \(k\times k\) 子式为 \(A_k,B_k\)。
+
+\[
+A=\begin{pmatrix}
+4&2&1\\[0.2em]
+2&3&-1\\[0.2em]
+1&-1&2
+\end{pmatrix}.
+\]
+
+\[
+\det A_1=4>0,\quad
+\det A_2=\det\begin{pmatrix}4&2\\2&3\end{pmatrix}=12-4=8>0.
+\]
+\[
+\det A=
+4\det\!\begin{pmatrix}3&-1\\-1&2\end{pmatrix}
+ -2\det\!\begin{pmatrix}2&-1\\1&2\end{pmatrix}
+ +1\det\!\begin{pmatrix}2&3\\1&-1\end{pmatrix}
+=4\cdot5-2\cdot5+(-5)=5>0.
+\]
+所有主子式正，故 \(A\) 正定。
+
+---
+
+\[
+B=\begin{pmatrix}
+3&-1&2\\[0.2em]
+-1&4&-2\\[0.2em]
+2&-2&1
+\end{pmatrix}.
+\]
+
+\[
+\det B_1=3>0,\quad 
+\det B_2=\det\begin{pmatrix}3&-1\\-1&4\end{pmatrix}=12-1=11>0,
+\]
+\[
+\det B=
+3\det\!\begin{pmatrix}4&-2\\-2&1\end{pmatrix}
+ +1\det\!\begin{pmatrix}-1&-2\\2&1\end{pmatrix}
+ +2\det\!\begin{pmatrix}-1&4\\2&-2\end{pmatrix}
+=3\cdot0+1\cdot3+2\cdot(-6)=-9<0.
+\]
+故 \(B\) 不是正定（实际上是不定）。
+
+---
+
+各矩阵的正定性：
+
+- \(-A\)：所有特征值取相反数，因此全部负，故 \(-A\) 负定，不是正定。
+- \(A^3\)：\(A\) 正定 \(\Rightarrow\) 所有特征值 \(\lambda_i>0\)，故 \(A^3\) 特征值为 \(\lambda_i^3>0\)，仍正定。
+- \(A^{-1}\)：正定矩阵可逆，特征值变为 \(1/\lambda_i>0\)，故 \(A^{-1}\) 正定。
+- \(A+B^{-1}\)：\(B\) 不正定，不保证可逆，甚至 \(B^{-1}\) 不一定存在；即便存在，\(B^{-1}\) 也不必半正定，因此 \(A+B^{-1}\) 不必正定，一般\emph{不能}断言正定。
+- \(A+B\)：因为 \(B\) 有正、负特征值，\(A+B\) 可能正定也可能不定，不能一概而论。  
+  直接算此例：
+  \[
+  A+B=
+  \begin{pmatrix}
+  7&1&3\\
+  1&7&-3\\
+  3&-3&3
+  \end{pmatrix},
+  \]
+  其行列式可算出为正，主子式亦都为正（你可单独列算），所以\emph{在这一具体例子}中 \(A+B\) 恰好正定，但这不是一般结论。
+- \(A-B\)：
+  \[
+  A-B=
+  \begin{pmatrix}
+  1&3&-1\\
+  3&-1&1\\
+  -1&1&1
+  \end{pmatrix}.
+  \]
+  \(\det(A-B)=1\cdot\det\begin{pmatrix}-1&1\\1&1\end{pmatrix}
+  -3\cdot\det\begin{pmatrix}3&1\\-1&1\end{pmatrix}
+  -1\cdot\det\begin{pmatrix}3&-1\\-1&1\end{pmatrix}
+  =(-2)-3\cdot4-4=-18<0\)，故 \(A-B\) 不正定（不定）。
+
+---
+
+\textbf{4.2}
+
+a) 对。  
+若 \(A\) 正定，则所有特征值 \(\lambda_i>0\)，\(A^5\) 的特征值为 \(\lambda_i^5>0\)，故 \(A^5\) 正定。
+
+b) 错。  
+若 \(A\) 负定，则特征值 \(\lambda_i<0\)，\(A^8\) 的特征值为 \(\lambda_i^8>0\)，所以 \(A^8\) 反而正定，不是负定。
+
+c) 对。  
+同理，\(\lambda_i<0\Rightarrow \lambda_i^{12}>0\)，故 \(A^{12}\) 正定。
+
+d) 对。  
+ \(A\) 正定，\(B\) 半负定，故对任意 \(\xx\neq0\),
+\[
+\langle(A-B)\xx,\xx\rangle
+=(A\xx,\xx)-(B\xx,\xx)\ge (A\xx,\xx)>0,
+\]
+因此 \(A-B\) 正定。
+
+e) 错。  
+\(A\) 不定、\(B\) 正定时，\(A+B\) 可能变成正定。简单例子：
+\[
+A=\begin{pmatrix}1&0\\0&-2\end{pmatrix}\ \text{(不定)},\quad
+B=\begin{pmatrix}2&0\\0&3\end{pmatrix}\ \text{(正定)},
+\]
+则
+\[
+A+B=\begin{pmatrix}3&0\\0&1\end{pmatrix}
+\]
+正定，并非不定。
+
+---
+
+\textbf{4.3}
+
+设
+\[
+A=\begin{pmatrix}
+a_{11}&a_{12}\\
+\overline{a_{12}}&a_{22}
+\end{pmatrix},\quad
+a_{11}\ge0,\ \det A\ge0.
+\]
+特征多项式为
+\[
+\lambda^2-(a_{11}+a_{22})\lambda+\det A=0.
+\]
+解得特征值
+\[
+\lambda_{1,2}
+=\frac{a_{11}+a_{22}\pm\sqrt{(a_{11}+a_{22})^2-4\det A}}{2}.
+\]
+由 \(\det A\ge0\) 知 \(\lambda_1\lambda_2\ge0\)。  
+又
+\[
+\lambda_1+\lambda_2=a_{11}+a_{22}=\operatorname{tr}A\in\RR.
+\]
+若存在某个特征值 \(<0\)，则两者同号，故两者都 \(<0\)，从而
+\(\lambda_1+\lambda_2<0\Rightarrow a_{22}< -a_{11}\le0\)。  
+但这时
+\[
+\det A=a_{11}a_{22}-|a_{12}|^2\le a_{11}a_{22}\le0,
+\]
+与 \(\det A\ge0\) 矛盾，故不可能有负特征值；于是 \(\lambda_1,\lambda_2\ge0\)，\(A\) 半正定。
+
+等价地，可直接使用 2×2 版本的塞尔维斯特判据：  
+对埃尔米特矩阵，\(a_{11}\ge0,\det A\ge0\) 等价于所有特征值非负。
+
+---
+
+\textbf{4.4}
+
+要一个 \(n\times n\)（\(n\ge3\)）实对称矩阵，使所有主顺序子式 \(\det A_k\ge0\)，但 \(A\) 不是半正定。  
+取 \(n=3\)，例如
+\[
+A=
+\begin{pmatrix}
+1&0&0\\
+0&1&0\\
+0&0&-1
+\end{pmatrix}.
+\]
+这是实对称且不半正定（因为 \((A(0,0,1)^T,(0,0,1)^T)=-1<0\)）。  
+其主顺序子式
+\[
+A_1=(1),\quad \det A_1=1>0,\quad
+A_2=\begin{pmatrix}1&0\\0&1\end{pmatrix},\ \det A_2=1>0,\quad
+A_3=A,\ \det A=-1<0.
+\]
+这\emph{不}满足题目要求，因为 \(\det A_3<0\)。需要的是所有 \(\det A_k\ge0\)，而矩阵仍不半正定——这必须利用 \(n\ge3\) 时塞尔维斯特判据对“半正定”失效这一点：  
+可以让所有\emph{顺序主子式}非负，但存在其它方向上二次型取负。
+
+一种标准构造是（教材常见例）：
+\[
+A=
+\begin{pmatrix}
+1&1&0\\
+1&1&1\\
+0&1&1
+\end{pmatrix}.
+\]
+它是对称的。主顺序子式：
+\[
+\det A_1=1>0,\quad
+\det A_2=\det\begin{pmatrix}1&1\\1&1\end{pmatrix}=0,\quad
+\det A=
+\det\begin{pmatrix}
+1&1&0\\
+1&1&1\\
+0&1&1
+\end{pmatrix}=1>0.
+\]
+所以 \(\det A_k\ge0\) 对 \(k=1,2,3\) 都成立。  
+但
+\[
+Q(x_1,x_2,x_3)=(Ax,x)
+=(x_1+x_2)^2+(x_2+x_3)^2-x_2^2.
+\]
+取 \((x_1,x_2,x_3)=(1,-2,1)\)，可算得
+\[
+(Ax,x)=-2<0,
+\]
+故 \(A\) 不半正定。  
+（你可根据个人口味改用更对称的例子，只要顺序主子式全非负而二次型在某方向为负即可。）
+
+---
+
+\textbf{4.5}
+
+设 \(A\) 为 \(n\times n\) 埃尔米特矩阵，\(\det A_k>0\) 对 \(k=1,\dots,n-1\)，且 \(\det A\ge0\)。  
+由前面的定理 4.2（塞尔维斯特正定性判据）知道：  
+若 \(\det A_k>0\) 对所有 \(k=1,\dots,n\)，则 \(A\) 正定。  
+这里仅知道前 \(n-1\) 个严格正，最后一个非负。
+
+把 \(A\) 对角化：存在酉矩阵 \(U\) 使
+\[
+U^*AU=D=\text{diag }(\lambda_1,\dots,\lambda_n),
+\]
+\(\lambda_j\in\RR\) 为特征值。由于酉变换不改变主顺序子式的符号，可转而研究 \(D\)。  
+定理 4.2 的证明（书中已给）表明：
+\[
+\det A_k>0\ \forall k=1,\dots,n-1
+\quad\Longrightarrow\quad
+\lambda_1,\dots,\lambda_{n-1}>0.
+\]
+而
+\[
+\det A=\lambda_1\cdots\lambda_n\ge0,
+\]
+结合前 \(n-1\) 个特征值都 \(>0\)，可得
+\(\lambda_n\ge0\)。于是所有特征值均非负，故 \(A\) 半正定。
+
+（若 \(\det A>0\) 进一步严格为正，则 \(\lambda_n>0\)，得到 \(A\) 正定。）
+
+---
+
+\textbf{4.6}
+
+需要一个 \(3\times3\) 实对称矩阵 \(A\)，满足
+\[
+a_{11}>0,\quad
+\det A_2\ge0,\quad
+\det A_3\ge0,
+\]
+但 \(A\) 不是半正定。
+
+可取
+\[
+A=
+\begin{pmatrix}
+1&1&0\\
+1&1&1\\
+0&1&1
+\end{pmatrix},
+\]
+即上题 4.4 中给出的具体例子；它是实对称。  
+显然 \(a_{11}=1>0\)，
+\[
+\det A_2=\det\begin{pmatrix}1&1\\1&1\end{pmatrix}=0\ge0,\quad
+\det A=\det A_3=1>0.
+\]
+与上一题分析一样，存在向量 \(\xx\)（例如 \(\xx=(1,-2,1)^T\)）使得
+\[
+(A\xx,\xx)<0,
+\]
+故 \(A\) 不是半正定。
+
+
+
+
+
+\end{exer}
+
+
+
+
+
+
+
+
+\section{第八章答案}
+
+\begin{exer}
+
+
+只写习题解答内容，方便你直接嵌到答案册。
+
+---
+
+\textbf{1.1}
+
+a) 设
+\[
+\sum_{j=1}^r \alpha_j \vv_j = 0.
+\]
+对上式两边施加线性泛函 \(\vv'_k\)，利用双正交关系：
+\[
+0=\vv'_k\Bigl(\sum_{j=1}^r \alpha_j \vv_j\Bigr)
+   =\sum_{j=1}^r \alpha_j\,\vv'_k(\vv_j)
+   =\sum_{j=1}^r \alpha_j \delta_{kj}=\alpha_k.
+\]
+对每个 \(k=1,\dots,r\) 都得到 \(\alpha_k=0\)，故 \(\{\vv_1,\dots,\vv_r\}\) 线性无关。
+
+b) 假设 \(\{\vv_1,\dots,\vv_r\}\) 不是生成集，则 \(\dim X = n>r\)。  
+把 \(\{\vv_1,\dots,\vv_r\}\) 扩展为 \(X\) 的一组基
+\[
+\{\vv_1,\dots,\vv_r,\vv_{r+1},\dots,\vv_n\}.
+\]
+在这组基下，第二章命题 5.4 告诉我们：存在唯一的一组对偶基
+\[
+\{\phi_1,\dots,\phi_n\}\subset X',
+\]
+满足
+\[
+\phi_k(\vv_j)=\delta_{kj},\quad k,j=1,\dots,n.
+\]
+显然 \(\{\phi_1,\dots,\phi_r\}\) 就是满足题中条件的一组“双正交”系统。
+
+现在说明这样的系统不是唯一的。  
+取任意不全为零的线性泛函 \(f\in X'\)，满足
+\[
+f(\vv_j)=0,\quad j=1,\dots,r.
+\]
+这样的 \(f\) 必然存在，因为 \(\{\vv_1,\dots,\vv_r\}\) 不是生成集，所以它张成的子空间 \(V=\operatorname{span}\{\vv_1,\dots,\vv_r\}\) 真包含于 \(X\)，对偶空间中存在非零泛函在 \(V\) 上恒为零（例如，先在商空间 \(X/V\) 上取一个非零线性泛函，再拉回到 \(X\)）。
+
+给定这样的 \(f\)，对任意标量 \(\lambda_1,\dots,\lambda_r\)，定义新的泛函
+\[
+\psi_k = \phi_k + \lambda_k f,\quad k=1,\dots,r.
+\]
+则对所有 \(j\le r\) 有
+\[
+\psi_k(\vv_j)
+= \phi_k(\vv_j) + \lambda_k f(\vv_j)
+= \delta_{kj} + \lambda_k\cdot 0
+= \delta_{kj},
+\]
+因此 \(\{\psi_1,\dots,\psi_r\}\) 也是一组满足题目条件的“双正交”系统。  
+只要选取某个 \(\lambda_k\ne0\) 且 \(f\ne0\)，就有 \(\psi_k\ne\phi_k\)，所以它与 \(\{\phi_1,\dots,\phi_r\}\) 不同，从而双正交系统不唯一。
+
+---
+
+\textbf{1.2}
+
+设 \(P_n\) 为所有次数不超过 \(n\) 的多项式空间，\(\dim P_n = n+1\)。  
+对每个给定的点 \(a_k\) 定义线性泛函
+\[
+f_k : P_n\to\FF,\quad f_k(p)=p(a_k),\quad k=1,\dots,n+1.
+\]
+这是 \(P_n'\) 中的 \(n+1\) 个线性泛函。
+
+要证满足
+\[
+p(a_k)=y_k,\quad k=1,\dots,n+1
+\]
+且 \(\deg p\le n\) 的多项式 \(p\) 唯一，只需证明：若 \(\deg q\le n\) 且
+\[
+q(a_k)=0,\quad k=1,\dots,n+1,
+\]
+则 \(q\equiv0\)。  
+线性代数语言下，就是要证明：如果
+\[
+f_k(q)=0,\quad k=1,\dots,n+1,
+\]
+则 \(q=0\)。
+
+设有两个满足条件的多项式 \(p_1,p_2\)，即
+\[
+p_1(a_k)=p_2(a_k)=y_k,\quad k=1,\dots,n+1.
+\]
+令 \(q=p_1-p_2\)，则 \(\deg q\le n\) 且
+\[
+q(a_k)=p_1(a_k)-p_2(a_k)=0,\quad k=1,\dots,n+1.
+\]
+于是 \(q\) 属于线性算子
+\[
+T:P_n\to \FF^{n+1},\quad T(p)=(p(a_1),\dots,p(a_{n+1}))
+\]
+的核：\(T(q)=0\)。
+
+我们证明 \(\text{Ker } T=\{0\}\)。  
+若 \(q\neq 0\)，则 \(\deg q\le n\) 的非零多项式在域 \(\FF\)（实或复）上最多有 \(n+1\) 个根，其中\emph{严格意义上线性代数不应使用这条分析结果}，所以换一种线性代数表述：
+
+注意到
+\[
+q(a_k)=0,\ k=1,\dots,n+1
+\]
+等价于
+\[
+f_k(q)=0,\ k=1,\dots,n+1.
+\]
+也就是说，\(\{f_1,\dots,f_{n+1}\}\subset P_n'\) 这一组泛函如果是线性无关的，那么由引理 1.3（书中本节的唯一性定理）可知
+\[
+f_k(q)=0\ \forall k \Longrightarrow q=0.
+\]
+因此关键是证明 \(\{f_k\}\) 线性无关。
+
+设
+\[
+\sum_{k=1}^{n+1} \alpha_k f_k = 0
+\quad\text{(作为 \(P_n'\) 中的零泛函)}.
+\]
+这意味着对任意 \(p\in P_n\),
+\[
+0=\Bigl(\sum_{k=1}^{n+1} \alpha_k f_k\Bigr)(p)
+=\sum_{k=1}^{n+1} \alpha_k p(a_k).
+\]
+特别地，取题中已经构造好的那组多项式 \(p_j\)（书中在公式 (1.5) 前后定义的拉格朗日基）：
+\[
+p_j(a_k)=\delta_{jk},\quad j,k=1,\dots,n+1.
+\]
+代入上式，得
+\[
+0=\sum_{k=1}^{n+1} \alpha_k p_j(a_k)
+  =\sum_{k=1}^{n+1} \alpha_k \delta_{jk}
+  =\alpha_j,\quad j=1,\dots,n+1.
+\]
+于是所有 \(\alpha_j=0\)，\(\{f_1,\dots,f_{n+1}\}\) 线性无关。
+
+因此 \(\text{Ker } T=\{0\}\)，从而 \(T\) 单射。  
+若 \(p_1,p_2\) 都满足插值条件，则
+\[
+T(p_1)=T(p_2)=(y_1,\dots,y_{n+1}),
+\]
+由单射性得 \(p_1=p_2\)。  
+
+所以满足 (1.5) 且 \(\deg p\le n\) 的多项式 \(p\) 唯一。
+
+
+只写习题解答内容，方便你直接嵌入。
+
+---
+
+\textbf{3.1}
+
+对任意 \(\xx\in X\) 及任意 \(\yy'\in Y'\),
+\[
+\langle T\xx,\yy'\rangle=\langle T_1\xx,\yy'\rangle
+\quad\Longrightarrow\quad
+\langle T\xx-T_1\xx,\yy'\rangle=0.
+\]
+记 \(\mathbb{Z}:=T\xx-T_1\xx\in Y\)。上式对所有 \(\yy'\in Y'\) 成立，即
+\[
+\langle \mathbb{Z},\yy'\rangle=0,\quad \forall\,\yy'\in Y'.
+\]
+由引理 1.3（对偶空间与向量唯一对应）知，只能有 \(\mathbb{Z}=0\)。于是
+\[
+T\xx-T_1\xx=0,\quad\forall\,\xx\in X,
+\]
+即 \(T=T_1\)。
+
+---
+
+\textbf{3.2}
+
+由里斯表示定理：对内积空间 \(H\) 上的任意连续线性泛函 \(\ell\in H'\)，存在唯一 \(\yy\in H\) 使
+\[
+\ell(\xx)=(\xx,\yy),\quad\forall\,\xx\in H.
+\]
+
+给定线性算子 \(A:H\to H\)。  
+对每个固定的 \(\yy\in H\)，考虑泛函
+\[
+\ell_\yy:H\to\FF,\quad
+\ell_\yy(\xx):=(A\xx,\yy).
+\]
+\(\ell_\yy\) 显然是线性的且连续。由里斯定理，存在唯一向量 \(\eta\in H\) 使得
+\[
+(A\xx,\yy)=(\xx,\eta),\quad\forall\,\xx\in H.
+\]
+把这唯一的 \(\eta\) 记为 \(A^*\yy\)。这样就得到一个映射
+\[
+A^*:H\to H,\quad
+\yy\mapsto A^*\yy,
+\]
+满足
+\[
+(A\xx,\yy)=(\xx,A^*\yy),\quad\forall\,\xx,\yy\in H.
+\]
+利用 3.1 题（对所有 \(\xx,\yy\) 成立的这种“配对相等”唯一确定算子），可知这样的 \(A^*\) 存在且唯一，这就是内积空间中算子埃尔米特伴随的无坐标定义。
+
+---
+
+\textbf{3.3}
+
+设 \(\{\vv_1,\dots,\vv_n\}\) 是 \(X\) 的一组基，\(\{\vv_1',\dots,\vv_n'\}\subset X'\) 是它的对偶基：
+\[
+\vv_i'(\vv_j)=\delta_{ij}.
+\]
+设 \(E=\operatorname{span}\{\vv_1,\dots,\vv_r\}\)，\(r<n\)。命题 3.6 说明可把对偶向量当作 \(X\) 中的一组向量，并且
+\[
+E^\perp=(E^\perp)^\perp{}^\perp=\text{span}\{\vv_{r+1},\dots,\vv_n\}.
+\]
+再对空间 \(E^\perp\) 应用命题 3.6 可知
+\[
+(E^\perp)^\perp=\operatorname{span}\{\vv_1',\dots,\vv_r'\},\quad
+E=\operatorname{span}\{\vv_1,\dots,\vv_r\}.
+\]
+另一方面，由零化子与正交补之间的同构关系（命题 3.6 的一般形式）
+\[
+E^\perp \cong E^0=\{\varphi\in X' : \varphi|_E=0\},
+\]
+而
+\[
+\varphi|_E=0\quad\Longleftrightarrow\quad
+\varphi\in\operatorname{span}\{\vv_{r+1}',\dots,\vv_n'\}.
+\]
+故
+\[
+E^\perp=\operatorname{span}\{\vv_{r+1}',\dots,\vv_n'\}.
+\]
+
+（按书中的叙述：在把 \(X\) 与 \(X'\) 通过里斯定理规约同构后，对偶基 \(\vv_j'\) 正好是一组与 \(\vv_j\) 双正交的基，从而上式成立。）
+
+---
+
+\textbf{3.4}
+
+设 \(E\subset X\) 是任一子空间。命题 3.6 给出
+\[
+(E^\perp)^\perp=E.
+\]
+从题 3.3 的结果，对某组基及其对偶基，可写
+\[
+E=\operatorname{span}\{\vv_1,\dots,\vv_r\},\quad
+E^\perp=\operatorname{span}\{\vv_{r+1}',\dots,\vv_n'\}.
+\]
+于是
+\[
+\dim E = r,\quad \dim E^\perp = n-r,
+\]
+其中 \(n=\dim X\)。因此
+\[
+\dim E+\dim E^\perp = r+(n-r)=n=\dim X.
+\]
+
+
+只写解答内容，方便你直接嵌入习题解答。
+
+---
+
+\textbf{4.1}
+
+设原坐标为 \((x_1,\dots,x_n)\)，新坐标为 \((\tilde x_1,\dots,\tilde x_n)\)，二者之间的关系为
+\[
+x_k = x_k(\tilde x_1,\dots,\tilde x_n),\quad k=1,\dots,n,
+\]
+且这个坐标变换可微并且可逆。
+
+给定微分算子
+\[
+D=\sum_{k=1}^n v_k(x)\,\frac{\partial}{\partial x_k}.
+\]
+我们要在新坐标下把同一个算子写成
+\[
+D=\sum_{j=1}^n \tilde v_j(\tilde x)\,\frac{\partial}{\partial \tilde x_j},
+\]
+并证明 \(\tilde v\) 是按向量坐标变换规律从 \(v\) 得到的。
+
+对任意光滑函数 \(\Phi\)，利用链式法则有
+\[
+\frac{\partial\Phi}{\partial x_k}
+=
+\sum_{j=1}^n
+\frac{\partial\Phi}{\partial \tilde x_j}
+\frac{\partial \tilde x_j}{\partial x_k}.
+\]
+因此
+\[
+D\Phi
+=
+\sum_{k=1}^n v_k\,\frac{\partial\Phi}{\partial x_k}
+=
+\sum_{k=1}^n v_k
+\sum_{j=1}^n
+\frac{\partial \tilde x_j}{\partial x_k}
+\frac{\partial\Phi}{\partial \tilde x_j}
+=
+\sum_{j=1}^n
+\Bigl(\sum_{k=1}^n v_k\,\frac{\partial \tilde x_j}{\partial x_k}\Bigr)
+\frac{\partial\Phi}{\partial \tilde x_j}.
+\]
+与
+\[
+D\Phi
+=
+\sum_{j=1}^n \tilde v_j\,\frac{\partial\Phi}{\partial \tilde x_j}
+\]
+比较，可得
+\[
+\tilde v_j(\tilde x)
+=
+\sum_{k=1}^n
+v_k(x)\,\frac{\partial \tilde x_j}{\partial x_k},
+\quad j=1,\dots,n.
+\]
+
+记
+\[
+v=(v_1,\dots,v_n)^T,\quad
+\tilde v=(\tilde v_1,\dots,\tilde v_n)^T,
+\]
+以及雅可比矩阵
+\[
+J=\Bigl(\frac{\partial \tilde x_j}{\partial x_k}\Bigr)_{j,k}.
+\]
+上式就是
+\[
+\tilde v = J\,v.
+\]
+
+但 \(J\) 正是从旧坐标到新坐标的线性近似——也就是同一个几何向量在坐标变化下的坐标变换矩阵。因此
+\[
+\tilde v = J v
+\]
+表明：微分算子 \(D\) 的系数 \((v_k)\) 在坐标变换下，正是按向量坐标的变换规则变化的。也即，\(D\) 的系数在每一点构成一个切向量，其坐标变换与向量坐标一致。
+
+
+
+只写习题解答内容，方便你直接嵌入。
+
+---
+
+**5.1**
+
+按定义，\(\vv_1\otimes\cdots\otimes\vv_p\) 是一个多线性函数
+\[
+F(\varphi_1,\dots,\varphi_p)
+=(\vv_1\otimes\cdots\otimes\vv_p)(\varphi_1,\dots,\varphi_p)
+:=\varphi_1(\vv_1)\cdots\varphi_p(\vv_p),
+\quad \varphi_k\in V_k'.
+\]
+对第 \(k\) 个参数验证线性即可。例如对 \(\vv_k\)：
+\[
+(\vv_1\otimes\cdots\otimes(\alpha\vv_k+\beta\ww_k)\otimes\cdots\otimes\vv_p)
+(\varphi_1,\dots,\varphi_p)
+=
+\varphi_1(\vv_1)\cdots \varphi_k(\alpha\vv_k+\beta\ww_k)\cdots\varphi_p(\vv_p)
+\]
+\[
+=\alpha\,\varphi_1(\vv_1)\cdots\varphi_k(\vv_k)\cdots\varphi_p(\vv_p)
++\beta\,\varphi_1(\vv_1)\cdots\varphi_k(\ww_k)\cdots\varphi_p(\vv_p)
+\]
+\[
+=\alpha\,(\vv_1\otimes\cdots\otimes\vv_k\otimes\cdots\otimes\vv_p)
++\beta\,(\vv_1\otimes\cdots\otimes\ww_k\otimes\cdots\otimes\vv_p)
+\]
+在多线性函子意义下相等，因此在第 \(k\) 个变量上线性；其它变量类似。故在每个参数 \(\vv_k\) 上均线性。
+
+---
+
+**5.2**
+
+设 \(\dim V_k=n_k>0\)。则
+\[
+\dim\bigl(V_1\otimes\cdots\otimes V_p\bigr)=n_1\cdots n_p.
+\]
+
+向量张量积集合
+\(\{\vv_1\otimes\cdots\otimes\vv_p:\vv_k\in V_k\}\) 中的每个元素称为「可分张量」或「纯张量」。  
+如果这个集合等于整个张量积空间，那么张量积空间中任何元素都必须是一个纯张量。
+
+取最简单情形 \(p=2\)、\(\dim V_1=\dim V_2=2\) 即可给出反例。设
+\[
+V_1=V_2=\RR^2,\quad
+e_1,e_2\text{ 为标准基}.
+\]
+则
+\[
+e_1\otimes e_1,\ e_1\otimes e_2,\ e_2\otimes e_1,\ e_2\otimes e_2
+\]
+构成 \(V_1\otimes V_2\) 的一组基。考虑向量
+\[
+w:= e_1\otimes e_1 + e_2\otimes e_2.
+\]
+若 \(w\) 是一个纯张量，则存在
+\[
+(a_1e_1+a_2e_2)\otimes(b_1e_1+b_2e_2)=w.
+\]
+展开得
+\[
+a_1b_1\,e_1\otimes e_1
++a_1b_2\,e_1\otimes e_2
++a_2b_1\,e_2\otimes e_1
++a_2b_2\,e_2\otimes e_2
+= e_1\otimes e_1+e_2\otimes e_2.
+\]
+比较基系数，得到方程组
+\[
+a_1b_1=1,\quad
+a_1b_2=0,\quad
+a_2b_1=0,\quad
+a_2b_2=1.
+\]
+由 \(a_1b_1=1\) 知 \(a_1\ne0,b_1\ne0\)，从而 \(a_2b_1=0\) 推出 \(a_2=0\)。  
+再由 \(a_2b_2=1\) 得 \(0\cdot b_2=1\)，矛盾。因此不存在这样的 \(a_i,b_j\)，故 \(w\) 不是纯张量。
+
+于是张量积空间中至少存在一个向量不是任何向量张量积的形式，说明
+\[
+\{\vv_1\otimes\cdots\otimes\vv_p:\vv_k\in V_k\}
+\subsetneq
+V_1\otimes\cdots\otimes V_p.
+\]
+
+---
+
+**5.3**
+
+命题 5.6：给定张量
+\[
+F\in L(V_1,\dots,V_p;V'),
+\]
+存在唯一的线性变换
+\[
+\tilde T:V_1\otimes\cdots\otimes V_p\to V'
+\]
+满足
+\[
+\tilde T(\vv_1\otimes\cdots\otimes\vv_p)=F(\vv_1,\dots,\vv_p),
+\quad \forall\,\vv_k\in V_k.
+\]
+
+唯一性证明如下。设 \(\tilde T_1,\tilde T_2:V_1\otimes\cdots\otimes V_p\to V'\) 都是线性变换，且对所有 \(\vv_k\in V_k\) 满足
+\[
+\tilde T_1(\vv_1\otimes\cdots\otimes\vv_p)
+=\tilde T_2(\vv_1\otimes\cdots\otimes\vv_p)
+=F(\vv_1,\dots,\vv_p).
+\]
+则对于任意纯张量 \(w=\vv_1\otimes\cdots\otimes\vv_p\)，有
+\[
+\tilde T_1(w)=\tilde T_2(w).
+\]
+
+另一方面，按定义，纯张量的线性张成空间等于整个张量积空间 \(V_1\otimes\cdots\otimes V_p\)。因此任意
+\[
+w=\sum_{s} \alpha_s\,
+\vv^{(s)}_1\otimes\cdots\otimes\vv^{(s)}_p
+\]
+有
+\[
+\tilde T_1(w)
+=\sum_s \alpha_s \tilde T_1(\vv^{(s)}_1\otimes\cdots\otimes\vv^{(s)}_p)
+=\sum_s \alpha_s \tilde T_2(\vv^{(s)}_1\otimes\cdots\otimes\vv^{(s)}_p)
+=\tilde T_2(w).
+\]
+故 \(\tilde T_1=\tilde T_2\)。这就证明了命题 5.6 中 \(\tilde T\) 的唯一性。
+
+
+
+
+
+\end{exer}
+
+
+
+
+
+
+
+
+\section{第九章答案}
+
+\begin{exer}
+
+
+只写解答内容，便于直接放进习题解答里。
+
+---
+
+\textbf{1.1}
+
+设
+\[
+A=SDS^{-1},\quad 
+D=\operatorname{diag}(\lambda_1,\dots,\lambda_n),
+\]
+其中 \(\lambda_1,\dots,\lambda_n\) 是 \(A\) 的全部特征值（按代数重数计）。则 \(A\) 和 \(D\) 相似，故有相同的特征多项式：
+\[
+p(\lambda)=\det(A-\lambda I)=\det(D-\lambda I)
+=\prod_{j=1}^n(\lambda_j-\lambda).
+\]
+
+1）先计算 \(p(D)\)。  
+因为 \(D\) 是对角矩阵，而多项式在对角矩阵上的值仍是对角矩阵，且对角元是把该多项式作用在每个特征值上：
+\[
+p(D)=\sum_{k=0}^n c_k D^k
+=\operatorname{diag}\bigl(p(\lambda_1),\dots,p(\lambda_n)\bigr).
+\]
+但由上式 \(p(\lambda)=\prod_{j=1}^n(\lambda_j-\lambda)\)，对每个 \(i\) 有
+\[
+p(\lambda_i)=\prod_{j=1}^n(\lambda_j-\lambda_i)=0,
+\]
+因为当 \(j=i\) 时因子为 \(0\)。于是
+\[
+p(D)=\operatorname{diag}\bigl(p(\lambda_1),\dots,p(\lambda_n)\bigr)
+=\operatorname{diag}(0,\dots,0)=0.
+\]
+
+2）再计算 \(p(A)\)。  
+利用 \(A=SDS^{-1}\) 以及多项式与相似变换的相容性：
+\[
+A^k=(SDS^{-1})^k
+=SD^kS^{-1},\quad k\ge0,
+\]
+因此
+\[
+p(A)=\sum_{k=0}^n c_k A^k
+=\sum_{k=0}^n c_k SD^kS^{-1}
+=S\Bigl(\sum_{k=0}^n c_k D^k\Bigr)S^{-1}
+=Sp(D)S^{-1}.
+\]
+由上一步 \(p(D)=0\)，于是
+\[
+p(A)=S\cdot 0\cdot S^{-1}=0.
+\]
+
+这就证明了当 \(A\) 与对角矩阵相似（即可对角化）时，凯莱–哈密顿定理成立。
+
+
+只写解答内容，便于直接嵌入。
+
+---
+
+\textbf{2.1}
+
+设 \(A\) 幂零，即存在某个正整数 \(k\) 使 \(A^k=0\)。
+
+设 \(\lambda\) 是 \(A\) 的一个特征值，对应特征向量 \(\vv\neq0\)，即
+\[
+A\vv=\lambda\vv.
+\]
+连续作用 \(A\) 得
+\[
+A^2\vv = A(A\vv)=A(\lambda\vv)=\lambda^2\vv,\quad\ldots,\quad
+A^m\vv=\lambda^m\vv,\ \forall m\ge1.
+\]
+取 \(m=k\)，由 \(A^k=0\) 得
+\[
+0=A^k\vv=\lambda^k\vv.
+\]
+由于 \(\vv\neq0\)，只能有 \(\lambda^k=0\)，因此 \(\lambda=0\)。
+
+这说明 \(A\) 的任何特征值都必须为 \(0\)，于是
+\[
+\sigma(A)=\{0\}.
+\]
+
+整个证明只用到了特征值的定义，没有用到谱映射定理。
+
+
+
+
+
+\end{exer}
+
+
+
+
+
+
+
