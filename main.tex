@@ -21,11 +21,12 @@ Linear Algebra
 Done Wrong}} 翻译版}  % 副标题
 
 
-\author{[美]Sergei Treil~（谢尔盖·特雷伊）\\ 布朗大学数学系 }  % 作者姓名
-\bioinfo{译者}{董耀择\\南京大学匡亚明学院2025级本科生} 
+\author{[美]Sergei Treil~（谢尔盖·特雷尔）\\  \hspace{5em}布朗大学数学系}  % 作者姓名
+
+\bioinfo{译\hspace{2em}者}{董耀择\\\hspace{5em}南京大学匡亚明学院2025级本科生} 
 
 \date{\today}  % 日期
-\version{9.0}  % 版本
+\version{9.8.6}  % 版本
  % 其他信息
 
 
@@ -35,6 +36,13 @@ Done Wrong}} 翻译版}  % 副标题
 % 通用虚拟出版商标志
 \newcommand{\plogo}{\fbox{$\mathfrak{NaN}$}}
 
+
+
+
+\usepackage{tikz}
+\usetikzlibrary{matrix, positioning, calc}
+% 如果使用了 \resizebox 进行缩放，通常需要 graphicx 宏包（插入图片时通常已包含）
+% \usepackage{graphicx} 
 
 %----- 设置英文字体 -----
 %\usepackage{newtxtext}  %New TX font for text
@@ -70,14 +78,15 @@ Done Wrong}} 翻译版}  % 副标题
 \setlength{\bibsep}{7pt plus 3pt minus 3pt}  % 调整参考文献间距
 
 %----- 制作索引 -----
-\usepackage{imakeidx}
-\makeindex[columns=2,intoc=true,title={索~~引}]
+% \usepackage{imakeidx}
+% \makeindex[columns=2,intoc=true,title={索~~引}]
 %\indexsetup{level=\chapter*}
 
 % 使用 zhmakeindex 按照中文拼音排序
-%\usepackage[noautomatic]{imakeidx}
-%\makeindex[columns=2,intoc=true,title={索~~引}]
-
+\usepackage[noautomatic]{imakeidx}
+\makeindex[columns=2,intoc=true,title={索~~引}, options=-s \jobname.mst]
+% \usepackage[program=upmendex, columns=2, intoc=true, title={索~~引}]{imakeidx}
+% \makeindex
 
 %----- 调整列表项的间距 -----
 %\setlength{\itemsep}{3pt}
@@ -130,20 +139,95 @@ Done Wrong}} 翻译版}  % 副标题
 \newcommand{\zz}{\mathbf{z}}
 \newcommand{\oo}{\mathbf{0}}
 \newcommand{\ff}{\mathbf{f}}
+\newcommand{\rr}{\mathbf{r}}
+
+\DeclareMathOperator{\Null}{Null}
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Col}{Col}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\spanL}{span}
+\DeclareMathOperator{\trace}{trace}
+\DeclareMathOperator{\ReR}{Re}
+\DeclareMathOperator{\ImI}{Im}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\sign}{sign}
+% \newcommand{\rank}{\mathrm{rank}}
+% \newcommand{\Null}{\mathrm{Null}}
+% \newcommand{\Ran}{\mathrm{Ran}}
+% \newcommand{\Ker}{\mathrm{Ker}}
+% \newcommand{\Col}{\mathrm{Col}}
+
+
+
 
 \begin{document}
-
-% \let\cleardoublepage\clearpage
-% 生成封面
-% \maketitle
-
-
 
 
 % 插入封面 PDF文件
 \thispagestyle{empty}
 \includepdf[pages=-]{cover.pdf} % 或 [pages={1-2}]
-\cleardoublepage
+% \cleardoublepage
+
+
+% \let\cleardoublepage\clearpage
+% 生成封面
+\maketitle
+
+
+% --- 插入致谢页 ---
+\thispagestyle{empty}  
+\null  
+\vspace*{\stretch{1}} 
+\begin{center}
+    {To my parents.\\
+    \songti\zihao{4}  
+    谨以此书献给我的父母。
+    \\[2.2em] 
+    \hspace*{6em} ——来自译者 
+    }
+\end{center}
+\vspace*{\stretch{2}}   
+\clearpage 
+
+
+\clearpage 
+\thispagestyle{empty}
+\vspace*{\fill}
+
+\noindent 
+Copyright © Sergei Treil, 2004, 2009, 2011, 2014, 2017, 2020, 2021, 2024
+
+\vspace{1.5em} 
+
+\noindent 
+\begin{minipage}[c]{0.2\textwidth} % [c]表示内容垂直居中对齐，宽度为文本宽度的10%
+  \includegraphics[width=\linewidth]{figures/Figure0.PNG}
+\end{minipage}%  <-- 这个百分号 % 至关重要，它能防止产生多余的空格
+\hspace{1em}%   <-- 在图片和文字之间增加一点水平间距
+% 创建一个用于放置文字的小盒子
+\begin{minipage}[c]{0.85\textwidth} % 宽度为文本宽度的85%
+  本书基于\textit{完整署名-禁止商用-禁止演绎 3.0 许可协议}，参见 \\ \url{https://creativecommons.org/licenses/by-nc-nd/3.0/}
+\end{minipage}
+\vspace{1em} 
+
+\noindent
+\textbf{额外详情}：
+您可以免费使用本书用于非商业目的，特别是用于学习和（或）教学。您可以使用个人打印机或专业打印服务打印本书的纸质副本或其部分内容。教师在开设课程时（或其所属机构）可以为学生提供本书的印刷副本，并收取印刷成本费，但学生应有使用免费电子版本的选项。
+
+\noindent
+\textbf{译者补充}：该译本仅用于个人学习交流，且完全开源、免费发布。本书版权归原作者所有，请勿用作其他非法、商业用途。
+% 下载后请24小时内删除。
+
+\clearpage 
+
+
+
+% 插入封面 PDF文件
+% \thispagestyle{empty}
+% \includepdf[pages=-]{cover.pdf} % 或 [pages={1-2}]
+% \cleardoublepage
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -154,99 +238,79 @@ Done Wrong}} 翻译版}  % 副标题
 %%%%%%%%%%%%%%%%%%%%%% 前言 %%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{part/preface}
-
-%%%%%%%%%%%%%%%%% 中文摘要内容和关键字  %%%%%%%%%%%%%%
-
+%% 中文摘要内容和关键字  %%%%
 %\input{part/cnabstract}
-
-%%%%%%%%%%%%%%%%% 英文摘要内容和关键字 %%%%%%%%%%%%%%
-
+%%%%%% 英文摘要内容和关键字 %%%
 %\input{part/enabstract}
-
-%%%%%%%%%%%%%%%%%%%%%%% 目录 %%%%%%%%%%%%%%%%%%%%%%%
-
+%%% 目录 %%%%
 % 生成目录
 \maketoc
 
-% 生成插图清单, 如不需要可以注释
+% 留白页
+\newpage
+\thispagestyle{empty} 
+\vspace*{\stretch{1}}
+\begin{center} 
+    \textit{This page intentionally left blank.}
+\end{center}
+\vspace*{\stretch{2}}
+\vfill 
+\newpage 
+
+% 生成插图清单
 % \makelof
-
-% 生成表格清单, 如不需要可以注释
+% 生成表格清单
 % \makelot
+%% 主要符号表 %%%
 
-%%%%%%%%%%%%%%%%%%%% 主要符号表 %%%%%%%%%%%%%%%%%%%%%
-
-% 如不需要可以注释
-% \input{part/denotation}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\input{part/denotation}
+%%%%%%%%%%%
 \mainmatter
-
-%%%%%%%%%%%%%%%%%%%% 正文内容 %%%%%%%%%%%%%%%%%%%%%%%
-
-
-
+%%%% 正文内容 %%%%%
 \input{part/chap01}
-
 
 \input{part/chap02}
 
-
 \input{part/chap03}
-
 
 \input{part/chap04}
 
-
 \input{part/chap05}
-
 
 \input{part/chap06}
 
-
 \input{part/chap07}
-
 
 \input{part/chap08}
 
-
 \input{part/chap09}
 
+% \input{part/manipulate}
 
-%%%%%%%%%%%%%%%%%%%%%% 参考文献 %%%%%%%%%%%%%%%%%%%%%
+\input{part/exercises}
 
+% \input{part/exerGem2.5}
+
+% \input{part/exerGPT}
+
+
+%%% 参考文献 %%%%%%%
 % 生成参考文献, 两种方式任选一种
-
 % 第一种方式, 使用 bib 文件
 %\nocite{*}  % 可以显示全部参考文献
 % \bibliography{reference}
-
-%--------------------------------------------------%
-
+%----------
 % 第二种方式, 手动添加文献信息
 %\input{part/bibliography}
-
-
-%%%%%%%%%%%%%%%%%%%%%% 附录 %%%%%%%%%%%%%%%%%%%%%%%%
-
+%%% 附录 %%%%%
 % 添加附录, 如不需要可以注释
 % \input{part/appendix}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%
 \backmatter  % 结束章节自动编号
-
-%%%%%%%%%%%%%%%%%%%%%% 索引  %%%%%%%%%%%%%%%%%%%%%%%%
-
+%% 索引  %%%%%%%%
 \clearpage
 \printindex
-
-
-%%%%%%%%%%%%%%%%%%%%%%% 后记 %%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%% 后记 %%%%%%%%%
 \input{part/epilogue}
 
 
