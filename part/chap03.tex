@@ -63,30 +63,52 @@ $$
 
 {\heiti 注记}~~ 我们已经知道\textbf{线性性质}(linearity)是一个非常好的性质，在许多情况下对我们都有帮助。因此，允许负高度（以及由此而来的负体积）是获得线性的一个非常小的代价，因为我们之后总是可以取绝对值。
 
-实际上，通过允许负高度，我们并没有牺牲任何东西！相反，我们甚至获得了一些东西，因为行列式的符号包含了有关向量系统（方向）的一些信息。
+实际上，通过允许负高度，我们并没有牺牲任何东西！相反，我们甚至获得了一些东西，因为行列式的符号包含了有关向量系统（定向）的一些信息。
 
-\subsection{2.2. “列替换”下保持不变性}
+\subsection{2.2. 若两个向量重合，则行列式为 0}
+
+若对于某个 $j \neq k$ 有 $\vv_j = \vv_k$，则向量 $\vv_1, \vv_2, \dots, \vv_n$ 线性相关，因此
+$$
+\dim \spanL\{\vv_1, \vv_2, \dots, \vv_n\} < n.
+$$
+此时体积必定为 0（例如，因为“高度”，即 $\vv_j$ 到 $\spanL\{\vv_r : r \neq j\}$ 的距离为 0）。因此，很自然地可以假设
+$$
+(2.3) \quad D(\vv_1, \vv_2, \dots, \vv_n) = 0 \quad \text{若对于某个 } j \neq k \text{ 有 } \vv_j = \vv_k.
+$$
+在后文中，我们将使用行列式的这一性质。
+
+{\heiti 注记}~~ 对于线性相关的向量组 $\vv_1, \vv_2, \dots, \vv_n$ 成立 $D(\vv_1, \vv_2, \dots, \vv_n) = 0$ 这一更强的性质也是相当自然的。
+
+然而，该性质很容易从较弱的假设 (2.3) 以及线性性质 (2.1)、(2.2) 推导出来，详见命题 3.1。
+
+\subsection{2.3. “列替换”下保持不变性}
 
 下一个性质也看起来很自然。也就是说，如果我们取一个向量，比如 $\vv_j$，并将其加上另一个向量 $\vv_k$ 的倍数，“高度”不会改变，所以
 $$
-(2.3) \quad D(\vv_1, \dots, \underset{j}{\underbrace{\vv_j + \alpha \vv_k}}, \dots, \underset{k}{\vv_k}, \dots, \vv_n) = D(\vv_1, \dots, \underset{j}{\vv_j}, \dots, \underset{k}{\vv_k}, \dots, \vv_n)
+(2.4) \quad D(\vv_1, \dots, \underset{j}{\underbrace{\vv_j + \alpha \vv_k}}, \dots, \underset{k}{\vv_k}, \dots, \vv_n) = D(\vv_1, \dots, \underset{j}{\vv_j}, \dots, \underset{k}{\vv_k}, \dots, \vv_n)
 $$
 换句话说，如果我们应用第三种类型的\textbf{列运算}，行列式不会改变。
 
-{\heiti 注记}~~ 虽然在此并非必需，但让我们注意到第二个部分的线性性质（性质 (2.2)）不是独立的：它可以从性质 (2.1) 和 (2.3) 推导出来。
+然而，这个性质并不是独立的，它是 (2.3) 和线性性质 (2.1)、(2.2) 的一个简单推论。即
+$$
+\begin{aligned}
+D(\vv_1, \dots, \underset{j}{\underbrace{\vv_j + \alpha \vv_k}}, \dots, \underset{k}{\vv_k}, \dots, \vv_n) &= D(\vv_1, \dots, \underset{j}{\vv_j}, \dots, \underset{k}{\vv_k}, \dots, \vv_n) \\
+&\quad + \alpha D(\vv_1, \dots, \underset{j}{\vv_k}, \dots, \underset{k}{\vv_k}, \dots, \vv_n) \\
+&= D(\vv_1, \dots, \underset{j}{\vv_j}, \dots, \underset{k}{\vv_k}, \dots, \vv_n);
+\end{aligned}
+$$
+这里的第一个等式由线性性质 (2.1)、(2.2) 得出，第二个等式正是 (2.3)。
 
-我们将证明留作读者的练习。
-
-\subsection{2.3. 反对称性}
+\subsection{2.4. 反对称性}
 
 行列式应该具备的另外一个性质，是如果我们交换了两个向量，行列式的符号改变一次。
-\footnote{具有多个变量的一些函数的性质，是在交换任意两个参数时会变号，这类函数称为反对称函数。}
+\footnote{一些具有多个变量的函数的性质，是在交换任意两个参数时会变号，这类函数称为反对称函数。}
 
 也就是说，如果我们交换两个向量，行列式会变号：
 $$
- (2.4) \quad D(\vv_1, \dots, \underset{j}{\vv_k}, \dots, \underset{k}{\vv_j}, \dots, \vv_n) = - D(\vv_1, \dots, \underset{j}{\vv_j}, \dots, \underset{k}{\vv_k}, \dots, \vv_n)
+ (2.5) \quad D(\vv_1, \dots, \underset{j}{\vv_k}, \dots, \underset{k}{\vv_j}, \dots, \vv_n) = - D(\vv_1, \dots, \underset{j}{\vv_j}, \dots, \underset{k}{\vv_k}, \dots, \vv_n)
 $$
-第一次看到时，这个性质看起来并不自然，但它可以从前面的性质推导出来。也就是说，三次应用性质 (2.3)，然后使用 (2.1)，我们得到
+第一次看到时，这个性质看起来并不自然，但它可以从前面的性质推导出来。也就是说，三次应用性质 (2.4)，然后使用 (2.1)，我们得到
 \begin{align*} 
 &D(\vv_1, \dots, \underset{j}{\vv_j}, \dots, \underset{k}{\vv_k}, \dots, \vv_n) \\
 &= D(\vv_1, \dots, \underset{j}{\vv_j}, \dots, \underset{k}{\underbrace{\vv_k - \vv_j}}, \dots, \vv_n) \\ 
@@ -95,12 +117,13 @@ $$
 &= D(\vv_1, \dots, \underset{j}{\vv_k}, \dots, \underset{k}{\underbrace{(\vv_k - \vv_j) - \vv_k}}, \dots, \vv_n) \\ 
 &= D(\vv_1, \dots, \underset{j}{\vv_k}, \dots, -\underset{k}{\vv_j}, \dots, \vv_n) \\ 
 &= - D(\vv_1, \dots, \underset{j}{\vv_k}, \dots, \underset{k}{\vv_j}, \dots, \vv_n). \end{align*}
+回忆一下，性质(2.4)可以从性质(2.3)和线性性质(2.1)及性质(2.2)中得到，所以反对称性(2.5)也可以从这些性质中推得。
 
-\subsection{2.4. 归一化}
+\subsection{2.5. 归一化}
 
 最后一个性质是最简单的。对于 $\RR^n$ 中的标准基 $\ee_1, \ee_2, \dots, \ee_n$，对应的平行六面体是 $n$ 维单位立方体，所以
 $$
-(2.5)\quad D(\ee_1, \ee_2, \dots, \ee_n) = 1.
+(2.6)\quad D(\ee_1, \ee_2, \dots, \ee_n) = 1.
 $$
 在矩阵表示中，这可以写成 
 $$\det (I) = 1.$$
@@ -130,9 +153,11 @@ $$
 
 3. 归一化性质：$\det I = 1$.~
 
-所有这些性质在第 2 节中都已讨论过。第一个性质只是 (2.1) 和 (2.2) 的组合。第二个是 (2.4)，最后一个是归一化性质 (2.5)。注意，我们没有使用性质 (2.3)：它可以从上述三个性质中推导出来。因此，这三个性质就完全定义了行列式！
+所有这些性质在第 2 节中都已讨论过。第一个性质只是 (2.1) 和 (2.2) 的组合。第二个是 (2.5)，最后一个是归一化性质 (2.6)。注意，我们没有使用性质 (2.3)和(2.4)：它们可以从上述三个性质中推导出来。因此，这三个性质就完全定义了行列式！
 
-\subsection{3.2.从行列式基本性质中推导出的性质}
+\subsection{3.2.由基本性质推导出的行列式性质}
+
+在下面的讨论中，$\det A = D(\aaa_1, \aaa_2, \dots, \aaa_n)$ 表示满足上文第 3.1 小节中性质 1–3 的一个函数。
 
 {\heiti 命题 3.1}~~ 对于方阵 $A$，以下陈述成立：
 
