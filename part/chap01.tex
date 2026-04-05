@@ -95,7 +95,7 @@ $$p(t) = a_0 + a_1 t + a_2 t^2 + \dots + a_n t^n$$
 
 通常我们可以方便地用带下标的字母来表示矩阵的项：第一个下标表示项所在的行号，第二个下标表示列号。例如，
 $$(1.1)\quad
-A = (a_{j,k})_{m \times n, j=1, k=1}^n = \begin{pmatrix}
+A = (a_{j,k})^{m,}_{j=1,}~^n_{k=1} = \begin{pmatrix}
 a_{1,1} & a_{1,2} & \dots & a_{1,n} \\
 a_{2,1} & a_{2,2} & \dots & a_{2,n} \\
 \vdots & \vdots & \ddots & \vdots \\
@@ -384,18 +384,18 @@ $$ T(p) := p' \quad \forall p \in \PP_n. $$
 
 
 {\heiti 例子}~~
-\textbf{旋转}: 在这个例子中，$V = W = \RR^2$（通常的坐标平面），一个变换 $T_\gamma : \RR^2 \to \RR^2$ 将 $\RR^2$ 中的一个向量逆时针旋转 $\gamma$ 弧度。由于 $T_\gamma$ 整体将平面旋转，它也整体旋转了用于定义两个向量之和的平行四边形（向量加法的平行四边形法则）。因此，线性变换的性质 1 成立。也很容易看出性质 2 也成立。
+\textbf{旋转}: 在这个例子中，$V = W = \RR^2$（通常的坐标平面），一个变换 $T_\gamma : \RR^2 \to \RR^2$ 将 $\RR^2$ 中的一个向量逆时针旋转 $\gamma$ 弧度。由于 $T_\gamma$ 整体将平面旋转，它也整体旋转了用于定义两个向量之和的平行四边形（向量加法的平行四边形法则），参见图 \Ref{fig:01}。因此，线性变换的性质 1 成立。也很容易看出性质 2 也成立。
 
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.6\linewidth]{figures/Figure1.PNG} % 这里修改了比例
+  \includegraphics[width=0.6\linewidth]{figures/fig1.pdf} % 这里修改了比例
   \caption{旋转}
   \label{fig:01}
 \end{figure}
 
 {\heiti 例子}~~ 
-\textbf{反射}: 在这个例子中，同样 $V = W = \RR^2$，变换 $T : \RR^2 \to \RR^2$ 是关于第一个坐标轴的反射，参见图 \Ref{fig:01}。
+\textbf{反射}: 在这个例子中，同样 $V = W = \RR^2$，变换 $T : \RR^2 \to \RR^2$ 是关于第一个坐标轴的反射。
 也可以几何地证明这个变换是线性的，但我们将使用另一种方法来证明。
 
 即，很容易写出 $T$ 的表达式：
@@ -528,9 +528,9 @@ d) $T: \PP_n \to \PP_n$, $T f(t) = 2 f(t) + 3 f'(t) - 4 f''(t)$（同样在标�
 \\
 a) 将每个向量投影到 $x-y$ 平面；
 \\
-b) 将每个向量反射到 $x-y$ 平面；
+b) 将每个向量以 $x-y$ 平面为对称面反射；
 \\
-c) 将 $x-y$ 平面绕 $z$ 轴旋转 $30^\circ$，同时保持 $z$ 轴不变。
+c) 将 $x-y$ 平面绕 $z$ 轴（逆时针）旋转 $30^\circ$，同时保持 $z$ 轴不变。
 
 3.5. 设 $A$ 是一个线性变换。如果 $\zz$ 是线段 $[\xx, \yy]$ 的中点，证明 $A \zz$ 是线段 $[A \xx, A \yy]$ 的中点。
 \\
@@ -1058,7 +1058,7 @@ $$
 为了获得更逼真的图像，我们需要使用所谓的\textbf{透视投影}(perspective projection)。要定义透视投影，我们需要选择一个点（投影中心或焦点）和一个要投影到的平面。然后，$\RR^3$ 中的每个点被投影到一个平面上的点，使得该点、它的像以及\textbf{投影中心}(center of the projection)位于同一条线上，见图\Ref{fig:02}。
 
 \begin{figure}[ht]
-  \centering  \includegraphics[width=0.5\linewidth]{figures/Figure2.PNG}
+  \centering  \includegraphics[width=0.5\linewidth]{figures/fig2.pdf}
   \caption{透视投影到 $x-y$ 平面：$F$ 是投影中心（焦点）}
   \label{fig:02} 
 \end{figure}
@@ -1069,8 +1069,8 @@ $$
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=1.0\linewidth]{figures/Figure3.PNG}
-  \caption{图 3. ~找到点 $(x, y, z)^T$ 的透视投影的坐标 $x^*, y^*$}
+  \includegraphics[width=1.0\linewidth]{figures/fig3.pdf}
+  \caption{找到点 $(x, y, z)^T$ 的透视投影的坐标 $x^*, y^*$}
   \label{fig:03} 
 \end{figure}
 
@@ -1093,7 +1093,7 @@ $$y^* = \frac{y}{1 - z/d}.$$
 }
 （如果 $x_4 = 0$，则此方法不适用，因此我们假设 $x_4 = 0$ 的情况对应于无穷远点）。
 
-因为在齐次坐标中，向量$\vv^*$可以被表示为$x, y, 0, 1-z/d)^T$,因此，在齐次坐标中，透视投影是一个线性变换：
+因为在齐次坐标中，向量$\vv^*$可以被表示为$(x, y, 0, 1-z/d)^T$,因此，在齐次坐标中，透视投影是一个线性变换：
 $$
 \begin{pmatrix} x \\ y \\ 0 \\ 1 - z/d \end{pmatrix} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & -1/d & 1 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix}.
 $$
