@@ -44,7 +44,13 @@
 
 换句话说，任何特征值均为实数的 $n \times n$ 实矩阵 $A$ 都可以表示为 $A = UTU^* = U T U^T$，其中 $U$ 是正交矩阵，而 $T$ 是实数上三角矩阵。\end{theorem}
 
-\begin{proof}为了证明定理，我们只需要分析定理 1.1 的证明。不妨假设（我们可以无损于一般性地这样做）算子（矩阵）$A$ 作用在 $\RR^n$ 上。
+{\heiti 注记 1.3.}~~ 回顾我们在第四章 1.4 节中的讨论：对于实向量空间 $X$ 上算子 $A$ 的特征值，我们总是指其复化 $A_{\CC}$ 作用于 $X$ 的复化 $X_{\CC}$ 时的特征值。
+
+如果 $X = \RR^n$，则其复化 $\CC^n$ 是通过允许 $\RR^n$ 取复数坐标而得到的。$\RR^n$ 上算子 $A$（即乘以\textbf{实}矩阵 $A$）的复化是乘以同一个（实）矩阵，但此时是在空间 $\CC^n$ 中运算。
+
+关于复化的更多细节，请参阅第四章 1.4 节和第五章 8.2 节。
+
+\begin{proof}[\normalfont\heiti 定理 1.2 的证明~\nopunct]为了证明定理，我们只需要分析定理 1.1 的证明。不妨假设（我们可以无损于一般性地这样做）算子（矩阵）$A$ 作用在 $\RR^n$ 上。
 
 假设定理对 $(n-1) \times (n-1)$ 矩阵成立。在定理 1.1 的证明中，设 $\lambda_1$ 是 $A$ 的一个实特征值，$\uu_1 \in \RR^n$, $\|\uu_1\| = 1$ 是相应的特征向量，设 $\{\vv_2, \dots, \vv_n\}$ 是 $\RR^n$ 中的一个标准正交系统，使得 $\{\uu_1, \vv_2, \dots, \vv_n\}$ 是 $\RR^n$ 中的一组标准正交基。
 
@@ -77,9 +83,13 @@ $$A = UDU^*,$$
 
 而且，如果矩阵 $A$ 是实数的，矩阵 $U$ 可以选择为实数的（即正交的）。\end{theorem}
 
-\begin{proof}为了证明定理 2.1 和定理 2.2，我们首先对内积空间 $X$（或实数空间 $X$）应用定理 1.1（或定理 1.2）来找到一组标准正交基，使得 $A$ 在该基下的矩阵是上三角矩阵。现在让我们问自己一个问题：什么样的上三角矩阵是自伴随的？
+\begin{proof}
+为了在复内积空间 $X$ 上证明定理 2.1 和定理 2.2，让我们首先应用定理 1.1 在 $X$ 中找到一组标准正交基，使得 $A$ 在该基下的矩阵是上三角矩阵。现在让我们问自己一个问题：什么样的上三角矩阵是自伴随的？
 
-答案是显而易见的：上三角矩阵是自伴随的当且仅当它是具有实数项的对角矩阵。定理 2.1（以及因此定理 2.2）得证。\end{proof}
+答案是显而易见的：上三角矩阵是自伴随的当且仅当它是仅具有实数项的对角矩阵。定理 2.1（以及因此定理 2.2）得证。
+
+为了处理实向量空间的情况，我们首先注意到，根据已经证明的复数情况，$A$ 的所有特征值都是实数\footnote{回顾一下（见上文注记 1.3），对于实向量空间 $X$ 上算子的特征值，我们总是指该算子延拓到（$X$ 的）\textbf{复化} $X_{\CC}$ 后的特征值。}。然后我们只需应用定理 1.2，并再次注意到唯一的自伴随上三角矩阵是对角矩阵。
+\end{proof}
 
 {\heiti 注记}~~注意，在许多教科书中只考虑实数矩阵，并且定理 2.2 通常被称为“\textbf{对称矩阵的谱定理}”。然而，应该强调，定理 2.2 的结论对于\textbf{复}对称矩阵是不成立的：该定理适用于 埃尔米特 矩阵，特别地，\textbf{实}对称矩阵。
 
@@ -462,7 +472,7 @@ $$(3.6) \quad A = W \Sigma V^* = (WV^*) (V \Sigma V^*) = U|A|$$
 
 
 3.2. 为以下矩阵 $A$ 找出施密特分解 $A = \sum_{k=1}^r s_k \ww_k \vv_k^*$：
-$$\begin{pmatrix} 2 & 3 \\ 0 & 2 \end{pmatrix},\quad \begin{pmatrix} 7 & 1 & 0 \\ 0 & 0 & 5 \\ 5 & 0 & 5 \end{pmatrix}, \quad \begin{pmatrix} 1 & 1 & 0 \\ 1 & 2 & 2 \\ 0 & -1 & 1 \end{pmatrix}.$$
+$$\begin{pmatrix} 2 & 3 \\ 0 & 2 \end{pmatrix},\quad \begin{pmatrix} 7 & 1 \\ 0 & 0 \\ 5 & 5 \end{pmatrix}, \quad \begin{pmatrix} 1 & 1 \\ 0 & 1 \\ -1 & 1 \end{pmatrix}.$$
 
 3.3. 设 $A$ 是一个可逆矩阵，设 $A = W \Sigma V^*$ 是它的奇异值分解。求 $A^*$ 和 $A^{-1}$ 的奇异值分解。
 
@@ -720,14 +730,14 @@ b) $A = \begin{pmatrix} 5 & 3 \\ -3 & 3 \end{pmatrix}$.~
 $$\frac{\|\Delta \xx\|} {\|\xx\| }= \|A\| \cdot \|A^{-1}\| \cdot \frac{\|\Delta \bb\| }{\|\bb\|};$$
 这里 $A\xx = \bb$ 且 $A(\xx + \Delta \xx) = \bb + \Delta \bb$.~
 
-4.2. 设 $A$ 是一个正常算子，其特征值为 $\lambda_1, \lambda_2, \dots, \lambda_n$（计重数）。证明 $A$ 的奇异值是 $|\lambda_1|, |\lambda_2|, \dots, |\lambda_n|$.~
+4.2. 设 $A$ 是一个正规算子，其特征值为 $\lambda_1, \lambda_2, \dots, \lambda_n$（计重数）。证明 $A$ 的奇异值是 $|\lambda_1|, |\lambda_2|, \dots, |\lambda_n|$.~
 
 4.3. 求矩阵 $$A = \begin{pmatrix} 2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2 \end{pmatrix}$$ 的奇异值、范数和条件数。\\
 你基本上可以不经计算完成此题，如果你能回答以下问题：
 \\
 a) 某个子空间 $E$ 上的正交投影 $P_E$ 的奇异值是多少？
     \\
-b) 跨越向量 $(1, 1, 1)^T$ 的子空间的零空间的矩阵是什么？
+b) 找出投影到向量 $(1, 1, 1)^T$ 所张成的子空间的正交投影矩阵。
 \\
 c) 算子 $T$ 和 $aT + bI$ （其中 $a$ 和 $b$ 是标量）的特征值之间有什么关系？
 \\
@@ -737,7 +747,7 @@ c) 算子 $T$ 和 $aT + bI$ （其中 $a$ 和 $b$ 是标量）的特征值之间
 
 4.5. 用奇异值分解 $A = W \Sigma V^*$ 表示摩尔-彭罗斯逆 $A^+$ 的公式。
 
-4.6. （提霍诺夫正则化，Tychonov’s regularization）：证明摩尔-彭罗斯逆 $A^+$ 可以计算为极限：
+4.6. （吉洪诺夫正则化，Tychonov’s regularization）：证明摩尔-彭罗斯逆 $A^+$ 可以计算为极限：
 $$A^+ = \lim_{\varepsilon \to 0^+} (A^*A + \varepsilon I)^{-1} A^* = \lim_{\varepsilon \to 0^+} A^*(AA^* + \varepsilon I)^{-1}.$$\end{exer}
 
 \section{5. 正交矩阵的结构}
@@ -882,13 +892,13 @@ $$R_{n-1} \dots R_2 R_1 A = \begin{pmatrix} a & * \\ \oo & A_1 \end{pmatrix},$$
 图\Ref{fig:04} 和图\Ref{fig:05} 分别展示了 $\RR^2$ 和 $\RR^3$ 中的 3 组标准正交基。在每张图中，基 b) 可以通过一次旋转从标准基 a) 获得，而不可能通过旋转将标准基 a) 变成基 c)（使得 $\ee_k$ 变成 $\vv_k$ 对所有 $k$ 成立）。
 
 \begin{figure}[ht]
-  \centering  \includegraphics[width=0.7\linewidth]{figures/Figure4.PNG}
+  \centering  \includegraphics[width=0.7\linewidth]{figures/fig4.pdf}
   \caption{$\RR^2$上的定向}
   \label{fig:04} 
 \end{figure}
 
 \begin{figure}[ht]
-  \centering  \includegraphics[width=0.7\linewidth]{figures/Figure5.PNG}
+  \centering  \includegraphics[width=0.7\linewidth]{figures/fig5.pdf}
   \caption{$\RR^3$上的定向}
   \label{fig:05} 
 \end{figure}
