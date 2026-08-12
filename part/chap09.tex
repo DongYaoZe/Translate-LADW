@@ -1,549 +1,591 @@
+%%%%%%%%%%%%%%%%%% 谱理论进阶 %%%%%%%%%%%%%%%%%%%
 
+\chapter{谱理论进阶}\label{chap:SpectralAdvanced}
 
+\section{凯莱-哈密尔顿定理}
 
-\chapter{第九章~~高级谱理论
-}
+\begin{theorem}[凯莱-哈密尔顿定理]\label{thm:caylay-hamilton}
+    令$A$为方阵，并令$p(\lambda)=\det(A-\lambda I)$是其特征多项式。那么$p(A)=\mathbf{0}$。\index{凯莱-哈密尔顿定理（Cayley-Hamilton theorem）}
+\end{theorem}
 
-\section{1. 凯莱-哈密顿定理}
+\begin{proof}[一种错误的证明]
+    这个证明看起来超级简单：在特征多项式的定义式中代入$A$而不是$\lambda$，得到
+    \[p(A)=\det(A-AI)=\det\mathbf{0}=0.\]
+\end{proof}
 
-\begin{theorem}[\normalfont\heiti 定理 1.1\nopunct]（凯莱-哈密顿，Cayley–Hamilton）
-设 $A$ 是一个方阵，其特征多项式为 $p(\lambda) = \det(A - \lambda I)$.~那么，$p(A) = \oo$.~\end{theorem}
+但这种证明是错的！要看出原因，我们分析一下定理的内容。定理是说，如果计算了特征多项式
+\[\det(A-\lambda I)=p(\lambda)=\sum_{k=0}^nc_k\lambda^k\]
+{\bf 然后}将$\lambda$换成$A$以得到
+\[p(A):=\sum_{k=0}^nc_kA^k=c_0I+c_1A+\ldots+c_nA^n\]
+则此式的结果是零{\bf 矩阵}。
 
-\begin{proof}[\normalfont\heiti 一个错误的证明~\nopunct]
-这个证明看起来异常简单：将 $\lambda$ 替换为 $A$ 并代入特征多项式（译者吐槽：正常人怎么会想要用一个矩阵去替换一个数的啊…这也不是特征值的定义啊…），我们得到
-$$p(A) = \det(A - AI) = \det(\oo) = 0.$$\end{proof}
+仅仅是将行列式$\det(A-\lambda I)$中的$\lambda$替换为$A$，并不能清晰地说明为何会得到相同的结果。并且，容易看出（除了$1\times 1$矩阵的例外情况），结果甚至不是同类对象。也即：$A-AI$是零{\bf 矩阵}，且其行列式是\textbf{数}$0$；但$p(A)$是矩阵，并且该定理说的是这个矩阵为零{\bf 矩阵}。那么上面的证明就是牛头不对马嘴：即便定理陈述中和证明中都说的是“零”，但这两个“零”并不相同——分别是数零和零矩阵！
 
-但这是一个错误的证明！为了明白为什么错误，让我们分析一下定理的内容。定理说明，如果我们计算特征多项式 
-$$\det(A - \lambda I) = p(\lambda) = \sum_{k=0}^n c_k \lambda^k,$$
-然后用矩阵 $A$ 替换 $\lambda$ 得到 
-$$p(A) := \sum_{k=0}^n c_k A^k = c_0 I + c_1 A + \dots + c_n A^n,$$
-那么结果将是零矩阵。
+我们呈上另一种证明，它的思路基于分析学。
 
-我们并不清楚，为何仅仅是将$A$而不是将 $\lambda$ 代入行列式 $\det(A - \lambda I)$ ，就得到了相同的结果。
-而且，很容易看出，除了 $1 \times 1$ 矩阵的平凡情况外，我们得到的对象是不同的。即，$A - AI$ 是零矩阵，它的行列式只是数字 $0$.~
+\begin{proof}[一种“连续式”的证明]
+    本证明是在观察到以下几点的基础上作出的。第一点是，该定理对于对角矩阵，进而对相似于对角矩阵的矩阵（即可对角化矩阵）都是平凡的（见下习题 \ref{ex:9_1_1}）。
 
-但是 $p(A)$ 是一个矩阵，而定理声称这个矩阵是零矩阵。因此，我们刚刚其实只是在比较苹果和橘子。尽管两种情况下我们都得到了零，但它们是不同的零：数字零和零矩阵！
+    第二点是，任意矩阵都能用可对角化矩阵来近似（且可以任意接近）。因为任意算子都关于规范正交基具有上三角矩阵（见第 \ref{chap:StructinInnerProdSpace} 章定理 \ref{thm:schur}），所以可假设$A$是上三角矩阵，而不失一般性。
 
-让我们给出另一组基于分析思想的证明。
+    我们可以对$A$的对角元施加扰动（可任意小），使得它们互不相同，于是经扰动的矩阵$\widetilde{A}$是可对角化的（三角矩阵的特征值是其对角元，见第 \ref{chap:SpectralIntro} 章第 \ref{subsec:eigen_of_tri} 节，并且由第 \ref{chap:SpectralIntro} 章推论 \ref{cor:diagonalizable_suff_1}，有$n$个互异特征值的$n\times n$矩阵是可对角化的）。
 
+    刚刚提到，我们可对$A$的对角元施加任意小的扰动，从而弗罗贝尼乌斯范数$\|A-\widetilde{A}\|_2$可任意小。因此，可找到一列可对角化矩阵$A_k$，满足当$k\to \infty$时$A_k\to A$（比如，当$k\to \infty$时$\|A_k-A\|_2\to 0$）。可以证明，特征多项式$p_k(\lambda)=\det (A_k-\lambda I)$收敛至$A$的特征多项式$p(\lambda)=\det (A-\lambda I)$。因此\[p(A)=\lim_{k\to \infty}p_k(A_k).\]
+    而我们在上面讨论过，凯莱-哈密尔顿定理对于可对角化矩阵是平凡的，所以$p_k(A_k)=\mathbf{0}$。因此$p(A)=\lim_{k\to \infty}\mathbf{0}=\mathbf{0}$。
+\end{proof}
 
-\begin{proof}[\normalfont\heiti 一个“连续的”证明~\nopunct]
-\footnote{这个证明阐述了一个重要的思想，即\textbf{通常只考虑典型、一般的状况就足够了}。虽然这超出了本书的范围，但我们仍提及一下，而不深入细节：一个一般的（即典型的）矩阵是可对角化的。}
+本证明展现了一种重要思想：通常，考虑一种典型的情况就足够完成证明了。尽管超出了本书的范围，但我们还要（粗略地）陈述一下这个结论：一般的矩阵是可对角化的。
 
-该证明基于几个观察。首先，对于对角矩阵，该定理是平凡的，因此对于与对角矩阵相似的矩阵（即可对角化矩阵）也是平凡的（见下文问题 1.1）。
+这个证明，是为熟知分析学中诸如连续、收敛之类概念\footnote{这里我说的是{\bf 分析学}，即关于连续、收敛之类的概念的严谨学问，而不是微积分，后者就现行教学而言，只是传授一系列技巧。}的读者准备的。这样的读者应当能够补全所有的细节，并且这个证明对于他/她来说应该是极为简单而自然的。
 
-第二个观察是，任何矩阵都可以被可对角化矩阵近似（任意精确）。
-由于任何算子在某组标准正交基下都可以表示为上三角矩阵（见第六章定理 1.1），我们可以不失一般性地假设 $A$ 是一个上三角矩阵。
+然而，对于其余尚不熟悉这些概念的读者，这个证明看上去会很奇怪，甚至像是“作弊”（不过我还是要重申，这个证明绝对是正确且严谨的，只是借助了分析学中几个基本的结论）。那么，我们呈上该定理的另一种证明，它是线性代数教材中的“通行”证明。
 
-我们可以通过微扰 $A$ 的对角线元素（任意小）来使它们全部不同，因此扰动后的矩阵 $\widetilde{A}$ 是可对角化的（三角矩阵的特征值是其对角线元素，见第四章第 1.7 节，并且根据第四章推论 2.3，一个具有 $n$ 个不同特征值的 $n \times n$ 矩阵是可对角化的）。
+\begin{proof}[一种“通行的”证明]
+    我们知道（见第 \ref{chap:StructinInnerProdSpace} 章定理 \ref{thm:schur}），任意方阵都幺正等价于上三角矩阵。因为对任意多项式$p$，有$p(UAU^{-1})=Up(A)U^{-1}$，并且幺正等价矩阵的特征多项式是相同的，所以只要对上三角矩阵证明该定理即可。
 
-如我刚才提到的，我们可以任意小地扰动 $A$ 的对角线元素，所以 弗罗贝尼乌斯 范数 $\|A - \widetilde{A}\|_2$ 可以任意小。因此，我们可以找到一个可对角化矩阵序列 $A_k$ 使得 $A_k \to A$ 当 $k \to \infty$（例如，使得 $\|A_k - A\|_2 \to 0$ 当 $k \to \infty$）。可以证明，特征多项式 $p_k(\lambda) = \det(A_k - \lambda I)$ 收敛于 $A$ 的特征多项式 $p(\lambda) = \det(A - \lambda I)$.~因此，$$p(A) = \lim_{k \to \infty} p_k(A_k).$$
-但是正如我们上面讨论的，对于可对角化矩阵，凯莱-哈密顿定理是平凡的，所以 $p_k(A_k) = \oo$.~因此，$p(A) = \lim_{k \to \infty} \oo = \oo$.~\end{proof}
+    因此，令$A$是上三角矩阵。我们知道三角矩阵的对角元即为其特征值，所以令$\lambda_1,\lambda_2,\dots,\lambda_n$是$A$的特征值（按照它们在对角线上出现的顺序排列），那么
+    \[A=\begin{pNiceMatrix}[margin]
+        \lambda_1 & & & *\\
+         & \lambda_2 & &\\
+         &&\ddots&\\
+         \mathbf{0}&&&\lambda_n
+    \end{pNiceMatrix}.\]
+    $A$的特征多项式$p(z)=\det(A-z I)$可表示为$p(z)=(\lambda_1-z)(\lambda_2-z)\dots(\lambda_n-z)=(-1)^n(z-\lambda_1)(z-\lambda_2)\dots(z-\lambda_n)$，因此
+    \[p(A)=(-1)^n(A-\lambda_1I)(A-\lambda_2I)\ldots(A-\lambda_nI).\]
 
-这个证明是为那些熟悉分析（即连续性、收敛性等的严格处理）中的想法的读者准备的。
-\footnote{这里我指的是\textbf{分析}，即连续性、收敛性等概念的严格处理，而不是微积分，微积分在其目前的教学方式下，仅仅是一系列技巧的集合。}
-这样的读者应该能够填补所有细节，并且对他/她来说，这个证明应该看起来非常简单和自然。
+    定义子空间$E_k:=\operatorname{span}\{\mathbf{e}_1,\mathbf{e}_2,\dots,\mathbf{e}_k\}$，其中$\mathbf{e}_1,\mathbf{e}_2,\dots,\mathbf{e}_n$是$\mathbb{C}^n$的标准基。因为$A$的矩阵是上三角的，所以子空间$E_k$是算子$A$的所谓{\bf 不变}子空间，即$AE_k\subset E_k$（即$A\mathbf{v}\in E_k$对所有$\mathbf{v}\in E_k$成立）。此外，因为对任意$\mathbf{v}\in E_k$与任意$\lambda$有\[(A-\lambda I)\mathbf{v}=A\mathbf{v}-\lambda \mathbf{v}\in E_k,\]
+    （这是因为$A\mathbf{v}$和$\lambda \mathbf{v}$都属于$E_k$），于是$(A-\lambda I)E_k\subset E_k$，即$E_k$是$A-\lambda I$的不变子空间。
 
-然而，对于还不熟悉这些想法的读者来说，这个证明肯定会显得奇怪。它甚至可能看起来像是在作弊，但让我重申，这是一个完全正确且严谨的证明（取决于分析中的一些标准事实）。
-因此，让我们给出定理的另一个证明，这也是其他线性代数教科书中的“标准”证明之一。
+    我们还可进一步描述子空间$(A-\lambda_k I)E_k$。首先，$(A-\lambda_k I)\mathbf{e}_k\in$\linebreak $\operatorname{span}\{\mathbf{e}_1,\mathbf{e}_2,\dots,\mathbf{e}_{k-1}\}$，这是因为$(A-\lambda_k I)$的矩阵的第$k$列只有前$k-1$个元素是非零的。此外，对$j<k$有$(A-\lambda_k I)\mathbf{e}_j\in E_j\subset E_k$（因为$E_j$是$A-\lambda_k I$的不变子空间）。
 
+    任取向量$\mathbf{v}\in E_k$。由$E_k$的定义，其可表示为向量$\mathbf{e}_1,\mathbf{e}_2,\dots,\mathbf{e}_k$的线性组合。因为所有向量$\mathbf{e}_1,\mathbf{e}_2,\dots,\mathbf{e}_k$都被$A-\lambda_k I$变换为$E_{k-1}$中的向量，所以
+    \begin{equation}\label{triangle_invariant}
+        (A-\lambda_k I)\mathbf{v}\in E_{k-1},\quad \forall\mathbf{v}\in E_k
+    \end{equation}
 
-\begin{proof}[\normalfont\heiti 一个“标准”的证明~\nopunct]
-我们知道，见第六章定理 6.1.1，任何方阵都与一个上三角矩阵酉等价。由于对于任何多项式 $p$，我们有 $p(UAU^{-1}) = Up(A)U^{-1}$，并且酉等价矩阵的特征多项式是相同的，所以我们只需要证明该定理对于上三角矩阵成立。
+    任取向量$\mathbf{x}\in\mathbb{C}^n= E_n$。依次对$k=n,n-1,\dots,1$应用 \eqref{triangle_invariant} 有
+    \[\begin{aligned}
+        &\mathbf{x}_{1}:=(A-\lambda_{n}I)\mathbf{x}\in E_{n-1},\\
+        &\mathbf{x}_{2}:=(A-\lambda_{n-1}I)\mathbf{x}_1=(A-\lambda_{n-1}I)(A-\lambda_{n}I)\mathbf{x}\in E_{n-2},\\&\mathrm{...}\\
+        &\mathbf{x}_{n}:=(A-\lambda_{2}I)\mathbf{x}_{n-1}=(A-\lambda_{2}I)\ldots(A-\lambda_{n-1}I)(A-\lambda_{n}I)\mathbf{x}\in E_{1}.
+    \end{aligned}\]
+    最后一个包含关系意味着$\mathbf{x}_{n}=\alpha \mathbf{e}_1$，然而$(A-\lambda_1 I)\mathbf{e}_1=\mathbf{0}$，因此\[\mathbf{0}=(A-\lambda_{1}I)\mathbf{x}_{n}=(A-\lambda_{1}I)(A-\lambda_{2}I)\ldots(A-\lambda_{n}I)\mathbf{x}.\]
+    因此$p(A)\mathbf{x}=\mathbf{0}$对所有$\mathbf{x}\in\mathbb{C}^n$成立，这就意味着$p(A)=\mathbf{0}$。
+\end{proof}
 
-因此，设 $A$ 是一个上三角矩阵。我们知道三角矩阵的对角线元素与其特征值相等，所以设 $\lambda_1, \lambda_2, \dots, \lambda_n$ 是 $A$ 的特征值，按其在对角线上的顺序排列，即
-$$A = \begin{pmatrix} \lambda_1 &  & & *\\ & \lambda_2 & & \\ & & \ddots & \\\oo & & & \lambda_n \end{pmatrix}.$$
-$A$ 的特征多项式 $p(z) = \det(A - zI)$ 可以表示为
-$$p(z) = (\lambda_1 - z)(\lambda_2 - z) \dots (\lambda_n - z) = (-1)^n (z - \lambda_1)(z - \lambda_2) \dots (z - \lambda_n),$$
-所以
-$$p(A) = (-1)^n (A - \lambda_1 I)(A - \lambda_2 I) \dots (A - \lambda_n I).$$
+\begin{problemset}
+    \item \label{ex:9_1_1} （可对角化矩阵的凯莱-哈密尔顿定理）在上节中提到，凯莱-哈密尔顿定理指出，若$A$是方阵，且其特征多项式为\[p(\lambda)=\det(A-\lambda I)=\sum_{k=0}^nc_k\lambda^k\]那么$p(A):=\sum_{k=0}^nc_kA^k=\mathbf{0}$（我们假设$A^0=I$）。
 
+    对$A$相似于对角矩阵的特殊情形$A=SDS^{-1}$证明该定理。{\bf 提示}：若$D=\operatorname{diag}\{\lambda_1,\lambda_2,\dots,\lambda_n\}$且$p$是任意多项式，你能计算$p(D)$吗？$p(A)$呢？
+\end{problemset}
 
-定义子空间 $E_k := \spanL\{\ee_1, \ee_2, \dots, \ee_k\}$，其中 $\ee_1, \ee_2, \dots, \ee_n$ 是 $\CC^n$ 中的标准基。由于 $A$ 的矩阵是上三角的，子空间 $E_k$ 是算子 $A$ 的\textbf{不变子空间}\index{bubianzikongjian@不变子空间}\index{zikongjian@子空间!bubian@不变}(invariant subspace)，即 $AE_k \subset E_k$（表示 $\vv \in E_k$ 的所有向量 $A\vv$ 都属于 $E_k$）。此外，由于对于任何 $\vv \in E_k$ 和任何 $\lambda$，
-$$(A - \lambda I)\vv = A\vv - \lambda \vv \in E_k,$$
-因为 $A\vv$ 和 $\lambda \vv$ 都属于 $E_k$，因此 $(A - \lambda I)E_k \subset E_k$，即 $E_k$ 是 $A - \lambda I$ 的不变子空间。
+\section{谱映射定理}
 
-我们可以进一步探讨子空间 $(A - \lambda_k I)E_k$ 的性质。即，$(A - \lambda_k I)\ee_k \in \spanL\{\ee_1,$ $ \ee_2, \dots, \ee_{k-1}\}$，因为 $A - \lambda_k I$ 矩阵的第 $k$ 列的前 $k-1$ 个元素可能非零。另一方面，对于 $j < k$，有 $(A - \lambda_k)\ee_j \in E_j \subset E_k$（因为 $E_j$ 是 $A - \lambda_k I$ 的不变子空间）。
+\subsection{算子的多项式}\label{subsec:poly_of_operator}
 
-取任意向量 $\vv \in E_k$.~根据 $E_k$ 的定义，它可以表示为向量 $\ee_1, \ee_2, \dots, \ee_k$ 的线性组合。由于所有向量 $\ee_1, \ee_2, \dots, \ee_k$ 都被 $A - \lambda_k I$ 映射到 $E_{k-1}$ 中的某个向量，我们可以得出结论：
-$$(1.1) \quad (A - \lambda_k I)\vv \in E_{k-1} \quad \forall \vv \in E_k.$$
-取任意向量 $\xx \in \CC^n = E_n$.~通过归纳地应用 (1.1)，令 $k = n, n-1, \dots, 1$，我们得到
-\begin{equation} \notag
-\begin{split}
-&\ \xx_1 := (A - \lambda_n I)\xx \in E_{n-1},\\
-&\ \xx_2 := (A - \lambda_{n-1} I)\xx_1 = (A - \lambda_{n-1} I)(A - \lambda_n I)\xx \in E_{n-2},\\
-&\ \dots \\
-&\ \xx_n := (A - \lambda_2 I)\xx_{n-1} = (A - \lambda_2 I) \dots (A - \lambda_{n-1} I)(A - \lambda_n I)\xx \in E_1.
-\end{split}\end{equation}
-最后一个包含关系意味着 $\xx_n = \alpha \ee_1$.~但是 $(A - \lambda_1 I)\ee_1 = 0$，所以
-$$\oo = (A - \lambda_1 I)\xx_n = (A - \lambda_1 I)(A - \lambda_2 I) \dots (A - \lambda_n I)\xx.$$
-因此，$p(A)\xx = \oo$ 对所有 $\xx \in \CC^n$ 成立，这意味着 $p(A) = \oo$.~\end{proof}
+回忆一下，对方阵（算子）$A$和多项式$p(z)=\sum_{k=0}^{N}a_kz^k$，算子$p(A)$定义为将$A$代入$p$的自变量位置
+\[p(A):=\sum_{k=0}^Na_kA^k=a_0I+a_1A+a_2A^2+\cdots+a_NA^N;\]
+此处规定$A^0=I$。
 
-\begin{exer} {\heiti 练习}
+我们知道，一般来说矩阵乘法是不可交换的，即一般来说$AB\ne BA$，所以顺序很重要。但是，
+\[A^kA^j=A^jA^k=A^{k+j},\]
+由此易证对任意多项式$p$和$q$有\[p(A)q(A)=q(A)p(A)=R(A)\]
+其中$R(z)=p(z)q(z)$。
 
-1.1 （可对角化矩阵的凯莱-哈密顿定理）。如上节讨论，凯莱-哈密顿定理说明，如果 $A$ 是一个方阵，且其特征多项式为 
-$$p(\lambda) = \det(A - \lambda I) = \sum_{k=0}^n c_k \lambda^k,$$
-则 $p(A) := \sum_{k=0}^n c_k A^k = \oo$（我们假设 $A^0 = I$）。
-\\
-证明该定理在 $A$ 与一个对角矩阵相似的特殊情况下的表述，即当 $A = SDS^{-1}$时。
-\\
-{\heiti 提示}：如果 $D = \diag\{\lambda_1, \lambda_2, \dots, \lambda_n\}$ 且 $p$ 是任意多项式，你能计算 $p(D)$ 吗？$p(A)$ 呢？\end{exer}
+这就意味着，处理算子$A$的多项式时，无需担心交换律不成立的问题，而可将$A$如（标量）自变量一般看待。特别地，若多项式$p(z)$可表示成单项式的乘积\[p(z)=a(z-z_1)(z-z_2)\ldots(z-z_N),\]
+其中$z_1,z_2,\dots,z_N$是$p$的根，那么$p(A)$可表示为\[p(A)=a(A-z_1 I)(A-z_2 I)\ldots(A-z_N I)\]
 
-\section{2. 谱映射定理}
+\subsection{谱映射定理}
 
-\subsection{2.1. 算子的多项式}
-同样需要回忆一下，对于一个方阵（算子）$A$ 和一个多项式 $p(z) = \sum_{k=0}^N a_k z^k$，算子 $p(A)$ 是通过将独立变量替换为 $A$ 来定义的，
-$$p(A) := \sum_{k=0}^N a_k A^k = a_0 I + a_1 A + a_2 A^2 + \dots + a_N A^N,$$
-这里我们约定 $A^0 = I$.~
+回忆一下，方阵（算子）$A$的谱$\sigma(A)$是$A$的所有特征值构成的集合（不按重数计）。
 
-我们知道，一般而言，矩阵乘法不是可交换的，即通常 $AB \neq BA$，所以顺序很重要。然而，
-$$A^k A^j = A^j A^k = A^{k+j},$$
-由此很容易证明对于任意多项式 $p$ 和 $q$，
-$$p(A)q(A) = q(A)p(A) = R(A),$$
-其中 $R(z) = p(z)q(z)$.~
+\begin{theorem}[谱映射定理]\label{thm:spectral_mapping}
+    对方阵$A$和任意多项式$p$，\[\sigma(p(A))=p(\sigma(A)).\]
+    换言之，$\mu$ 是$p(A)$的特征值，当且仅当$\mu=p(\lambda)$对$A$的特征值$\lambda$成立。
+\end{theorem}
 
-这意味着，当只处理一个算子 $A$ 的多项式时，不必担心交换性，可以将 $A$ 看作是一个独立的（标量）变量。特别地，如果一个多项式 $p(z)$ 可以表示为单项式的乘积
-$$p(z) = a(z - z_1)(z - z_2) \dots (z - z_N),$$
-其中 $z_1, z_2, \dots, z_N$ 是 $p$ 的根，那么 $p(A)$ 可以表示为
-$$p(A) = a(A - z_1 I)(A - z_2 I) \dots (A - z_N I).$$
+注意，如前所述，该定理不涉及特征值的重数。
 
-\subsection{2.2. 谱映射定理}
-回顾一下，一个方阵（算子）$A$ 的\textbf{谱} $\sigma(A)$ 是 $A$ 的所有特征值（不计重数）的集合。
+\begin{remark*}
+    注意，其中一个包含关系是显然的。即，如果$\lambda$是$A$的特征值，即$A\mathbf{x}=\lambda\mathbf{x}$对$\mathbf{x}\ne \mathbf{0}$成立，那么$A^k\mathbf{x}=\lambda^k\mathbf{x}$，且$p(A)\mathbf{x}=p(\lambda)\mathbf{x}$，所以$p(\lambda)$是$p(A)$的特征值，这就意味着包含关系$p(\sigma(A))\subset \sigma(p(A))$是平凡的。
+\end{remark*}
 
-\begin{theorem}[\normalfont\heiti 定理 2.1\nopunct] （谱映射定理）
-对于一个方阵 $A$ 和任意多项式 $p$，
-$$\sigma(p(A)) = p(\sigma(A)).$$
-换句话说，$\mu$ 是 $p(A)$ 的一个特征值，当且仅当 $\mu = p(\lambda)$ 对某个 $A$ 的特征值 $\lambda$ 成立。\end{theorem}
+如果考虑上述定理的$\mu=0$这一特殊情况，就会得到下面推论。
 
-注意，如表述所示，这个定理没有说明特征值的重数。
+\begin{corollary}\label{cor:poly_invertible}
+    令$A$是特征值为$\lambda_1,\lambda_2,\dots,\lambda_n$的方阵，并令$p$是多项式。那么$p(A)$是可逆的，当且仅当\[p(\lambda_k)\ne 0\quad \forall k=1,2,\dots,n.\]
+\end{corollary}
 
-{\heiti 注记}~~需要注意的是，一个包含关系是平凡的。即，如果 $\lambda$ 是 $A$ 的一个特征值，$A\xx = \lambda \xx$ 对某个 $\xx \neq \oo$ 成立，那么 $A^k \xx = \lambda^k \xx$，并且 $p(A)\xx = p(\lambda)\xx$，所以 $p(\lambda)$ 是 $p(A)$ 的一个特征值。这意味着包含关系 $p(\sigma(A)) \subset \sigma(p(A))$ 是平凡的。
+\begin{proof}[定理 \ref{thm:spectral_mapping} 的证明]
+    如上讨论的，包含关系\[p(\sigma(A))\subset \sigma(p(A))\]是平凡的。
 
+    为证明反方向的包含关系$\sigma(p(A))\subset p(\sigma(A))$，取$\mu\in \sigma(p(A))$。记$q(z)=p(z)-\mu$，因此$q(A)=p(A)-\mu I$。因为$\mu\in \sigma(p(A))$，所以算子$q(A)=p(A)-\mu I$不可逆。
 
-如果我们考虑上述定理中的 $\mu=0$ 的特殊情况，我们得到以下推论。
+    将多项式$q(z)$表示成单项式的乘积\[q(z)=a(z-z_1)(z-z_2)\dots (z-z_N).\]
+    那么，如之前在 \ref{subsec:poly_of_operator} 节中讨论的，可表出
+    \[q(A)=a(A-z_1 I)(A-z_2 I)\dots (A-z_N I).\]
+    算子$q(A)$不可逆，因此其中必有一项$(A-z_k I)$不可逆（因为可逆线性变换的乘积总是可逆的）。这就意味着$z_k\in\sigma(A)$。
 
-{\heiti 推论 2.2}~~
-设 $A$ 是一个方阵，其特征值为 $\lambda_1, \lambda_2, \dots, \lambda_n$，且 $p$ 是一个多项式。那么，$p(A)$ 是可逆的，当且仅当 $$p(\lambda_k) \neq 0\quad \forall k = 1, 2, \dots, n.$$
+    另一方面，$z_k$又是$q$的根，因此\[0=q(z_k)=p(z_k)-\mu\]因此$\mu=p(z_k)$。因此我们证明了包含关系$\sigma(p(A))\subset p(\sigma(A))$。
+\end{proof}
 
-\begin{proof}[\normalfont\heiti 定理 2.1 的证明~\nopunct]
-如上所述，包含关系 
-$$p(\sigma(A)) \subset \sigma(p(A))$$
-是平凡的。
+\begin{problemset}
+    \item \label{ex:9_2_1}若算子$A$满足$A^k=\mathbf{0}$对某幂次$k$成立，则称其是{\bf 幂零的}。证明：如果$A$是幂零的，那么$\sigma(A)=\{0\}$（即$0$是$A$的唯一特征值）。你能不用谱映射定理来证明吗？
+\end{problemset}
 
-为了证明另一个包含关系 $\sigma(p(A)) \subset p(\sigma(A))$，取一个值 $\mu \in \sigma(p(A))$.~令 $q(z) = p(z) - \mu$，则 $q(A) = p(A) - \mu I$.~由于 $\mu \in \sigma(p(A))$，算子 $q(A) = p(A) - \mu I$ 是不可逆的。
+\section{广义特征空间、代数重数的几何意义}
 
-我们将多项式 $q(z)$ 表示为单项式的乘积：
-$$q(z) = a(z - z_1)(z - z_2) \dots (z - z_N).$$
-那么，如第 2.1 节所讨论的，我们可以将 $q(A)$ 表示为
-$$q(A) = a(A - z_1 I)(A - z_2 I) \dots (A - z_N I).$$
-算子 $q(A)$ 是不可逆的，因此其中一个因子 $A - z_k I$ 必须是不可逆的（因为可逆变换的乘积总是可逆的）。这意味着 $z_k \in \sigma(A)$.~
+\subsection{不变子空间}\label{subsec:invariant_subspace}
 
-另一方面，$z_k$ 是 $q$ 的一个根，所以 
-$$0 = q(z_k) = p(z_k) - \mu,$$
-因此 $\mu = p(z_k)$.~
-所以我们证明了包含关系 $\sigma(p(A)) \subset p(\sigma(A))$.~\end{proof}
+\begin{definition*}
+    令$A:V\to V$是向量空间$V$上的算子（线性变换）。称向量空间$V$的子空间$E$是算子$A$的不变子空间（或简称为$A$-不变子空间），若$AE\subset E$，即若$A\mathbf{v}\in E$对所有$\mathbf{v}\in E$成立。\index{子空间（subspace）!不变$\sim$（invariant）}
+\end{definition*}
 
-\begin{exer} {\heiti 练习}
+若$E$是$A$-不变的，那么\[A^2E = A(AE) \subset AE \subset E,\]
+即$E$是$A^2$-不变的。
 
-2.1. 一个算子 $A$ 被称为\textbf{幂零}的，如果$\exists k \in \mathbb{N}_+$，使得  $A^k = \oo$ 成立。证明如果 $A$ 是幂零的，那么 $\sigma(A) = \{0\}$（即 $0$ 是 $A$ 的唯一特征值）。
-\\
-你能不使用谱映射定理来做到这一点吗？\end{exer}
+类似地，可以证明（可用归纳法），若$AE \subset E$，那么\[A^kE\subset E\quad \forall k\ge 1.\]
+这意味着对任意多项式$p$均有$p(A)E\subset E$，即
+\begin{center}
+    \fbox{任意$A$-不变子空间$E$都是$p(A)$的不变子空间。}
+\end{center}
 
-\section{3. 广义特征子空间~~代数重数的几何意义}
+若$E$是$A$-不变子空间，那么对所有$\mathbf{v}\in E$，$A\mathbf{v}$同样属于$E$。因此，可将$A$看成作用于$E$（而不是整个向量空间$V$）的算子。
 
-\subsection{3.1. 不变子空间}
+正式而言，对$A$-不变子空间$E$，定义$A$的所谓限制算子$A|_E:E\to E$为
+\[(A|_E)\mathbf{v}=A\mathbf{v}\quad \forall \mathbf{v}\in E.\]
+此处我们改变了原算子的定义域和目标空间，但是自变量和取值之间的对应关系保持不变。
 
-{\heiti 定义}~~
-设 $A: V \to V$ 是向量空间 $V$ 上的一个算子（线性变换）。子空间 $E$ 被称为算子 $A$ 的\textbf{不变子空间}(invariant subspace)（或简称，$A$-不变）如果 $AE \subset E$，即如果 $\vv \in E$ 的所有向量 $A\vv$ 都属于 $E$.~
+我们会用到下面这个简单的引理。
 
-如果 $E$ 是 $A$-不变的，那么 
-$$A^2 E = A(AE) \subset AE \subset E,$$
-即 $E$ 是 $A^2$-不变的。
+\begin{lemma}\label{lem:A_restrict_p}
+    令$p$为多项式，并令$E$是$A$-不变子空间。那么\[p(A|_E)=p(A)|_E.\]
+\end{lemma}
+\begin{proof}
+    证明很简单。
+\end{proof}
 
-类似地，我们可以证明（例如，通过归纳法），如果 $AE \subset E$，那么 $$A^k E \subset E \quad \forall k \geq 1.$$
-这意味着 $P(A)E \subset E$ 对于任何多项式 $p$，即：
+若$E_{1},E_{2},\ldots,E_{r}$是由$A$-不变子空间构成的基，并且$A_k:=A|_{E_k}$是对应的限制算子，那么由于$AE_k = A_kE_k\subset E_k$，所以各算子$A_k$的作用是相互独立的（互不影响），并且要分析$A$的作用，只需分别分析各$A_k$的作用。
 
-\fbox{
-% \begin{minipage}{0.9\textwidth}
-任何 $A$-不变子空间 $E$ 都是 $p(A)$ 的不变子空间。
-% \end{minipage}
-}
+特别地，如果在各子空间$E_k$中选取一个基，并且将它们组合起来以得到$V$的基（见第 \ref{chap:SpectralIntro} 章的定理 \ref{thm:union_of_basis_in_subspace_li_basis}），那么算子$A$在该基下的矩阵具有如下分块对角形式
+\[\begin{pNiceMatrix}[margin]
+    A_1                 &           &        &  \Block{2-1}<\LARGE>{\mathbf{0}}                         \\
+                                & A_2 &        &  \\
+    \Block[b]{2-1}<\LARGE>{\mathbf{0}} &           & \ddots &                           \\
+                                &           &        & A_r
+\end{pNiceMatrix}\]
+（当然，这里$V$的基需要有正确的顺序，即先取$E_1$的基，再取$E_2$的基，以此类推）。
 
+我们现在的目标是，选取由不变子空间$E_{1},E_{2},\ldots,E_{r}$构成的基，使得各限制算子$A_k$有简单的结构。在这种情况下，我们会得到一个基，使得$A$关于该基的矩阵有简单的结构。
 
-如果 $E$ 是一个 $A$-不变子空间，那么对于所有 $\vv \in E$，结果 $A\vv$ 也属于 $E$.~因此，我们可以把 $A$ 作为作用在 $E$ 上的算子来处理，而不是作用在整个空间 $V$ 上。形式上，对于一个 $A$-不变子空间 $E$，我们定义 $A$ 到 $E$ 上的\textbf{限制}(restriction) 
-$A|_E : E \to E$ 为 
-$$(A|_E)\vv = A\vv \quad \forall \vv \in E.$$
-这里我们改变了算子的定义域和目标空间，但将值赋给自变量的规则保持不变。
+特征空间$\ker (A-\lambda_k I)$是个很好的备选项，因为限制于特征空间$\ker (A-\lambda_k I)$的$A$就是$\lambda_k I$。不幸的是，特征空间并不总能构成基（它们能构成基当且仅当$A$可对角化，见第 \ref{chap:SpectralIntro} 章的定理 \ref{thm:diagonalizable_iff_1}）。
 
-我们将需要以下简单引理：
+不过，所谓{\bf 广义特征空间}可以实现我们的目的。
 
-\begin{lemma}[\normalfont\heiti 引理 3.1\nopunct]
-设 $p$ 是一个多项式，且 $E$ 是一个 $A$-不变子空间。则 $p(A|_E) = p(A)|_E$.~\end{lemma}
+\subsection{广义特征空间}
 
-\begin{proof} 证明是平凡的。\end{proof}
+\begin{definition}
+    如果向量$\mathbf{v}$满足$(A-\lambda I)^k\mathbf{v}=\mathbf{0}$对某$k\ge 1$成立，则称向量$\mathbf{v}$为（对应于特征值$\lambda$的）广义特征向量\index{广义特征向量（generalized eigenvector）}。
 
-如果 $E_1, E_2, \dots, E_r$ 是 $A$-不变子空间的基，并且 $A_k := A|_{E_k}$ 是相应的限制，那么由于 $AE_k = A_k E_k \subset E_k$，算子 $A_k$ 独立地相互作用（不交互），为了分析 $A$ 的作用，我们可以分别分析算子 $A_k$.~
+    对应于特征值$\lambda$的所有广义特征向量连同$\mathbf{0}$构成的集合$E_\lambda$称为对应于特征值$\lambda$的广义特征空间\index{广义特征空间（generalized eigenspace）}。
+\end{definition}
 
-特别地，如果我们选择每个子空间 $E_k$ 中的一组基，并将它们连接起来得到 $V$ 中的一组基（见第四章定理 2.6），那么在基下算子 $A$ 将具有以下块对角形式：
-$$A = \begin{pmatrix} A_1 & & & \oo \\ & A_2 & & \\ & & \ddots & \\ \oo & & & A_r \end{pmatrix}.$$
-（当然，这里我们对 $V$ 中的基进行了正确的排序，首先在一组基 $E_1$ 中，然后是另一组基 $E_2$ 等等）。
+换言之，广义特征空间$E_\lambda$可表示为
+\begin{equation}\label{generalized_infinite_union}
+    E_\lambda = \bigcup_{k\ge 1}\ker (A-\lambda I)^k.
+\end{equation}
+序列$\ker (A-\lambda I)^k,k=1,2,3,\dots$是由一系列递增的子空间构成的，意即
+\[\ker(A-\lambda I)^{k}\subset\ker(A-\lambda I)^{k+1}\quad\forall k\geq1.\]
 
-我们现在的目标是选择不变子空间 $E_1, E_2, \dots, E_r$ 的基，使得限制 $A_k$ 具有简单的结构。在这种情况下，我们将得到一组基，其中 $A$ 的矩阵具有简单的结构。
+表达式 \eqref{generalized_infinite_union} 看上去并不简单，因为它包含无限并集。然而，子空间$\ker (A-\lambda I)^k$会趋于稳定，即
+\[\ker(A-\lambda I)^{k}=\ker(A-\lambda I)^{k+1}\quad \forall k\ge k_\lambda,\]
+所以，表面上的“无限并集”其实是有限并集。
 
-特征子空间 $\Ker(A - \lambda_k I)$ 将是好的候选者，因为 $A$ 在特征子空间 $\Ker(A - \lambda_k I)$ 上的限制仅仅是 $\lambda_k I$.~不幸的是，如我们所知，特征子空间并不总是构成一组基（当且仅当 $A$ 可对角化时，它们才构成一组基，参见第四章定理 2.1）。
+为证明这一系列核会趋于稳定，首先注意到如果对有限维子空间$E$和$F$有$E\varsubsetneqq F$（符号$E\varsubsetneqq F$意为$E\subset F$但$E\neq F$），那么$\dim E<\dim F$。
 
-然而，所谓的广义特征子空间将起作用。
+因为$\dim\ker(A-\lambda I)^k\le\dim V<\infty$，所以它不会增长至无穷，而会在某处满足
+\[\ker(A-\lambda I)^k = \ker(A-\lambda I)^{k+1}.\]
 
-\subsection{3.2. 广义特征子空间}
+剩余证明由下述引理完成。
 
-{\heiti 定义 3.2}~~
-向量 $\vv$ 被称为\textbf{广义特征向量}\index{guangyitezhengxiangliang@广义特征向量}(generalized eigenvector)（对应于特征值 $\lambda$），如果 $(A - \lambda I)^k \vv = 0$ 对某个整数 $k \geq 1$ 成立。
+\begin{lemma}
+    令对某$k$有\[\ker(A-\lambda I)^k = \ker(A-\lambda I)^{k+1}.\]
+    那么\[\ker(A-\lambda I)^{k+r} = \ker(A-\lambda I)^{k+r+1}\quad \forall r\ge 0.\]
+\end{lemma}
 
-所有广义特征向量与 $0$ 的集合被称为\textbf{广义特征子空间}\index{guangyitezhengzikongjian@广义特征子空间}(generalized eigenspace)（对应于特征值 $\lambda$）。
+\begin{proof}
+    令$\mathbf{v}\in \ker(A-\lambda I)^{k+r+1}$，即$(A-\lambda I)^{k+r+1}\mathbf{v}=\mathbf{0}$。那么\[\mathbf{w}:=(A-\lambda I)^{r}\mathbf{v}\in\ker (A-\lambda I)^{k+1}.\]
+    但我们知道$\ker (A-\lambda I)^k = \ker(A-\lambda I)^{k+1}$，所以$\mathbf{w}\in \ker(A-\lambda I)^k$，这也就意味着$(A-\lambda I)^k\mathbf{w}=\mathbf{0}$。回顾$\mathbf{w}$的定义可得\[(A-\lambda I)^{k+r}\mathbf{v}=(A-\lambda I)^k\mathbf{w}=\mathbf{0}\]
+    因此$\mathbf{v}\in\ker (A-\lambda I)^{k+r}$，证明了$\ker (A-\lambda I)^{k+r+1}\subset \ker (A-\lambda I)^{k+r}$。反方向的包含关系是平凡的。
+\end{proof}
 
-换句话说，广义特征子空间 $E_\lambda$ 可以表示为
-$$(3.1) \quad E_\lambda = \bigcup_{k \geq 1} \Ker(A - \lambda I)^k.$$
-子空间序列 $\Ker(A - \lambda I)^k, k = 1, 2, 3, \dots$ 是一个递增的子空间序列，即 
-$$\Ker(A - \lambda I)^k \subset \Ker(A - \lambda I)^{k+1} \quad \forall k \geq 1.$$
+\begin{definition*}
+    使得序列$\ker (A-\lambda I)^{k}$稳定的数$d=d(\lambda)$，也即使得下式成立的数$d=d(\lambda)$
+    \[\ker (A-\lambda I)^{d-1}\varsubsetneqq \ker (A-\lambda I)^{d} = \ker (A-\lambda I)^{d+1}\]
+    称为特征值$\lambda$的深度。
+\end{definition*}
 
-(3.1)这个表示  看起来并不太简单，因为它涉及无限并集。然而，子空间 $\Ker(A - \lambda I)^k$ 的序列会\textbf{稳定}，即 
-$$\Ker(A - \lambda I)^k = \Ker(A - \lambda I)^{k+1} \quad \forall k \geq k_\lambda,$$
-所以实际上可以取有限并集。
+由深度的定义，可知对广义特征空间$E_\lambda$有
+\begin{equation}\label{gen_eigenspace_depth_0}
+    (A-\lambda I)^{d(\lambda)}\mathbf{v}=\mathbf{0}\quad \forall\mathbf{v}\in E_\lambda.
+\end{equation}
 
-为了证明核序列的稳定性，让我们注意到，如果对于有限维子空间 $E$ 和 $F$，我们有 $E \subsetneq F$（真子集符号 $E \subsetneq F$ 表示 $E \subset F$ 但 $E \neq F$），那么 $\dim E < \dim F$.~
+现在，总结一下我们已知的有关广义特征空间的结论：
+\begin{itemize}
+    \item[a)]  $E_\lambda$是$A$的不变子空间，$AE_\lambda \subset E_\lambda$。
+    \item[b)] 若$d(\lambda)$是特征值$\lambda$的深度，那么
+    \[((A-\lambda I)|_{E_\lambda})^{d(\lambda)} = (A|_{E_\lambda} - \lambda I_{E_\lambda})^{d(\lambda)} = \mathbf{0}.\]
+    （这仅仅是 \eqref{gen_eigenspace_depth_0} 的另一种写法）
+    \item[c)] $\sigma(A|_{E_\lambda})=\{\lambda\}$，因为算子$A|_{E_\lambda} - \lambda I_{E_\lambda}$是幂零的【见 b)】，而幂零算子的谱只包含$0$，见习题 \ref{ex:9_2_1}。
+\end{itemize}
 
-由于 $\dim \Ker(A - \lambda I)^k \leq \dim V < \infty$，它不能无限增长，所以某处 
-$$\Ker(A - \lambda I)^k = \Ker(A - \lambda I)^{k+1}.$$
+这样，我们就做好了准备，可以陈述本节的核心结论了。令$A:V\to V$。
 
-其余部分遵循以下引理。
+\begin{theorem}\label{thm:gen_eigen_decomp}
+    令$\sigma(A)$包含$r$个值$\lambda_1,\lambda_2,\dots,\lambda_r$，并令$E_k:=E_{\lambda_k}$是对应的广义特征空间。那么子空间构成的组$E_1,E_2,\dots,E_r$是$V$的子空间构成的基。
+\end{theorem}
 
-\begin{lemma}[\normalfont\heiti 引理 3.3\nopunct]
-如果对某个 $k$，
-$$\Ker(A - \lambda I)^k = \Ker(A - \lambda I)^{k+1}.$$则
-$$\Ker(A - \lambda I)^{k+r} = \Ker(A - \lambda I)^{k+r+1} \quad \forall r \geq 0.$$\end{lemma}
+\begin{remark}\label{remark:gen_eigen_decomp}
+    如果我们将所有广义特征空间$E_k$的基合并起来，那么由第 \ref{chap:SpectralIntro} 章定理 \ref{thm:union_of_basis_in_subspace_li_basis}，我们就会得到整个空间的基。在该基下，算子$A$的矩阵具有分块对角形式$A=\operatorname{diag}\{A_1,A_2,\dots,A_r\}$，其中$A_k:=A|_{E_k},E_k=E_{\lambda_k}$。还容易从 \eqref{gen_eigenspace_depth_0} 看出，算子$N_k:=A_k-\lambda_k I_{E_k}$是幂零的，$N_k^{d_k}=\mathbf{0}$。
+\end{remark}
 
-\begin{proof}设 $\vv \in \Ker(A - \lambda I)^{k+r+1}$，即 $(A - \lambda I)^{k+r+1} \vv = \oo$.~那么 $$\ww := (A - \lambda I)^r \vv \in \Ker(A - \lambda I)^{k+1}.$$
-但我们知道 $\Ker(A - \lambda I)^k = \Ker(A - \lambda I)^{k+1}$，所以 $\ww \in \Ker(A - \lambda I)^k$，这意味着 $(A - \lambda I)^k \ww = \oo$.~回忆 $\ww$ 的定义，我们得到 
-$$(A - \lambda I)^{k+r} \vv = (A - \lambda I)^k \ww = \oo,$$
-所以 $\vv \in \Ker(A - \lambda I)^{k+r}$.~我们证明了 $\Ker(A - \lambda I)^{k+r+1} \subset \Ker(A - \lambda I)^{k+r}$.~而反向包含关系是平凡的。\end{proof}
+\begin{proof}[定理 \ref{thm:gen_eigen_decomp} 的证明]
+    令$m_k$是特征值$\lambda_k$的重数，所以$p(z)=\prod_{k=1}^{r}(z-\lambda_{k})^{m_{k}}$是$A$的特征多项式。定义\[p_k(z)=p(z)/(z-\lambda_k)^{m_k}=\prod_{j\neq k}(z-\lambda_j)^{m_j}.\]
 
-{\heiti 定义}~~
-序列 $\Ker(A - \lambda I)^k$ 稳定的数字 $d = d(\lambda)$，即满足 $$\Ker(A - \lambda I)^{d-1} \subsetneq \Ker(A - \lambda I)^d = \Ker(A - \lambda I)^{d+1}$$
-的数字 $d$，被称为特征值 $\lambda$ 的\textbf{深度}(depth)。
+\begin{lemma}
+    \begin{equation}\label{power_zero}
+        (A-\lambda_k I)^{m_k}|_{E_k} = \mathbf{0}.
+    \end{equation}
+\end{lemma}
 
-从深度的定义可以得出，对于广义特征子空间 $E_\lambda$，
-$$(3.2) \quad (A - \lambda I)^{d(\lambda)} \vv = \oo \quad \forall \vv \in E_\lambda.$$
+\begin{proof}
+    定义 $A_k:=A|_{E_k}$。由广义特征空间的性质 c) 有$\sigma(A_k) = \{\lambda_k\}$。因为$p_k(\lambda_k)\ne 0$，根据谱映射定理（见推论 \ref{cor:poly_invertible}），算子$p_k(A)|_{E_k}=p_k(A_k)$是可逆的。
 
-现在总结一下我们对广义特征子空间的了解。
+    由凯莱-哈密尔顿定理（定理 \ref{thm:caylay-hamilton}）\[\mathbf{0}=p(A)=(A-\lambda_k I)^{m_k}p_k(A),\]
+    将上述等式限制到$E_k$，可得（见引理 \ref{lem:A_restrict_p}）\[\mathbf{0}=p(A_k)=(A_k-\lambda_k I_{E_k})^{m_k}p_k(A_k)\]
+    （$\mathbf{0}$是$E_k$上的零算子）。因为$p_k(A)$可逆，我们有\[(A_k-\lambda_k I_{E_k})^{m_k}=p(A_k)p_k(A_k)^{-1}=\mathbf{0}p_k(A_k)^{-1}=\mathbf{0}.\]
+    引理 \ref{lem:A_restrict_p} 表明$(A_k-\lambda_k I_{E_k})^{m_k}|_{E_k} = (A_k-\lambda_k I_{E_k})^{m_k}$，得证。
+\end{proof}
 
-a) $E_\lambda$ 是 $A$ 的一个不变子空间，$AE_\lambda \subset E_\lambda$.~
+接着证明定理 \ref{thm:gen_eigen_decomp}。定义\[q(z)=\sum_{k=1}^rp_k(z).\]
+因为$p_k(\lambda_j)=0(j\ne k)$并且$p_k(\lambda_k)\ne 0$，我们可得$q(\lambda_k)\ne 0$对所有$k$成立。因此由谱映射定理（见推论 \ref{cor:poly_invertible}），算子
+\[B=q(A)\]可逆。
 
-b) 如果 $d(\lambda)$ 是特征值 $\lambda$ 的深度，那么 
-$$((A - \lambda I)|_{E_\lambda})^{d(\lambda)} = (A|_{E_\lambda} - \lambda I_{E_\lambda})^{d(\lambda)} = \oo.$$（这只是 (3.2) 的另一种写法）
+% 注意到$BE_k\subset E_k$（任意$A$-不变子空间也是$p(A)$-不变的）。因为$B$是可逆算子，所以$\dim(BE_k)=\dim E_k$，结合$BE_k\subset E_k$可得$BE_k= E_k$。将此式乘以$B^{-1}$可得$B^{-1}E_k=E_k$，即$E_k$是$B^{-1}$的不变子空间。
 
-c) $\sigma(A|_{E_\lambda}) = \{\lambda\}$，因为算子 $A|_{E_\lambda} - \lambda I_{E_\lambda}$ 是幂零的，见 2，而幂零算子的谱只包含一个点 $0$，见问题 2.1。
+% 还注意到，由 \eqref{power_zero}，\[p_k(A)|_{E_j}=\mathbf{0}\quad \forall j\ne k,\]
+% 因为$p_k(A)|_{E_j}=p_k(A_j)$，而$p_k(A_j)$包含因子$(A_j-\lambda_j I_{E_j})^{m_j}=\mathbf{0}$。
 
-现在我们准备陈述本节的主要结果。
-设 $A: V \to V$.~
+% TODO
 
-\begin{theorem}[\normalfont\heiti 定理 3.4\nopunct] 
-设 $\sigma(A)$ 包含 $r$ 个点 $\lambda_1, \lambda_2, \dots, \lambda_r$，设 $E_k := E_{\lambda_k}$ 为相应的广义特征子空间。那么子空间系统 $E_1, E_2, \dots, E_r$ 是 $V$ 的一组基（的子空间）。\end{theorem}
+定义算子$\mathcal{P}_k$为\[\mathcal{P}_k=B^{-1}p_k(A).\]
 
-{\heiti 注记 3.5}~~
-如果我们连接所有广义特征子空间 $E_k$ 的基，那么根据第四章定理 2.6，我们将得到空间 $V$ 的一组基。在该基下，算子 $A$ 的矩阵具有块对角形式：
-$A = \diag\{A_1, A_2, \dots, A_r\}$,
-其中 $A_k := A|_{E_k}$，$E_k = E_{\lambda_k}$.~也很容易看出（见 (3.2)）算子 $N_k := A_k - \lambda_k I_{E_k}$ 是幂零的，$N_k^{d_k} = 0$.~
+\begin{lemma}\label{lem:prop_of_pk}
+    对于定义如上的算子$\mathcal{P}_k$有
+    \begin{itemize}
+        \item [a)] $\mathcal{P}_1+\mathcal{P}_2+\ldots+\mathcal{P}_r=I$；
+        \item [b)] $\mathcal{P}_k|_{E_j}=\mathbf{0}$对$j\ne k$成立；
+        \item [c)] $\rg \mathcal{P}_k\subset E_k$；
+        \item [d)] 此外，$\mathcal{P}_k\mathbf{v}=\mathbf{v} \ \forall\mathbf{v}\in E_k$，因此实际上$\rg \mathcal{P}_k= E_k$。
+    \end{itemize}
+\end{lemma}
 
-\begin{proof}[\normalfont\heiti 定理 3.4 的证明~\nopunct]
-设 $m_k$ 是特征值 $\lambda_k$ 的重数，所以 $p(z) = \prod_{k=1}^r (z - \lambda_k)^{m_k}$ 是 $A$ 的特征多项式。定义 
-$$p_k(z) = \frac{p(z)}{(z - \lambda_k)^{m_k}} = \prod_{j \neq k} (z - \lambda_j)^{m_j}.$$\end{proof}
+\begin{proof}
+    性质a)是平凡的：\[\sum_{k=1}^r\mathcal{P}_k=B^{-1}\sum_{k=1}^rp_k(A)=B^{-1}B=I.\]
+    性质b)源于 \eqref{power_zero}。的确：$p_k(A)$包含因子$(A-\lambda_j I)^{m_j}$，其限制到$E_j$上即为零。因此$p_k(A)|_{E_j}=\mathbf{0}$，进而$\mathcal{P}_k|_{E_j}=B^{-1}p_k(A)|_{E_j}=\mathbf{0}$。
 
-\begin{lemma}[\normalfont\heiti 引理 3.6\nopunct]
-$$(3.3) \quad (A - \lambda_k I)^{m_k}|_{E_k} = \oo,$$\end{lemma}
+    为证明性质c)，回忆一下，根据凯莱-哈密尔顿定理，$p(A)=\mathbf{0}$。因为$p(z)=(z-\lambda_k)^{m_k}p_k(z)$，故对于$\mathbf{w}=p_k(A)\mathbf{v}$有
+    \[(A-\lambda_kI)^{m_k}\mathbf{w}=(A-\lambda_kI)^{m_k}p_k(A)\mathbf{v}=p(A)\mathbf{v}=\mathbf{0}.\]
+    这就意味着，$\rg p_k(A)$中的任意向量$\mathbf{w}$可由$(A-\lambda_k I)$的若干次幂化为零向量，根据$E_k$的定义即得$\rg p_k(A)\subset E_k$。注意到$BE_k\subset E_k$（任意$A$-不变子空间也是$p(A)$-不变的）。因为$B$是可逆算子，所以$\dim(BE_k)=\dim E_k$，结合$BE_k\subset E_k$可得$BE_k= E_k$。将此式乘以$B^{-1}$可得$B^{-1}E_k=E_k$，即$E_k$是$B^{-1}$的不变子空间。因此$\rg \mathcal{P}_k\subset E_k$。
 
-\begin{proof}有两种简单的证明方法。第一个是注意到 $m_k \geq d_k$，其中 $d_k$ 是特征值 $\lambda_k$ 的深度，并利用事实 
-$$(A - \lambda_k I)^{d_k}|_{E_k} = (A|_{E_k} - \lambda_k I_{E_k})^{m_k} = \oo,$$
-其中 $A_k := A|_{E_k}$（广义特征子空间的性质 2）。
+    为证明最后一条性质，注意到由 \eqref{power_zero}，对$\mathbf{v}\in E_k$
+    \[p_k(A)\mathbf{v}=\sum_{j=1}^{r}p_{j}(A)\mathbf{v}=B\mathbf{v},\]
+    这意味着$\mathcal{P}_k\mathbf{v}=B^{-1}B\mathbf{v}=\mathbf{v}$。
+\end{proof}
 
-第二种可能性是注意到根据谱映射定理，见推论 2.2，算子 $p_k(A)|_{E_k} = p_k(A_k)$ 是可逆的。根据凯莱-哈密顿定理（定理 1.1），
-$$\oo = p(A) = (A - \lambda_k I)^{m_k} p_k(A),$$
-将所有算子限制到 $E_k$ 上我们得到 $$\oo = p(A_k) = (A_k - \lambda_k I_{E_k})^{m_k} p_k(A_k),$$
-所以 
-$$(A_k - \lambda_k I_{E_k})^{m_k} = p(A_k) p_k(A_k)^{-1} = \oo  p_k(A_k)^{-1} = \oo.$$\end{proof}
+现在我们就能完成定理的证明了。取$\mathbf{v}\in V$并定义$\mathbf{v}_k=\mathcal{P}_k\mathbf{v}$。然后根据引理 \ref{lem:prop_of_pk} 的表述 c) 有$\mathbf{v}_k\in E_k$，再根据表述 a)，\[\mathbf{v}=\sum_{k=1}^{r}\mathbf{v}_k,\]
+所以$\mathbf{v}$可被表示成各$E_k$中向量的线性组合。
 
-为了证明定理，定义 
-$$q(z) = \sum_{k=1}^r p_k(z).$$
-由于 $p_k(\lambda_j) = 0$ 对 $j \neq k$ 且 $p_k(\lambda_k) \neq 0$，我们可以得出 $q(\lambda_k) \neq 0$ 对所有 $k$ 成立。因此，根据谱映射定理，见推论 2.2，算子 
-$$B = q(A)$$ 是可逆的。
+为证明该表示是唯一的，我们只需注意到，如果$\mathbf{v}$被表示为$\mathbf{v}=\sum_{k=1}^{r}\mathbf{v}_k,\mathbf{v}_k\in E_k$，那么由引理 \ref{lem:prop_of_pk} 的表述 b) 和 d) 有\[\mathcal{P}_k\mathbf{v} = \mathcal{P}_k(\mathbf{v}_1+\mathbf{v}_2+\dots+\mathbf{v}_r)=\mathcal{P}_k\mathbf{v}_k=\mathbf{v}_k.\qedhere\]
 
-注意，$BE_k \subset E_k$（任何 $A$-不变子空间也必然是 $p(A)$-不变的）。由于 $B$ 是一个可逆算子，$\dim(BE_k) = \dim E_k$，这与 $BE_k \subset E_k$ 一起意味着 $BE_k = E_k$.~将最后一个恒等式乘以 $B^{-1}$ 得到 $B^{-1}E_k = E_k$，即 $E_k$ 是 $B^{-1}$ 的不变子空间。
+\end{proof}
 
-还需注意，从 (3.3) 可知，$$p_k(A)|_{E_j} = \oo \quad \forall j \neq k,$$
-因为 $p_k(A)|_{E_j} = p_k(A_j)$ 并且 $p_k(A_j)$ 包含因子 $(A_j - \lambda_j I_{E_j})^{m_j} = \oo$.~
+\subsection{代数重数的几何意义}
 
-定义算子 $\PPP _k$ 为 $$\PPP _k := B^{-1} p_k(A).$$
+\begin{proposition}
+    特征值的代数重数等于对应广义特征空间的维数。\index{虫@重数（multiplicity）!代数$\sim$（algebraic）}
+\end{proposition}
 
-\begin{lemma}[\normalfont\heiti 引理 3.7\nopunct]
-对于上述定义的算子 $\PPP _k$：
+\begin{proof}
+    根据注 \ref{remark:gen_eigen_decomp}，如果将广义特征空间$E_k=E_{\lambda_k}$的基组合起来，以得到整个向量空间的基，则$A$在该基下的矩阵具有分块对角形式$A=\operatorname{diag}\{A_1,A_2,\dots,A_r\}$，其中$A_k:=A|_{E_k}$。算子$N_k=A_k-\lambda_k I_{E_k}$是幂零的，所以$\sigma(N_k)=\{0\}$。因此，算子$A_k$的谱（回顾：$A_k=N_k-\lambda_k I$）只包含一个特征值$\lambda_k$且其（代数）重数为$n_k=\dim E_k$——这是因为有限维向量空间$V$上的算子恰有$\dim V$个特征值（以重数计），而$A_k$只有一个特征值。
 
-a) $\PPP _1 + \PPP _2 + \dots + \PPP _r = I$；
+    注意我们可以自由选取$E_k$的基，所以我们让对应的块$A_k$是上三角的。那么
+    \[\det(A-\lambda I)=\prod_{k=1}^{r}\det(A_{k}-\lambda I_{E_{k}})=\prod_{k=1}^{r}(\lambda_{k}-\lambda)^{n_{k}}.\]
+    而这意味着算子$A$的特征值$\lambda_k$的代数重数就是$n_k=\dim E_{\lambda_k}$。
+\end{proof}
 
-b) $\PPP _k|_{E_j} = \oo$ 对 $j \neq k$；
+\subsection{一个重要应用}
 
-c) $\Ran \PPP _k \subset E_k$；
+下述推论对研究微分方程十分重要。
 
-d) 更进一步， $\PPP _k \vv = \vv \quad \forall \vv \in E_k$，所以实际上 $\Ran \PPP _k = E_k$.~\end{lemma}
+\begin{corollary}
+    $V$上的任意算子$A$可表示为$A=D+N$，其中$D$可对角化（即关于某基具有对角矩阵），$N$是幂零的（$N^m=\mathbf{0}$对某$m$成立），且$DN=ND$。
+\end{corollary}
 
-\begin{proof}第一个性质是平凡的：$$\sum_{k=1}^r \PPP _k = B^{-1} \sum_{k=1}^r \PPP _k p_k(A) = B^{-1} B = I.$$
-第二个性质来自 (3.3)。实际上，$p_k(A)$ 包含因子 $(A - \lambda_j)^{m_j}$，将其限制到 $E_j$ 上为零。因此，$p_k(A)|_{E_j} = \oo$，从而 $\PPP _k|_{E_j} = B^{-1} p_k(A)|_{E_j} = \oo$.~
+\begin{proof}
+    如前面所讨论的（见注 \ref{remark:gen_eigen_decomp}），如果将$E_k$的基合并起来而得到$V$的基，那么在该基下，$A$具有分块对角形式$A=\operatorname{diag}\{A_1,A_2,\dots,A_r\}$，其中$A_k:=A|_{E_k}$，$E_k=E_{\lambda_k}$。算子$N_k:=A_k-\lambda_k I_{E_k}$是幂零的，并且算子$D=\operatorname{diag}\{\lambda_1 I_{E_1},\lambda_2 I_{E_2},\dots,\lambda_r I_{E_r}\}$在该基下是对角的。又注意到$\lambda_k I_{E_k} N_k=N_k \lambda_k I_{E_k}$（恒等算子与任意算子都可交换），因此分块对角算子$N=\operatorname{diag}\{N_1,N_2,\dots,N_r\}$与$D$可交换，即$DN=ND$。因此，定义$N$为分块对角算子$N=\operatorname{diag}\{N_1,N_2,\dots,N_r\}$，我们就得到了所需的分解。
+\end{proof}
 
-为了证明第三个性质，根据凯莱-哈密顿定理， $p(A) = \oo$.~由于 $p(z) = (z - \lambda_k)^{m_k} p_k(z)$，我们得到对于 $\ww = p_k(A)\vv$，
-$$(A - \lambda_k I)^{m_k} \ww = (A - \lambda_k I)^{m_k} p_k(A) \vv = p(A) \vv = \oo.$$
-这意味着，$\Ran p_k(A)$ 中的任何向量$\ww$都被 $(A - \lambda_k I)$ 的某个幂化为了零，根据定义，这意味着 $\Ran p_k(A) \subset E_k$.~
+本推论使我们得以计算关于算子的函数。回顾一下，如果$p$是$d$次多项式，那么$p(a+x)$可借助泰勒公式计算\[p(a+x)=\sum_{k=0}^{d}{\frac{p^{(k)}(a)}{k!}}x^{k}\]
+这个公式是一个代数恒等式，意即对任意多项式$p$，都可以关于$a$和$x$运用代数运算来检验这个公式的正确性，而无需在意$a$和$x$是何种对象。
 
-为了证明最后一个性质，让我们注意到从 (3.3) 可以得出，对于 $\vv \in E_k$，
-$$p_k(A) \vv = \sum_{j=1}^r p_j(A) \vv = B \vv,$$
-这使得 $\PPP _k \vv = B^{-1} B \vv = \vv$.~\end{proof}
+因为算子$D$和$N$可交换（$DN=ND$），因此适用于一般的自变量（标量）的运算规则也适用于它们，于是我们可以写出（将$a$换成$D$，$x$换成$N$）
+\[p(A)=p(D+N)=\sum_{k=0}^{d}{\frac{p^{(k)}(D)}{k!}}N^{k}.\]
+此处，为计算导数$p^{(k)}(D)$，我们首先计算多项式$p(x)$的$k$阶导数（使用微积分中所学的一般法则），然后将$x$换成$D$。
 
-\begin{proof}[\nopunct]现在我们准备完成定理的证明。取 $\vv \in V$，定义 $\vv_k = \PPP _k \vv$.~那么根据引理 3.7 的陈述 c)，$\vv_k \in E_k$，并且根据陈述 a)，
-$$\vv = \sum_{k=1}^r \vv_k,$$
-所以 $\vv$ 允许表示为线性组合。
+不过由于$N$是幂零的，所以$N^m=\mathbf{0}$对某$m$成立，因此只有前$m$项是非零的，所以
+\[p(A)=p(D+N)=\sum_{k=0}^{m-1}{\frac{p^{(k)}(D)}{k!}}N^{k}.\]
+如果$m$远小于$d$，那么这个公式就会让$p(A)$的计算简单很多。
 
-为了证明这个表示是唯一的，我们可以注意到，如果 $\vv$ 被表示为 $\vv = \sum_{k=1}^r \vv_k$，其中 $\vv_k \in E_k$，那么根据引理 3.7 的陈述 b) 和 d)，
-$$\PPP _k \vv = \PPP _k \left( \vv_1 + \vv_2 + \dots + \vv_r \right) = \PPP _k \vv_k = \vv_k.$$\end{proof}
+如果$p$不是多项式，而是无限的幂级数，那么同样的方法仍然适用。对于一般的幂级数，我们需要特别留意收敛性，所以不能认为公式对于任意幂级数$p(x)$都成立。然而，如果幂级数的收敛半径是$\infty$，那么就不会出任何问题。特别地，若$p(x)=e^x$，那么利用$(e^x)'=e^x$，可以得到
+\[e^A=\sum_{k=0}^{m-1}\frac{e^D}{k!}N^k=e^D\sum_{k=0}^{m-1}\frac{1}{k!}N^k\]
+此式在微分方程的研究中有重要应用。
 
-\subsection{3.3. 代数重数的几何意义}
+注意，此处$ND=DN$这个条件很重要！
 
-{\heiti 命题 3.8}~~
-一个特征值的代数重数等于对应广义特征子空间的维数。
+\section{幂零算子的结构}
 
-\begin{proof}根据注记 3.5，如果我们连接广义特征子空间 $E_k = E_{\lambda_k}$ 的基得到整个空间的一组基，那么在该基下算子 $A$ 的矩阵具有块对角形式 $\diag\{A_1, A_2, \dots, A_r\}$，其中 $A_k := A|_{E_k}$.~算子 $N_k = A_k - \lambda_k I_{E_k}$ 是幂零的，所以 $\sigma(N_k) = \{0\}$.~因此，算子 $A_k$（回忆 $A_k = N_k - \lambda_k I$）的谱只包含一个特征值 $\lambda_k$，其代数重数为 $n_k = \dim E_k$.~重数等于 $n_k$，因为一个有限维空间 $V$ 中的算子有恰好 $\dim V$ 个特征值（计入重数），而 $A_k$ 只有一个特征值。
+回忆一下，若向量空间$V$上的算子$A$满足$A^k=\mathbf{0}$对某个幂次$k$成立，则称$A$是{\bf 幂零的}。
 
-注意，我们可以自由选择 $E_k$ 中的基，所以我们选择它们使得相应的块 $A_k$ 是上三角的。那么 
-$$\det(A - \lambda I) = \prod_{k=1}^r \det(A_k - \lambda I_{E_k}) = \prod_{k=1}^r (\lambda_k - \lambda)^{n_k}.$$
-但这表示特征值 $\lambda_k$ 的代数重数是 $n_k = \dim E_{\lambda_k}$.~\end{proof}
+在前一节中我们证明了（见注 \ref{remark:gen_eigen_decomp}），如果将所有广义特征空间$E_k=E_{\lambda_k}$的基合并起来以得到整个向量空间的基，那么算子$A$在该基下的矩阵具有分块对角形式$\operatorname{diag}\{A_1,A_2,\dots,A_r\}$，算子$A_k$可表示为$A_k=\lambda_k I+N_k$，其中$N_k$是幂零算子。
 
-\subsection{3.4. 一个重要的应用}
-以下推论对于有关微分方程的理论非常重要。
+在每个广义特征空间$E_k$中，我们期望选取一个基，使得$A_k$关于该基的矩阵具有最简单的形式。因为恒等算子在任意基下的矩阵都是恒等矩阵，所以需要求出一个基使得$N_k$的矩阵具有最简单的形式。
 
-{\heiti 推论 3.9}~~
-任何算子 $A$ 在 $V$ 中都可以表示为 $A = D + N$，其中 $D$ 是可对角化的（即在某组基下是对角形的）且 $N$ 是幂零的 ($N^m = \oo$ 对某个 $m$)，并且 $DN = ND$.~
+因为我们可以分开处理每个$N_k$，所以要考虑的就是以下问题：
 
-\begin{proof}如上所述，见注记 3.5，如果我们连接广义特征子空间 $E_k$ 的基得到整个空间的一组基，那么在该基下 $A$ 具有块对角形式 $A = \diag\{A_1, A_2, \dots, A_r\}$，其中 $A_k := A|_{E_k}$.~算子 $N_k = A_k - \lambda_k I_{E_k}$ 是幂零的，并且算子 $D = \diag\{\lambda_1 I_{E_1}, \lambda_2 I_{E_2}, \dots, \lambda_r I_{E_r}\}$ 是对角的（在该基下）。
-还需注意，$\lambda_k I_{E_k} N_k = N_k \lambda_k I_{E_k}$（恒等（单位）算子与任何算子可交换），所以块对角算子 $N = \diag\{N_1, N_2, \dots, N_r\}$ 与 $D$ 可交换，$DN = ND$.~因此，定义 $N$ 为块对角算子 $N = \diag\{N_1, N_2, \dots, N_r\}$，我们得到所需的分解。\end{proof}
+\begin{center}
+    对幂零算子$A$，求出一个基，使得$A$关于该基的矩阵很简单。
+\end{center}
 
-这个推论允许我们计算算子的函数。让我们回顾一下，如果 $p$ 是一个 $d$ 次多项式，那么 $p(a + x)$ 可以用泰勒公式计算：
-$$p(a + x) = \sum_{k=0}^d \frac{p^{(k)}(a)}{k!} x^k.$$
-这是一个代数恒等式，意味着对于每个多项式 $p$，我们可以通过对 $a$ 和 $x$ 进行形式代数运算而不关心它们的特殊性质是否会改变该公式的正确性。
+我们来看看“矩阵具有简单的形式”是什么意思。容易看出，矩阵
+\begin{equation}\label{jordan_block}
+    \begin{pNiceMatrix}[margin]
+        0 & 1 &   &        & 0   \\
+          & 0 & 1 &        &    \\
+          &   & 0 & \ddots &    \\
+          &   &   & \ddots & 1   \\
+        0 &   &   &        & 0
+    \end{pNiceMatrix}
+\end{equation}
+（紧挨着主对角线上方的那条对角线里的元素都是$1$，剩余的则为$0$）是幂零的。
 
-由于算子 $D$ 和 $N$ 可交换，$DN = ND$，因此它们遵循与普通（标量）变量相同的规则，故我们可以这样写（通过用 $D$ 替换 $a$ 并用 $N$ 替换 $x$）：
-$$p(A) = p(D + N) = \sum_{k=0}^d \frac{p^{(k)}(D)}{k!} N^k.$$
-这里，为了计算导数 $p^{(k)}(D)$，我们首先通过（普通的微积分）规则计算多项式 $p(x)$ 的 $k$ 阶导数，然后将 $x$ 替换为 $D$.~
+这样的矩阵（以及$1\times 1$零矩阵）将会成为我们的“构建基块”。也就是说，我们将证明，对于任意幂零算子，可以求出一个基，使得算子关于该基的矩阵具有分块对角形式$\operatorname{diag}\{A_1,A_2,\dots,A_r\}$，其中各$A_k$要么是形如 \eqref{jordan_block} 的块，要么是$1\times 1$零矩阵。
 
-但是由于 $N$ 是幂零的，$N^m = \oo$ 对某个 $m$ 成立，只有前 $m$ 项可能非零，所以
-$$p(A) = p(D + N) = \sum_{k=0}^{m-1} \frac{p^{(k)}(D)}{k!} N^k.$$
-如果 $m$ 远小于 $d$，这个公式将使 $p(A)$ 的计算容易得多。
+我们看看应该找什么样的向量来构成基。假设算子$A$关于基$\mathbf{v}_{1},$\linebreak $\mathbf{v}_{2},\ldots,\mathbf{v}_{p}$的矩阵形如 \eqref{jordan_block}。那么
+\begin{flalign}
+    A\mathbf{v}_1&=\mathbf{0}\label{chain_relation_1}\\
+    \intertext{并且}
+    A\mathbf{v}_{k+1}&=\mathbf{v}_k,\quad k=1,2,\dots,p-1.\label{chain_relation_2}
+\end{flalign}
+于是，我们应该求一串向量$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{p}$满足上述 关系 \eqref{chain_relation_1} 和 \eqref{chain_relation_2}。
 
-同样的方法也适用于 $p$ 不是多项式，而是无穷幂级数的情况。
-对于一般的幂级数，我们必须注意所有级数的收敛性，所以我们不能说这个公式对任意幂级数 $p(x)$ 都成立。然而，如果幂级数的收敛半径是 $\infty$，那么上文中一切都是正确的。特别地，如果 $p(x) = e^x$，那么使用 $(e^x)' = e^x$ 的事实，我们得到：
-$$e^A = e^{D + N} = \sum_{k=0}^{m-1} \frac{e^{(k)}(D)}{k!} N^k = \sum_{k=0}^{m-1} \frac{e^D}{k!} N^k = e^D \sum_{k=0}^{m-1} \frac{1}{k!} N^k.$$
-这个公式在微分方程中具有重要的应用。
+\subsection{广义特征向量链}\label{subsec:cycle_gen}
 
-请注意，$ND = DN$ 的事实在这里是至关重要的！
+\begin{definition*}
+    令$A$为幂零算子。一串满足 \eqref{chain_relation_1} 和 \eqref{chain_relation_2} 的非零向量$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{p}$称为$A$的{\bf 广义特征向量链}。向量$\mathbf{v}_1$称为该链的{\bf 首向量}，而向量$\mathbf{v}_p$称为该链的{\bf 尾向量}，数$p$称为该链的{\bf 长度}。
+\end{definition*}
+\begin{remark*}
+    对于一个任意的算子，也可写出类似的定义。此式，所有向量$\mathbf{v}_k$必须属于同一广义特征空间$E_\lambda$，且它们必须满足恒等式
+    \[(A-\lambda I)\mathbf{v}_{1}=\mathbf{0},\quad(A-\lambda I)\mathbf{v}_{k+1}=\mathbf{v}_{k},\quad k=1,2,\ldots,p-1.\]
+\end{remark*}
+\begin{theorem}\label{thm:cycle_li}
+    令$A$是幂零算子，并令${\mathcal{C}}_{1},{\mathcal{C}}_{2},\ldots,{\mathcal{C}}_{r}$都是其广义特征向量链，$\mathcal{C}_{k}=\mathbf{v}_{1}^{k},\mathbf{v}_{2}^{k},\ldots,\mathbf{v}_{p_{k}}^{k}$（$p_k$是链${\mathcal{C}}_{k}$的长度）。假设首向量$\mathbf{v}_{1}^{1},\mathbf{v}_{1}^{2},\ldots,\mathbf{v}_{1}^{r}$是线性无关的。那么这些链中的任意向量都不会同属于两个链，并且这些链中的所有向量构成的并集是线性无关的。
+\end{theorem}
+\begin{proof}
+    设$n=p_1+p_2+\dots+p_r$是这些链中向量的总数\footnote{这里我们仅仅是对每个链中的向量计数，然后将这些数量加在一起。我们并不在意是否有向量在各链中重复出现，而是该向量出现一次就计数一次（当然，根据这条定理，不会出现重复，但是一开始我们不能这样假设）。}。我们将对$n$用归纳法。如果$n=1$，该定理是平凡的。
 
-\section{4. 幂零算子的结构}
+    我们现在假设，当链中的向量总数严格小于$n$时，该定理对于所有算子和所有链都是成立的。
 
-回想一下，向量空间 $V$ 中的一个算子 $A$ 被称为\textbf{幂零}的，如果$\exists k \in \mathbb{N}_+$，使得  $A^k = \oo$ 成立。
+    不失一般性，我们可假设向量$\mathbf{v}_j^k$的全体张成整个向量空间$V$，因为如若不然，我们可以转而考虑将$A$限制在不变子空间$\mathrm{span}\{\mathbf{v}_{j}^{k}:k=1,2,\ldots,r,1\leq j\leq p_k\}$上所得的算子。
 
-在上一节中，我们证明了（见注记 3.5），如果我们连接所有广义特征子空间 $E_k = E_{\lambda_k}$ 的基得到空间 $V$ 的一组基，那么算子 $A$ 在该基下的矩阵具有块对角形式 $\diag\{A_1, A_2, \dots, A_r\}$，并且算子 $A_k$ 可以表示为 $A_k = \lambda_k I + N_k$，其中 $N_k$ 是幂零算子。
+    考虑子空间$\rg A$。由 \eqref{chain_relation_1} 和 \eqref{chain_relation_2} 可得，向量$\mathbf{v}_{j}^{k}:k=1,2,\ldots,r,$\linebreak $1\leq j\leq p_{k}-1$张成$\rg A$。注意，如果$p_k>1$，那么向量组\linebreak $\mathbf{v}_{1}^{k},\mathbf{v}_{2}^{k},\ldots,\mathbf{v}_{p_{k}-1}^{k}$仍为链；任意长度为$1$的链则都会被$A$化为零。
 
-在每个广义特征子空间 $E_k$ 中，我们想选择一组基，使得 $A_k$ 在该基下的矩阵具有最简单的形式。
-由于恒等算子在任何基下的矩阵都是单位矩阵，我们需要找到一组基，使得幂零算子 $N_k$ 具有简单的形式。
+    因此，我们得到有限多个链，并且这些链的首向量是线性无关的，它们适用归纳假设，则可知向量$\mathbf{v}_{j}^{k}:k=1,2,\ldots,r,1\leq j\leq p_{k}-1$是线性无关的。又因为这些向量张成$\rg A$，所以我们得到了$\rg A$的一个基。因此\[\rank A=\dim \rg A=n-r\]
+    （原有$n$个向量，我们从每个链$\mathcal{C}_k,k=1,2,\dots,r$中移除了一个向量$\mathbf{v}_{p_k}^k$，所以基$\mathbf{v}_{j}^{k},k=1,2,\ldots,r,1\leq j\leq p_{k}-1$有$n-r$个向量）。另一方面，$A\mathbf{v}_1^k=\mathbf{0}$对$k=1,2,\dots,r$成立，又由于各向量$\mathbf{v}_1^k$线性无关，所以$\dim\ker A\ge r$。由秩定理（第 \ref{chap:LinearSystems} 章定理 \ref{thm:fundamental_thm_of_la}）
+    \[\dim V=\rank A+\dim \ker A = (n-r)+\dim\ker A\ge (n-r)+r=n\]
+    因此$\dim V\ge n$。
 
-由于我们可以分别处理每个 $N_k$，我们将需要考虑以下问题：
-\begin{quote}
-    对于一个幂零算子 $A$，能否找到一组基，使得该算子在该基下的矩阵是简单的？
-\end{quote}
+    另一方面，$V$由$n$个向量张成。因此，向量$\mathbf{v}_{j}^{k}:k=1,2,\ldots,r,1\leq j\leq p_{k}$构成基，因此它们线性无关。
+\end{proof}
 
-让我们看看，一个矩阵具有简单形式意味着什么。很容易看出以下矩阵
-$$(4.1) \quad \begin{pmatrix} 0 & 1 & & & 0 \\ & 0 & 1 & & \\ & & \ddots & \ddots & \\ & & & 0 & 1 \\ 0 & & & & 0 \end{pmatrix}$$
-是幂零的。
+\subsection{幂零算子的若当标准形}\label{subsec:jordan_nil}
 
-这些矩阵（以及 $1 \times 1$ 的零矩阵）将是我们的“构建模块”。即，我们将证明对于任何幂零算子，都可以找到一组基，使得算子在该基下的矩阵具有块对角形式 $\diag\{A_1, A_2, \dots, A_r\}$，其中每个 $A_k$ 要么是形式 (4.1) 的块，要么是 $1 \times 1$ 的零块。
+\begin{theorem}\label{thm:basis_cycle_gen_eigen}
+    令$A:V\to V$是幂零算子。那么$V$有由算子$A$的广义特征向量链的并集构成的基。
+\end{theorem}
 
-让我们看看我们应该寻找什么。
-假设一个算子 $A$ 在基 $\vv_1, \vv_2, \dots, \vv_p$ 下的矩阵是 (4.1) 的形式。那么
-$$(4.2) \quad A\vv_1 = \oo$$
-并且
-$$(4.3) \quad A\vv_{k+1} = \vv_k, \quad k = 1, 2, \dots, p-1.$$
-因此，我们必须寻找满足上述关系 (4.2)、(4.3) 的向量链 $\vv_1, \vv_2, \dots, \vv_p$.~
+\begin{proof}
+    我们将对$n$用归纳法，$n=\dim V$。该定理对$n=1$是平凡的。
 
-\subsection{4.1. 广义特征向量循环}
+    假设该定理对作用于维数严格小于$n$的向量空间的任意算子都成立。
 
-{\heiti 定义}~~
-设 $A$ 是一个幂零算子。满足关系 (4.2)、(4.3) 的非零向量 $\vv_1, \vv_2, \dots, \vv_p$ 的链被称为 $A$ 的\textbf{广义特征向量循环}(cycle of generalized eigenvectors)。向量 $\vv_1$ 被称为循环的\textbf{初始向量}(initial vector)，向量 $\vv_p$ 被称为循环的\textbf{末端向量}(end vector)，并且数字 $p$ 被称为循环的\textbf{长度}(length)。
+    考虑子空间$X=\rg A$。$X$是算子$A$的不变子空间，因此我们考虑限制算子$A|_X$。
 
-{\heiti 注记}~~对于任意算子，也可以做出类似的定义。那么所有向量 $\vv_k$ 必须属于同一个广义特征子空间 $E_\lambda$，并且它们必须满足恒等式
-$$(A - \lambda I)\vv_1 = \oo, \quad (A - \lambda I)\vv_{k+1} = \vv_k, \quad k = 1, 2, \dots, p-1.$$
+    因为$A$不可逆，所以$\dim \rg A<\dim V$，所以由归纳假设，存在广义特征向量链${\mathcal{C}}_{1},{\mathcal{C}}_{2},\ldots,{\mathcal{C}}_{r}$，使得它们的并形成$X$的基。令${\mathcal{C}}_{k}=\mathbf{v}_{1}^{k},\mathbf{v}_{2}^{k},\ldots,\mathbf{v}_{p_{k}}^{k}$，其中$\mathbf{v}_{1}^{k}$是该链的首向量。
 
+    因为尾向量$\mathbf{v}_{p_{k}}^k$属于 $\rg A$，所以可找到一个向量$\mathbf{v}_{p_{k}+1}^k$使得\linebreak $A\mathbf{v}_{p_{k}+1}^k=\mathbf{v}_{p_{k}}^k$。因此我们可以将每个链${\mathcal{C}}_{k}$都延拓为一个更长的链\linebreak $\widetilde{\mathcal{C}}_{k}=\mathbf{v}_{1}^{k},\mathbf{v}_{2}^{k},\ldots,\mathbf{v}_{p_{k}}^{k},\mathbf{v}_{p_{k}+1}^{k}$。因为链$\widetilde{\mathcal{C}}_{k},k=1,2,\dots,r$的首向量$\mathbf{v}_1^k$是线性无关的，所以上述定理 \ref{thm:cycle_li} 表明，这些链的并集构成线性无关向量组。
 
+    由链的定义可知$\mathbf{v}_1^k\in\ker A$，并且有假设$\mathbf{v}_1^k,k=1,2,\dots,r$线性无关。将这个向量组补全为$\ker A$的基，即求出向量$\mathbf{u}_{1},\mathbf{u}_{2},\ldots,\mathbf{u}_{q}$使得向量组$\mathbf{v}_{1}^{1},\mathbf{v}_{1}^{2},\ldots,\mathbf{v}_{1}^{r},\mathbf{u}_{1},\mathbf{u}_{2},\ldots,\mathbf{u}_{q}$是$\ker A$的基（向量组$\mathbf{v}_1^k,k=1,2,\dots,r$有可能已经是$\ker A$的基，在此情形下我们置$q=0$且不加入任何向量）。
 
-\begin{theorem}[\normalfont\heiti 定理 4.1\nopunct] 
-设 $A$ 是一个幂零算子，设 $\C_1, \C_2, \dots, \C_r$ 是其广义特征向量循环，$\C_k = \{\vv^{k}_{1}, \vv^{k}_{2}, \dots, \vv^{k}_{p_k}\}$，其中 $p_k$ 是循环 $\C_k$ 的长度。假设初始向量 $\vv^{1}_{1}, \vv^{2}_{1}, \dots, \vv^{r}_{1}$ 是线性无关的。那么没有向量属于两个循环，并且所有向量组成的集合是线性无关的。\end{theorem}
+    向量$\mathbf{u}_j$可视为长度为$1$的链，因此现有$\widetilde{\mathcal{C}}_{1},\widetilde{\mathcal{C}}_{2},\ldots,\widetilde{\mathcal{C}}_{r},\mathbf{u}_{1},\mathbf{u}_{2},\ldots,\mathbf{u}_{q}$这些链，并且它们的首向量线性无关。因此可以运用定理 \ref{thm:cycle_li} 得到：这些链的并集构成线性无关向量组。
 
-\begin{proof}设 $n = p_1 + p_2 + \dots + p_r$ 是所有循环中向量的总数
-\footnote{
-我们只是数每个循环中的向量，并将所有数字相加。我们不关心是否有些循环有共同的向量，我们将其计入它所属的每个循环（当然，根据定理，这是不可能的，但一开始我们不能假设这一点）
-}。我们将使用 $n$ 的归纳法。如果 $n=1$，则定理是平凡的。
+    现在通过计算维数来说明它是基。我们知道链${\mathcal{C}}_{1},{\mathcal{C}}_{2},\ldots,{\mathcal{C}}_{r}$共有$\dim\rg A=\rank A$个向量。而每个链$\widetilde{\mathcal{C}}_{k}$都是通过向$\mathcal{C}_{k}$中添加$1$个向量得到，因此链$\widetilde{\mathcal{C}}_{k}$的向量总数是$\rank A+r$。
 
-现在假设定理对于所有算子和所有循环集合成立，只要所有循环中向量的总数严格小于 $n$.~
+    我们知道$\dim \ker A=r+q$（因为$\mathbf{v}_{1}^{1},\mathbf{v}_{1}^{2},\ldots,\mathbf{v}_{1}^{r},\mathbf{u}_{1},\mathbf{u}_{2},\ldots,\mathbf{u}_{q}$是它的基）。而上面的线性无关组是往链$\widetilde{\mathcal{C}}_{1},\widetilde{\mathcal{C}}_{2},\ldots,\widetilde{\mathcal{C}}_{r}$中添加$q$个向量得到的，所以我们有
+    \[\rank A + r + q = \rank A+\dim\ker A=\dim V\]
+    个线性无关向量。而$\dim V$个线性无关向量就构成了一个基。
+\end{proof}
 
-不失一般性，我们可以假设向量 $\vv^{k}_{j}$ 构成整个空间 $V$ 的基，否则我们可以考虑算子 $A$ 限制在不变子空间 $\spanL\{\vv^{k}_{j} : k = 1, 2, \dots, r, 1 \leq j \leq p_k\}$ 上。
+\begin{definition*}
+    由幂零算子$A$的广义特征向量链的并集构成的基（其存在性由定理 \ref{thm:basis_cycle_gen_eigen} 保证）称为$A$的若当标准基。\index{若当标准（Jordan canonical）!$\sim$基（basis）!幂零算子的$\sim$（for a nilpotent operator）}
+\end{definition*}
 
-考虑子空间 $\Ran A$.~从关系 (4.2)、(4.3) 可知，向量 $\vv^{k}_{j} : k = 1, 2, \dots, r, 1 \leq j \leq p_k - 1$ 构成 $\Ran A$ 的基。注意，如果 $p_k > 1$，那么系统 $\vv^{k}_{1}, \vv^{k}_{2}, \dots, \vv^{k}_{p_k-1}$ 是一个循环，并且 $A$ 使长度为 1 的任何循环的向量零化。
+注意，这样的基是不唯一的。
 
-因此，我们有有限数量的循环，并且这些循环的初始向量是线性无关的，所以归纳假设适用，并且向量 $\vv^{k}_{j} : k = 1, 2, \dots, r, 1 \leq j \leq p_k - 1$ 是线性无关的。
+\begin{corollary}\label{cor:jordan_canonical_nil}
+    设$A$是幂零算子。存在基（若当标准基），使得$A$关于该基的矩阵是分块对角矩阵$\operatorname{diag}\{A_1,A_2,\dots,A_r\}$，其中所有$A_k$都是形如 \eqref{jordan_block} 的块（除了可能有一个全为零的块）。\index{若当标准（Jordan canonical）!$\sim$形（form）!幂零算子的$\sim$（for a nilpotent operator）}\index{若当分解定理（Jordan decomposition theorem）!幂零算子的$\sim$（for a nilpotent operator）}
+\end{corollary}
 
-由于这些向量也张成 $\Ran A$，我们在那里有了一组基。因此，$$\rank A = \dim \Ran A = n - r.$$
-（我们有$n$个向量，并从每个循环 $\C_k$ 中移除了一个向量 $\vv_{p_k}^k$，其中 $k = 1, 2, \dots, r$.~因此，我们在基 $\vv_j^k : k = 1, 2, \dots, r, 1 \le j \le p_k - 1$ 中有 $n-r$ 个向量）。
-另一方面，$A \vv^{k}_{1} = 0$ 对 $k = 1, 2, \dots, r$ 成立，并且由于这些向量是线性无关的，$\dim \Ker A \geq r$.~根据秩定理（第二章定理 7.1），
-$$\dim V = \rank A + \dim \Ker A = (n - r) + \dim \Ker A \geq (n - r) + r = n,$$
-所以 $\dim V \geq n$.~
+算子$A$关于若当标准基的矩阵称为$A$的若当标准形。后面我们将看到，如果规定各块的顺序（即规定基中向量的排列顺序），那么若当标准形是唯一的。
 
-另一方面，$V$ 由 $n$ 个向量张成，因此向量 $\vv^{k}_{j} : k = 1, 2, \dots, r, 1 \leq j \leq p_k$ 构成一组基，所以它们是线性无关的。\end{proof}
+\begin{proof}[推论 \ref{cor:jordan_canonical_nil} 的证明]
+    由定理 \ref{thm:basis_cycle_gen_eigen}，可以求出由广义特征向量链的并集构成的基。长度为$p$的链将对应形如 \eqref{jordan_block} 的$p\times p$对角块，而长度为$1$的链对应$1\times 1$的零矩阵块。我们可以将这些$1\times 1$零矩阵合并成一个大块（因为非对角元也是$0$）。
+\end{proof}
 
+\subsection{点图、若当标准形的唯一性}
 
-\subsection{4.2. 幂零算子的若尔当标准型}
+有一种可视化定理 \ref{thm:basis_cycle_gen_eigen} 和推论 \ref{cor:jordan_canonical_nil} 的好方法——点图。这种方法使我们得以回答许多自然的问题，比如，由推论 \ref{cor:jordan_canonical_nil} 给出的分块对角表示是否唯一？
 
-\begin{theorem}[\normalfont\heiti 定理 4.2\nopunct] 
-\index{ruoerdangbiaozhun@若尔当标准!xingmilingsuanzide@型 (幂零算子的)}\index{ruoerdiangbiaozhun@若尔当标准!jimilingsuanzide@基 (幂零算子的)}设 $A: V \to V$ 是一个幂零算子。那么 $V$ 有一组由 $A$ 的广义特征向量循环组成的集合构成的基。\end{theorem}
+从字面上处理这个问题，回答当然是“否”，因为我们总可以改变块的顺序。但是，如果我们排除这些琐碎的可能性，比如通过规定块的排列顺序（先将所有非零块按大小降序排列，然后再放置零矩阵块），那么矩阵表示是否唯一？
 
-\begin{proof}我们将使用 $n = \dim V$ 的归纳法。对于 $n=1$，定理是平凡的。
+为了更好理解 \ref{subsec:cycle_gen} 节中描述的幂零算子结构，我们来绘制所谓点图。方法是：假设我们有由广义特征向量链的并集构成的基。将这个基用一个点阵来表示，其中一列点代表一个向量链。第一行（见下图 \ref{fig:dotted_diagram}）对应各链的首向量$\mathbf{v}_1^k$，且各链以长度排序——最长的链排在最左侧。第$k$列的点从上到下分别对应第$k$个链的向量$\mathbf{v}_1^k,\mathbf{v}_2^k,\dots,\mathbf{v}_{p_k}^k$。
 
-假设定理对于任何作用在维数小于 $n$ 的空间中的算子都成立。考虑子空间 $X = \Ran A$.~
+通常，我们只绘制点图，不展示其对应的向量。不过有时，考虑“{\bf 带标记}的点图”（即把点与链中的对应向量关联起来）也是有益处的。
 
-$X$ 是算子 $A$ 的一个不变子空间，所以我们可以考虑限制 $A|_X$.~
+在图 \ref{fig:dotted_diagram} 中，我们给出了一幂零算子的点图及其若当标准形。点图表明，若当标准基含有$1$个长度为$5$的链、$1$个长度为$3$的链、$2$个长度为$2$的链，以及$2$个长度为$1$的链。长度为$5$的链对应矩阵中$5\times 5$的块，长度为$3$的链对应$3\times 3$的块，两个长度为$2$的链对应两个$2\times 2$的块，而两个长度为$1$的链对应对角线上的两个零元素。此处，在每块中我们只给出主对角线及其上方的对角线的元素，而该矩阵其余的元素都是零。
 
-由于 $A$ 是不可逆的，$\dim \Ran A < \dim V$，所以根据归纳假设存在广义特征向量循环 $\C_1, \C_2, \dots, \C_r$，使得它们的并集是 $X$ 中的一组基。设 $\C_k = \{\vv^{k}_{1}, \vv^{k}_{2}, \dots, \vv^{k}_{p_k}\}$，其中 $\vv^{k}_{1}$ 是循环的初始向量。
-
-由于末端向量 $\vv^{k}_{p_k}$ 属于 $\Ran A$，可以找到一个向量 $\vv^{k}_{p_k+1}$ 使得 $A \vv_{p_k+1} = \vv^{k}_{p_k}$.~因此，我们可以将每个循环 $\C_k$ 扩展成一个更大的循环 $\widetilde{\C}_k = \{\vv^{k}_{1}, \vv^{k}_{2}, \dots, \vv^{k}_{p_k}, \vv^{k}_{p_k+1}\}$.~
-由于循环 $\widetilde{\C}_k, k = 1, 2, \dots, r$ 的初始向量 $\vv^{k}_{1}$ 是线性无关的，上述定理 4.1 暗示了这些循环的并集是一个线性无关系统。
-
-根据循环的定义，我们有 $\vv^{k}_{1} \in \Ker A$，并且我们假设初始向量 $\vv^{k}_{1}, k = 1, 2, \dots, r$ 是线性无关的。让这个系统扩展成 $\Ker A$ 中的一组基，即找到向量 $\uu_1, \uu_2, \dots, \uu_q$，使得系统 $\{\vv^{1}_{1}, \vv^{2}_{1}, \dots, \vv^{r}_{1}, \uu_1, \uu_2, \dots, \uu_q\}$ 是 $\Ker A$ 中的一组基（可能发生的情况是系统 $\vv^{k}_{1}, k = 1, 2, \dots, r$ 已经是 $\Ker A$ 中的一组基，在这种情况下，我们让 $q = 0$ ，这并没有添加任何内容）。
-
-向量 $\uu_j$ 可以被视为长度为 1 的循环，因此我们有一个循环集合 $\{\widetilde{\C}_1, \widetilde{\C}_2, \dots, \widetilde{\C}_r, $ $\uu_1, \uu_2, \dots, \uu_q\}$，其初始向量是线性无关的。
-所以，我们可以应用定理 4.1 得到所有这些循环的并集是一个线性无关系统。
-
-为了证明它是一组基，让我们计算维数。我们知道循环 $\C_1, \C_2, \dots, \C_r$ 总共有 $\dim \Ran A = \rank A$ 个向量。每个循环 $\widetilde{\C}_k$ 是从 $\C_k$ 通过添加 1 个向量得到的，所以所有循环 $\widetilde{\C}_k$ 中的向量总数是 $\rank A + r$.~
-
-我们知道 $\dim \Ker A = r + q$（因为 $\{\vv^{1}_{1}, \vv^{2}_{1}, \dots, \vv^{r}_{1}, \uu_1, \uu_2, \dots, \uu_q\}$ 是那里的一组基）。我们将循环 $\widetilde{\C}_1, \widetilde{\C}_2, \dots, \widetilde{\C}_r$ 添加了额外的 $q$ 个向量，所以我们得到了 $$\rank A + r + q = \rank A + \dim \Ker A = \dim V$$
-个线性无关的向量。但是 $\dim V$ 个线性无关的向量构成一组基。\end{proof}
-
-{\heiti 定义}~~
-由幂零算子 $A$ 的广义特征向量循环的并集构成的基（其存在由定理 4.2 保证）称为 $A$ 的\textbf{若尔当标准基}\index{ruoerdangbiaozhun@若尔当标准!ji@基}(Jordan canonical basis)。
-
-注意，这样的基不是唯一的。
-
-{\heiti 推论 4.3}~~
-设 $A$ 是一个幂零算子。存在一组基（若尔当标准基），使得该算子在该基下的矩阵是块对角的 $\diag\{A_1, A_2, \dots, A_r\}$，其中所有 $A_k$（可能有一个例外）是形式 (4.1) 的块，并且其中一个块 $A_k$ 可以是零。
-
-算子在若尔当标准基下的矩阵称为该算子的 \textbf{若尔当标准型}\index{ruoerdangbiaozhun@若尔当标准!xing@型}。我们稍后会看到，如果我们要约定块的顺序（即约定基中的向量顺序），那么若尔当标准型是唯一的。
-
-\begin{proof}[\normalfont\heiti 定理 4.3 的证明~\nopunct]
-根据定理 4.2，可以找到一组由广义特征向量循环的并集构成的基。大小为 $p$ 的循环产生一个 $p \times p$ 的对角块，形式为 (4.1)，而长度为 1 的循环对应于一个 $1 \times 1$ 的零块。我们可以将这些 $1 \times 1$ 的零块连接成一个大的零块（因为非对角线元素是 0）。\end{proof}
-
-\subsection{4.3. 点图~~若尔当标准型的唯一性}
-
-有一种很好的方法来可视化定理 4.2 和推论 4.3，即所谓的\textbf{点图}。这种方法还可以让我们回答许多自然问题，例如“由推论 4.3 给出的块对角表示是否是唯一的？”
-
-当然，如果我们字面上处理这个问题，答案是“否”，因为我们可以随时更改块的顺序。但是，如果我们排除这种微不足道的情况，例如约定某种块的顺序（比如，如果我们把所有非零块按降序排列，然后放零块），那么这个表示是不是唯一的？
-
-为了更好地理解第 4.1 节中描述的幂零算子的结构，让我们绘制所谓的点图。即，假设我们有一组基，它是广义特征向量循环的并集。
-让我们用一个元素为点的数组来表示基，这样每一列代表一个循环。第一行由循环的初始向量组成，我们按照长度的降序排列这些列（循环），将最长的放在左边。
-
-% \begin{figure}[ht]
-%   \centering  \includegraphics[width=1.0\linewidth]{figures/Figure6.PNG}
-%   \caption{幂零算子的点图和相应的若尔当标准型}
-%   \label{fig:06} 
-% \end{figure}
-
-\begin{figure}[ht]
+\begin{figure}[htbp]
     \centering
-    \input{figures/figure6.tikz}
-    \caption{幂零算子的点图和相应的若尔当标准型}
-    \label{fig:06} 
+    \begin{minipage}[t]{0.25\textwidth}
+        \vspace{0pt}
+        \centering
+        $\begin{matrix}
+            \bullet & \bullet & \bullet & \bullet & \bullet & \bullet \\
+            \bullet & \bullet & \bullet & \bullet &         &         \\
+            \bullet & \bullet &         &         &         &         \\
+            \bullet &         &         &         &         &         \\
+            \bullet &         &         &         &         &         \\
+        \end{matrix}$
+    \end{minipage}\qquad
+    \begin{minipage}[t]{0.68\textwidth}
+        \vspace{0pt}
+        \centering
+        $\begin{pNiceMatrix}[margin]
+            \Block[borders={bottom,right}]{5-5}{}
+            0 & 1 &   &   &   &   &   &   &   &   &   &   &   &  \\
+            & 0 & 1 &   &   &   &   &   &   &   &   &   &   &  \\
+            &   & 0 & 1 &   &   &   &   &   &   &   &   &   &  \\
+            &   &   & 0 & 1 &   &   &   &   &   & 0 &   &   &  \\
+            &   &   &   & 0 &   &   &   &   &   &   &   &   &  \\
+            &   &   &   &   & \Block[borders={bottom,top,right,left}]{3-3}{}
+                                0 & 1 &   &   &   &   &   &   &  \\
+            &   &   &   &   &   & 0 & 1 &   &   &   &   &   &  \\
+            &   &   &   &   &   &   & 0 &   &   &   &   &   &  \\
+            &   &   &   &   &   &   &   & \Block[borders={bottom,top,right,left}]{2-2}{}
+                                            0 & 1 &   &   &   &  \\
+            &   &   &   &   &   &   &   &   & 0 &   &   &   &  \\
+            &   & 0 &   &   &   &   &   &   &   & \Block[borders={bottom,top,right,left}]{2-2}{}
+                                                    0 & 1 &   &  \\
+            &   &   &   &   &   &   &   &   &   &   & 0 &   &  \\
+            &   &   &   &   &   &   &   &   &   &   &   & \Block[borders={bottom,top,right,left}]{1-1}{}
+                                                            0 &  \\
+            &   &   &   &   &   &   &   &   &   &   &   &   &  \Block[borders={top,left}]{1-1}{}
+                                                                0\\
+        \end{pNiceMatrix}$
+    \end{minipage}
+    \caption{点图及对应的幂零算子的若当标准形}
+    \label{fig:dotted_diagram}
 \end{figure}
 
-在图\Ref{fig:06} 中，我们有一个幂零算子的点图，以及它的若尔当标准型。这个点图表明，基由一个长度为 5 的循环，一个长度为 3 的循环，两个长度为 2 的循环，以及两个长度为 1 的循环组成。长度为 5 的循环对应于矩阵的 $5 \times 5$ 块，长度为 3 的循环对应于一个 $3 \times 3$ 非零块，两个长度为 2 的循环对应于两个 $2 \times 2$ 块。三个长度为 1 的循环对应于对角线上的两个零项。这里，在每个块中，我们只给出主对角线和它上面的对角线；矩阵的所有其他项都是零。
+如果我们规定块的顺序，那么（对于幂零算子而言）在点图和若当标准形之间就有了一一对应关系。所以，若当标准形的唯一性问题就等价于点图的唯一性问题。
 
-如果我们约定块的顺序，那么点图与若尔当标准型（对于幂零算子）之间存在一一对应关系。因此，关于若尔当标准型唯一性的问题等同于关于点图唯一性的问题。
+\subsubsection{将算子作用于点图}\label{subsubsec:operator_on_dot}
 
-为了回答这个问题，让我们分析算子 $A$ 如何变换点图。
-由于算子 $A$ 使循环的初始向量化零，并将循环中的向量 $\vv_{k+1}$ 移到向量 $\vv_k$，我们可以看到算子 $A$ 通过删除图的第一行（顶部）来作用于其点图。
+为了回答点图的唯一性问题，我们分析一下算子$A$会如何变换点图。首先假设我们有一张带标记的点图，这意味着我们将每个点与对应的链中向量关联起来。这样，从这张点图里我们既能得到若当标准型，也能得到若当标准基。
 
-新的点图对应于 $\Ran A$ 中的若尔当标准基，并且允许我们写出限制 $A|_{\Ran A}$ 的若尔当标准型。
+因为算子$A$将各链的首向量化为零，并且将链中的向量$\mathbf{v}_{k+1}$变成向量$\mathbf{v}_{k}$，所以算子$A$作用于点图会将其每一列的最后一个点消去。还有一种等价的叙述是，算子$A$将第一行消去，但保证第$k$列首行的点仍对应于该链的首向量$\mathbf{v}_1^k$。
 
-类似地，不难看出算子 $A^k$ 删除图的前 $k$ 行。因此，如果对于所有 $k$，我们都知道维数 $\dim \Ker(A^k)$，我们就知道了算子 $A$ 的点图。
-即，第一行的点的数量是 
-$$\dim \Ker A,$$第二行的点的数量是 
-$$\dim \Ker(A^2) - \dim \Ker A,$$
-而第 $k$ 行的点的数量是 $$\dim \Ker(A^k) - \dim \Ker(A^{k+1}).$$
+新的点图，是限制于$A$-不变子空间$\rg A$的算子$A$的（带标记）点图，它给出了限制算子$A|_{\rg A}$的若当标准形和若当标准基。
 
-但这意味着，最初使用若尔当标准基定义的点图，并不取决于该标准基的特定选择。因此，点图是唯一的！这意味着如果我们约定块的顺序，那么若尔当标准型是唯一的。
+类似地，不难看出算子$A^k$消去点图的前$k$行。因此，若我们知道$k$取所有值时的$\dim\ker(A^k)$，那么我们就知道算子$A$的点图。即，第一行的点数是$\dim \ker A$，第二行的点数是\[\dim \ker(A^2)-\dim \ker A,\]第$k$行的点数则是\[\dim \ker(A^k)-\dim \ker (A^{k-1}).\]
 
-\subsection{4.4. 计算若尔当标准基}
-让我们简单谈谈如何为幂零算子计算若尔当标准基。设 $p_1$ 是最大的正整数，使得 $A^{p_1-1} \neq \oo$（因此 $A^{p_1} = \oo$）。等价地，我们可以说 $p_1$ 是使得 $A^{p_1} = \oo$（从而 $A^{p_1-1} \neq \oo$）的最小非负整数。从上面对点图的分析可以看出，$p_1$ 是最长循环的长度（因此这也可以用作 $p_1$ 的定义）。
+而这就意味着，尽管点图最初是用若当标准基定义的，但它并不依赖于该基的选取。因此，点图是唯一的！由此可得，如果我们规定了块的顺序，那么若当标准形是唯一的。
 
-计算算子 $A^k, k = 1, 2, \dots, p_1 - 1$，并计数 $\dim \Ker(A^k)$，我们可以构造 $A$ 的点图。具体来说，$\dim \Ker A$ 给出最上面一行中点的数量，$\dim \Ker A^2 - \dim \Ker A$ 给出下一行中点的数量，以此类推。
+\subsection{计算若当标准基}\label{subsec:compute_jordan}
 
-现在我们想用向量代替点，并找到一个构成循环之并集的基。
+现在简短介绍一下幂零算子若当标准基的计算。在 \ref{subsec:jordan_nil} 节中我们已经证明了该基的存在性，于是我们可以利用若当标准型和点图来构造出它。
 
-我们从找到最长的循环开始（因为我们知道点图，我们知道有多少个循环，以及每个循环的长度）。
-考虑 $\Ran (A^{p_1})$ 中的一组基。将该基中的向量命名为 $\vv^{1}_{1}, \vv^{2}_{1}, \dots, \vv^{r_1}_{1}$，这些将是循环的初始向量。然后我们通过求解方程 
-$$A^{p_1} \vv^{k}_{p_1} = \vv^{k}_{1}, k = 1, 2, \dots, r_1$$ 
-来找到循环的末端向量 $\vv^{1}_{p_1}, \vv^{2}_{p_1}, \dots, \vv^{r_1}_{p_1}$.~
-通过连续地将算子 $A$ 应用于末端向量 $\vv^{k}_{p_1}$，我们得到循环中的所有向量 $\vv^{k}_{j}$.~
-因此，我们构造了所有最大长度的循环。
+令$p_1$是满足$A^{p_1-1}\ne\mathbf{0}$的最大正整数（从而$A^{p_1}=\mathbf{0}$）。等价地说，$p_1$是满足$A^{p_1}=\mathbf{0}$的最小非负整数（从而$A^{p_1-1}\ne\mathbf{0}$）。从上述有关点图的分析（见 \ref{subsubsec:operator_on_dot} 小节）可看出，$p_1$是最长链的长度（因此这也可作为$p_1$的定义）。
 
-设 $p_2$ 是剩余循环中最大循环的长度。
-考虑 $\Ran (A^{p_2})$ 子空间，并设 $\dim \Ran(A^{p_2}) = r_2$.~由于$\Ran(A^{p_1}) \subset \Ran(A^{p_2})$，我们可以将基 $\vv^{1}_{1}, \vv^{2}_{1}, \dots, \vv^{r_1}_{1}$ 扩展成$\Ran(A^{p_2})$ 中的一组基 $\vv^{1}_{1}, \vv^{2}_{1}, \dots, \vv^{r_1}_{1}, \vv^{r_1+1}_{1}, \dots, \vv^{r_2}_{1}$.~然后我们通过求解方程 
-$$A^{p_1} \vv^{k}_{p_2} = \vv^{k}_{1}, \quad k = r_1+1, r_1+2, \dots, r_2$$ 
-来找到循环 $\C_{r_1+1}, \dots, \C_{r_2}$ 的末端向量，从而构造长度为 $p_2$ 的循环。
+计算算子$A^k,k=1,2,\dots,p_1-1$并计算$\dim\ker (A^k)$，可以构造出$A$的点图：$\dim\ker A$给出了第一行的点数，$\dim \ker(A^2)-\dim \ker A$给出了下一行的点数，以此类推。
 
-设 $p_3$ 表示剩余循环中最大循环的长度。然后，通过将基 $\vv^{1}_{1}, \vv^{2}_{1}, \dots, \vv^{r_2}_{1}$ 在 $\Ker(A^{p_2})$ 中扩展成 $\Ker(A^{p_3})$ 中的一组基，我们构造长度为 $p_3$ 的循环，依此类推。
+现在我们要将点换成向量，并求出由向量链的并集构成的基。
 
-最后还有一个说明：如上所述，如果我们知道点图，我们就知道标准型，所以一旦我们找到了一组若尔当标准基，我们就不需要计算该基下算子 $A$ 的矩阵：我们已经知道了！
+我们首先求最长的链（因为我们知道点图，所以我们也知道链的个数与每个链的长度）。考虑列空间$\rg (A^{p_1-1})$。因为$A^{p_1}=\mathbf{0}$，故成立$\rg(A^{p_1-1})\subset \ker A$，因此$\rg(A^{p_1-1}) = \rg(A^{p_1-1})\cap \ker A$。为了和后续步骤所用记号相统一，我们将用记号$\rg(A^{p_1-1})\cap \ker A$而非$\rg(A^{p_1-1})$。
 
+令$\mathbf{v}_1^1,\mathbf{v}_1^2,\ldots,\mathbf{v}_1^{r_1}$为子空间$\rg(A^{p_1-1})\cap \ker A$的基，这些向量就是各最长链的首向量。然后通过解下列方程来求出这些链的尾向量$\mathbf{v}_{p_{1}}^{1},\mathbf{v}_{p_{1}}^{2},\ldots,\mathbf{v}_{p_{1}}^{r_{1}}$：
+\[A^{p_1-1}\mathbf{v}_{p_1}^k=\mathbf{v}_1^k,\quad k=1,2,\ldots,r_1.\]
+对尾向量$\mathbf{v}_{p_1}^k$连续作用$A$，就能得到该链中的所有向量$\mathbf{v}_{j}^k$。这样，我们就构造出了所有最长的链。
 
-\section{5. 若尔当分解定理}
+或者，对于各$k$，通过求解一系列方程\[A\mathbf{v}_j^k = \mathbf{v}_{j-1}^k,\quad j=2,\dots,p_1.\]
+得到$\mathbf{v}_j^k, j=2,\dots,p_1$，从而构造出所有最长的链。
 
-\begin{theorem}[\normalfont\heiti 定理 5.1\nopunct]  给定一个算子 $A$，存在一组基（若尔当标准基），使得 $A$ 在这组基下的矩阵具有分块对角形式，其对角块形如
-$$
-(5.1)\quad \begin{pmatrix}
-\lambda & 1 & & & 0 \\
-& \lambda & 1 & & \\
-& & \ddots & \ddots & \\
-& & & \ddots & 1 \\
-0 & & & & \lambda
-\end{pmatrix}
-$$
-其中 $\lambda$ 是 $A$ 的一个特征值。这里我们假定大小为 1 的块就是 $\lambda$.~\end{theorem}
+令$p_2$是待求链的最大长度。考虑子空间$\rg (A^{p_2-1})\cap\ker A$，并令其维数为$r_2$。因为$\rg(A^{p_1-1})\subset \rg(A^{p_2-1})$，所以
+\[\rg(A^{p_1-1})\cap\ker A\subset \rg(A^{p_2-1})\cap\ker A,\]
+因此$r_2\ge r_1=\dim \rg(A^{p_1-1})\cap\ker A$。此外\footnote{还可从点图看出，对于$p_2<p\le p_1$，有$\rg(A^p)\cap\ker A=\rg(A^{p_1})\cap\ker A$，因此$p_2$是我们计算基时所用的最大指数。}，从点图可看出$r_2>r_1$。因此我们可将
+$\rg(A^{p_1-1})\cap\ker A$的基补全为$\rg(A^{p_2-1})\cap\ker A$的基$\mathbf{v}_{1}^{1},\mathbf{v}_{1}^{2},\ldots,\mathbf{v}_{1}^{r_{1}},\mathbf{v}_{1}^{r_{1}+1},\ldots,\mathbf{v}_{1}^{r_{2}}$。那么，我们可以通过求以下方程\[A^{p_2-1}\mathbf{v}_{p_2}^k=\mathbf{v}_1^k,\quad k=r_1+1,r_1+2,\ldots,r_2,\]
+来得出$\mathbf{v}_{p_2}^k$，进而求出链$\mathcal{C}_{r_{1}+1},\ldots,\mathcal{C}_{r_{2}}$。这样就构造了长度为$p_2$的链。
 
-定理 5.1 中得到的分块对角形式称为算子 $A$ 的\textbf{若尔当标准型}。相应的基称为算子 $A$ 的\textbf{若尔当标准基}。
+令$p_3$是待求链的最大长度。那么，将$\rg(A^{p_2-1})\cap\ker A$的基$\mathbf{v}_{1}^{1},$\linebreak $\mathbf{v}_{1}^{2},\ldots,\mathbf{v}_{1}^{r_{2}}$补全为$\rg(A^{p_3-1})\cap\ker A$的基，我们就可构造出长度为$p_3$的链，以此类推。
 
-\begin{proof}[\normalfont\heiti 定理 5.1 的证明~\nopunct]根据定理 3.4 和注记 3.5，如果我们将广义特征空间 $E_k = E_{\lambda_k}$ 中的基合并起来，得到全空间的一组基，那么算子 $A$ 在这组基下的矩阵具有分块对角形式 $\mathrm{diag}\{A_1, A_2, \dots, A_r\}$，其中 $A_k = A|_{E_k}$.~算子 $N_k = A_k - \lambda_k I_{E_k}$ 是幂零的，因此根据定理 4.2（更确切地说，根据推论 4.3），我们可以在 $E_k$ 中找到一组基，使得 $N_k$ 在这组基下的矩阵是 $N_k$ 的若尔当标准型。要得到 $A_k$ 在这组基下的矩阵，只需将主对角线上的 0 替换为 $\lambda_k$ 即可。\end{proof}
+% 特别地，当$p_l=1$时，我们将$\rg(A^{p_{l-1}-1})$的基补全为$\ker A$的基，就得到了所有长度为$1$的链。
 
-\subsection{5.1. 关于计算若尔当标准基的注记}
-首先，我们回顾一下，计算特征值是最困难的部分，但我们在这里不讨论这一部分，并假设特征值已经计算出来了。
+最后说明一下：前面我们讨论过，如果我们知道点图，那么我们就知道标准形。所以，在求出若当标准基之后，不需要关于这个基计算矩阵——我们已经知道矩阵是什么了！
 
-对于每个特征值 $\lambda$，我们计算子空间 $\Ker(A-\lambda I)^k$, $k=1,2, \dots$，直到子空间序列稳定为止。事实上，由于我们有一个递增的子空间序列（$\Ker(A-\lambda I)^k \subset \Ker(A-\lambda I)^{k+1}$），因此只需追踪它们的维数（或算子 $(A-\lambda I)^k$ 的秩）就足够了。对于一个特征值 $\lambda$，令 $m=m_\lambda$ 是使得序列 $\Ker(A-\lambda I)^k$ 稳定的那个数，即 $m$ 满足
-\[
-\dim\Ker(A - \lambda I)^{m-1} < \dim \Ker(A - \lambda I)^m = \dim \Ker(A - \lambda I)^{m+1}.
-\]
-那么 $E_\lambda = \Ker(A-\lambda I)^m$ 就是对应于特征值 $\lambda$ 的广义特征空间。
+\section{若当分解定理}
 
-在我们计算出所有广义特征空间后，有两种可能的方法。第一种方法是在每个广义特征空间中找到一组基，这样算子 $A$ 在这组基下的矩阵就具有分块对角形式 $\mathrm{diag}\{A_1, A_2, \dots, A_r\}$，其中 $A_k = A|_{E_{\lambda_k}}$.~然后我们可以分别处理每个矩阵 $A_k$.~算子 $N_k = A_k - \lambda_k I$ 是幂零的，因此应用 4.4 节中描述的算法，我们得到 $N_k$ 的若尔当标准表示，然后将主对角线上的 0 替换为 $\lambda_k$，就得到分块 $A_k$ 的若尔当标准表示。这种方法的优点是我们处理的是更小的块。但我们需要找到算子在新基下的矩阵，这涉及到矩阵求逆和矩阵乘法。
+\begin{theorem}\label{thm:jordan_decomp}
+    给定算子$A$，存在基（若当标准基），使得$A$关于该基的矩阵有分块对角形式，各块形如
+    \begin{equation}
+        \begin{pNiceMatrix}[margin]\lambda&1&&&0\\&\lambda&1&&\\&&\lambda&\ddots&\\&&&\ddots&1\\0&&&&\lambda\end{pNiceMatrix}
+    \end{equation}
+    其中$\lambda$是$A$的特征值。这里假设大小为$1$的块就是$\lambda$。\index{若当分解定理（Jordan decomposition theorem）}
+\end{theorem}
 
+定理 \ref{thm:jordan_decomp} 中的分块对角形式称为算子$A$的{\bf 若当标准形}。对应的基称为算子$A$的{\bf 若当标准基}。\index{若当标准（Jordan canonical）!$\sim$基（basis）}\index{若当标准（Jordan canonical）!$\sim$形（form）}
 
+\begin{proof}[定理 \ref{thm:jordan_decomp} 的证明]
+    根据定理 \ref{thm:gen_eigen_decomp} 和注 \ref{remark:gen_eigen_decomp}，如果将广义特征空间$E_k=E_{\lambda_k}$的基合并起来得到整个空间的基，那么$A$关于该基的矩阵具有分块对角形式$\operatorname{diag}\{A_1,A_2,\dots,A_r\}$，其中$A_k=A|_{E_k}$。算子$N_k=A_k-\lambda_k I_{E_k}$是幂零的，所以由定理 \ref{thm:basis_cycle_gen_eigen}（更准确地说，是由推论 \ref{cor:jordan_canonical_nil}），可以求出$E_k$的基，使得$N_k$关于该基的矩阵是$N_k$的若当标准形。要得到$A_k$关于该基的矩阵，只需将主对角线上的$0$换成$\lambda_k$即可。
+\end{proof}
 
-另一种方法是直接处理算子 $A$，而不是先将其分解为块，在每个广义特征空间 $E_{\lambda_k}$ 中找到若尔当标准基。同样，我们在 4.4 节中概述的算法稍作修改后仍然适用。也就是说，在为广义特征空间 $E_{\lambda_k}$ 计算若尔当标准基时，我们不需要像单独处理分块 $A_k$ 时那样考虑子空间 $\Ran(A_k - \lambda_k I)^j$，而是需要考虑子空间 $(A-\lambda_k I)^j E_{\lambda_k}$.~
+\subsection{有关计算若当标准基的注记}
+
+首先，回忆一下，计算特征值是其中最困难的一步，但是这里我们不去讨论这一步，并假设特征值已经算出来了。
+
+对每个特征值$\lambda$，我们计算子空间$\ker(A-\lambda I)^k,k=1,2,\dots$，直到子空间序列稳定。事实上，因为子空间序列是递增的（$\ker(A-\lambda I)^k\subset \ker(A-\lambda I)^{k+1}$），所以只需要关注它们的维数（或者算子$(A-\lambda I)^k$的秩）。对特征值$\lambda$，令$m=m_\lambda$表示使得序列$\ker(A-\lambda I)^k$稳定的数，即$m$满足
+\[\dim\ker (A-\lambda I)^{m-1}< \dim\ker (A-\lambda I)^{m} = \dim\ker (A-\lambda I)^{m+1}\]
+那么$E_\lambda = \ker (A-\lambda I)^m$就是对应于特征值$\lambda$的广义特征空间。
+
+在算出所有的广义特征空间后，有两种可行的做法。第一种是，求出每个广义特征空间的基，因而算子$A$关于该基的矩阵具有分块对角形式$\operatorname{diag}\{A_1,A_2,\dots,A_r\}$，其中$A_k=A|_{E_{\lambda_k}}$。接下来，我们就能分别处理每个矩阵$A_k$。算子$N_k=A_k-\lambda_k I$是幂零的，因此运用 \ref{subsec:compute_jordan} 节所述的算法，就能得到$N_k$的若当标准表示，再将主对角线上的$0$换成$\lambda_k$，我们就得到了$A_k$这个块的若当标准表示。这种方法的优势在于，我们是分别处理每小块（而不是整个矩阵）。但是，我们需要求出算子在新基下的矩阵，这就会涉及矩阵求逆和矩阵乘法。
+
+另一种方法是，直接考虑算子$A$（而不将其分块）来求出每个广义特征空间$E_{\lambda_k}$的若当标准基。\ref{subsec:compute_jordan} 节所述的算法仍然可用，但要稍作修改。具体而言，在计算广义特征空间$E_{\lambda_k}$的若当标准基时，我们不考虑子空间$\rg(A_k-\lambda_k I)^j$（这需要我们分别考虑各块$A_k$），而是考虑子空间$(A-\lambda_k I)^j E_{\lambda_k}$。

@@ -1,513 +1,534 @@
+%%%%%%%%%%%%%%%%%% 双线性型和二次型 %%%%%%%%%%%%%%%%%%%
 
+\chapter{双线性型和二次型}\label{chap:BilinearandInner}
 
-\chapter{第七章~~双线性型与二次型}
+诚然，{\bf 实}二次型（即二次齐次多项式）的研究是本章论题的源动机，不过复二次型$(A\mathbf{x},\mathbf{x}),\mathbf{x}\in\mathbb{C}^n,A=A^*$也相当有趣。因此，除非另有说明，本章的结论和计算过程适用于实数和复数情形。
 
+为了避免重复书写实质上相同的公式，我们都用复数情形下的记号。特别地，在实数情形下，也用$A^*$而非$A^T$。
 
-尽管研究\textbf{实}二次型（即二次齐次多项式）可能是本章主题的最初动机，但\textbf{复}二次型（$A \xx, \xx)$, $\xx \in \CC^n$, $A = A^*$）也具有重要的意义。因此，除非另有说明，本章中的结论在实数和复数情况下都适用。
+\section{主要定义}
 
-为了避免重复书写本质上相同的公式，我们将使用适应复数情况的记号：特别地，在实数情况下，用 $A^*$ 代替 $A^T$.~
+\subsection{\texorpdfstring{$\mathbb{R}^n$}{R\^{}n}上的双线性型}
 
-\section{1. 主要定义}
+$\mathbb{R}^n$上的双线性型是具有两个自变量$\mathbf{x},\mathbf{y}\in\mathbb{R}^n$的函数$L=L(\mathbf{x},\mathbf{y})$，它对每个自变量都是线性的，即
+\begin{enumerate}
+    \item $L(\alpha\mathbf{x}_1+\beta\mathbf{x}_2,\mathbf{y})=\alpha L(\mathbf{x}_1,\mathbf{y})+\beta L(\mathbf{x}_2,\mathbf{y})$；
+    \item $L(\mathbf{x},\alpha\mathbf{y}_1+\beta\mathbf{y}_2)=\alpha L(\mathbf{x},\mathbf{y}_1)+\beta L(\mathbf{x},\mathbf{y}_2)$。
+\end{enumerate}
+可以考察取值于任意向量空间的双线性型，不过本书中只考察取值于实数的双线性型。
 
-\subsection{1.1. $\RR^n$ 上的双线性型}
-
-$\RR^n$ 上的\textbf{双线性型}\index{shuangxianxingxing@双线性型}(bilinear form)是一个含两参数 $\xx, \yy \in \RR^n$ 的函数 $L = L(\xx, \yy)$，它在每个参数上都是线性的，即满足：
-
-1. $L(\alpha \xx_1 + \beta \xx_2, \yy) = \alpha L(\xx_1, \yy) + \beta L(\xx_2, \yy)$；
-
-2. $L(\xx, \alpha \yy_1 + \beta \yy_2) = \alpha L(\xx, \yy_1) + \beta L(\xx, \yy_2)$.~
-
-双线性型的值可以属于任意向量空间，但在本书中，我们只考虑取实数值的向量。
-
-如果 $\xx = (x_1, x_2, \dots, x_n)^T$ 且 $\yy = (y_1, y_2, \dots, y_n)^T$，则双线性型可以写成
-$$L(\xx, \yy) = \sum_{j,k=1}^n a_{j,k} x_k y_j,$$
-或者以矩阵形式表示为
-$$L(\xx, \yy) = (A \xx, \yy),$$
+若$\mathbf{x}=(x_{1},x_{2},\ldots,x_{n})^{T}$及$\mathbf{y}=(y_{1},y_{2},\ldots,y_{n})^{T}$，则双线性型可表示成\[L(\mathbf{x},\mathbf{y})=\sum_{j,k=1}^na_{j,k}x_ky_j,\]
+或写为矩阵形式
+\[L(\mathbf{x},\mathbf{y})=(A\mathbf{x},\mathbf{y})\]
 其中
-$$A = \begin{pmatrix} a_{1,1} & a_{1,2} & \dots & a_{1,n} \\ a_{2,1} & a_{2,2} & \dots & a_{2,n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{n,1} & a_{n,2} & \dots & a_{n,n} \end{pmatrix}.$$
-矩阵 $A$ 由双线性型 $L$ 唯一确定。
+\[A=\begin{pNiceMatrix}[margin]a_{1,1}&a_{1,2}&\ldots&a_{1,n}\\a_{2,1}&a_{2,2}&\ldots&a_{2,n}\\\vdots&\vdots&\ddots&\vdots\\a_{n,1}&a_{n,2}&\ldots&a_{n,n}\end{pNiceMatrix}.\]
+矩阵$A$由双线性型$L$唯一确定。
 
-\subsection{1.2. $\RR^n$ 上的二次型}
+\subsection{\texorpdfstring{$\mathbb{R}^n$}{R\^{}n}上的二次型}
 
-\textbf{二次型}\index{ercixing@二次型}(quadratic form)有几种等价的定义。
+二次型有几种等价的定义。\index{二次型（quadratic form）}
 
-可以认为二次型是双线性型 $L$ 的“对角线”，即任何二次型 $Q$ 由 $Q[\xx] = L(\xx, \xx) = (A\xx, \xx)$ 定义。
+一种是，$\mathbb{R}^n$上的二次型是双线性型$L$的“{\bf 对角线}”，即任意二次型$Q$都定义为$Q[\mathbf{x}]=L(\mathbf{x},\mathbf{x})=(A\mathbf{x},\mathbf{x})$。
 
-另一种更代数的方式是，二次型是一个\textbf{二次齐次多项式}，即 $Q[\xx]$ 是一个关于 $n$ 个变量 $x_1, x_2, \dots, x_n$ 的多项式，只包含二次项。这意味着只允许出现 $ax_k^2$ 和 $cx_j x_k$ 形式的项。
+另一种更“代数”的定义是，二次型是{\bf 二次齐次多项式}，即$Q[\mathbf{x}]$是关于$n$个变量$x_1,x_2,\dots,x_n$的多项式，且其中只含有二次项。这意味着其中只含形如$ax_k^2$和$cx_jx_k$的项。
 
-可以将二次型 $Q[\xx]$ 写成 $Q[\xx] = (A\xx, \xx)$ 的方式有很多（事实上有无限多种）。例如，二次型 $Q[\xx] = x_1^2 + x_2^2 - 4x_1x_2$ 在 $\RR^2$ 上可以表示为 $(A\xx, \xx)$，其中 $A$ 可以是以下任何一个矩阵：
-$$\begin{pmatrix} 1 & -4 \\ 0 & 1 \end{pmatrix}, \quad \begin{pmatrix} 1 & 0 \\ -4 & 1 \end{pmatrix}, \quad \begin{pmatrix} 1 & -2 \\ -2 & 1 \end{pmatrix}.$$
-事实上，任何形式为 $$\begin{pmatrix} 1 & a \\ -4-a & 1 \end{pmatrix}$$
-的矩阵都可以。
+要将二次型$Q[\mathbf{x}]$写为$Q[\mathbf{x}]=(A\mathbf{x},\mathbf{x})$的形式，有很多方法（事实上有无穷多种方法）。例如，要将$\mathbb{R}^2$上的二次型$Q[\mathbf{x}]=x_1^2+x_2^2-4x_1x_2$表示为$(A\mathbf{x},\mathbf{x})$，则$A$可为下列矩阵之一
+\[\begin{pNiceMatrix}[margin]1&-4\\0&1\end{pNiceMatrix},\quad\begin{pNiceMatrix}[margin]1&0\\-4&1\end{pNiceMatrix},\quad\begin{pNiceMatrix}[margin]1&-2\\-2&1\end{pNiceMatrix}.\]
+事实上，任意形式如下的矩阵$A$都可以。
+\[\begin{pNiceMatrix}[margin]1&a-4\\-a&1\end{pNiceMatrix}\]
+但若要求矩阵$A$是对称的，那么$A$就是唯一的：
+\begin{center}
+    \fbox{\parbox{0.8\linewidth}{$\mathbb{R}^n$上的任意二次型$Q[\mathbf{x}]$可唯一表示为$Q[\mathbf{x}]=(A\mathbf{x},\mathbf{x})$，其中$A$是（实）对称矩阵。}}
+\end{center}
 
-但是，如果我们要求矩阵 $A$ 是对称的，那么这样的矩阵是唯一的：
+例如，对于$\mathbb{R}^3$上的二次型\[Q[\mathbf{x}]=x_1^2+3x_2^2+5x_3^2+4x_1x_2-16x_1x_3+7x_2x_3\]
+对应的对称矩阵$A$是
+\[\begin{pNiceMatrix}[margin]1&2&-8\\2&3&3.5\\-8&3.5&5\end{pNiceMatrix}.\]
 
-\fbox{\begin{minipage}{0.9\textwidth}
-$\RR^n$ 上的任何二次型 $Q[\xx]$ 都存在唯一的表示 $Q[\xx] = (A\xx, \xx)$，其中 $A$ 是一个（实）对称矩阵。
-\end{minipage}}
+\subsection{\texorpdfstring{$\mathbb{C}^n$}{C\^{}n}上的二次型}
 
-例如，对于二次型 
-$$Q[\xx] = x_1^2 + 3x_2^2 + 5x_3^2 + 4x_1x_2 - 16x_1x_3 + 7x_2x_3$$
-在 $\RR^3$ 上，对应的对称矩阵 $A$ 是
-$$A = \begin{pmatrix} 1 & 2 & -8 \\ 2 & 3 & 3.5 \\ -8 & 3.5 & 5 \end{pmatrix}.$$
+还可以定义$\mathbb{C}^n$（乃至任意复内积空间）上的{\bf 二次型}，只需取自伴变换$A=A^*$，并定义$Q$为$Q[\mathbf{x}]=(A\mathbf{x},\mathbf{x})$。尽管我们主要举$\mathbb{R}^n$上的例子，但所有定理对于$\mathbb{C}^n$的情况也是成立的。做好这个心理准备后，我们总用$A^*$而不用$A^T$。
 
-\subsection{1.3. $\CC^n$ 上的二次型}
+复数情形与实数情形的本质区别仅在于，如果二次型是实的，那么对应的矩阵一定是埃尔米特（自伴）的，我们没有选择的余地。
 
-也可以在 $\CC^n$（或任何复内积空间）上定义一个\textbf{二次型}，通过取一个自伴算子 $A = A^*$，并定义 $Q$ 为 $Q[\xx] = (A\xx, \xx)$.~虽然后面大多数例子都在 $\RR^n$上，但所有定理在 $\CC^n$ 上也成立。考虑到这一点，我们将始终使用 $A^*$ 而不是 $A^T$.~
+注意到，如果$A=A^*$，那么
+\[(A\mathbf{x},\mathbf{x})=(\mathbf{x},A^*\mathbf{x})=(\mathbf{x},A\mathbf{x})=\overline{(A\mathbf{x},\mathbf{x})},\]
+所以$(A\mathbf{x},\mathbf{x})\in\mathbb{R}$。
 
-与实数情况的唯一本质区别是，在复数情况下我们没有选择的自由：如果要求二次型中的项均为实数，则对应的矩阵必须是埃尔米特的（自伴随的）。
+逆命题也是成立的。
 
-注意到如果 $A = A^*$，那么 $$(A\xx, \xx) = (\xx, A^*\xx) = (\xx, A\xx) = \overline{(A\xx, \xx)},$$
-所以 $(A\xx, \xx) \in \RR$.~
+\begin{lemma}\label{lem:real_quad_self_adjoint}
+    令$(A\mathbf{x},\mathbf{x})$对所有$\mathbf{x}\in\mathbb{C}^n$都是实数。那么$A=A^*$。
+\end{lemma}
 
-其逆命题也成立。
+我们将证明留给读者作为习题，见下习题 \ref{ex:7_1_4}。
 
-\begin{lemma}[\normalfont\heiti 引理 1.1\nopunct] 
-设 $(A\xx, \xx)$ 对所有 $\xx \in \CC^n$ 都是实数。那么 $A = A^*$.~\end{lemma}
+引理 \ref{lem:real_quad_self_adjoint} 的一种可行证法是利用极化恒等式的如下变种。
 
-我们把证明留给读者作为练习，见下面的问题 1.4。
+\begin{lemma}\label{lem:polarization_eq_operator}
+    令$A$是内积空间$X$上的算子。
+    \begin{enumerate}
+        \item 若$X$是复向量空间，那么对所有$\mathbf{x},\mathbf{y}\in X$，
+        \[(A\mathbf{x},\mathbf{y})=\frac{1}{4}\sum_{\alpha\in\mathbb{C}:\alpha^4=1}\alpha(A(\mathbf{x}+\alpha\mathbf{y}),\mathbf{x}+\alpha\mathbf{y}).\]
+        \item 若$X$是实向量空间且$A=A^*$，那么对所有$\mathbf{x},\mathbf{y}\in X$，
+        \[(A\mathbf{x},\mathbf{y})=\frac{1}{4}\left[(A(\mathbf{x}+\mathbf{y}),\mathbf{x}+\mathbf{y})-(A(\mathbf{x}-\mathbf{y}),\mathbf{x}-\mathbf{y})\right].\]
+    \end{enumerate}
+\end{lemma}
 
-证明引理 1.1 的一种可能方法是使用下面版本的极化恒等式。
+引理 \ref{lem:polarization_eq_operator} 的证明见第 \ref{chap:InnerProduct} 章的习题 \ref{ex:5_6_3}。
 
-\begin{lemma}[\normalfont\heiti 引理 1.2\nopunct] 
-设 $A$ 是内积空间 $X$ 中的一个算子。
+\begin{problemset}
+    \item 求出$\mathbb{R}^3$上的如下双线性型$L$的矩阵。
+    \begin{align*}
+        L(\mathbf{x},\mathbf{y})=x_1y_1&+2x_1y_2+14x_1y_3-5x_2y_1+2x_2y_2\\
+        &-3x_2y_3+8x_3y_1+19x_3y_2-2x_3y_3.
+    \end{align*}
+    \item 定义$\mathbb{R}^2$上的双线性$L$为\[L(\mathbf{x},\mathbf{y})=\det[\mathbf{x},\mathbf{y}],\]
+    即，要计算$L(\mathbf{x},\mathbf{y})$，构造各列为$\mathbf{x},\mathbf{y}$的$2\times 2$矩阵并计算其行列式。求$L$的矩阵。
+    \item 求出$\mathbb{R}^3$上的如下二次型$Q$的矩阵
+    \[Q[\mathbf{x}]=x_1^2+2x_1x_2-3x_1x_3-9x_2^2+6x_2x_3+13x_3^2.\]
+    \item \label{ex:7_1_4} 证明上述引理 \ref{lem:real_quad_self_adjoint}。
 
-1. 如果 $X$ 是一个复空间，则对于任意 $\xx, \yy \in X$，
-$$(A\xx, \yy) = \frac{1}{4} \sum_{\alpha \in \CC : \alpha^4=1} \alpha(A(\xx + \alpha \yy), \xx + \alpha \yy).$$
+    {\bf 提示}：利用极化恒等式（见引理 \ref{lem:polarization_eq_operator}）。或者，你可以考虑表达式$(A(\mathbf{x}+z\mathbf{y}),\mathbf{x}+z\mathbf{y})$，证明如果它对所有$z\in\mathbb{C}$都是实数，则$(A\mathbf{x},\mathbf{y})={\overline{(\mathbf{y},A^{*}\mathbf{x})}}$。
+\end{problemset}
 
-2. 如果 $X$ 是一个实空间且 $A = A^*$，则对于任意 $\xx, \yy \in X$，
-$$(A\xx, \yy) = \frac{1}{4} [(A(\xx + \yy), \xx + \yy) - (A(\xx - \yy), \xx - \yy)].$$\end{lemma}
+\section{二次型的对角化}
 
-引理 1.2 的证明请参见上面第五章的练习 6.3。
+你之前可能已经与二次型相识了——在你学习平面二次曲线的时候。你甚至可能还学过$\mathbb{R}^3$上的二次曲面。
 
-\begin{exer} {\heiti 练习}~~
+我们要给出这些对象的通用分类方法。假设给定$\mathbb{R}^n$中由$Q[\mathbf{x}]=1$定义的集合，其中$Q$是二次型。如果$Q$具有简单的形式，比如对应的矩阵是对角的，也即$Q[\mathbf{x}]=a_{1}x_{1}^{2}+a_{2}x_{2}^{2}+\ldots+a_{n}x_{n}^{2}$，那么我们就很容易将这个集合可视化（尤其是在$n=2,3$的情况）。在更高维的情况中，即便无法可视化，也可以借此理解该集合的结构。
 
-1.1. 求 $\RR^3$ 上双线性型 $L$ 的矩阵，其中 $$L(\xx, \yy) = x_1y_1 + 2x_1y_2 + 14x_1y_3 - 5x_2y_1 + 2x_2y_2 - 3x_2y_3 + 8x_3y_1 + 19x_3y_2 - 2x_3y_3.$$
+因此，如果给定一个一般的且复杂的二次型，我们希望尽可能地简化它，比如将它对角化。通常的做法，就是变量代换。
 
-1.2. 通过 $$L(\xx, \yy) = \det[\xx, \yy]$$ 在 $\RR^2$ 上定义双线性型 $L$（即，计算 $L(\xx, \yy)$ 时，我们构造一个以 $\xx, \yy$ 为列的 $2 \times 2$ 矩阵并计算其行列式）。
-\\
-求 $L$ 的矩阵。
+\subsection{正交对角化}
 
-1.3. 求 $\RR^3$ 上二次型 $Q$ 的矩阵，其中 $$Q[\xx] = x_1^2 + 2x_1x_2 - 3x_1x_3 - 9x_2^2 + 6x_2x_3 + 13x_3^2.$$
+设有$\mathbb{F}^n$（$\mathbb{F}$为$\mathbb{R}$或$\mathbb{C}$）上的二次型为$Q[\mathbf{x}]=(A\mathbf{x},\mathbf{x})$。引入新的坐标$\mathbf{y}=(y_{1},y_{2},\ldots,y_{n})^{T}\in\mathbb{F}^n$，且有$\mathbf{y}=S^{-1}\mathbf{x}$，其中$S$是可逆的$n\times n$矩阵，因此$\mathbf{x}=S\mathbf{y}$。
 
-1.4. 证明上面的引理 1.1。
-\\
-{\heiti 提示}：考虑表达式 $(A(\xx + z\yy), \xx + z\yy)$，并证明如果它对所有 $z \in \CC$ 都是实数，那么 $(A\xx, \yy) = \overline{(\yy, A^*\xx)}$.~\end{exer}
+那么\[Q[\mathbf{x}]=Q[S\mathbf{y}]=(AS\mathbf{y},S\mathbf{y})=(S^*AS\mathbf{y},\mathbf{y}),\]
+因此在新变量$\mathbf{y}$下，二次型的矩阵是$S^*AS$。
 
-\section{2. 二次型的对角化}
+因此，我们想求出可逆矩阵$S$，使得$S^*AS$是对角矩阵。注意，这不同于我们之前做过的对角化——将矩阵$A$表示为$A=SDS^{-1}$，从而$D=S^{-1}AS$是对角矩阵。然而，对于幺正矩阵$U$，有$U^*=U^{-1}$，并且我们可以将对称矩阵正交对角化。因此我们可以对二次型应用我们之前学过的正交对角化。
 
-你可能之前在研究平面上的二次曲线时就遇到过二次型。也许你甚至研究过 $\RR^3$ 中的二次曲面。
+也就是说，可以将矩阵$A$表示为$A=UDU^*=UDU^{-1}$。回忆一下，$D$是对角矩阵，且对角线上是$A$的特征值，而$U$是由特征向量构成的矩阵（我们需要选取由特征向量构成的正交基）。于是$D=U^*AU$，因此在变量$\mathbf{y}=U^{-1}\mathbf{x}$下，二次型具有对角矩阵。
 
-我们想为这些对象的分类提供一个统一的方法。假设我们有一个在 $\RR^n$ 中的集合，由方程 $Q[\xx] = 1$ 定义，其中 $Q$ 是某个二次型。
-如果 $Q$ 具有某种简单的形式，例如，如果其对应的矩阵是对角矩阵，即如果 $Q[\xx] = a_1x_1^2 + a_2x_2^2 + \dots + a_nx_n^2$，那么我们可以很容易地可视化这个集合，特别是当 $n=2, 3$ 时。在更高的维度中，即使不能可视化，也能很好地理解集合的结构。
+现在来分析正交对角化的几何含义。幺正矩阵$U$的各列$\mathbf{u}_{1},$\linebreak $\mathbf{u}_{2},\ldots,\mathbf{u}_{n}$形成$\mathbb{F}^n$的规范正交基，记其为$\mathcal{B}$。从该基到标准基的坐标变换矩阵$[I]_\mathcal{S,B}$恰为$U$。我们知道$\mathbf{y}=(y_{1},y_{2},\ldots,y_{n})^{T}=U^{-1}\mathbf{x}$，因此各坐标$y_{1},y_{2},\ldots,y_{n}$可解释成向量$\mathbf{x}$在新基$\mathbf{u}_{1},\mathbf{u}_{2},\ldots,\mathbf{u}_{n}$下的坐标。
 
-因此，如果我们给定一个一般、复杂的二次型，我们总想尽可能地简化它，例如，使其对角化。
-实现这一目标的标准方法是变量替换。
+因此，正交对角化使我们得以很好地将集合$Q[\mathbf{x}]=1$（或与之类似的集合）可视化——只要能将矩阵为对角的二次型可视化即可。
 
-\subsection{2.1. 正交（相似）对角化}
+\begin{example*}
+    考虑双变量二次型（即$\mathbb{R}^2$上的二次型）$Q(x,y)=2x^{2}+2y^{2}+2xy$。现在描述满足$Q(x,y)=1$的点$(x,y)^T\in\mathbb{R}^2$构成的集合。
 
-\index{zhengjiaoxiangsiduijiaohua@正交（相似）对角化}设我们有一个在 $\FF^n$（$\FF$ 是 $\RR$ 或 $\CC$）中的二次型 $Q[\xx] = (A\xx, \xx)$.~引入新的变量 $\yy = (y_1, y_2, \dots, y_n)^T \in \FF^n$，其中 $\yy = S^{-1}\xx$，这里 $S$ 是某个可逆的 $n \times n$ 矩阵，所以 $\xx = S\yy$.~
+    $Q$的矩阵是\[A=\begin{pNiceMatrix}[margin]2&1\\1&2\end{pNiceMatrix}.\]
+    正交对角化该矩阵，可将其表示为\[A=U\begin{pNiceMatrix}[margin]3&0\\0&1\end{pNiceMatrix}U^*,\quad\text{其中}\quad U=\frac{1}{\sqrt{2}}\begin{pNiceMatrix}[margin]1&-1\\1&1\end{pNiceMatrix},\]
+    或等价地写为\[U^*AU=\begin{pNiceMatrix}[margin]3&0\\0&1\end{pNiceMatrix}=:D.\]
+    集合$\{\mathbf{y}:(D\mathbf{y},\mathbf{y})=1\}$是椭圆，半长轴为$1/\sqrt3$和$1$。因此集合$\{\mathbf{x}\in\mathbb{R}^2:(A\mathbf{x},\mathbf{x})=1\}$是相同的椭圆，只不过是在基$(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}})^{T},(-\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}})^{T}$下；或等价地说，相同的椭圆，只不过旋转了$\pi/4$。
+\end{example*}
 
-那么，
-$$Q[\xx] = Q[S\yy] = (AS\yy, S\yy) = (S^*AS\yy, \yy).$$
-所以，在新变量 $\yy$ 下，二次型具有矩阵 $S^*AS$.~
+\subsection{非正交对角化}\label{subsec:diag_row_column_operation}
 
-因此，我们想找到一个可逆矩阵 $S$，使得矩阵 $S^*AS$ 是对角矩阵。
-注意，这与我们之前讨论的矩阵对角化是不同的：我们试图将矩阵 $A$ 表示为 $A = SDS^{-1}$，所以对角矩阵 $D = S^{-1}AS$.~然而，对于酉矩阵 $U$，我们有 $U^* = U^{-1}$，我们可以正交对角化对称矩阵。因此，我们可以将之前研究的\textbf{正交对角化}应用于二次型。
+正交对角化涉及计算特征值和特征向量，因此，$n$很大时，不借助计算机可能难以完成。另一方面，非正交对角化，即求出可逆的$S$（不要求$S^{-1}=S^*$）使得$D=S^*AS$是对角矩阵，要更容易计算，并且只通过代数运算（加减乘除）就能完成。
 
-具体来说，我们可以将矩阵 $A$ 表示为 $A = UDU^* = UDU^{-1}$.~回想一下，$D$ 是一个对角矩阵，对角线上的项是 $A$ 的特征值，而 $U$ 是特征向量构成的矩阵（我们需要选择一组正交的特征向量基）。那么 $D = U^*AU$，所以在新变量 $\yy = U^{-1}\xx$ 下，二次型具有对角矩阵。
+下面我们呈现两种最常用的非正交对角化方法。
 
-让我们分析一下正交对角化的几何意义。酉矩阵 $U$ 的列 $\uu_1, \uu_2, \dots, \uu_n$ 构成了 $\FF^n$ 中的一组标准正交基，称之为基 $\B$.~从这组基到标准基的坐标变换矩阵 $[I]_{\SSS,\B}$ 正好是 $U$.~我们知道 $\yy = (y_1, y_2, \dots, y_n)^T = U^{-1}\xx$，所以坐标 $y_1, y_2, \dots, y_n$ 可以解释为向量 $\xx$ 在新基 $\uu_1, \uu_2, \dots, \uu_n$ 下的坐标。
+\subsubsection{通过配方法对角化}
 
-因此，正交对角化可以让我们非常清晰地可视化集合 $Q[\xx] = 1$，或者类似的集合，只要我们能对对角矩阵可视化。
+第一种方法基于配方。我们将举实二次型（$\mathbb{R}^n$上的二次型）作为示例。经过简单的修改，这一方法可用于复数情形，不过此处不做讨论。如有必要，感兴趣的读者可以自行修改。
 
-{\heiti 例子}~~
-考虑一个二次变量的二次型（即 $\RR^2$ 上的二次型），$Q(x, y) = 2x^2 + 2y^2 + 2xy$.~让我们描述满足 $Q(x, y) = 1$ 的点 $(x, y)^T \in \RR^2$ 的集合。
+再次考虑双变量二次型$Q[\mathbf{x}]=2x_1^{2}+2x_1x_2+2x_2^{2}$（和上面例子中的二次型是一样的，只不过变量记作$x_1,x_2$而不是$x,y$）。由于
+\[2\left(x_1+\frac{1}{2}x_2\right)^2=2\left(x_1^2+2x_1\frac{1}{2}x_2+\frac{1}{4}x_2^2\right)=2x_1^2+2x_1x_2+\frac{1}{2}x_2^2\]
+（注意，前两项与$Q$的前两项相同），所以我们有
+\[2x_1^2+2x_1x_2+2x_2^2=2\left(x_1+\frac{1}{2}x_2\right)^2+\frac{3}{2}x_2^2=2y_1^2+\frac{3}{2}y_2^2,\]
+其中$y_1=x_1+\frac12 x_2$且$y_2=x_2$。
 
-$Q$ 的矩阵是
-$$A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}.$$
-对该矩阵进行正交对角化，我们可以将其表示为
-$$A = U \begin{pmatrix} 3 & 0 \\ 0 & 1 \end{pmatrix} U^*,\quad\text{其中}\quad U = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & -1 \\ 1 & 1 \end{pmatrix},$$
-或者等价地 $$U^*AU = \begin{pmatrix} 3 & 0 \\ 0 & 1 \end{pmatrix} =: D.$$
-集合 $\{\yy : (D\yy, \yy) = 1\}$ 是半轴为 $1/\sqrt{3}$ 和 $1$ 的椭圆。因此，集合 $\{\xx \in \RR^2 : (A\xx, \xx) = 1\}$ 和它是同一个椭圆，只是在新基 $(\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}})^T$, $(-\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}})^T$ 下，或者说，前者只是同一个椭圆被旋转了 $\pi/4$ 。
+同样的方法可用于含超过$2$个变量的二次型。例如，考虑$\mathbb{R}^3$上的二次型
+\[Q[\mathbf{x}]=x_1^2-6x_1x_2+4x_1x_3-6x_2x_3+8x_2^2-3x_3^2.\]
+考虑所有包含第一个变量$x_1$的项（在本例中是前三项），我们选出一个完全平方（或其倍数）使其恰好包含这几项（可能多出几项）。
 
-\subsection{2.2. 非正交对角化}
+由于
+\[(x_1-3x_2+2x_3)^2=x_1^2-6x_1x_2+4x_1x_3-12x_2x_3+9x_2^2+4x_3^2\]
+所以可重写该二次型为
+\[(x_{1}-3x_{2}+2x_{3})^{2}-x_{2}^{2}+6x_{2}x_{3}-7x_{3}^{2}.\]
+注意，表达式$-x_{2}^{2}+6x_{2}x_{3}-7x_{3}^{2}$只包含变量$x_2$和$x_3$。因为
+\[-(x_2-3x_3)^2=-(x_2^2-6x_2x_3+9x_3^2)=-x_2^2+6x_2x_3-9x_3^2\]
+所以有\[-x_2^2+6x_2x_3-7x_3^2=-\left(x_2-3x_3\right)^2+2x_3^2.\]
+于是二次型$Q$可写成\[Q[\mathbf{x}]=(x_1-3x_2+2x_3)^2-(x_2-3x_3)^2+2x_3^2=y_1^2-y_2^2+2y_3^2\]
+其中\[y_1=x_1-3x_2+2x_3,\quad y_2=x_2-3x_3,\quad y_3=x_3.\]
 
-正交对角化涉及到计算特征值和特征向量，所以对于大的 $n$ 可能难以用计算机完成。另一方面，非正交对角化，即找到一个可逆矩阵 $S$（不要求 $S^{-1} = S^*$）使得 $D = S^*AS$ 是对角矩阵，这计算起来就要容易得多，并且只需要代数运算（加、减、乘、除）。
-
-下面我们介绍两种最常用的非正交对角化方法。
-
-\subsubsection{2.2.1. 通过配方法对角化}
-
-第一种方法基于配方法。我们将以实二次型（$\RR^n$ 上的二次型）为例来说明这种方法。经过简单的修改，这种方法也可以用于复数情况，但我们在此不作讨论。如有必要，感兴趣的读者应能自行进行适当的修改。
-
-再次考虑一个二次变量的二次型，$Q[\xx] = 2x_1^2 + 2x_1x_2 + 2x_2^2$（与上面例子中的二次型相同，只是这里我们称变量为 $x_1, x_2$ 而不是 $x, y$）。
-由于 
-$$2(x_1 + \frac{1}{2}x_2)^2 = 2(x_1^2 + 2x_1 \frac{1}{2}x_2 + \frac{1}{4}x_2^2) = 2x_1^2 + 2x_1x_2 + \frac{1}{2}x_2^2$$（注意，前两项与 $Q$ 的前两项相同），我们得到
-$$2x_1^2 + 2x_1x_2 + 2x_2^2 = 2(x_1 + \frac{1}{2}x_2)^2 + \frac{3}{2}x_2^2 = 2y_1^2 + \frac{3}{2}y_2^2,$$
-其中 $y_1 = x_1 + \frac{1}{2}x_2$ ， $y_2 = x_2$.~
-
-同样的方法可以应用于多于两个变量的二次型。例如，考虑 $\RR^3$ 中的二次型 $Q[\xx]$：
-$$Q[\xx] = x_1^2 - 6x_1x_2 + 4x_1x_3 - 6x_2x_3 + 8x_2^2 - 3x_3^2.$$
-考虑所有涉及第一个变量 $x_1$ 的项（本例中为前三项），我们提取一个包含这些项（加上其他项）的完全平方或其倍数。
-
-由于 $$(x_1 - 3x_2 + 2x_3)^2 = x_1^2 - 6x_1x_2 + 4x_1x_3 - 12x_2x_3 + 9x_2^2 + 4x_3^2,$$
-我们可以将二次型重写为
-$$(x_1 - 3x_2 + 2x_3)^2 - x_2^2 + 6x_2x_3 - 7x_3^2.$$
-注意，表达式 $-x_2^2 + 6x_2x_3 - 7x_3^2$ 只包含变量 $x_2$ 和 $x_3$.~
-由于 
-$$-(x_2 - 3x_3)^2 = -(x_2^2 - 6x_2x_3 + 9x_3^2) = -x_2^2 + 6x_2x_3 - 9x_3^2,$$
-我们有
-$$-x_2^2 + 6x_2x_3 - 7x_3^2 = -(x_2 - 3x_3)^2 + 2x_3^2.$$
-因此，我们可以将二次型 $Q$ 写成
-$$Q[\xx] = (x_1 - 3x_2 + 2x_3)^2 - (x_2 - 3x_3)^2 + 2x_3^2 = y_1^2 - y_2^2 + 2y_3^2,$$
-其中 $$y_1 = x_1 - 3x_2 + 2x_3,\quad y_2 = x_2 - 3x_3,\quad y_3 = x_3.$$
-
-最后，让我们来解决一个细心的读者可能已经提出的问题：如果我们某个时候得到了两个变量的乘积，但没有相应的平方项，这时该怎么办？例如，如何对角化形式 $x_1x_2$？答案直接来自恒等式
-$$(2.1)\quad 4x_1x_2 = (x_1 + x_2)^2 - (x_1 - x_2)^2,$$
-这给出了表示
-$$Q[\xx] = y_1^2 - y_2^2,\quad y_1 = (x_1 + x_2)/2,~y_2 = (x_1 - x_2)/2.$$
-
-\subsubsection{2.2.2. 使用行/列运算进行对角化}
-
-还有另一种对二次型进行非正交对角化的方法。其思想是对二次型的矩阵 $A$ 进行行运算。与高斯-若尔当消元法的区别在于，在每次行运算后，我们需要执行相同的列运算，原因是我们想得到对角矩阵 $S^*AS$.~
-
-我们以一个例子来说明这个方法是如何进行的。假设我们要对角化矩阵
-$$A = \begin{pmatrix} 1 & -1 & 3 \\ -1 & 2 & 1 \\ 3 & 1 & 1 \end{pmatrix}$$
-的二次型。我们将矩阵 $A$ 与单位矩阵进行拼接，并对增广矩阵 $(A | I)$ 执行行/列运算。在每次行运算后，我们必须对矩阵 $A$ 执行相同的列运算。
-\begin{equation} \notag
-\begin{split}
-\left(\begin{array}{ccc|ccc} 1 & -1 & 3 & 1 & 0 & 0 \\ -1 & 2 & 1 & 0 & 1 & 0 \\ 3 & 1 & 1 & 0 & 0 & 1 \end{array}\right) \xrightarrow{R_2+R_1} 
-&\ \left(\begin{array}{ccc|ccc} 1 & -1 & 3 & 1 & 0 & 0 \\ 0 & 1 & 4 & 1 & 1 & 0 \\ 3 & 1 & 1 & 0 & 0 & 1 \end{array}\right) \xrightarrow{C_2+C_1} \\
-\left(\begin{array}{ccc|ccc} 1 & 0 & 3 & 1 & 0 & 0 \\ 0 & 1 & 4 & 1 & 1 & 0 \\ 3 & 4 & 1 & 0 & 0 & 1 \end{array}\right) \xrightarrow{R_3-3R_1} 
-&\ \left(\begin{array}{ccc|ccc} 1 & 0 & 3 & 1 & 0 & 0 \\ 0 & 1 & 4 & 1 & 1 & 0 \\ 0 & 4 & -8 & -3 & 0 & 1 \end{array}\right) \xrightarrow{C_3-3C_1}\\
-\left(\begin{array}{ccc|ccc} 1 & 0 & 0 & 1 & 0 & 0 \\ 0 & 1 & 4 & 1 & 1 & 0 \\ 0 & 4 & -8 & -3 & 0 & 1 \end{array}\right) \xrightarrow{R_3-4R_2}
-&\ \left(\begin{array}{ccc|ccc} 1 & 0 & 0 & 1 & 0 & 0 \\ 0 & 1 & 4 & 1 & 1 & 0 \\ 0 & 0 & -24 & -7 & -4 & 1 \end{array} \right)\xrightarrow{C_3-4C_2}\\
-\left(\begin{array}{ccc|ccc} 1 & 0 & 0 & 1 & 0 & 0 \\ 0 & 1 & 0 & 1 & 1 & 0 \\ 0 & 0 & -24 & -7 & -4 & 1 \end{array}\right)
-\end{split}\end{equation}
-注意，我们只对增广矩阵的左侧执行列运算。
-
-我们得到左侧的对角矩阵 $D$，右侧的矩阵 $S^*$，所以 $D = S^*AS$.~
-$$\begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -24 \end{pmatrix} = 
-\begin{pmatrix} 1 & 0 & 0 \\ 1 & 1 & 0 \\ -7 & -4 & 1 \end{pmatrix}
-\begin{pmatrix} 1 & -1 & 3 \\ -1 & 2 & 1 \\ 3 & 1 & 1 \end{pmatrix}
-\begin{pmatrix} 1 & 1 & 7 \\ 0 & 1 & -4 \\ 0 & 0 & 1 \end{pmatrix}.
-$$
-让我解释一下这个方法为何有效。行运算是通过左乘一个初等矩阵实现的。对应的列运算是通过右乘其转置的初等矩阵实现的。因此，执行行运算 $E_1, E_2, \dots, E_N$ 和相同的列运算，我们将矩阵 $A$ 转换为
-$$(2.2)\quad E_N \dots E_2 E_1 A E_1^* E_2^* \dots E_N^* = EAE^*.$$
-至于右侧的单位矩阵，我们只对其执行了行运算，所以单位矩阵变为
-$$E_N \dots E_2 E_1 I = EI = E.$$
-如果我们现在设 $E^* = S$，则我们得到 $S^*AS$ 是一个对角矩阵，而矩阵 $E = S^*$ 是变换后的增广矩阵的右半部分。
-
-在上面的例子中，我们很幸运，因为我们不需要交换两行。行交换这个操作稍微棘手一些。如果你知道该怎么做，它会很简单，但你可能很难猜到正确的行运算。例如，考虑一个矩阵为
-$$A = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$$
-的二次型。如果我们想通过行和列运算来对角化它，最简单的想法是交换第 1 行和第 2 行。但我们也必须执行相同的列运算，即交换第 1 列和第 2 列，所以我们会得到相同的矩阵。因此，我们需要一些更不寻常的操作。例如，恒等式（2.1）可以用来对角化这个二次型。
-
-然而，一个更简单的想法也奏效：使用行运算来得到对角线上的非零项！例如，如果我们开始使 $a_{1,1}$ 非零，下面的连续行（及相应的列）运算是一种可能的选择：
-\begin{equation}
-\notag
-\begin{split}
-\left(\begin{array}{cc|cc} 0 & 1 & 1 & 0 \\ 1 & 0 & 0 & 1 \end{array}\right) \xrightarrow{R_1+ \frac{1}{2}R_2}
-&\ \left(\begin{array}{cc|cc} 1/2 & 1 & 1 & 1/2 \\ 1 & 0 & 0 & 1 \end{array}\right) \xrightarrow{C_1+ \frac{1}{2}C_2} \\
-\left(\begin{array}{cc|cc} 1 & 1 & 1 & 1/2 \\ 1 & 0 & 0 & 1 \end{array}\right) \xrightarrow{R_2-R_1}
-&\ \left(\begin{array}{cc|cc} 1 & 1 & 1 & 1/2 \\ 0 & -1 & -1 & 1/2 \end{array}\right)\xrightarrow{C_2-C_1}\\
-\left(\begin{array}{cc|cc} 1 & 0 & 1 & 1/2 \\ 0 & -1 & -1 & 1/2 \end{array}\right)
-\end{split}
+最后，还要解决一个问题——细心的读者可能发现：当表达式中有两个变量的乘积而没有对应的平方怎么办？比如，如何对角化$x_1x_2$？答案可由下述恒等式直接得出：
+\begin{equation}\label{no_square_decomp}
+    4x_1x_2=(x_1+x_2)^2-(x_1-x_2)^2,
 \end{equation}
+因为由此可将二次型表示为
+\[Q[\mathbf{x}]=y_1^2-y_2^2,\quad y_1=(x_1+x_2)/2,y_2=(x_1-x_2)/2.\]
 
+\subsubsection{用行/列变换对角化}
 
-{\heiti 注记}~~
-非正交对角化在一组非正交基下提供了对集合 $Q[\xx] = 1$ 的简单描述。它比正交对角化给出的表示更难可视化。然而，如果我们不关心细节，例如，如果我们只需要知道该集合是否为椭圆（或双曲面等），那么非正交对角化是获得答案的更简单方法。
+还有一种对二次型做非正交对角化的方法。它的思路是对二次型的矩阵$A$做行变换。与行化简（高斯-若当消元法）的区别在于，在每次行变换后，我们还需要做相同的列变换，因为我们是要让$S^*AS$成为对角矩阵。
 
-{\heiti 注记 2.1}~~
-对于复数二次型（即形式为 $(A\xx, \xx)$, $A = A^*$），非正交对角化与实数情况的处理方式相同，唯一的区别是相应的“列运算”具有共轭复数系数。
+我们用一个例子来解释。假设我们想对角化的二次型具有矩阵\[A=\begin{pNiceMatrix}[margin]1&-1&3\\-1&2&1\\3&1&1\end{pNiceMatrix}.\]
+我们向矩阵$A$附上恒等矩阵，并对增广矩阵$(A|I)$做行/列变换。在每次行变换后，我们都需要对矩阵$A$做相同的列变换\footnote{对复埃尔米特矩阵，在每次行变换后，我们做的是对应的列变换的共轭，见下注 \ref{remark:conjugate_of_row_operation}。}。由此可得
+\begin{align*}
+    &\begin{pNiceArray}{rrr|rrr}[margin,last-col]
+  1&-1&3&1&0&0\\
+  -1&2&1&0&1&0&+R_1\\
+  3&1&1&0&0&1
+\end{pNiceArray}  &&\sim \left(
+  \begin{array}{rrr|rrr}
+      1&-1&3&1&0&0\\
+      0&1&4&1&1&0\\
+      3&1&1&0&0&1
+    \end{array}
+  \right)\sim\\
+    &\begin{pNiceArray}{rrr|rrr}[margin,last-col]
+  1&0&3&1&0&0\\
+  0&1&4&1&1&0\\
+  3&4&1&0&0&1&-3R_1
+\end{pNiceArray}  &&\sim \left(
+  \begin{array}{rrr|rrr}
+      1&0&3&1&0&0\\
+      0&1&4&1&1&0\\
+      0&4&-8&-3&0&1
+    \end{array}
+  \right)\sim\\
+  &\begin{pNiceArray}{rrr|rrr}[margin,last-col]
+  1&0&0&1&0&0\\
+    0&1&4&1&1&0\\
+    0&4&-8&-3&0&1&-4R_2
+\end{pNiceArray}  &&\sim \left(
+  \begin{array}{rrr|rrr}
+      {1}&{0}&{0}&{1}&{0}&{0}\\
+      {0}&{1}&{4}&{1}&{1}&{0}\\
+      {0}&{0}&{-24}&{-7}&{-4}&{1}
+    \end{array}
+  \right)\sim\\
+  &\left(\begin{array}{rrr|rrr}
+  1&0&0&1&0&0\\0&1&0&1&1&0\\0&0&-24&-7&-4&1
+  \end{array}\right).&&
+\end{align*}
+注意，列变换只对扩展后矩阵的左侧进行。
 
-原因是，如果一个行运算是通过左乘一个初等矩阵 $E_k$ 给出的，那么相应的列运算则是通过右乘 $E_k^*$ 给出的，见（2.2）。
+上式左边是对角矩阵$D$，右侧是矩阵$S^*$，因此$D=S^*AS$，
+\[\begin{pNiceMatrix}[margin]1&0&0\\0&1&0\\0&0&-24\end{pNiceMatrix}=\begin{pNiceMatrix}[margin]1&0&0\\1&1&0\\-7&-4&1\end{pNiceMatrix}\begin{pNiceMatrix}[margin]1&-1&3\\-1&2&1\\3&1&1\end{pNiceMatrix}\begin{pNiceMatrix}[margin]1&1&-7\\0&1&-4\\0&0&1\end{pNiceMatrix}.\]
+我们解释一下为何此种方法可行。行变换就是左乘初等矩阵，而对应的列变换就是右乘初等矩阵的转置。因此，做行变换$E_1,E_2,\dots,E_N$与相同的列变换后，我们将矩阵$A$变换为
+\begin{equation}\label{congruent_elementary}
+    E_N\ldots E_2E_1AE_1^*E_2^*\ldots E_N^*=EAE^*.
+\end{equation}
+至于右侧的恒等矩阵，我们只对它做了行变换，所以它被变换成
+\[E_N\ldots E_2E_1I=EI=E.\]
+这样一来，如果记$E^*=S$，则$S^*AS$就是对角矩阵，而$E=S^*$是扩展的矩阵变换后的右半部分。
 
-注意到公式（2.2）在复数和实数情况下都适用：在实数情况下，我们可以写 $E_k^T$ 而不是 $E_k^*$，但使用埃尔米特伴随允许我们在两种情况下使用相同的公式。
+在上面的例子中，其实我们很走运——因为我们不需要交换两行。而做这个变换有些技巧性。要猜出如何做行变换才能实现目的可能有些难度，但一旦知道了步骤，你就会发现其实很简单。例如，考虑一个二次型，其矩阵为\[A=\begin{pNiceMatrix}[margin]0&1\\1&0\end{pNiceMatrix}\]
+要通过行列变换将其对角化，最简单的思路是交换1、2两行。但这样就还要做相同的列变换，即交换1、2两列，最后又得到原先的矩阵。
 
-\begin{exer} {\heiti 练习}~~
+所以我们需要一些复杂点的方法。比如，恒等式 \eqref{no_square_decomp} 就可用于对角化这个二次型。然而，有个更为简单的方法也是可行的：用行变换使对角线上出现非零元！比如，如果要让$a_{1,1}$非零，就可用以下这一系列行变换（以及对应的列变换）：
+\[
+\begin{array}{ll}
+    \begin{pNiceArray}{rr|rr}[margin,last-col]
+      0&1&1&0&+\frac12 R_2\\
+      1&0&0&1
+    \end{pNiceArray}  &\sim \left(
+    \begin{array}{cc|cc}
+      1/2 & 1 & 1 & 1/2\\
+      1&0&0&1
+    \end{array}
+    \right)\sim\\
+    \begin{pNiceArray}{cc|cc}[margin,last-col]
+      1&1&1&1/2\\
+      1&0&0&1&-R_1
+    \end{pNiceArray}  &\sim \left(
+    \begin{array}{rr|rc}
+      1&1&1&1/2\\
+      0&-1&-1&1/2
+    \end{array}
+    \right)\sim\\
+    \left(\begin{array}{rr|rc}
+      1&0&1&1/2\\
+      0&-1&-1&1/2
+    \end{array}\right) .&
+\end{array}
+\]
 
-2.1. 对矩阵 $$A = \begin{pmatrix} 1 & 2 & 1 \\ 2 & 3 & 2 \\ 1 & 2 & 1 \end{pmatrix}.$$ 的二次型进行对角化。使用两种方法：配方法和行运算。你更喜欢哪一种？
-\\
-你能判断矩阵 $A$ 是否是正定的吗？
+\begin{remark*}
+    非正交对角化给出了集合$Q[\mathbf{x}]=1$在非正交基下的简单描述。比起正交对角化给出的表达式，此种描述更难以可视化。然而，如果我们不在意细节，比如只需要确定这个集合是个椭球（或者双曲面之类的），那么非正交对角化更容易获得答案。
+\end{remark*}
 
-2.2. 对于矩阵 $$A = \begin{pmatrix} 2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2 \end{pmatrix},$$
-正交对角化相应的二次型，即找到一个对角矩阵 $D$ 和一个酉矩阵 $U$，使得 $D = U^*AU$.~\end{exer}
+\begin{remark}\label{remark:conjugate_of_row_operation}
+    对于有复数项的二次型（即对$(A\mathbf{x},\mathbf{x}),A=A^*$），非正交对角化与在实数情形下的步骤相同，唯一的区别在于，对应的“列变换”的系数取复共轭。
 
-\section{3. 惯性定理}
+    这是因为，如果行变换由左乘初等矩阵$E_k$给出，那么对应的列变换由右乘$E_k^*$给出，见 \eqref{congruent_elementary}。
 
-如上所述，对角化二次型有许多方法。注意，最终的对角矩阵不是唯一的。例如，如果我们得到一个对角矩阵 $$D = \diag\{\lambda_1, \lambda_2, \dots, \lambda_n\},$$
-我们可以取一个对角矩阵 
-$$S = \diag\{s_1, s_2, \dots, s_n\},\quad s_k \in \RR,\quad s_k \ne 0,$$
-并将 $D$ 变换为 $$S^*DS = \diag\{s_1^2\lambda_1, s_2^2\lambda_2, \dots, s_n^2\lambda_n\}.$$
-这种变换改变了 $D$ 的对角线元素。然而，它\textbf{不改变}对角线元素的\textbf{符号}。这始终是成立的！
+    注意，公式 \eqref{congruent_elementary} 适用于实数和复数情形。在实数情形下，我们可以用$E_k^T$替代$E_k^*$，不过这里用到埃尔米特伴随，以使公式对两种情形保持一致。
+\end{remark}
 
-也就是说，著名的\textbf{惯性定理}(Sylvester’s Law of Inertia)指出：
+\begin{problemset}
+    \item 对角化具有下述矩阵的二次型。
+    \[A=\begin{pNiceMatrix}[margin]1&2&1\\2&3&2\\1&2&1\end{pNiceMatrix}.\]
+    用两种方法：配方法和行变换法。你更喜欢哪一种？你能看出矩阵$A$是否正定吗？
+    \item 对矩阵\[A=\begin{pNiceMatrix}[margin]2&1&1\\1&2&1\\1&1&2\end{pNiceMatrix}\]
+    正交对角化其对应的二次型，即求出对角矩阵$D$和幺正矩阵$U$，使得$D=U^*AU$。
+\end{problemset}
 
-\fbox{\begin{minipage}{0.9\textwidth}
-对于一个埃尔米特矩阵 $A$（即二次型 $Q[\xx] = (A\xx, \xx)$）及其任意对角化 $D = S^*AS$， $D$ 的正（负、零）对角线元素的数量仅取决于 $A$，而不取决于对角化的具体选择。
-\end{minipage}}
+\section{西尔维斯特惯性定律}
 
-这里我们当然假设 $S$ 是一个可逆矩阵，$D$ 是一个对角矩阵。
+如前面所讨论的，将二次型对角化的方式有很多种，并且要注意获得的对角矩阵不唯一。例如，如果有对角矩阵
+\[D=\mathrm{diag}\{\lambda_1,\lambda_2,\ldots,\lambda_n\},\]
+那么总可以取对角矩阵
+\[S=\mathrm{diag}\{s_1,s_2,\ldots,s_n\},\quad s_k\in\mathbb{R},\quad s_k\neq0\]
+而将$D$变换为\[S^*DS=\mathrm{diag}\{s_1^2\lambda_1,s_2^2\lambda_2,\ldots,s_n^2\lambda_n\}.\]
+这一变换改变了$D$的对角元，但它并不改变对角元的{\bf 符号}，而且后者总是成立的！
 
-惯性定理证明的思路是，用与 $S$ 或 $D$ 无关的 $A$ 来表达对角化 $D = S^*AS$ 的正（负、零）对角线元素的数量。
+这也就是著名的西尔维斯特惯性定律：\index{西尔维斯特惯性定律（Sylvester's Law of Inertia）}
+\begin{center}
+    \fbox{\parbox{0.8\linewidth}{对埃尔米特矩阵$A$（即对二次型$Q[\mathbf{x}]=(A\mathbf{x},\mathbf{x})$）和其任一对角化$D=S^*AS$，$D$的对角元中正数（或负数、或零）的个数仅取决于$A$，而与对角化的过程无关。}}
+\end{center}
+这里，我们仍假设$S$是可逆矩阵，$D$是对角矩阵。
 
-我们将需要以下定义。
+西尔维斯特惯性定律的证明思路，是将对角化$D=S^*AS$的对角元中正数（或负数、或零）的个数仅用$A$表达，而不牵涉$S$和$D$。
 
-{\heiti 定义}~~
-给定一个 $n \times n$ 埃尔米特矩阵 $A = A^*$（$\FF^n$ 上的二次型 $Q[\xx] = (A\xx, \xx)$），我们称一个子空间 $E \subset \FF^n$ 为\textbf{正的}（分别，\textbf{负的}，\textbf{零的}），如果对所有 $\xx \in E, \xx \ne 0$，都有 
-$$(A\xx, \xx) > 0\quad (\text{分别} ~(A\xx, \xx) < 0,\quad  (A\xx, \xx) = 0.)$$
+我们需要下面这个定义。
 
-有时，为了强调 $A$ 的作用，我们会说 $A$-正（$A$-负，$A$-零）。
+\begin{definition*}
+    给定$n\times n$埃尔米特矩阵$A=A^*$（$\mathbb{F}^n$上的二次型$Q[\mathbf{x}]=(A\mathbf{x},\mathbf{x})$）。若子空间$E\subset \mathbb{F}^n$满足
+    \[(A\mathbf{x},\mathbf{x})>0\quad(\text{相应地},(A\mathbf{x},\mathbf{x})<0,\text{或}~(A\mathbf{x},\mathbf{x})=0)\]
+    对于所有$\mathbf{x}\in E,\mathbf{x}\ne \mathbf{0}$成立，则称其是{\bf 正性的}（相应地，{\bf 负性的}或{\bf 中性的}）。
 
-\begin{theorem}[\normalfont\heiti 定理 3.1\nopunct]
-设 $A$ 是一个 $n \times n$ 埃尔米特矩阵， $D = S^*AS$ 是它的对角化（通过可逆矩阵 $S$）。那么 $D$ 的正（分别负）对角线元素的数量等于 $A$-正（分别 $A$-负）子空间的最大维度。\end{theorem}
+    有时，为了凸显$A$的重要性，也说成$A$-正性的（$A$-负性的、$A$-中性的）。
+\end{definition*}
 
-上面的定理说明，如果 $r_+$ 是 $D$ 的正对角线元素的数量，那么存在一个维度为 $r_+$ 的 $A$-正子空间 $E$，但是不可能找到一个维度大于 $r_+$ 的正子空间 $E$.~
+\begin{theorem}\label{thm:diag_positive_a_positive_dim}
+    令$A$为$n\times n$埃尔米特矩阵，并令$D=S^*AS$是其通过可逆矩阵$S$的对角化。那么$D$的对角元中，正数（相应地，负数）的数量等于$A$-正性子空间（相应地，$A$-负性子空间）的最大维数。
+\end{theorem}
 
-我们将需要以下引理，它可以被视为上述定理的一个特例。
+上述定理指出，如果$r_+$是$D$的正对角元的个数，那么存在维数为$r_+$的$A$-正性子空间$E$，但不存在满足$\dim E>r_+$的正性子空间$E$。
 
-\begin{lemma}[\normalfont\heiti 引理 3.2\nopunct]
-设 $D$ 是一个对角矩阵 $D = \diag\{\lambda_1, \lambda_2, \dots, \lambda_n\}$.~那么 $D$ 的正（分别负）对角线元素的数量等于 $D$-正（分别 $D$-负）子空间的最大维度。\end{lemma}
+我们需要下述引理——可视为上述定理的特例。
+
+\begin{lemma}
+    令$D$是对角矩阵$D=\mathrm{diag}\{\lambda_{1},\lambda_{2},\ldots,\lambda_{n}\}$。那么$D$的对角元中，正数（相应地，负数）的数量等于$D$-正性子空间（相应地，$D$-负性子空间）的最大维数。
+\end{lemma}
 
 \begin{proof}
-通过重新排列 $\FF^n$ 中的标准基（改变编号），我们可以无损地假设正对角线元素是前 $r_+$ 个对角线元素。
+    通过重排$\mathbb{F}^n$的基（改改序号），总可以假设$D$的正对角元是前$r_+$个对角元，而不失一般性。
 
-考虑由前 $r_+$ 个坐标向量 $\ee_1, \ee_2, \dots, \ee_{r_+}$ 张成的子空间 $E_+$.~显然 $E_+$ 是一个 $D$-正子空间，且 $\dim E_+ = r_+$.~
+    考虑由前$r_+$个坐标向量$\mathbf{e}_1,\mathbf{e}_2,\ldots,\mathbf{e}_{r_+}$张成的子空间$E_+$。显然$E_+$是$D$-正性子空间，且$\dim E_+=r_+$。
 
-现在我们证明对于任何其他的 $D$-正子空间 $E$，都有 $\dim E \le r_+$.~
-考虑正交投影 $P = P_{E_+}$，
-$$P \xx = (x_1, x_2, \dots, x_{r_+}, 0, \dots, 0)^T,\quad \xx = (x_1, x_2, \dots, x_n)^T.$$
-对于一个 $D$-正子空间 $E$，定义一个算子 $T: E \to E_+$ 为 $$T \xx = P \xx,\quad \forall \xx \in E.$$
+    下面证明，任意其余$D$-正性子空间$E$都满足$\dim E\le r_+$。考虑正交投影$P=P_{E_+}$，
+    \[P\mathbf{x}=(x_1,x_2,\ldots,x_{r_+},0,\ldots,0)^T,\quad\mathbf{x}=(x_1,x_2,\ldots,x_n)^T.\]
+    对$D$-正性子空间$E$，定义变换$T:E\to E_+$为
+    \[T\mathbf{x}=P\mathbf{x},\quad \forall \mathbf{x}\in E.\]
+    换言之，$T$是对投影$P$的{\bf 限制}：$P$定义在整个空间上，通过将其定义域和目标空间分别限制于$E$和$E_+$，得到从$E$到$E_+$的变换，并用不同的字母将其与$P$区分开。
 
-换句话说，$T$ 是投影 $P$ 的\textbf{限制}(restriction)（$P$ 定义在整个空间上，但我们将它的定义域限制到 $E$，目标空间限制到 $E_+$）。我们得到一个从 $E$ 到 $E_+$ 的算子，并使用另一个字母来区分它与 $P$.~
+    注意，$\ker T=\{\mathbf{0}\}$。的确，假设对$\mathbf{x}=(x_{1},x_{2},\ldots,x_{n})^{T}\in E$我们有$T\mathbf{x}=P\mathbf{x}=\mathbf{0}$。于是由$P$的定义得\[x_1=x_2=\ldots=x_{r_+}=0,\]
+    因此\[(D\mathbf{x},\mathbf{x})=\sum_{k=r_++1}^n\lambda_kx_k^2\leq0\quad(\lambda_k\leq0, k>r_+).\]
+    但是$\mathbf{x}$属于$D$-正性子空间$E$，所以不等式$(D\mathbf{x},\mathbf{x})\le 0$只对$\mathbf{x}=\mathbf{0}$成立。
 
-注意到 $\Ker T = \{\oo\}$.~确实，设 $\xx = (x_1, x_2, \dots, x_n)^T \in E$ 且 $T \xx = P \xx = \oo$.~那么，根据 $P$ 的定义，
-$$x_1 = x_2 = \dots = x_{r_+} = 0.$$
-因此 
-$$(D\xx, \xx) = \sum_{k=r_++1}^n \lambda_k x_k^2 \le 0\quad(\lambda_k \le 0 ~\text{对}~k > r_+).$$
-但是 $\xx$ 属于一个 $D$-正子空间 $E$，所以不等式 $(D\xx, \xx) \le 0$ 仅对 $\xx=\oo$ 成立。
+    现在应用秩定理（第 \ref{chap:LinearSystems} 章定理 \ref{thm:rank_theorem}）。首先，$\operatorname{rank}T=\dim\operatorname{Ran}T\leq\dim E_+=r_+$，因为$\rg T\subset E_+$。由秩定理，$\dim\ker T+\rank T=\dim E$。但我们刚刚证明了$\ker T=\{\mathbf{0}\}$，即$\dim\ker T=0$，因此
+    \[\dim E=\operatorname{rank}T\leq\dim E_{+}=r_{+}.\]
 
-现在我们应用秩定理（第二章定理 7.1）。首先，$\rank T = \dim \Ran T \le \dim E_+ = r_+$，因为 $\Ran T \subset E_+$.~根据秩定理，$\dim \Ker T + \rank T = \dim E$.~但是我们刚刚证明了 $\Ker T = \{\oo\}$，即 $\dim \Ker T = 0$，所以 $$\dim E = \rank T \le \dim E_+ = r_+.$$
+    为证明关于负对角元的相应结论，只需将上述论证用于矩阵$-D$。
+\end{proof}
 
-要证明关于负对角线元素的命题，只需对矩阵 $-D$ 应用上述推理。\end{proof}
+\begin{proof}[定理 \ref{thm:diag_positive_a_positive_dim} 的证明]
+    令$D=S^*AS$是$A$的对角化。因为
+    \[(D\mathbf{x},\mathbf{x})=(S^*AS\mathbf{x},\mathbf{x})=(AS\mathbf{x},S\mathbf{x})\]
+    所以对任意$D$-正性子空间$E$，子空间$SE$都是$A$-正性子空间。该等式还表明，对任意$A$-正性子空间$F$，子空间$S^{-1}F$都是$D$-正性子空间。
 
-\begin{proof}[\normalfont\heiti 定理 3.1 的证明~\nopunct]
-设 $D = S^*AS$ 是 $A$ 的一个对角化。由于 
-$$(D\xx, \xx) = (S^*AS\xx, \xx) = (AS\xx, S\xx),$$
-可知对于任一 $D$-正子空间 $E$，子空间 $SE$ 是一个 $A$-正子空间。同样的恒等式暗示，对于任一 $A$-正子空间 $F$，子空间 $S^{-1}F$ 是 $D$-正的。
+    因为$S$和$S^{-1}$是可逆变换，所以$\dim E=\dim SE$且$\dim F=\dim S^{-1}F$。所以，对任意$D$-正性子空间$E$，可求出相同维数的$A$-正性子空间（即$SE$），反之亦然：对任意$A$-正性子空间$F$，可求出相同维数的$D$-正性子空间（即$S^{-1}F$）。因此，$A$-正性子空间和$D$-正性子空间的最大可能维数相同，定理得证。
 
-由于 $S$ 和 $S^{-1}$ 是可逆变换，$\dim E = \dim SE$ 且 $\dim F = \dim S^{-1}F$.~因此，对于任何 $D$-正子空间 $E$，我们可以找到一个相同维度的 $A$-正子空间（即 $SE$），反之亦然：对于任何 $A$-正子空间 $F$，我们可以找到一个相同维度的 $D$-正子空间（即 $S^{-1}F$）。
-因此，$A$-正子空间和 $D$-正子空间的最大维度是相同的，定理得证。
+    对角元为负的情形可类似处理，留给读者作为习题。
+\end{proof}
 
-关于负对角线元素的处理方式类似，细节留作读者练习。\end{proof}
+\section{正定型、特征值的极小极大刻画和西尔维斯特正定性判据}
 
-\section{4. 正定二次型~~极小极大特征值刻画与塞尔维斯特正定性判据}
+\begin{definition*}
+  称二次型$Q$是\index{正定（positive definite）}\index{正半定（positive semidefinite）}
+  \begin{itemize}
+    \item 正定的，若$Q[\mathbf{x}]>0$对所有$\mathbf{x}\ne\mathbf{0}$成立。
+    \item 正半定的，若$Q[\mathbf{x}]\ge 0$对所有$\mathbf{x}$成立。
+    \item 负定的，若$Q[\mathbf{x}]<0$对所有$\mathbf{x}\ne\mathbf{0}$成立。
+    \item 负半定的，若$Q[\mathbf{x}]\le 0$对所有$\mathbf{x}$成立。
+    \item 不定的，若它取值可正可负，即若存在向量$\mathbf{x}_1$和$\mathbf{x}_2$使得$Q[\mathbf{x}_1]>0$及$Q[\mathbf{x}_2]<0$。
+  \end{itemize}
+\end{definition*}
 
-{\heiti 定义}~~
-一个二次型 $Q$ 被称为
-\begin{itemize}
-\item \textbf{正定}，如果对所有 $\xx \ne \oo$，有 $Q[\xx] > 0$.~
-\item \textbf{半正定}，如果对所有 $\xx$，有 $Q[\xx] \ge 0$.~
-\item \textbf{负定}，如果对所有 $\xx \ne \oo$，有 $Q[\xx] < 0$.~
-\item \textbf{半负定}，如果对所有$\xx$，有 $Q[\xx] \le 0$.~
-\item \textbf{不定}，如果它既能取到正值，又能取到负值，即存在向量 $x_1$ 和 $x_2$ 使得 $Q[x_1] > 0$ 且 $Q[x_2] < 0$.~
-\end{itemize}
+\begin{definition*}
+  若埃尔米特矩阵$A=A^*$对应的二次型$Q[\mathbf{x}]=(A\mathbf{x},\mathbf{x})$是正定的（负定的，及其他），则称该矩阵为正定的（负定的，及其他）。
+\end{definition*}
 
-{\heiti 定义}~~
-一个埃尔米特矩阵 $A = A^*$ 被称为是\textbf{正定}（负定，……）的，如果相应的二次型 $Q[\xx] = (A\xx, \xx)$ 是正定（负定，……）的。
-
-\begin{theorem}[\normalfont\heiti 定理 4.1\nopunct] 
-设 $A = A^*$.~那么
-
-1. $A$ 是正定的，当且仅当 $A$ 的所有特征值都是正的。
-
-2. $A$ 是半正定的，当且仅当 $A$ 的所有特征值都是非负的。
-
-3. $A$ 是负定的，当且仅当 $A$ 的所有特征值都是负的。
-
-4. $A$ 是半负定的，当且仅当 $A$ 的所有特征值都是非正的。
-
-5. $A$ 是不定的，当且仅当它同时具有正特征值和负特征值。\end{theorem}
+\begin{theorem}\label{thm:pd_eig_pos}
+  令$A=A^*$。那么
+  \begin{enumerate}
+    \item $A$是正定的，当且仅当$A$的所有特征值都是正的。
+    \item $A$是正半定的，当且仅当$A$的所有特征值都是非负的。
+    \item $A$是负定的，当且仅当$A$的所有特征值都是负的。
+    \item $A$是负半定的，当且仅当$A$的所有特征值都是非正的。
+    \item $A$是不定的，当且仅当$A$的特征值有正有负。
+  \end{enumerate}
+\end{theorem}
 
 \begin{proof}
-证明可以平凡地从正交对角化得出。事实上，存在一组标准正交基，使得 $A$ 在该基下的矩阵是对角矩阵，而对于对角矩阵，定理是显而易见的。\end{proof}
+  由正交分解容易得证。的确如此：$A$关于一个规范正交基的矩阵是对角的，而对于对角矩阵，该定理是平凡的。
+\end{proof}
 
-{\heiti 注记}~~
-注意到，为了判断一个矩阵（二次型）是否是正定的（负定的等），不必计算特征值。根据惯性定理，只需执行任意的（不一定是正交的）对角化 $D = S^*AS$，然后查看 $D$ 的对角线元素。
+\begin{remark*}
+  注意，要判断矩阵（或二次型）是正定的（负定的，及其他），不需要计算特征值。根据西尔维斯特惯性定律，只要进行对角化（不一定要是正交对角化）$D=S^*AS$，并观察$D$的对角元即可。
+\end{remark*}
 
+\subsection{西尔维斯特正定性判据}
 
-\subsection{4.1. 塞尔维斯特正定性判据}
-很容易看出，一个 $2 \times 2$ 矩阵 
-$$A = \begin{pmatrix} a & b \\ \overline{b} & c \end{pmatrix}$$
+容易看出$2\times 2$矩阵\[A=\begin{pNiceMatrix}[margin]a&b\\\bar{b}&c\end{pNiceMatrix}\]
 是正定的，当且仅当
-$$(4.1)\quad a > 0\quad\text{且} \quad\det A = ac - |b|^2 > 0.$$ 
+\begin{equation}\label{positivity_for_2by2}
+  a > 0\quad \text{且}\quad \det A=ac-|b|^2>0
+\end{equation}
+的确如此：若$a>0$且$\det A = ac-|b|^2>0$，那么$c>0$，所以$\tr A=a+c>0$。所以我们知道如果$\lambda_1,\lambda_2$是$A$的特征值，那么$\lambda_1\lambda_2>0(\det A>0)$，并且$\lambda_1+\lambda_2=\tr A>0$。而这只有两个特征值都为正时才成立。所以我们证明了 \eqref{positivity_for_2by2} 能推出$A$是正定的。反方向的蕴涵关系很简单，留给读者作为习题。
 
-事实上，如果 $a > 0$ 且 $\det A = ac - |b|^2 > 0$，那么 $c > 0$，所以 $\trace A = a+c > 0$.~因此，我们知道如果 $\lambda_1, \lambda_2$ 是 $A$ 的特征值，那么 $\lambda_1\lambda_2 > 0$ ($\det A > 0$) 且 $\lambda_1 + \lambda_2 = \trace A > 0$.~这只有可能在两个特征值都为正时发生。因此，我们证明了条件（4.1）蕴含 $A$ 是正定的。反向蕴含很简单，留作读者练习。
+这个结论可以推广到$n\times n$矩阵。也就是说，对于矩阵$A$
+\[A=\begin{pNiceMatrix}[margin]a_{1,1}&a_{1,2}&\ldots&a_{1,n}\\a_{2,1}&a_{2,2}&\ldots&a_{2,n}\\\vdots&\vdots&\ddots&\vdots\\a_{n,1}&a_{n,2}&\ldots&a_{n,n}\end{pNiceMatrix}\]
+考虑其所有的{\bf 顺序主子阵}
+\[A_1=(a_{1,1}),A_2=\begin{pNiceMatrix}[margin]a_{1,1}&a_{1,2}\\a_{2,1}&a_{2,2}\end{pNiceMatrix},A_3=\begin{pNiceMatrix}[margin]a_{1,1}&a_{1,2}&a_{1,3}\\a_{2,1}&a_{2,2}&a_{2,3}\\a_{3,1}&a_{3,2}&a_{3,3}\end{pNiceMatrix},\ldots,A_n=A\]
+\begin{theorem}[西尔维斯特正定性判据]\label{thm:sylvester_positivity}
+  矩阵$A=A^*$是正定的，当且仅当\[\det A_k > 0\quad \text{对于所有}~k=1,2,\dots,n~\text{成立。}\]
+\end{theorem}
 
-这个结果可以推广到 $n \times n$ 矩阵。也就是说，对于矩阵 
-$$A = \begin{pmatrix} a_{1,1} & a_{1,2} & \dots & a_{1,n} \\ a_{2,1} & a_{2,2} & \dots & a_{2,n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{n,1} & a_{n,2} & \dots & a_{n,n} \end{pmatrix},$$
-我们考虑它的所有左上子矩阵(upper left submatrices)\footnote{
-译者注：它们的行列式被称为“顺序主子式”。
-}
-$$A_1 = (a_{1,1}),\quad A_2 = \begin{pmatrix} a_{1,1} & a_{1,2} \\ a_{2,1} & a_{2,2} \end{pmatrix},\quad A_3 = \begin{pmatrix} a_{1,1} & a_{1,2} & a_{1,3} \\ a_{2,1} & a_{2,2} & a_{2,3} \\ a_{3,1} & a_{3,2} & a_{3,3} \end{pmatrix}, \dots,\quad A_n = A.$$
+首先我们注意到，如果$A>0$那么$A_k>0$（你能解释为何如此吗？）。这样一来，因为正定矩阵的所有特征值都是正的（见定理 \ref{thm:pd_eig_pos}），所以$\det A_k>0$对所有$k$成立。
 
-\begin{theorem}[\normalfont\heiti 定理 4.2\nopunct] 塞尔维斯特正定性判据(Sylvester’s Criterion of Positivity)
+通过分析利用行列变换的二次型对角化（在 \ref{subsec:diag_row_column_operation} 节中描述），可以证明如果$\det A_k>0$对所有$k$成立，那么$A$的所有特征值均为正。关键在于，观察到如果按照自然的顺序做行/列变换（即首先将第一行/列从其他所有行/列中减掉，然后将第二行/列从第$3,4,\dots,n$行/列中减掉，以此类推），并且不做行交换，那么在此过程中我们顺带完成了对二次型$A_k$的对角化。也即，在减掉第一、二行/列后，我们就对角化了$A_2$；减掉第三行/列后，我们就对角化了$A_3$，以此类推。
 
-矩阵 $A = A^*$ 是正定的，当且仅当 $$\det A_k > 0 \quad\text{对所有}\quad k = 1, 2, \dots, n.$$\end{theorem}
+因为我们只做行替换，所以行列式不变。此外，由于我们未做行交换，并且以正确的顺序做行变换，所以各$A_k$的行列式也保持不变。因此，$\det A_k>0$这一条件确保了变换后每个对角元都是正的。
 
-首先，我们注意到，如果 $A > 0$，那么 $A_k > 0$ 成立（你能解释为什么吗？）。因此，由于正定矩阵的所有特征值都是正的，参见定理 4.1，$\det A_k > 0$ 对所有 $k = 1, 2, \dots, n$.~
+当然，我们需要保证可以只用行替换且按正确顺序做变换，即我们不会碰到任何使该流程无法持续的情况。
+如果我们分析上述算法，就会发现此类情况只有一种：在某一步中主元位置的元素是零。换言之，就是在减掉前$k$行和前$k$列并将$A_k$对角化后，第$k+1$行第$k+1$列的元素是零。这种情况不可能发生，证明留给读者作为习题。{\hfill \qedsymbol}
 
-我们可以证明，如果 $\det A_k > 0 \forall k$，那么 $A$ 的所有特征值都是正的。证明通过分析使用行和列运算进行的二次型对角化，该方法在第 2.2 节中已有所描述。关键在于观察到，如果我们按自然顺序执行行/列运算（即先从所有其他行/列减去第一行/列，然后从第 3, 4, ..., n 行/列减去第二行/列，依此类推），并且我们不进行任何行交换，那么我们也自动地对角化了子二次型 $A_k$.~也就是说，在减去第一行和第二行（以及列）后，我们得到了 $A_2$ 的对角化；在减去第三行/列后，我们得到了 $A_3$ 的对角化，依此类推。
+上面概述的证明思路非常简单。不过，下面我们要更细致地呈现另一种证明，这种证明常出现在更为进阶的教材中。我个人更为喜欢这种证明，因为它展示了一些重要的关系。
 
-由于我们只执行行替换，我们不会改变行列式。而且，由于我们不执行行交换并以正确的顺序执行运算，我们保留了 $A_k$ 的行列式。因此，条件 $\det A_k > 0$ 保证了每个新的对角线元素都是正的。
+我们需要对埃尔米特矩阵特征值的如下刻画。
 
-当然，必须确保我们只能使用行替换，并按正确的顺序执行运算，即我们不会遇到任何病态情况。如果分析算法，可以看出唯一可能发生的非正常情况是在某个步骤中主元位置为零。换句话说，如果我们减去前 $k$ 行和列并得到 $A_k$ 的对角化，那么第 $k+1$ 行和第 $k+1$ 列的元素为 0。我们把证明该情况不可能发生留给读者作为练习。
+\subsection{特征值的极小极大刻画}
 
-上面概述的证明很简单。然而，让我更详细地介绍另一种证明，这种证明可以在更高级的教科书中找到。我个人更喜欢第二个证明，因为它展示了一些重要的联系。
+对于内积空间$X$的子空间$E$，其{\bf 余维数} $\operatorname{codim}E$定义为其正交补的维数，$\operatorname{codim}E = \dim(E^\perp)$。因为对子空间$E\subset X$及$\dim X=n$，我们有$\dim E+\dim E^\perp=n$，所以$\operatorname{codim}E = \dim X-\dim E$。
 
-我们将需要以下埃尔米特矩阵特征值的一个刻画。
+回忆一下，平凡子空间$\{\mathbf{0}\}$的维数是零，因此整个向量空间$X$的余维数是$0$。
 
+\begin{remark*}
+  对于任意的向量空间$X$，子空间$E$的余维数可简单定义作$\operatorname{codim}E = \dim X-\dim E$。
 
-\subsection{4.2. 特征值的极小极大刻画}
+  一种更为“高端”的定义方式则采用商空间$X/E$的维数。然而在本书中我们并不论及商空间，故用上面两种定义（$\dim E^\perp$或是$\dim X-\dim E$）即可。
+\end{remark*}
 
-回想一下，子空间 $E \subset X$ 的\textbf{余维度}(codimension)被定义为其正交补的维度，$\codim E = \dim(E^\perp)$.~由于对于子空间 $E \subset X$，$\dim X = n$，我们有 $\dim E + \dim E^\perp = n$，所以 $\codim E = \dim X - \dim E$.~
+\begin{theorem}[特征值的极小极大刻画]\label{thm:minmax}
+  令$A=A^*$是$n\times n$矩阵，并令$\lambda_1\geq\lambda_2\geq\ldots\geq\lambda_n$是其特征值，按降序排列。那么
+  \[\lambda_k=\max_{\begin{subarray}{c}E:\\ \dim E=k \end{subarray}}\min_{\begin{subarray}{c}\mathbf{x}\in E\\ \|\mathbf{x}\|=1 \end{subarray}}(A\mathbf{x},\mathbf{x})=\min_{\begin{subarray}{c}F:\\ \operatorname{codim} F=k-1 \end{subarray}}\max_{\begin{subarray}{c}\mathbf{x}\in F\\ \|\mathbf{x}\|=1\end{subarray}}(A\mathbf{x},\mathbf{x}).\]
+\end{theorem}
 
-回想一下，平凡子空间 $\{\oo\}$ 的维度为零，因此整个空间 $X$ 的余维度为 0。
+我们详细解释一下有$\max\min$和$\min\max$的表达式是什么含义。要计算前者，需考虑所有维数为$k$的子空间$E$。对每个这样的子空间$E$，考虑范数为$1$的所有$\mathbf{x}\in E$构成的集合，并对所有这样的$\mathbf{x}$求出$(A\mathbf{x},\mathbf{x})$的最小值。这样对每个子空间，我们都能得到一个数，然后我们需要选出一个子空间$E$使得这个数最大。这就是$\max \min$。
 
-\begin{theorem}[\normalfont\heiti 定理 4.3\nopunct]  （特征值的极小极大刻画）
+$\min\max$的定义是类似的。
 
-设 $A = A^*$ 是一个 $n \times n$ 矩阵，设 $\lambda_1 \ge \lambda_2 \ge \dots \ge \lambda_n$ 是其特征值（按降序排列）。那么
-$$\lambda_k = \max_{E: \atop \dim E = k} \min_{\xx \in E \atop \|\xx\|=1} (A\xx, \xx) = \min_{F: \atop \codim F = k-1} \max_{\xx \in F \atop \|\xx\|=1} (A\xx, \xx).$$\end{theorem}
+\begin{remark*}
+  心思缜密的读者可能留意到一个问题：为什么最大值和最小值存在？众所周知，最大值和最小值不存在这种糟糕情况比比皆是：例如，函数$f(x)=x$在开区间$(0,1)$上就既无最大值也无最小值。
 
-我们更详细地解释一下像 $\max \min$ 和 $\min \max$ 这样的表达式的含义。为了计算第一个表达式，我们需要考虑所有维度为 $k$ 的子空间 $E$.~对于每个这样的子空间 $E$，我们考虑所有范数为 1 的 $\xx \in E$ 的集合，并找到 $(A\xx, \xx)$ 在所有这些 $\xx$ 上的最小值。因此，对于每个子空间，我们得到一个数字，我们需要选择一个子空间 $E$ 使得该数字最大。这就是 $\max \min$.~
+  然而，在此处这种情形下，最大值和最小值的确存在。关于$(A\mathbf{x},\mathbf{x})$取得最大值和最小值，有两种可行的解释。第一种需要熟悉分析学的基本概念：$E$中的单位球面，即集合$\{\mathbf{x}\in E:\|\mathbf{x}\|=1\}$是紧的，并且连续函数（这里是$Q[\mathbf{x}]=(A\mathbf{x},\mathbf{x})$）在紧集上取得最大值和最小值。
 
-$\min \max$ 的定义类似。
+  另一种解释是，注意到函数$Q[\mathbf{x}]=(A\mathbf{x},\mathbf{x}),\mathbf{x}\in E$是$E$上的二次型。不难关于$E$的规范正交基计算该二次型的矩阵，不过要注意这个矩阵并不是$A$，而是$k\times k$矩阵，其中$k=\dim E$。
 
-{\heiti 注记}~~
-一个敏锐的读者可能会注意到一个问题：为什么这里最大值和最小值存在？众所周知，最大值和最小值往往不存在：例如，函数 $f(x) = x$ 在开区间 $(0, 1)$ 上既没有最大值也没有最小值。
+  容易看出，二次型在单位球面上的最大值和最小值分别是其矩阵的最大和最小特征值。
 
-然而，在这种情况下，最大值和最小值确实存在。
-存在两种关于 $(A\xx, \xx)$ 会达到最大值和最小值的解释：
-第一种需要对分析的基本概念有一定的熟悉度：只需说明 $E$ 中的单位球面，即集合 $\{\xx \in E : \|\xx\| = 1\}$ 是紧致的，而一个连续函数（在这种情况下，我们的 $Q[\xx] = (A\xx, \xx)$）在紧致集上会达到其最大值和最小值。
+  至于在所有子空间上取最值，下面我们将要证明这样的最大值和最小值都是存在的。
+\end{remark*}
 
-另一种解释是注意到函数 $Q[\xx] = (A\xx, \xx)$，$\xx \in E$，是 $E$ 上的一个二次型。在 $E$ 的某组标准正交基下计算该二次型的矩阵并不难，但让我们指出该矩阵并不是 $A$：它必须是一个 $k \times k$ 矩阵，其中 $k = \dim E$.~
+\begin{proof}[定理 \ref{thm:minmax} 的证明]
+  首先，通过选取一个合适的规范正交基，可假设矩阵$A$是对角的（$A=\operatorname{diag}\{\lambda_1,\lambda_2,\dots,\lambda_n\}$），而不失一般性。
 
-容易看出，对于二次型，在单位球体上的最大值和最小值是其矩阵的最大和最小特征值。
+  选取子空间$E$和$F$，$\dim E=k$，$\operatorname{codim}F=k-1$，即$\dim F=n-k+1$。因为$\dim E+\dim F>n$，所以存在非零向量$\mathbf{x}_0\in E\cap F$。将其规范化，可假设$\|\mathbf{x}_0\|=1$，而不失一般性。我们总可将特征值按降序排列，因此假设$\lambda_{1}\geq\lambda_{2}\geq\ldots\geq\lambda_{n}$。
 
-至于在所有子空间上的推广，我们将在下面证明最大值和最小值确实存在。
+  因为$\mathbf{x}_0$既属于$E$又属于$F$，因此
+  \[\min_{\begin{subarray}{c}\mathbf{x}\in E\\\|\mathbf{x}\|=1\end{subarray}}(A\mathbf{x},\mathbf{x})\leq(A\mathbf{x}_0,\mathbf{x}_0)\leq\max_{\begin{subarray}{c}\mathbf{x}\in F\\\|\mathbf{x}\|=1\end{subarray}}(A\mathbf{x},\mathbf{x}).\]
+  我们并未作出子空间$E$和$F$的维数之外的假设，所以上述不等式
+  \begin{equation}\label{mine_maxf}
+    \min_{\begin{subarray}{c}\mathbf{x}\in E\\\|\mathbf{x}\|=1\end{subarray}}(A\mathbf{x},\mathbf{x})\leq\max_{\begin{subarray}{c}\mathbf{x}\in F\\\|\mathbf{x}\|=1\end{subarray}}(A\mathbf{x},\mathbf{x}).
+  \end{equation}
+  对维数适当的$E$和$F$都是成立的。
 
+  定义
+  \[E_0:=\mathrm{span}\{\mathbf{e}_1,\mathbf{e}_2,\ldots,\mathbf{e}_k\},\quad F_0:=\mathrm{span}\{\mathbf{e}_k,\mathbf{e}_{k+1},\mathbf{e}_{k+2},\ldots,\mathbf{e}_n\}.\]
+  由于对自伴矩阵$B$，$(B\mathbf{x},\mathbf{x})$在单位球面$\{\mathbf{x}:\|\mathbf{x}\|=1\}$的最大值和最小值分别是最大和最小的特征值（容易在对角矩阵上检验），所以
+  \[\min_{\begin{subarray}{c}\mathbf{x}\in E_0\\\|\mathbf{x}\|=1\end{subarray}}(A\mathbf{x},\mathbf{x})=\max_{\begin{subarray}{c}\mathbf{x}\in F_0\\\|\mathbf{x}\|=1\end{subarray}}(A\mathbf{x},\mathbf{x})=\lambda_k.\]
+  由 \eqref{mine_maxf}，对子空间$E$（$\dim E=k$）有
+  \[\min_{\begin{subarray}{c}\mathbf{x}\in E\\\|\mathbf{x}\|=1\end{subarray}}(A\mathbf{x},\mathbf{x})\leq \max_{\begin{subarray}{c}\mathbf{x}\in F_0\\\|\mathbf{x}\|=1\end{subarray}}(A\mathbf{x},\mathbf{x})=\lambda_k.\]
+  类似地，对任意余维数是$k-1$的子空间$F$有
+  \[\max_{\begin{subarray}{c}\mathbf{x}\in F\\\|\mathbf{x}\|=1\end{subarray}}(A\mathbf{x},\mathbf{x})\geq \min_{\begin{subarray}{c}\mathbf{x}\in E_0\\\|\mathbf{x}\|=1\end{subarray}}(A\mathbf{x},\mathbf{x})=\lambda_k.\]
+  而在子空间$E_0$和$F_0$上，分别可取得最大和最小值$\lambda_k$，因此$\min\max=\max\min=\lambda_k$。
+\end{proof}
 
-\begin{proof}[\normalfont\heiti 定理 7.1 的证明~\nopunct]
-首先，通过选择适当的标准正交基，我们可以无损地假设矩阵 $A$ 是对角矩阵，$A = \diag\{\lambda_1, \lambda_2, \dots, \lambda_n\}$.~
-
-选择维度为 $k$ 的子空间 $E$ 和余维度为 $k-1$ 的子空间 $F$（即 $\dim F = n - (k-1) = n - k + 1$）。由于 $\dim E + \dim F = k + n - k + 1 = n+1 > n$，存在一个非零向量 $\xx_0 \in E \cap F$.~通过归一化它可以无损地假设 $\|\xx_0\| = 1$.~
-我们可以总是将特征值按降序排列，所以假设 $\lambda_1 \ge \lambda_2 \ge \dots \ge \lambda_n$.~
-
-由于 $\xx$ 属于 $E$ 和 $F$ 两个子空间，
-$$\min_{\xx \in E,\atop \|\xx\|=1} (A\xx, \xx) \le (A\xx_0, \xx_0) \le \max_{\xx \in F,\atop \|\xx\|=1} (A\xx, \xx).$$
-我们没有对子空间 $E$ 和 $F$ 做出任何除了维度之外的假设，所以上述不等式
-$$(4.2)\quad\min_{\xx \in E,\atop \|\xx\|=1} (A\xx, \xx) \le \max_{\xx \in F,\atop \|\xx\|=1} (A\xx, \xx)$$
-对所有适当维度的 $E$ 和 $F$ 的对都成立。
-
-定义 $$E_0 := \spanL\{\ee_1, \ee_2, \dots, \ee_k\},\quad F_0 := \spanL\{\ee_k, \ee_{k+1}, \dots, \ee_n\}.$$
-
-由于对于自伴矩阵 $B$，$(B\xx, \xx)$ 在单位球体 $\{\xx : \|\xx\|=1\}$ 上的最大值和最小值分别是最大和最小特征值（在对角矩阵上很容易验证），我们得到
-$$\min_{\xx \in E_0,\atop \|\xx\|=1} (A\xx, \xx) = \max_{\xx \in F_0,\atop \|\xx\|=1} (A\xx, \xx) = \lambda_k.$$
-从（4.2）可知，对于任何子空间 $E$，$\dim E = k$，
-$$\min_{\xx \in E, \|\xx\|=1} (A\xx, \xx) \le \max_{\xx \in F_0, \|\xx\|=1} (A\xx, \xx) = \lambda_k.$$
-同理，对于任何余维度为 $k-1$ 的子空间 $F$，
-$$\max_{\xx \in F, \|\xx\|=1} (A\xx, \xx) \ge \min_{\xx \in E_0, \|\xx\|=1} (A\xx, \xx) = \lambda_k.$$
-但是在子空间 $E_0$ 和 $F_0$ 上，最大值和最小值都是 $\lambda_k$，所以 $\min \max = \max \min = \lambda_k$.~\end{proof}
-
-{\heiti 推论4.4.}~~（特征值的交错性质）
-设 $A = A^* = \{a_{j,k}\}^{n}_{j,k=1}$ 是一个自伴矩阵，令 $\widetilde{A} = \{a_{j,k}\}^{n-1}_{j,k=1}$ 为它 $(n-1) \times (n-1)$ 的子矩阵（移除最后一行和最后一列）。设 $\lambda_1, \lambda_2, \dots, \lambda_n$ 和 $\mu_1, \mu_2, \dots, \mu_{n-1}$ 分别是 $A$ 和 $\widetilde{A}$ 的特征值（按降序排列）。那么
-$$\lambda_1 \ge \mu_1 \ge \lambda_2 \ge \mu_2 \ge \dots \ge \lambda_{n-1} \ge \mu_{n-1} \ge \lambda_n,$$
-即 
-$$\lambda_k \ge \mu_k \ge \lambda_{k+1},\quad k = 1, 2, \dots, n-1.$$
+\begin{corollary}[特征值交错排列]\label{cor:interw}
+  令$A=A^*=\{a_{j,k}\}_{j,k=1}^n$是自伴矩阵，并令$\widetilde{A}=\{a_{j,k}\}_{j,k=1}^{n-1}$是其大小为$(n-1)\times (n-1)$的子矩阵。令$\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$和$\mu_{1},\mu_{2},\ldots,\mu_{n-1}$分别是$A$和$\widetilde{A}$的特征值，按降序排列。那么
+  \[\lambda_1\geq\mu_1\geq\lambda_2\geq\mu_2\geq\cdots\geq\lambda_{n-1}\geq\mu_{n-1}\geq\lambda_n.\]
+  也即
+  \[\lambda_k\geq\mu_k\geq\lambda_{k+1},\quad k=1,2,\ldots,n-1\]
+\end{corollary}
 
 \begin{proof}
-设 $\widetilde{X} \subset \FF^n$ 是由前 $n-1$ 组基向量张成的子空间，$\widetilde{X} = \spanL\{\ee_1, \ee_2, \dots, \ee_{n-1}\}$.~由于 $( \widetilde{A} \xx, \xx ) = ( A \xx, \xx )$ 对所有 $\xx \in \widetilde{X}$ 成立，定理 4.3 暗示
-$$\mu_k = \max_{E \subset \widetilde{X},\atop \dim E = k} \min_{\xx \in E,\atop \|\xx\|=1} (A\xx, \xx).$$
-为了得到 $\lambda_k$，我们需要在 $\FF^n$ 的所有维度为 $k$ 的子空间上取最大值（任何 $\widetilde{X}$ 的子空间都是 $\FF^n$ 的子空间）。因此，$$\mu_k \le \lambda_k.$$ （在更大集合上的最大值不会变得更小）。
+  令$\widetilde{X}\subset\mathbb{F}^n$是由前$n-1$个基向量张成的子空间，$\widetilde{X}=$\linebreak $\mathrm{span}\{\mathbf{e}_{1},\mathbf{e}_{2},\ldots,\mathbf{e}_{n-1}\}$。因为$(\widetilde{A}\mathbf{x},\mathbf{x})=(A\mathbf{x},\mathbf{x})$对所有$\mathbf{x}\in\widetilde{X}$成立，所以定理 \ref{thm:minmax} 蕴涵
+  \[\mu_k=\max_{\begin{subarray}{c}E\subset\widetilde{X}\\\dim E=k\end{subarray}}\min_{\begin{subarray}{c}\mathbf{x}\in E\\\|\mathbf{x}\|=1\end{subarray}}(A\mathbf{x},\mathbf{x}).\]
+  为得到$\lambda_k$，我们需要在$\mathbb{F}^n$的所有子空间$E$（$\dim E=k$）所构成的集合上取最大值，即在一个更大的集合上（$\widetilde{X}$的任意子空间也是$\mathbb{F}^n$的子空间）取最大值。因此\[\mu_k\le\lambda_k\]（如果将集合扩大，最大值只会扩大）
 
-另一方面，$\widetilde{X}$ 中余维度为 $k-1$ 的任何子空间 $E$（这里指的是在 $\widetilde{X}$ 中的余维度）的维度是 $n-1 - (k-1) = n-k$，因此它在 $\FF^n$ 中的余维度是 $k$.~所以
-$$\mu_k = \min_{E \subset \widetilde{X},\atop \dim E = n-k} \max_{\xx \in E,\atop \|\xx\|=1} (A\xx, \xx) \le \min_{E \subset \FF^n,\atop \dim E = n-k} \max_{\xx \in E,\atop \|\xx\|=1} (A\xx, \xx) = \lambda_{k+1}$$
- （在更大集合上的最小值不会变得更大）。\end{proof}
+  另一方面，任意余维数$k-1$的子空间$E\subset \widetilde{X}$（这里的余维数是就$\widetilde{X}$而言的）的维数是$n-1-(k-1)=n-k$，所以其就$\mathbb{F}^n$而言的余维数是$k$。因此
+  \[\mu_k \ge \min_{\begin{subarray}{c}E\subset\widetilde{X}\\\dim E=n-k\end{subarray}}\max_{\begin{subarray}{c}\mathbf{x}\in E\\\|\mathbf{x}\|=1\end{subarray}}(A\mathbf{x},\mathbf{x}) = \min_{\begin{subarray}{c}E\subset\mathbb{F}^n\\\dim E=n-k\end{subarray}}\max_{\begin{subarray}{c}\mathbf{x}\in E\\\|\mathbf{x}\|=1\end{subarray}}(A\mathbf{x},\mathbf{x})=\lambda_{k+1}.\]
+  （如果将集合扩大，最小值只会更小）
+\end{proof}
 
-\begin{proof}[\normalfont\heiti 定理 4.2 的证明~\nopunct]
-如果 $A > 0$，那么 $A_k > 0$ 对 $k=1, 2, \dots, n$ 也成立（你能解释为什么吗？）。由于正定矩阵的所有特征值都是正的（见定理 4.1），$\det A_k > 0$ 对所有 $k=1, 2, \dots, n$.~
+\begin{proof}[定理 \ref{thm:sylvester_positivity} 的证明]
+  若$A>0$，那么$A_k>0$对$k=1,2,\dots,n$成立（你能解释原因吗？）。因为正定矩阵的所有特征值都是正的（见定理 \ref{thm:pd_eig_pos}），所以$\det A_k>0$对$k=1,2,\dots,n$成立。
 
-现在我们来证明另一个蕴含。设 $\det A_k > 0$ 对所有 $k$.~我们将通过归纳法证明（对 $k$），所有 $A_k$（因此 $A = A_n$）都是正定的。
+  现在证明另一方向的蕴涵关系。令$\det A_k>0$对所有$k$成立。我们将通过对$k$用归纳法来证明所有$A_k$（进而，$A=A_n$）都是正定的。
 
-显然 $A_1$ 是正定的（它是一个 $1 \times 1$ 矩阵，所以 $A_1 = \det A_1$）。假设 $A_{k-1} > 0$（且 $\det A_k > 0$），我们来证明 $A_k$ 是正定的。
-设 $\lambda_1, \lambda_2, \dots, \lambda_k$ 和 $\mu_1, \mu_2, \dots, \mu_{k-1}$ 分别是 $A_k$ 和 $A_{k-1}$ 的特征值。根据推论 4.4，
-$$\lambda_j \ge \mu_j > 0,\quad j = 1, 2, \dots, k-1.$$
-由于 $\det A_k = \lambda_1 \lambda_2 \dots \lambda_{k-1} \lambda_k > 0$，最后一个特征值 $\lambda_k$ 也必须是正的。
-因此，由于其所有特征值都为正，矩阵 $A_k$ 是正定的。\end{proof}
+  显然$A_1$是正定的（其为$1\times 1$矩阵，所以$A_1=\det A_1$）。假设$A_{k-1}>0$（且有$\det A_k>0$），现要证明$A_k$是正定的。令$\lambda_{1},\lambda_{2},\ldots,\lambda_{k}$和$\mu_{1},\mu_{2},\ldots,\mu_{k-1}$分别是$A_k$和$A_{k-1}$的特征值。由推论 \ref{cor:interw}，有\[\lambda_j\ge\mu_j>0\quad \text{对}~j=1,2,\dots,k-1~\text{成立}.\]
+  因为$\det A_k=\lambda_1\lambda_2\dots\lambda_{k-1}\lambda_k>0$，所以最后一个特征值$\lambda_k$必为正。因此，由于矩阵$A_k$的所有特征值都是正的，所以其为正定的。
+\end{proof}
 
-\subsection{4.3. 一些注记}
-首先，请注意，塞尔维斯特正定性判据不能推广到半正定矩阵（当 $n \ge 3$ 时），这意味着对于 $n \times n$ 矩阵，$n \ge 3$，条件 $\det A_k \ge 0$ 并不蕴含 $A$ 是半正定的，参见下面的问题 4.4。
+\subsection{一些注记}
 
-然而，对于 $2 \times 2$ 矩阵，条件 $\det A_k \ge 0$ 蕴含 $A$ 是半正定的，参见下面的问题 4.3。
-这有时会导致对 $n \times n$ 矩阵的错误结论。
+首先，注意到西尔维斯特正定性判据不能推广到$n\ge 3$的正半定矩阵，意即对$n\times n$（$n\ge 3$）矩阵，条件$\det A_k\ge 0$不能推出$A$是正半定的，见下习题 \ref{ex:4_4_6}。
 
-最后，我们应该简单地谈谈负定矩阵。这个典型的错误，初学者常常会犯：他们认为条件 $\det A_k < 0$ 意味着 $A$ 是负定的。但这却是错误的！
+不过，对$2\times 2$矩阵，条件$\det A_k\ge 0$能推出$A$是正半定的，见下习题 \ref{ex:4_4_3}。这有时会导致对$n\times n$矩阵的错误结论。
 
-要核验矩阵 $A$ 是否是负定的，只需核验矩阵 $-A$ 是否是正定的。
-将 塞尔维斯特正定性判据应用于 $-A$，我们可以看到 $A$ 是负定的，当且仅当 $(-1)^k \det A_k > 0$ 对所有 $k = 1, 2, \dots, n$.~
+最后，我们要稍微提一下负定矩阵的判据。学生常会误认为条件$\det A_k< 0$蕴涵$A$是负定的。但这是错的！
 
-\begin{exer} {\heiti 练习}~~
+要检验矩阵$A$是否负定，只需检验矩阵$-A$是否正定。对$-A$应用西尔维斯特正定性判据，可得$A$负定当且仅当$(-1)^k\det A_k>0$对所有$k=1,2,\dots,n$成立。
 
-4.1. 使用塞尔维斯特正定性判据核验矩阵 
-$$A = \begin{pmatrix} 4 & 2 & 1 \\ 2 & 3 & -1 \\ 1 & -1 & 2 \end{pmatrix},\quad B = \begin{pmatrix} 3 & -1 & 2 \\ -1 & 4 & -2 \\ 2 & -2 & 1 \end{pmatrix}$$
-否是正定的。
-\\
-矩阵 $-A$, $A^3$ 和 $A^{-1}$, $A+B^{-1}$, $A+B$, $A-B$ 是否是正定的？
+\begin{problemset}
+  \item 用西尔维斯特正定性判据来检验一下矩阵是否正定。
+  \[A=\begin{pNiceMatrix}[margin]4&2&1\\2&3&-1\\1&-1&2\end{pNiceMatrix},\quad B=\begin{pNiceMatrix}[margin]3&-1&2\\-1&4&-2\\2&-2&2\end{pNiceMatrix}\]
+  矩阵$-A,A^3$及$A^{-1},A+B^{-1},A+B,A-B$是正定的吗？
+  \item 判断正误：
+  \begin{probenumerate}
+    \item 如果$A$正定，那么$A^5$正定；
+    \item 如果$A$负定，那么$A^8$负定；
+    \item 如果$A$负定，那么$A^{12}$正定；
+    \item 如果$A$正定且$B$负半定，那么$A-B$正定；
+    \item 如果$A$不定，且$B$正定，那么$A+B$不定。
+  \end{probenumerate}
+  \item \label{ex:4_4_3} 令$A$是$2\times 2$埃尔米特矩阵，满足$a_{1,1}>0$，$\det A\ge 0$。证明：$A$是正半定的。
+  \item 求实对称$n\times n$矩阵，满足$\det A_k\ge 0$对所有$k=1,2,\dots,n$成立，但是矩阵$A$不是正半定的。试找出$n$最小的反例。
+  \item 令$A$是$n\times n$埃尔米特矩阵，满足$\det A_k> 0$对所有$k=1,2,\dots,n-1$成立，且$\det A\ge 0$。证明：$A$是正半定的。
+  \item \label{ex:4_4_6} 求出$3\times 3$实对称矩阵$A$，满足$a_{1,1}>0$，$\det A_k\ge 0$对$k=2,3$成立，但$A$不是正半定的。
+\end{problemset}
 
-4.2. 判断正误：
-\\
-a) 如果 $A$ 是正定的，那么 $A^5$ 是正定的。
-\\
-b) 如果 $A$ 是负定的，那么 $A^8$ 是负定的。
-\\
-c) 如果 $A$ 是负定的，那么 $A^{12}$ 是正定的。
-\\
-d) 如果 $A$ 是正定的，且 $B$ 是半负定的，那么 $A-B$ 是正定的。
-\\
-e) 如果 $A$ 是不定的，且 $B$ 是正定的，那么 $A+B$ 是不定的。
+\section{正定型和内积}
 
-4.3. 设 $A$ 是一个 $2 \times 2$ 埃尔米特矩阵，满足 $a_{1,1} > 0$, $\det A \ge 0$.~证明 $A$ 是半正定的。
+令$V$是内积空间，并令${\mathcal{B}}=\{\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}\}$是$V$的基（不一定是正交的）。令矩阵$G=\{g_{j,k}\}_{j,k=1}^n$定义为
+\[g_{j,k}=(\mathbf{v}_k,\mathbf{v}_j).\]
+若$\mathbf{x}=\sum_{k}x_{k}\mathbf{v}_{k}$及$\mathbf{y}=\sum_{k}y_{k}\mathbf{v}_{k}$，则
+\[\begin{aligned}
+  (\mathbf{x},\mathbf{y})=\left(\sum_{k}x_{k}\mathbf{v}_{k},\sum_{j}y_{j}\mathbf{v}_{j}\right)&=\sum_{k,j=1}^{n}x_{k}\overline{y}_{j}(\mathbf{v}_{k},\mathbf{v}_{j})\\&=\sum_{j=1}^{n}\sum_{k=1}^{n}g_{j,k}x_{k}\overline{y}_{j}=(G[\mathbf{x}]_{\mathcal{B}},[\mathbf{y}]_{\mathcal{B}})_{\mathbb{C}^{n}},
+\end{aligned}\]
+其中$(\cdot,\cdot)_{\mathbb{C}^n}$表示$\mathbb{C}^n$上的标准内积。容易看出，$G$是正定矩阵（为什么？）。
 
-4.4. 找到一个 $n \times n$ 实对称矩阵 $A$，使得 $\det A_k \ge 0$ 对所有 $k = 1, 2, \dots, n$，但是矩阵 $A$ 不是半正定的。试着为最小可能的 $n$ 举一个例子。
+所以，当处理在内积空间的任意基（不一定是正交基）下的坐标时，（关于坐标的）内积不再如$\mathbb{C}^n$上的标准内积那样计算，而是借助正定矩阵$G$来计算（如上所述）。
 
-4.5. 设 $A$ 是一个 $n \times n$ 埃尔米特矩阵，使得对所有 $k = 1, 2, \dots, n-1$，都有 $\det A_k > 0$，并且 $\det A \ge 0$.~证明 $A$ 是半正定的。
+注意，这种$G$-内积和$\mathbb{C}^n$上的标准内积相同当且仅当$G=I$，而这又等价于基$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$是规范正交的。
 
-4.6. 找到一个 $3 \times 3$ 实对称矩阵 $A$，使得 $a_{1,1} > 0$，对 $k=2,3$ 有 $\det A_k \ge 0$，但矩阵 $A$ 不是半正定的。
-\end{exer}
-
-\section{5. 正定二次型与内积}
-
-设 $V$ 是一个内积空间，设 $\B = \{\vv_1, \vv_2, \dots, \vv_n\}$ 是 $V$ 中的一组基（不一定是正交的）。设 $G = \{g_{j,k}\}^{n}_{j,k=1}$ 是由 $$g_{j,k} = (\vv_k, \vv_j)$$ 
-定义的矩阵。
-
-如果 $\xx = \sum_{k=1}^n x_k \vv_k$ 且 $\yy = \sum_{j=1}^n y_j \vv_j$，那么
-\begin{equation} \notag
-\begin{split}
-(\xx, \yy) = (\sum_{k=1}^n x_k \vv_k, \sum_{j=1}^n y_j \vv_j) =&\ \sum_{k,j=1}^n x_k y_j (\vv_k, \vv_j)\\ =&\ \sum_{j=1}^n \sum_{k=1}^n g_{j,k} x_k y_j = (G [\xx]_\B, [\yy]_\B)_{\CC^n},
-\end{split}\end{equation}
-其中 $( \cdot, \cdot )_{\CC^n}$ 代表 $\CC^n$ 中的标准内积。
-可以立即看出 $G$ 是一个正定矩阵（为什么？）。
-
-因此，当在内积空间中的任意（不一定是正交的）基下处理坐标时，内积（用坐标表示）不是像在 $\CC^n$ 中那样通过标准内积计算，而是通过如上所述的正定矩阵 $G$ 来计算。
-
-注意，这个 $G$-内积当且仅当 $G=I$ 时才与 $\CC^n$ 中的标准内积重合，这当且仅当基 $\vv_1, \vv_2, \dots, \vv_n$ 是标准正交的时成立。
-
-反之，给定一个正定矩阵 $G$，可以在 $\CC^n$ 中定义一个非标准的内积（$G$-内积）为 
-$$(\xx, \yy)_G := (G\xx, \yy)_{\CC^n},\quad \xx, \yy \in \CC^n.$$
-可以很容易地核验 $(\xx, \yy)_G$ 确实是一个内积，即满足第五章第 1.3 节性质 1-4.
-
-
-
-
+反之，给定正定矩阵$G$，可定义$\mathbb{C}^n$上的非标准内积（$G$-内积）为
+\[(\mathbf{x},\mathbf{y})_G:=(G\mathbf{x},\mathbf{y})_{\mathbb{C}^n},\quad\mathbf{x},\mathbf{y}\in\mathbb{C}^n.\]
+容易检验，$(\mathbf{x},\mathbf{y})_G$的确是内积，即它满足第 \ref{chap:InnerProduct} 章第 \ref{subsec:inner_prod} 节的性质1-4。

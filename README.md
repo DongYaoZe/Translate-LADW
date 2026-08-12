@@ -7,6 +7,8 @@
 
 本项目是 Sergei Treil 教授的经典教材 **《Linear Algebra Done Wrong》** 的中文翻译版本。
 
+当前开发版本以原作者 **2026-04-30** 版为内容基准。同步时以 Brown University 发布的 LaTeXML HTML 与由其恢复出的结构化 TeX 为校对依据；恢复文件用于逐段、公式、定理、习题和脚注对照，并不声称是作者原始 TeX 工程。
+
 本书是南京大学匡亚明学院线性代数课程（李耀文老师授课）的核心参考书。由于原书为英文，为帮助同学们克服语言障碍、更高效地掌握线性代数的核心思想，我发起了这个翻译项目。
 
 希望这份译稿能成为一份小小的礼物，送给每一位在知识海洋中奋力前行的同学。
@@ -15,6 +17,8 @@
 - **书名:** Linear Algebra Done Wrong
 - **作者:** Sergei Treil
 - **原书主页:** [https://sites.google.com/a/brown.edu/sergei-treil-homepage/linear-algebra-done-wrong](https://sites.google.com/a/brown.edu/sergei-treil-homepage/linear-algebra-done-wrong)
+- **本次同步原文:** Brown University 发布的 `HTML_2026_04-30 / LADW_2026_04-30`
+- **当前开发版本:** `10.0.0-dev`
 
 ---
 
@@ -49,10 +53,22 @@
     确保您的系统中已安装了 TeX Live, MacTeX 或 MiKTeX，并支持 `XeLaTeX` 编译。
 
 3.  **编译:**
-    使用 `XeLaTeX` 编译器对主文件 `main.tex` 进行编译。通常需要编译两次以上以确保目录和交叉引用正确生成。
+    本项目包含索引与交叉引用，推荐使用仓库中的 `makefiles.bat` / `makefiles.sh`；完整流程为 XeLaTeX → BibTeX → MakeIndex / zhmakeindex → XeLaTeX × 2。
     ```bash
-    xelatex main.tex
+    xelatex main
+    bibtex main
+    makeindex main
+    zhmakeindex main
+    xelatex main
+    xelatex main
     ```
+
+### 源码组织
+
+- `part/chap01.tex`–`chap09.tex`：与 2026-04-30 原作者正文同步的九章译文。
+- `part/exercises.tex`：译者维护的课后习题解答附录，不占用原书章号。
+- `legacy/drafts/`：历史题解与旧附录草稿，不参与正式构建。
+- 定理、公式、习题和章节编号均由 LaTeX 自动生成；不要在标题或正文中手写原书编号。
 
 ---
 
@@ -73,15 +89,16 @@
 - **Sergei Treil 教授**，感谢他创作了如此优秀的教材。
 - **南京大学匡亚明学院李耀文老师**，他的课程是本项目开始的契机。
 - **[zhbook](http://haixing-hu.github.io/xelatex-zh-book/) 项目**，本项目使用了其优秀的 `LaTeX` 模板。
+- **独立中译项目 `LADW-cn-main` 的维护者与贡献者**：本次同步将其作为重要的结构与译文对照来源；所有采用内容均继续以 2026-04-30 原作者文本逐项核验。
 - **所有关注、支持和贡献本项目的同学和朋友们**。
 
 ---
 
 ## 📝 许可协议 (License)
 
-本项目源码采用 [MIT License](https://github.com/DongYaoZe/Translate-LADW/blob/main/LICENSE) 开源。
+仓库中的模板、构建脚本及项目自有代码以仓库 `LICENSE` 为准。
 
-翻译内容的版权属于原作者 Sergei Treil 和译者。本项目为非营利性质，仅供学习交流使用。严禁用于任何商业目的。
+**原书文本与本仓库代码许可应分开理解。** 原作者当前发布页将《Linear Algebra Done Wrong》标示为 Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported。翻译文本及其传播还涉及原作者与译者的权利；本项目仅用于非营利的学习、校对与交流，具体使用范围请以相关权利人的许可为准。
 
 ---
 

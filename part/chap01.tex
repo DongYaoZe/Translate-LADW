@@ -1,1137 +1,995 @@
-\chapter{第一章~~基本概念}
 
-\section{1. 向量空间}
-向量空间 $V$ 由一些被称为向量（本书中用小写粗体字母表示，如 $\vv$）的对象组成，并且包含两个运算：向量加法和数（标）量乘法
-\footnote{为了在向量和其他对象之间做出视觉区分，本书使用\textbf{加粗的小写字母}来表示向量，而使用\textbf{普通小写字母}来表示数字（标量）。在一些（更高级的）书中，拉丁字母留给向量使用，而希腊字母被用作标量；在更高级的文本中，任何字母都可以用于任何目的，读者必须根据上下文理解每个符号的含义。我认为，尤其对于初学者来说，在不同对象之间作一定的视觉区分是有帮助的，所以加粗的小写字母将始终表示一个向量。而在黑板上，通常会使用箭头（如 $\vec{v}$）来标识一个向量。
-}
-，使得以下 8 个性质（所谓的向量空间\textbf{公理}(axiom)）成立：
+%%%%%%%%%%%%%%%%%%%% 基本概念 %%%%%%%%%%%%%%%%%%%%%
 
-前 4 个性质涉及加法：
-\footnote{
-这时会引出一个问题：“我们该如何记住上述性质呢？” 而答案是，根本不需要记住，请看下文！
-}
+\chapter{基本概念}\label{chap:BasicNotion}
 
-1. 交换律：$\vv + \ww = \ww + \vv$ 对所有 $\vv, \ww \in V$；
+\section{向量空间}\label{sec:vector_space}
 
-2. 结合律：$(\uu + \vv) + \ww = \uu + (\vv + \ww)$ 对所有 $\uu, \vv, \ww \in V$；
+向量空间$V$是一系列对象所构成的（非空）集合，这些对象称为向量（本书中以粗体小写字母表示，例如$\mathbf{v}$）。其上还定义了两种运算——向量的加法以及向量与数（标量）的乘法\footnote{我们需要让向量和其他对象看起来有些区别，因此在本书中我们使用粗体小写字母来表示向量，并用正体小写字母来表示数（标量）。一些（进阶的）教材中，拉丁字母用于表示向量而希腊字母用于表示标量；更为进阶的教材里，任意字母可用于表示任意对象，而读者须从上下文推断每个符号的含义。我认为，尤其对于初学者而言，对不同对象加以视觉上的区分是有助于理解的，因此总用粗体小写字母来表示向量。在黑板上，则用箭头来标识向量（如$\vec{v}$所示）。}，这两种运算满足所得结果总属于$V$，以及以下的八条性质（所谓向量空间的{\bf 公理}）：
 
-3. 零向量：存在一个特殊的向量，记作 $\oo$，使得 $\vv + \oo = \vv$ 对所有 $\vv \in V$；
+前 4 条性质是关于加法的：%\marginpar{\small 问题来了：“这些性质怎么记得住呢？”回答是，不需要刻意去记，详见后文！}
+\begin{enumerate}
+    \item 交换律：对于所有 $\mathbf{v},\mathbf{w}\in V$，都有$\mathbf{v} + \mathbf{w} = \mathbf{w} + \mathbf{v}$；
+    \item 结合律：对于所有 $\mathbf{u},\mathbf{v},\mathbf{w}\in V$，都有$(\mathbf{u}+\mathbf{v})+\mathbf{w}=\mathbf{u}+(\mathbf{v}+\mathbf{w})$；
+    \item 零向量：存在一个特殊的向量，记作$\mathbf{0}$，其满足$\mathbf{v}+\mathbf{0} = \mathbf{v}$对于所有$\mathbf{v}\in V$都成立；
+    \item 加法逆元：对于每个向量$\mathbf{v}\in V$，都存在向量$\mathbf{w}\in V$使得$\mathbf{v}+\mathbf{w}=\mathbf{0}$。这一加法逆元常记作$-\mathbf{v}$；
+\end{enumerate}
 
-4. 加法逆元：对于每个向量 $\vv \in V$ ,都存在一个向量 $\ww \in V$ 使得 $\vv + \ww = \oo$. 这样的加法逆元通常记作 $-\vv$；
+接下来两条性质是有关乘法的：
 
-接下来的两个性质涉及乘法：
+\begin{enumerate}[start=5]
+    \item 乘法恒等元：对于所有$\mathbf{v}\in V$，都有$1\mathbf{v}=\mathbf{v}$；
+    \item 乘法结合律：对于所有$\mathbf{v}\in V$和所有标量$\alpha,\beta$，都有$(\alpha\beta)\mathbf{v} = \alpha(\beta\mathbf{v})$；
+\end{enumerate}
 
-5. 乘法单位元：$1 \vv = \vv$ 对所有 $\vv \in V$；
+最后是两条分配性质，它们将乘法与加法联系起来：
 
-6. 乘法结合律：$(\alpha\beta) \vv = \alpha(\beta \vv)$ 对所有 $\vv \in V$ 和所有标量 $\alpha, \beta$；
+\begin{enumerate}[start=7]
+    \item 对于所有$\mathbf{u},\mathbf{v}\in V$和所有标量$\alpha$，都有$\alpha(\mathbf{u}+\mathbf{v})=\alpha\mathbf{u}+\alpha\mathbf{v}$；
+    \item 对于所有$\mathbf{v}\in V$和所有标量$\alpha,\beta$，都有$(\alpha+\beta)\mathbf{v}=\alpha\mathbf{v}+\beta\mathbf{v}$。
+\end{enumerate}
 
-最后是两个分配律，它们连接了乘法和加法：
+\begin{remark*}
+    上述性质看起来很难记忆，但其实没必要记——它们不过是标量代数的运算律，而这些内容你在中学期间就已经熟知。唯一新出现的难点是，你需要理解运算可作用的对象。你可以将向量相加，也可以将向量与数（标量）相乘。当然，你还可以对于数进行之前你学过的所有运算。然而，你不能将两个向量相乘，或将向量和数加在一起。
+\end{remark*}
 
-7. $\alpha (\uu + \vv) = \alpha \uu + \alpha \vv$ 对所有 $\uu, \vv \in V$ 和所有标量 $\alpha$；
+\begin{remark*}
+    容易证明，零向量$\mathbf{0}$是唯一的，并且对于给定$\mathbf{v}\in V$，其加法逆元$-\mathbf{v}$也是唯一的。
 
-8. $(\alpha + \beta) \vv = \alpha \vv + \beta \vv$ 对所有 $\vv \in V$ 和所有标量 $\alpha, \beta$.
+    同样，（利用性质5、6和8）不难证明$\mathbf{0} = 0\mathbf{v}$对所有$\mathbf{v}\in V$都成立，且有$-\mathbf{v}=(-1)\mathbf{v}$。注意，在证明过程中，我们还需用到向量空间的其他性质，特别是性质3和4。
+\end{remark*}
 
-{\heiti 注记}~~上述性质似乎很难记忆，但读者没有必要死记硬背。它们只是我们熟知的从高中学到的关于对数字进行代数运算的规则。这里唯一的陌生之处在于，你必须理解你可以在什么对象上进行什么运算。你可以将向量相加，也可以用数字（标量）乘以向量。当然，你可以对数字进行所有你以前学过的运算。但是，你不能将两个向量相乘，也不能将一个数字加到一个向量上。
+若标量为实数，那么我们称$V$为{\bf 实}向量空间。若标量为复数，意即我们可将向量与复数相乘，那么我们称$V$为{\bf 复}向量空间。
 
-{\heiti 注记}~~可以很容易地证明零向量 $\oo$ 是唯一的，并且给定 $\vv \in V$ ，其加法逆元 $-\vv$ 也是唯一的。
+注意，任何的复向量空间也是实向量空间（如果我们可以做复数乘法，那么也可以做实数乘法），但反之不成立。
 
-通过使用向量空间的性质5，6和8，也不难证明 $\oo = 0 \vv$ 对任何 $\vv \in V$，并且 $-\vv = (-1)\vv$.~注意，要做到这一点，仍然需要使用向量空间的其它性质来证明，特别是性质 3 和 4。
+还可以考虑标量为任意的域\footnote{如果你不知道什么是域也不必担心，因为在这本书中我们只考虑实向量空间和复向量空间。}$\mathbb{F}$中的元素的情况。在这种情况里，我们说$V$是域$\mathbb{F}$上的向量空间。尽管本书的许多章节（特别地，第 \ref{chap:BasicNotion} 至 \ref{chap:Determinant} 章的全部内容）对于一般的域都适用，在本书中我们只考虑实向量空间和复向量空间。
 
+如果我们不指明标量集合或使用$\mathbb{F}$来指代之，那么有关结论就对实向量空间和复向量空间都成立。如果需要区分实数和复数情形，那么我们就会说清楚到底在考虑何种情况。
 
-如果标量是通常的实数，我们称空间 $V$ 为\textbf{实向量空间}(real vector space)。如果标量是复数，即如果我们能用复数乘以向量，我们称空间 $V$ 为\textbf{复向量空间}(complex vector space)。
+注意，在“任意的域上的向量空间”这一定义中，我们{\bf 要求}标量集合为域，这样我们总是可以与非零标量做除法（并且不产生余数）。于是，向量空间的标量集可以取为有理数集，但不能取为整数集。
 
-注意，任何复向量空间也都是实向量空间（因为如果我们能用复数乘以向量，那么我们也能用实数乘以向量），但反之则不然。
+\subsection{例子}
+\begin{example*}
+    向量空间$\mathbb{R}^n$由长度为$n$的列向量（如下）所构成：
+    \[\mathbf{v}=\begin{pNiceMatrix}[margin]v_1\\v_2\\\vdots\\v_n\end{pNiceMatrix}\]
+    其中各元素为实数。加法和乘法是逐元素定义的，也即
+    \[\alpha\begin{pNiceMatrix}[margin]v_1\\v_2\\\vdots\\v_n\end{pNiceMatrix}=\begin{pNiceMatrix}[margin]\alpha v_1\\\alpha v_2\\\vdots\\\alpha v_n\end{pNiceMatrix},\quad\begin{pNiceMatrix}[margin]v_1\\v_2\\\vdots\\v_n\end{pNiceMatrix}+\begin{pNiceMatrix}[margin]w_1\\w_2\\\vdots\\w_n\end{pNiceMatrix}=\begin{pNiceMatrix}[margin]v_1+w_1\\v_2+w_2\\\vdots\\v_n+w_n\end{pNiceMatrix}\]
+\end{example*}
 
-我们也可能会考虑标量是任意域 $\FF$ 中的元素的情况。在这种情况下，我们说 $V$ 是域 $\FF$ 上的向量空间。虽然本书中的许多构造（特别是第一至第三章中的所有内容）适用于一般域，但本书仅考虑实数和复数向量空间。
+\begin{example*}
+    向量空间$\mathbb{C}^n$同样由长度为$n$的列向量所构成，只是向量中各元素为复数。加法和乘法与$\mathbb{R}^n$中的定义相同，唯一的区别在于如今可以将向量与{\bf 复}数相乘，也即，$\mathbb{C}^n$为{\bf 复}向量空间。
+\end{example*}
 
-如果我们不指定标量集，或者用字母 $\FF$ 来表示它，那么结果对实数和复数空间都成立。如果我们想区分实数和复数情况，我们会明确说明我们正在考虑哪种情况。
+本书中许多结论对于$\mathbb{R}^n$和$\mathbb{C}^n$都成立，在这样的情况下，我们将使用$\mathbb{F}^n$这个记号。
 
-请注意，在定义域 $\FF$ 上的向量空间定义中，我们\textbf{要求}标量集是一个域，因此我们始终可以进行除法（无余数），尽管不能进行整数除法。在这种情况下，我们可以考虑有理数域上的向量空间，但不能考虑整数环上的。
+\begin{example*}
+    向量空间$M_{m\times n}$（也记作$M_{m,n}$）由$m\times n$矩阵构成，加法和标量乘法是逐元素定义的。如果我们限制各元素为实数（并且只允许与实数相乘），那么我们就得到了一个实向量空间；如果我们允许各元素为复数（并且允许与复数相乘），那么我们就得到了一个复向量空间。\index{$M_{m\times n}$}\index{$M_{m,n}$}
 
+    正式而言，我们需要区分实数与复数情形，也即分别写为$M_{m, n}^{\mathbb{R}}$和$M_{m, n}^{\mathbb{C}}$。然而，在大多数场合中，实数和复数情形并没有区别，于是也没有必要明确到底在考虑哪种情形。如果有所区别，我们会说清楚考虑的是哪种情况。
+\end{example*}
 
+\begin{remark*}
+    如上所提到的，向量空间的公理仅仅是实数或复数的通常代数运算规则，因此如果我们将标量（数）视作向量，那么所有的公理都是成立的。于是，实数集合$\mathbb{R}$是实向量空间，复数集合$\mathbb{C}$是复向量空间。
 
+    更重要的是，由于在上面的例子中，所有的向量运算（加法和标量乘法）都是逐元素进行的，因此在这些例子中向量空间的公理是自动满足的，因为这些公理对标量成立（你能看出原因吗？）。因此，无需检验这些公理，我们就能得知上述例子中的集合的确是向量空间！
 
+    同样的道理也适用于下面的例子，此处多项式的系数充当了（上述列向量或矩阵中）各元素的角色。
+\end{remark*}
 
-\subsection{1.1. 一些例子}
-{\heiti 例子}~~ 空间 $\RR^n$ 由所有大小为 $n$ 的列向量组成：
-$$
-\vv = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix}
-$$
-其中各项均为实数。加法和乘法是逐项定义的，即
-$$
-\alpha \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix} = \begin{pmatrix} \alpha v_1 \\ \alpha v_2 \\ \vdots \\ \alpha v_n \end{pmatrix}, \quad \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix} + \begin{pmatrix} w_1 \\ w_2 \\ \vdots \\ w_n \end{pmatrix} = \begin{pmatrix} v_1 + w_1 \\ v_2 + w_2 \\ \vdots \\ v_n + w_n \end{pmatrix}
-$$
+\begin{example*}
+    由次数至多为$n$的多项式所构成的向量空间$\mathbb{P}_n$，其中各元素$p$都是多项式，形式如下：\[p(t) = a_0 + a_1t + a_2t^2 + \dots +a_nt^n,\]
+    其中$t$为自变量。注意，有些（甚至全部）系数$a_k$可以取$0$。
 
-{\heiti 例子}~~ 空间 $\CC^n$ 也由大小为 $n$ 的列向量组成，只是各项现在是复数。加法和乘法与 $\RR^n$ 中的定义完全相同，唯一的区别是我们现在可以乘以\textbf{复数}，即 $\CC^n$ 是一个\textbf{复向量空间}。
+    系数$a_k$为实数时，我们就得到了一个实向量空间；系数$a_k$为复数时，此空间则为复向量空间。同样，仅在有必要的时候我们才说明考虑的是实数情形还是复数情形，否则所讨论的内容在两种情况下都适用。
+\end{example*}
 
-本书中的许多结果对于 $\RR^n$ 和 $\CC^n$ 都成立。这种情况下我们将使用符号 $\FF^n$.~
+{\bf 问题：}上面这几个例子中的零向量是什么？
 
+\subsection{矩阵记号}\label{subsec:matrix_notation}
 
+一个$m\times n$的矩阵是一个有$m$行$n$列的阵列\index{矩阵（matrix）}。这个阵列中的元素称为矩阵的{\bf 元素}。\index{元素（entry, entries）!矩阵的$\sim$（of a matrix）}
 
-{\heiti 例子}~~ 空间 $M_{m \times n}$\index{aabMmxn@$M_{m \times n}$}（也记作 $M_{m,n}$\index{aaaMmn@$M_{m,n}$}）是 $m \times n$ 矩阵的集合：加法和标量乘法是逐项定义的。如果我们只允许实数项存在（因此只允许实数乘法），那么我们会得到一个实向量空间；如果我们允许复数项和复数乘法存在，那么我们会得到一个复向量空间。
-
-形式上，我们必须区分实数情况和复数情况，即写成 $M^{\RR}_{m,n}$ 或 $M^{\CC}_{m,n}$.~然而，在大多数情况下，实数和复数情况之间没有区别，我们也无需指明正在考虑哪种情况。当有区别时，我们会明确说明正在考虑哪种情况。
-
-{\heiti 注记}~~ 正如我们上面提到的，向量空间的公理仅仅是我们所熟知的（实数或复数）数字代数运算的规则，所以如果我们把标量（数字）当作向量，所有公理都会得到满足！因此，实数集 $\RR$ 也是一个实向量空间，复数集 $\CC$ 也是一个复向量空间。
-
-更重要的是，由于在上面的例子中，所有向量运算（加法和标量乘法）都是逐项执行的，因此对于这些例子，向量空间的公理自动满足，因为它们对于标量也是成立的（你能看出为什么吗？）。所以，我们不必检验公理本身，就自然地获得了这些例子确实是向量空间的事实！
-
-同样的情况也适用于下面的例子，即多项式，其中多项式的系数起着项的作用。
-
-{\heiti 例子}~~ 考虑最多 $n$ 次的多项式的空间 $\PP_n$ ，包含所有形式为
-$$p(t) = a_0 + a_1 t + a_2 t^2 + \dots + a_n t^n$$
-的多项式，其中 $t$ 是自变量。注意，一些或甚至所有系数 $a_k$ 可以是 0。
-
-在$a_k$ 为实数系数的情况下，我们得到一个实向量空间，复数系数则构成一个复向量空间。同样，我们只在区别至关重要时才明确说明我们正在处理实数或复数情况；否则，讨论的一切都适用于这两种情况。
-
-{\heiti 问题}~~ 在以上每个例子中，零向量各是什么？
-
-\subsection{1.2. 矩阵表示}
-一个 $m \times n$ 矩阵\index{juzhen@矩阵}是含有 $m$ 行和 $n$ 列的矩形数组。\footnote{
-译者注：需要注意的是，矩阵中元素的定位规则与中学里平面直角坐标系点的查找方式恰好相反。中学是“横纵坐标”，坐标轴分别在水平和竖直方向上延伸；而矩阵中，行的增加在竖直方向，列的增加在水平方向。
-}数组中的元素称为矩阵的\textbf{项}(entry)。\index{xiang@项}  % entry, entries
-\index{xiang@项!juzhende@矩阵的}  %1.1 of a matrix
-
-
-通常我们可以方便地用带下标的字母来表示矩阵的项：第一个下标表示项所在的行号，第二个下标表示列号。例如，
-$$(1.1)\quad
-A = (a_{j,k})^{m,}_{j=1,}~^n_{k=1} = \begin{pmatrix}
-a_{1,1} & a_{1,2} & \dots & a_{1,n} \\
-a_{2,1} & a_{2,2} & \dots & a_{2,n} \\
-\vdots & \vdots & \ddots & \vdots \\
-a_{m,1} & a_{m,2} & \dots & a_{m,n}
-\end{pmatrix}
-$$
-是一种一般地书写 $m \times n$ 矩阵的方式。
-
-对于矩阵 $A$，位于第 $j$ 行和第 $k$ 列的项常常被表示为 $A_{j,k}$ 或 $(A)_{j,k}$，有时也会像上面 (1.1) 那个例子一样，用相同的小写字母来表示矩阵的项。
-
-给定矩阵 $A$，它的\textbf{转置}(transpose)（或转置矩阵）$A^T$ 是通过将 $A$ 的行变为列来定义的。例如\index{zhuanzhi@转置} 
-$$
-\begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{pmatrix}^T = \begin{pmatrix} 1 & 4 \\ 2 & 5 \\ 3 & 6 \end{pmatrix}.
-$$
-所以，$A^T$ 的列是 $A$ 的行，反之亦然，$A^T$ 的行是 $A$ 的列。
-
-正式定义如下：$(A^T)_{j,k} = (A)_{k,j}.$ 这种表示的意思是 $A^T$ 中第 $j$ 行第 $k$ 列的项等于 $A$ 中第 $k$ 行第 $j$ 列的项。
-
-对矩阵的转置有一个线性变换上很好的解释，即它给出了所谓的\textbf{伴随}(adjoint)变换。我们将在后面详细讨论这一点，现在转置只是一个有用的形式运算。
-
-转置的一个早期用途是我们可以将列向量 $\xx \in \FF^n$（回想一下 $\FF$ 是 $\RR$ 或 $\CC$）写成 $\xx = (x_1, x_2, \dots, x_n)^T$.如果我们将列向量垂直放置，它将占用纸面上更多的空间。
-
-\begin{exer}
-
- {\heiti 练习}~~
- 
-% \footnote{
-% 按照是否启动翻译计划的问卷调查结果，译者不会为本书制作答案。所有练习请读者自行完成。加油哦！
-\textbf{译者注}：本书练习题解答放在了附录中，请读者先思考，先动笔算，而不是一上来就看答案。
-\\
-本书的一大特色是，正文内容较为抽象且简略，而对于一些概念的更深入理解与辨析、应用、具象化、直观化，实践算法如何进行，以及少量提高内容，甚至一些定理的证明，作者都将其放在了练习中。故读者即使不将本书作为主要教材，仅是看书的话，也建议看着答案把题目过一遍。只有这样，你才知道自己是否真正理解了正文内容，适不适合立即往后看。以适量练习题作为补充，你的收获也将会更多。
-% }
-
-1.1. 令 $\xx = (1, 2, 3)^T$, $\yy = (y_1, y_2, y_3)^T$, $\zz = (4, 2, 1)^T$.~计算 $2\xx$, $3\yy$, $\xx + 2\yy - 3\zz$.
-
-
-
-1.2. 下列集合（在自然定义的加法和标量乘法下）哪些是向量空间？请给出你的理由。
-\\
-a) $[0, 1]$ 区间上所有连续函数的集合；
-\\
-b) $[0, 1]$ 区间上所有非负函数的集合；
-\\
-c) \textbf{恰好} $n$ 次多项式的集合；
-\\
-d) 所有 $n \times n$ 对称矩阵的集合，即满足 $A^T = A$ 的矩阵 $A = \{a_{j,k}\}_{j,k=1}^n $.\index{juzhen@矩阵!duichen@对称}  %1. symmetric
-
-
-
-1.3. 判断正误：
-\\
-a) 每个向量空间都包含一个零向量；
-\\
-b) 一个向量空间可以有多个零向量；
-\\
-c) 一个 $m \times n$ 矩阵有 $m$ 行和 $n$ 列；
-\\
-d) 如果 $f$ 和 $g$ 是 $n$ 次多项式，那么 $f+g$ 也是正好为 $n$ 次的多项式；
-\\
-e) 如果 $f$ 和 $g$ 是最高为 $n$ 次的多项式，那么 $f+g$ 也是最高为 $n$ 次的多项式。
-
-1.4. 证明向量空间 $V$ 的零向量 $\oo$ 是唯一的。
-
-1.5. 空间 $M_{2 \times 3}$ 的零向量是什么样子的矩阵？请写出来。
-
-1.6. 证明向量空间公理 4 中定义的加法逆元是唯一的。
-
-1.7. 证明 $0 \vv = \oo$ 对任何向量 $\vv \in V$.~
-
-1.8. 证明对任何向量 $\vv$，其加法逆元 $-\vv$ 由 $(-1)\vv$ 给出。
-
-\end{exer}
-
-\section{2. 线性组合，基}
-设 $V$ 为向量空间，又设 $\vv_1, \vv_2, \dots, \vv_p \in V$ 为一组向量。向量 $\vv_1, \vv_2, \dots, \vv_p$ 的\textbf{线性组合}(linear combination)是形式为\index{xianxingzuhe@线性组合}
-$$
-\alpha_1 \vv_1 + \alpha_2 \vv_2 + \dots + \alpha_p \vv_p = \sum_{k=1}^p \alpha_k \vv_k
-$$
-的和。
-
-{\heiti 定义}~~ 向量系统 $\vv_1, \vv_2, \dots, \vv_n \in V$ 称为 $V$ 的\textbf{基}(base)（或\textbf{基底}）\index{ji@基}\index{ji@基!shuangzhenjiao@双正交|see{基, 对偶}}，如果任何向量 $\vv \in V$ 都可以\textbf{唯一地}表示为其下的线性组合
-$$
-\vv = \alpha_1 \vv_1 + \alpha_2 \vv_2 + \dots + \alpha_n \vv_n = \sum_{k=1}^n \alpha_k \vv_k.
-$$
-系数 $\alpha_1, \alpha_2, \dots, \alpha_n$ 称为向量 $\vv$ 的\textbf{坐标}(coordinates)\index{zuobiao@坐标}（在基 $\vv_1, \vv_2, \dots, \vv_n$ 下，或相对于基 $\vv_1, \vv_2, \dots, \vv_n$）。\index{zuobiao@坐标!xiangliangzai@向量在基下的}
-
-另一种说 $\vv_1, \vv_2, \dots, \vv_n$ 是基的方式是说，对于任何可能的上文等号右侧 $\vv_k$ 的选择，方程 $x_1 \vv_1 + x_2 \vv_2 + \dots + x_m \vv_n = \vv$（未知数为 $x_k$）有唯一解。
-
-在讨论基
-\footnote{
-基"basis" 的复数是 "bases"，与 "base" 的复数相同。
-}的任何性质之前
-，我会给出几个例子，以说明这些对象确实存在，并且研究它们是有意义的。
-
-
-{\heiti 例子2.2.}~~ 
-在第一个例子中，空间 ${V}$ 是 $\FF^n$，其中 $\FF$ 是实数 $\RR$ 或复数 $\CC$.~考虑向量
-$$ \ee_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, \quad \ee_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, \quad \ee_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \\ \vdots \\ 0 \end{pmatrix}, \quad \dots, \quad \ee_n = \begin{pmatrix} 0 \\ 0 \\ 0 \\ \vdots \\ 1 \end{pmatrix} ,$$
-（向量 $\ee_k$ 除第 $k$ 个分量为 1 外，其余分量均为 0）。向量组 $\ee_1, \ee_2, \dots, \ee_n$ 是 $\FF^n$ 的一组基。事实上，任意向量 $\vv = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} \in \FF^n$ 都可以表示为线性组合
-$$ \vv = x_1 \ee_1 + x_2 \ee_2 + \dots + x_n \ee_n = \sum_{k=1}^n x_k \ee_k ,$$
-并且这种表示是唯一的。向量组 $\ee_1, \ee_2, \dots, \ee_n \in \FF^n$ 被称为 $\FF^n$ 中的\textbf{标准基}(standard basis)。
-
-
-{\heiti 例子2.3.}~~ 
-在这个例子中，$\PP_n$是至多 $n$ 次多项式构成的空间。考虑向量（多项式） $\ee_0, \ee_1, \ee_2, \dots, \ee_n \in \PP_n$ 定义为
-$$ \ee_0 := 1, \quad \ee_1 := t, \quad \ee_2 := t^2, \quad \ee_3 := t^3, \quad \dots, \quad \ee_n := t^n .$$
-显然，任意多项式$p$， $p(t) = a_0 + a_1 t + a_2 t^2 + \dots + a_n t^n$ 都存在唯一的表示
-$$ p = a_0 \ee_0 + a_1 \ee_1 + \dots + a_n \ee_n .$$
-因此，向量组 $\ee_0, \ee_1, \ee_2, \dots, \ee_n \in \PP_n$ 是 $\PP_n$ 中的一组基。我们将它称为 $\PP_n$ 中的标准基。
-
-{\heiti 注记}~~
-如果一个向量空间 $V$ 拥有基 $\vv_1, \vv_2, \dots, \vv_n$，那么任何向量 $\vv$ 都可以由其在分解 $\vv = \sum_{k=1}^n \alpha_k \vv_k$ 中的系数唯一确定
-\footnote{这是一个非常重要的注记，将在本书中贯穿使用。它允许我们将任何关于标准列空间 $\FF^n$ 的陈述转化为关于具有基 $\vv_1, \vv_2, \dots, \vv_n$ 的向量空间 $V$ 的陈述。}。
-因此，如果我们把系数 $\alpha_k$ 堆叠成一个列向量，我们就可以像处理列向量一样处理它们，即像处理 $\FF^n$ 的元素一样（同样，这里的 $\FF$ 是 $\RR$ 或 $\CC$，但所有内容也都适用于抽象域 $\FF$）。
-
-具体来说，如果 $\vv = \sum_{k=1}^n \alpha_k \vv_k$ 且 $\ww = \sum_{k=1}^n \beta_k \vv_k$，那么
-$$ \vv + \ww = \sum_{k=1}^n \alpha_k \vv_k + \sum_{k=1}^n \beta_k \vv_k = \sum_{k=1}^n (\alpha_k + \beta_k) \vv_k. $$
-也就是说，要得到和的坐标列，只需将各个向量的坐标列相加。类似地，要得到 $\alpha \vv$ 的坐标，只需将 $\vv$ 的坐标列乘以 $\alpha$.~
-
-
-
-\subsection{2.1. 生成系统与线性无关系统}
-基的定义是任何向量都可以表示为其线性组合。这句话实际上包含两个陈述，即表示存在和表示唯一。让我们分别分析这两个陈述。
-
-如果我们只考虑存在性，我们就得到以下概念：
-
-{\heiti 定义}~~  向量系统 $\vv_1, \vv_2, \dots, \vv_p \in V$ 称为 $V$ 中的\textbf{生成系统}\index{shengchengxitong@生成系统}(generating system)（也称为\textbf{张成系统}(spanning system)或\textbf{完备系统}(complete system)），如果任何向量 $\vv \in V$ 都可以表示为线性组合
-$$
-\vv = \alpha_1 \vv_1 + \alpha_2 \vv_2 + \dots + \alpha_p \vv_p = \sum_{k=1}^p \alpha_k \vv_k.
-$$
-与基的定义不同之处在于，我们不假定上面的表示是唯一的。
-
-
-这里，“生成”、“张成”和“完备”是同义词。我个人更喜欢“完备”这个词，只因我的算子理论研究背景。生成和张成往往在更常见的线性代数教材中得到使用。
-
-显然，任何基都是生成（完备）系统。此外，如果我们有一组基，例如 $\vv_1, \vv_2, \dots, \vv_n$，并且我们往其中添加几个向量，例如 $\vv_{n+1}, \dots, \vv_p$，那么新的系统也将是生成（完备）系统。实际上，我们可以将任一向量表示为向量 $\vv_1, \vv_2, \dots, \vv_n$ 的线性组合，并将新向量（通过将相应的系数 $\alpha_k = 0$）忽略掉。
-
-现在来关注唯一性。这里我们不想担心存在性，所以让我们考虑零向量 $\oo$，它总是可以表示为线性组合。
-
-{\heiti 定义}~~  线性组合 $\alpha_1 \vv_1 + \alpha_2 \vv_2 + \dots + \alpha_p \vv_p$ 称为\textbf{平凡}\index{xianxingzuhe@线性组合!pingfan@平凡}的(trivial)，如果 $\alpha_k = 0 \ \forall k$.~
-
-平凡线性组合总是（对于所有选择的向量 $\vv_1, \vv_2, \dots, \vv_p$）等于 $\oo$，这也许就是“平凡”这个名字的由来。
-
-
-{\heiti 定义}~~ 向量系统 $\vv_1, \vv_2, \dots, \vv_p \in V$ 称为\textbf{线性无关}(linearly independent)的，如果只有平凡线性组合（$\sum_{k=1}^p \alpha_k \vv_k$ 其中 $\alpha_k = 0 \ \forall k$）等于 $\oo$.~\index{xianxingwuguan@线性无关}
-
-换句话说，系统 $\vv_1, \vv_2, \dots, \vv_p$ 是线性无关的，当且仅当方程 $x_1 \vv_1 + x_2 \vv_2 + \dots + x_p \vv_p = \oo$（未知数为 $x_k$）只有一个平凡解 $x_1 = x_2 = \dots = x_p = 0$.~
-
-
-如果系统不是线性无关的，则称为是\textbf{线性相关}(linearly dependent)的。通过将线性无关的定义取否，我们得到以下定义：\index{xianxingxiangguan@线性相关}
-
-
-
-{\heiti 定义}~~ 向量系统 $\vv_1, \vv_2, \dots, \vv_p$ 称为\textbf{线性相关}的，如果 $\oo$ 可以表示为\textbf{非平凡}的线性组合，即 $\oo = \sum_{k=1}^p \alpha_k \vv_k$.~非平凡意味着至少有一个系数 $\alpha_k$ 非零。这可以（并且通常）写成 $\sum_{k=1}^p |\alpha_k| \neq 0$.~
-
-
-因此，重申定义，我们可以说，一个系统是线性相关的，当且仅当存在不全为零的标量 $\alpha_1, \alpha_2, \dots, \alpha_p$，使得 
-$$\sum_{k=1}^p \alpha_k \vv_k = \oo.$$
-
-另一个定义（关于方程）是，系统 $\vv_1, \vv_2, \dots, \vv_p$ 是线性相关的，当且仅当方程 
-$$x_1 \vv_1 + x_2 \vv_2 + \dots + x_p \vv_p = \oo$$
-（未知数为 $x_k$）有一个非平凡解。非平凡，再次意味着至少有一个 $x_k$ 不为零，这可以写成 $\sum_{k=1}^p |x_k| \neq 0$.~
-
-以下命题提供了线性相关系统的一个替代描述。
-
-{\heiti 命题 2.6.}~~ 向量系统 $\vv_1, \vv_2, \dots, \vv_p \in V$ 是线性相关的，当且仅当其中一个向量 $\vv_k$ 可以表示为其他向量的线性组合，
-\begin{equation}\nonumber
- (2.1)\quad \vv_k = \sum_{j=1, j \neq k}^p \beta_j \vv_j.
+将矩阵的元素记作带下标的字母是很方便的：第一个下标代表该元素的行号，而第二个下标则代表列号。例如
+\begin{equation}\label{matrix_notation}
+    A=(a_{j,k})_{j=1,}^{m,}\,{\vphantom{)}}_{k=1}^{n}=\begin{pNiceMatrix}[margin]a_{1,1}&a_{1,2}&\ldots&a_{1,n}\\a_{2,1}&a_{2,2}&\ldots&a_{2,n}\\\vdots&\vdots&&\vdots\\a_{m,1}&a_{m,2}&\ldots&a_{m,n}\end{pNiceMatrix}
 \end{equation}
+就是$m\times n$矩阵的通常表示形式。
 
+矩阵$A$中的第$j$行第$k$列的元素往往表示为$A_{j,k}$或$(A)_{j,k}$，有时也像上面的式 \eqref{matrix_notation} 那样用小写字母加下标来表示。
 
-\begin{proof} 
- 假设系统 $\vv_1, \vv_2, \dots, \vv_p$ 是线性相关的。那么存在不全为零的标量 $\alpha_k$（$\sum_{k=1}^p |\alpha_k| \neq 0$），使得 
-$$\alpha_1 \vv_1 + \alpha_2 \vv_2 + \dots + \alpha_p \vv_p = \oo.$$
-设 $k$ 是 $\alpha_k \neq 0$ 的下标。那么，将除 $\alpha_k \vv_k$ 之外的所有项移到右侧，我们得到 $$\alpha_k \vv_k = -\sum_{j=1, j \neq k}^p \alpha_j \vv_j.$$
-将两边除以 $\alpha_k$，我们得到 (2.1) 式，其中 $\beta_j = -\alpha_j / \alpha_k$.
+给定一矩阵$A$，其{\bf 转置}\index{转置（transpose）}（或转置矩阵）$A^T$定义为将$A$的行变为列所得的矩阵。例如
+\[\begin{pNiceMatrix}[margin]1&2&3\\4&5&6\end{pNiceMatrix}^T=\begin{pNiceMatrix}[margin]1&4\\2&5\\3&6\end{pNiceMatrix}.\]
+因此，$A^T$的各列就是$A$的各行。反之亦然：$A^T$的各行就是$A$的各列。
 
-另一方面，如果 (2.1) 式成立，则 $\oo$ 可以表示为非平凡线性组合 
-$$\vv_k - \sum_{j=1, j \neq k}^p \beta_j \vv_j = \oo.$$\end{proof}
+形式化定义是：$(A^T)_{j,k}=(A)_{k,j}$，意为：$A^T$的第$j$行第$k$列的元素等于$A$的第$k$行第$j$列的元素。
 
+就线性变换而言，矩阵的转置有一种很优美的阐释，也即其能导出所谓{\bf 伴随}变换，我们将在后面详细研究它，目前转置仅仅是一种有用且正式的运算。
 
-显然，任何基都是线性无关的系统。实际上，如果一个系统 $\vv_1, \vv_2, \dots, \vv_n$ 是基，则 $\oo$ 允许唯一表示 
-$$\oo = \alpha_1 \vv_1 + \alpha_2 \vv_2 + \dots + \alpha_n \vv_n = \sum_{k=1}^n \alpha_k \vv_k.$$
-因为平凡线性组合总是给出 $\oo$，所以平凡组合必须是给出 $\oo$ 的\textbf{唯一}组合。
+转置的用处首先在于使我们得以将列向量$\mathbf{x}\in\mathbb{F}^n$（回想一下，$\mathbb{F}$是指$\mathbb{R}$或$\mathbb{C}$）写为$\mathbf{x} = (x_1,x_2,\dots,x_n)^T$。如果我们将列向量竖着写，那么其占据的空间就会大大增加。
 
-因此，正如我们已经讨论过的，如果一个系统是基，那么它就是完备（生成）的并且线性无关的系统。以下命题表明其必要性也成立。
+\begin{problemset}
+\item 令$\mathbf{x}=(1,2,3)^{T},\mathbf{y}=(y_{1},y_{2},y_{3})^{T},\mathbf{z}=(4,2,1)^{T}$。计算$2\mathbf{x},3\mathbf{y},\mathbf{x}+2\mathbf{y}-3\mathbf{z}$。
+\item 下面哪些集合（具有自然的加法和标量乘法运算）是向量空间？论证你的回答。
+\begin{probenumerate}
+    \item 所有区间$[0,1]$上的连续函数所成的集合；
+    \item 所有区间$[0,1]$上的非负函数所成的集合；
+    \item 所有次数{\bf 恰}为$n$的多项式所成的集合；
+    \item 所有$n\times n$对称矩阵所成的集合，即所有满足$A^T=A$的矩阵$A=\{a_{j,k}\}_{j,k=1}^n$所成的集合。\index{矩阵（matrix）!对称$\sim$（symmetric）}
+\end{probenumerate}
+\item 判断正误：
+\begin{probenumerate}
+    \item 每个向量空间都包含零向量；
+    \item 一向量空间可包含多个零向量；
+    \item $m\times n$矩阵有$m$行$n$列；
+    \item 若$f$和$g$是次数为$n$的多项式，那么$f+g$也是次数为$n$的多项式；
+    \item 若$f$和$g$是次数至多为$n$的多项式，那么$f+g$也是次数至多为$n$的多项式。
+\end{probenumerate}
+\item 证明：向量空间$V$的零向量$\mathbf{0}$唯一。
+\item 向量空间$M_{2\times 3}$的零向量是何矩阵？
+\item 证明：向量空间公理4所定义的加法逆元是唯一的。
+\item 证明：$0\mathbf{v} = \mathbf{0}$对于所有向量$\mathbf{v}\in V$都成立。
+\item 证明：对于所有向量$\mathbf{v}$，其加法逆元$-\mathbf{v}$由$(-1)\mathbf{v}$给出。
+\end{problemset}
 
-{\heiti 命题 2.7.} 向量系统 $\vv_1, \vv_2, \dots, \vv_n \in V$ 是基，当且仅当它线性无关且完备（生成）。
+\section{线性组合、基}
 
-\begin{proof} 
-我们已经知道基总是线性无关且完备的，所以命题的一个方向已经证明。
+令$V$为一向量空间，并令$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{p}\in V$为一系列向量。向量$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{p}$的{\bf 线性组合}\index{线性组合（linear combination）}是形式如下的求和式：
+\[\alpha_1\mathbf{v}_1+\alpha_2\mathbf{v}_2+\ldots+\alpha_p\mathbf{v}_p=\sum_{k=1}^p\alpha_k\mathbf{v}_k.\]
 
-让我们证明另一个方向。假设系统 $\vv_1, \vv_2, \dots, \vv_n$ 是线性和完备的。取任意向量 $\vv \in V$.~由于系统 $\vv_1, \vv_2, \dots, \vv_n$ 是线性完备的（生成的），$\vv$ 可以表示为 
-$$\vv = \alpha_1 \vv_1 + \alpha_2 \vv_2 + \dots + \alpha_n \vv_n = \sum_{k=1}^n \alpha_k \vv_k.$$
-我们只需要证明这个表示是唯一的。
+\begin{definition}
+    对于一组向量\footnote{原书对于若干向量有两种表达：“a system of vectors”和“a set of vectors”，此处一律采用国内通行翻译“向量组”。——译者注}$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}\in V$，若任意向量$\mathbf{v}\in V$都能被{\bf 唯一}写成线性组合的形式：\[\mathbf{v}=\alpha_1\mathbf{v}_1+\alpha_2\mathbf{v}_2+\ldots+\alpha_n\mathbf{v}_n=\sum_{k=1}^n\alpha_k\mathbf{v}_k.\]
+    则称这组向量为（向量空间$V$的）基\index{基（basis）}。系数$\alpha_1,\alpha_2,\dots,\alpha_n$称为向量$\mathbf{v}$（在基$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$下，或者说关于基$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$）的{\bf 坐标}。\index{坐标（coordinates）!向量在基下的$\sim$（of a vector in the basis）}
 
-假设 $\vv$ 还有另一个表示 $$\vv = \sum_{k=1}^n \widetilde{\alpha}_k \vv_k.$$
-那么 
-$$\sum_{k=1}^n (\alpha_k - \widetilde{\alpha}_k) \vv_k = \sum_{k=1}^n \alpha_k \vv_k - \sum_{k=1}^n \widetilde{\alpha}_k \vv_k = \vv - \vv = \oo.$$
-由于系统是线性无关的，$\alpha_k - \widetilde{\alpha}_k = 0 \ \forall k$，因此，表示 $\vv = \alpha_1 \vv_1 + \alpha_2 \vv_2 + \dots + \alpha_n \vv_n$ 是唯一的。\end{proof}
+    $\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$是基的另一种表述是，方程$x_{1}\mathbf{v}_{1}+x_{2}\mathbf{v}_{2}+\ldots+x_{n}\mathbf{v}_{n}=\mathbf{v}$（未知数为各$x_k$）对于任意右端项$\mathbf{v}$皆有唯一解。
+\end{definition}
 
-{\heiti 注记}~~ 在许多教材中，基被定义为完备且线性无关的系统（根据命题 2.7，这个定义等价于我们的定义）。虽然这个定义比本书提出的定义更常见，但我更喜欢后者。它强调了基的主要性质，即任何向量都可以唯一地表示为基下的线性组合。
+在讨论基的性质之前\footnote{英文中“basis”的复数形式是“bases”，与“base”的复数形式相同。}，首先给出一些例子来说明“基”这种对象确实存在，并且研究它们是有意义的。
 
-{\heiti 命题 2.8.} 任何（有限）生成系统都包含一组基。
+\begin{example}
+    在这第一个例子当中，向量空间$V$等于$\mathbb{F}^n$，其中$\mathbb{F}$是$\mathbb{R}$或$\mathbb{C}$。考虑向量
+    \[\mathbf{e}_1=\begin{pNiceMatrix}[margin]1\\0\\0\\\vdots\\0\end{pNiceMatrix},\quad\mathbf{e}_2=\begin{pNiceMatrix}[margin]0\\1\\0\\\vdots\\0\end{pNiceMatrix},\quad\mathbf{e}_3=\begin{pNiceMatrix}[margin]0\\0\\1\\\vdots\\0\end{pNiceMatrix},\quad\ldots,\quad\mathbf{e}_n=\begin{pNiceMatrix}[margin]0\\0\\0\\\vdots\\1\end{pNiceMatrix},\]
+    （向量$\mathbf{e}_k$除第$k$个元素为$1$外，其余各元素均为$0$）。
 
-\begin{proof} 
-假设 $\vv_1, \vv_2, \dots, \vv_p \in V$ 是生成（完备）集。如果它是线性无关的，那么它就是基，我们就完成了证明。
+    向量组$\mathbf{e}_1,\mathbf{e}_2,\dots,\mathbf{e}_n$是$\mathbb{F}^n$的基。的确，任意向量\[\mathbf{v}=\begin{pNiceMatrix}[margin]x_1\\x_2\\\vdots\\x_n\end{pNiceMatrix}\in\mathbb{F}^n\]
+    都能被表示成线性组合
+    \[\mathbf{v}=x_1\mathbf{e}_1+x_2\mathbf{e}_2+\ldots +x_n\mathbf{e}_n=\sum_{k=1}^nx_k\mathbf{e}_k\]
+    且该表示唯一。向量组$\mathbf{e}_1,\mathbf{e}_2,\dots,\mathbf{e}_n\in \mathbb{F}^n$称为$\mathbb{F}^n$的{\bf 标准基}。
+\end{example}
 
-假设它不是线性无关的，即它是线性相关的。那么将存在一个向量 $\vv_k$ 可以表示为向量 $\vv_j$ ($j \neq k$) 的线性组合。
+\begin{example}
+    本例中考虑的是次数至多为$n$的多项式所构成的向量空间$\mathbb{P}_n$。考虑定义如下的向量（多项式）$\mathbf{e}_0,\mathbf{e}_1,\mathbf{e}_2,\dots,\mathbf{e}_n\in \mathbb{P}_n$
+    \[\mathbf{e}_0:=1,\quad\mathbf{e}_1:=t,\quad\mathbf{e}_2:=t^2,\quad\mathbf{e}_3:=t^3,\quad\ldots,\quad\mathbf{e}_n:=t^n.\]
+    显然，对任意多项式$p$，$p(t)=a_0+a_1t+a_2t^2+\ldots+a_nt^n$，其均能被唯一表示为
+    \[p=a_0\mathbf{e}_0+a_1\mathbf{e}_1+\ldots+a_n\mathbf{e}_n.\]
+    因此向量组$\mathbf{e}_0,\mathbf{e}_1,\mathbf{e}_2,\ldots,\mathbf{e}_n\in\mathbb{P}_n$是$\mathbb{P}_n$的基。我们称其为$\mathbb{P}_n$的标准基。
+\end{example}
 
-由于 $\vv_k$ 可以表示为向量 $\vv_j$ ($j \neq k$) 的线性组合，因此任何向量 $\vv_1, \vv_2, \dots, \vv_p$ 的线性组合都可以表示为相同的向量（即 $\vv_j$, $1 \le j \le p$, $j \neq k$）的线性组合（即删掉 $\vv_k$ 之后的向量）。因此，如果我们删除向量 $\vv_k$，新的系统仍然是完备的。
+\begin{remark}\label{remark:fn_to_abstract}
+    若向量空间$V$有基$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$，那么任意向量$\mathbf{v}$都能被线性组合式$\mathbf{v}=\sum_{k=1}^{n}\alpha_{k}\mathbf{v}_{k}$中的系数唯一决定。因此，如果我们将各系数$\alpha_k$写在一列中，那么我们处理任意向量就如同处理列向量一样，也就是如同处理$\mathbb{F}^n$中的元素一样（此处$\mathbb{F}$仍然代表$\mathbb{R}$或$\mathbb{C}$，不过此处的结论对于任意的域$\mathbb{F}$也是成立的）。
 
-如果新的系统是线性无关的，我们就完成了证明。如果不是，则重复这个过程。
+    这就是说，若$\mathbf{v}=\sum_{k=1}^{n}\alpha_{k}\mathbf{v}_{k}$且$\mathbf{w}=\sum_{k=1}^{n}\beta_{k}\mathbf{v}_{k}$，则
+    \[\mathbf{v}+\mathbf{w}=\sum_{k=1}^n\alpha_k\mathbf{v}_k+\sum_{k=1}^n\beta_k\mathbf{v}_k=\sum_{k=1}^n(\alpha_k+\beta_k)\mathbf{v}_k,\]
+    即为了得到求和结果的坐标所构成的列向量，只需将各求和项的坐标所构成的列向量相加。类似地，为了得到$\alpha\mathbf{v}$的坐标，我们只需将$\mathbf{v}$的坐标所构成的列向量乘以$\alpha$。
+\end{remark}
 
-重复有限次该过程后，我们将得到一个线性无关且完备的系统，否则我们将删除所有向量，最后得到一个空集。
+这个注记很重要，整本书都会用到它。它使我们得以将适用于标准向量空间$\mathbb{F}^n$的各种表述迁移至具有基$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$的向量空间$V$。
 
-因此，任何有限的完备（生成）集都包含一个完备的线性无关子集，即一组基。\end{proof}
+\subsection{生成组与线性无关组}
 
+基的定义中说到，任意向量都能被唯一表示成基向量的线性组合。这个说法其实包含两方面：一是表达式存在，二是表达式唯一。让我们分开来分析这两个方面。
 
+如果我们只考虑存在性，我们就得到下面的概念：
 
-\begin{exer}  {\heiti 练习}~~
+\begin{definition}
+    对于一组向量$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{p}\in V$，若任意向量$\mathbf{v}\in V$都能被写成其线性组合的形式：\[\mathbf{v}=\alpha_1\mathbf{v}_1+\alpha_2\mathbf{v}_2+\ldots+\alpha_p\mathbf{v}_p=\sum_{k=1}^p\alpha_k\mathbf{v}_k.\]
+    则称这组向量为$V$中的生成组（也称为{\bf 张成组}或{\bf 完备组}）。\index{生成组（generating system）}
+\end{definition}
 
-2.1. 在 $3 \times 2$ 矩阵空间 $M_{3 \times 2}$ 中找到一组基。
+该定义与基的定义的区别仅在于，我们并不假设上述表示唯一。
 
-2.2. 判断正误：
-\\
-a) 包含零向量的任何集合都是线性相关的；
-\\
-b) 基必须包含 $\oo$；
-\\
-c) 线性相关集的子集是线性相关的；
-\\
-d) 线性无关集的子集是线性无关的；
-\\
-e) 如果 $\alpha_1 \vv_1 + \alpha_2 \vv_2 + \dots + \alpha_n \vv_n = \oo$，那么所有标量 $\alpha_k$ 都为零。
+此处{\bf 生成}、{\bf 张成}和{\bf 完备}是同义词。我本人更喜欢“完备”这个词，这是由于我在算子理论方面的专业背景。“生成”和“张成”则更经常用于线性代数教材中。
 
-2.3. 回忆一下，如果 $A^T = A$，则矩阵称为\textbf{对称}矩阵。写下一个 $2 \times 2$ 对称矩阵空间的基（有许多可能的答案）。基中有多少个元素？
+显然，任一基都是张成（完备）向量组。并且，如果我们向基$\mathbf{v}_{1},$ $\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$中加入若干向量$\mathbf{v}_{n+1},\ldots,\mathbf{v}_{p}$，那么新的向量组是张成（完备）向量组。的确如此：我们可以将任意向量表示成$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,$ $\mathbf{v}_{n}$的线性组合，并直接忽略新加入的向量（取对应的系数$\alpha_k=0$）。
 
-2.4. 写出以下空间的基：
-\\
-a) $3 \times 3$ 对称矩阵；
-\\
-b) $n \times n$ 对称矩阵；
-\\
-c) $n \times n$ 反对称矩阵 ($A^T = -A$)。\index{juzhen@矩阵!fanduichen@反对称}
+现在，让我们将注意力转向唯一性。我们不想产生存在性方面的顾虑，因此我们考虑零向量$\mathbf{0}$，其总是能够以线性组合式表出。
 
-2.5. 设向量系统 $\vv_1, \vv_2, \dots, \vv_r$ 是线性无关的，但不是生成的。证明可以找到向量 $\vv_{r+1}$ 使得系统 $\vv_1, \vv_2, \dots, \vv_r, \vv_{r+1}$ 是线性无关的。
-\\
-提示：选择任何不能表示为 $\sum_{k=1}^r \alpha_k \vv_k$ 的向量作为 $\vv_{r+1}$，并证明系统 $\vv_1, \vv_2, \dots, $ $\vv_r, \vv_{r+1}$ 是线性无关的。
+\begin{definition*}
+    若线性组合$\alpha_{1}\mathbf{v}_{1}+\alpha_{2}\mathbf{v}_{2}+\ldots+\alpha_{p}\mathbf{v}_{p}$中有$\alpha_k = 0\ \forall k$，则称其是{\bf 平凡的}\index{线性组合（linear combination）!平凡$\sim$（trivial）}。
+\end{definition*}
 
-2.6. 是否可能存在，向量 $\vv_1, \vv_2, \vv_3$ 是线性相关的，而向量 $\ww_1 = \vv_1 + \vv_2$, $\ww_2 = \vv_2 + \vv_3$ 和 $\ww_3 = \vv_3 + \vv_1$ 是线性无关的？
+平凡的线性组合总等于$\mathbf{0}$（无论向量$\mathbf{v}_1,\mathbf{v}_2,\ldots,\mathbf{v}_p$是什么），这可能也是其名称的来历。
 
-\end{exer}
+\begin{definition*}
+    若一组向量$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{p}\in V$只有平凡线性组合（$\sum_{k=1}^{p}\alpha_{k}\mathbf{v}_{k}$，其中$\alpha_{k}=0\ \forall k$）等于$\mathbf{0}$，则称这组向量为{\bf 线性无关的}。\index{线性无关（linearly independent）}
 
-\section{3. 线性变换~~矩阵-向量乘法}
+    换言之，向量组$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{p}$是线性无关的，当且仅当方程$x_1\mathbf{v}_1+x_2\mathbf{v}_2+\ldots+x_p\mathbf{v}_p=\mathbf{0}$（未知数为$x_k$）仅有平凡解（$x_{1}=x_{2}=\ldots=x_{p}=0$）。
+\end{definition*}
 
+若一向量组不是线性无关的，就称其为{\bf 线性相关的}。通过取线性无关定义的否定，我们得到以下定义：
 
-从集合 $X$ 到集合 $Y$ 的\textbf{变换}
-\footnote{
-单词“变换”（transformation）、“映射”（map, mapping）、“算子”（operator）、“函数”（function）这些词都表示同一个概念。
-} (transformation)$T$ 是一个规则，它为每个自变量（输入）$x \in X$ 分配一个值（输出）$y = T(x) \in Y$.~
+\begin{definition*}
+    若$\mathbf{0}$可被表示为向量组$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{p}\in V$的非平凡线性组合$\mathbf{0}=\sum_{k=1}^{p}\alpha_{k}\mathbf{v}_{k}$，则称这组向量为{\bf 线性相关的}。此处的“非平凡”是指至少一个系数$\alpha_{k}$是非零的。这可以写为（也通常表示为）$\sum_{k=1}^{p}|\alpha_{k}|\neq0$。\index{线性相关（linearly dependent）}
+\end{definition*}
 
-集合 $X$ 称为 $T$ 的{\heiti 定义域}(domain)，集合 $Y$ 称为 $T$ 的\textbf{目标空间}(target space)或\textbf{上域}(codomain)。
+换种方式表述该定义，我们可以说，向量组$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{p}$是线性相关的，当且仅当存在标量$\alpha_1,\alpha_2,\ldots,\alpha_p$且$\sum_{k=1}^{p}|\alpha_{k}|\neq0$使得\[\sum_{k=1}^p\alpha_k\mathbf{v}_k=\mathbf{0}.\]
 
-我们用 $T: X \to Y$ 来表示 $T$ 是一个定义域为 $X$、目标空间为 $Y$ 的变换。
+还有一种定义（以方程的语言表述）是：向量组$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{p}$是线性相关的，当且仅当方程\[x_1\mathbf{v}_1+x_2\mathbf{v}_2+\ldots+x_p\mathbf{v}_p=\mathbf{0}\]
+（未知数为$x_k$）有非平凡解。此处的“非平凡”还是指至少一个$x_{k}$是非零的，并可写作$\sum_{k=1}^{p}|x_{k}|\neq0$。
 
-{\heiti 定义}~~  设 $V$，$W$ 为向量空间（在同一域 $\FF$ 上）。变换 $T: V \to W$ 称为\textbf{线性}(linear)的（或具有线性性质），如果
+以下命题给出了线性相关组的又一种描述。
+\begin{proposition}
+    一组向量$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{p}\in V$是线性相关的，当且仅当其中有一向量$\mathbf{v}_{k}$可被表示成其他向量的线性组合
+    \begin{equation}\label{eq_2_1}
+        \mathbf{v}_k=\sum_{\begin{subarray}{c}j=1\\j\neq k\end{subarray}}^p\beta_j\mathbf{v}_j.
+    \end{equation}
+\end{proposition}
+\begin{proof}
+    假设向量组$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{p}$是线性相关的。那么存在标量$\alpha_{k}$，\linebreak $\sum_{k=1}^{p}|\alpha_{k}|\neq0$使得
+    \[\alpha_1\mathbf{v}_1+\alpha_2\mathbf{v}_2+\cdots+\alpha_p\mathbf{v}_p=\mathbf{0}.\]
+    令$k$为使得$\alpha_k\ne 0$的下标。于是，将除了$\alpha_{k}\mathbf{v}_{k}$之外的项移到右端可得\[\alpha_k\mathbf{v}_k=-\sum_{\begin{subarray}{c}j=1\\j\neq k\end{subarray}}^p\alpha_j\mathbf{v}_j.\]
+    将两边都除以$\alpha_k$可得式 \eqref{eq_2_1}，其中$\beta_j = -\alpha_j/\alpha_k$。
 
-1. $T(\uu + \vv) = T(\uu) + T(\vv)$ $\quad \forall \uu, \vv \in V$；
+    另一方面，若 \eqref{eq_2_1} 成立，那么$\mathbf{0}$可被表示为非平凡线性组合\[\mathbf{v}_k-\sum_{\begin{subarray}{c}j=1\\j\neq k\end{subarray}}^p\beta_j\mathbf{v}_j=\mathbf{0}.\qedhere\]
+\end{proof}
 
-2. $T(\alpha \vv) = \alpha T(\vv)$ 对所有 $\vv \in V$ 和所有标量 $\alpha \in \FF$.
+显然，任一基都是线性无关组。的确如此：若向量组$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$是基，那么$\mathbf{0}$可被唯一表示为\[\mathbf{0}=\alpha_1\mathbf{v}_1+\alpha_2\mathbf{v}_2+\cdots+\alpha_n\mathbf{v}_n=\sum_{k=1}^n\alpha_k\mathbf{v}_k.\]
+由于$\mathbf{0}$总可被平凡线性组合表出，所以平凡线性组合必为{\bf 唯一}线性表出$\mathbf{0}$的方法。
 
+所以，如我们已经讨论的，若一向量组是基，则其是完备（生成）组，也是线性无关组。下面命题表明，这句话反过来也是成立的。
 
-性质 1 和 2 一起等价于这个性质：
-$T(\alpha \uu + \beta \vv) = \alpha T(\uu) + \beta T(\vv)$ ~~对所有 $\uu, \vv \in V$ ~~和所有标量 $\alpha, \beta$.~
+\begin{proposition}\label{prop:complete_li_basis}
+    向量组$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}\in V$是基，当且仅当其既是完备（生成）组又线性无关。
+\end{proposition}
 
+\begin{proof}
+    我们已经知道基一定是既完备又线性无关的，所以该命题的一个方向已经得证了。
 
+    让我们证明另一个方向。设向量组$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$是线性无关且完备的。取任意向量$\mathbf{v}\in V$。因为向量组$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$是完备（生成）组，因此$\mathbf{v}$可表示为\[\mathbf{v}=\alpha_1\mathbf{v}_1+\alpha_2\mathbf{v}_2+\cdots+\alpha_n\mathbf{v}_n=\sum_{k=1}^n\alpha_k\mathbf{v}_k.\]
+    我们只需证明此表达式是唯一的。
 
-\subsection{3.1. 一些例子}
-你以前一定接触过线性变换，甚至可能没有意识到，如下例所示。
+    设$\mathbf{v}$还可被表示为\[\mathbf{v}=\sum_{k=1}^{n}\widetilde{\alpha}_{k}\mathbf{v}_{k}.\]
+    那么\[\sum_{k=1}^n(\alpha_k-\widetilde{\alpha}_k)\mathbf{v}_k=\sum_{k=1}^n\alpha_k\mathbf{v}_k-\sum_{k=1}^n\widetilde{\alpha}_k\mathbf{v}_k=\mathbf{v}-\mathbf{v}=\mathbf{0}.\]
+    因为该组是线性无关的，所以$\alpha_k-\widetilde{\alpha}_k = 0\ \forall k$，从而表达式$\mathbf{v}=\alpha_{1}\mathbf{v}_{1}+\alpha_{2}\mathbf{v}_{2}+\ldots+\alpha_{n}\mathbf{v}_{n}$唯一。
+\end{proof}
 
-{\heiti 例子}~~ 
-\textbf{求导}: 设 $V = \PP_n$（至多 $n$ 次多项式的集合），$W = \PP_{n-1}$，令 $T : \PP_n \to \PP_{n-1}$ 为求导的算子，
-$$ T(p) := p' \quad \forall p \in \PP_n. $$
-因为 $(f+g)' = f' + g'$ 且 $(\alpha f)' = \alpha f'$，所以这是一个线性变换。
+\begin{remark*}
+    在许多教材中，基被定义为既完备又线性无关的向量组（由命题 \ref{prop:complete_li_basis}，这种定义和本书的定义是等价的）。尽管这种定义比本书所示的定义更为常见，我还是更喜欢后者。它强调了基的主要性质，即任意向量都能被基向量的线性组合唯一表出。
+\end{remark*}
 
+\begin{proposition}\label{prop:generating_contain_basis}
+    任意（有限）生成组包含一个基。
+\end{proposition}
 
-{\heiti 例子}~~
-\textbf{旋转}: 在这个例子中，$V = W = \RR^2$（通常的坐标平面），一个变换 $T_\gamma : \RR^2 \to \RR^2$ 将 $\RR^2$ 中的一个向量逆时针旋转 $\gamma$ 弧度。由于 $T_\gamma$ 整体将平面旋转，它也整体旋转了用于定义两个向量之和的平行四边形（向量加法的平行四边形法则），参见图 \Ref{fig:01}。因此，线性变换的性质 1 成立。也很容易看出性质 2 也成立。
+\begin{proof}
+    设$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{p}\in V$是生成（完备）组。若它是线性无关的，它就是基，则我们已经达成目标。
 
+    设它不是线性无关的，即它是线性相关的。那么存在向量$\mathbf{v}_k$，其可被表示为向量$\mathbf{v}_j,j\ne k$的线性组合。
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.6\linewidth]{figures/fig1.pdf} % 这里修改了比例
-  \caption{旋转}
-  \label{fig:01}
+    因为$\mathbf{v}_k$可被表示为向量$\mathbf{v}_j,j\ne k$的线性组合，所以$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{p}$的任意线性组合都可被除了$\mathbf{v}_{k}$之外的向量（即$\mathbf{v}_j,1\le j\le p, j\ne k$）的线性组合表示。因此，如果我们去除向量$\mathbf{v}_k$，新向量组将仍是完备的。
+
+    若新向量组是线性无关的，那么我们达成了目标。若仍不是，则重复上述过程。
+
+    在重复上述过程有限多次后，我们必得到一线性无关且完备的向量组，否则我们就会删除所有向量并且得到空组了。
+
+    因此，任意有限的完备（生成）组都包含一完备的线性无关子集，也就是基。
+\end{proof}
+
+\begin{problemset}
+    \item 求出$3\times 2$矩阵所成的向量空间$M_{3\times 2}$的基。
+    \item 判断正误：
+    \begin{probenumerate}
+        \item 任意包含零向量的向量组都是线性相关的；
+        \item 基必包含$\mathbf{0}$；
+        \item 线性相关向量集合的子集是线性相关的；
+        \item 线性无关向量集合的子集是线性无关的；
+        \item 若$\alpha_{1}\mathbf{v}_{1}+\alpha_{2}\mathbf{v}_{2}+\ldots+\alpha_{n}\mathbf{v}_{n}=\mathbf{0}$，那么所有标量$\alpha_{k}$都为零。
+    \end{probenumerate}
+    \item 回想一下，若矩阵$A$满足$A^T=A$，则称其为{\bf 对称}的。\index{矩阵（matrix）!对称$\sim$（symmetric）}写出由$2\times 2$\textbf{对称}矩阵所构成的向量空间的一个基（有很多可能的答案）。该基中包含几个元素？
+    \item 写出由下列元素构成的空间的基：
+    \begin{probenumerate}
+        \item $3\times 3$对称矩阵；
+        \item $n\times n$对称矩阵；
+        \item $n\times n$\textbf{反对称}矩阵（$A^T=-A$）。\index{矩阵（matrix）!反对称$\sim$（antisymmetric）}
+    \end{probenumerate}
+    \item \label{ex:1_2_5}设向量组$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{r}$是线性无关的，但不是生成组。证明：可以找到向量$\mathbf{v}_{r+1}$使得向量组$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{r},\mathbf{v}_{r+1}$是线性无关的。{\bf 提示}：取$\mathbf{v}_{r+1}$为任一无法被表示为线性组合$\sum_{k=1}^r\alpha_k\mathbf{v}_k$的向量，再证明向量组$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{r},\mathbf{v}_{r+1}$是线性无关的。
+    \item 是否可能出现这样的情况：向量$\mathbf{v}_{1},\mathbf{v}_{2},\mathbf{v}_{3}$是线性相关的，但向量$\mathbf{w}_1=\mathbf{v}_1+\mathbf{v}_2,\mathbf{w}_2=\mathbf{v}_2+\mathbf{v}_3$与$\mathbf{w}_3=\mathbf{v}_3+\mathbf{v}_1$是线性{\bf 无关}的？
+\end{problemset}
+
+\section{线性变换、矩阵-向量乘法}
+
+从集合$X$到集合$Y$的\textbf{变换}$T$是一种对应关系，将任意自变量（输入）$x\in X$对应到一值（输出）$y=T(x)\in Y$。
+
+集合$X$称为$T$的{\bf 定义域}，集合$Y$称为$T$的{\bf 目标空间}或{\bf 陪域}。
+
+我们记$T:X\to Y$表示$T$是定义域为$X$而目标空间为$Y$的变换。
+
+\begin{center}
+    \fbox{\parbox{0.8\linewidth}{“变换”、“映射”、“算子”、“函数”都是指同类对象。\footnotemark}}
+\end{center}
+\footnotetext{一般来说，算子的定义域和陪域一样。本书有些地方的“算子”实为一般的变换，翻译将予以区分。——译者注}
+
+\begin{definition*}
+    令$V,W$为（同一域$\mathbb{F}$上的）向量空间。若变换$T:V\to W$满足
+    \begin{enumerate}
+        \item $T(\mathbf{u}+\mathbf{v})=T(\mathbf{u})+T(\mathbf{v})\ \forall\mathbf{u},\mathbf{v}\in V$；
+        \item $T(\alpha\mathbf{v})=\alpha T(\mathbf{v})$对所有$\mathbf{v}\in V$和所有标量$\alpha\in \mathbb{F}$都成立。
+    \end{enumerate}
+    则称其为线性的。\index{线性变换（linear transformation）}
+\end{definition*}
+
+性质1、2合起来等价于下面说法：
+\begin{center}
+    对于所有标量$\alpha,\beta$和所有$\mathbf{u},\mathbf{v}\in V$，有$T(\alpha\mathbf{u}+\beta\mathbf{v})=\alpha T(\mathbf{u})+\beta T(\mathbf{v})$。
+\end{center}
+
+\subsection{例子}
+
+你之前已经和线性变换打过交道了——可能你还未曾意识到这一点。请看下面示出的例子。
+
+\begin{example*}
+    微分：令$V=\mathbb{P}_n$（次数至多为$n$的多项式所成的集合），$W=\mathbb{P}_{n-1}$，并令$T:\mathbb{P}_n\to \mathbb{P}_{n-1}$为微分算子
+    \[T(p):=p^{\prime}\quad\forall p\in\mathbb{P}_n.\]
+    因为$(f+g)^{\prime}=f^{\prime}+g^{\prime}$且$(\alpha f)^{\prime}=\alpha f^{\prime}$，所以这是一个线性变换。
+\end{example*}
+
+\begin{example*}
+    旋转：在本例中$V=W=\mathbb{R}^2$（即通常的坐标平面），变换$T_{\gamma}:\mathbb{R}^2\to\mathbb{R}^2$将$\mathbb{R}^2$中的向量逆时针旋转$\gamma$弧度。因为$T_{\gamma}$是将平面整体做旋转，所以它会将用于定义两向量之和（平行四边形法则）的平行四边形整体做旋转（见下图 \ref{fig_rotation}）。因此，其满足线性变换的性质1。容易看出，性质2也是成立的。
+\end{example*}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics{figures/fig1_3_1.pdf}
+    \caption{旋转}
+    \label{fig_rotation}
 \end{figure}
 
-{\heiti 例子}~~ 
-\textbf{反射}: 在这个例子中，同样 $V = W = \RR^2$，变换 $T : \RR^2 \to \RR^2$ 是关于第一个坐标轴的反射。
-也可以几何地证明这个变换是线性的，但我们将使用另一种方法来证明。
+\begin{example*}
+    反射：在本例中$V=W=\mathbb{R}^2$，变换$T_{\gamma}:\mathbb{R}^2\to\mathbb{R}^2$是关于第一轴的反射。可以从几何的角度证明该变换为线性的，但我们将用另一种方法来证明。
 
-即，很容易写出 $T$ 的表达式：
-$$ T\left(\begin{pmatrix} x_1 \\ x_2 \end{pmatrix}\right) = \begin{pmatrix} x_1 \\ -x_2 \end{pmatrix} $$
-并且从该表达式可以看出，这个变换是线性的。
+    方法是：写出$T$的表达式\[T\left(\begin{pNiceMatrix}[margin]x_1\\x_2\end{pNiceMatrix}\right)=\begin{pNiceMatrix}[margin]x_1\\-x_2\end{pNiceMatrix}\]
+    根据该式，我们很容易检验该变换是线性的。
+\end{example*}
 
+\begin{example*}
+    考察线性变换$T:\mathbb{R}\to\mathbb{R}$。任一此类变换都由下式给出\[T(x)=ax\quad\text{其中}~a=T(1).\]
+    的确如此：\[T(x)=T(x\times1)=xT(1)=xa=ax.\]
+    因此，$\mathbb{R}$上的任一线性变换仅仅是与常数的乘法。
+\end{example*}
 
+\subsection{线性变换\texorpdfstring{$\mathbb{F}^n\to \mathbb{F}^m$}{F\^{}n到F\^{}m}、矩阵-列向量乘法}
 
-{\heiti 例子}~~ 
-让我们来研究线性变换 $T : \RR \to \RR$.~任何这样的变换都由公式 $T(x) = ax$ 给出，其中 $a = T(1)$.~
-事实上，$$T(x) = T(x \times 1) = x T(1) = xa = ax.$$
-因此，$\RR$ 的任何线性变换仅仅是将一个数乘上一个常数。
+线性变换$T:\mathbb{F}^n\to\mathbb{F}^m$也可用一乘法表示，不过不是与标量相乘，而是与矩阵相乘。
 
+我们来看看是如何乘的。令$T:\mathbb{F}^n\to\mathbb{F}^m$为一线性变换。为了对所有向量$\mathbf{x}\in\mathbb{F}^{n}$计算$T(\mathbf{x})$，我们需要什么信息呢？我的观点是，知道$T$作用于$\mathbb{F}^{n}$的标准基$\mathbf{e}_1,\mathbf{e}_2,\ldots,\mathbf{e}_n$的结果就足够了。也即，知道$\mathbb{F}^m$中的这$n$个向量（若干长度为$m$的向量）就足够了：
+\[\mathbf{a}_1:=T(\mathbf{e}_1),\quad\mathbf{a}_2:=T(\mathbf{e}_2),\quad\ldots,\quad\mathbf{a}_n:=T(\mathbf{e}_n).\]
+的确如此：令\[\mathbf{x}=\begin{pNiceMatrix}[margin]x_1\\x_2\\\vdots\\x_n\end{pNiceMatrix}.\]
+那么$\mathbf{x}=x_{1}\mathbf{e}_{1}+x_{2}\mathbf{e}_{2}+\ldots+x_{n}\mathbf{e}_{n}=\sum_{k=1}^{n}x_{k}\mathbf{e}_{k}$，且有
+\[T(\mathbf{x})=T\left(\sum_{k=1}^nx_k\mathbf{e}_k\right)=\sum_{k=1}^nT(x_k\mathbf{e}_k)=\sum_{k=1}^nx_kT(\mathbf{e}_k)=\sum_{k=1}^nx_k\mathbf{a}_k.\]
 
+因此，如果我们将列向量$\mathbf{a}_{1},\mathbf{a}_{2},\ldots,\mathbf{a}_{n}$一起放入一矩阵$A=[\mathbf{a}_1,$ $\mathbf{a}_2,\ldots,\mathbf{a}_n]$（$\mathbf{a}_{k}$是$A$的第$k$列，$k=1,2,\ldots,n$），该矩阵就包含了$T$的所有信息。
 
+下面我们说明如何定义矩阵和列向量的乘积才能将变换$T$表示为乘积$T(\mathbf{x})=A\mathbf{x}$。令
+\[A=\begin{pNiceMatrix}[margin]a_{1,1}&a_{1,2}&\ldots&a_{1,n}\\a_{2,1}&a_{2,2}&\ldots&a_{2,n}\\\vdots&\vdots&&\vdots\\a_{m,1}&a_{m,2}&\ldots&a_{m,n}\end{pNiceMatrix}.\]
 
+回想一下，$A$的第$k$列是向量$\mathbf{a}_{k}$，即\[\mathbf{a}_k=\begin{pNiceMatrix}[margin]a_{1,k}\\a_{2,k}\\\vdots\\a_{m,k}\end{pNiceMatrix}.\]
+于是，如果我们要使$A\mathbf{x} = T(\mathbf{x})$，我们就有
+\[A\mathbf{x}=\sum_{k=1}^nx_k\mathbf{a}_k=x_1\begin{pNiceMatrix}[margin]a_{1,1}\\a_{2,1}\\\vdots\\a_{m,1}\end{pNiceMatrix}+x_2\begin{pNiceMatrix}[margin]a_{1,2}\\a_{2,2}\\\vdots\\a_{m,2}\end{pNiceMatrix}+\ldots+x_n\begin{pNiceMatrix}[margin]a_{1,n}\\a_{2,n}\\\vdots\\a_{m,n}\end{pNiceMatrix}.\]
 
-\subsection{3.2. 线性变换 $\FF^n \to \FF^m$~~矩阵-向量乘法}
+因此，矩阵-向量乘法应该按照下述“{\bf 列乘以坐标}”法则来进行：
+\begin{center}
+    \fbox{将矩阵的各列与向量的对应坐标相乘。}
+\end{center}
 
-事实证明，从 $\FF^n$ 到 $\FF^m$ 的线性变换 $T$ 也能表示为一种乘法，但这不是乘标量，而是乘矩阵。我们来看看怎么做。
+\begin{example*}
+    \[\begin{pNiceMatrix}[margin]1&2&3\\3&2&1\end{pNiceMatrix}\begin{pNiceMatrix}[margin]1\\2\\3\end{pNiceMatrix}=1\begin{pNiceMatrix}[margin]1\\3\end{pNiceMatrix}+2\begin{pNiceMatrix}[margin]2\\2\end{pNiceMatrix}+3\begin{pNiceMatrix}[margin]3\\1\end{pNiceMatrix}=\begin{pNiceMatrix}[margin]14\\10\end{pNiceMatrix}.\]
+\end{example*}
 
-设 $T: \FF^n \to \FF^m$ 是一个线性变换。计算 $T(\xx)$ 对所有向量 $\xx \in \FF^n$ ，需要哪些信息？我的主张是，知道 $T$ 如何作用于 $\FF^n$ 的标准基 $\ee_1, \ee_2, \dots, \ee_n$ 就足够了。也就是说，知道 $n$ 个 $\FF^m$ 中的向量（即 $n$ 个大小为 $m$ 的向量）， $$\aaa_1 = T(\ee_1), \quad\aaa_2 := T(\ee_2),\quad \dots, \quad\aaa_n := T(\ee_n)$$ 就足够了。
+“列乘以坐标”法则很适于并行计算，在之后的一些理论推导中也很重要。
 
-实际上，设 $$\xx = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix},$$那么 $\xx = x_1 \ee_1 + x_2 \ee_2 + \dots + x_n \ee_n = \sum_{k=1}^n x_k \ee_k$ 并且 $$T(\xx) = T(\sum_{k=1}^n x_k \ee_k) = \sum_{k=1}^n T(x_k \ee_k) = \sum_{k=1}^n x_k T(\ee_k) = \sum_{k=1}^n x_k \aaa_k.$$
+不过，当手工进行计算时，逐元素计算更为方便。这种计算可按以下“{\bf 行乘以列}”法则来进行：
+\begin{center}
+    \fbox{\parbox{0.8\linewidth}{要得到结果的第$k$个元素，我们需要将矩阵的第$k$行与向量相乘。也就是说，若$A\mathbf{x}=\mathbf{y}$，那么$y_{k}=\sum_{j=1}^{n}a_{k,j}x_{j},k=1,2,\ldots, m$。}}
+\end{center}
+此处$x_j$和$y_k$分别是向量$\mathbf{x}$和$\mathbf{y}$的坐标，$a_{j,k}$则为矩阵$A$的元素。
 
-因此，如果我们把（列）向量$\aaa_1, \aaa_2, \dots, \aaa_n$ 组合成一个矩阵 $A = [\aaa_1, \aaa_2, \dots, \aaa_n]$（$\aaa_k$ 是 $A$ 的第 $k$ 列，$k = 1, 2, \dots, n$），这个矩阵就包含了关于 $T$ 的所有信息。让我们看看如何定义矩阵与（列）向量的乘积以将变换 $T$ 表示为乘积，$T(\xx) = A \xx$.设
-$$
-A = \begin{pmatrix}
-a_{1,1} & a_{1,2} & \dots & a_{1,n} \\
-a_{2,1} & a_{2,2} & \dots & a_{2,n} \\
-\vdots & \vdots & \ddots & \vdots \\
-a_{m,1} & a_{m,2} & \dots & a_{m,n}
-\end{pmatrix}.
-$$
-回忆一下，$A$ 的第 $k$ 列是向量 $\aaa_k$，即 $$\aaa_k = \begin{pmatrix} a_{1,k} \\ a_{2,k} \\ \vdots \\ a_{m,k} \end{pmatrix}.$$
-那么，如果我们希望 $A \xx = T(\xx)$，我们得到
-$$
-A \xx = \sum_{k=1}^n x_k \aaa_k = x_1 \begin{pmatrix} a_{1,1} \\ a_{2,1} \\ \vdots \\ a_{m,1} \end{pmatrix} + x_2 \begin{pmatrix} a_{1,2} \\ a_{2,2} \\ \vdots \\ a_{m,2} \end{pmatrix} + \dots + x_n \begin{pmatrix} a_{1,n} \\ a_{2,n} \\ \vdots \\ a_{m,n} .\end{pmatrix}
-$$
-所以，矩阵-向量乘法应该通过以下\textbf{按列坐标规则}(column by coordinating rule)执行：
-$$\fbox{分别将矩阵的每一列乘以向量的相应坐标。}$$
+\begin{example*}
+    \[\begin{pNiceMatrix}[margin]1&2&3\\4&5&6\end{pNiceMatrix}\begin{pNiceMatrix}[margin]1\\2\\3\end{pNiceMatrix}=\begin{pNiceMatrix}[margin]1\cdot1+2\cdot2+3\cdot3\\4\cdot1+5\cdot2+6\cdot3\end{pNiceMatrix}=\begin{pNiceMatrix}[margin]14\\32\end{pNiceMatrix}\]
+\end{example*}
 
-{\heiti 例子}~~
-$$
-\begin{pmatrix} 1 & 2 & 3 \\ 3 & 2 & 1 \end{pmatrix} \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} = 1 \begin{pmatrix} 1 \\ 3 \end{pmatrix} + 2 \begin{pmatrix} 2 \\ 2 \end{pmatrix} + 3 \begin{pmatrix} 3 \\ 1 \end{pmatrix} = \begin{pmatrix} 1+4+9 \\ 3+4+3 \end{pmatrix} = \begin{pmatrix} 14 \\ 10 \end{pmatrix}.
-$$
+\subsection{线性变换与生成组}
 
-“按列坐标规则”对于表示乘积的变换非常适用。它在后面不同的理论构造中也将会非常重要。
+我们上面讨论过，从$\mathbb{F}^n$到$\mathbb{F}^m$的线性变换$T$完全决定于其在$\mathbb{F}^n$的标准基上的取值。
 
-然而，在手动计算时，逐项计算结果更方便。这可以表示为以下\textbf{按行列规则}(row by column rule)：
+其实，我们并不一定要考虑标准基，而是可以考虑任意的基，甚至可以考虑任意生成（张成）组。即
+\begin{center}
+    \fbox{\parbox{0.8\linewidth}{线性变换$T:V\to W$完全由其在生成组上的取值所决定（特别地，由其在基上的取值所决定）。}}
+\end{center}
+所以，若$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$是$V$中的生成组（特别地，若其是$V$的基），并且$T$与$T_1$是线性变换，$T,T_1:V\to W$，使得\[T\mathbf{v}_k=T_1\mathbf{v}_k,\quad k=1,2,\ldots,n\]
+那么$T=T_1$。
 
-\fbox{\begin{minipage}{0.9\textwidth}
-要得到结果的第 $k$ 项，需要将矩阵的第 $k$ 行乘以向量，即，如果 $A \xx = \yy$，那么
-$y_k = \sum_{j=1}^n a_{k,j} x_j, \quad k = 1, 2, \dots, m;$
-\end{minipage}}
+此结论的证明很简单，留作习题。
 
+\subsection{结论}
 
-这里 $x_j$ 和 $y_k$ 分别是向量 $\xx$ 和 $\yy$ 的坐标，而 $a_{j,k}$ 是矩阵 $A$ 的项。
-
-{\heiti 例子}~~
-$$
-\begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{pmatrix} \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} = \begin{pmatrix} 1 \cdot 1 + 2 \cdot 2 + 3 \cdot 3 \\ 4 \cdot 1 + 5 \cdot 2 + 6 \cdot 3 \end{pmatrix} = \begin{pmatrix} 1+4+9 \\ 4+10+18 \end{pmatrix} = \begin{pmatrix} 14 \\ 32 \end{pmatrix}.
-$$
-
-
-\subsection{3.3. 线性变换与生成集}
-
-正如我们在上面讨论的，作用于 $\FF^n$ 到 $\FF^m$ 的线性变换 $T$ 完全由其在 $\FF^n$ 标准基上的值定义。
-
-我们虽然在上文用了标准基，但并没有利用其特殊性，其实也可以考虑任何基，甚至任何生成（张成）集。也就是说，
-$$\fbox{线性变换 $T: V \to W$ 完全由其在生成集上的值（特别地，由其在基上的值）定义。}$$
-因此，如果 $\vv_1, \vv_2, \dots, \vv_n$ 是 $V$ 中的生成集（特别地，如果它是基），并且 $T$ 和 $T_1$ 是(具有相同定义域和目标空间的)两个线性变换 ($T, T_1: V \to W$) 并且 $$T \vv_k = T_1 \vv_k, k = 1, 2, \dots, n,$$ 
-则 $T = T_1$.~
-
-这个命题的证明是显然的，留作读者的练习。
-
-\subsection{3.4. 结论}
 \begin{itemize}
-\item 要获得 $T: \FF^n \to \FF^m$ 的线性变换的矩阵，只需将向量 $\aaa_k = T \ee_k$（其中 $\ee_1, \ee_2, \dots, \ee_n$ 是 $\FF^n$ 的标准基）组合成一个矩阵：矩阵的第 $k$ 列是 $\aaa_k$, $k = 1, 2, \dots, n$.~
-\item 如果已知线性变换 $T$ 的矩阵 $A$，则 $T(\xx)$ 可以通过矩阵-向量乘法找到，$T(\xx) = A \xx$.~要执行矩阵-向量乘法，可以使用“按列坐标规则”或“按行列规则”。
+    \item 要得到线性变换$T:\mathbb{F}^{n}\to\mathbb{F}^{m}$的矩阵，我们需要将向量$\mathbf{a}_{k}=T\mathbf{e}_{k}$（其中$\mathbf{e}_1,\mathbf{e}_2,\ldots,\mathbf{e}_n$是$\mathbb{F}^n$的标准基）组合成一个矩阵：该矩阵的第$k$列是$\mathbf{a}_{k},k=1,2,\dots,n$。
+    \item 若线性变换$T$的矩阵$A$是已知的，那么$T(\mathbf{x})$能通过矩阵-向量乘法$T(\mathbf{x})=A\mathbf{x}$求出。矩阵-向量乘法可用“列乘以坐标”或“行乘以列”法则来运算。
+
+    后者更适于手工运算，而前者更适用于并行计算机且将被用于各种理论推导中。
 \end{itemize}
-后者似乎更适合手动计算。前者非常适合并行计算，并且将在后面不同的理论构造中使用。
-
-对于线性变换 $T: \FF^n \to \FF^m$，其矩阵通常记作 $[T]$.~然而，人们常常不区分线性变换和它的矩阵，并使用相同的符号表示两者。当这不引起混淆时，我们也将使用相同的符号表示变换和它的矩阵。
-
-由于线性变换本质上是乘法，因此 $T \vv$ 这个表示通常会被采用，而不是 $T(\vv)$
-\footnote{
-$T \vv$ 的表示比 $T(\vv)$更常用。
-}
-。我们将使用这种表示法。注意，通常的代数运算顺序（优先级）是适用的，即 $T \vv + \uu$ 表示 $T(\vv) + \uu$，而不是 $T(\vv + \uu)$.~
-
-{\heiti 注记}~~ 在矩阵-向量乘法 $A \xx$ 中，矩阵 $A$ 的列数必须与向量 $\xx$ 的大小一致
-\footnote{
-在使用“按行列规则”进行矩阵-向量乘法时，请确保行中的项数与列中的项数相同。行和列的项应该同时结束：如果不满足，则乘法不被定义。
-}
-，即 $\FF^n$ 中的向量只能被 $m \times n$ 矩阵相乘。
-
-这是有意义的，因为 $m \times n$ 矩阵定义了一个从 $\FF^n$ 到 $\FF^m$ 的线性变换，所以向量 $\xx$ 必须属于 $\FF^n$.~
-
-最简单的记住这个事实的方法是，如果在进行乘法时，只要你先用完了一种种类的项，这时还有另一些项未使用，那么乘法就是不被定义的。
 
-{\heiti 注记}~~ 不需要将自己局限于标准基与 $\FF^n$ 的情况：当存在定义域和目标空间中的基时，本节中描述的所有内容都适用于任意向量空间。当然，如果改变了基，线性变换的矩阵也会不同。这将在后面第二章第 8 节中讨论。
+对线性变换$T:\mathbb{F}^{n}\to\mathbb{F}^{m}$，其矩阵常记作$[T]$。不过，人们往往不区分线性变换及其矩阵，并常对两者用相同的记号。不致混淆时，我们也会用同样的符号来表示线性变换和其矩阵。
+
+因为线性变换本质上就是乘法，因此常用记号$T\mathbf{v}$而不是$T(\mathbf{v})$表示。我们也会用前者。注意，代数运算的一般顺序仍然适用，也即，$T\mathbf{v}+\mathbf{u}$意为$T(\mathbf{v})+\mathbf{u}$，而非$T(\mathbf{v}+\mathbf{u})$。
+
+\begin{remark*}
+    在矩阵-向量乘法$A\mathbf{x}$中，矩阵$A$的列数必须与向量$\mathbf{x}$的长度相同，即$\mathbb{F}^n$中的向量只能被$m\times n$矩阵所乘。
+
+    这是合理的，因为$m\times n$矩阵定义了$\mathbb{F}^n\to\mathbb{F}^m$的线性变换，所以向量$\mathbf{x}$必须属于$\mathbb{F}^n$。
+
+    记住这一点的最简单方法，就是记住如果在做乘法的时候有某种元素先被用光了，那么此乘法就是未定义的。例如，如果用“行乘以列”法则时，你将矩阵的行中各元素都用尽了，而列向量中的元素仍有未用到的，那么所做的乘法就是未定义的。同样，如果你先用尽列向量中的元素，而矩阵的行中各元素尚有未用到的，那么该乘法也是未定义的。%\marginpar{\small 在用“行乘以列”法则计算矩阵-向量乘法时，确保矩阵的行中的元素数和列向量中的元素数相同。行中的元素和列向量中的元素应该被同时用尽；否则所做的乘法未定义。}
+\end{remark*}
+
+\begin{remark*}
+    不要将自己束缚在$\mathbb{F}^n$及其标准基的情形中：本节陈述的所有内容适用于任意向量空间之间的线性变换——只要定义域和目标空间中都有基。当然，如果基改变了，那么线性变换的矩阵也会相应变化。这将在第 \ref{chap:LinearSystems} 章第 \ref{sec:ChangeOfCoordinate} 节中讨论。
+\end{remark*}
+
+\begin{problemset}
+    \item 做乘法：
+    \begin{probenumerate}
+        \item $\begin{pNiceMatrix}[margin]1&2&3\\4&5&6\end{pNiceMatrix}\begin{pNiceMatrix}[margin]1\\3\\2\end{pNiceMatrix}$；
+        \item $\begin{pNiceMatrix}[margin]1&2\\0&1\\2&0\end{pNiceMatrix}\begin{pNiceMatrix}[margin]1\\3\end{pNiceMatrix}$；
+        \item $\begin{pNiceMatrix}[margin]1&2&0&0\\0&1&2&0\\0&0&1&2\\0&0&0&1\end{pNiceMatrix}\begin{pNiceMatrix}[margin]1\\2\\3\\4\end{pNiceMatrix}$；
+        \item $\begin{pNiceMatrix}[margin]1&2&0\\0&1&2\\0&0&1\\0&0&0\end{pNiceMatrix}\begin{pNiceMatrix}[margin]1\\2\\3\\4\end{pNiceMatrix}$。
+    \end{probenumerate}
+    \item 设$\mathbb{R}^2$上的线性变换为关于直线$x_1=x_2$的反射。求其矩阵。
+    \item 对于下述线性变换，求其矩阵：
+    \begin{probenumerate}
+        \item $T:\mathbb{R}^2\to\mathbb{R}^3$，定义为$T(x,y)^T=(x+2y,2x-5y,7y)^T$；
+        \item $T:\mathbb{R}^4\to\mathbb{R}^3$，定义为$T(x_{1},x_{2},x_{3},x_{4})^{T}=(x_{1}+x_{2}+x_{3}+x_{4},x_{2}-x_{4},x_{1}+3x_{2}+6x_{4})^T$；
+        \item $T:\mathbb{P}_{n}\to\mathbb{P}_{n},Tf(t)=f^{\prime}(t)$（求其关于标准基$1,t,t^2,\ldots,t^n$的矩阵）；
+        \item $T:\mathbb{P}_{n}\to\mathbb{P}_{n},Tf(t)=2f(t)+3f^{\prime}(t)-4f^{\prime\prime}(t)$（仍求其关于标准基$1,t,t^2,\ldots,t^n$的矩阵）。
+    \end{probenumerate}
+    \item 求出表示下列$\mathbb{R}^3$上的线性变换的$3\times 3$矩阵：
+    \begin{probenumerate}
+        \item 将所有向量投影至$x$-$y$平面；
+        \item 将所有向量关于$x$-$y$平面反射；
+        \item 将$x$-$y$平面旋转$30^\circ$，并保持$z$轴不变。
+    \end{probenumerate}
+    \item 令$A$为线性变换。若$\mathbf{z}$是直线区间$[\mathbf{x},\mathbf{y}]$的中点，证明：$A\mathbf{z}$是区间$[A\mathbf{x},A\mathbf{y}]$的中点。{\bf 提示}：“$\mathbf{z}$是区间$[\mathbf{x},\mathbf{y}]$的中点”意味着什么？
+    \item 复数集合$\mathbb{C}$可与向量空间$\mathbb{R}^2$自然对应——视任一$z=x+iy\in\mathbb{C}$为列向量$(x,y)^T\in\mathbb{R}^2$。
+    \begin{probenumerate}
+        \item 视$\mathbb{C}$为复向量空间，证明与$\alpha=a+ib\in\mathbb{C}$的乘法是$\mathbb{C}$上的线性变换。该变换的矩阵是什么？
+        \item 视$\mathbb{C}$为实向量空间$\mathbb{R}^2$，证明与$\alpha=a+ib$的乘法是其上的线性变换。该变换的矩阵是什么？
+        \item 定义$T(x+iy)=2x-y+i(x-3y)$。证明：该变换不是复向量空间$\mathbb{C}$上的线性变换，但如果我们把$\mathbb{C}$视为实向量空间$\mathbb{R}^2$，那么该变换是其上的线性变换（即$T$是{\bf 实线性}变换而非{\bf 复线性}变换）。
+
+        求出该实线性变换$T$的矩阵。
+    \end{probenumerate}
+    \item 证明：$\mathbb{C}$（视为复向量空间）上的任意线性变换都是与$\alpha\in\mathbb{C}$的乘法。
+\end{problemset}
+
+\section{线性变换作为向量空间的元素}\label{sec:linear_transformations_as_vectors}
+
+我们可以对线性变换做什么运算呢？我们总可以将线性变换乘以一标量，也即，设有线性变换$T:V\to W$与标量$\alpha$，我们可定义一新的变换$\alpha T$为
+\[(\alpha T)\mathbf{v}=\alpha(T\mathbf{v})\quad\forall\mathbf{v}\in V.\]
+容易检验，$\alpha T$亦为线性变换：
+\[\begin{aligned}
+    (\alpha T)(\alpha_{1}\mathbf{v}_{1}+\alpha_{2}\mathbf{v}_{2})&=\alpha(T(\alpha_{1}\mathbf{v}_{1}+\alpha_{2}\mathbf{v}_{2}))\quad\text{由}~\alpha T~\text{的定义}\\
+    &=\alpha(\alpha_{1}T\mathbf{v}_{1}+\alpha_{2}T\mathbf{v}_{2})\quad\text{由}~ T~\text{的线性}\\
+    &=\alpha_{1}\alpha T\mathbf{v}_{1}+\alpha_{2}\alpha T\mathbf{v}_{2}\\
+    &=\alpha_{1}(\alpha T)\mathbf{v}_{1}+\alpha_{2}(\alpha T)\mathbf{v}_{2}
+\end{aligned}\]
+
+若$T_1$和$T_2$是具有相同的定义域和目标空间的线性变换（$T_{1}:V\to W$并且$T_{2}:V\to W$，或者简写作$T_{1},T_{2}:V\to W$），那么我们可以将这两个线性变换相加，并定义新的变换$T=(T_1+T_2):V\to W$为
+\[(T_1+T_2)\mathbf{v}=T_1\mathbf{v}+T_2\mathbf{v}\quad\forall\mathbf{v}\in V.\]
+容易检验，变换$T_1+T_2$也是线性的——只需重复上面用于说明$\alpha T$之线性的推理过程即可。
+
+所以，如果我们固定向量空间$V$和$W$，并且考虑所有从$V$到$W$的线性变换所成的集合（将其记为$\mathcal{L}(V,W)$），那么我们可以在$\mathcal{L}(V,W)$上定义两种运算：标量乘法和加法。容易证明，这些运算符合向量空间的所有公理——见第 \ref{sec:vector_space} 节。
+
+读者应该不会对此感到意外，因为向量空间的公理本质上意味着向量的运算符合代数的一般规则，而线性变换的运算的定义天然满足这些规则！
+
+作为演示，我们写出向量空间第一条分配性质（公理7）的正式证明。待证命题是$\alpha(T_{1}+T_{2})=\alpha T_{1}+\alpha T_{2}$。对任意$\mathbf{v}\in V$都有
+\[\begin{aligned}
+    \alpha(T_{1}+T_{2})\mathbf{v}&=\alpha((T_{1}+T_{2})\mathbf{v})&\text{由乘法的定义}\\
+    &=\alpha(T_1\mathbf{v}+T_2\mathbf{v})&\text{由加法的定义}\\
+    &=\alpha T_{1}\mathbf{v}+\alpha T_{2}\mathbf{v}&\text{由}~W~\text{的公理7}\\
+    &=(\alpha T_{1}+\alpha T_{2})\mathbf{v}&\text{由加法的定义}
+\end{aligned}\]
+因此，的确有$\alpha(T_{1}+T_{2})=\alpha T_{1}+\alpha T_{2}$。
+
+\begin{remark*}
+    适用于线性变换$T:\mathbb{F}^n\to \mathbb{F}^m$的线性运算（加法和标量乘法）与适用于其矩阵的运算相对应。因为我们知道$m\times n$矩阵所成的集合是向量空间，所以立刻可知$\mathcal{L}(\mathbb{F}^n, \mathbb{F}^m)$是向量空间。
+
+    上面我们演示了抽象的证明，原因之一是其适用于一般的空间（例如，不存在基的空间，这种情况我们无法利用坐标来处理），原因之二则是类似于此处抽象证明的推理过程会在许多场合被用到，因此理解它对于读者而言是有益的。
+
+    并且，随着读者愈来愈精通数学，他/她将发现此处的抽象推理其实非常简单——几乎是不假思索就能做出。
+\end{remark*}
+
+\section{线性变换的复合与矩阵乘法}
+
+\subsection{矩阵乘法的定义}
+
+在了解矩阵-向量乘法后，很容易猜出两矩阵乘积$AB$的一种自然的定义方式：将$B$的各列乘以$A$（用矩阵-向量乘法），再将所得各列向量组成矩阵。正式而言，
+\begin{center}
+    \fbox{\parbox{0.85\linewidth}{若$B$的各列是$\mathbf{b}_{1},\mathbf{b}_{2},\ldots,\mathbf{b}_{r}$，那么$A\mathbf{b}_{1},A\mathbf{b}_{2},\ldots,A\mathbf{b}_{r}$是矩阵$AB$的各列。}}
+\end{center}
+回忆矩阵-向量乘法的“{\bf 行乘以列}”规则，我们得到了下述{\bf 矩阵的}“{\bf 行乘以列}”{\bf 规则}：
+\begin{center}
+    \fbox{\parbox{0.85\linewidth}{乘积$AB$的元素$(AB)_{j,k}$（第$j$行第$k$列中的元素）定义为\[(AB)_{j,k}=(A~\text{的第}~j~\text{行})\cdot(B~\text{的第}~k~\text{列})\]}}
+\end{center}
+正式而言，若用$a_{j,k}$和$b_{j,k}$分别表示矩阵$A$和$B$的元素，则其可写为\[(AB)_{j,k}=\sum_{l}a_{j,l}b_{l,k}.\]
 
+我特地没说明矩阵$A$和$B$的大小，但是如果我们回想一下矩阵-向量乘法的“行乘以列”规则，我们就能看出，如果一个乘积是有定义的，那么$A$的行的长度应该等于$B$的列的长度。
 
-\begin{exer} {\heiti 练习}~~
+换言之，乘积$AB$是有定义的，当且仅当$A$是$m\times n$矩阵且$B$是$n\times r$矩阵。
 
-3.1. 进行乘法运算：
-\\
-a) $\begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{pmatrix} \begin{pmatrix} 1 \\ 3 \\ 2 \end{pmatrix}$;
-\\
-b) $\begin{pmatrix} 1 & 2 \\ 0 & 1 \\ 2 & 0 \end{pmatrix} \begin{pmatrix} 1 \\ 3 \end{pmatrix}$;
-\\
-c) $\begin{pmatrix} 1 & 2 & 0 & 0 \\ 0 & 1 & 2 & 0 \\ 0 & 0 & 1 & 2 \\ 0 & 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} 1 \\ 2 \\ 3 \\ 4 \end{pmatrix}$;
-\\
-d) $\begin{pmatrix} 1 & 2 & 0 \\ 0 & 1 & 2 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{pmatrix} \begin{pmatrix} 1 \\ 2 \\ 3 \\ 4 \end{pmatrix}$.\footnote{译者注：原书如此。}
+\subsection{缘起：线性变换的复合}
 
-3.2. 找到 $\RR^2$ 中关于直线 $x_1 = 3x_2$ 的反射的线性变换的矩阵。
+这里，我们不妨问问自己：为什么要用如此复杂的方式定义乘法呢？为什么我们不直接将矩阵逐元素相乘呢？
 
-3.3. 求下列线性变换对应的矩阵：
-\\
-a) $T: \RR^2 \to \RR^3,$ 定义为 $T(\begin{pmatrix} x \\ y \end{pmatrix}) = \begin{pmatrix} x + 2y \\ 2x - 5y \\ 7y \end{pmatrix}$;
-\\
-b) $T: \RR^4 \to \RR^3,$ 定义为 $T(x_1, x_2, x_3, x_4)^T = (x_1 + x_2 + x_3 + x_4, x_2 - x_4, x_1 + 3x_2 + 6x_4)^T$;
-\\
-c) $T: \PP_n \to \PP_n$, $T f(t) = f'(t)$（在标准基 $1, t, t^2, \dots, t^n$ 下找到矩阵）;
-\\
-d) $T: \PP_n \to \PP_n$, $T f(t) = 2 f(t) + 3 f'(t) - 4 f''(t)$（同样在标准基 $1, t, t^2, \dots, t^n$ 下找到矩阵）.
+回答是：定义如上的这种乘法，是从线性变换的复合中自然产生的。
 
-3.4. 以下线性变换在 $\RR^3$ 中作用。分别求它们对应的 $3 \times 3$ 矩阵：
-\\
-a) 将每个向量投影到 $x-y$ 平面；
-\\
-b) 将每个向量以 $x-y$ 平面为对称面反射；
-\\
-c) 将 $x-y$ 平面绕 $z$ 轴（逆时针）旋转 $30^\circ$，同时保持 $z$ 轴不变。
+假设我们有两个线性变换$T_1:\mathbb{F}^n\to\mathbb{F}^m$和$T_2:\mathbb{F}^r\to\mathbb{F}^n$。定义线性变换$T_1,T_2$的复合$T=T_1\circ T_2$为\[T(\mathbf{x})=T_1(T_2(\mathbf{x}))\quad\forall \mathbf{x}\in\mathbb{F}^r.\]
+注意$T_{2}(\mathbf{x})\in\mathbb{F}^{n}$。由于$T_{1}:\mathbb{F}^{n}\to\mathbb{F}^{m}$，所以表达式$T_1(T_2(\mathbf{x}))$是定义完善的，且变换后的结果属于$\mathbb{F}^m$。因此$T:\mathbb{F}^{r}\to\mathbb{F}^{m}$。
 
-3.5. 设 $A$ 是一个线性变换。如果 $\zz$ 是线段 $[\xx, \yy]$ 的中点，证明 $A \zz$ 是线段 $[A \xx, A \yy]$ 的中点。
-\\
-{\heiti 提示}：$\zz$ 是线段 $[\xx, \yy]$ 的中点意味着什么？
+容易证明，$T$是线性变换（留作习题），因此其由一$m\times r$矩阵所确定。如何在已知$T_1$和$T_2$的矩阵的情况下求出这个矩阵呢？
 
-3.6. 复数集 $\CC$ 可以通过将 $z = x + {\rm i}  y \in \CC$ 视为列向量 $(x, y)^T \in \RR^2$ 来规范对应(be canonically identified)。
-\\
-a) 将 $\CC$ 视为复向量空间，证明通过 $\alpha = a + {\rm i} b \in \CC$ 的乘法是在 $\CC$ 中的线性变换。它的矩阵是什么？
-\\
-b) 将 $\CC$ 视为实向量空间 $\RR^2$，证明通过 $\alpha = a + {\rm i} b \in \CC$ 的乘法在那里定义了一个线性变换。它的矩阵是什么？
-\\
-c) 定义 $T(x + {\rm i} y) = 2x - y + {\rm i} (x - 3y)$.~证明这个变换不是 $\CC$ 复向量空间中的线性变换，但如果我们把 $\CC$ 视为实向量空间 $\RR^2$，那么它在那里是一个线性变换（即 $T$ 是一个\textbf{实线性}但不是\textbf{复线性}变换）。找到这个实线性变换的矩阵。
+\begin{remark*}
+    我们通常会把线性变换与其矩阵等同起来看，不过在下面几段中我们会将它们区分开。
+\end{remark*}
 
-3.7. 证明 $\CC$ 中的任何线性变换（视为复向量空间）都是通过乘以 $\alpha \in \CC$ 来实现的。
-\end{exer}
+令$A$是$T_1$的矩阵，$B$是$T_2$的矩阵。在之前的小节中我们讨论过，$T$的矩阵各列是向量$T(\mathbf{e}_{1}),T(\mathbf{e}_{2}),\ldots,T(\mathbf{e}_{r})$，其中$\mathbf{e}_1,\mathbf{e}_2,\ldots,\mathbf{e}_r$是$\mathbb{F}^r$的标准基。对$k=1,2,\ldots,r$我们有\[T(\mathbf{e}_k)=T_1(T_2(\mathbf{e}_k))=T_1(B\mathbf{e}_k)=T_1(\mathbf{b}_k)=A\mathbf{b}_k\]
+（变换$T_2$和$T_1$分别是与$B$和$A$做乘法）
+
+因此，$T$的矩阵各列是$A\mathbf{b}_{1},A\mathbf{b}_{2},\ldots,A\mathbf{b}_{r}$，而这就是矩阵$AB$的定义！
+
+我们重新将线性变换与其矩阵等同起来看。由于矩阵乘法与线性变换的复合是一致的，我们可以（并且将要）用$T_1T_2$这种写法取代$T_1\circ T_2$，并且用$T_{1}T_{2}\mathbf{x}$这种写法取代$T_{1}(T_{2}(\mathbf{x}))$。
 
-\section{4. 线性变换作为向量空间}
+\begin{remark*}
+    在复合$T_1T_2$中，首先作用的是变换$T_2$！记住这一点的方法是，注意到在$T_1T_2\mathbf{x}$中，首先碰上$\mathbf{x}$的是变换$T_2$。
+\end{remark*}
 
-我们可以对线性变换进行哪些运算？我们总是可以在一个线性变换上乘上一个标量，也即，如果我们有一个线性变换 $T: V \to W$ 和一个标量 $\alpha$，我们可以定义一个新的变换 $\alpha T$ 为 $$(\alpha T) \vv = \alpha (T \vv)\quad\forall \vv \in V.$$
-可以很容易地检验， $\alpha T$ 也是一个线性变换：
-\begin{equation} \notag
-\begin{split}
-(\alpha T )(\alpha_1 \vv_1 + \alpha_2 \vv_2)
-=&\ \alpha( T (\alpha_1 \vv_1 + \alpha_2 \vv_2))\quad\text{（根据$\alpha T$的定义）}
-\\
-=&\  \alpha (\alpha_1 T \vv_1 + \alpha_2 T \vv_2)\quad\text{（根据$T$的线性性质）}
-\\
-=&\  \alpha_1 \alpha T \vv_1 +\alpha_2  \alpha T \vv_2  
-\\
-=&\  \alpha_1( \alpha T) \vv_1 +\alpha_2( \alpha T) \vv_2   .
-\end{split}\end{equation}
+\begin{remark*}
+    除“行乘以列”法则以外，还有一种检验矩阵乘积中各矩阵大小的方法：要使复合$T_1T_2$有定义，$T_2\mathbf{x}$必须属于$T_1$的定义域。若$T_2$从某个空间（比如说$\mathbb{F}^r$）映射到$\mathbb{F}^n$，那么$T_1$一定要从$\mathbb{F}^n$映射到某个空间（比如说$\mathbb{F}^m$）。所以，要使$T_1T_2$有定义，$T_1$和$T_2$的矩阵的大小必须分别是$m\times n$和$n\times r$——这和我们由“{\bf 行乘以列}”法则所得到的条件是一样的。
+\end{remark*}
 
-如果 $T_1$ 和 $T_2$ 是具有相同定义域和目标空间的线性变换 ($T_1: V \to W$ 且 $T_2: V \to W$，或简写为 $T_1, T_2: V \to W$)，那么我们可以将这些变换相加，即定义一个新的变换 $T = (T_1 + T_2): V \to W$ 为 $$(T_1 + T_2) \vv = T_1 \vv + T_2 \vv\quad\forall \vv \in V.$$
-可以很容易地检验出变换 $T_1 + T_2$ 也是线性的，只需重复上面关于 $\alpha T$ 线性的推理即可。
+\begin{example*}
+    令$T:\mathbb{R}^{2}\to\mathbb{R}^{2}$是关于直线$x_1=3x_2$的反射。它是线性变换，现在来求其矩阵。要求这个矩阵，我们需计算$T\mathbf{e}_{1}$和$T\mathbf{e}_{2}$。然而，直接计算$T\mathbf{e}_{1}$和$T\mathbf{e}_{2}$所需的三角学知识远远超出了一个正常人愿意记忆的范畴。
 
-因此，如果我们固定向量空间 $V$ 和 $W$ 并考虑从 $V$ 到 $W$ 的所有线性变换的集合（我们将其表示为 $\LL(V, W)$），我们可以定义 $\LL(V, W)$ 上的 2 个运算：标量乘法和加法。可以很容易地证明这些运算满足向量空间公理（该公理在第 1 节中定义）。
+    $T$的矩阵的一个更为简便的求法是，将$T$表示成若干简单线性变换的复合。具体而言，令$\gamma$为$x_1$轴和直线$x_1=3x_2$之间的夹角，并令$T_0$为关于$x_1$轴的反射。那么，要得到反射$T$，我们可以首先将平面旋转$-\gamma$以将直线$x_1=3x_2$转到$x_1$轴上，然后将向量关于$x_1$轴反射，最后将平面旋转$\gamma$以恢复原状。正式而言，这三步可以写成
+    \[T=R_\gamma T_0R_{-\gamma}\]
+    （注意各矩阵的顺序！）其中$R_\gamma$表示旋转$\gamma$弧度。$T_0$的矩阵很容易计算：
+\[T_0=\begin{pNiceMatrix}[margin]1&0\\0&-1\end{pNiceMatrix},\]
+而旋转矩阵是我们已知的：
+\[\begin{aligned}
+    R_{\gamma}&=\begin{pNiceMatrix}[margin]{\cos\gamma}&{-\sin\gamma}\\{\sin\gamma}&{\cos\gamma}\end{pNiceMatrix},\\
+    R_{-\gamma}&=\left(\begin{array}{cc}{\cos(-\gamma)}&{-\sin(-\gamma)}\\{\sin(-\gamma)}&{\cos(-\gamma)}\end{array}\right)=\begin{pNiceMatrix}[margin]{\cos\gamma}&{\sin\gamma}\\{-\sin\gamma}&{\cos\gamma}\end{pNiceMatrix}\end{aligned}
+\]
+为计算$\sin\gamma$和$\cos\gamma$，可在直线$x_1=3x_2$上取一向量，比如向量$(3,1)^T$。那么\[\cos\gamma=\frac{\text{第一个坐标}}{\text{长度}}=\frac{3}{\sqrt{3^2+1^2}}=\frac{3}{\sqrt{10}}\]
+类似地\[\sin\gamma=\frac{\text{第二个坐标}}{\text{长度}}=\frac{1}{\sqrt{3^2+1^2}}=\frac{1}{\sqrt{10}}\]
+将上面这些组合起来可得
+\[\begin{aligned}T=R_{\gamma}T_{0}R_{-\gamma}&=\frac{1}{\sqrt{10}}\begin{pNiceMatrix}[margin]{3}&{-1}\\{1}&{3}\end{pNiceMatrix}\begin{pNiceMatrix}[margin]{1}&{0}\\{0}&{-1}\end{pNiceMatrix}\frac{1}{\sqrt{10}}\begin{pNiceMatrix}[margin]{3}&{1}\\{-1}&{3}\end{pNiceMatrix}\\&=\frac{1}{10}\begin{pNiceMatrix}[margin]3&-1\\1&3\end{pNiceMatrix}\begin{pNiceMatrix}[margin]1&0\\0&-1\end{pNiceMatrix}\begin{pNiceMatrix}[margin]3&1\\-1&3\end{pNiceMatrix}\end{aligned}\]
+只需计算矩阵乘法，即可得到最终结果。
+\end{example*}
 
-这里，读者不应该感到惊讶，因为向量空间的公理本质上意味着有关向量的运算应该遵循自然的代数运算规则。而线性变换上的运算定义就是为了满足这些规则！
+\subsection{矩阵乘法的性质}
 
-作为说明，让我们为向量空间公理的第一个分配律（公理 7）写下正式证明。我们想证明 $\alpha (T_1 + T_2) = \alpha T_1 + \alpha T_2$.~对于 $V$ 中的任何 $\vv$，
-\begin{equation} \notag
-\begin{split}
-\alpha (T_1 + T_2) \vv =&\   \alpha ((T_1 + T_2) \vv) \quad\text{（根据乘法的定义）}         \\
-=&\  \alpha (T_1 \vv + T_2 \vv) \quad\text{（根据和的定义）} \\
-=&\  \alpha T_1 \vv + \alpha T_2 \vv \quad\text{（根据 $W$ 中的公理 7）}\\
-=&\ (\alpha T_1 + \alpha T_2) \vv \quad\text{（根据和的定义）}
-\end{split}
-\end{equation}
+矩阵乘法有许多性质，而这些性质我们在高中代数课就已熟悉：
+\begin{enumerate}
+    \item 结合律：$A(BC)=(AB)C$——前提是左侧或右侧的乘积都是定义完善的。从而我们就能（并且将会）把这种情况简记作$ABC$。
+    \item 分配律：$A(B+C)=AB+AC,(A+B)C=AC+BC$——前提是左侧或右侧的乘积都是定义完善的。
+    \item 标量可以提出：$A(\alpha B)=(\alpha A)B=\alpha(AB)=\alpha AB$。
+\end{enumerate}
+这些性质很容易证明。你应该证明线性变换的对应性质——由定义即很容易得到，然后再由线性变换的这些性质推出矩阵乘法的对应性质。
 
+此处新出现的难点是，交换律不成立：
+\begin{quote}
+    矩阵乘法是不可交换的，即一般来说$AB\ne BA$。
+\end{quote}
+容易看出，期望矩阵乘法的交换律成立是不合理的。的确如此：令$A$和$B$分别为$m\times n$和$n\times r$矩阵。那么乘积$AB$是定义完善的，但若$m\ne r$则$BA$是未定义的。
+
+即便两个乘积都有定义，比如说$A$和$B$都是$n\times n$方阵的情况，乘法仍然不是可交换的。如果我们随机选择矩阵$A$和$B$，那么大概率$AB\ne BA$，运气很好的时候才会恰巧得到$AB=BA$的结果。
+
+\subsection{转置矩阵与乘法}
+
+给定矩阵 $A$，其\textbf{转置}（或转置矩阵）$A^T$ 定义为把 $A$ 的行变为列所得的矩阵。例如
+\[
+\begin{pNiceMatrix}[margin]1&2&3\\4&5&6\end{pNiceMatrix}^{T}
+=
+\begin{pNiceMatrix}[margin]1&4\\2&5\\3&6\end{pNiceMatrix}.
+\]
+因此，$A^T$ 的各列就是 $A$ 的各行，反之 $A^T$ 的各行就是 $A$ 的各列。
+
+形式化地，$(A^T)_{j,k}=A_{k,j}$：也就是说，$A^T$ 第 $j$ 行第 $k$ 列的元素等于 $A$ 第 $k$ 行第 $j$ 列的元素。
 
-因此，确实 $\alpha (T_1 + T_2) = \alpha T_1 + \alpha T_2$.
+矩阵转置在线性变换的语言下有一个很优美的解释：它导出所谓的\textbf{伴随}变换。我们将在后文详细研究这一点；目前只把转置看作一种有用的形式运算。
 
-{\heiti 注记}~~ 线性运算（加法和标量乘法）在 $T: \FF^n \to \FF^m$ 的线性变换上对应于它们矩阵上的相应运算。由于我们知道 $m \times n$ 矩阵的集合是一个向量空间，这就立即意味着 $\LL(\FF^n, \FF^m)$ 也是一个向量空间。
+转置最先带来的一个便利，是可以把列向量 $\mathbf{x}\in\mathbb{F}^n$ 写成
+$\mathbf{x}=(x_1,x_2,\ldots,x_n)^T$，而不必每次都把它竖直排成一列。
+
+简单分析“行乘以列”规则可得
+\[(AB)^{T}=B^{T}A^{T},\]
+即，当对乘积取转置时，需更改各乘积项的顺序。
+
+\subsection{迹与矩阵乘法}
 
-我们率先提出了抽象证明，首先是因为它适用于一般的空间，例如，适用于没有基的向量空间，在那里我们不能使用坐标；其次，这里展示的抽象推理在其他许多地方都会使用，所以读者将受益于理解它。
+对于方阵（$n\times n$矩阵）$A=(a_{j,k})$，其迹（记为$\tr A$）是对角元之和：\index{迹（trace）}
+\[\operatorname{trace}A=\sum_{k=1}^{n}a_{k,k}.\]
+\begin{theorem}\label{thm:trace_commute}
+    令$A$和$B$分别为$m\times n$和$n\times m$矩阵（则乘积$AB$和$BA$都是定义完善的）。那么\[\tr (AB)=\tr(BA)\]
+\end{theorem}
+此定理的证明留作习题（见下习题 \ref{ex:1_5_6}）。其实，这个定理有两种证法。第一种方法是计算$AB$与$BA$的对角元并比较两者的和。这种方法对于操作嵌套的求和有较高的要求。
 
-并且随着读者对数学的理解慢慢深入，他/她将看到这种抽象推理确实是非常简单的，几乎可以自动完成。
+如果你不擅长代数运算，还可用另一种方法。我们可以考虑两个从$M_{n\times m}$到$\mathbb{F}=\mathbb{F}^1$的线性变换$T$和$T_1$，定义为：\[T(X)=\mathrm{trace}(AX),\quad T_{1}(X)=\mathrm{trace}(XA)\]
+只需证明$T=T_1$即可得证——代入$X=B$可得到原定理。
 
-\section{5. 线性变换的复合与矩阵乘法}
+由于线性变换完全由其在生成组上的取值所决定，我们只需对一些简单的矩阵检验$T=T_1$——比如考虑矩阵$X_{j,k}$，其中除了第$j$列第$k$行的元素为$1$外，其余各元素均为$0$。
 
-\subsection{5.1. 矩阵乘法的定义}
+\begin{problemset}
+    \item 令
+    \[A=\begin{pNiceMatrix}[margin]1&2\\3&1\end{pNiceMatrix},B=\begin{pNiceMatrix}[margin]1&0&2\\3&1&-2\end{pNiceMatrix},C=\begin{pNiceMatrix}[margin]1&-2&3\\-2&1&-1\end{pNiceMatrix},D=\begin{pNiceMatrix}[margin]-2\\2\\1\end{pNiceMatrix}\]
+    \begin{probenumerate}
+        \item 选出所有有定义的乘积，并给出乘积的大小：$AB,BA,ABC,ABD,BC,$ $BC^{T},B^{T}C,DC,D^{T}C^{T}.$
+        \item 计算$AB,A(3B+C),B^{T}A,A(BD),(AB)D.$
+    \end{probenumerate}
+    \item 令$T_\gamma$为$\mathbb{R}^2$中旋转$\gamma$弧度的矩阵。用矩阵乘法检验$T_{\gamma}T_{-\gamma}=T_{-\gamma}T_{\gamma}=I$。
+    \item 将两个旋转矩阵$T_{\alpha}$和$T_{\beta}$相乘（该乘法是罕见的可交换乘法，即$T_\alpha T_\beta=T_\beta T_\alpha$，故顺序不重要）。据此推导$\sin(\alpha+\beta)$和$\cos(\alpha+\beta)$的公式。
+    \item 求出$\mathbb{R}^2$中向直线$x_1=-2x_2$上正交投影的矩阵。{\bf 提示}：向坐标轴$x_1$上投影的矩阵是什么？
+    \item 求出线性变换$A,B:\mathbb{R}^{2}\to\mathbb{R}^{2}$使得$AB=\mathbf{0}$但$BA\ne \mathbf{0}$。
+    \item \label{ex:1_5_6}证明定理 \ref{thm:trace_commute}，即证明$\tr (AB)=\tr(BA)$。
+    \item 构造非零矩阵$A$使得$A^{2}=\mathbf{0}$。
+    \item 求出关于直线$y=-2x/3$的反射的矩阵。请将所有乘法都算到最终结果。
+\end{problemset}
+
+\section{可逆变换与矩阵、同构}
+
+\subsection{恒等变换和恒等矩阵}
+
+在所有线性变换中，有个很特殊的线性变换——恒等变换（恒等算子）$I$，$I\mathbf{x}=\mathbf{x},\forall\mathbf{x}$。
+
+准确地说，恒等变换有无数多个：对任意向量空间$V$，都有一个恒等变换$I=I_{V}:V\to V,I_{V}\mathbf{x}=\mathbf{x},\forall\mathbf{x}\in V$。然而，不致混淆时，我们将用同一符号$I$表示所有的恒等算子（恒等变换）。只有在强调该变换作用于哪个空间时，我们才用记号$I_V$。
+
+显然，如果$I:\mathbb{F}^n\to\mathbb{F}^n$是$\mathbb{F}^n$上的恒等变换，则其矩阵为$n\times n$矩阵\[I=I_n=\begin{pNiceMatrix}[margin]1&0&\ldots&0\\0&1&\ldots&0\\\vdots&\vdots&\ddots&\vdots\\0&0&\ldots&1\end{pNiceMatrix}\]
+（主对角线上全为$1$，而其余地方全为$0$）。当我们需要强调矩阵的大小时，就用$I_n$这个记号；否则我们用$I$即可。
+\begin{remark*}
+    通常，线性代数教材中用符号$E$表示恒等矩阵。我更中意$I$，因为在算子理论中用的是它。
+\end{remark*}
+
+显然，对于任意线性变换$A$，等式\[AI=A,\quad IA=A\]成立（只要乘积是有定义的）。
+
+\subsection{可逆变换}
+
+\begin{definition*}
+    令$A:V\to W$为一线性变换。若存在线性变换$B:W\to V$使得\[BA=I\quad(\text{此处}~I=I_{V}),\]
+    则称变换$A$是{\bf 左可逆的}；
+    若存在线性变换$C:W\to V$使得\[AC=I\quad(\text{此处}~I=I_{W}),\]
+    则称变换$A$是{\bf 右可逆的}。
+    线性变换$B$和$C$分别称为$A$的{\bf 左逆}和{\bf 右逆}。注意，我们并没有假设$B$和$C$的唯一性，并且通常左逆和右逆也不是唯一的。
+\end{definition*}
 
-知道了矩阵-向量乘法，人们很容易猜出两个矩阵乘积 $AB$ 的自然定义：让我们用 $A$ 乘以 $B$ 的每个列（矩阵-向量乘法），并将得到的列向量连接成一个矩阵。形式上，
+\begin{definition*}
+    若线性变换$A:V\to W$既是左可逆的又是右可逆的，则称其是{\bf 可逆的}。
+\end{definition*}
 
-\fbox{如果 $\bb_1, \bb_2, \dots, \bb_r$ 是 $B$ 的列，那么 $A \bb_1, A \bb_2, \dots, A \bb_r$ 就是矩阵 $AB$ 的列.}
+\begin{theorem}\label{thm:inverse_unique}
+    若线性变换$A:V\to W$是可逆的，那么其左逆$B$和右逆$C$是唯一且相等的。
+\end{theorem}
 
-回忆矩阵-向量乘法的“按行列规则”，我们得到矩阵的\textbf{按行列规则}：
+\begin{corollary*}
+    线性变换$A:V\to W$是可逆的，当且仅当存在唯一的线性变换（记为$A^{-1}$），$A^{-1}:W\to V$使得
+    \begin{equation}\label{eq:a_inv}
+        A^{-1}A=I_V,\quad AA^{-1}=I_W.
+    \end{equation}
+    变换$A^{-1}$称作$A$的{\bf 逆}。
+\end{corollary*}
+\begin{remark*}
+    “存在满足\eqref{eq:a_inv}的变换$A^{-1}$”往往被用作可逆线性变换的定义。
+\end{remark*}
 
-\fbox{\begin{minipage}{0.9\textwidth}
-$AB$ 的项 $(AB)_{j,k}$（第 $j$ 行第 $k$ 列的项）定义为\\$(AB)_{j,k} = $ ( $A$ 的第 $j$ 行 ) $\cdot$ ( $B$ 的第 $k$ 列).
-\end{minipage}}
-\\
-形式上可以写成 
-$$(AB)_{j,k} = \sum_{l} a_{j,l} b_{l,k},$$
-如果 $a_{j,k}$ 和 $b_{j,k}$ 分别是矩阵 $A$ 和 $B$ 的项。
+\begin{proof}[定理 \ref{thm:inverse_unique} 的证明]
+    令$BA=I$且$AC=I$。那么\[BAC=B(AC)=BI=B.\]
+    另一方面，\[BAC=(BA)C=IC=C,\]
+    因此$B=C$。
 
-我特意没有提及矩阵 $A$ 和 $B$ 的大小，但如果我们回忆矩阵-向量乘法的按行列规则，我们可以看到，为了使乘法有定义，$A$ 的行的大小应等于 $B$ 的列的大小。
+    假设对于某个线性变换$B_1$有$B_1A=I$。将上面对$B$所做的推理作用于$B_1$，可得$B_1=C$。因此，左逆$B$是唯一的。类似可证$C$的唯一性。
+\end{proof}
 
-换句话说，乘积 $AB$ 有定义当且仅当 $A$ 是 $m \times n$ 的矩阵，$B$ 是 $n \times r$ 的矩阵。（这与从按行列规则获得的条件相同。）
+\begin{definition*}
+    如果相应于一矩阵的线性变换是可逆的（相应地，左可逆的或右可逆的），则称该矩阵是{\bf 可逆的}（相应地，{\bf 左可逆的}或{\bf 右可逆的}）。
+\end{definition*}
 
-\subsection{5.2. 动机：线性变换的复合}
+定理 \ref{thm:inverse_unique} 表明若存在唯一的矩阵$A^{-1}$使得$A^{-1}A=I,AA^{-1}=I$，则矩阵$A$是可逆的。矩阵$A^{-1}$称作$A$的{\bf 逆}。
 
-在这里可以问问自己：为什么我们要使用如此复杂的乘法规则？为什么我们不直接逐项对应地将矩阵相乘\footnote{译者注：此即矩阵逐项积的定义。}？
+\subsubsection{例子}
 
-答案是，如上定义的乘法自然地源于线性变换的复合。
+\begin{enumerate}
+    \item 恒等变换（恒等矩阵）是可逆的，$I^{-1} = I$。
+    \item 旋转$R_\gamma$\[R_\gamma=\begin{pNiceMatrix}[margin]\cos\gamma&-\sin\gamma\\\sin\gamma&\cos\gamma\end{pNiceMatrix}\]
+    是可逆的，且其逆为$(R_{\gamma})^{-1}=R_{-\gamma}$。从$R_\gamma$的几何描述很容易得到该等式，也可以通过矩阵乘法来检验它。
+    \item 列向量$(1,1)^T$是左可逆的但不是右可逆的。其左逆可以是行向量$(1/2,1/2)$。
+
+    为了说明该矩阵不是右可逆的，只需注意到该矩阵存在不止一个左逆。{\bf 习题}：描述该矩阵的所有左逆。
+    \item 行向量$(1,1)$是右可逆的，但不是左可逆的。可能的右逆之一是列向量$(1/2,1/2)^T$。
+\end{enumerate}
 
-假设我们有两个线性变换，$T_1: \FF^n \to \FF^m$ 和 $T_2: \FF^r \to \FF^n$.~定义变换的\textbf{复合}(composition) $T = T_1 \circ T_2$ 为
-$$T(\xx) = T_1(T_2(\xx)) ~~\ \forall \xx \in \FF^r.$$
-请注意，$T_2(\xx) \in \FF^n$.~由于 $T_1: \FF^n \to \FF^m$，表达式 $T_1(T_2(\xx))$ 是有定义的，并且结果属于 $\FF^m$.~所以，$T: \FF^r \to \FF^m.$
-\footnote{我们通常将线性变换与其矩阵等同，但在接下来的几个段落中，我们将区分它们。}
+\begin{remark}
+    可逆矩阵{\bf 必为}方阵（$n\times n$）。此外，若方阵$A$有左逆或右逆，那么其为可逆的。因此，只需检验等式$AA^{-1}=I,A^{-1}A=I$其中之一。
 
-可以很容易地证明 $T$ 是一个线性变换（留作练习），所以它由一个 $m \times r$ 矩阵定义。已知 $T_1$ 和 $T_2$ 的矩阵，如何找到 $T$ 的矩阵？
+    该结论会在后面证明。在证明该结论之前，我们将不会使用它。我在此处先提及它只是为了防止读者误入歧途。
+\end{remark}
 
-令 $A$ 为 $T_1$ 的矩阵，令 $B$ 为 $T_2$ 的矩阵。正如我们在上一节中所讨论的，$T$ 的列是向量 $T(\ee_1), T(\ee_2), \dots, T(\ee_r)$，其中 $\ee_1, \ee_2, \dots, \ee_r$ 是 $\FF^r$ 中的标准基。对于 $k = 1, 2, \dots, r$，我们有
-$$T(\ee_k) = T_1(T_2(\ee_k)) = T_1(B \ee_k) = T_1(\bb_k) = A \bb_k$$
-（变换 $T_2$ 和 $T_1$ 分别就是乘 $B$ 和乘 $A$）。
+\subsubsection{逆变换的性质}
 
-所以，$T$ 的矩阵的列是 $A \bb_1, A \bb_2, \dots, A \bb_r$，这正是矩阵 $AB$ 的定义方式！
+\begin{theorem}[乘积的逆]
+    若线性变换$A$和$B$是可逆的（并且乘积$AB$是有定义的），那么乘积$AB$是可逆的，且\[(AB)^{-1}=B^{-1}A^{-1}\]
+    注意顺序的变化！
+\end{theorem}
+\begin{proof}
+    直接计算有\[(AB)(B^{-1}A^{-1})=A(BB^{-1})A^{-1}=AIA^{-1}=AA^{-1}=I\]
+    类似地\[(B^{-1}A^{-1})(AB)=B^{-1}(A^{-1}A)B=B^{-1}IB=B^{-1}B=I\]
+\end{proof}
 
-让我们回到与之等同的观点。由于矩阵乘法与复合一致，我们可以（并且将）写作 $T_1 T_2$ 而不是 $T_1 \circ T_2$，以及 $T_1 T_2 \xx$ 而不是 $T_1(T_2(\xx))$.~
-\footnote{注意变换的顺序！ }
+\begin{remark}
+    乘积$AB$的可逆性并不蕴涵$A$和$B$的可逆性（你能举出一个例子吗？）。然而，如果因子之一（$A$或$B$）是可逆的，且乘积$AB$可逆，那么另一个因子也是可逆的。
 
-注意在组合$T_1 T_2$中，先作变换$T_2$！记住这种方法的一个办法是注意到 $T_1 T_2 \xx$ 中，变换 $T_2$ 首先与 $\xx$ 相遇。
+    我们将这一结论的证明留作习题。
+\end{remark}
+
+\begin{theorem}[$A^T$的逆]
+    若矩阵$A$可逆，那么$A^T$也可逆，且\[(A^T)^{-1}=(A^{-1})^T\]
+\end{theorem}
+\begin{proof}
+    利用$(AB)^{T}=B^{T}A^{T}$，我们有\[(A^{-1})^TA^T=(AA^{-1})^T=I^T=I,\]
+    类似地，\[A^T(A^{-1})^T=(A^{-1}A)^T=I^T=I.\]
+\end{proof}
+最后，若$A$可逆，那么$A^{-1}$也可逆，且$(A^{-1})^{-1}=A$。
+
+让我们总结逆的主要性质：
+\begin{enumerate}
+    \item 若$A$可逆，那么$A^{-1}$也可逆，且$(A^{-1})^{-1}=A$；
+    \item 若$A$和$B$是可逆的，并且乘积$AB$是有定义的，那么$AB$是可逆的，且$(AB)^{-1}=B^{-1}A^{-1}$；
+    \item 若$A$可逆，那么$A^T$也可逆，且$(A^T)^{-1}=(A^{-1})^T$。
+\end{enumerate}
+
+\subsection{同构、同构向量空间}
+
+称可逆线性变换$A:V\to W$为{\bf 同构}。我们并未引入任何新概念，只是给我们已研究过的对象取了一个新名字而已。
+
+若存在同构$A:V\to W$，则称两个向量空间$V$和$W$是{\bf 同构的}（记作$V\cong W$）。
+
+同构的向量空间可视作同一向量空间的不同表达，意即涉及向量空间运算的所有性质和推导在同构下都是保持不变的。
+
+以下定理形象展示了这一说法。
+
+\begin{theorem}\label{thm:preserve_basis}
+    令$A:V\to W$是同构，并令$\mathbf{v}_1,\mathbf{v}_2,\ldots,\mathbf{v}_n$是$V$的基。那么向量组$A\mathbf{v}_{1},A\mathbf{v}_{2},\ldots,A\mathbf{v}_{n}$是$W$的基。
+\end{theorem}
+
+此定理的证明留作习题。
+
+\begin{remark*}
+    可以将上述定理中的“基”换成“线性无关组”、“生成组”或“线性相关组”——所有这些性质在同构下都是保持不变的。
+\end{remark*}
+
+\begin{remark*}
+    若$A$为同构，那么$A^{-1}$也是同构。因此我们可以把上述定理表述成$\mathbf{v}_1,\mathbf{v}_2,\ldots,\mathbf{v}_n$是基当且仅当$A\mathbf{v}_{1},A\mathbf{v}_{2},\ldots,A\mathbf{v}_{n}$是基。
+\end{remark*}
+
+定理 \ref{thm:preserve_basis} 的逆命题也是成立的。
+
+\begin{theorem}\label{thm:basis_to_basis}
+    令$A:V\to W$是线性映射，并令$\mathbf{v}_1,\mathbf{v}_2,\ldots,\mathbf{v}_n$和$\mathbf{w}_1,\mathbf{w}_2,\ldots,$ $\mathbf{w}_n$分别为$V$和$W$的基。若$A\mathbf{v}_{k}=\mathbf{w}_{k},k=1,2,\dots,n$，那么$A$是同构。
+\end{theorem}
+\begin{proof}
+    定义逆变换$A^{-1}$为$A^{-1}\mathbf{w}_{k}=\mathbf{v}_{k},k=1,2,\dots,n$（我们知道，线性变换由其在基上的取值所决定）。
+\end{proof}
+
+\subsubsection{例子}
+
+\begin{enumerate}
+    \item 令$A:\mathbb{F}^{n+1}\to\mathbb{P}_{n}^{\mathbb{F}}$（$\mathbb{P}_{n}^{\mathbb{F}}$是次数最高为$n$的多项式$\sum_{k=0}^{n}a_{k}t^{k},a_{k}\in\mathbb{F}$所成的集合）定义为\[A\mathbf{e}_1=1,A\mathbf{e}_2=t,\ldots,A\mathbf{e}_n=t^{n-1},A\mathbf{e}_{n+1}=t^n\]
+    由定理 \ref{thm:basis_to_basis}，$A$为同构，故$\mathbb{P}_n^\mathbb{F}\cong\mathbb{F}^{n+1}$。
+    \item 令$V$为$\mathbb{F}$上的向量空间，基为$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$。定义变换$A:\mathbb{F}^{n}\to V$为\[A\mathbf{e}_k=\mathbf{v}_k,\quad k=1,2,\ldots,n,\]
+    其中$\mathbf{e}_1,\mathbf{e}_2,\ldots,\mathbf{e}_n$是$\mathbb{F}^n$的标准基。同样由定理 \ref{thm:basis_to_basis}，$A$为同构，故$V\cong\mathbb{F}^{n}$。
+    \item 由$2\times 3$矩阵（各元素属于$\mathbb{F}$）所构成的向量空间$M_{2\times3}^{\mathbb{F}}$同构于$\mathbb{F}^6$；
+    \item 更一般地，$M_{m\times n}^{\mathbb{F}}\cong\mathbb{F}^{m\cdot n}$。
+\end{enumerate}
+
+\begin{remark*}
+    任一具有基的实向量空间都与$\mathbb{R}^n$（$n$为适当的数）同构。类似地，任一具有基的复向量空间都与$\mathbb{C}^n$同构。
+\end{remark*}
+
+\subsection{可逆性与方程}\label{subsec:invert_eq}
+
+\begin{theorem}\label{thm:invert_unique}
+    令$A:X\to Y$为线性变换。那么$A$可逆，当且仅当对任意右端项$\mathbf{b}\in Y$，方程\[A\mathbf{x}=\mathbf{b}\]有唯一解$\mathbf{x}\in X$。
+\end{theorem}
+\begin{proof}
+    设$A$是可逆的。那么$\mathbf{x}=A^{-1}\mathbf{b}$是方程$A\mathbf{x}=\mathbf{b}$的解。为证明该解是唯一的，设另一向量$\mathbf{x}_1\in X$满足\[A\mathbf{x}_1=\mathbf{b}\]
+    将此等式两端左乘$A^{-1}$，可得\[A^{-1}A\mathbf{x}_{1}=A^{-1}\mathbf{b},\]
+    因此$\mathbf{x}_{1}=A^{-1}\mathbf{b}=\mathbf{x}$。注意，$AA^{-1}=I$和$A^{-1}A=I$这两个等式都用到了。
+
+    现在假设方程$A\mathbf{x}=\mathbf{b}$对于任意$\mathbf{b}\in Y$有唯一解$\mathbf{x}$。下面用符号$\mathbf{y}$而不用$\mathbf{b}$。我们知道，给定$\mathbf{y}\in Y$，方程\[A\mathbf{x}=\mathbf{y}\]有唯一解$\mathbf{x}\in X$。记此解为$B(\mathbf{y})$。
+
+    注意$B(\mathbf{y})$对于所有$\mathbf{y}\in Y$都有定义，因此我们定义了一个变换$B:Y\to X$。
+
+    下面检验$B$是线性变换。我们需要证明$B(\alpha\mathbf{y}_{1}+\beta\mathbf{y}_{2})=\alpha B(\mathbf{y}_{1})+\beta B(\mathbf{y}_{2})$。令$\mathbf{x}_{k}:=B(\mathbf{y}_{k}),k=1,2$，即$A\mathbf{x}_{k}=\mathbf{y}_{k},k=1,2$。那么\[A(\alpha\mathbf{x}_1+\beta\mathbf{x}_2)=\alpha A\mathbf{x}_1+\beta A\mathbf{x}_2=\alpha\mathbf{y}_1+\beta\mathbf{y}_2,\]
+    这表明\[B(\alpha\mathbf{y}_1+\beta\mathbf{y}_2)=\alpha B(\mathbf{y}_1)+\beta B(\mathbf{y}_2).\]
+
+    最后，我们证明$B$的确是$A$的逆。取$\mathbf{x}\in X$并令$\mathbf{y}=A\mathbf{x}$，则根据$B$的定义，我们有$\mathbf{x}=B\mathbf{y}$。那么对所有$\mathbf{x}\in X$有\[BA\mathbf{x}=B\mathbf{y}=\mathbf{x},\]
+    故$BA=I$。类似地，对任意$\mathbf{y}\in Y$令$\mathbf{x}=B\mathbf{y}$，故$\mathbf{y}=A\mathbf{x}$。则对所有$\mathbf{y}\in Y$均有\[AB\mathbf{y}=A\mathbf{x}=\mathbf{y},\]
+    故$AB=I$。
+\end{proof}
+
+回忆一下基的定义，我们可得定理 \ref{thm:preserve_basis} 和 \ref{thm:basis_to_basis} 的如下推论。
+
+\begin{corollary}\label{cor:invert_basis}
+    $m\times n$矩阵是可逆的，当且仅当它的列形成$\mathbb{F}^m$的基。
+\end{corollary}
+
+\begin{problemset}
+    \item 证明：若$A:V\to W$是同构（即可逆线性变换），且$\mathbf{v}_1,\mathbf{v}_2,\ldots,\mathbf{v}_n$是$V$的基，那么$A\mathbf{v}_{1},A\mathbf{v}_{2},\ldots,A\mathbf{v}_{n}$是$W$的基。
+    \item 求出$1\times 2$矩阵（行向量）$A=(1,1)$的所有右逆，并由此得出结论：行向量$A$不是左可逆的。
+    \item 求出列向量$(1,2,3)^T$的所有左逆。
+    \item 列向量$(1,2,3)^T$是右可逆的吗？论证之。
+    \item 找出两个矩阵$A$和$B$，满足$AB$是可逆的，但$A$和$B$不是。{\bf 提示}：方阵$A$和$B$并不能用于举例。{\bf 注}：在$AB$是$1\times 1$矩阵（标量）时，很容易构造$A$和$B$。但你能否对于$AB$为$2\times 2$矩阵的情况进行构造？$3\times 3$和$n\times n$呢？
+    \item 设乘积$AB$可逆。证明：$A$是右可逆的且$B$是左可逆的。{\bf 提示}：写出右逆和左逆的表达式。
+    \item 设$A$和$AB$都可逆（假设乘积$AB$是定义完善的）。证明：$B$是可逆的。
+    \item 设$A$是$n\times n$矩阵。证明：若$A^2=\mathbf{0}$，那么$A$不可逆。
+    \item 设$AB=\mathbf{0}$对某非零矩阵$B$成立。$A$可能是可逆的吗？论证之。
+    \item 写出$\mathbb{F}^5$上线性变换$T_1$和$T_2$的矩阵。这两个变换的定义是：$T_1$将向量$\mathbf{x}$的坐标$x_2$和$x_4$互换，而$T_2$将$x_4$的$a$倍加到$x_2$且不改变其他坐标，即
+    \[T_1\begin{pNiceMatrix}[margin]x_1\\x_2\\x_3\\x_4\\x_5\end{pNiceMatrix}=\begin{pNiceMatrix}[margin]x_1\\x_4\\x_3\\x_2\\x_5\end{pNiceMatrix},\quad T_2\begin{pNiceMatrix}[margin]x_1\\x_2\\x_3\\x_4\\x_5\end{pNiceMatrix}=\begin{pNiceMatrix}[margin]x_1\\x_2+ax_4\\x_3\\x_4\\x_5\end{pNiceMatrix};\]
+    此处$a$为某固定的数。
 
-{\heiti 注记}~~ 除了“按行列规则”的矩阵乘法之外，还有另一种核验矩阵乘积维数的方法：对于复合 $T_1 T_2$ 的定义，必须使得 $T_2 \xx$ 属于 $T_1$ 的定义域。如果 $T_2$ 作用于某个空间，比如 $\FF^r$ 到 $\FF^n$，那么 $T_1$ 必须从 $\FF^n$ 作用到某个空间（比如 $\FF^m$）。因此，为了使 $T_1 T_2$ 有定义，$T_1$ 和 $T_2$ 的矩阵的大小应该分别是 $m \times n$ 和 $n \times r$ ——这与从“按行列规则”获得的条件相同。
+    证明：$T_1$和$T_2$是可逆变换，并写出它们的逆的矩阵。{\bf 提示}：比起猜想（或计算）$T_1,T_2$这两个矩阵的逆，先描述出逆变换再求出逆变换的矩阵可能更为容易。
+    \item 求出$\mathbb{R}^3$上绕向量$(1,2,3)^T$旋转$\alpha$角度这一变换的矩阵。我们假设从向量的尾端看向原点时，所做的旋转为逆时针方向。
 
-{\heiti 例子}~~ 设 $T: \RR^2 \to \RR^2$ 是关于直线 $x_1 = 3x_2$ 的反射。这是一个线性变换，那么让我们找到它的矩阵。为了找到矩阵，我们需要计算 $T \ee_1$ 和 $T \ee_2$.~然而，直接计算 $T \ee_1$ 和 $T \ee_2$ 需要的知识比一个理智的人愿意记住的三角学显然更多。
+    你可以将答案写成若干矩阵相乘的形式，而不需要计算所有的乘法。
+    \item 给出满足下面条件的矩阵（比如$2\times 2$矩阵）的例子：
+    \begin{probenumerate}
+        \item $A+B$不可逆，尽管$A$和$B$都可逆；
+        \item $A+B$可逆，尽管$A$和$B$都不可逆；
+        \item $A$、$B$、$A+B$都可逆。
+    \end{probenumerate}
+    \item 令$A$为可逆的对称矩阵（$A^T=A$）。$A$的逆还是对称的吗？论证之。
+\end{problemset}
 
-找到 $T$ 的矩阵的一个更简单的方法是将其表示为简单线性变换的复合。也就是说，设 $\gamma$ 是 $x_1$ 轴和直线 $x_1 = 3x_2$ 之间的夹角，设 $T_0$ 是关于 $x_1$ 轴的反射。那么要得到反射 $T$，我们可以先将平面旋转 $-\gamma$ 角，将直线 $x_1 = 3x_2$ 移动到 $x_1$ 轴，然后将所得在 $x_1$ 轴上反射，最后将平面旋转 $\gamma$ 角，将所有东西移回原位。形式上可以写成 
-$$T = R_\gamma T_0 R_{-\gamma}$$
-（注意乘积的顺序！），其中 $R_\gamma$ 是绕原点逆时针旋转 $\gamma$ 角的变换矩阵。$T_0$ 的矩阵很容易计算，是 
-$$T_0 = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix},$$
-旋转矩阵是已知的 
-$$R_\gamma = \begin{pmatrix} \cos \gamma & -\sin \gamma \\ \sin \gamma & \cos \gamma \end{pmatrix}$$
+\section{子空间}\label{sec:subspace}
 
-$$R_{-\gamma} = \begin{pmatrix} \cos(-\gamma) & -\sin(-\gamma) \\ \sin(-\gamma) & \cos(-\gamma) \end{pmatrix} = \begin{pmatrix} \cos \gamma & \sin \gamma \\ -\sin \gamma & \cos \gamma \end{pmatrix}$$
-为了计算 $\sin \gamma$ 和 $\cos \gamma$，取直线 $x_1 = 3x_2$ 上的一个向量，例如向量 $(3, 1)^T$.~那么 
-$$\cos \gamma = \frac{\text{向量的第一个坐标}}{\text{向量长度}} = \frac{3}{\sqrt{3^2 + 1^2}} = \frac{3}{\sqrt{10}},$$
-类似地 
-$$\sin \gamma = \frac{\text{向量的第二个坐标}}{\text{向量长度}} = \frac{1}{\sqrt{3^2 + 1^2}} = \frac{1}{\sqrt{10}}.$$
+向量空间$V$的{\bf 子空间}是$V$的非空子集$V_0\subset V$，它对于向量加法和标量乘法都是封闭的，也即：\index{子空间（subspace）}
+\begin{enumerate}
+    \item 若$\mathbf{v}\in V_0$，那么对于所有标量$\alpha$都有$\alpha \mathbf{v}\in V_0$；
+    \item 对于任意$\mathbf{u},\mathbf{v}\in V_0$，都有求和结果$\mathbf{u}+\mathbf{v}\in V_0$；
+\end{enumerate}
 
-将此前的所有内容合并起来，我们得到
-$$T = R_\gamma T_0 R_{-\gamma} = \frac{1}{\sqrt{10}} \begin{pmatrix} 3 & -1 \\ 1 & 3 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \frac{1}{\sqrt{10}} \begin{pmatrix} 3 & 1 \\ -1 & 3 \end{pmatrix} $$
-$$= \frac{1}{10} \begin{pmatrix} 3 & -1 \\ 1 & 3 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \begin{pmatrix} 3 & 1 \\ -1 & 3 \end{pmatrix}$$
-最后一步是进行矩阵乘法以得到最终结果，此处从略。
+同样，这两个条件可替换成下面这一个：
+\begin{center}
+    对于所有标量$\alpha,\beta$和所有$\mathbf{u},\mathbf{v}\in V_0$，都有$\alpha\mathbf{u}+\beta\mathbf{v}\in V_0$。
+\end{center}
 
+注意，具有继承自$V$的运算（向量加法和标量乘法）的子空间$V_0\subset V$是向量空间。的确如此：由于$V$非空，它至少包含一个向量$\mathbf{v}$，又因为$\mathbf{0}=0\mathbf{v}$，上述条件1表明零向量$\mathbf{0}$属于$V$。并且对于任意$\mathbf{v}\in V$，其加法逆元$-\mathbf{v}$由$-\mathbf{v}=(-1)\mathbf{v}$给出，所以同样由性质1可得$-\mathbf{v}\in V$。向量空间的其余公理也都成立，因为所有运算都继承自$V$。唯一可能出问题的一点，就是运算的结果可能不属于$V_0$。但是子空间的定义规避了这种情况！
 
-\subsection{5.3. 矩阵乘法的性质}
+现在我们考虑一些例子：
+\begin{enumerate}
+    \item 向量空间$V$的{\bf 平凡}子空间，即$V$自身和$\{\mathbf{0}\}$（仅包含零向量的子空间）。注意，空集$\varnothing$不是向量空间（因为不包含零向量），因此它不是子空间。
+\end{enumerate}
+对于每个线性变换$A:V\to W$，有以下两个子空间与之关联：
+\begin{enumerate}[start=2]
+    \item $A$的{\bf 零空间}或{\bf 核}，记为$\nul A$或$\ker A$，由所有满足$A\mathbf{v}=\mathbf{0}$的向量$\mathbf{v}\in V$所构成。
+    \item \textbf{值域}$\rg A$定义为由所有可被表示成$\mathbf{w}=A\mathbf{v}$（其中$\mathbf{v}\in V$）的向量$\mathbf{w}\in W$所构成的集合。
+\end{enumerate}
+若$A$为矩阵，即$A:\mathbb{F}^m\to\mathbb{F}^n$，回想一下矩阵-向量乘法的“{\bf 列乘以坐标}”规则，我们可看出，任意向量$\mathbf{w}\in \rg A$可表示成矩阵$A$各列的线性组合。这就能解释为何常使用列空间（记号为$\col A$）这个术语来指代矩阵的值域。因此，对于矩阵$A$，更常用记号$\col A$而非$\rg A$。
 
-矩阵乘法享有许多性质，它们和我们从高中代数中学到的知识相类似：
+最后一个例子是：
+\begin{enumerate}[start=4]
+    \item 给定向量组$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{r}\in V$，其{\bf 线性张成空间}（有时可简称为{\bf 张成空间}）$\mathcal{L}\{\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{r}\}$是可被表示为$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{r}$的线性组合$\mathbf{v}=\alpha_{1}\mathbf{v}_{1}+\alpha_{2}\mathbf{v}_{2}+\ldots+\alpha_{r}\mathbf{v}_{r}$的所有向量$\mathbf{v}\in V$所构成的集合。除$\mathcal{L}\{\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{r}\}$外，也用记号$\operatorname{span}\{\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{r}\}$来表示。
+\end{enumerate}
+容易检验，这些例子中的向量空间的确是子空间——留给读者作为习题。其中有些结论会在后文得到证明。
 
-1. 结合律：$A(BC) = (AB)C$，只要等式的一侧或另一侧有定义；因此我们可以（并且将）简单地写为 $ABC$.~
+\begin{problemset}
+    \item 令$X$和$Y$是向量空间$V$的子空间。证明$X\cap Y$是$V$的子空间。
+    \item 令$V$是向量空间。对于$X,Y\subset V$，$X+Y$是所有可被表示为$\mathbf{v}=\mathbf{x}+\mathbf{y},\mathbf{x}\in X,\mathbf{y}\in Y$的向量$\mathbf{v}$所构成的集合。证明若$X$和$Y$是$V$的{\bf 子空间}，那么$X+Y$也是$V$的子空间。
+    \item 令$X$是向量空间$V$的子空间，并令$\mathbf{v}\in V,\mathbf{v}\notin X$。证明：若$\mathbf{x}\in X$则$\mathbf{x}+\mathbf{v}\not\in X$。
+    \item 令$X$和$Y$是向量空间$V$的子空间。利用上一题的结论证明：$X\cup Y$是子空间，当且仅当$X\subset Y$或$Y\subset X$。
+    \item 由$4\times 4$矩阵所构成的空间的所有子空间里，包含所有上三角矩阵（对于所有$j>k$有$a_{j,k}=0$）的最小子空间是什么？包含所有对称矩阵（$A^T=A$）的最小子空间是什么？这两个子空间所共同包含的最大子空间是什么？\index{矩阵（matrix）!上三角$\sim$（upper triangular）}
+\end{problemset}
 
-2. 分配律：$A(B + C) = AB + AC$, $(A + B)C = AC + BC$，只要每个等式的任一侧有定义。
+\section{在计算机图形学中的应用}
 
-3. 系数（标量）可以提取：$A(\alpha B) = (\alpha A) B = \alpha (AB) = \alpha AB$.
+本节我们给出线性代数在计算机图形学中的一些实际应用。我们并不会深究细节，而只是陈述一些基本思想。我们会重点解释为什么对于$3$维图像的运算可简化为$4\times 4$矩阵的乘法。
 
-这些性质很容易证明。可以先证明它们对应于线性变换的性质，然后它们将几乎自然地从定义中得出。因为线性变换的性质蕴含了矩阵乘法的性质。
+\subsection{\texorpdfstring{$2$}{2}维图形}
 
-这里新的特点是交换律失败了：
+计算机显示屏可建模为$x$-$y$平面（更准确地说，其中的一个矩形）。显示屏上出现的任意图形都可用一系列{\bf 像素}来表示，而每个像素都被赋予了特定的颜色。每个像素的位置都由列号和行号所确定，二者充当了平面上$x$和$y$坐标的角色。因此，用带$x$-$y$坐标的平面中的矩形来表示计算机屏幕是很合适的——而一个图形只不过是一系列点。
 
-~~~~~~~矩阵乘法是不可交换的，即通常 $AB \neq BA$.~
+\begin{remark*}
+    图形分为两类：位图（会给出每个像素的信息）和矢量图（只给出{\bf 关键点}的信息，而绘图引擎将这些点连接起来以重构出完整图形）。位图的一个典例是数字相片：其中每个像素都会被描述。位图可能包含大量的点，因此对于位图进行运算需要大量的算力。用位图处理程序（比如Adobe Photoshop）编辑过数字相片的人都知道程序的运行需要很强大的计算机，而且即便用了很现代也很强大的计算机，运算还是需要花费一定的时间。
 
-容易看出，期望矩阵乘法满足交换律是不合理的。确实，如果 $A$ 和 $B$ 是 $m \times n$ 和 $n \times r$ 大小的矩阵，那么乘积 $AB$ 有定义，但如果 $m \neq r$，则 $BA$ 不被定义。
+    这就是计算机屏幕上的图形中矢量图占大多数的原因：计算机只需要存储关键点。例如，为了描绘一个多边形，只需要给出其顶点的坐标，以及顶点之间的连接关系。当然，计算机屏幕上并非所有图形都可被表示为多边形，有些图形（例如字母）具有弯曲而光滑的边界。不过，绘制经过一系列点的光滑曲线已有成熟的方法（例如贝塞尔曲线），这些方法被用于PostScript与Adobe PDF（以及许多其他格式的文件）中。
 
-即使两个乘积都有定义，例如，当 $A$ 和 $B$ 是 $n \times n$（方阵）时，乘法仍然是非交换的。如果我们随机选择矩阵 $A$ 和 $B$，那么 $AB \neq BA$ 的概率很高：我们非常幸运时才能得到 $AB = BA$的结果。
+    无论如何，这是（与本书内容迥异的）其他书籍所涉及的主题，此处我们不做讨论。对我们来说，图形就是一系列的点（无论是线框模型\footnote{就是上面所说的用“关键点”和“连接关系”来描述图形的方法。——译者注}还是位图），并且我们将要展示可以对这样的对象进行何种运算。
+\end{remark*}
 
-\subsection{5.4. 转置矩阵与乘法}
+最简单的变换是平移，其中每个点（向量）$\mathbf{v}$的平移量为$\mathbf{a}$，也即向量$\mathbf{v}$会被$\mathbf{v}+\mathbf{a}$所取代（用$\mathbf{v}\mapsto\mathbf{v}+\mathbf{a}$这个记法来表示）。向量加法很适于计算机运算，因此平移是很容易实现的。
 
-转置的定义已在1.2节中给出。
+注意，平移并不是线性变换（若$\mathbf{a}\ne\mathbf{0}$）：经此变换直线仍为直线，但$\mathbf{0}$不再为$\mathbf{0}$。
 
-一个简单的分析表明 $$(AB)^T = B^T A^T,$$
-即当你取矩阵乘积的转置时，你需要改变矩阵的顺序。
+计算机图形学中要用到的其他变换都是线性的。首先是旋转。绕原点$\mathbf{0}$旋转$\gamma$可表示为与旋转矩阵$R_\gamma$的乘法（我们之前讨论过）：
+\[R_\gamma=\begin{pNiceMatrix}[margin]\cos\gamma&-\sin\gamma\\\sin\gamma&\cos\gamma\end{pNiceMatrix}.\]
+如果我们要绕点$\mathbf{a}$旋转，我们首先需要将图形平移$-\mathbf{a}$以将点$\mathbf{a}$移到$\mathbf{0}$，然后绕着$\mathbf{0}$旋转（乘以$R_\gamma$），再平移$\mathbf{a}$以消去之前的平移。
 
-\subsection{5.5. 迹与矩阵乘法}
+另一个很有用的变换是缩放，其由下述矩阵给出\[\begin{pNiceMatrix}[margin]a&0\\0&b\end{pNiceMatrix},\]
+其中$a,b\ge 0$。若$a=b$，则其为{\bf 等倍缩放}，将图形放大或缩小的同时保持其形状。若$a\ne b$，则$x$和$y$坐标缩放比例不同，图形会变得“更高”或“更宽”。
 
-对于一个（$n \times n$）方阵$A = (a_{j,k})$，它的\textbf{迹}\index{ji@迹}(trace)（记作 $\trace A$）是其对角线上所有项的和：
-$$
-\trace A = \sum_{k=1}^n a_{k,k}
-$$
+另一个常用的变换是{\bf 反射}：例如矩阵\[\begin{pNiceMatrix}[margin]1&0\\0&-1\end{pNiceMatrix}\]定义了关于$x$轴的反射。
 
-\begin{theorem}[\normalfont\heiti 定理 5.1\nopunct] 设 $A$ 和 $B$ 是大小分别为 $m \times n$ 和 $n \times m$ 的矩阵（因此两个乘积 $AB$ 和 $BA$ 都有定义）。那么
-$$
-\trace(AB) = \trace(BA).
-$$\end{theorem}
-我们将此定理的证明留作练习，见下文问题 5.6.证明此定理大体上有两种方法。一种方法是计算 $AB$ 和 $BA$ 的对角线项并比较它们的和。这种方法需要一些熟练处理带 $\sum$ 符号求和的技巧。
+在本书的后续部分，我们将证明$\mathbb{R}^2$上的所有线性变换都是缩放、旋转和反射的复合。然而，有时考虑别的变换也可带来便利。例如由下面矩阵所给出的剪切变换：\[\begin{pNiceMatrix}[margin]1&\tan\varphi\\0&1\end{pNiceMatrix}.\]
+这个变换会使图形倾斜——水平线仍然保持水平，但是垂直线变成了与垂直方向夹角为$\varphi$的斜线。
 
-如果你不熟悉代数运算，还有另一种方法。我们可以考虑两个线性变换$T$和$T_1$，它们作用于 $M_{n \times m}$ 到 $\FF = \FF^1$，由 
-$$T(X) = \trace(AX),\quad T_1(X) = \trace(XA)$$
-定义。
-为了证明该定理，只需检验 $T=T_1$ 即可；当 $X=B$ 时，等式即给出该定理。
+\subsection{\texorpdfstring{$3$}{3}维图形}
 
-由于线性变换完全由其在生成系统上的值决定，我们只需在一些简单的矩阵上检验等式是否成立，之后即可推广至一般情况。例如矩阵 $X_{j,k}$，该矩阵除了在第 $j$ 列和第 $k$ 行的交汇处有一个 1 之外，其余所有元素都是 0。
+三维图形学更为复杂。首先我们需要能够对三维的图形对象进行运算，然后我们还需要将其在二维平面（显示器）上显示出来。
 
-\begin{exer} {\heiti 练习}~~
+对三维图形对象的运算是很直截了当的，我们仍然是用基本的几种变换：平移、关于平面的反射、缩放和旋转。这些变换的矩阵很类似于$2\times 2$时的对应情形。例如，矩阵
+\[\begin{pNiceMatrix}[margin]1&0&0\\0&1&0\\0&0&-1\end{pNiceMatrix},\quad\begin{pNiceMatrix}[margin]a&0&0\\0&b&0\\0&0&c\end{pNiceMatrix},\quad\begin{pNiceMatrix}[margin]\cos\gamma&-\sin\gamma&0\\\sin\gamma&\cos\gamma&0\\0&0&1\end{pNiceMatrix}\]
+就分别表示关于$x$-$y$平面的反射、缩放和绕$z$轴的旋转。
 
-5.1. 设 $A = \begin{pmatrix} 1 & 2 \\ 3 & 1 \end{pmatrix}$, $B = \begin{pmatrix} 1 & 0 & 2 \\ 3 & 1 & -2 \end{pmatrix}$, $C = \begin{pmatrix} 1 & -2 & 3 \\ -2 & 1 & -1 \end{pmatrix}$, $D = \begin{pmatrix} -2 \\ 2 \\ 1 \end{pmatrix}.$
-\\
-a) 标记所有有定义的乘积，并给出结果的维数：$AB, BA, ABC, ABD, BC, BC^T$, $B^T C, DC, D^T C^T$.
-\\
-b) 计算 $AB$, $A(3B + C)$, $B^T A$, $A(BD)$, $(AB)D$.
+注意，上述旋转实际上是$2$维旋转——它并不改变$z$坐标。类似地，也可写出另外两种{\bf 基本旋转}——绕$x$轴和$y$轴的旋转——的矩阵。后面会证明，绕任意轴的旋转都可表示为一系列基本旋转的复合。
 
-5.2. 设 $T_\gamma$ 是 $\RR^2$ 中绕 $\gamma$ 角旋转的矩阵。通过矩阵乘法验证 $T_\gamma T_{-\gamma} = T_{-\gamma} T_\gamma = I$.~
+这样，我们就知道如何对$3$维图形进行运算了。下面讨论如何将它在$2$维平面上显示出来。最简单的方法就是将其投影到一个平面上，例如$x$-$y$平面。为进行这一投影，只需将$z$坐标置$0$。该{\bf 投影}的矩阵是\[\begin{pNiceMatrix}[margin]1&0&0\\0&1&0\\0&0&0\end{pNiceMatrix}.\]
 
-5.3. 乘以两个旋转矩阵 $T_\alpha$ 和 $T_\beta$（这是罕见的乘法可交换的情况，即 $T_\alpha T_\beta = T_\beta T_\alpha$，所以顺序不重要）。从中推导出 $\sin(\alpha + \beta)$ 和 $\cos(\alpha + \beta)$ 的公式。
+此种方法常用于技术示意图中。将一个物体旋转再投影，就等价于从不同的视点观察它。然而，这种方法并不能给出非常逼真的图形，因为它没有考虑视角——即“近大远小”的规律。
 
-5.4. 找到 $\RR^2$ 中关于直线 $x_1 = -2x_2$ 的正交投影矩阵。
-\\
-{\heiti 提示}：$x_1$ 轴上的投影矩阵是什么？
+为了得到更为逼真的图像，需要使用所谓{\bf 透视投影}。为确定透视投影，我们需要选择一个点（投影中心，或称焦点）以及需要投射到的平面。那么$\mathbb{R}^3$中的每个点都会被投影到该平面中的一个像点上，且满足原来的点、像点和{\bf 投影中心}处于同一直线上——见图 \ref{fig_2}。\index{投影（projection）!透视$\sim$（perspective）}
 
-5.5. 找到 $A, B: \RR^2 \to \RR^2$ 的线性变换，使得 $AB = 0$ 但 $BA \neq 0$.~
-
-5.6. 证明定理 5.1，即证明 $\trace(AB) = \trace(BA)$.~
-
-5.7. 构建一个非零矩阵 $A$ 使得 $A^2 = 0$.~
-
-5.8. 找到直线 $y = -2x/3$ 的反射矩阵，并用乘法化至最简。
-\end{exer}
-
-\section{6. 可逆变换与矩阵~~同构}
-
-\subsection{6.1. 恒等变换与单位矩阵}
-
-在所有线性变换中，有一个特殊的变换，即\textbf{恒等变换}(identity transformation)（算子）$I$, $I \xx = \xx,\quad\forall \xx$.
-
-准确地说，存在无数个恒等变换：对于任何向量空间 $V$，存在恒等变换 $I = I_V: V \to V,\quad I_V \xx = \xx,\quad\forall \xx \in V$.~\footnote{
-译者注：这一表述隐含了，对于一个给定的向量空间 $V$，恒等变换$I_V$是唯一的，且对应的矩阵必然为方阵。
-}但是，当不引起混淆时，我们也将使用相同的符号 $I$ 来表示所有恒等操作（变换）。只有当我们想强调变换在哪一个空间中作用时，我们才会使用符号 $I_V$.~
-\footnote{
-符号$E$经常在线性代数教科书中用来表示单位矩阵，但我更喜欢$I$，因为它也用于算子理论中的相应表示。
-}
-
-显然，如果 $I: \FF^n \to \FF^n$ 是 $\FF^n$ 中的恒等变换，它的矩阵是
-$$
-I = I_n = \begin{pmatrix}
-1 & 0 & \dots & 0 \\
-0 & 1 & \dots & 0 \\
-\vdots & \vdots & \ddots & \vdots \\
-0 & 0 & \dots & 1
-\end{pmatrix}
-$$
-（主对角线上的项为 1，其他地方为 0.）当我们要强调矩阵的大小时，我们使用符号 $I_n$；否则，我们只使用 $I$.~
-
-显然，对于任意线性变换 $A$，等式 $$AI = A,\quad IA = A$$ 成立（只要乘积有定义）。
-
-\subsection{6.2. 可逆变换}
-
-{\heiti 定义}~~
-设 $A: V \to W$ 是一个线性变换。我们说变换 $A$ 是\textbf{左可逆}(left invertible)的，如果存在一个线性变换 $B: W \to V$ 使得 
-$$BA = I \quad\text{（此处 $I = I_V$）}.$$
-变换 $A$ 称为\textbf{右可逆}的，如果存在一个线性变换 $C: W \to V$ 使得 
-$$
-AC = I\quad\text{（此处 $I = I_W$）}.
-$$
-变换 $B$ 和 $C$ 分别称为 $A$ 的\textbf{左逆}(left inverse)和\textbf{右逆}(right inverse)。注意，我们没有假定 $B$ 或 $C$ 的唯一性，并且通常情况下，左逆和右逆不是唯一的。
-
-{\heiti 定义}~~线性变换 $A: V \to W$ 称为\textbf{可逆的}(invertible)，如果它既是右可逆又是左可逆的。
-
-\begin{theorem}[\normalfont\heiti 定理  6.1\nopunct] 如果线性变换 $A: V \to W$ 是可逆的，那么它的左逆$B$和右逆 $C$ 是唯一且相等的。\end{theorem}
-
-{\heiti 推论}
-\footnote{
-更为常见的是，这个性质被用于对可逆变换的定义。
-}
-~ 变换 $A: V \to W$ 是可逆的，当且仅当存在唯一一个线性变换（记作 $A^{-1}$），$A^{-1}: W \to V$，使得 $$A^{-1} A = I_V,\quad A A^{-1} = I_W.$$
-
-变换 $A^{-1}$ 称为 $A$ 的\textbf{逆}(inverse)。\footnote{
-译者注：一旦选定一组基并用矩阵来表示线性变换，这里从矩阵乘法的定义的层面就已经意味着逆矩阵$A^{-1}$是方阵，否则无法通过矩阵乘法同时得到前面这两个单位矩阵。进一步，矩阵$A$也为方阵。\\
-但如果要严格形式化证明，即不使用线性变换的矩阵表示，只针对线性变换本身，需要依赖可逆变换是双射，从而维数相等。本书到这里还没有引入这些概念。
-}
-
-\begin{proof}[\normalfont\heiti 定理 6.1 的证明~\nopunct]设 $BA = I$ 且 $AC = I$.~那么 
-$$BAC = B(AC) = BI = B.$$
-另外，
-$$BAC = (BA)C = IC = C,$$
-因此 $B = C$.~
-
-假设对于某个变换 $B_1$ 有 $B_1 A = I$，重复上面的推理，用 $B_1$ 而不是 $B$，我们得到 $B_1 = C$.~因此左逆 $B$ 是唯一的。 右逆$C$ 的唯一性同理可证。\end{proof}
-
-{\heiti 推论}~~矩阵被称为\textbf{可逆}的（分别地，左可逆、右可逆），如果相应的线性变换是可逆的（分别地，左可逆、右可逆）。
-
-定理 6.1断言，如果存在唯一的矩阵 $A^{-1}$ 使得 $A^{-1} A = I$, $A A^{-1} = I$，那么矩阵 $A$ 是可逆的。这个矩阵 $A^{-1}$ 称为（惊喜！）$A$ 的\textbf{逆}。
-
-{\heiti 例子}~~
-
-1. 恒等变换（矩阵）是可逆的，$I^{-1} = I$；
-
-2. 旋转变换 $R_\gamma$ 
-$$R_\gamma = \begin{pmatrix} \cos \gamma & -\sin \gamma \\ \sin \gamma & \cos \gamma \end{pmatrix}$$
-是可逆的，并且其逆由 $(R_\gamma)^{-1} = R_{-\gamma}$ 给出。这个等式从 $R_\gamma$ 的几何描述中就清楚了，但也可以通过矩阵乘法来验证；
-
-3. 列向量 $(1, 1)^T$ 是左可逆但不是右可逆的。可能的左逆之一是行向量 $(1/2, 1/2)$.~要证明这个矩阵不是右可逆的，我们只需注意到它有不止一个左逆。 {\heiti 练习}：描述这个矩阵的所有左逆。
-
-4. 行向量 $(1, 1)$ 是右可逆但不是左可逆的。列向量 $(1/2, 1/2)^T$ 是一个可能的右逆。
-
-{\heiti 注记 6.2} 可逆矩阵\textbf{必须}是方阵（之后会证明）。而且，如果一个方阵 $A$ 既有左逆又有右逆，那么它就是可逆的。所以，只需检验 $A A^{-1} = I$ 或 $A^{-1} A = I$ 中的一个即可。
-
-重申，这个事实将在后面证明\footnote{译者注：见于本书第二章第3节}。在此之前，我们不会使用它。我在这里呈现它只是为了阻止学生尝试错误的证明方向。
-
-\subsubsection{6.2.1. 逆变换的性质}
-
-\begin{theorem}[\normalfont\heiti 定理 6.3\nopunct] （乘积的逆） 如果线性变换 $A$ 和 $B$ 是可逆的（并且乘积 $AB$ 有定义），那么乘积 $AB$ 也是可逆的，并且 $$(AB)^{-1} = B^{-1} A^{-1}.$$\end{theorem}
-注意它们顺序的变化！
-
-\begin{proof} 直接计算表明：$$(AB)(B^{-1} A^{-1}) = A(BB^{-1})A^{-1} = AIA^{-1} = AA^{-1} = I$$
-同理
-$$(B^{-1} A^{-1})(AB) = B^{-1}(A^{-1} A)B = B^{-1}IB = B^{-1}B = I.$$\end{proof}
-
-{\heiti 注记 6.4}~~乘积 $AB$ 的可逆性并不意味着因子 $A$ 和 $B$ 的可逆性（你能想到一个例子吗？）。然而，如果其中一个因子（无论是 $A$ 还是 $B$）以及乘积 $AB$ 都是可逆的，那么第二个因子也是可逆的。
-
-我们将此事实的证明留作练习。
-
-\begin{theorem}[\normalfont\heiti 定理 6.5\nopunct] （$A^T$ 的逆）如果矩阵 $A$ 是可逆的，那么 $A^T$ 也是可逆的，并且 $$(A^T)^{-1} = (A^{-1})^T.$$\end{theorem}
-
-\begin{proof} 使用 $(AB)^T = B^T A^T$ 我们得到 $$(A^{-1})^T A^T = (AA^{-1})^T = I^T = I,$$
-同理 
-$$A^T (A^{-1})^T = (A^{-1} A)^T = I^T = I.$$
-
-最后，如果 $A$ 是可逆的，那么 $A^{-1}$ 也是可逆的，$(A^{-1})^{-1} = A$.~\end{proof}
-
-所以，让我们总结一下逆的三个主要性质：
-
-1. 如果 $A$ 可逆，那么 $A^{-1}$ 也可逆，$(A^{-1})^{-1} = A$;
-
-2. 如果 $A$ 和 $B$ 均可逆且乘积 $AB$ 有定义，那么 $AB$ 可逆且 $(AB)^{-1} = B^{-1} A^{-1}$;
-
-3. 如果 $A$ 可逆，那么 $A^T$ 也可逆且 $(A^T)^{-1} = (A^{-1})^T$.
-
-\subsection{6.3. 同构~~同构空间}
-
-\textbf{可逆线性变换} $A: V \to W$ 称为\textbf{同构}(isomorphism)。我们这里没有引入任何新东西，这只是我们已经研究过的对象的另一个名称。
-
-两个向量空间 $V$ 和 $W$ 称为\textbf{同构}（记作 $V \cong W$），如果存在一个同构 $A: V \to W$.~
-
-同构空间可以视为同一个空间的不同表示，这意味着所有涉及向量空间运算的性质和构造在同构下都得到保留。
-
-下面的定理说明了这一点。
-
-\begin{theorem}[\normalfont\heiti 定理 6.6\nopunct] 设 $A: V \to W$ 是一个同构，并设 $\vv_1, \vv_2, \dots, \vv_n$ 是 $V$ 中的一组基。那么向量系统 $A \vv_1, A \vv_2, \dots, A \vv_n$ 是 $W$ 中的一组基。\end{theorem}
-
-我们把这个定理的证明留作练习。
-
-{\heiti 注记}~~ 在上面的定理中，我们可以用“线性无关”、“生成”或“线性相关”来替换原本写着“基”的地方——所有这些性质在同构下都被保留。
-
-{\heiti 注记}~~ 如果 $A$ 是同构，那么 $A^{-1}$ 也是同构。因此，在上面的定理中，我们可以说 $\vv_1, \vv_2, \dots, \vv_n$ 是基当且仅当 $A \vv_1, A \vv_2, \dots, A \vv_n$ 是基。
-
-定理 6.6 的逆命题也成立。
-
-\begin{theorem}[\normalfont\heiti 定理 6.7\nopunct]  设 $A: V \to W$ 是线性映射，并设 $\vv_1, \vv_2, \dots, \vv_n$ 和 $\ww_1, \ww_2, \dots, \ww_n$ 分别是 $V$ 和 $W$ 中的基。如果 $A \vv_k = \ww_k$, $k = 1, 2, \dots, n$，那么 $A$ 是一个同构。\end{theorem}
-
-\begin{proof} 定义逆变换 $A^{-1}$ 为 $A^{-1} \ww_k = \vv_k,\quad k = 1, 2, \dots, n$（正如我们所知，线性变换由其在基上的值定义）。\end{proof}
-
-{\heiti 例子}~~
-
-1. $A: \FF^{n+1} \to \PP^\FF_n$ （$\PP^\FF_n$ 是 $\sum_{k=0}^n a_k t^k$, $\alpha_k \in \FF$ 的形式的 $n$ 次多项式集）定义为 
-$$A \ee_1 = 1,\quad A \ee_2 = t,\quad \dots,\quad A \ee_n = t^{n-1},\quad A \ee_{n+1} = t^n.$$
-
-根据定理 6.7，$A$ 是同构，所以 $\PP^\FF_n \cong \FF^{n+1}$.~
-
-2. 设 $V$ 是一个在 $\FF$ 上的向量空间，\footnote{
-任何带有基的实向量空间都同构于 $RR^n$（对于某个 $n$）。类似地，任何带有基的复向量空间都同构于 $CC^n$.
-}它有一组基 $\vv_1, \vv_2, \dots, \vv_n$.~定义变换 $A: \FF^n \to V$ 为 
-$$A \ee_k = \vv_k,\quad k = 1, 2, \dots, n,$$
-其中 $\ee_1, \ee_2, \dots, \ee_n$ 是 $\FF^n$ 的标准基。根据定理 6.7，$A$ 是同构，所以 $V \cong \FF^n$.~
-
-3. $M^\FF_{2 \times 3}$ 空间（$\FF$ 中的 $2 \times 3$ 矩阵）同构于 $\RR^6$.~
-
-4. 更一般地，$M^\FF_{m \times n} \cong \FF^{m \cdot n}$.~
-
-\subsection{6.4. 可逆性与方程}
-
-\begin{theorem}[\normalfont\heiti 定理 6.8\nopunct] \footnote{
-这难道不让你联想到基的定义吗？
-}设 $A: X \to Y$ 是一个线性变换。
-那么 $A$ 是可逆的，当且仅当对于任意右侧 $\bb \in Y$，方程 $$A \xx = \bb$$ 有唯一解 $\xx \in X$.~\end{theorem}
-
-\begin{proof} 假设 $A$ 是可逆的。那么 $\xx = A^{-1} \bb$ 就是方程 $A \xx = \bb$的解。为了证明解是唯一的，假设对于另一个向量 $\xx_1 \in X$, 
-$$A \xx_1 = \bb.$$
-将这个恒等式从左边乘以 $A^{-1}$，我们得到 $$A^{-1} A \xx_1 = A^{-1} \bb,$$
-因此 $\xx_1 = A^{-1} \bb = \xx$.~注意，这里使用了两个恒等式，$AA^{-1} = I$ 和 $A^{-1} A = I$.~
-
-现在假设方程 $A \xx = \bb$ 对于任意 $\bb \in Y$ 都有唯一解 $\xx \in X$.~让我们用 $\yy$ 代替 $\bb$.~我们知道，对于给定的 $\yy \in Y$，方程 
-$$A \xx = \yy$$
-有唯一解 $\xx \in X$.~让我们称这个解为 $B(\yy)$.~
-
-注意，$B(\yy)$ 对所有 $\yy \in Y$ 都有定义，因此我们定义了一个变换 $B: Y \to X$.~
-
-让我们检验 $B$ 是否是线性变换。我们需要证明 $B(\alpha \yy_1 + \beta \yy_2) = \alpha B(\yy_1) + \beta B(\yy_2)$.
-设 $\xx_k := B(\yy_k),\quad k = 1, 2$，即
-$A \xx_k = \yy_k,\quad k = 1, 2$.那么
-$$A(\alpha \xx_1 + \beta \xx_2) = \alpha A \xx_1 + \beta A \xx_2 = \alpha \yy_1 + \beta \yy_2,$$
-这意味着
-$$B(\alpha \yy_1 + \beta \yy_2) = \alpha B(\yy_1) + \beta B(\yy_2).$$
-
-最后，让我们证明 $B$ 确实是 $A$ 的逆。取 $\xx \in X$，设 $\yy = A \xx$，所以根据 $B$ 的定义，我们有 $\xx = B \yy$.~那么对于所有 $\xx \in X$, 
-$$BA \xx = B \yy = \xx,$$
-所以 $BA = I$.~类似地，对于任意 $\yy \in Y$，设 $\xx = B \yy$，所以 $\yy = A \xx$.~那么对于所有 $\yy \in Y$,
-$$AB \yy = A \xx = \yy,$$
-所以 $AB = I$.~\end{proof}
-
-回忆基的定义，我们得到以下定理 6.6 和 6.7 的推论。
-
-{\heiti 推论 6.9} 一个 $m \times n$ 矩阵可逆，当且仅当它的列在 $\FF^m$ 中构成一组基。
-
-\begin{exer} {\heiti 练习}~~
-
-6.1. 证明，如果 $A: V \to W$ 是一个同构（即一个可逆线性变换），并且 $\vv_1, \vv_2, \dots, \vv_n$ 是 $V$ 中的一组基，那么 $A \vv_1, A \vv_2, \dots, A \vv_n$ 是 $W$ 中的一组基。
-
-6.2. 找到行向量 $A = (1, 1)$ 的所有右逆。由此得出 行向量$A$ 不是左可逆的。
-
-6.3. 找到列向量 $(1, 2, 3)^T$ 的所有左逆。
-
-6.4. 列向量 $(1, 2, 3)^T$ 是右可逆的吗？请给出理由。
-
-6.5. 找到两个矩阵 $A$ 和 $B$，使得 $AB$ 是可逆的，但 $A$ 和 $B$ 都不是可逆的。
-\\
-{\heiti 提示}：若$A$ 和 $B$ 是方阵，那你不可能找到。
-\\
-{\heiti 注记}：即使 $AB$ 是 $1 \times 1$ 矩阵（标量），也很容易构造这样的 $A$ 和 $B$.~但是你能得到 $2 \times 2$ 矩阵 $AB$ 吗？$3 \times 3$呢？$n \times n$呢？
-
-6.6. 假设乘积 $AB$ 是可逆的。证明 $A$ 是右可逆的，$B$ 是左可逆的。提示：你可以直接写出右逆和左逆的公式。
-
-6.7. 假设 $A$ 和 $AB$ 都是可逆的（假设乘积 $AB$ 有定义）。证明 $B$ 是可逆的。
-
-6.8. 设 $A$ 是一个 $n \times n$ 矩阵。证明如果 $A^2 = \oo$ ，则 $A$ 不可逆。
-
-6.9. 假设 $AB = \oo$ 对某个非零矩阵 $B$ 成立。 $A$ 能是可逆的吗？请给出理由。
-
-6.10. 在 $\FF^5$ 中找到代表如下变换的矩阵 $T_1$ 和 $T_2$：$T_1$ 交换向量 $x$ 的坐标 $x_2$ 和 $x_4$，而 $T_2$ 只是将 $x_4$ 的 $a$ 倍加到坐标 $x_2$ 上，而不改变其他坐标，即
-$$T_1 \begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \end{pmatrix} = \begin{pmatrix} x_1 \\ x_4 \\ x_3 \\ x_2 \\ x_5 \end{pmatrix},\quad T_2 \begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \end{pmatrix} = \begin{pmatrix} x_1 \\ x_2 + ax_4 \\ x_3 \\ x_4 \\ x_5 \end{pmatrix};$$
-这里 $a$ 是某个固定的常数。
-\\
-证明 $T_1$ 和 $T_2$ 是可逆变换，并写出它们的逆矩阵。{\heiti 提示}：先描述逆变换，然后再求它的矩阵，可能比猜测（或计算）$T_1$, $T_2$ 的逆矩阵要简单。
-
-6.11. 找到 $\RR^3$ 中绕以向量 $(1, 2, 3)^T$ 所在直线为轴 $\alpha$ 角旋转的变换的矩阵。我们假设旋转是从向量的尖端看向原点时逆时针旋转的。
-\\
-读者可以将答案表示为几个矩阵的乘积：你不必用乘法化简得到一个矩阵。
-
-6.12. 举出一些 $2 \times 2$ 矩阵，使得：
-\\
-a) $A+B$ 不可逆，尽管 $A$ 和 $B$ 都可逆；
-\\
-b) $A+B$ 可逆，尽管 $A$ 和 $B$ 都不可逆；
-\\
-c) $A$, $B$ 和 $A+B$ 都可逆。
-
-6.13. 设 $A$ 是一个可逆的对称矩阵 ($A^T = A$)。$A$ 的逆是否对称？请给出理由。
-\end{exer}
-
-\section{7. 子空间}
-
-向量空间 $V$ 的一个\textbf{子空间}(subspace)是 $V$ 的一个非空子集 $V_0 \subset V$，它对向量加法和标量乘法是封闭的，即
-
-1. 如果 $\vv \in V_0$，则 $\alpha \vv \in V_0$ 对所有标量 $\alpha$；
-
-2. 对于任何 $\uu, \vv \in V_0$，它们的和 $\uu + \vv \in V_0$；
-
-再次，条件 1 和 2 可以被以下一个条件替换：
-
-$\alpha \uu + \beta \vv \in V_0$ 对所有 $\uu, \vv \in V_0$，以及所有标量 $\alpha, \beta$.~
-
-请注意，子空间 $V_0 \subset V$ 连同从 $V$ 中继承的运算（向量加法和标量乘法），是一个向量空间。实际上，由于 $V$ 非空，它至少包含 1 个向量 $\vv$，并且由于 $\oo = 0\vv$，所以上述条件 1 意味着零向量 $\oo$ 在 $V$ 中。此外，对于任何 $\vv \in V$，它的加法逆元 $-\vv$ 由 $-\vv = (-1)\vv$ 给出，所以再次根据性质 1，$-\vv \in V$.向量空间的其余公理之所以成立，是因为所有运算都源于向量空间 $V$.唯一可能出错的是某个运算的结果不属于 $V_0$，但子空间的定义防止了这一点！
-
-现在我们来看一些例子：
-
-1. 空间 $V$ 的\textbf{平凡}(trivial)子空间，即 $V$ 本身和 $\{\oo\}$（仅包含零向量的子空间）。注意，空集 $\emptyset$ 不是向量空间，因为它不包含零向量，所以它不是子空间。
-
-任何线性变换 $A: V \to W$ 都可以关联以下两个子空间：
-
-2. $A$ 的\textbf{零空间}(null space)或\textbf{核}(kernel)，记作 $\Null A$ 或 $\Ker A$，由所有满足 $A \vv = \oo$ 的向量 $\vv \in V$ 组成。\index{kongjian@空间!lingkongjian@零空间}\index{kongjian@空间!hekongjian@核空间}
-
-3. \textbf{像空间}\index{kongjian@空间!xiangkongjian@像空间}(range)$\Ran A$ 定义为所有可以表示为 $\ww = A \vv$ 的向量 $\ww \in W$ 的集合，其中某个 $\vv \in V$.
-
-如果 $A$ 是一个矩阵，即 $A: \FF^m \to \FF^n$，那么回忆矩阵-向量乘法的“按列坐标规则”，我们可以看到任何向量 $\ww \in \Ran A$ 都可以表示为 $A$ 的列的线性组合。这解释了为什么\textbf{列空间}（表示为 $\Col A$）这个术语经常用来表示矩阵的像空间。因此，对于矩阵 $A$，符号 $\Col A$ 通常用于代替 $\Ran A$.
-
-还有最后一个例子。
-
-4. 给定向量系统 $\vv_1, \vv_2, \dots, \vv_r \in V$，它的\textbf{线性张成}(linear span)（有时简单称为\textbf{张成}）$\LL\{\vv_1, \vv_2, \dots, \vv_r\}$ 是 $V$ 中所有可以表示为向量 $\vv_1, \vv_2, \dots, \vv_r$ 的线性组合 $\vv = \alpha_1 \vv_1 + \alpha_2 \vv_2 + \dots + \alpha_r \vv_r$ 的向量的集合。符号 $\spanL\{\vv_1, \vv_2, \dots, \vv_r\}$ 也用于代替 $\LL\{\vv_1, \vv_2, \dots, \vv_r\}$.
-
-容易检验，在所有这些例子中，我们确实得到了子空间。我们把检验部分交给读者，作为练习。其中一些陈述将在本书后面证明。
-
-
-\begin{exer} {\heiti 练习}~~
-
-7.1. 设 $X$ 和 $Y$ 是向量空间 $V$ 的子空间。证明 $X \cap Y$ 是 $V$ 的子空间。
-
-7.2. 设 $V$ 是一个向量空间。对于 $X, Y \subset V$，“和空间” $X+Y$ 是所有可以表示为 $\vv = \xx + \yy$, $\xx \in X$, $\yy \in Y$ 的向量的集合。证明如果 $X$ 和 $Y$ 是 $V$ 的子空间，那么 $X+Y$ 也是 $V$ 的子空间。
-
-7.3. 设 $X$ 是向量空间 $V$ 的子空间，设 $\vv \in V$, $\vv \notin X$.~证明如果 $\xx \in X$，则 $\xx + \vv \notin X$.~
-
-7.4. 设 $X$ 和 $Y$ 是向量空间 $V$ 的子空间。利用上一道练习，证明 $X \cup Y$ 是子空间当且仅当 $X \subset Y$ 或 $Y \subset X$.~
-
-7.5. 包含所有上三角矩阵\index{juzhen@矩阵!shangsanjiao@上三角}（$a_{j,k} = 0$ $\forall j > k$）和所有对称矩阵（$A = A^T$）的 $4 \times 4$ 矩阵空间中最小的子空间是什么？包含在这两个子空间中的最大子空间是什么？\end{exer}
-
-
-\section{8. 应用于计算机图形学}
-
-在本节中，我们将介绍一些线性代数在计算机图形学中的应用。我们不会深入细节，只是解释一些思想。特别是我们将解释为什么对三维图像的操作会简化为 $4 \times 4$ 矩阵的乘法。
-
-\subsection{8.1.二维操作}
-
-$x-y$ 平面（更准确地说，平面上的一个矩形）是表示计算机显示器的一个很好的模型。显示器上的任何对象都表示为\textbf{像素}(pixel)的集合，每个像素被分配一个特定的颜色。每个像素的位置由其列和行确定，它们充当平面上的 $x$ 和 $y$ 坐标。所以，一个平面上具有 $x-y$ 坐标的矩形是计算机屏幕的良好模型：而图形对象只是点的集合。
-
-{\heiti 注记}~~ 有两种类型的图形对象：位图对象，其中描述了对象的每个像素，以及矢量对象，其中我们只描述\textbf{关键点}(critical points)，然后图形引擎将它们连接起来以重建对象。照片是位图对象的一个好例子：它的每个像素都被描述。位图对象可能包含很多点，所以处理位图需要大量的计算能力。任何使用过位图处理程序（如 Adobe Photoshop）的人都知道，你需要一台相当强大的计算机，即使是现代和强大的计算机，操作也可能需要一些时间。
-
-这就是为什么出现在计算机屏幕上的大多数对象都是矢量对象的原因：计算机只需要记住关键点。例如，要描述一个多边形，你只需要给出其顶点的坐标，以及哪些顶点连接到哪个顶点。当然，并非屏幕上的所有对象都可以表示为多边形，有些对象，如字母，具有平滑弯曲的边界。但是，存在标准方法可以允许我们通过一组点绘制平滑曲线，例如贝塞尔曲线，在 PostScript 和 Adobe PDF（以及许多其他格式）中使用。
-
-无论如何，这是另一本书的主题，我们在这里不讨论它。对我们来说，一个图形对象将是一组点（无论是线框模型(wireframe model)还是位图），我们想展示如何对这些对象执行一些操作。
-
-最简单的变换是\textbf{平移}(translation)（移动）(shift)，其中每个点（向量）$\vv$ 被平移 $\aaa$，即向量 $\vv$ 被替换为 $\vv + \aaa$（表示 $ \vv \mapsto \vv + \aaa $）。计算机非常适合计算向量加法，因此平移很容易实现。注意，平移不是线性变换（如果 $\aaa \neq 0$）：虽然它保留了直线，但它不保留 $\oo$.~
-
-计算机图形学中使用的所有其他变换都是线性的。第一个想到的就是旋转。绕原点 $\oo$ 的 $\gamma$ 角旋转由我们上面讨论过的旋转矩阵 $R_\gamma$ 给出， $$R_\gamma = \begin{pmatrix} \cos \gamma & -\sin \gamma \\ \sin \gamma & \cos \gamma \end{pmatrix}.$$
-如果我们想绕一个点 $\aaa$ 旋转，我们首先需要平移图像 $-\aaa$，将点 $\aaa$ 移动到 $\oo$，然后绕 $\oo$ 旋转（乘以 $R_\gamma$），然后将所有内容平移回 $\aaa$.~
-
-另一个非常有用的变换是\textbf{缩放}(scaling)，由矩阵 
-$$\begin{pmatrix} a & 0 \\ 0 & b \end{pmatrix}$$
-给出，$a, b \ge 0$.~如果 $a=b$ 它是\textbf{均匀缩放}(uniform scaling)，它放大（缩小）对象，保持其形状。如果 $a \neq b$ 则 $x$ 和 $y$ 坐标缩放不同；对象变得“更高”或“更宽”。
-
-另一个经常使用的变换是\textbf{反射}(reflection)：例如矩阵 
-$$\begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$$
-定义了关于 $x$ 轴的反射。
-
-我们将在本书后面证明， $\RR^2$ 中的任何线性变换都可以表示为缩放、旋转和反射的复合。然而，有时考虑一些不同的变换，如\textbf{剪切变换}(shear transformation)，由矩阵 
-$$\begin{pmatrix} 1 & \tan \phi \\ 0 & 1 \end{pmatrix}$$
-给出。这个变换使得所有对象倾斜，水平线保持水平，但垂直线变成与水平线成 $\phi$ 角的倾斜线。
-
-\subsection{8.2. 三维图形}
-
-三维图形更复杂。首先我们需要能够操作三维物体，然后需要将其表示在二维平面（显示器）上。
-
-三维物体的操作非常直接，我们有相同的基本变换：平移、平面反射、缩放、旋转。这些变换的矩阵与其二维对应物的矩阵非常相似。例如，矩阵
-$$
-\begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -1 \end{pmatrix}, \quad \begin{pmatrix} a & 0 & 0 \\ 0 & b & 0 \\ 0 & 0 & c \end{pmatrix}, \quad \begin{pmatrix} \cos \gamma & -\sin \gamma & 0 \\ \sin \gamma & \cos \gamma & 0 \\ 0 & 0 & 1 \end{pmatrix}
-$$
-分别代表了关于 $x-y$ 平面的反射、缩放和绕 $z$ 轴的旋转。
-
-请注意，上述旋转本质上是二维变换，它不改变 $z$ 坐标。类似地，可以为绕 $x$ 轴和绕 $y$ 轴的其他两组基本旋转写出矩阵。后面将表明，任意轴上的旋转可以表示为基本旋转的复合。因此，我们知道了应该如何操作三维物体。
-
-现在让我们讨论如何将三维物体表示在二维平面上。最简单的方法是将其投影到平面，比如 $x-y$ 平面上。要执行这种投影，只需将 $z$ 坐标替换为 0，这个投影(projection)的矩阵是
-$$
-\begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{pmatrix}.
-$$
-这种方法通常用于技术插图。旋转一个物体并对其进行投影相当于从不同的点看它。然而，这种方法没有给出非常逼真的图像，因为它没有考虑透视，即远处的物体看起来更小的事实。
-
-为了获得更逼真的图像，我们需要使用所谓的\textbf{透视投影}(perspective projection)。要定义透视投影，我们需要选择一个点（投影中心或焦点）和一个要投影到的平面。然后，$\RR^3$ 中的每个点被投影到一个平面上的点，使得该点、它的像以及\textbf{投影中心}(center of the projection)位于同一条线上，见图\Ref{fig:02}。
-
-\begin{figure}[ht]
-  \centering  \includegraphics[width=0.5\linewidth]{figures/fig2.pdf}
-  \caption{透视投影到 $x-y$ 平面：$F$ 是投影中心（焦点）}
-  \label{fig:02} 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics{figures/fig1_8_1.pdf}
+    \caption{到$x$-$y$平面上的透视投影：$F$是投影中心（焦点）}
+    \label{fig_2}
 \end{figure}
 
-这正是相机的工作方式，也是我们眼睛工作方式的一个合理初步近似。
+这就是照相机的工作原理，也是对我们眼球运作方式的合理的初步近似。
 
-让我们得到投影的公式。假设焦点是 $(0, 0, d)^T$，并且我们投影到 $x-y$ 平面，见图\Ref{fig:03}a）。考虑一个点 $\vv = (x, y, z)^T$，让 $\vv^* = (x^*, y^*, 0)^T$ 是它的投影。分析相似三角形，见图\Ref{fig:03}b），我们得到
-
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=1.0\linewidth]{figures/fig3.pdf}
-  \caption{找到点 $(x, y, z)^T$ 的透视投影的坐标 $x^*, y^*$}
-  \label{fig:03} 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics{figures/fig1_8_2.pdf}
+    \caption{求出点$(x,y,z)^T$的透视投影的坐标$x^\ast,y^\ast$}
+    \label{fig_3}
 \end{figure}
 
+下面推导这种投影的公式。假设焦点是$(0,0,d)^T$，并且是向$x$-$y$平面上投影——见图 \ref{fig_3} a)。考虑点$\mathbf{v}=(x,y,z)^T$，并令$\mathbf{v}^*=(x^*,y^*,0)^T$是其投影。如图 \ref{fig_3} b)，分析相似三角形可得\[\frac{x^*}{d}=\frac{x}{d-z},\]
+故\[x^*=\frac{xd}{d-z}=\frac{x}{1-z/d},\]
+类似有\[y^*=\frac{y}{1-z/d}.\]
+注意，此公式同样适用于$z>d$和$z<0$的情况：你可以自行绘制对应的相似三角形来检验。
 
-$$\frac{x^*}{d} = \frac{x}{d-z},$$
-所以 
-$$x^* = \frac{xd}{d-z} = \frac{x}{1 - z/d},$$
-类似地 
-$$y^* = \frac{y}{1 - z/d}.$$
-注意，这个公式在 $z > d$ 和 $z < 0$ 时也有效：你可以画出相应的相似三角形来验证它。
+于是透视投影将点$(x,y,z)^T$映射到点$\begin{pNiceMatrix}[margin]\frac{x}{1-z/d},\frac{y}{1-z/d},0\end{pNiceMatrix}^T$。
 
+该变换显然不是线性的（由于分母中的$z$）。然而，可以将它表示为线性变换。为此，我们引入所谓{\bf 齐次坐标}。\index{坐标（coordinates）!齐次$\sim$（homogeneous）}
 
-因此，透视投影将点 $(x, y, z)^T$ 映射到点 $(\frac{x}{1-z/d}, \frac{y}{1-z/d}, 0)^T.$
+在齐次坐标中，$\mathbb{R}^3$中的每个点都用$4$个坐标来表示，其中最后一个（即第$4$个）坐标充当缩放系数的角色。从而，要从向量$\mathbf{v}$的齐次坐标$(x_1,x_2,x_3,x_4)^T$恢复出通常的$3$维坐标$(x,y,z)^T$，我们需要将每个元素都除以最后一个坐标$x_4$，再取前三个坐标\footnote{如果我们将$\mathbb{R}^3$中一个点的齐次坐标乘以一个非零标量，这个点不会改变。换言之，在齐次坐标中，$\mathbb{R}^3$中的点是用$\mathbb{R}^4$中过$\mathbf{0}$的直线来表示的。}（若$x_4=0$，那么此办法就不奏效了，因此我们假设$x_4=0$对应的是处于无穷远处的点）。
 
-这个变换肯定不是线性的（由于分母中的 $z$）。然而，通过引入所谓的\textbf{齐次坐标}(homogeneous coordinates)，仍然可以将其表示为线性变换。
+于是在齐次坐标中，向量$\mathbf{v}^{*}$可表示为$(x,y,0,1-z/d)^T$，因此在齐次坐标中，透视投影是线性变换：
+\[\begin{pNiceMatrix}[margin]x\\y\\0\\1-z/d\end{pNiceMatrix}=\begin{pNiceMatrix}[margin]1&0&0&0\\0&1&0&0\\0&0&0&0\\0&0&-1/d&1\end{pNiceMatrix}\begin{pNiceMatrix}[margin]x\\y\\z\\1\end{pNiceMatrix}.\]
+注意在齐次坐标中，平移也是线性变换：\[\begin{pNiceMatrix}[margin]x+a_1\\y+a_2\\z+a_3\\1\end{pNiceMatrix}=\begin{pNiceMatrix}[margin]1&0&0&a_1\\0&1&0&a_2\\0&0&1&a_3\\0&0&0&1\end{pNiceMatrix}\begin{pNiceMatrix}[margin]x\\y\\z\\1\end{pNiceMatrix}.\]
 
-在齐次坐标中，$\RR^3$ 中的每个点都由 4 个坐标表示，最后一个（第四个）坐标起到了缩放系数的作用。因此，要从 $\vv = (x, y, z)^T$ 的齐次坐标$\vv = (x_1, x_2, x_3, x_4) ^T$得到其通常的三维坐标，需要将所有项除以最后一个坐标 $x_4$，然后取前 3 个坐标
-\footnote{
-如果我们对齐次坐标下一个在$\RR^2$中的点乘上一个非零标量，我们没有改变这个点。换而言之，在齐次坐标下，一个在$\RR^3$中的点被表示为在$\RR^4$中有一行为0的点。
-}
-（如果 $x_4 = 0$，则此方法不适用，因此我们假设 $x_4 = 0$ 的情况对应于无穷远点）。
+不过，如果投影中心不是$(0,0,d)^T$，而是任意的点$(d_1,d_2,d_3)^T$呢？那么，我们需要首先做平移量为$-(d_1,d_2,0)^T$的平移，将投影中心移到$(0,0,d_3)^T$（同时保持$x$-$y$平面不变），再作用该投影，然后再用平移量为$(d_1,d_2,0)^T$的平移来抵消之前的平移。类似地，如果投影平面不是$x$-$y$平面，就需要通过旋转和平移将投影平面转到$x$-$y$平面上，之后的逻辑类似上述过程。
 
-因为在齐次坐标中，向量$\vv^*$可以被表示为$(x, y, 0, 1-z/d)^T$,因此，在齐次坐标中，透视投影是一个线性变换：
-$$
-\begin{pmatrix} x \\ y \\ 0 \\ 1 - z/d \end{pmatrix} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & -1/d & 1 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix}.
-$$
-请注意，在齐次坐标中，平移也是一个线性变换：
-$$
-\begin{pmatrix} x + a_1 \\ y + a_2 \\ z + a_3 \\ 1 \end{pmatrix} = \begin{pmatrix} 1 & 0 & 0 & a_1 \\ 0 & 1 & 0 & a_2 \\ 0 & 0 & 1 & a_3 \\ 0 & 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix}.
-$$
+所有这些运算都仅仅是与$4\times 4$矩阵的乘法。这就能够解释为何现代的显卡在处理器中内置了$4\times 4$矩阵运算。
 
-但是，如果投影中心不是 $(0, 0, d)^T$ 这样的点，而是任意点 $(d_1, d_2, d_3)^T$ 呢？
-那么我们首先需要应用 $-( d_1 , d_2 , 0 )^T$ 的平移来将中心移到 $(0, 0, d_3)^T$，同时保持 $x-y$ 平面不变，应用投影，然后通过 $(d_1, d_2, 0)^T$ 的平移将所有内容移回。类似地，如果投影平面不是 $x-y$ 平面，我们通过使用旋转和平移将其移到 $x-y$ 平面，等等。
+当然，此处我们只是对$3$维图形学背后的数学有了粗浅的认识，还有许多可供了解的地方。例如，怎样确定一个物体的哪些部分是可见或隐藏的，如何制造逼真的光影，等等。
 
-所有这些操作只是 $4 \times 4$ 矩阵的乘法。这就解释了为什么现代显卡将 $4 \times 4$ 矩阵运算嵌入到处理器中。
+\begin{problemset}
+    \item $\mathbb{R}^3$中的哪个向量具有齐次坐标$(10,20,30,5)$？
+    \item 证明：旋转$\gamma$可表示为以下这两个“剪切与缩放”变换的复合：
+    \[T_1=\begin{pNiceMatrix}[margin]1&0\\\sin\gamma&\cos\gamma\end{pNiceMatrix},\quad T_2=\begin{pNiceMatrix}[margin]\sec\gamma&-\tan\gamma\\0&1\end{pNiceMatrix}.\]
+    两变换的顺序应该是什么样？
+    \item 将$2$维向量乘以任意$2\times 2$矩阵通常需要做$4$次乘法。
 
-当然，这里我们只触及了三维图形背后的数学，还有更多内容等待我们学习。例如，如何确定物体的哪些部分可见，哪些部分被隐藏，如何制作逼真的照明、阴影等等。
+    假设$2\times 1000$矩阵$D$包含$\mathbb{R}^2$中的$1000$个点。利用两个任意的$2\times 2$矩阵$A$和$B$来变换这些点，需要做多少次乘法？请比较两种可能的算法，$A(BD)$和$(AB)D$。
+    \item 写出表征投影中心为$(d_1,d_2,d_3)^T$、投影平面为$x$-$y$平面的透视投影的矩阵。
+    \item $\mathbb{R}^3$上的变换$T$将向量绕$x$-$y$平面中的直线$y=x+3$旋转$\gamma$。写出对应于该变换的$4\times 4$矩阵。
 
-
-\begin{exer} {\heiti 练习}~~
-
-8.1. $\RR^3$ 中齐次坐标为 $(10, 20, 30, 5)^T$ 的向量是什么？
-
-8.2. 证明 $\gamma$ 角的旋转可以表示为两次剪切-缩放变换的复合 
-$$T_1 = \begin{pmatrix} 1 & 0 \\ \sin \gamma & \cos \gamma \end{pmatrix} ,\quad T_2 = \begin{pmatrix} \sec \gamma & -\tan \gamma \\ 0 & 1 \end{pmatrix}.$$
-应该以什么顺序进行变换？
-
-8.3. 一个2维向量乘以一个任意的$2\times 2$矩阵通常需要4次乘法。
-\\
-假设$2 \times 1000$ 矩阵 $D$ 包含 $\RR^2$ 中 1000 个点的坐标。使用两个任意 $2 \times 2$ 矩阵 $A$ 和 $B$ 来变换这些点需要多少次乘法？比较两种可能性，$A(BD)$ 和 $(AB)D$.~
-
-8.4. 写出符合要求的 $4 \times 4$ 矩阵，来进行到 $x-y$ 平面的透视投影，其投影中心为 $(d_1, d_2, d_3)^T$.~
-
-8.5. 变换 $T$ 在 $\RR^3$ 中是 $x-y$ 平面中直线 $y = 2x+3$ 绕 $\gamma$ 角的旋转。写出与此变换对应的 $4 \times 4$ 矩阵。你可以将结果表示为矩阵的乘积。
-\end{exer}
-
-
-
-
-
-
-
-
-
+    你可将答案保留为若干矩阵相乘的形式。
+\end{problemset}

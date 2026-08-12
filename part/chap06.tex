@@ -1,962 +1,1024 @@
+%%%%%%%%%%%%%%%%%% 内积空间上算子的结构 %%%%%%%%%%%%%%%%%%%
 
+\chapter{内积空间上算子的结构}\label{chap:StructinInnerProdSpace}
 
-\chapter{第六章~~内积空间中算子的结构}
+本章我们仍然假设所有向量空间都是有限维的，并且仍然只处理实向量空间或复向量空间——内积空间的理论不适用于一般的域上的向量空间。如未指明向量空间，则有关表述对实向量空间和复向量空间都成立。
 
-在本章中，我们再次假设所有空间都是有限维的。同样，我们只处理复数或实数空间，内积空间的理论不适用于任意域上的空间。当没有提及我们所处的空间时，所有结果都适用于复数和实数空间。
+为了避免重复书写实质上相同的公式，我们都用复数情形下的公式，它们在实数情形下也正确，虽然有时会复杂一点。
 
-为了避免重复书写基本相同的公式，我们将使用复数情况的记号：在实数情况下，它给出正确但有时稍显复杂的公式。
+\section{算子的上三角（舒尔）表示}
 
-\section{1. 算子的上三角（舒尔）表示}
+\begin{theorem}\label{thm:schur}
+    令$A:X\to X$是作用于复内积空间的算子。那么存在$X$的规范正交基$\mathbf{u}_{1},\mathbf{u}_{2},\ldots,\mathbf{u}_{n}$，使得$A$关于该基的矩阵是上三角的。
 
-\begin{theorem}[\normalfont\heiti 定理 1.1\nopunct] 设 $A: X \to X$ 是作用在复内积空间中的算子。则在 $X$ 中存在一组标准正交基 $\{\uu_1, \uu_2, \dots, \uu_n\}$ ，使得 $A$ 在该基下的矩阵是上三角矩阵。
-
-换句话说，任何 $n \times n$ 矩阵 $A$ 都可以表示为 $A = UTU^*$，其中 $U$ 是酉矩阵，而 $T$ 是上三角矩阵。\end{theorem}
-
-\begin{proof}我们使用 $\dim X$ 的数学归纳法来证明定理。如果 $\dim X = 1$，则定理是平凡的，因为任何 $1 \times 1$ 矩阵都是上三角矩阵。
-
-假设当 $\dim X = n-1$ 时定理成立，并且我们想证明对于 $\dim X = n$ 时定理成立。
-
-设 $\lambda_1$ 是 $A$ 的一个特征值，设 $\uu_1$, $\|\uu_1\| = 1$ 是相应的特征向量，$A\uu_1 = \lambda_1 \uu_1$.~记 $E = \uu_1^\perp$，并设 $\{\vv_2, \dots, \vv_n\}$ 是 $E$ 中的某组标准正交基（显然 $\dim E = \dim X - 1 = n-1$），那么 $\{\uu_1, \vv_2, \dots, \vv_n\}$ 是 $X$ 中的一组标准正交基。在这一基下，$A$ 的矩阵具有形式$$ (1.1)\quad
-\begin{pmatrix} \lambda_1 & * & \dots & * \\ 0 & & & \\ \vdots & & A_1 & \\ 0 & & & \end{pmatrix};$$
-这里 $\lambda_1$ 下方的所有元素都是零，而 $*$ 表示我们不关心 $\lambda_1$ 右侧的元素。
-
-我们足够关心右下角的 $(n-1) \times (n-1)$ 块，以至于给它命名：我们将其记为 $A_1$.~
-
-注意，$A_1$ 定义了 $E$ 中的一个线性变换，并且由于 $\dim E = n-1$，归纳假设表明存在一组标准正交基（我们将其记为 $\{\uu_2, \dots, \uu_n\}$），使得 $A_1$ 在该基下的矩阵是上三角矩阵。
-
-所以，$A$的矩阵在正交基$\uu_1,\uu_2,\dots, \uu_n$具有形式(1.1)，其中矩阵$A_1$是上三角矩阵。
-因此，$A$ 在该标准正交基 $\{\uu_1, \uu_2, \dots, \uu_n\}$ 下的矩阵也是上三角矩阵。\end{proof}
-
-{\heiti 注记}~~注意，在证明中引入的子空间 $E = \uu_1^\perp$ 对于 $A$ 不是不变的，即 $AE \subseteq E$ 不一定成立。这意味着 $A_1$ 不是 $A$ 的一部分，它是从 $A$ 构建的某个算子。
-
-还需注意，$AE \subseteq E$ 当且仅当所有标记为 $*$ 的元素（即除了 $\lambda_1$ 之外的第一行的所有元素）都为零。
-
-{\heiti 注记}~~注意，即使我们从一个实数矩阵 $A$ 开始，矩阵 $U$ 和 $T$ 也可以是复数的。旋转矩阵 $$\begin{pmatrix} \cos \alpha & -\sin \alpha \\ \sin \alpha & \cos \alpha \end{pmatrix}, \quad \alpha \neq k\pi, k \in \mathbb{Z}$$
-与实数上三角矩阵不是酉等价的（甚至不是相似的）。因为该矩阵的特征值是复数，而上三角矩阵的特征值是对角线元素。
-
-{\heiti 注记}~~ 定理 1.1 的一个类似版本可以陈述于任意向量空间，而不要求它具有内积。在这种情况下，定理声称在某组基下任何算子都有上三角形式。我们可以通过模仿定理 1.1 的证明来完成此证明。另一种方法是为 $V$ 装备内积，方法是固定一组基并声明它是标准正交基，见第 5 章第 2.4 节。
-
-注意，内积空间版本（定理 1.1）比向量空间版本更强大，因为它说明我们总能找到一组标准正交基，而不仅仅是一组基。
-
-下面的定理是定理 1.1 的实数版本：
-
-\begin{theorem}[\normalfont\heiti 定理 1.2\nopunct] 设 $A: X \to X$ 是作用在\textbf{实数}内积空间中的算子。假设 $A$ 的所有特征值都是实数（意味着 $A$ 恰好有 $n = \dim X$ 个实数特征值，计入重数）。那么 $X$ 中存在标准正交基 $\{\uu_1, \uu_2, \dots, \uu_n\}$，使得 $A$ 在该基下的矩阵是上三角矩阵。
-
-换句话说，任何特征值均为实数的 $n \times n$ 实矩阵 $A$ 都可以表示为 $A = UTU^* = U T U^T$，其中 $U$ 是正交矩阵，而 $T$ 是实数上三角矩阵。\end{theorem}
-
-{\heiti 注记 1.3.}~~ 回顾我们在第四章 1.4 节中的讨论：对于实向量空间 $X$ 上算子 $A$ 的特征值，我们总是指其复化 $A_{\CC}$ 作用于 $X$ 的复化 $X_{\CC}$ 时的特征值。
-
-如果 $X = \RR^n$，则其复化 $\CC^n$ 是通过允许 $\RR^n$ 取复数坐标而得到的。$\RR^n$ 上算子 $A$（即乘以\textbf{实}矩阵 $A$）的复化是乘以同一个（实）矩阵，但此时是在空间 $\CC^n$ 中运算。
-
-关于复化的更多细节，请参阅第四章 1.4 节和第五章 8.2 节。
-
-\begin{proof}[\normalfont\heiti 定理 1.2 的证明~\nopunct]为了证明定理，我们只需要分析定理 1.1 的证明。不妨假设（我们可以无损于一般性地这样做）算子（矩阵）$A$ 作用在 $\RR^n$ 上。
-
-假设定理对 $(n-1) \times (n-1)$ 矩阵成立。在定理 1.1 的证明中，设 $\lambda_1$ 是 $A$ 的一个实特征值，$\uu_1 \in \RR^n$, $\|\uu_1\| = 1$ 是相应的特征向量，设 $\{\vv_2, \dots, \vv_n\}$ 是 $\RR^n$ 中的一个标准正交系统，使得 $\{\uu_1, \vv_2, \dots, \vv_n\}$ 是 $\RR^n$ 中的一组标准正交基。
-
-在该基下 $A$ 的矩阵具有形式 (1.1)，其中 $A_1$ 是某个实数矩阵。
-
-如果我们能证明矩阵 $A_1$ 只有实数特征值，那么我们就完成了证明。确实，根据归纳假设，存在 $E = \uu_1^\perp$ 中的一组标准正交基 $\{\uu_2, \dots, \uu_n\}$，使得 $A_1$ 在该基下的矩阵是上三角矩阵，因此 $A$ 在 $\{\uu_1, \uu_2, \dots, \uu_n\}$ 基下的矩阵也是上三角矩阵。
-
-为了证明 $A_1$ 只有实数特征值，让我们注意到 
-$$\det(A - \lambda I) = ( \lambda_1 - \lambda ) \det( A_1 - \lambda )$$
-（例如，通过第一行的代数余子式展开），所以 $A_1$ 的任何特征值也是 $A$ 的特征值。但是 $A$ 只有实数特征值！\end{proof}
-
-\begin{exer} {\heiti 练习}
-
-1.1. 利用算子的上三角表示，给出行列式是乘积，迹是计重数的特征值之和这一事实的另一种证明。\end{exer}
-
-\section{2. 自伴随和正规算子的谱定理}
-
-在本章中，我们处理的酉等价于对角矩阵的矩阵（算子）。
-
-让我们回忆一下，如果一个算子满足 $A = A^*$，则称其为\textbf{自伴随}的。在某组标准正交基下的自伴（随）算子\index{zibansuanzi@自伴算子}（即满足 $A^* = A$ 的矩阵）称为\textbf{埃尔米特矩阵}\index{juzhen@矩阵!aiermite@埃尔米特}。
-术语“自伴随”和“埃尔米特”其实是同义的。但通常人们在谈论算子（变换）时会说自伴随，而在谈论矩阵时说 埃尔米特。我们将尝试遵循这个约定，但由于我们经常不区分算子和它们的矩阵，所以有时会混合使用这两个术语。
-
-\begin{theorem}[\normalfont\heiti 定理 2.1\nopunct] 设 $A = A^*$ 是内积空间 $X$（空间可以是复数或实数）中的一个自伴随算子。那么 $A$ 的所有特征值都是实数，并且 $X$ 中存在由 $A$ 特征向量组成的标准正交基。\end{theorem}
-
-这个定理可以用矩阵形式重述如下：
-
-\begin{theorem}[\normalfont\heiti 定理 2.2\nopunct] 设 $A = A^*$ 是一个自伴随（因此是方阵）矩阵。那么 $A$ 可以表示为 
-$$A = UDU^*,$$
-其中 $U$ 是酉矩阵，$D$ 是实对角矩阵。
-
-而且，如果矩阵 $A$ 是实数的，矩阵 $U$ 可以选择为实数的（即正交的）。\end{theorem}
+    换言之，任意$n\times n$矩阵$A$都可表示为$A=UTU^*$，其中$U$是幺正的，$T$是上三角矩阵。
+\end{theorem}
 
 \begin{proof}
-为了在复内积空间 $X$ 上证明定理 2.1 和定理 2.2，让我们首先应用定理 1.1 在 $X$ 中找到一组标准正交基，使得 $A$ 在该基下的矩阵是上三角矩阵。现在让我们问自己一个问题：什么样的上三角矩阵是自伴随的？
+    我们通过对$\dim X$用归纳法来证明本定理。若$\dim X=1$，则该定理是平凡的，这是因为任意$1\times 1$矩阵都是上三角的。
 
-答案是显而易见的：上三角矩阵是自伴随的当且仅当它是仅具有实数项的对角矩阵。定理 2.1（以及因此定理 2.2）得证。
+    假设我们证明了该定理在$\dim X=n-1$时是成立的，并要证明它在$\dim X=n$时也成立。
 
-为了处理实向量空间的情况，我们首先注意到，根据已经证明的复数情况，$A$ 的所有特征值都是实数\footnote{回顾一下（见上文注记 1.3），对于实向量空间 $X$ 上算子的特征值，我们总是指该算子延拓到（$X$ 的）\textbf{复化} $X_{\CC}$ 后的特征值。}。然后我们只需应用定理 1.2，并再次注意到唯一的自伴随上三角矩阵是对角矩阵。
+    令$\lambda_1$是$A$的特征值，并令$\mathbf{u}_1$（$\|\mathbf{u}_1\|=1$）是对应的特征向量，$A\mathbf{u}_1=\lambda_1\mathbf{u}_1$。记$E=\mathbf{u}_1^\perp$，并令$\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$是$E$的规范正交基（显然$\dim E=\dim X-1=n-1$），因此$\mathbf{u}_1,\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$是$X$的规范正交基。在该基下，$A$的矩阵形如
+    \begin{equation}\label{upper_triangular_with_ortho}
+        \begin{pNiceArray}{c|ccc}[margin]
+            \lambda_1 & & * & \\
+            \Hline
+            0 & & & \\
+            \vdots & & A_1 & \\
+            0 & & &
+        \end{pNiceArray};
+    \end{equation}
+    此处$\lambda_1$之下的所有元素都是零，$\ast$表示我们不在意第一行中位于$\lambda_1$右侧的元素。
+
+    我们在意的是右下角$(n-1)\times (n-1)$的块，记其为$A_1$。
+
+    注意，$A_1$确定了$E$上的一个线性变换，又由于$\dim E=n-1$，所以由归纳假设可得，存在规范正交基（不妨记其为$\mathbf{u}_{2},\ldots,\mathbf{u}_{n}$）使得$A_1$关于该基的矩阵是上三角的。
+
+    因此$A$关于规范正交基$\mathbf{u}_{1},\mathbf{u}_{2},\ldots,\mathbf{u}_{n}$的矩阵形如 \eqref{upper_triangular_with_ortho}，其中矩阵$A_1$是上三角的。因此$A$关于该基的矩阵也是上三角的。
 \end{proof}
 
-{\heiti 注记}~~注意，在许多教科书中只考虑实数矩阵，并且定理 2.2 通常被称为“\textbf{对称矩阵的谱定理}”。然而，应该强调，定理 2.2 的结论对于\textbf{复}对称矩阵是不成立的：该定理适用于 埃尔米特 矩阵，特别地，\textbf{实}对称矩阵。
+\begin{remark*}
+    注意，此证明中引入的子空间$E=\mathbf{u}_1^\perp$在$A$下不是不变的\footnote{不变子空间的概念在本书第 \ref{chap:SpectralAdvanced} 章第 \ref{subsec:invariant_subspace} 节介绍。——译者注。}，即$AE\subset E$并不一定成立。这意味着$A_1$不是$A$的一部分，而是由$A$构造出来的算子。
 
-让我们给出一个 $A=A^*$ 的算子的特征值是实数的独立证明。设 $A=A^*$ 且 $A\xx=\lambda \xx$, $\xx \neq 0$.~那么 
-$$(A\xx, \xx) = (\lambda \xx, \xx) = \lambda(\xx, \xx) = \lambda\|\xx\|^2.$$
-另一方面，
-$$(A\xx, \xx) = (\xx, A^*\xx) = (\xx, A\xx) = (\xx, \lambda \xx) = \overline{\lambda}(\xx, \xx) = \overline{\lambda}\|\xx\|^2,$$（这里我们用到了结论 $(\xx, \lambda \yy) = \overline{\lambda}(\xx, \yy)$）。所以 $\lambda\|\xx\|^2 = \overline{\lambda}\|\xx\|^2$.~由于 $\xx \neq 0$，$\|\xx\|^2 \neq 0$，我们可以得出 $\lambda = \overline{\lambda}$，所以 $\lambda$ 是实数。
+    还请注意，$AE\subset E$当且仅当记作$\ast$的所有元素（即第一行中除了$\lambda_1$以外的元素）都是零。
+\end{remark*}
 
-从定理 2.1 也可以得出，自伴随算子的特征子空间是相互正交的。但让我们给出一个该结果的独立证明。
+\begin{remark*}
+    注意，即便$A$是实矩阵，矩阵$U$和$T$还是可能有复数元素。比如，旋转矩阵
+    \[\begin{pNiceMatrix}[margin]\cos\alpha&-\sin\alpha\\\sin\alpha&\cos\alpha\end{pNiceMatrix},\quad\alpha\neq k\pi,k\in\mathbb{Z}\]
+    就不幺正等价于实上三角矩阵（甚至不会与之相似）。的确如此：该矩阵的特征值是复数，而上三角矩阵的特征值恰为对角元。
+\end{remark*}
 
-{\heiti 命题 2.3}~~设 $A = A^*$ 是一个自伴随算子，设 $\uu, \vv$ 是它的特征向量，$A\uu = \lambda \uu$, $A\vv = \mu \vv$.~那么，如果 $\lambda \neq \mu$，则特征向量 $\uu$ 和 $\vv$ 是正交的。
+\begin{remark*}
+    有个类似于定理 \ref{thm:schur} 的结论，可在任意向量空间（不需要有内积）上成立并被证明。该结论是说，任意算子都关于某个基具有上三角矩阵。为证明之，可以仿照定理 \ref{thm:schur} 的证明，也可以为$V$配以内积（取$V$的基，并使其具有规范正交性，见第 \ref{chap:InnerProduct} 章的习题 \ref{ex:5_2_4}）。
 
-\begin{proof}这个命题虽然可以从谱定理（定理 1.1）得出，但我们在这里给出一个直接的证明。即，$$(A\uu, \vv) = (\lambda \uu, \vv) = \lambda(\uu, \vv).$$
-另一方面，$$(A\uu, \vv) = (\uu, A^*\vv) = (\uu, A\vv) = (\uu, \mu \vv) = \mu(\uu, \vv)$$
-（最后一个等式成立是因为自伴随算子的特征值都是实数），所以 $\lambda(\uu, \vv) = \mu(\uu, \vv)$.~如果 $\lambda \neq \mu$，则这只有在 $(\uu, \vv) = 0$ 时才可能。\end{proof}
+    注意，适用于内积空间的版本（定理 \ref{thm:schur}）比适用于一般向量空间的版本更强，因为它指出总可以找到满足条件的规范正交基，而不仅仅是基。
+\end{remark*}
 
-现在让我们尝试找到哪些矩阵酉等价于一个对角矩阵。可以很容易地检验出，对于对角矩阵 $D$, 
-$$D^*D = DD^*.$$
-因此，如果 $A$ 在某组标准正交基下的矩阵是对角矩阵，那么 $A^*A = AA^*$.~
+下面定理是定理 \ref{thm:schur} 在实数情形下的版本。
 
-{\heiti 定义}~~称算子（矩阵）$N$ 是\textbf{正规}\index{zhengguisuanzi@正规算子}(normal)的，如果 $N^*N = NN^*$.~
+\begin{theorem}\label{thm:schur_real}
+    令$A:X\to X$是作用于{\bf 实}内积空间的算子。假设$A$的所有特征值都是实数【即$A$恰存在$n=\dim X$个实特征值（以重数计）】。那么存在$X$的规范正交基$\mathbf{u}_{1},\mathbf{u}_{2},\ldots,\mathbf{u}_{n}$，使得$A$关于该基的矩阵是上三角的。
 
-显然，任何自伴随算子（$A^*A = AA^*$）都是正规的。同样，任何酉算子 $U: X \to X$ 也是正规的，因为 $U^*U = UU^* = I$.~
+    换言之，任意特征值全为实数的$n\times n$实矩阵$A$都可表示为$A=UTU^*=UTU^T$，其中$U$是正交的，$T$是实上三角矩阵。
+\end{theorem}
 
-注意，正规算子是作用在同一个空间上的算子，而不是从一个空间到另一个空间。所以，如果 $U$ 是作用在一个空间到另一个空间上的酉算子，我们就不能说 $U$ 是正规的。
+\begin{remark}\label{remark:eig_complex}
+    回忆一下，我们在第 \ref{chap:SpectralIntro} 章第 \ref{subsec:complex_vs_real} 节中讨论过，“实向量空间$X$上算子$A$的特征值”总是指$X_\mathbb{C}$（$X$的复化）上的$A_\mathbb{C}$（$A$的复化）的特征值。
 
-\begin{theorem}[\normalfont\heiti 定理 2.4\nopunct] 任何复数向量空间中的正规算子 $N$ 都有一组由标准正交的特征向量组成的基。
+    如果$X=\mathbb{R}^n$，那么允许各坐标为复数，即得到其复化$\mathbb{C}^n$。$\mathbb{R}^n$上算子$A$（即与{\bf 实}矩阵$A$的乘法）的复化仍是与同一实矩阵的乘法，只不过所乘向量属于$\mathbb{C}^n$。
 
-换句话说，任何满足 $N^*N = NN^*$ 的矩阵 $N$ 都可以表示为 $$N = UDU^*,$$
-其中 $U$ 是酉矩阵，$D$ 是对角矩阵。\end{theorem}
+    有关复化的更多细节，详见第 \ref{chap:SpectralIntro} 章第 \ref{subsec:complex_vs_real} 节和第 \ref{chap:InnerProduct} 章第 \ref{subsec:complexification} 节。
+\end{remark}
 
-{\heiti 注记}~~注意，在上述定理中，即使 $N$ 是实数矩阵，我们也没有声称矩阵 $U$ 和 $D$ 是实数。而且，可以很容易地证明，如果 $D$ 是实数，那么 $N$ 必须是自伴随的。
+\begin{proof}[定理 \ref{thm:schur_real} 的证明]
+    为证明该定理，只需分析定理 \ref{thm:schur} 的证明。不失一般性，假设算子（矩阵）$A$作用于$\mathbb{R}^n$。
 
+    假设定理对于$(n-1)\times (n-1)$矩阵成立。如定理 \ref{thm:schur} 的证明，令$\lambda_1$是$A$的实特征值，$\mathbf{u}_1\in\mathbb{R}^n$（$\|\mathbf{u}_1\|=1$）是对应的特征向量，并令$\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$是（$\mathbb{R}^n$中的）规范正交向量组，使得$\mathbf{u}_1,\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$是$\mathbb{R}^n$的规范正交基。
 
-\begin{proof}[\normalfont\heiti 定理 2.4 的证明~\nopunct]为了证明定理 2.4，我们应用定理 1.1 来得到一组标准正交基，使得 $N$ 在该基下的矩阵是上三角矩阵。为了完成定理的证明，我们只需要证明一个上三角正规矩阵必须是对角矩阵。
+    在该基下，$A$的矩阵形如 \eqref{upper_triangular_with_ortho}，其中$A_1$是实矩阵。
 
-我们将使用对矩阵维数的数学归纳法来证明这一点。$1 \times 1$ 矩阵的情况是平凡的，因为任何 $1 \times 1$ 矩阵都是对角矩阵。
+    如果我们能证明矩阵$A_1$只有实特征值，即可完成整个证明。的确如此：这样一来，由归纳假设，存在$E=\mathbf{u}_1^\perp$的规范正交基$\mathbf{u}_{2},\ldots,\mathbf{u}_{n}$，使得$A_1$关于该基的矩阵是上三角的，所以$A$关于基$\mathbf{u}_1,\mathbf{u}_{2},\ldots,\mathbf{u}_{n}$的矩阵也是上三角的。
 
-假设我们已经证明了任何 $(n-1) \times (n-1)$ 的上三角正规矩阵都是对角矩阵，并且我们想证明对于 $n \times n$ 矩阵也成立。设 $N$ 是一个 $n \times n$ 上三角正规矩阵。我们可以将其写成
-$$
-N = \left(\begin{array}{c|ccc}
-a_{1,1} & a_{1,2} & \dots & a_{1,n} \\
-\hline
-0 & & & \\
-\vdots & & N_1 & \\
-0 & & &
-\end{array}\right)
-$$
-其中 $N_1$ 是一个 $(n-1) \times (n-1)$ 的上三角矩阵。
+    为证明$A_1$只有实特征值，注意到\[\det(A-\lambda I)=(\lambda_1-\lambda)\det(A_1-\lambda I)\]
+    （可按第一行进行余子式展开）于是$A_1$的任意特征值也是$A$的特征值，而$A$只有实特征值！
+\end{proof}
 
-让我们比较 $N^*N$ 和 $NN^*$ 的左上角元素（第一行第一列）。直接计算表明 $$(N^*N)_{1,1} = \overline{a}_{1,1}a_{1,1} = |a_{1,1}|^2,$$
-而 
-$$(NN^*)_{1,1} = |a_{1,1}|^2 + |a_{1,2}|^2 + \dots + |a_{1,n}|^2.$$
-所以，$(N^*N)_{1,1} = (NN^*)_{1,1}$ 当且仅当 $a_{1,2} = \dots = a_{1,n} = 0$.~因此，矩阵 $N$ 具有形式
-$$
-N = \left(\begin{array}{c|ccc}
-a_{1,1} & 0 & \dots & 0 \\
-\hline
-0 & & & \\
-\vdots & & N_1 & \\
-0 & & &
-\end{array}\right).
-$$
-从上述表示可以得出 
-$$
-N^*N = \left(\begin{array}{c|ccc}
-|a_{1,1}|^2 & 0 & \dots & 0 \\
-\hline
-0 & & & \\
-\vdots & & N_1^*N_1 & \\
-0 & & &
-\end{array}\right), \quad 
-NN^* = \left(\begin{array}{c|ccc}
-|a_{1,1}|^2 & 0 & \dots & 0 \\
-\hline
-0 & & & \\
-\vdots & & N_1 N_1^* & \\
-0 & & &
-\end{array}\right).
-$$
-所以 $N_1^*N_1 = N_1N_1^*$.~这意味着矩阵 $N_1$ 也是正规的，并且根据归纳假设它是对角矩阵。所以矩阵 $N$ 也是对角矩阵。\end{proof}
+\begin{problemset}
+    \item 利用算子的上三角表示来重新证明：行列式是特征值的积，迹是特征值的和（特征值均按重数计）。
+\end{problemset}
 
-以下命题给出了正规算子的一个非常有用的刻画。
+\section{自伴算子和正规算子的谱定理}
 
-{\heiti 命题 2.5}~~算子 $N: X \to X$ 是正规的当且仅当 
-$$\|N\xx\| = \|N^*\xx\| \quad \forall \xx \in X.$$
+本节中，我们讨论幺正等价于对角矩阵的矩阵（算子）。
 
-\begin{proof}设 $N$ 是正规的，$N^*N = NN^*$.~那么 
-$$\|N\xx\|^2 = (N\xx, N\xx) = (N^*N\xx, \xx) = (NN^*\xx, \xx) = (N^*\xx, N^*\xx) = \|N^*\xx\|^2,$$
-所以 $\|N\xx\| = \|N^*\xx\|$.~
-现在设 
-$$\|N\xx\| = \|N^*\xx\| \quad \forall \xx \in X.$$
-极化恒等式（第 5 章引理 1.9）暗示对于所有 $\xx, \yy \in X$，
-\begin{equation} \notag
-\begin{split}
-(N^*N\xx, \yy) = (N\xx, N\yy) =&\   \frac{1}{4} \sum_{\alpha = \pm 1, \pm i} \alpha \|N\xx + \alpha N\yy\|^2  \\
-=&\ \frac{1}{4} \sum_{\alpha = \pm 1, \pm i} \alpha \|N(\xx + \alpha \yy)\|^2   \\
-=&\  \frac{1}{4} \sum_{\alpha = \pm 1, \pm i} \alpha \|N^*(\xx + \alpha \yy)\|^2  \\
-=&\  \frac{1}{4} \sum_{\alpha = \pm 1, \pm i} \alpha \|N^* \xx + \alpha N^* \yy)\|^2  \\
-=&\ (N^*\xx, N^*\yy) = (NN^*\xx, \yy). 
- \end{split}
+回忆一下，若算子$A$满足$A=A^*$，则称其为自伴的\index{自伴算子（self-adjoint operator）}。自伴算子（关于规范正交基）的矩阵，即满足$A^*=A$的矩阵，称为埃尔米特矩阵。\index{矩阵（matrix）!埃尔米特$\sim$（Hermitian）}
+
+术语{\bf 自伴}与{\bf 埃尔米特}本质上同义。人们通常在提及算子时用自伴而在提及矩阵时用埃尔米特。我们尽量遵循此惯例，但因为我们通常不区分算子及其矩阵，所以有时会混用这两个术语。
+
+\begin{theorem}\label{thm:self_adjoint_operator_real_eig}
+    令$A=A^*$是内积空间$X$上的自伴算子（$X$可以是实的也可以是复的）。那么$A$的所有特征值都是实数，并且$X$存在由$A$的特征向量构成的规范正交基。
+\end{theorem}
+
+该定理可按矩阵形式重述如下：
+
+\begin{theorem}\label{thm:self_adjoint_matrix_diagonalize}
+    令$A=A^*$是自伴矩阵（从而是方阵）。那么$A$可表示为\[A=UDU^*,\]其中$U$是幺正矩阵，$D$是实对角矩阵。
+
+    此外，若$A$是实矩阵，那么$U$可选为实矩阵（即正交矩阵）。
+\end{theorem}
+
+\begin{proof}
+    为证明复内积空间$X$中的定理 \ref{thm:self_adjoint_operator_real_eig} 和 \ref{thm:self_adjoint_matrix_diagonalize}，首先应用定理 \ref{thm:schur}，找出$X$的一个规范正交基，使得$A$关于该基的矩阵是上三角的。现在问：什么样的上三角矩阵是自伴的？
+
+    答案显而易见：上三角矩阵是自伴的，当且仅当其为实对角矩阵。定理 \ref{thm:self_adjoint_operator_real_eig} 得证（从而也有定理 \ref{thm:self_adjoint_matrix_diagonalize}）。
+
+    为处理实向量空间的情形，首先注意到由刚刚证明的复数情形，$A$的特征值都是实数\footnote{回想一下（见上方的注 \ref{remark:eig_complex}），“实向量空间$X$上算子的特征值”总是指$X_\mathbb{C}$（$X$的{\bf 复化}）上原算子的复化的特征值。}。那么，只需应用定理 \ref{thm:schur_real}，并再次注意到自伴的上三角矩阵仅有对角阵即可。
+\end{proof}
+
+\begin{remark*}
+    许多教材只考虑实矩阵，则定理 \ref{thm:self_adjoint_matrix_diagonalize} 常称为“{\bf 对称}矩阵的谱定理”。然而要强调，定理 \ref{thm:self_adjoint_matrix_diagonalize} 对{\bf 复}对称矩阵是不成立的：该定理是对埃尔米特矩阵成立，特别地，也对{\bf 实}对称矩阵成立。
+\end{remark*}
+
+现在单独证明一下“自伴算子的特征值为实数”这一结论。令$A=A^*$，并设$A\mathbf{x}=\lambda\mathbf{x},\mathbf{x}\neq\mathbf{0}$。那么\[(A\mathbf{x},\mathbf{x})=(\lambda\mathbf{x},\mathbf{x})=\lambda(\mathbf{x},\mathbf{x})=\lambda\|\mathbf{x}\|^2.\]
+另方面，\[(A\mathbf{x},\mathbf{x})=(\mathbf{x},A^*\mathbf{x})=(\mathbf{x},A\mathbf{x})=(\mathbf{x},\lambda\mathbf{x})=\overline{\lambda}(\mathbf{x},\mathbf{x})=\overline{\lambda}\|\mathbf{x}\|^2,\]
+因此$\lambda\|\mathbf{x}\|^2=\overline{\lambda}\|\mathbf{x}\|^2$。因为$\|\mathbf{x}\|\ne 0$（$\mathbf{x}\ne \mathbf{0}$），所以$\lambda=\overline{\lambda}$，故$\lambda$为实数。
+
+根据定理 \ref{thm:self_adjoint_operator_real_eig}，自伴算子的特征空间是正交的。下面给出该结论的另一种证明。
+
+\begin{proposition}
+    令$A=A^*$是自伴算子，并令$\mathbf{u},\mathbf{v}$是它的特征向量，$A\mathbf{u}=\lambda\mathbf{u},A\mathbf{v}=\mu\mathbf{v}$。那么，若$\lambda\ne\mu$，则特征向量$\mathbf{u}$和$\mathbf{v}$正交。
+\end{proposition}
+\begin{proof}
+    该命题可由谱定理（定理 \ref{thm:self_adjoint_operator_real_eig}）得到，但此处我们直接证明之。我们有\[(A\mathbf{u},\mathbf{v})=(\lambda\mathbf{u},\mathbf{v})=\lambda(\mathbf{u},\mathbf{v}).\]
+    另一方面，\[(A\mathbf{u},\mathbf{v})=(\mathbf{u},A^*\mathbf{v})=(\mathbf{u},A\mathbf{v})=(\mathbf{u},\mu\mathbf{v})=\overline{\mu}(\mathbf{u},\mathbf{v})=\mu(\mathbf{u},\mathbf{v})\]
+    （最后一个等式成立，是因为自伴算子的特征值是实数）因此$\lambda(\mathbf{u},\mathbf{v})=\mu(\mathbf{u},\mathbf{v})$。若$\lambda\ne \mu$，则只能$(\mathbf{u},\mathbf{v})=0$。
+\end{proof}
+
+现在我们来探究什么样的矩阵幺正等价于对角矩阵。容易检验，对角矩阵$D$满足\[D^*D=DD^*.\]因此如果算子$A$关于某个规范正交基具有对角矩阵，那么$A^*A=AA^*$。
+
+\begin{definition*}
+    若算子（矩阵）$N$满足$N^*N=NN^*$，则称其为{\bf 正规}的。\index{正规算子（normal operator）}
+\end{definition*}
+
+显然，任意自伴算子（$A=A^*$）都是正规的。并且，任意幺正算子$U:X\to X$也是正规的，因为$U^*U=UU^*=I$。
+
+注意，正规算子是一向量空间到其自身的变换，而不是从一向量空间到另一向量空间的。所以，如果$U$是从一向量空间到另一向量空间的幺正变换，那么不能说$U$是正规的。
+
+\begin{theorem}\label{thm:normal_diag}
+    复向量空间上的任意正规算子$N$的特征向量能构成规范正交基。
+
+    换言之，任意满足$N^*N=NN^*$的矩阵$N$能表示为\[N=UDU^*\]其中$U$是幺正矩阵，$D$是对角阵。
+\end{theorem}
+
+\begin{remark*}
+    注意，上述定理中即便$N$是实矩阵，也不能断定矩阵$U$和$D$是实的。此外，很容易证明如果$D$是实的，那么$N$一定是自伴的。
+\end{remark*}
+
+\begin{proof}[定理 \ref{thm:normal_diag} 的证明]
+    要证明定理 \ref{thm:normal_diag}，先应用定理 \ref{thm:schur}，从而得到一个规范正交基，$N$关于该基的矩阵是上三角的。为完成该定理的证明，只需证明上三角的正规矩阵一定是对角的。
+
+    我们将通过对矩阵的大小用归纳法来证明。$1\times 1$矩阵的情形是平凡的，因为任意$1\times 1$矩阵都是对角阵。
+
+    假设我们已经证明任意$(n-1)\times (n-1)$上三角正规矩阵都是对角的，现在要证明这对于$n\times n$矩阵也是成立的。令$N$是$n\times n$上三角正规矩阵。可将其写为
+    \begin{equation*}
+        \begin{pNiceArray}{c|ccc}[margin]
+            a_{1,1} & a_{1,2} & \ldots & a_{1,n}\\
+            \Hline
+            0 & & & \\
+            \vdots & & N_1 & \\
+            0 & & &
+        \end{pNiceArray}
+    \end{equation*}
+    其中$N_1$是$(n-1)\times (n-1)$上三角矩阵。
+
+    我们来比较$N^*N$和$NN^*$左上角（第一行第一列）的元素。直接计算表明
+    \[(N^*N)_{1,1}=\overline{a}_{1,1}a_{1,1}=|a_{1,1}|^2\]
+    且有\[(NN^*)_{1,1}=|a_{1,1}|^2+|a_{1,2}|^2+\ldots+|a_{1,n}|^2.\]
+    因此，$(N^*N)_{1,1}=(NN^*)_{1,1}$当且仅当$a_{1,2}=\ldots=a_{1,n}=0$。因此，矩阵$N$形如
+    \begin{equation*}
+        \begin{pNiceArray}{c|ccc}[margin]
+            a_{1,1} & 0 & \ldots & 0\\
+            \Hline
+            0 & & & \\
+            \vdots & & N_1 & \\
+            0 & & &
+        \end{pNiceArray}
+    \end{equation*}
+    从上述表达式可得
+    \begin{equation*}
+        N^*N = \begin{pNiceArray}{c|ccc}[margin]
+            |a_{1,1}|^2 & 0 & \ldots & 0\\
+            \Hline
+            0 & & & \\
+            \vdots & & N_1^*N_1 & \\
+            0 & & &
+        \end{pNiceArray},\quad
+        NN^* = \begin{pNiceArray}{c|ccc}[margin]
+            |a_{1,1}|^2 & 0 & \ldots & 0\\
+            \Hline
+            0 & & & \\
+            \vdots & & N_1N_1^* & \\
+            0 & & &
+        \end{pNiceArray},
+    \end{equation*}
+    因此$N_1^*N_1=N_1N_1^*$，这意味着矩阵$N_1$是正规的，由归纳假设可得它是对角的。于是矩阵$N$也是对角的。
+\end{proof}
+
+下面命题给出了正规算子的一个很有用的刻画。
+
+\begin{proposition}
+    算子$N:X\to X$是正规的，当且仅当\[\|N\mathbf{x}\|=\|N^*\mathbf{x}\|\quad\forall\mathbf{x}\in X.\]
+\end{proposition}
+\begin{proof}
+    令$N$是正规的，$N^*N=NN^*$。那么\[\|N\mathbf{x}\|^2=(N\mathbf{x},N\mathbf{x})=(N^*N\mathbf{x},\mathbf{x})=(NN^*\mathbf{x},\mathbf{x})=(N^*\mathbf{x},N^*\mathbf{x})=\|N^*\mathbf{x}\|^2\]
+    所以$\|N\mathbf{x}\|=\|N^{*}\mathbf{x}\|$。
+
+    现在令\[\|N\mathbf{x}\|=\|N^*\mathbf{x}\|\quad\forall\mathbf{x}\in X.\]
+    由极化恒等式（第 \ref{chap:InnerProduct} 章引理 \ref{lem:polarization}）可得对所有$\mathbf{x},\mathbf{y}\in X$
+    \begin{align*}
+        (N^{*}N\mathbf{x},\mathbf{y})=(N\mathbf{x},N\mathbf{y})&=\frac{1}{4}\sum_{\alpha=\pm1,\pm i}\alpha\|N\mathbf{x}+\alpha N\mathbf{y}\|^{2}\\
+        &=\frac{1}{4}\sum_{\alpha=\pm1,\pm i}\alpha\|N(\mathbf{x}+\alpha\mathbf{y})\|^2\\
+        &=\frac{1}{4}\sum_{\alpha=\pm1,\pm i}\alpha\|N^{*}(\mathbf{x}+\alpha\mathbf{y})\|^{2}\\
+        &=\frac{1}{4}\sum_{\alpha=\pm1,\pm i}\alpha\|N^{*}\mathbf{x}+\alpha N^{*}\mathbf{y}\|^{2}\\
+        &=(N^*\mathbf{x},N^*\mathbf{y})=(NN^*\mathbf{x},\mathbf{y})
+    \end{align*}
+    因此（见第 \ref{chap:InnerProduct} 章推论 \ref{cor:Ax_Bx_A_eq_B}），$N^*N=NN^*$。
+\end{proof}
+
+\begin{problemset}
+    \item 判断正误：
+    \begin{probenumerate}
+        \item 每个幺正算子$U:X\to X$都是正规的。
+        \item 一矩阵是幺正的，当且仅当其可逆。
+        \item 如果两个矩阵是幺正等价的，则这两个矩阵也是相似的。
+        \item 自伴算子之和仍然自伴。
+        \item 幺正算子的伴随是幺正的。
+        \item 正规算子的伴随是正规的。
+        \item 如果线性算子的所有特征值是$1$，那么该算子必为幺正或正交的。
+        \item 如果正规算子的所有特征值是$1$，那么该算子是恒等算子。
+        \item 线性算子可能只保持范数而不保持内积。
+    \end{probenumerate}
+    \item 判断正误：正规算子之和仍然正规。论证你的结论。
+    \item 证明：幺正等价于对角矩阵的算子是正规的。
+    \item 正交分解下列矩阵\[A=\begin{pNiceMatrix}[margin]
+        3&2\\2&3
+    \end{pNiceMatrix}\]求出$A$的所有平方根，即求出所有满足$B^2=A$的矩阵$B$。注意，$A$的所有平方根都是自伴的。
+    \item 判断正误：任意自伴矩阵有自伴的平方根。论证之。
+    \item 正交分解下列矩阵\[A=\begin{pNiceMatrix}[margin]
+        7&2\\2&4
+    \end{pNiceMatrix}\]即将其表示为$A=UDU^*$，其中$D$是对角阵，$U$是幺正的。
+
+    在$A$的所有平方根（即所有满足$B^2=A$的矩阵$B$）中，找出特征值全为正的那个。你可将$B$保留为矩阵乘积。
+    \item 判断正误：
+    \begin{probenumerate}
+        \item 两个自伴矩阵的乘积仍是自伴的；
+        \item 若$A$是自伴的，那么$A^k$是自伴的。
+    \end{probenumerate}
+    论证你的结论。
+    \item 令$A$是$m\times n$矩阵。证明：
+    \begin{probenumerate}
+        \item $A^*A$是自伴的；
+        \item $A^*A$的所有特征值都非负；
+        \item $A^*A+I$可逆。
+    \end{probenumerate}
+    \item 对于下列结论，如果正确则证明之，如果不正确则给出反例：
+    \begin{probenumerate}
+        \item 若$A=A^*$，那么$A+iI$是可逆的；
+        \item 若$U$是幺正的，那么$U+\frac34I$是可逆的；
+        \item 若$A$是实矩阵，那么$A-iI$是可逆的。
+    \end{probenumerate}
+    \item 正交分解旋转矩阵\[R_\alpha=\begin{pNiceMatrix}[margin]
+        \cos\alpha&-\sin\alpha\\\sin\alpha&\cos\alpha
+    \end{pNiceMatrix},\]其中$\alpha$不是$\pi$的整数倍。注意，此处你会得到复特征值。
+    \item 正交分解矩阵\[A=\begin{pNiceMatrix}[margin]
+        \cos\alpha&\sin\alpha\\\sin\alpha&-\cos\alpha
+    \end{pNiceMatrix}.\]
+    {\bf 提示}：此处你会得到实特征值。另外，三角恒等式$\sin2x=2\sin x\cos x,$ $\sin^2x=(1-\cos2x)/2,\cos^2x=(1+\cos2x)/2$（应用于$x=\alpha/2$）有助于简化特征向量的表达式。
+    \item 你能从几何角度描述上题中矩阵$A$所确定的线性变换吗？它的几何描述特别简单。
+    \item 证明：具有单位模长特征值（即所有特征值都满足$|\lambda_k|=1$）的正规算子是幺正的。{\bf 提示}：考虑对角化。
+    \item 证明：具有实特征值的正规算子是自伴的。
+    \item 举例说明：定理 \ref{thm:self_adjoint_matrix_diagonalize} 的结论对于{\bf 复}对称矩阵不成立。即
+    \begin{probenumerate}
+        \item 构造一个（可对角化的）$2\times 2$复对称矩阵，其特征向量不能构成正交基；
+        \item 构造一个$2\times 2$复对称矩阵，其不能被对角化。
+    \end{probenumerate}
+\end{problemset}
+
+\section{极分解和奇异值分解}
+
+\subsection{正定算子、平方根}
+
+\begin{definition*}
+    若自伴算子$A:X\to X$满足\[(A\mathbf{x},\mathbf{x})>0\quad\forall\mathbf{x}\neq\mathbf{0},\]
+    则称其是{\bf 正定的}。若\[(A\mathbf{x},\mathbf{x})\ge 0\quad\forall\mathbf{x}\in X,\]
+    则称其为{\bf 正半定的}。
+    我们将用记号$A>0$表示正定算子，并用记号$A\ge 0$表示正半定算子。
+\end{definition*}
+
+下述定理描述了正定和正半定算子。
+
+\begin{theorem}
+    令$A=A^*$。则
+    \begin{enumerate}
+        \item $A>0$当且仅当$A$的所有特征值都是正数。
+        \item $A\ge 0$当且仅当$A$的所有特征值都是非负数。
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    选取一个规范正交基，使得$A$关于该基的矩阵是对角的（见定理 \ref{thm:self_adjoint_operator_real_eig}）。为完成证明，只需留意，对角矩阵是正定（正半定）的，当且仅当其所有对角元都是正的（非负的）。
+\end{proof}
+
+\begin{corollary}
+    令$A=A^*\ge 0$是正半定算子。存在唯一的正半定算子$B$使得$B^2=A$。
+\end{corollary}
+
+这样的$B$称为$A$的（正）平方根，并记作$\sqrt{A}$或$A^{1/2}$。
+
+\begin{proof}
+    首先证明$\sqrt{A}$存在。令$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$是由$A$的特征向量构成的规范正交基，并令$\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$是对应的特征值。注意，因为$A\ge 0$，所以全体$\lambda_k\ge 0$。
+
+    关于基$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$，$A$的矩阵是对角元为$\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$的对角\linebreak 矩阵$\operatorname{diag}\{\lambda_{1},\lambda_{2},\ldots,\lambda_{n}\}$。定义算子$B$，其关于同一个基的矩阵为\linebreak $\mathrm{diag}\{\sqrt{\lambda_{1}},\sqrt{\lambda_{2}},\ldots,\sqrt{\lambda_{n}}\}$。
+
+    显然，$B=B^*\ge 0$，并且$B^2=A$。
+
+    为证明$B$是唯一的，假设存在算子$C=C^*\ge 0$使得$C^2=A$。令$\mathbf{u}_1,\mathbf{u}_2,\ldots,\mathbf{u}_n$是由$C$的特征向量构成的规范正交基，并令$\mu_{1},\mu_{2},\ldots,\mu_{n}$是对应的特征值（注意$\mu_k\ge 0\ \forall k$）。$C$关于基$\mathbf{u}_1,\mathbf{u}_2,\ldots,\mathbf{u}_n$的矩阵是对角阵$\mathrm{diag}\{\mu_{1},\mu_{2},\ldots,\mu_{n}\}$，因而$A=C^2$关于相同基的矩阵是$\mathrm{diag}\{\mu_{1}^{2},\mu_{2}^{2},\ldots,\mu_{n}^{2}\}$。这意味着，$A$的任意特征值$\lambda$都形如$\mu_k^2$，并且如果$A\mathbf{x}=\lambda\mathbf{x}$，那么$C\mathbf{x}=\sqrt\lambda\mathbf{x}$。
+
+    因此，关于上面的基$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$，算子$C$的矩阵是对角矩阵\linebreak $\mathrm{diag}\{\sqrt{\lambda_{1}},\sqrt{\lambda_{2}},\ldots,\sqrt{\lambda_{n}}\}$，即$B=C$。
+\end{proof}
+
+\subsection{变换的模、极分解}
+
+考虑变换$A:X\to Y$。其{\bf 埃尔米特平方} $A^*A$是$X$上的正半定算子。的确如此：
+\[(A^*A)^*=A^*(A^*)^*=A^*A\]
+并且\[(A^*A\mathbf{x},\mathbf{x})=(A\mathbf{x},A\mathbf{x})=\|A\mathbf{x}\|^2\geq0\quad\forall\mathbf{x}\in X.\]
+因此，存在（唯一的）正半定平方根$R=\sqrt{A^*A}$。该算子$R$称为变换$A$的{\bf 模}，常记为$|A|$。
+
+$A$的模显示了变换$A$的“大小”：
+\begin{proposition}\label{prop:modulus_preserve_norm}
+    对线性变换$A:X\to Y$，\[\||A|\mathbf{x}\|=\|A\mathbf{x}\|\quad\forall\mathbf{x}\in X.\]
+\end{proposition}
+
+\begin{proof}
+    对任意$\mathbf{x}\in X$，
+    \begin{align*}
+        \||A|\mathbf{x}\|^{2}&=(|A|\mathbf{x},|A|\mathbf{x})=(|A|^*|A|\mathbf{x},\mathbf{x})=(|A|^2\mathbf{x},\mathbf{x})\\
+        &=(A^*A\mathbf{x},\mathbf{x})=(A\mathbf{x},A\mathbf{x})=\|A\mathbf{x}\|^2\qedhere
+    \end{align*}
+\end{proof}
+
+\begin{corollary}\label{cor:ker_a_ker_moda}
+    \[\ker A=\ker |A|=(\rg |A|)^\perp.\]
+\end{corollary}
+\begin{proof}
+    第一个等号可直接由命题 \ref{prop:modulus_preserve_norm} 得到，第二个等号源于$\ker T=(\rg T^*)^\perp$（$|A|$是自伴的）。
+\end{proof}
+\begin{theorem}[算子的极分解]\label{thm:polar_decomp}
+    令$A:X\to X$是算子（方阵）。那么$A$可表示为\[A=U|A|,\]其中$U$是幺正算子。
+\end{theorem}
+\begin{remark*}
+    上述幺正算子$U$通常不唯一。从定理的证明中，我们将发现$U$唯一当且仅当$A$可逆。
+\end{remark*}
+\begin{remark*}
+    极分解$A=U|A|$对从一个空间到另一个空间的变换$A:X\to Y$也成立。不过在这种情况中，只能保证$U$是从$\rg |A|=(\ker A)^\perp$到$Y$的{\bf 等距变换}。
+
+    若$\dim X\le \dim Y$，那么这个等距变换扩展为从整个$X$到$Y$的等距变换（而若$\dim X=\dim Y$，这个变换就成为幺正算子）。
+\end{remark*}
+
+\begin{proof}[定理 \ref{thm:polar_decomp} 的证明]
+    考虑向量$\mathbf{x}\in\operatorname{Ran}|A|$。那么向量$\mathbf{x}$可表示为$\mathbf{x}=|A|\mathbf{v}$（$\mathbf{v}\in X$）。
+
+    定义$U_0\mathbf{x}:=A\mathbf{v}$。由命题 \ref{prop:modulus_preserve_norm}，
+    \[\|U_0\mathbf{x}\|=\|A\mathbf{v}\|=\||A|\mathbf{v}\|=\|\mathbf{x}\|\]
+    这样看来，$U_0$是从$\rg |A|$到$X$的等距变换。
+
+    但首先，我们需要证明$U_0$是定义完善的。设另一个向量$\mathbf{v}_1$满足$\mathbf{x}=|A|\mathbf{v}_1$。这样，由$\mathbf{x}=|A|\mathbf{v}=|A|\mathbf{v}_1$可得，$\mathbf{v}-\mathbf{v}_1\in\ker|A|=\ker A$（据推论 \ref{cor:ker_a_ker_moda}），所以$A\mathbf{v}=A\mathbf{v}_1$，这意味着$U_0\mathbf{x}$是定义完善的。
+
+    则构造出了$A=U_0|A|$。验证$U_0$是线性变换，留给读者作为习题。
+
+    要将$U_0$延拓为幺正算子$U$，我们求幺正变换$U_1:\ker A\to$\linebreak $(\rg A)^\perp=\ker A^*$。这总可以实现，因为对于方阵$A$有$\dim\ker A=\dim\ker A^*$（秩定理）。
+
+    容易验证，$U=U_0+U_1$是幺正算子，且有$A=U|A|$。
+\end{proof}
+
+\subsection{奇异值、施密特分解}
+
+\begin{definition*}
+    $|A|$的特征值称为$A$的{\bf 奇异值}。换言之，如果$\lambda_{1},\lambda_{2},\ldots,\lambda_{n}$是$A^*A$的特征值，那么$\sqrt{\lambda_{1}},\sqrt{\lambda_{2}},\ldots,\sqrt{\lambda_{n}}$是$A$的奇异值。\index{奇异值（singular value）}
+\end{definition*}
+\begin{remark*}
+    文献中往往将奇异值定义为$A^*A$的特征值的算术平方根，而并不借助$|A|$。
+
+    我认为变换的模这一概念很重要，所以在上面介绍了它。不过，变换的模的概念在后文（定义施密特和奇异值分解）并不会再被用到。并且，下面会说明，很容易从奇异值分解中构造出$A$的模。
+\end{remark*}
+
+考虑变换$A:X\to Y$，并令$\sigma_1,\sigma_2,\ldots,\sigma_n$是$A$的奇异值（以重数计）。假设$\sigma_1,\sigma_2,\ldots,\sigma_r$是$A$的{\bf 非零}奇异值（以重数计）。特别地，这意味着$\sigma_k=0,k>r$。
+
+根据奇异值的定义，$\sigma_{1}^{2},\sigma_{2}^{2},\ldots,\sigma_{n}^{2}$是$A^*A$的特征值。令$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,$\linebreak $\mathbf{v}_{n}$是由$A^*A$的特征向量构成的规范正交基\footnote{我们知道，对于自伴算子（此处是$A^*A$），存在由其特征向量构成的规范正交基。}，$A^{*}A\mathbf{v}_{k}=\sigma_{k}^{2}\mathbf{v}_{k}$。
+
+\begin{proposition}
+    向量组\[\mathbf{w}_k:=\frac{1}{\sigma_k}A\mathbf{v}_k,\quad k=1,2,\ldots,r\]
+    是规范正交向量组。
+\end{proposition}
+
+\begin{proof}
+    因为$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{r}$是规范正交向量组，所以
+    \[(A\mathbf{v}_j,A\mathbf{v}_k)=(A^*A\mathbf{v}_j,\mathbf{v}_k)=(\sigma_j^2\mathbf{v}_j,\mathbf{v}_k)=\sigma_j^2(\mathbf{v}_j,\mathbf{v}_k)=\left\{\begin{array}{ll}0,&\quad j\neq k\\\sigma_j^2,&\quad j=k\end{array}\right.\qedhere\]
+\end{proof}
+
+用上述命题的记号，变换$A$可表示为
+\begin{equation}\label{schmidt_decomp_1}
+    A=\sum_{k=1}^r\sigma_k\mathbf{w}_k\mathbf{v}_k^*,
 \end{equation}
-因此（见推论 1.6），$N^*N = NN^*$.~\end{proof}
-
-\begin{exer} {\heiti 练习}~
-
-2.1. 判断正误：
-\\
-a) 任何酉算子 $U: X \to X$ 都是正规的。
-\\
-b) 矩阵是酉的当且仅当它是可逆的。
-\\
-c) 如果两个矩阵酉等价，那么它们也相似。
-\\
-d) 两个自伴随算子之和是自伴随的。
-\\
-e) 酉算子的伴随是酉的。
-\\
-f) 正规算子的伴随是正规的。
-\\
-g) 如果一个线性算子的所有特征值都是 1，那么该算子必须是酉的或正交的。
-\\
-h) 如果一个正规算子的所有特征值都是 1，那么该算子是恒等（单位）算子。
-\\
-i) 线性算子可能保持范数但不保持内积。
-
-2.2. 证明或证伪：两个正规算子之和也是正规的。
-
-2.3. 证明一个酉等价于对角矩阵的矩阵是正规的。
-
-2.4. 正交对角化矩阵 
-$$\begin{pmatrix} 3 & 2 \\ 2 & 3 \end{pmatrix}.$$
-找出 $A$ 的所有平方根，即找出所有满足 $B^2 = A$ 的矩阵 $B$.~
-{\heiti 注记：} $A$ 的所有平方根都是自伴随的。
-
-2.5. 判断正误：任何自伴随矩阵都有一个自伴随的平方根。证明你的结论。
-
-2.6. 正交对角化矩阵 $$A = \begin{pmatrix} 7 & 2 \\ 2 & 4 \end{pmatrix},$$
-即将其表示为 $A = UDU^*$，其中 $D$ 是对角矩阵，$U$ 是酉矩阵。
-\\
-在 $A$ 的所有平方根中，找出具有正特征值的平方根。你可以将 $B$ 表示为乘积形式。
-
-2.7. 判断正误：
-\\
-a) 两个自伴随矩阵的乘积是自伴随的。
-\\
-b) 如果 $A$ 是自伴随的，那么 $A^k$ 是自伴随的。证明你的结论。
-
-2.8. 设 $A$ 是 $m \times n$ 矩阵。证明：
-\\
-a) $A^*A$ 是自伴随的。
-\\
-b) $A^*A$ 的所有特征值都是非负的。
-\\
-c) $A^*A + I$ 是可逆的。
-
-2.9. 证明或证伪：
-\\
-a) 如果 $A$ 是自伴随的，那么 $A + \ii I$ 是可逆的。
-\\
-b) 如果 $U$ 是酉的，$U + \frac{3}{4}I$ 是可逆的。
-\\
-c) 如果矩阵 $A$ 是实的，那么 $A - \ii I$ 是可逆的。
-
-2.10. \textbf{正交对角化}旋转矩阵 
-$$R_\alpha = \begin{pmatrix} \cos \alpha & -\sin \alpha \\ \sin \alpha & \cos \alpha \end{pmatrix},$$
-其中 $\alpha$ 不是 $\pi$ 的整数倍。注意，在这种情况下你会得到复数特征值。
-
-2.11. \textbf{正交对角化}矩阵 
-$$A = \begin{pmatrix} \cos \alpha & \sin \alpha \\ \sin \alpha & -\cos \alpha \end{pmatrix}.$$
-{\heiti 提示：} 你会得到实数特征值。此外，三角恒等式 $\sin^2 x = 2 \sin x \cos x$, $\sin^2 x = (1 - \cos 2x)/2$, $\cos^2 x = (1 + \cos 2x)/2$（应用于 $x = \alpha/2$）将有助于简化特征向量的表达式。
-
-2.12. 你能从几何上描述上一问题中矩阵 $A$ 所代表的线性变换吗？它有一个非常简单的几何解释。
-
-2.13. 证明具有模为 1 的特征值（即所有特征值满足 $|\lambda_k| = 1$）的正规算子是酉的。\\
-{\heiti 提示：} 考虑对角化。
-
-2.14. 证明具有实数特征值的正规算子是自伴随的。
-
-
-2.15. 举例说明定理 2.2 的结论对于复数对称矩阵不成立。 即：
-\\
-    a) 构建一个（可对角化的）$2 \times 2$ 复数对称矩阵，它不容许一组正交的特征向量基；
-    \\
-    b) 构建一个 $2 \times 2$ 复数对称矩阵，它不能被对角化。
-\end{exer}
-
-
-\section{3. 极分解与奇异值分解}
-
-\subsection{3.1. 正定算子~~平方根}
-
-{\heiti 定义}~~称自伴随算子 $A: X \to X$ 为\textbf{正定}的，如果 
-$$(A\xx, \xx) > 0 \quad \forall \xx \neq 0,$$
-称其为\textbf{半正定}的，如果 
-$$(A\xx, \xx) \geq 0 \quad \forall \xx \in X.$$
-
-我们将使用记号 $A > 0$ 表示正定算子，$A \geq 0$ 表示半正定算子。
-
-下面的定理描述了正定和半正定算子。
-
-\begin{theorem}[\normalfont\heiti 定理 3.1\nopunct] 设 $A = A^*$.~那么
-
-1. $A > 0$ 当且仅当 $A$ 的所有特征值都是正的。
-
-2. $A \geq 0$ 当且仅当 $A$ 的所有特征值都是非负的。\end{theorem}
-
-\begin{proof}通过选取一组标准正交基，使得 $A$ 在该基下的矩阵是对角矩阵（见定理 2.1），我们可以无损于一般性地证明。要完成证明，只需注意到，对于对角矩阵，当且仅当其对角线元素都为正（非负）时，该矩阵才是正定（半正定）的。\end{proof}
-
-{\heiti 推论 3.2}~~设 $A = A^* \geq 0$ 是一个半正定算子。存在唯一一个半正定算子 $B$，使得 $B^2 = A$.~
-
-这样的 $B$ 被称为 $A$ 的（正）\textbf{平方根}，并记作 $\sqrt{A}$ 或 $A^{1/2}$.~
-
-\begin{proof}我们来证明 $\sqrt{A}$ 的存在性。设 $\{\vv_1, \vv_2, \dots, \vv_n\}$ 是 $A$ 的特征向量的标准正交基，并设 $\lambda_1, \lambda_2, \dots, \lambda_n$ 是相应的特征值。注意，由于 $A \geq 0$，所有 $\lambda_k \geq 0$.~
-
-在基 $\{\vv_1, \vv_2, \dots, \vv_n\}$ 下，$A$ 的矩阵是对角矩阵 $\diag\{\lambda_1, \lambda_2, \dots, \lambda_n\}$，对角线上是 $\lambda_1, \lambda_2, \dots, \lambda_n$.~定义 $B$ 在同一基下的矩阵为 $\diag\{\sqrt{\lambda_1}, \sqrt{\lambda_2}, \dots, \sqrt{\lambda_n}\}$.~
-
-显然，$B = B^* \geq 0$ 且 $B^2 = A$.~
-
-为了证明 $B$ 的唯一性，让我们假设存在一个算子 $C = C^* \geq 0$ 使得 $C^2 = A$.~设 $\{\uu_1, \uu_2, \dots, \uu_n\}$ 是 $C$ 的特征向量的标准正交基，并设 $\mu_1, \mu_2, \dots, \mu_n$ 是相应的特征值（注意 $\mu_k \geq 0 \quad \forall k$）。$C$ 在该基下的矩阵是对角矩阵 $\diag\{\mu_1, \mu_2, \dots, \mu_n\}$，因此 $A = C^2$ 在同一基下的矩阵是 $\diag\{\mu_1^2, \mu_2^2, \dots, \mu_n^2\}$.~这暗示 $A$ 的任何特征值 $\lambda$ 都必须是 $\mu_k^2$ 的形式，并且，更重要的是，如果 $A\xx = \lambda \xx$，那么 $C\xx = \sqrt{\lambda} \xx$.~
-
-因此，在上面的基 $\{\vv_1, \vv_2, \dots, \vv_n\}$ 下，$C$ 的矩阵是对角矩阵 $\diag\{\sqrt{\lambda_1}, \sqrt{\lambda_2}, $ $\dots, \sqrt{\lambda_n}\}$，即 $B = C$.~\end{proof}
-
-\subsection{3.2. 算子的模~~奇异值}
-考虑算子 $A: X \to Y$.~它的\textbf{埃尔米特平方} $A^*A$ 是作用在 $X$ 上的半正定算子。确实，$$(A^*A)^* = A^*(A^*)^* = A^*A$$
-并且 $$(A^*A\xx, \xx) = (A\xx, A\xx) = \|A\xx\|^2 \geq 0 \quad \forall \xx \in X.$$
-因此，存在（唯一）一个半正定算子 $R = \sqrt{A^*A}$.~这个算子 $R$ 被称为算子 $A$ 的\textbf{模}(modulus)，通常记为 $|A|$.~
-
-$A$ 的模显示了算子 $A$ 的“大小”：
-
-{\heiti 命题 3.3}~~对于线性算子 $A: X \to Y$，
-$$\| |A| \xx \| = \|A\xx\| \quad \forall \xx \in X.$$
-
-\begin{proof}对于任何 $\xx \in X$，
-\begin{equation} \notag
-\begin{split}
-\| |A| \xx \|^2 =&\  (|A|\xx, |A|\xx) = (|A|^*|A|\xx, \xx) = ( |A|^2 \xx, \xx )  \\
-=&\    (A^*A\xx, \xx) = (A\xx, A\xx) = \|A\xx\|^2.
-\end{split}
-\end{equation}\end{proof}
-
-{\heiti 推论 3.4}~~
-$$\Ker A = \Ker |A| = (\Ran |A|)^\perp.$$
-
-\begin{proof}第一个等式直接来自命题 3.3，第二个等式来自恒等式 $\Ker T = (\Ran T^*)^\perp$（$|A|$ 是自伴随的）。\end{proof}
-
-\begin{theorem}[\normalfont\heiti 定理 3.5\nopunct] （算子的极分解，polar decomposition）设 $A: X \to X$ 是一个算子（方阵）。那么 $A$ 可以表示为 
-$$A = U|A|,$$
-其中 $U$ 是酉算子。\end{theorem}
-
-{\heiti 注记}~~酉算子 $U$ 通常不是唯一的。从定理的证明中可以看出，$U$ 仅在 $A$ 可逆时才唯一。
-
-{\heiti 注记}~~极分解 $A = U|A|$ 也适用于作用在一个空间到另一个空间上的算子 $A: X \to Y$.~但在这种情况下，我们只能保证 $U$ 是从 $\Ran |A| = (\Ker A)^\perp$ 到 $Y$ 的一个等距同构。
-
-如果 $\dim X \leq \dim Y$，则此等距同构可以扩展为从整个 $X$ 到 $Y$ 的等距同构（如果 $\dim X = \dim Y$，则它将是一个酉算子）。
-
-\begin{proof}[\normalfont\heiti 定理 3.5 的证明~\nopunct]考虑向量 $\xx \in \Ran |A|$.~那么向量 $\xx$ 可以表示为 $\xx = |A|\vv$ 对于某个向量 $\vv \in X$.~
-
-定义 $U_0 \xx := A\vv$.~根据命题 3.3 
-$$\|U_0 \xx\| = \|A\xx\| = \||A|\vv\| = \|\xx\|,$$
-所以看起来 $U$ 是从 $\Ran |A|$ 到 $X$ 的一个等距同构。
-
-但首先我们需要证明 $U_0$ 是良好定义的。设 $\vv_1$ 是另一个使得 $\xx = |A|\vv_1$ 的向量。但是 $\xx = |A|\vv = |A|\vv_1$ 意味着 $\vv - \vv_1 \in \Ker |A| = \Ker A$（参见推论 3.4），所以 $A\vv = A\vv_1$，这意味着 $U_0 \xx$ 是良好定义的。
-
-根据构造，$A = U_0|A|$.~我们将核验 $U_0$ 是一个线性变换的证明留给读者。
-
-为了将 $U_0$ 扩展为酉算子 $U$，我们找到一个酉变换 $U_1 : \Ker A \to (\Ran A)^\perp = \Ker A^*$.~这样做总是可能的，因为对于方阵，$\dim \Ker A = \dim\Ker  A^*$（根据秩定理）。
-
-很容易验证，$U = U_0 + U_1$ 是一个酉算子，并且 $A = U |A|$.\end{proof}
-
-\subsection{3.3. 奇异值~~施密特分解}
-
-{\heiti 定义}~~$|A|$ 的特征值被称为 $A$ 的\textbf{奇异值}\index{qiyizhi@奇异值}(singular value)。换句话说，如果 $\lambda_1, \lambda_2, \dots, \lambda_n$ 是 $A^*A$ 的特征值，那么 $\sqrt{\lambda_1}, \sqrt{\lambda_2}, \dots, \sqrt{\lambda_n}$ 就是 $A$ 的奇异值。
-
-{\heiti 注记}~~在许多教材、文献中，奇异值被定义为 $A^*A$ 的特征值的非负平方根，而不提及算子 $|A|$.~
-
-我认为算子 $|A|$ 的概念很重要，所以已经在前面介绍了。然而，算子 $|A|$ 的概念对于后续内容（定义施密特和奇异值分解）不是必需的。此外，正如下面将要显示的，算子 $|A|$ 可以很容易地从奇异值分解构造出来。
-
-设 $A: X \to Y$ 是一个算子，并设 $\sigma_1, \sigma_2, \dots, \sigma_n$ 是 $A$ 的奇异值（计入重数）。假设 $\sigma_1, \sigma_2, \dots, \sigma_r$ 是 $A$ 的\textbf{非零}奇异值（计入重数）。这意味着 $\sigma_k = 0$ 对于 $k > r$.~
-
-
-根据奇异值的定义，数字 $\sigma_1^2, \sigma_2^2, \dots, \sigma_n^2$ 是 $A^*A$ 的特征值。设 $\{\vv_1, \vv_2, \dots, \vv_n\}$ 是 $A^*A$ 的特征向量的标准正交基，$A^*A\vv_k = \sigma_k^2 \vv_k$.~
-
-{\heiti 命题 3.6}~~系统 
-$$\{\ww_k := \frac{1}{\sigma_k} A\vv_k,\quad k = 1, 2, \dots, r\}$$
-是一个标准正交系统。
-
-\begin{proof}$$(A\vv_j, A\vv_k) = (A^*A\vv_j, \vv_k) = (\sigma_j^2 \vv_j, \vv_k) = \sigma_j^2 (\vv_j, \vv_k) = \begin{cases} 0, & j \neq k \\ \sigma_j^2, & j = k \end{cases},$$因为 $\{\vv_1, \vv_2, \dots, \vv_r\}$ 是一个标准正交系统。\end{proof}
-
-在上述命题的记号中，算子 $A$ 可以表示为
-$$(3.1)\quad A = \sum_{k=1}^r \sigma_k \ww_k \vv_k^*,$$
-或者等价地
-$$(3.2)\quad A\xx = \sum_{k=1}^r \sigma_k (\xx, \vv_k) \ww_k.$$
-确实，我们知道 $\{\vv_1, \vv_2, \dots, \vv_n\}$ 是 $X$ 的一组标准正交基。那么将 $\xx = \vv_j$ 代入 (3.2) 的右侧，我们得到 
-$$\sum_{k=1}^r \sigma_k (\vv_j, \vv_k) \ww_k = \sigma_j (\vv_j, \vv_j) \ww_j = \sigma_j \ww_j = A\vv_j$$
-如果 $j=1, 2, \dots, r$，并且 
-$$\sum_{k=1}^r \sigma_k (\vv_k^* \vv_j) \ww_k = \oo = A\vv_j$$ 对于 $j > r$.~所以，(3.1) 中左右两侧的算子在基 $\{\vv_1, \vv_2, \dots, \vv_n\}$ 上是相同的，因此它们是相等的。
-
-{\heiti 定义}~~上述分解 (3.1)（或 (3.2)）被称为算子 $A$ 的\textbf{施密特分解}\index{shimitefenjie@施密特分解}(Schmidt decomposition)。
-
-{\heiti 注记}~~施密特分解不是唯一的。为什么？
-
-
-\begin{lemma}[\normalfont\heiti 引理 3.7\nopunct]设$A$可以被表示为 
-$$A = \sum_{k=1}^r \sigma_k \ww_k \vv_k^*,$$
-其中 $\sigma_k > 0$ 并且 $\{\vv_1, \vv_2, \dots, \vv_r\}$, $\{\ww_1, \ww_2, \dots, \ww_r\}$ 是某些标准正交系。
-
-那么这个表示给出了 $A$ 的施密特分解。\end{lemma}
-
-\begin{proof}我们只需要证明 $\vv_1, \vv_2, \dots, \vv_r$ 是 $A^*A$ 的特征向量，$A^*A\vv_k = \sigma_k^2 \vv_k$.~由于 $\{\ww_1, \ww_2, \dots, \ww_r\}$ 是标准正交系统，$$\ww_k^* \ww_j = (\ww_j, \ww_k) = \delta_{k,j} := \begin{cases} 0, & j \neq k \\ 1, & j = k \end{cases},$$
-因此 
-$$A^*A = \sum_{k=1}^r \sigma_k^2 \vv_k \vv_k^*.$$
-由于 $\{\vv_1, \vv_2, \dots, \vv_r\}$ 是标准正交系统，
-$$A^*A\vv_j = \sum_{k=1}^r \sigma_k^2 \vv_k \vv_k^* \vv_j = \sigma_j^2 \vv_j,$$
-因此 $\vv_k$ 是 $A^*A$ 的特征向量。\end{proof}
-
-{\heiti 推论 3.8}~~设 $$A = \sum_{k=1}^r \sigma_k \ww_k \vv_k^*$$
-是 $A$ 的施密特分解。那么 
-$$A^* = \sum_{k=1}^r \sigma_k \vv_k \ww_k^*$$
-是 $A^*$ 的施密特分解。
-
-\subsection{3.4. 施密特分解的矩阵表示~~奇异值分解}
-
-施密特分解可以写成一个很好的矩阵形式。即，假设 $A: \FF^n \to \FF^m$（这里 $\FF$ 总是 $\CC$ 或 $\RR$；我们可以通过选取 $X$ 和 $Y$ 中的标准正交基并处理这些基下的坐标来完成）。设 $\sigma_1, \sigma_2, \dots, \sigma_r$ 是 $A$ 的非零奇异值（计入重数），并设 
-$$A = \sum_{k=1}^r \sigma_k \ww_k \vv_k^*$$
-是 $A$ 的施密特分解。
-
-如你所见，这个等式可以重写为
-$$(3.3)\quad A = \widetilde{W} \widetilde{\Sigma} \widetilde{V}^*,$$
-其中 $\widetilde{\Sigma} = \diag\{\sigma_1, \sigma_2, \dots, \sigma_r\}$ 并且 $\widetilde{V}$ 和 $\widetilde{W}$ 是分别以 $\vv_1, \vv_2, \dots, \vv_r$ 和 $\ww_1, \ww_2, \dots, \ww_r$ 为列的矩阵。（你能说出每个矩阵的大小吗？）
-
-注意，由于 $\{\vv_1, \vv_2, \dots, \vv_r\}$ 和 $\{\ww_1, \ww_2, \dots, \ww_r\}$ 是标准正交系统，矩阵 $\widetilde{V}$ 和 $\widetilde{W}$ 是等距同构。还需注意 $r = \rank A$，见下面的练习 3.1。
-
-如果矩阵 $A$ 是可逆的，那么 $m=n=r$，矩阵 $\widetilde{V}$, $\widetilde{W}$ 是酉的，并且 $\widetilde{\Sigma}$ 是一个可逆的对角矩阵。
-
-事实证明，总是可以写出一个类似的表示（3.3），用酉矩阵 $V$ 和 $W$ 来代替 $\widetilde{V}$ 和 $\widetilde{W}$，并且在许多情况下，处理这样的表示会更方便。
-为了写出这个表示，我们首先需要将系统 $\{\vv_1, \vv_2, \dots, \vv_r\}$ 和 $\{\ww_1, \ww_2, \dots, \ww_r\}$ \textbf{补全}为 $\FF^n$ 和 $\FF^m$ 中的正交基。
-
-回想一下，要将 $\{\vv_1, \vv_2, \dots, \vv_r\}$ 补全为 $\FF^n$ 中的标准正交基，只需找到 $\Ker V^*$ 的一组标准正交基 $\{\vv_{r+1}, \dots, \vv_n\}$；那么系统 $\{\vv_1, \vv_2, \dots, \vv_n\}$ 将是 $\FF^n$ 中的一组标准正交基。并且人们总是能通过格拉姆-施密特正交化从任意系统得到一组标准正交基。
-
-然后 $A$ 可以表示为
-$$(3.4)\quad A = W \Sigma V^*,$$
-其中 $V \in M^\FF_{n \times n}$ 和 $W \in M^\FF_{m \times m}$ 分别是以 $\vv_1, \vv_2, \dots, \vv_n$ 和 $\ww_1, \ww_2, \dots, \ww_m$ 为列的酉矩阵，而 $\Sigma \in M^{\RR_+}_{ m \times n}$ 是一个“对角”矩阵
-$$(3.5)\quad \sigma_{j,k} = \begin{cases} \sigma_k, & j=k \leq r \\ 0, & \text{其他} \end{cases}.$$
-也就是说，为了得到矩阵 $\Sigma$，你需要取对角矩阵 $\diag\{\sigma_1, \sigma_2, \dots, \sigma_r\}$ 并通过在“南方”（下方）和“东方”（右侧）添加额外的零将其变成一个 $m \times n$ 矩阵。
-
-{\heiti 定义 3.9}~~对于矩阵 $A \in M^\FF_{m \times n}$（这里 $\FF$ 总是 $\CC$ 或 $\RR$），其\textbf{奇异值分解}\index{qiyizhifenjie@奇异值分解} (singular value decomposition, SVD) 是形如 (3.4) 的分解，即分解 $A = W \Sigma V^*$，其中 $W \in M^\FF_{n \times n}$ 和 $V \in M^\FF_{m \times m}$ 是酉矩阵，而 $\Sigma \in M^{\RR_+}_{ m \times n}$ 是“对角”矩阵（意思是 $\sigma_{k,k} \geq 0$ 对于所有 $k = 1, 2, \dots, \min\{m, n\}$，并且 $\sigma_{j,k} = 0$ 对于所有 $j \neq k$）。
-
-(3.3)这种表示经常称作\textbf{约简 SVD}(reduced or compact SVD) .~更精确地说，约简 SVD 是一个表示 $A = \widetilde{W} \widetilde{\Sigma} \widetilde{V}^*$，其中 $\widetilde{\Sigma} \in M^{\RR_+}_{ r \times r}$, $r \leq \min\{m, n\}$ 是一个对角矩阵，其对角线元素严格为正，而 $\widetilde{W} \in M^\FF_{n \times r}$, $\widetilde{V} \in M^\FF_{m \times r}$ 是等距同构；而且，我们要求 $\widetilde{W}$ 和 $\widetilde{V}$ 中至少有一个不是方阵。
-
-{\heiti 注记 3.10}~~很容易看出，如果 $A = W \Sigma V^*$ 是 $A$ 的奇异值分解，那么 $\sigma_k := \sigma_{k,k}$ 是 $A$ 的奇异值，即 $\sigma_k^2$ 是 $A^*A$ 的特征值。而且，$V$ 的列 $\vv_k$ 是 $A^*A$ 的相应特征向量，$A^*A\vv_k = \sigma_k^2 \vv_k$.~还要注意，如果 $\sigma_k \neq 0$，那么 $\ww_k = \frac{1}{\sigma_k} A\vv_k$.~
-
-所有这些都意味着任何奇异值分解 $A = W \Sigma V^*$ 都可以通过本节上面描述的构造从施密特分解 (3.2) 得到。
-
-对于不可逆矩阵 $A$，约简奇异值分解可以解释为施密特分解 (3.2) 的矩阵形式。对于可逆矩阵 $A$，施密特分解的矩阵形式给出了奇异值分解。
-
-{\heiti 注记 3.11}~~奇异值分解$A = W \Sigma V^*$ 的另一种解释是，$\Sigma$ 是 $A$ 在（标准正交）基 $\{\vv_1, \vv_2, \dots, \vv_n\}$ 和 $\{\ww_1, \ww_2, \dots, \ww_n\}$ 下的矩阵，即 $\Sigma = [A]_{\B,\A}$.~
-
-我们将在后面使用这个解释。
-
-\subsubsection{3.4.1. 从奇异值分解到极分解}
-
-注意，如果我们知道方阵 $A$ 的奇异值分解 $A = W \Sigma V^*$，我们可以写出 $A$ 的极分解：
-$$(3.6) \quad A = W \Sigma V^* = (WV^*) (V \Sigma V^*) = U|A|$$
-其中 $|A| = V \Sigma V^*$ 并且 $U = WV^*$.~
-
-为了说明这确实是一个极分解，让我们注意到 $V\Sigma V^*$ 是一个自伴随的、半正定的算子，并且 
-\begin{equation} \notag
-\begin{split}A^*A &= (W\Sigma V^*)^*(W\Sigma V^*) = V \Sigma^* W^* W \Sigma V^* = V \Sigma^*\Sigma V^* \\
-&= V (\Sigma^* \Sigma) V^* = (V \Sigma V^*)(V \Sigma V^*) = (|A|)^2.
-\end{split}
+或等价地写成
+\begin{equation}\label{schmidt_decomp_2}
+    A\mathbf{x}=\sum_{k=1}^r\sigma_k(\mathbf{x},\mathbf{v}_k)\mathbf{w}_k.
 \end{equation}
-所以根据 $|A|$ 的定义（它是 $A^*A$ 的唯一半正定平方根），我们可以看出 $|A| = V \Sigma V^*$.~变换 $WV^*$ 显然是一个酉变换，因为它是由两个酉变换相乘得到的，所以（3.6）确实给出了 $A$ 的一个极分解。
+的确如此：我们知道$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$是$X$的规范正交基，那么将$\mathbf{x}=\mathbf{v}_j$代入 \eqref{schmidt_decomp_2} 可得
+\[\text{若}~j=1,2,\ldots,r,~\text{则}~\sum_{k=1}^r\sigma_k(\mathbf{v}_j,\mathbf{v}_k)\mathbf{w}_k=\sigma_j(\mathbf{v}_j,\mathbf{v}_j)\mathbf{w}_j=\sigma_j\mathbf{w}_j=A\mathbf{v}_j\]
+且\[\text{对于}~j>r,~\text{有}~\sum_{k=1}^r\sigma_k(\mathbf{v}_k^*\mathbf{v}_j)\mathbf{w}_k=\mathbf{0}=A\mathbf{v}_j.\]
+所以 \eqref{schmidt_decomp_1} 的左右两侧对基$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$的作用相同，因此它们相同。
+
+\begin{definition*}
+    上述分解 \eqref{schmidt_decomp_1} 或 \eqref{schmidt_decomp_2} 称为变换$A$的{\bf 施密特分解}。\index{施密特分解（Schmidt decomposition）}
+\end{definition*}
+\begin{remark*}
+    一个变换的施密特分解不唯一。为什么？
+\end{remark*}
+\begin{lemma}
+    令$A$可表示为\[A=\sum_{k=1}^r\sigma_k\mathbf{w}_k\mathbf{v}_k^*\]
+    其中$\sigma_k>0$，$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{r}$和$\mathbf{w}_{1},\mathbf{w}_{2},\ldots,\mathbf{w}_{r}$是规范正交向量组。
+
+    那么该表达式给出了$A$的一个施密特分解。
+\end{lemma}
+
+\begin{proof}
+    我们只需证明$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{r}$是$A^*A$的特征向量，$A^{*}A\mathbf{v}_{k}=\sigma_{k}^{2}\mathbf{v}_{k}$。因为$\mathbf{w}_{1},\mathbf{w}_{2},\ldots,\mathbf{w}_{r}$是规范正交向量组，所以
+    \[\mathbf{w}_k^*\mathbf{w}_j=(\mathbf{w}_j,\mathbf{w}_k)=\delta_{k,j}:=\left\{\begin{array}{ll}0,&\quad j\neq k\\1,&\quad j=k,\end{array}\right.\]
+    因此\[A^{*}A=\sum_{k=1}^{r}\sigma_{k}^{2}\mathbf{v}_{k}\mathbf{v}_{k}^{*}.\]
+    因为$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{r}$是规范正交向量组，所以\[A^*A\mathbf{v}_j=\sum_{k=1}^r\sigma_k^2\mathbf{v}_k\mathbf{v}_k^*\mathbf{v}_j=\sigma_j^2\mathbf{v}_j\]
+    所以各$\mathbf{v}_j$是$A^*A$的特征向量。
+\end{proof}
+
+\begin{corollary}
+    令\[A=\sum_{k=1}^r\sigma_k\mathbf{w}_k\mathbf{v}_k^*\]是$A$的施密特分解。那么\[A^*=\sum_{k=1}^r\sigma_k\mathbf{v}_k\mathbf{w}_k^*\]是$A^*$的施密特分解。
+\end{corollary}
+
+\subsection{施密特分解的矩阵表示、奇异值分解}
+
+施密特分解可以写成优美的矩阵形式。我们假设$A:\mathbb{F}^n\to \mathbb{F}^m$，其中$\mathbb{F}$是$\mathbb{C}$或$\mathbb{R}$（取定$X$和$Y$的规范正交基，并围绕关于这些基的坐标展开讨论，总能化归到这种情况）。令$\sigma_{1},\sigma_{2},\ldots,\sigma_{r}$是$A$的非零奇异值，并令
+\[A=\sum_{k=1}^r\sigma_k\mathbf{w}_k\mathbf{v}_k^*\]
+是$A$的施密特分解。
+
+容易看出此式可改写为
+\begin{equation}\label{schmidt_decomp_3}
+    A=\widetilde{W}\widetilde{\Sigma}\widetilde{V}^*
+\end{equation}
+其中$\widetilde{\Sigma}=\operatorname{diag}\{\sigma_1,\sigma_2,\dots,\sigma_r\}$，$\widetilde{V}$和$\widetilde{W}$分别是各列为$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{r}$和$\mathbf{w}_{1},\mathbf{w}_{2},\ldots,\mathbf{w}_{r}$的矩阵。（你能确定各矩阵的大小吗？）
+
+注意，因为$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{r}$和$\mathbf{w}_{1},\mathbf{w}_{2},\ldots,\mathbf{w}_{r}$是规范正交向量组，所以$\widetilde{V}$和$\widetilde{W}$是等距矩阵。还请注意，$r=\rank A$（见下习题 \ref{ex:6_3_1}）。
+
+若矩阵$A$可逆，那么$m=n=r$，矩阵$\widetilde{V}$和$\widetilde{W}$是幺正的，$\widetilde{\Sigma}$是可逆的对角矩阵。
+
+其实，总可以用幺正的$V$和$W$（而不仅是$\widetilde{V}$和$\widetilde{W}$）来写出类似 \eqref{schmidt_decomp_3} 的表达式，并且在许多情形下使用这种表达式更加便利。要写出这样的表达式，首先需要将向量组$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{r}$和$\mathbf{w}_{1},\mathbf{w}_{2},\ldots,\mathbf{w}_{r}$分别补全为$\mathbb{F}^n$和$\mathbb{F}^m$的规范正交基。
+
+回忆一下，为了将$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{r}$补全为$\mathbb{F}^n$的规范正交基，只需求出$\ker V^*$的规范正交基$\mathbf{v}_{r+1},\ldots,\mathbf{v}_{n}$，从而向量组$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$就是$\mathbb{F}^n$的规范正交基。并且，从一般的基得到规范正交基，还总可以通过格拉姆-施密特正交化来完成。
+
+这样一来，$A$可表示为
+\begin{equation}\label{SVD}
+    A=W\Sigma V^*
+\end{equation}
+其中$V\in M_{n\times n}^{\mathbb{F}}$和$W\in M_{m\times m}^{\mathbb{F}}$分别是各列为$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$和\linebreak $\mathbf{w}_{1},\mathbf{w}_{2},\ldots,\mathbf{w}_{m}$的幺正矩阵，且$\Sigma$是$m\times n$“对角”矩阵
+\begin{equation}\label{SVD_diag}
+    \Sigma_{j,k}=\left\{\begin{array}{ll}{\sigma_{k}}&{\quad j=k\leq r;}\\{0}&{\quad\text{其他}.}\end{array}\right.
+\end{equation}
+换言之，向对角矩阵$\operatorname{diag}\{\sigma_1,\sigma_2,\dots,\sigma_r\}$的右下角补零，使其扩充为$m\times n$大小，就得到了矩阵$\Sigma$。
+
+\begin{definition}
+    矩阵$A\in M_{m\times n}^{\mathbb{F}}$（回忆一下，$\mathbb{F}$是$\mathbb{C}$或$\mathbb{R}$）的{\bf 奇异值分解}（SVD）是形如 \eqref{SVD} 的分解，即$A=W\Sigma V^*$，其中$W\in M_{m\times m}^{\mathbb{F}}$和$V\in M_{n\times n}^{\mathbb{F}}$是幺正矩阵，$\Sigma\in M_{m\times n}^{\mathbb{R}_+}$是“对角”矩阵（意为对于所有$k=1,2,\dots,\min\{m,n\}$有$\sigma_{k,k}\ge 0$，而对于所有$j\ne k$有$\sigma_{j,k}=0$）。\index{奇异值分解（singular value decomposition）}
+
+    表达式 \eqref{schmidt_decomp_3} 常称为{\bf 简化}或{\bf 紧凑} SVD。\index{奇异值分解（singular value decomposition）!简化（或紧凑）$\sim$【reduced (equiv. compact)】}更确切地说，简化SVD的表达式为$A=\widetilde{W}\widetilde{\Sigma}\widetilde{V}^*$，其中$\widetilde{\Sigma}\in M_{r\times r}^{\mathbb{R}_+},r\le\min\{m,n\}$是对角矩阵且各对角元严格大于零，$\widetilde{W}\in M_{m\times r}^{\mathbb{F}}$和$\widetilde{V}\in M_{n\times r}^{\mathbb{F}}$是等距矩阵。此外，我们还要求$\widetilde{W}$和$\widetilde{V}$中至少有一个不是方阵。
+\end{definition}
+
+\begin{remark}
+    容易看出，如果$A=W\Sigma V^*$是$A$的奇异值分解，那么$\sigma_k:=\sigma_{k,k}$是$A$的奇异值，即$\sigma_k^2$是$A^*A$的特征值。此外，$V$的各列$\mathbf{v}_k$是$A^*A$的对应特征向量，即$A^{*}A\mathbf{v}_{k}=\sigma_{k}^{2}\mathbf{v}_{k}$。又注意到，若$\sigma_k\ne 0$，那么$\mathbf{w}_k=\frac{1}{\sigma_k}A\mathbf{v}_k$。
+
+    所有这些都意味着，按照本节前面叙述的方法，可由施密特分解 \eqref{schmidt_decomp_2} 构造出奇异值分解$A=W\Sigma V^*$。
+\end{remark}
+
+简化奇异值分解可解释为对不可逆矩阵$A$的施密特分解 \eqref{schmidt_decomp_2} 的矩阵形式。对可逆矩阵$A$，施密特分解的矩阵形式是（非简化的）奇异值分解。
+
+\begin{remark}\label{remark:Singular_orthonormal_diag}
+    奇异值分解$A=W\Sigma V^*$的另一种解释是，$\Sigma$是$A$在（规范正交）基$\mathcal{A}=\{\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}\}$和$\mathcal{B}=\{\mathbf{w}_{1},\mathbf{w}_{2},\ldots,\mathbf{w}_{m}\}$下的矩阵，即$\Sigma=[A]_\mathcal{BA}$。
+
+    我们将在后文用到这种解释。
+\end{remark}
+
+\subsubsection{从奇异值分解到极分解}
+
+注意，如果我们知道方阵$A$的奇异值分解$A=W\Sigma V^*$，就可由此写出$A$的极分解：
+\begin{equation}\label{polar_decomp}
+    A=W\Sigma V^*=(W V^*)(V\Sigma V^*)=U|A|
+\end{equation}
+其中$|A|=V\Sigma V^*$，$U=W V^*$。
+
+为说明这的确是极分解，注意到$V\Sigma V^*$是自伴且正半定的算子，且有
+\[A^*A=V\Sigma W^*W\Sigma V^*=V\Sigma\Sigma V^*=V\Sigma V^*V\Sigma V^*=(V\Sigma V^*)^2.\]
+故根据$|A|$的定义（$A^*A$的唯一正半定平方根），可见$|A|=V\Sigma V^*$。变换$WV^*$是两个幺正变换的乘积，自然是幺正的，所以 \eqref{polar_decomp} 确实是$A$的极分解。
+
+注意，此处的推证过程只适用于方阵，因为如果$A$不是方阵，那么乘积$V\Sigma$没有定义（维数不匹配，你能看出来是怎么回事吗？）。
+
+\begin{problemset}
+    \item \label{ex:6_3_1} 证明：矩阵$A$的非零奇异值的数量（以重数计）等于它的秩。
+    \item 求下列矩阵$A$的施密特分解$A=\sum_{k=1}^{r}s_{k}\mathbf{w}_{k}\mathbf{v}_{k}^{*}$：
+    \[\begin{pNiceMatrix}[margin]2&3\\0&2\end{pNiceMatrix},\quad\begin{pNiceMatrix}[margin]7&1\\0&0\\5&5\end{pNiceMatrix},\quad\begin{pNiceMatrix}[margin]1&1\\0&1\\-1&1\end{pNiceMatrix}.\]
+    \item 令$A$是可逆矩阵，并令$A=W\Sigma V^*$是它的奇异值分解。求出$A^*$和$A^{-1}$的奇异值分解。
+    \item 求下列矩阵的奇异值分解$A=W\Sigma V^*$，其中$V$和$W$是幺正矩阵：
+    \begin{probenumerate}
+        \item $A=\begin{pNiceMatrix}[margin]{-3}&{1}\\{6}&{-2}\\{6}&{-2}\end{pNiceMatrix}$；
+        \item $A={\begin{pNiceMatrix}[margin]{3}&{2}&{2}\\{2}&{3}&{-2}\end{pNiceMatrix}}$。
+    \end{probenumerate}
+    \item 求下列矩阵的奇异值分解\[A=\begin{pNiceMatrix}[margin]
+        2&3\\0&2
+    \end{pNiceMatrix}\]利用它求出
+    \begin{probenumerate}
+        \item $\max_{\|\mathbf{x}\|\leq1}\|A\mathbf{x}\|$，以及使之取得最大值的向量；
+        \item $\min_{\|\mathbf{x}\|=1}\|A\mathbf{x}\|$，以及使之取得最小值的向量；
+        \item $\mathbb{R}^2$中闭单位球的像$A(B)$，$B=\{\mathbf{x}\in\mathbb{R}^2:\|\mathbf{x}\|\le 1\}$。从几何角度描述$A(B)$。
+    \end{probenumerate}
+    \item 证明：对方阵$A$，$|\det A|=\det |A|$。
+    \item 判断正误：
+    \begin{probenumerate}
+        \item 矩阵的奇异值也是该矩阵的特征值。
+        \item 矩阵$A$的奇异值是$A^*A$的特征值。
+        \item 如果$s$是矩阵$A$的奇异值，$c$是标量，那么$|c|s$是$cA$的奇异值。
+        \item 任意线性算子的奇异值都是非负的。
+        \item 自伴矩阵的奇异值与其特征值相同。
+    \end{probenumerate}
+    \item 令$A$是$m\times n$矩阵。证明：矩阵$A^*A$和$AA^*$的{\bf 非零}特征值（以重数计）相同。你能指出，何时$A^*A$和$AA^*$的零特征值具有相同的重数吗？
+    \item 令$s$是算子$A$的最大奇异值，并令$\lambda$是$A$的特征值中绝对值最大的一个。证明$|\lambda|\le s$。
+    \item 证明：矩阵的秩等于其非零奇异值的个数（计重数）。
+    \item \label{ex:6_3_11} 证明：矩阵 $A$ 的算子范数与 Frobenius 范数相同，当且仅当 $\rank A=1$。\textbf{提示：}上一题的结论可能有用。
+    \item 对矩阵$A$\[A=\begin{pNiceMatrix}[margin]2&-3\\0&2\end{pNiceMatrix},\]
+    描述单位球的逆像，即所有满足$\|A\mathbf{x}\|\le 1$的$\mathbf{x}\in\mathbb{R}^2$。利用奇异值分解。
+\end{problemset}
+
+\section{奇异值分解的应用}
+
+\enlargethispage{1.5em}
+
+如前面所讨论的，奇异值分解就是关于两个不同的规范正交基的对角化。因为我们用了两个不同的基，所以从奇异值分解不太能看出算子在特征值方面的性质。例如，奇异值分解中的$\Sigma$  \eqref{SVD_diag} 的对角元不是$A$的特征值。又注意到，对 \eqref{SVD} 所示的$A=W\Sigma V^*$，一般有$A^n\ne W\Sigma^n V^*$，所以这种对角化无助于计算关于该矩阵的函数。
+
+然而，如下面几个例子所示，奇异值能给出大量有关线性变换的所谓{\bf 度量性质}的信息。
+
+注：进行奇异值分解，需要求出埃尔米特（自伴）矩阵$A^*A$的特征值和特征向量。要求特征值，通常要先计算特征多项式，再求根，云云。这看起来是个复杂的过程——尤其是考虑到$5$次及以上的多项式没有求根公式。
+
+然而，求出埃尔米特矩阵的特征值和特征向量，已有很高效的数值方法，它们能达到要求的任意精度。这些方法并不涉及计算特征多项式以及求根，而是通过迭代直接计算特征值和特征向量的近似值。因为埃尔米特矩阵的特征向量能构成正交基，所以这些方法特别适用于它们。
+
+此处我们将不会讨论这些方法——这超出了本书的范围。然而，请你相信，计算埃尔米特矩阵的特征值和特征向量，进而求出奇异值分解，都有很高效的数值方法。这些方法非常高效，计算开销只比解线性方程组稍大一点点。
+
+\subsection{单位球的像}
+
+以下面问题为例。令$A:\mathbb{R}^n\to \mathbb{R}^m$是线性变换，并令$B=\{\mathbf{x}\in\mathbb{R}^n:\|\mathbf{x}\|\le 1\}$是$\mathbb{R}^n$中的闭{\bf 单位球}。现要描述$A(B)$，即要得出单位球在线性变换下被变成了什么。
+
+我们首先考虑最简单的情况——$A$是对角阵$\operatorname{diag}\{\sigma_1,\sigma_2,\dots,\sigma_n\},$ $\sigma_k>0,k=1,2,\dots,n$。那么，对$\mathbf{x}=(x_{1},x_{2},\ldots,x_{n})^{T}$和$\mathbf{y}=A\mathbf{x}=(y_{1},y_{2},\ldots,y_{n})^{T}$，有$y_k=\sigma_k x_k$（等价地说，$x_k=y_k/\sigma_k$）对$k=1,2,\dots,n$成立。因此
+\[\text{对}~\|\mathbf{x}\|\leq1,~\text{有}~\mathbf{y}=(y_1,y_2,\ldots,y_n)^T=A\mathbf{x},\]
+当且仅当各坐标$y_1,y_2,\dots,y_n$满足下列不等式
+\[\frac{y_1^2}{\sigma_1^2}+\frac{y_2^2}{\sigma_2^2}+\cdots+\frac{y_n^2}{\sigma_n^2}=\sum_{k=1}^n\frac{y_k^2}{\sigma_k^2}\leq1\]
+（这其实就是不等式$\|\mathbf{x}\|^2=\sum_k x_k^2\leq1$）。
+
+$\mathbb{R}^n$中满足上述不等式的点构成的集合称为椭球。若$n=2$，那么它是半长轴为$\sigma_1$和$\sigma_2$的椭圆；而若$n=3$，它是半长轴为$\sigma_1$、$\sigma_2$和$\sigma_3$的椭球。在$\mathbb{R}^n$中，这个集合的几何也很容易可视化，并且我们称该集合是半长轴为$\sigma_1,\sigma_2,\dots,\sigma_n$的椭球。向量$\mathbf{e}_{1},\mathbf{e}_{2},\ldots,\mathbf{e}_{n}$，或更准确地说，这些向量所在的直线，称为该椭球的{\bf 主轴}。
+
+奇异值分解本质上是说，内积空间上的任意算子都可关于一对规范正交基进行对角化（见注 \ref{remark:Singular_orthonormal_diag}）。也就是说，考虑奇异值分解 \eqref{SVD} 中的规范正交基$\mathcal{A}=\{\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}\}$和$\mathcal{B}=\{\mathbf{w}_{1},\mathbf{w}_{2},\ldots,\mathbf{w}_{n}\}$\footnote{注意此处讨论的是算子，故$\mathcal{A}$和$\mathcal{B}$中有相同数量的向量。——译者注}，那么$A$关于这些基的矩阵是对角阵
+\[[A]_{\mathcal{B}\mathcal{A}}=\mathrm{diag}\{\sigma_k:k=1,2,\ldots,n\}.\]
+假设所有$\sigma_k>0$，并重复前述的推理过程，容易说明，任意的点$\mathbf{y}=A\mathbf{x}\in A(B)$当且仅当该点满足不等式\[\frac{y_1^2}{\sigma_1^2}+\frac{y_2^2}{\sigma_2^2}+\cdots+\frac{y_n^2}{\sigma_n^2}=\sum_{k=1}^n\frac{y_k^2}{\sigma_k^2}\leq1\]
+其中$y_1,y_2,\dots,y_n$是$\mathbf{y}$在规范正交基$\mathcal{B}=\{\mathbf{w}_{1},\mathbf{w}_{2},\ldots,\mathbf{w}_{n}\}$（而不是标准基）下的坐标。类似地，$(x_1,x_2,\ldots,x_n)^T=[\mathbf{x}]_{\mathcal{A}}$。
 
-请注意，此推理仅适用于方阵，因为如果 $A$ 不是方阵，则乘积 $V\Sigma$ 是未定义的（维度不匹配，你能看出为什么吗？）。
+而这实质上就是之前的椭球，只不过旋转了（主轴与之前不同，但仍然正交）！
 
-\begin{exer} {\heiti 练习}~
+下面展示另一种解释。
 
-3.1. 证明矩阵 $A$ 的非零奇异值的数量（计入重数）与其秩相等。
+考虑一般情形：矩阵$A$不一定是方阵，且（或）并非所有的奇异值都是非零的。首先考虑$A$是形如 \eqref{SVD_diag} 的“对角”矩阵$\Sigma$的情况。容易看出，单位球$B$的像$\Sigma B$是半长轴为$\sigma_1,\sigma_2,\dots,\sigma_r$的椭球（不在整个空间中，而仅在$\rg \Sigma$中）。
 
+现在考虑更一般的情况，即$A=W\Sigma V^*$，其中$V,W$是幺正算子。首先，幺正变换不会改变单位球（因为它保持范数），因此$V^*(B)=B$。然后，我们已知$\Sigma (B)$是$\rg \Sigma$中的半长轴为$\sigma_1,\sigma_2,\dots,\sigma_r$的椭球。接着，又由于幺正变换不改变几何形状，所以$W(\Sigma(B))$仍是具有相同半长轴的椭球。由于$W$和$V^*$都可逆，所以从$A=W\Sigma V^*$不难看出$W$将$\rg \Sigma$变换为$\rg A$，因此我们可得出结论：
+\begin{center}
+    \fbox{\parbox{0.96\linewidth}{闭单位球$B$的像$A(B)$是$\rg A$中的椭球，半长轴为$\sigma_1,\sigma_2,\dots,\sigma_r$。此处$r$是$A$的非零奇异值的个数，即$A$的秩。}}
+\end{center}
 
-3.2. 为以下矩阵 $A$ 找出施密特分解 $A = \sum_{k=1}^r s_k \ww_k \vv_k^*$：
-$$\begin{pmatrix} 2 & 3 \\ 0 & 2 \end{pmatrix},\quad \begin{pmatrix} 7 & 1 \\ 0 & 0 \\ 5 & 5 \end{pmatrix}, \quad \begin{pmatrix} 1 & 1 \\ 0 & 1 \\ -1 & 1 \end{pmatrix}.$$
+\subsection{线性变换的算子范数}
 
-3.3. 设 $A$ 是一个可逆矩阵，设 $A = W \Sigma V^*$ 是它的奇异值分解。求 $A^*$ 和 $A^{-1}$ 的奇异值分解。
+给定线性变换$A:X\to Y$，考虑以下最优化问题：求出闭单位球$B=\{\mathbf{x}\in X:\|\mathbf{x}\|\le 1\}$上$\|A\mathbf{x}\|$的最大值。
 
-3.4. 为以下矩阵 $A$ 找出奇异值分解 $A = W \Sigma V^*$，其中 $V$ 和 $W$ 是酉矩阵：
-\\
-a) $A = \begin{pmatrix} -3 & 1 \\ 6 & -2 \\ 6 & -2 \end{pmatrix}$；
-\\
-b) $A = \begin{pmatrix} 3 & 2 & 2 \\ 2 & 3 & -2 \end{pmatrix}$.~
+同样，可借助奇异值分解来解决此问题。对于各元素非负的“对角”矩阵$A$（类似奇异值分解的定义中的矩阵$\Sigma$），上述最大值恰为最大的对角元。的确如此：令$s_1,s_2,\ldots,s_r$是$A$的非零对角元，并令$s_1$是其中的最大者。由于对$\mathbf{x}=(x_1,x_2,\ldots,x_n)^T$有
+\begin{equation}\label{Ax_singular}
+    A\mathbf{x}=\sum_{k=1}^rs_kx_k\mathbf{e}_k,
+\end{equation}
+故可得
+\[\|A\mathbf{x}\|^{2}=\sum_{k=1}^{r}s_{k}^{2}|x_{k}|^{2}\leq s_{1}^{2}\sum_{k=1}^{r}|x_{k}|^{2}=s_{1}^{2}\cdot\|\mathbf{x}\|^{2},\]
+因此$\|A\mathbf{x}\|\le s_1\|\mathbf{x}\|$。另一方面，$\|A\mathbf{e}_{1}\|=\|s_{1}\mathbf{e}_{1}\|=s_{1}\|\mathbf{e}_{1}\|$，所以$s_1$确实是闭单位球$B$上$\|A\mathbf{x}\|$的最大值。注意，在上面的论证中，我们并未假设矩阵$A$是方阵，而仅仅假设“主对角线”之外的所有元素都是$0$，因此 \eqref{Ax_singular} 成立。
 
-3.5. 找出矩阵 
-$$A = \begin{pmatrix} 2 & 3 \\ 0 & 2 \end{pmatrix}$$ 
-的奇异值分解。并用它来找出：
-\\
-a) $\max_{\|\xx\| \leq 1} \|A\xx\|$ 以及最大值对应的向量；
-\\
-b) $\min_{\|\xx\|=1} \|A\xx\|$ 以及最小值对应的向量；
-\\
-c) $A$ 对 $\RR^2$ 中的闭单位球 $B = \{\xx \in \RR^2 : \|\xx\| \leq 1\}$ 的像 $A(B)$.~并在几何上描述 $A(B)$.~
+为处理一般情形，我们考虑奇异值分解 \eqref{SVD} $A=W\Sigma V^*$，其中$W,V$是幺正算子，$\Sigma$是各元素非负的“对角”矩阵。因为幺正变换不改变范数，所以$\|A\mathbf{x}\|$在单位球$B$上的最大值是$\Sigma$的最大对角元，即
+\begin{center}
+    \fbox{$\|A\mathbf{x}\|$在单位球$B$上的最大值是$A$的最大奇异值。}
+\end{center}
+\begin{definition*}
+    $\max\{\|A\mathbf{x}\|:\mathbf{x}\in X,\|\mathbf{x}\|\le 1\}$称为$A$的算子范数，记作$\|A\|$。\index{范数（norm）!线性变换的算子$\sim$（operator, of a linear transformation）}
+\end{definition*}
 
-3.6. 证明对于方阵 $A$，$|\det A| = \det |A|$.~
+容易看出，$\|A\|$满足范数的所有性质（留作习题）：
+\begin{enumerate}
+    \item $\|\alpha A\|=|\alpha|\cdot\|A\|$；
+    \item $\|A+B\|\leq\|A\|+\|B\|$；
+    \item 对所有$A$均有$\|A\|\ge 0$；
+    \item $\|A\|= 0$当且仅当$\|A\|=\mathbf{0}$。
+\end{enumerate}
+所以，它的确是由$X$到$Y$的线性变换构成的向量空间上的范数。
 
-3.7. 判断正误：
-\\
-a) 矩阵的奇异值也是该矩阵的特征值。
-\\
-b) 矩阵 $A$ 的奇异值是 $A^*A$ 的特征值。
-\\
-c) 如果 $s$ 是矩阵 $A$ 的一个奇异值，而 $c$ 是一个标量，那么 $|c|s$ 是 $cA$ 的奇异值。
-\\
-d) 任何线性算子的奇异值都是非负的。
-\\
-e) 自伴随矩阵的奇异值与其特征值相等。
+算子范数的主要性质之一是如下不等式\[\|A\mathbf{x}\|\leq\|A\|\cdot\|\mathbf{x}\|,\]
+从范数$\|\mathbf{x}\|$的齐次性很容易得到。
 
-3.8. 设 $A$ 是一个 $m \times n$ 矩阵。证明 $A^*A$ 和 $AA^*$ 的\textbf{非零}特征值（计入重数）是相同的。你能说出 $A^*A$ 的零特征值和 $AA^*$ 的零特征值何时具有相同的重数吗？
+事实上，可以证明，算子范数$\|A\|$是满足
+\[\|A\mathbf{x}\|\leq C\|\mathbf{x}\|\quad\forall\mathbf{x}\in X.\]
+的最好（最小）的$C$。这往往被用于定义算子范数。
 
-3.9. 设 $s$ 是算子 $A$ 的最大奇异值，设 $\lambda$ 是 $A$ 具有最大绝对值的特征值。证明 $|\lambda| \leq s$.~
+在线性变换构成的向量空间上，我们已经定义过一种范数——弗罗贝尼乌斯范数\index{范数（norm）!弗罗贝尼乌斯$\sim$（Frobenius）}，或称\index{范数（norm）!希尔伯特-施密特$\sim$（Hilbert-Schmidt）}希尔伯特-施密特范数 $\|A\|_2$，\[\|A\|_2^2=\tr (A^*A).\]
+那么，我们来比较一下这两种范数。
 
-3.10. 证明矩阵的秩等于其非零奇异值的数量（计入重数）。
+令$s_{1},s_{2},\ldots,s_{r}$是$A$的非零奇异值（以重数计），并令$s_1$是最大的奇异值。那么$s_1^2,s_2^2,\dots,s_r^2$是$A^*A$的非零特征值（同样以重数计）。回忆一下，迹等于特征值的和，于是\[\|A\|_2^2=\operatorname{trace}(A^*A)=\sum_{k=1}^rs_k^2.\]
+另一方面，我们知道$A$的算子范数等于其最大奇异值，即$\|A\|=s_1$。所以我们可得$\|A\|\le\|A\|_2$，也就是
+\begin{center}
+    \fbox{矩阵的算子范数不大于其弗罗贝尼乌斯范数。}
+\end{center}
+这条结论也可以用柯西-施瓦兹不等式直接证明——有些教材中就是用这种方法。此处这种证明的美妙之处在于，不需要任何计算，还揭示了该不等式背后的深层次原因。
 
+\subsection{矩阵的条件数}
 
-3.11. 证明算子范数 $\|A\|$ 与 弗罗贝尼乌斯 范数 $\|A\|_2$ 相等当且仅当该矩阵秩为 1。
-{\heiti 提示：} 上一个问题可能有所帮助。
+假设有可逆矩阵$A$，欲解方程$A\mathbf{x}=\mathbf{b}$。该方程的解自然是$\mathbf{x}=A^{-1}\mathbf{b}$，但我们要分析，如果方程中的数据仅仅是粗略的，会发生什么。
 
-3.12. 对于矩阵 $$A = \begin{pmatrix} 2 & -3 \\ 0 & 2 \end{pmatrix},$$
-描述单位球的逆像，即所有 $\xx \in \RR^2$ 使得 $\|A\xx\| \leq 1$ 的集合。使用奇异值分解。\end{exer}
+这在现实中是会发生的——比如数据是从实验中得到的。即便我们得到了确切的数据，计算机运算时产生的舍入误差也可能使数据产生相同的失真。
 
+我们考虑一个简单的失真模型——假设方程右侧有微小误差。这就意味着我们不是解$A\mathbf{x}=\mathbf{b}$，而是解\[A\mathbf{x}=\mathbf{b}+\Delta\mathbf{b},\]
+其中$\Delta\mathbf{b}$是右端项$\mathbf{b}$的微小扰动。
 
-\section{4. 奇异值分解的应用}
+于是，我们并不是得到$A\mathbf{x}=\mathbf{b}$的精确解$\mathbf{x}$，而是得到$A(\mathbf{x}+\Delta\mathbf{x})=\mathbf{b}+\Delta\mathbf{b}$的近似解$\mathbf{x}+\Delta\mathbf{x}$。我们假设$A$可逆，从而$\Delta\mathbf{x}=A^{-1}\Delta\mathbf{b}$。
 
-正如我们上面讨论的，奇异值分解（SVD）本质上是对两组不同标准正交基的对角化。由于这里有两组不同的基，我们无法从其奇异值分解中得知一个算子的谱的性质。例如，奇异值分解 (3.5) 中的 $\Sigma$ 对角线上的项并不是 $A$ 的特征值。注意，对于 $A = W \Sigma V^*$（如 (3.5) 所示），通常有 $A^n \ne W \Sigma^n V^*$，因此这种对角化并不能帮助我们计算矩阵的函数。
-
-然而，正如下面的例子所示，奇异值能够很好地揭示线性变换的所谓\textbf{度量性质}(metric property)。
-
-最后说明：进行奇异值分解需要找到埃尔米特（自伴）矩阵 $A^*A$ 的特征值和特征向量。为了找到特征值，我们通常需要计算特征多项式，找到它的根，等等。这看起来是一个相当复杂的过程，尤其考虑到对于五次及更高次的方程，并没有求根公式。
-
-然而，存在非常有效的数值方法，可以计算出埃尔米特矩阵的特征值和特征向量，精确到任意给定的精度。这些方法不涉及计算特征多项式及其根。它们通过迭代过程直接计算近似的特征值和特征向量。由于埃尔米特矩阵具有标准正交的特征向量基，这些方法效果非常好。
-
-我们在此不讨论这些方法，这超出了本书的范围。但是，你可以相信我，存在非常有效的数值方法来计算埃尔米特矩阵的特征值和特征向量，以及找到奇异值分解。这些方法非常有效，计算量也只比求解线性方程组略多一些。
-
-
-
-\subsection{4.1. 单位球的像}
-
-例如，考虑以下问题：设 $A : \RR^n \to \RR^m$ 是一个线性变换，令 $B = \{ \xx \in \RR^n : \|\xx\| \le 1 \}$ 是 $\RR^n$ 中的闭单位球。我们希望描述 $A(B)$，即我们想弄清楚单位球在仿射变换下是如何被映射的。
-
-让我们先考虑最简单的情况，即 $A$ 是一个对角矩阵 $A = \diag\{\sigma_1, \sigma_2, \dots, \sigma_n\}$，且 $\sigma_k > 0$ 对 $k = 1, 2, \dots, n$ 成立。那么对于 $\xx = (x_1, x_2, \dots, x_n)^T$ 和 $\yy = (y_1, y_2, \dots,$ $ y_n)^T = A\xx$，我们有 $y_k = \sigma_k x_k$（等价地，$x_k = y_k/\sigma_k$）对 $k = 1, 2, \dots, n$ 成立。因此，
-$$\yy = (y_1, y_2, \dots, y_n)^T = A\xx~~\text{其中}~~\|\xx\| \le 1,$$
-当且仅当坐标 $y_1, y_2, \dots, y_n$ 满足不等式
-$$\frac{y_1^2}{\sigma_1^2} + \frac{y_2^2}{\sigma_2^2} + \dots + \frac{y_n^2}{\sigma_n^2} = \sum_{k=1}^n \frac{y_k^2}{\sigma_k^2} \le 1$$
-（这只是不等式 $\|\xx\|^2 = \sum_{k} |x_k|^2 \le 1$）。
-
-满足上述不等式点的集合被称为\textbf{椭球体}(ellipsoid)。
-如果 $n = 2$，这是一个半轴长为 $\sigma_1$ 和 $\sigma_2$ 的椭圆面；如果 $n = 3$，它是一个半轴长为 $\sigma_1, \sigma_2$ 和 $\sigma_3$ 的椭球体。在 $\RR^n$ 中，这个集合的几何形状也容易可视化，我们称之为半轴长为 $\sigma_1, \sigma_2, \dots, \sigma_n$ 的椭球体。向量 $\ee_1, \ee_2, \dots, \ee_n$ 或更确切地说，它们对应的直线，被称为椭球体的\textbf{主轴}(principal axes)。
-
-奇异值分解本质上说明了，在任意内积空间中，任何算子都可以通过一对标准正交基变得对角化（见注记 3.11）。即，考虑奇异值分解 (3.1) 中的正交基 $\A = \{\vv_1, \vv_2, \dots, \vv_n\}$ 和 $\B = \{\ww_1, \ww_2, \dots, \ww_n\}$.~那么 $A$ 在这些基下的矩阵是 
-$$\left[A\right]_{\B,\A} = \diag\{\sigma_n : n=1, 2, \dots, n\}.$$
-假设所有 $\sigma_k > 0$，并重复上述推理，很容易证明任何点 $\yy = A\xx \in A(B)$ 当且仅当它满足不等式：
-$$\frac{y_1^2}{\sigma_1^2} + \frac{y_2^2}{\sigma_2^2} + \dots + \frac{y_n^2}{\sigma_n^2} = \sum_{k=1}^n \frac{y_k^2}{\sigma_k^2} \le 1.$$
-其中 $y_1, y_2, \dots, y_n$ 是 $\yy$ 在标准正交基 $\B = \{\ww_1, \ww_2, \dots, \ww_n\}$ 下的坐标。类似地，$(x_1, x_2, \dots, x_n)^T = [\xx]_\A$.~
-
-但这本质上是同一个椭球体，只是被“旋转”了（具有不同但仍正交的主轴）！
-
-还有一个替代的解释，呈现在下面。
-
-考虑“对角”矩阵 $\Sigma$ 的一般情况，形式如 (3.5)。很容易看出，单位球 $B$ 的像 $\Sigma B$ 是一个椭球体（不是在整个空间中，而是在 $\Ran \Sigma$ 中），其半轴长为 $\sigma_1, \sigma_2, \dots, \sigma_r$.~
-
-现在考虑一般情况，$A = W \Sigma V^*$，其中 $W, V$ 是酉算子。酉变换不改变单位球（因为它们保持范数），所以 $V^*(B) = B$.~我们知道 $\Sigma(B)$ 是 $\Ran \Sigma$ 中的一个椭球体，半轴长为 $\sigma_1, \sigma_2, \dots, \sigma_r$.~酉变换不改变物体的几何形状，所以 $W(\Sigma(B))$ 也是一个椭球体，且具有相同的半轴长。
-从分解 $A = W \Sigma V^*$（利用 $W$ 和 $V^*$ 都是可逆的事实）可以很容易看出，$W$ 将 $\Ran \Sigma$ 映射到 $\Ran A$，因此我们可以得出结论：
-
-\fbox{\begin{minipage}{0.9\textwidth}
-闭单位球 $B$ 的像 $A(B)$ 是 $\Ran A$ 中的一个椭球体，其半轴长为 $\sigma_1, \sigma_2, \dots, \sigma_r$.~这里 $r$ 是非零奇异值的数量，即 $A$ 的秩。
-\end{minipage}}
-
-
-\subsection{4.2. 线性变换的算子范数}
-
-给定一个线性变换 $A : X \to Y$，我们考虑以下优化问题：在闭单位球 $B = \{ \xx \in X : \|\xx\| \le 1 \}$ 上，求 $\|A\xx\|$ 的最大值。
-
-再次，奇异值分解允许我们解决这个问题。对于具有非负项的对角矩阵 $A$，最大值正好是最大的对角项。确实，设 $s_1, s_2, \dots, s_r$ 是 $A$ 的非零对角项，设 $s_1$ 是它们中最大的。由于对于 $\xx = (x_1, x_2, \dots, x_n)^T$,
-$$(4.1)\quad A\xx = \sum_{k=1}^r s_k x_k \ee_k,$$
-我们可以得出 
-$$\|A\xx\|^2 = \sum_{k=1}^r s_k^2 |x_k|^2 \le s_1^2 \sum_{k=1}^r |x_k|^2 = s_1^2 \cdot \|\xx\|^2,$$
-因此 $\|A\xx\| \le s_1 \|\xx\|$.~另一方面，$\|A\ee_1\| = \|s_1 \ee_1\| = s_1 \|\ee_1\|$，因此 $s_1$ 确实是闭单位球 $B$ 上 $\|A\xx\|$ 的最大值。
-注意，在上述推理中，我们没有假设矩阵 $A$ 是方阵；我们只假设“主对角线”外的所有元素都为 0，因此公式 (4.1) 成立。
-
-为了处理一般情况，我们考虑奇异值分解 (3.5)，$A = W \Sigma V^*$，其中 $W, V$ 是酉算子，$\Sigma$ 是具有非负项的对角矩阵。由于酉变换不改变范数，我们可以得出 
-
-\fbox{\begin{minipage}{0.9\textwidth}
-$\|A\xx\|$ 在单位球 $B$ 上的最大值是 $\Sigma$ 的最大对角项，即 $A$ 的最大奇异值。
-\end{minipage}}
-
-
-{\heiti 定义}~~ 量 $\max\{\|A\xx\| : \xx \in X, \|\xx\| \le 1\}$ 被称为 $A$ 的\textbf{算子范数}\index{suanzifanshu@算子范数}(operator norm)，记作 $\|A\|$.~
-
-很容易看出 $\|A\|$ 满足范数的所有性质：
-
-1. $\|\alpha A\| = |\alpha| \cdot \|A\|$；
-
-2. $\|A + B\| \le \|A\| + \|B\|$；
-
-3. 对所有 $A$ 都有 $\|A\| \ge 0$；
-
-4. $\|A\| = 0$ 当且仅当 $A = \oo$，
-
-因此它确实是 $X$ 到 $Y$ 的线性变换空间上的一个范数。
-
-算子范数的一个主要性质是不等式 
-$$\|A\xx\| \le \|A\| \cdot \|\xx\|,$$
-这很容易从范数 $\|\xx\|$ 的齐次性推导出来。
-
-事实上，可以证明算子范数 $\|A\|$ 是满足 
-$$\|A\xx\| \le C \|\xx\| \quad \forall \xx \in X$$ 
-的最佳（最小）非负数 $C$.~这通常被用作算子范数的定义。
-
-在线性变换空间上\index{fanshu@范数!suanzi@算子 (线性变换的)}，我们之前已经由内积的概念定义了一个范数，即弗罗贝尼乌斯(Frobenius)范数\index{fanshu@范数!fuluobeiniwusi@弗罗贝尼乌斯}\index{fuluobeiniwusifanshu@弗罗贝尼乌斯范数}，或称希尔伯特-施密特(Hilbert-Schmidt)范数\index{fanshu@范数!xierboteshimite@希尔伯特-施密特} $\|A\|_2$：$$\|A\|_2^2 = \trace(A^*A).$$
-所以，让我们来研究这两个范数是如何比较的。
-
-设 $s_1, s_2, \dots, s_r$ 是 $A$ 的非零奇异值（计重数），设 $s_1$ 是它们中最大的。那么 $s_1^2, s_2^2, \dots, s_r^2$ 是 $A^*A$ 的非零特征值（同样计重数）。回想一下，迹等于特征值之和，我们得出 
-$$\|A\|_2^2 = \trace(A^*A) = \sum_{k=1}^r s_k^2.$$
-另一方面，我们知道算子范数 $\|A\|$ 等于其最大奇异值，即 $\|A\| = s_1$.~因此，我们可以得出 $\|A\| \le \|A\|_2$，即
-
-\fbox{
-% \begin{minipage}{0.9\textwidth}
-矩阵的算子范数不能大于其弗罗贝尼乌斯范数。
-% \end{minipage}
-}
-\\
-这个陈述也可以用柯西-施瓦茨不等式直接证明，并且这种证明在一些教材中已经给出。我们这里展示的证明的美妙之处在于，它不需要任何计算，并阐明了不等式背后的原因。
-
-\subsection{4.3. 矩阵的条件数}
-
-假设我们有一个可逆矩阵 $A$，并且我们想解方程 $A\xx = \bb$.~解当然是 $\xx = A^{-1}\bb$，但我们想研究如果我们只知道近似数据时会发生什么。
-
-在现实生活中，数据是通过某些实验获得的。但即使我们有精确的数据，计算机计算过程中的舍入误差也可能产生类似效应，将数据扭曲。
-
-让我们考虑最简单的模型，假设方程的右侧有一个小的误差。这意味着，我们求解的是 $$A\xx = \bb + \Delta \bb,$$
-而不是 $A\xx = \bb$.~其中 $\Delta \bb$ 是右侧 $\bb$ 的一个小扰动。因此，我们得到近似解 $\xx + \Delta \xx$，而 $A(\xx + \Delta \xx) = \bb + \Delta \bb$.~我们假设 $A$ 是可逆的，所以 $\Delta \xx = A^{-1} \Delta \bb$.~
-
-我们想知道解中的相对误差 $\|\Delta \xx\| / \|\xx\|$ 与右侧的相对误差 $\|\Delta \bb\| / \|\bb\|$ 相比有多大。很容易看出：
-$$\frac{\|\Delta \xx\|}{\|\xx\|} = \frac{\|A^{-1} \Delta \bb\|}{\|\xx\|} = \frac{\|A^{-1} \Delta \bb\|}{\|\bb\|} \frac{\|\bb\|}{\|\xx\|} = \frac{\|A^{-1} \Delta \bb\|}{\|\bb\|} \frac{\|A\xx\|}{\|\xx\|}.$$
-由于 $\|A^{-1} \Delta \bb\| \le \|A^{-1}\| \cdot \|\Delta \bb\|$ 且 $\|A\xx\| \le \|A\| \cdot \|\xx\|$，我们可以得出：
-$$\frac{\|\Delta \xx\|}{\|\xx\|} \le \|A^{-1}\| \cdot \|A\| \cdot \frac{\|\Delta \bb\|}{\|\bb\|}.$$
-
-$\|A\| \cdot \|A^{-1}\|$ 这个量被称为矩阵的\textbf{条件数}(condition number)。它估计了解的相对误差 $\xx$ 在多大程度上取决于右侧 $\bb$ 的相对误差。
-
-让我们看看这个量与奇异值是如何关联的。设 $s_1, s_2, \dots, s_n$ 是 $A$ 的奇异值，并且假设 $s_1$ 是最大奇异值，$s_n$ 是最小奇异值。我们知道算子范数等于其最大奇异值，所以 
-$$\|A\| = s_1,\quad  \|A^{-1}\| = \frac{1}{s_n},$$
-因此 
-$$\|A\| \cdot \|A^{-1}\| = \frac{s_1}{s_n}.$$
-换句话说，
-
-\fbox{
-% \begin{minipage}{0.9\textwidth}
-矩阵的条件数等于最大和最小奇异值之比。
-% \end{minipage}
-}
-
-我们上面推导出 $\|\Delta \xx\| / \|\xx\| \le \|A^{-1}\| \cdot \|A\| \cdot \|\Delta \bb\| / \|\bb\|$.~不难看出，这个估计是精确的，即可以选择右侧 $\bb$ 和误差 $\Delta \bb$，使得等式成立：
-$$\frac{\|\Delta \xx\| } {\|\xx\|} = \|A^{-1}\| \cdot \|A\| \cdot \frac{\|\Delta \bb\| }{ \|\bb\|}.$$
-我们只需取 $\bb = \ww_1$ 且 $\Delta \bb = \alpha \ww_n$，其中 $\ww_1$ 和 $\ww_n$ 分别是奇异值分解 $A = W \Sigma V^*$ 中 $W$ 的第一列和最后一列，$\alpha \ne 0$ 是任意标量。这里，像往常一样，奇异值假设为非递增排序 $s_1 \ge s_2 \ge \dots \ge s_n$，所以 $s_1$ 是最大的，而 $s_n$ 是最小的。
-
-我们将细节留给读者作为练习。
-
-如果一个矩阵的条件数不是太大，则称该矩阵是\textbf{良态}的(well conditioned)。如果条件数很大，则称该矩阵是\textbf{病态}的(ill conditioned)。这里的“大”取决于具体问题：你能在多大程度上确定你的右侧数据，对解需要多高的精度等等。
-
-\subsection{4.4. 矩阵的有效秩}
-
-理论上，矩阵的秩很容易计算：只需对矩阵进行行变换并计算主元即可。然而，在实际应用中，情况并非如此简单。主要原因是，我们通常不知道精确的矩阵，只知道其近似值，精度有限。
-
-此外，即使我们知道精确的矩阵，大多数计算机程序在计算过程中也会引入舍入误差，因此我们实际上无法区分一个零主元和一个非常小的主元。
-
-一种简单粗暴的操作方法是这样的：在计算秩（以及与之相关的其他对象，如列空间、核等）时，只需设置一个容差（一个小的数），如果主元小于容差，就将其视为零。
-这种方法的优点在于它的简单性，因为它非常容易编程。然而，主要的缺点是无法看出容差的作用。例如，如果我们设置容差为 $10^{-6}$，我们失去了什么？$10^{-8}$ 会好多少？虽然上述方法对良态矩阵效果很好，但在一般情况下并不可靠。
-
-一个更好的方法是使用奇异值。它需要更多的计算，但能给出更好、更易于解释的结果。在这种方法中，我们也设定一个小的数作为容差，然后进行奇异值分解。之后，我们简单地将小于容差的奇异值视为零。这种方法的优点在于我们可以清楚地看到我们在做什么。奇异值是椭球体 $A(B)$（$B$ 是闭单位球）的半轴长，因此通过设置容差，我们只是决定了椭球体应该有多“细”才被认为是“扁平”的。
-
-\subsection{4.5. 摩尔-彭罗斯（伪）逆}
-
-正如我们在第 5 章第 4 节中所讨论的，在方程 $A\xx = \bb$ 没有解的情况下，最小二乘解给了我们“次优”的解决方案（当方程有解时，它也给出了 $A\xx = \bb$ 的解）。
-
-注意，最小二乘解并未解决唯一性问题：方程 $A^*A\xx = A^*\bb$ 的解不一定唯一。一个自然区别开来的解是具有最小范数的解\index{zuixiaoerchengjie@最小二乘解!zuixiaofanshu@最小范数}；这样的解确实是唯一的，并且可以通过取任意一个解，然后将其投影到 $(\Ker A^*A)^\perp = (\Ker A)^\perp$ 上得到（参见第 5 章的问题 4.5 和 4.6）。
-
-不难看出，如果 $A = \widetilde{W} \widetilde{\Sigma} \widetilde{V}^*$ 是 $A$ 的\textbf{约简}奇异值分解，那么最小范数的最小二乘解 $\xx_0$ 由下式给出：
-$$(4.2)\quad \xx_0 = \widetilde{V} \widetilde{\Sigma}^{-1} \widetilde{W}^* \bb.$$ 
-确实，$\xx_0$ 是 $A\xx = \bb$ 的一个最小二乘解（即 $A\xx = P_{\Ran A} \bb$ 的解）：
-$$A\xx_0 = \widetilde{W} \widetilde{\Sigma} \widetilde{V}^* (\widetilde{V} \widetilde{\Sigma}^{-1} \widetilde{W}^* \bb) = \widetilde{W} \widetilde{\Sigma} \widetilde{\Sigma}^{-1} \widetilde{W}^* \bb = \widetilde{W} \widetilde{W}^* \bb = P_{\Ran A} \bb;$$
-在链的最后一个等式中，我们使用了 $\widetilde{W} \widetilde{W}^* = P_{\Ran \widetilde{W}}$（$P_{\Ran \widetilde{W}} = \widetilde{W} (\widetilde{W}^* \widetilde{W})^{-1} \widetilde{W}^* = \widetilde{W} \widetilde{W}^*$）并且 $\Ran \widetilde{W} = \Ran A$（见问题 4.4）。
-
-$A\xx = P_{\Ran A} \bb$ 的一般解由 
-$$\xx = \xx_0 + \yy,\quad \yy \in \Ker A$$
-给出，因此 $\xx_0$ 确实是 $A\xx = P_{\Ran A} \bb$ 的唯一最小范数解，或者等价地，是 $A\xx = \bb$ 的最小范数的最小二乘解。
-
-{\heiti 定义 4.1.} 算子 $A^+ := \widetilde{V} \widetilde{\Sigma}^{-1} \widetilde{W}^*$，其中 $A = \widetilde{W} \widetilde{\Sigma} \widetilde{V}^*$ 是 $A$ 的\textbf{约简}奇异值分解，称为 $A$ 的\textbf{摩尔-彭罗斯逆}\index{moerpenroseni@摩尔-彭罗斯逆} （或\textbf{摩尔-彭罗斯伪逆}）(Moore–Penrose (pseudo)inverse)。换句话说，\textbf{摩尔-彭罗斯逆}是给出 $A\xx = \bb$ 的唯一最小二乘解的算子。
-
-{\heiti 注记 4.2.} 文献中通常将摩尔-彭罗斯逆定义为一个矩阵 $A^+$，它满足：
-
-1. $AA^+A = A$；
-
-2. $A^+AA^+ = A^+$；
-
-3. $(AA^+)^* = AA^+$；
-
-4. $(A^+A)^* = A^+A$.~
-
-很容易验证算子 $A^+ := \widetilde{V} \widetilde{\Sigma}^{-1} \widetilde{W}^*$ 满足上述性质 1-4。
-
-还可以（尽管有点难）证明满足性质 1-4 的算子 $A^+$ 是唯一的。
-确实，通过用 $A^+$ 左乘或右乘等式 1，我们得到 $(A^+A)^2 = A^+A$ 和 $(AA^+)^2 = AA^+$；与性质 3 和 4 一起，可以得出 $A^+A$ 和 $AA^+$ 是正交投影（见第 5 章问题 5.6）。
-
-显然，$\Ker A \subset \Ker A^+A$.~另一方面，等式 1 暗示 $\Ker A^+A \subset \Ker A$（为什么？），所以 $\Ker A^+A = \Ker A$.~但这表明 $A^+A$ 是 $(\Ker A)^\perp = \Ran A^*$ 上的正交投影，
-$$A^+A = P_{\Ran A^*}.$$
-
-性质 1 也暗示了 $AA^+\yy = \yy$ 对所有 $\yy \in \Ran A$ 成立。由于 $AA^+$ 是一个正交投影，我们得出 $\Ran A \subset \Ran AA^+$.~相反的包含关系 $\Ran AA^+ \subset \Ran A$ 是平凡的，所以 $AA^+$ 是 $\Ran A$ 上的正交投影，
-$$AA^+ = P_{\Ran A}.$$
-
-知道了 $A^+A$ 和 $AA^+$，我们可以将性质 2 重写为 
-$$P_{\Ran A^*} A^+ = A^+ \quad \text{或} \quad A^+ P_{\Ran A} = A^+.$$
-结合上述恒等式，我们得到 $$P_{\Ran A^*} A^+ P_{\Ran A} = A^+.$$
-
-最后，对于 $A$ 的目标空间中的任何 $\bb$，令 
-$$\xx_0 := A^+\bb = P_{\Ran A^*} A^+ \bb \in \Ran A^*$$ 
-并且 
-$$A\xx_0 = AA^+\bb = P_{\Ran A} \bb,$$
-则 $\xx_0$ 是 $A\xx = \bb$ 的一个最小二乘解。由于 $\xx_0 \in \Ran A^* = (\Ker A)^\perp$， $\xx_0$ 如前所述，是最小范数的最小二乘解。但是，如我们之前所示，这样的最小范数解由 (4.2) 给出，所以 $A^+ = \widetilde{V} \widetilde{\Sigma}^{-1} \widetilde{W}^*$.~
-
-\begin{exer} {\heiti 练习}~~
-
-4.1. 求以下矩阵的范数和条件数：
-\\
-a) $A = \begin{pmatrix} 4 & 0 \\ 1 & 3 \end{pmatrix}$.~
-    \\
-b) $A = \begin{pmatrix} 5 & 3 \\ -3 & 3 \end{pmatrix}$.~
-\\
-对于 a) 部分的矩阵 $A$，给出一个右侧 $\bb$ 和误差 $\Delta \bb$ 的例子，使得 
-$$\frac{\|\Delta \xx\|} {\|\xx\| }= \|A\| \cdot \|A^{-1}\| \cdot \frac{\|\Delta \bb\| }{\|\bb\|};$$
-这里 $A\xx = \bb$ 且 $A(\xx + \Delta \xx) = \bb + \Delta \bb$.~
-
-4.2. 设 $A$ 是一个正规算子，其特征值为 $\lambda_1, \lambda_2, \dots, \lambda_n$（计重数）。证明 $A$ 的奇异值是 $|\lambda_1|, |\lambda_2|, \dots, |\lambda_n|$.~
-
-4.3. 求矩阵 $$A = \begin{pmatrix} 2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2 \end{pmatrix}$$ 的奇异值、范数和条件数。\\
-你基本上可以不经计算完成此题，如果你能回答以下问题：
-\\
-a) 某个子空间 $E$ 上的正交投影 $P_E$ 的奇异值是多少？
-    \\
-b) 找出投影到向量 $(1, 1, 1)^T$ 所张成的子空间的正交投影矩阵。
-\\
-c) 算子 $T$ 和 $aT + bI$ （其中 $a$ 和 $b$ 是标量）的特征值之间有什么关系？
-\\
-当然，你也可以直接进行计算。
-
-4.4. 设 $A = \widetilde{W} \widetilde{\Sigma} \widetilde{V}^*$ 是 $A$ 的约简奇异值分解。证明 $\Ran A = \Ran \widetilde{W}$，然后通过取伴随矩阵证明 $\Ran A^* = \Ran \widetilde{V}$.~
-
-4.5. 用奇异值分解 $A = W \Sigma V^*$ 表示摩尔-彭罗斯逆 $A^+$ 的公式。
-
-4.6. （吉洪诺夫正则化，Tychonov’s regularization）：证明摩尔-彭罗斯逆 $A^+$ 可以计算为极限：
-$$A^+ = \lim_{\varepsilon \to 0^+} (A^*A + \varepsilon I)^{-1} A^* = \lim_{\varepsilon \to 0^+} A^*(AA^* + \varepsilon I)^{-1}.$$\end{exer}
-
-\section{5. 正交矩阵的结构}
-
-一个行列式为 1 的正交矩阵 $U$ 通常被称为\textbf{旋转}(rotation)。下面的定理解释了这个名称。
-
-\begin{theorem}[\normalfont\heiti 定理 5.1\nopunct]  设 $U$ 是 $\RR^n$ 中的一个正交算子，且 $\det U = 1$.~
-\footnote{
-对于一个正交矩阵$U$，它的行列式为$\pm 1$.
-}
-则存在一组标准正交基 $\vv_1, \vv_2, \dots, \vv_n$，使得 $U$ 在该基下的矩阵具有分块对角形式：
-$$\begin{pmatrix} R_{\phi_1} & & & & \\ & R_{\phi_2} & & & \\ & & \ddots & & \\ & & & R_{\phi_k} & \\ & & & & I_{n-2k} \end{pmatrix},$$
-其中 $R_{\phi_k}$ 是 $2$ 维旋转矩阵，
-$$R_{\phi_k} = \begin{pmatrix} \cos \phi_k & -\sin \phi_k \\ \sin \phi_k & \cos \phi_k \end{pmatrix},$$
-而 $I_{n-2k}$ 表示 $(n-2k) \times (n-2k)$ 的单位矩阵。\end{theorem}
-
-\begin{proof} 我们知道，如果 $p$ 是一个实系数多项式，并且 $\lambda$ 是它的复根，$p(\lambda) = 0$，那么 $\overline{\lambda}$ 也是 $p$ 的根，$p(\overline{\lambda}) = 0$（这可以通过将 $\overline{\lambda}$ 代入 $p(z) = \sum_{k=0}^n a_k z^k$ 来很容易地验证）。
-
-因此，实矩阵 $A$ 的所有复特征值可以配对成 $\lambda_k, \overline{\lambda}_k$.~
-
-我们知道，酉矩阵的特征值绝对值都为 1，所以 $A$ 的所有复特征值都可以写成 $\lambda_k = \cos \alpha_k + \ii \sin \alpha_k$ 和 $\overline{\lambda}_k = \cos \alpha_k - \ii \sin \alpha_k$.~
-
-固定一对复特征值 $\lambda$ 和 $\overline{\lambda}$，设 $\uu \in \CC^n$ 是 $U$ 的特征向量，$U\uu = \lambda \uu$.~那么 $U\overline{\uu} = \overline{\lambda} \overline{\uu}$.~现在，将 $\uu$ 分解为实部和虚部，即定义 
-$$\xx := \ReR \uu = \frac{\uu + \overline{\uu}}{2},\quad \yy := \ImI \uu = \frac{\uu - \overline{\uu}}{2\ii}$$
-（注意，$\xx, \yy$ 是实向量，即所有项均为实数的向量）。那么 $\uu = \xx + \ii \yy$.
-% （我们在此处定义 $\uu$ 使得 $\uu = \xx+\ii \yy$）。
-那么 
-$$U \xx = U \frac{\uu + \overline{\uu}}{2} = \frac{1}{2}(U\uu + U\overline{\uu}) = \frac{1}{2}(\lambda \uu + \overline{\lambda} \overline{\uu}) = \ReR(\lambda \uu).$$
-类似地，$$U \yy = U \frac{\uu - \overline{\uu}}{2\ii} = \frac{1}{2\ii}(U\uu - U\overline{\uu}) = \frac{1}{2\ii}(\lambda \uu - \overline{\lambda} \overline{\uu}) = \ImI(\lambda \uu).$$
-由于 $\lambda = \cos \alpha + \ii \sin \alpha$，我们有
-$$\lambda \uu = (\cos \alpha + \ii \sin \alpha)(\xx + \ii \yy) = ((\cos \alpha)\xx - (\sin \alpha)\yy) + \ii((\cos \alpha)\yy + (\sin \alpha)\xx).$$
-所以 $$U \xx = \ReR(\lambda \uu) = (\cos \alpha)\xx - (\sin \alpha)\yy,\quad U \yy = \ImI(\lambda \uu) = (\cos \alpha)\yy + (\sin \alpha)\xx.$$
-
-
-换句话说，$U$ 对由向量 $\xx, \yy$ 生成的二维子空间 $E_\lambda$ 保持不变，即 $E_\lambda$ 是 $U$ 的不变子空间，且 $U$ 在该子空间上的限制矩阵是旋转矩阵 
-$$R_{-\alpha} = \begin{pmatrix} \cos \alpha & \sin \alpha \\ -\sin \alpha & \cos \alpha \end{pmatrix}.$$
-% （注意：这里的旋转方向与定理中的 $R_{\phi_k}$ 可能相反，取决于如何定义旋转角度。如果我们按照定理中的约定，矩阵将是 $R_\alpha$）。
-注意，向量 $\uu$ 和 $\overline{\uu}$（酉矩阵对应于不同特征值的特征向量）是正交的，所以根据勾股定理 
-$$\|\xx\| = \|\yy\| = \frac{1}{\sqrt{2}}\|\uu\|,$$
-很容易核验 $\xx \perp \yy$，所以 $\xx, \yy$ 是 $E_\lambda$ 中的一组正交基。如果我们对每个向量 $\xx, \yy$ 乘以相同的非零数，我们不会改变线性变换的矩阵，所以不妨假设 $\|\xx\| = \|\yy\| = 1$，即 $\xx, \yy$ 是 $E_\lambda$ 中的一组标准正交基。
-
-让我们将标准正交向量组 $\vv_1 = \xx, \vv_2 = \yy$ 补全成 $\RR^n$ 中的一组标准正交基。由于 $UE_\lambda \subset E_\lambda$，即 $E_\lambda$ 是 $U$ 的不变子空间，在该基下的 $U$ 的矩阵具有分块三角形式：
-$$
-\left(\begin{array}{c|ccc} R_{-\alpha} & & * & \\ \hline  \oo & & U_1  & 
-\end{array}\right),
-$$
-其中 $\oo$ 表示一个 $(n-2) \times 2$ 的零块。
-
-由于旋转矩阵 $R_{-\alpha}$ 是可逆的，我们有 $U E_\lambda = E_\lambda$.~因此 
-$$
-U^* E_\lambda = U^{-1} E_\lambda = E_\lambda,
-$$
-所以我们构造的基下的 $U$ 的矩阵实际上是分块对角形式：
-$$
-\left(\begin{array}{c|ccc} R_{-\alpha} & & \oo \\ \hline \oo & & U_1 & \end{array}\right).
-$$
-由于 $U$ 是酉的，
-$$
-I = U^*U = \left(\begin{array}{c|ccc} I & & \oo & \\ \hline \oo & & U_1^* U_1 & \end{array}\right),
-$$
-所以，由于 $U_1$ 是方阵，它也是酉的。
-
-如果 $U_1$ 有复特征值，我们可以应用相同的过程将其大小减 2，直到我们剩下只具有实特征值的块。实特征值只能是 $+1$ 或 $-1$，所以在一组标准正交基下，$U$ 的矩阵具有以下形式：
-$$\begin{pmatrix} R_{-\alpha_1} & & & & & \\ & R_{-\alpha_2} & & & & \\ & & \ddots & & & \\ & & & R_{-\alpha_d} & & \\ & & & & -I_r & \\ & & & & & I_l \end{pmatrix};$$
-这里 $I_r$ 和 $I_l$ 分别是 $r \times r$ 和 $l \times l$ 的单位矩阵。由于 $\det U = 1$，特征值为 $-1$ 的重数（即 $r$）必须是偶数。
-
-注意，$2 \times 2$ 矩阵 $-I_2$ 可以解释为通过角度 $\pi$ 的旋转。因此，这一矩阵具有上述定理结论中的形式，其中 $\phi_k = -\alpha_k$ 或 $\phi_k = \pi$.~\end{proof}
-
-让我们给出定理 5.1 的另一个解释。定义 $T_j$ 为在由向量 $\vv_j, \vv_{j+1}$ 张成的平面中的一次 $\phi_j$ 旋转。那么定理 5.1 就可以简单地说成 $U$ 是旋转 $T_j, j = 1, 2, \dots, k$ 的复合。注意，由于旋转 $T_j$ 在相互正交的平面上作用，它们是可交换的，也就是说，复合的顺序并不重要。因此，该定理可以解释为：
-
-\fbox{\begin{minipage}{0.9\textwidth}
-任何 $\RR^n$ 中的旋转都可以表示为最多 $n/2$ 个可交换的平面中旋转的复合。
-\end{minipage}}
-
-
-如果一个正交矩阵的行列式为 $-1$，其结构由以下定理描述。
-
-\begin{theorem}[\normalfont\heiti 定理 5.2\nopunct]  设 $U$ 是 $\RR^n$ 中的一个正交算子，且 $\det U = -1$.~则存在一组标准正交基 $\vv_1, \vv_2, \dots, \vv_n$，使得 $U$ 在该基下的矩阵具有分块对角形式：\end{theorem}
-$$\begin{pmatrix} R_{\phi_1} & & & & & \\ & R_{\phi_2} & & & & \\ & & \ddots & & & \\ & & & R_{\phi_k} & & \\ & & & & I_r & \\ & & & & & -1 \end{pmatrix},$$
-其中 $r = n - 2k - 1$，并且 $R_{\phi_k}$ 是 $2$ 维旋转矩阵，
-$$R_{\phi_k} = \begin{pmatrix} \cos \phi_k & -\sin \phi_k \\ \sin \phi_k & \cos \phi_k \end{pmatrix},$$
-而 $I_{n-2k}$ 表示 $(n-2k) \times (n-2k)$ 的单位矩阵。
-
-我们把证明留给读者作为练习。对定理 5.1 证明的修改是很明显的。
-
-注意，从上述定理可以得出，一个行列式为 $-1$ 的 $2 \times 2$ 正交矩阵总是反射。
-
-现在让我们固定一组标准正交基，例如 $\RR^n$ 中的标准基。我们称一个\textbf{初等旋转}(elementary rotation)\footnote{
-这个术语并没有被广泛接受。
-} 
-是在 $x_j$ - $x_k$ 平面中的一次旋转，即一个只改变坐标 $x_j$ 和 $x_k$ 的线性变换，并且它在这两个坐标上像平面旋转一样作用。
-
-\begin{theorem}[\normalfont\heiti 定理 5.3\nopunct] 任何旋转 $U$（即 $\det U = 1$ 的正交变换）都可以表示为最多 $n(n-1)/2$ 个初等旋转的乘积。\end{theorem}
-
-为了证明这个定理，我们需要以下简单的引理。
-
-\begin{lemma}[\normalfont\heiti 引理 5.4\nopunct]设 $\xx = (x_1, x_2)^T \in \RR^2$.~存在一个 $\RR^2$ 的旋转 $R_\alpha$，它将向量 $\xx$ 移动到向量 $(a, 0)^T$，其中 $a = \sqrt{x_1^2 + x_2^2}$.~\end{lemma}
-
-证明是基本的，我们将其作为读者练习。你可以画一张图或者写出 $R_\alpha$ 的公式。
-
-\begin{lemma}[\normalfont\heiti 引理 5.5\nopunct] 设 $\xx = (x_1, x_2, \dots, x_n)^T \in \RR^n$.~存在 $n-1$ 个初等旋转 $R_1, R_2, \dots, R_{n-1}$，使得 $R_{n-1} \dots R_2 R_1 \xx = (a, 0, 0, \dots, 0)^T$，其中 $a = \sqrt{x_1^2 + x_2^2 + \dots + x_n^2}$.~\end{lemma}
-
-\begin{proof} 引理证明的思路非常简单。我们使用一个初等旋转 $R_1$（在 $x_{n-1}$ - $x_n$ 平面中）来“消去” $\xx$ 的最后一个坐标（引理 5.4 保证了这样的旋转存在）。然后使用一个初等旋转 $R_2$（在 $x_{n-2}$ - $x_{n-1}$ 平面中）来“消去” $R_1 \xx$ 的第 $n-1$ 个坐标（旋转 $R_2$ 不改变最后一个坐标，所以 $R_2 R_1 \xx$ 的最后一个坐标保持为零），以此类推。
-
-为了进行正式证明，我们将使用数学归纳法。$n=1$ 的情况是平凡的，因为 $\RR^1$ 中的任何向量都具有所需的形状。$n=2$ 的情况由引理 5.4 处理。
-
-现在假设引理对 $n-1$ 成立，我们将证明对 $n$ 成立。根据引理 5.4，存在一个 $2 \times 2$ 旋转矩阵 $R_\alpha$，使得 
-$$R_\alpha \begin{pmatrix} x_{n-1} \\ x_n \end{pmatrix} = \begin{pmatrix} a_{n-1} \\ 0 \end{pmatrix},$$其中 $a_{n-1} = \sqrt{x_{n-1}^2 + x_n^2}$.~那么如果我们定义 $n \times n$ 的初等旋转 $R_1$ 为：
-$$R_1 = \begin{pmatrix} I_{n-2} & \oo \\ \oo & R_\alpha \end{pmatrix}$$
-（$I_{n-2}$ 是 $(n-2) \times (n-2)$ 的单位矩阵），那么 $$R_1 \xx = (x_1, x_2, \dots, x_{n-2}, a_{n-1}, 0)^T.$$
-
-我们假设引理的结论对 $n-1$ 成立，因此存在 $n-2$ 个初等旋转（我们称它们为 $R_2, R_3, \dots, R_{n-1}$），它们在 $\RR^{n-1}$ 中（仅作用于坐标 $x_1, x_2, \dots, x_{n-1}$）将向量 $(x_1, x_2, \dots, x_{n-1}, a_{n-1})^T \in \RR^{n-1}$ 变换为向量 $(a, 0, \dots, 0)^T \in \RR^{n-1}$.~换句话说，
-$$R_{n-1} \dots R_3 R_2 (x_1, x_2, \dots, x_{n-1}, a_{n-1})^T = (a, 0, \dots, 0)^T.$$
-
-我们可以总假设初等旋转 $R_2, R_3, \dots, R_{n-1}$ 在 $\RR^n$ 中作用，只需假设它们不改变最后一个坐标。那么 $$R_{n-1} \dots R_3 R_2 R_1 \xx = (a, 0, \dots, 0)^T \in \RR^n.$$
-
-现在我们来证明 $a = \sqrt{x_1^2 + x_2^2 + \dots + x_n^2}$.~这可以通过直接计算轻松验证，但我们现在采用间接推理。我们知道正交变换保持范数，并且 $a \ge 0$.~那么我们就没有任何选择，唯一的可能性就是 $a = \sqrt{x_1^2 + x_2^2 + \dots + x_n^2}$.~\end{proof}
-
-\begin{lemma}[\normalfont\heiti 引理 5.6\nopunct]设 $A$ 是一个具有实数项的 $n \times n$ 矩阵。存在初等旋转 $R_1, R_2, \dots, R_N$，$N \le n(n-1)/2$，使得矩阵 $B = R_N \dots R_2 R_1 A$ 是上三角的，并且其所有对角线元素，除了最后一个 $B_{n,n}$ 之外，都是非负的。\end{lemma}
-
-\begin{proof} 我们将使用数学归纳法。$n=1$ 的情况是平凡的，因为我们可以说任何 $1 \times 1$ 矩阵都具有所需的形状。
-
-让我们考虑 $n=2$ 的情况。设 $\aaa_1$ 是 $A$ 的第一列。根据引理 5.4，存在一个旋转 $R$，它可以“消去” $\aaa_1$ 的第二个坐标，使得第一个坐标非负。然后矩阵 $B = RA$ 具有所需的形状。
-
-现在假设引理对 $(n-1) \times (n-1)$ 矩阵成立，我们想对 $n \times n$ 矩阵证明它。对于 $n \times n$ 矩阵 $A$，设 $\aaa_1$ 是它的第一列。根据引理 5.5，我们可以找到 $n-1$ 个初等旋转（例如 $R_1, R_2, \dots, R_{n-1}$），它们将 $\aaa_1$ 变换为 $(a, 0, \dots, 0)^T$.~那么矩阵 $R_{n-1} \dots R_2 R_1 A$ 具有以下分块三角形式：
-$$R_{n-1} \dots R_2 R_1 A = \begin{pmatrix} a & * \\ \oo & A_1 \end{pmatrix},$$
-其中 $A_1$ 是一个 $(n-1) \times (n-1)$ 的块。
-
-我们假设引理对 $n-1$ 成立，所以 $A_1$ 可以通过最多 $(n-1)(n-2)/2$ 个旋转变换成所需的上三角形式。注意，这些旋转作用在 $\RR^{n-1}$ 中（只作用于坐标 $x_2, x_3, \dots, x_n$），但我们可以总假设它们作用在整个 $\RR^n$ 中，只需假设它们不改变第一个坐标。那么，这些旋转不会改变 $R_{n-1} \dots R_2 R_1 A$ 的第一列向量 $(a, 0, \dots, 0)^T$.~因此，矩阵 $A$ 可以通过最多 $n-1 + (n-1)(n-2)/2 = n(n-1)/2$ 个初等旋转变换成所需的上三角形式。\end{proof}
-
-\begin{proof}[\normalfont\heiti 定理 5.3 的证明~\nopunct]根据引理 5.5，存在初等旋转 $R_1, R_2, \dots, R_N$，使得矩阵 $U_1 = R_N \dots R_2 R_1 U$ 是上三角的，并且除最后一个对角线元素 $B_{n,n}$ 外，所有对角线元素都是非负的。
-
-注意，矩阵 $U_1$ 是正交的。任何正交矩阵都是正规的，我们知道一个上三角矩阵只有在它是对角矩阵时才是正规的。因此，$U_1$ 是一个对角矩阵。
-
-我们知道正交矩阵的特征值只能是 $1$ 或 $-1$，所以我们只能在 $U_1$ 的对角线上有 $1$ 或 $-1$.~但是，我们知道 $U_1$ 的所有对角线元素，除了最后的之外，都是非负的，所以 $U_1$ 的所有对角线元素，除了最后的之外，都是 $1$.~最后一个对角线元素可以是 $\pm 1$.~
-
-由于初等旋转的行列式为 1，我们可以得出 $\det U_1 = \det U = 1$，所以最后一个对角线元素也必须是 1。因此 $U_1 = I$，所以 $U$ 可以表示为初等旋转的乘积 $U = R_1^{-1} R_2^{-1} \dots R_N^{-1}$.~这里我们使用了初等旋转的逆也是初等旋转这一事实。\end{proof}
-
-\section{6. 定向}
-
-\subsection{6.1. 动机}
-图\Ref{fig:04} 和图\Ref{fig:05} 分别展示了 $\RR^2$ 和 $\RR^3$ 中的 3 组标准正交基。在每张图中，基 b) 可以通过一次旋转从标准基 a) 获得，而不可能通过旋转将标准基 a) 变成基 c)（使得 $\ee_k$ 变成 $\vv_k$ 对所有 $k$ 成立）。
-
-\begin{figure}[ht]
-  \centering  \includegraphics[width=0.7\linewidth]{figures/fig4.pdf}
-  \caption{$\RR^2$上的定向}
-  \label{fig:04} 
+我们想知道解的相对误差$\|\Delta\mathbf{x}\|/\|\mathbf{x}\|$相比于右端项的相对误差$\|\Delta\mathbf{b}\|/\|\mathbf{b}\|$有多大。容易看出
+\[\frac{\|\Delta\mathbf{x}\|}{\|\mathbf{x}\|}=\frac{\|A^{-1}\Delta\mathbf{b}\|}{\|\mathbf{x}\|}=\frac{\|A^{-1}\Delta\mathbf{b}\|}{\|\mathbf{b}\|}\frac{\|\mathbf{b}\|}{\|\mathbf{x}\|}=\frac{\|A^{-1}\Delta\mathbf{b}\|}{\|\mathbf{b}\|}\frac{\|A\mathbf{x}\|}{\|\mathbf{x}\|}.\]
+因为$\|A^{-1}\Delta\mathbf{b}\|\le \|A^{-1}\|\cdot \|\Delta\mathbf{b}\|$，并且$\|A\mathbf{x}\|\le\|A\|\cdot \|\mathbf{x}\|$，所以可得
+\[\frac{\|\Delta\mathbf{x}\|}{\|\mathbf{x}\|}\leq\|A^{-1}\|\cdot\|A\|\cdot\frac{\|\Delta\mathbf{b}\|}{\|\mathbf{b}\|}.\]
+
+$\|A\|\cdot\|A^{-1}\|$称为矩阵$A$的{\bf 条件数}。它估计了方程的解$\mathbf{x}$的相对误差与右端项$\mathbf{b}$的相对误差的依赖程度。\index{条件数（condition number）}
+
+我们看看这个量和奇异值有何关系。令$A$的奇异值是$s_{1},s_{2},\ldots,s_{n}$，并设$s_1$和$s_n$分别是最大的和最小的奇异值。我们知道算子的（算子）范数等于其最大奇异值，所以
+\[\|A\|=s_1,\quad\|A^{-1}\|=\frac{1}{s_n},\]
+因此\[\|A\|\cdot\|A^{-1}\|=\frac{s_1}{s_n}.\]
+换言之
+\begin{center}
+    \fbox{矩阵的条件数等于其最大和最小奇异值之比。}
+\end{center}
+
+前面我们推得，$\frac{\|\Delta\mathbf{x}\|}{\|\mathbf{x}\|}\leq\|A^{-1}\|\cdot\|A\|\cdot\frac{\|\Delta\mathbf{b}\|}{\|\mathbf{b}\|}$。不难看出，这个估计是紧的，即可以选取右端项$\mathbf{b}$和误差$\Delta\mathbf{b}$，使得等号成立：
+\[\frac{\|\Delta\mathbf{x}\|}{\|\mathbf{x}\|}=\|A^{-1}\|\cdot\|A\|\cdot\frac{\|\Delta\mathbf{b}\|}{\|\mathbf{b}\|}.\]
+只需置$\mathbf{b}=\mathbf{w}_{1}$和$\Delta\mathbf{b}=\alpha\mathbf{w}_{n}$，其中$\mathbf{w}_{1}$和$\mathbf{w}_{n}$分别是奇异值分解$A=W\Sigma V^*$中矩阵$W$的第一列和最后一列，$\alpha\neq 0$是任意标量。此处，按惯例，将奇异值按非增顺序排列为$s_{1}\geq s_{2}\geq\ldots\geq s_{n}$，故$s_1$是最大的奇异值，$s_n$是最小的奇异值。
+
+我们将细节留给读者作为习题。
+
+如果一矩阵的条件数不太大，则称其是{\bf 良态的}；如果条件数很大，就称该矩阵是病态的。“大”的标准依问题而定——与可获得的右端项的精度，以及所需的解的精度等都有关系。
+
+\subsection{矩阵的有效秩}
+
+理论上讲，矩阵的秩很容易计算：只需做行化简再数出主元的个数就行了。然而，在实际应用中，并不总这样简单——主要原因是，我们常常不知道确切的矩阵，而只知道它达到某个精度的估计。
+
+此外，即便我们知道确切的矩阵，大多数的计算程序在运算过程中都会引入舍入误差，所以实际上我们无法区分“为零的主元”和“很小的主元”。
+
+处理舍入误差的一种朴素的思路是，当计算秩（以及与之相关的其他对象，比如列空间、核等）时，设定一个容许值（很小的数），若某主元小于这个容许值，就视其为零。这个方法的优势就是它很简单，因为很容易编程实现。然而，这个方法有个关键的缺陷：无法看出容许值会造成什么影响。比如，如果将容许值设为$10^{-6}$，我们会损失什么？设成$10^{-8}$又会有多少改进？
+
+尽管上述方法对良态矩阵很好用，它在一般情形下并不十分可靠。
+
+一种更好的方法是用奇异值。这种方法需要做更多计算，但会给出更好的结果，解释起来也更清晰。我们同样设定一个很小的数作为容许值，然后做奇异值分解。然后我们只需视小于容许值的奇异值为零。这种方法的优势在于我们知道自己在做什么：奇异值就是椭球$A(B)$（$B$是闭单位球）的半长轴，所以设定容许值就是在确定多“薄”的椭球应被视为“平”的。
+
+\subsection{摩尔-彭罗斯（伪）逆}
+
+如我们在第 \ref{chap:InnerProduct} 章第 \ref{sec:least_square} 节所讨论的，最小二乘解给出了方程$A\mathbf{x}=\mathbf{b}$无解时的“次优解”（并且在$A\mathbf{x}=\mathbf{b}$有解时也能给出其解）。\index{摩尔-彭罗斯逆（Moore-Penrose inverse）}
+
+注意，最小二乘解并未解决唯一性的问题：法方程$A^*A\mathbf{x}=A^*\mathbf{b}$的解未必是唯一的。其有一个自然的特解——最小范数解。这样的解是唯一的，并且可以通过取任意解往$(\ker A^*A)^\perp=(\ker A)^\perp$的投影来获得，见第 \ref{chap:InnerProduct} 章习题 \ref{ex:5_4_5} 和 \ref{ex:5_4_6}。
+
+不难看出，如果$A$的{\bf 简化}奇异值分解是$A=\widetilde{W}\widetilde{\Sigma}\widetilde{V}^*$，那么最小范数最小二乘解$\mathbf{x}_0$由下式给出：\index{最小二乘解（least square solution）!最小范数$\sim$（minimal norm）}
+\begin{equation}\label{ls_ln_sol}
+    \mathbf{x}_{0}=\widetilde{V}\widetilde{\Sigma}^{-1}\widetilde{W}^{*}\mathbf{b}.
+\end{equation}
+的确如此——$\mathbf{x}_0$是$A\mathbf{x}=\mathbf{b}$的最小二乘解（即$A\mathbf{x}=P_{\rg A}\mathbf{b}$的解）：
+\[A\mathbf{x}_{0}=\widetilde{W}\widetilde{\Sigma}\widetilde{V}^{*}\widetilde{V}\widetilde{\Sigma}^{-1}\widetilde{W}^{*}\mathbf{b}=\widetilde{W}\widetilde{\Sigma}\widetilde{\Sigma}^{-1}\widetilde{W}^{*}\mathbf{b}=\widetilde{W}\widetilde{W}^{*}\mathbf{b}=P_{\mathrm{Ran}A}\mathbf{b};\]
+最后一个等号成立，是由于$\widetilde{W}\widetilde{W}^{*}=P_{\operatorname{Ran}\widetilde{W}}$（$P_{\rg\widetilde{W}}=\widetilde{W}(\widetilde{W}^{*}\widetilde{W})^{-1}\widetilde{W}^{*}=\widetilde{W}\widetilde{W}^{*}$）并且$\rg\widetilde{W}=\rg A$（见下习题 \ref{ex:6_4_4}）。
+
+方程$A\mathbf{x}=P_{\rg A}\mathbf{b}$的通解是
+\[\mathbf{x}=\mathbf{x}_0+\mathbf{y},\quad \mathbf{y}\in\ker A,\]
+注意到$\mathbf{x}_0\in \rg \widetilde{V}$且$\rg \widetilde{V}=\rg A^*$（同样见下习题 \ref{ex:6_4_4}），因此 $\mathbf{x}_0\perp \ker A$（因为$\ker A = (\rg A^*)^\perp$，见第 \ref{chap:InnerProduct} 章的定理 \ref{thm:geometric_relation_adjoint_fundamental}）。
+所以$\mathbf{x}_0$的确是$A\mathbf{x}=P_{\rg A}\mathbf{b}$的唯一最小范数解，或者等价地说，是$A\mathbf{x}=\mathbf{b}$的最小范数最小二乘解。
+
+\begin{definition}
+    变换$A^+:=\widetilde{V}\widetilde{\Sigma}^{-1}\widetilde{W}^{*}$（其中$A$的{\bf 简化}奇异值分解为$A=\widetilde{W}\widetilde{\Sigma}\widetilde{V}^*$）称为变换$A$的{\bf 摩尔-彭罗斯逆}（或{\bf 摩尔-彭罗斯伪逆}）。换言之，{\bf 摩尔-彭罗斯逆}是能给出$A\mathbf{x}=\mathbf{b}$的唯一最小二乘解的变换。
+\end{definition}
+
+\begin{remark}
+    在文献中，摩尔-彭罗斯逆常定义为满足下列性质的矩阵$A^+$：
+    \begin{enumerate}
+        \item $AA^{+}A=A$；
+        \item $A^{+}AA^{+}=A^{+}$；
+        \item $(AA^+)^*=AA^+$；
+        \item $(A^{+}A)^{*}=A^{+}A$。
+    \end{enumerate}
+
+    很容易检验，变换$A^+:=\widetilde{V}\widetilde{\Sigma}^{-1}\widetilde{W}^{*}$满足上述性质1-4。
+
+    还可以证明，满足上述性质1-4的变换$A^+$是唯一的，尽管证明稍有些难度。的确如此：将等式1右乘和左乘$A^+$，可分别得到$(A^+A)^{2}=A^{+}A$和$(AA^+)^{2}=AA^{+}$，再结合性质3和4，即得$A^{+}A$和$AA^{+}$都是正交投影（见第 \ref{chap:InnerProduct} 章习题 \ref{ex:5_5_6}）。
+
+    显然，$\ker A\subset\ker A^{+}A$，而由等式1，$\ker A^{+}A\subset\ker A$（为什么？），所以$\ker A^{+}A=\ker A$。而这就意味着$A^{+}A$是往$(\ker A)^\perp=\rg A^*$的正交投影：\[A^{+}A=P_{\rg A^*}.\]
+
+    性质1还意味着，对所有$\mathbf{y}\in \rg A$，有$AA^{+}\mathbf{y}=\mathbf{y}$。因为$AA^+$是正交投影，所以$\rg A\subset \rg AA^+$。反方向的包含关系$\rg AA^+\subset \rg A$是平凡的，所以$AA^+$是往$\rg A$的正交投影：\[AA^+=P_{\rg A}.\]
+
+    已知$A^{+}A$和$AA^+$，可重写性质2为\[P_{\rg A^*}A^+=A^+\quad\text{或}\quad A^+P_{\rg A}=A^+.\]
+    结合两式得到\[P_{\rg A^*}A^+P_{\rg A}=A^+.\]
+
+    最后，对$A$的目标空间中的任意$\mathbf{b}$有\[\mathbf{x}_0:=A^+\mathbf{b}=P_{\operatorname{Ran}A^*}A^+\mathbf{b}\in\operatorname{Ran}A^*\]
+    以及\[A\mathbf{x}_{0}=AA^{+}\mathbf{b}=P_{\operatorname{Ran}A}\mathbf{b},\]
+    即$\mathbf{x}_0$是$A\mathbf{x}=\mathbf{b}$的最小二乘解。因为$\mathbf{x}_0\in \rg A^*=(\ker A)^\perp$，所以根据我们之前的讨论，$\mathbf{x}_0$是最小范数最小二乘解。但是，如我们之前证明的，这样的最小二乘解由 \eqref{ls_ln_sol} 给出，因此必有$A^+=\widetilde{V}\widetilde{\Sigma}^{-1}\widetilde{W}^{*}$。\qed
+\end{remark}
+
+\begin{problemset}
+    \item 求出下列矩阵的范数和条件数：
+    \begin{probenumerate}
+        \item $A=\begin{pNiceMatrix}[margin]
+            4&0\\1&3
+        \end{pNiceMatrix}$。
+        \item $A=\begin{pNiceMatrix}[margin]
+            5&3\\-3&3
+        \end{pNiceMatrix}$。
+    \end{probenumerate}
+
+    对a)问中的矩阵$A$，给出一个右端项$\mathbf{b}$和误差$\Delta\mathbf{b}$使得
+    \[\frac{\|\Delta\mathbf{x}\|}{\|\mathbf{x}\|}=\|A\|\cdot\|A^{-1}\|\cdot\frac{\|\Delta\mathbf{b}\|}{\|\mathbf{b}\|};\]
+    这里$A\mathbf{x}=\mathbf{b}$且$A\Delta\mathbf{x}=\Delta\mathbf{b}$。
+    \item 令$A$是正规算子，并令$\lambda_1,\lambda_2,\ldots,\lambda_n$是它的特征值（以重数计）。证明：$A$的奇异值是$|\lambda_1|,|\lambda_2|,\dots,|\lambda_n|$。
+    \item 求出矩阵\[A=\begin{pNiceMatrix}[margin]2&1&1\\1&2&1\\1&1&2\end{pNiceMatrix}\]
+    的奇异值、范数和条件数。如果你利用上题的结论并能回答下列几个问题，可以不用任何计算就得出答案：
+    \begin{probenumerate}
+        \item 往某子空间$E$上正交投影$P_E$的奇异值（特征值）是什么？
+        \item 往由向量$(1,1,1)^T$张成的子空间上正交投影的矩阵是什么？
+        \item 算子$T$与$aT+bI$（$a,b$为标量）的特征值有什么关系？
+    \end{probenumerate}
+    \item \label{ex:6_4_4} 令$A$的{\bf 简化}奇异值分解为$A=\widetilde{W}\widetilde{\Sigma}\widetilde{V}^*$。证明$\rg A=\rg \widetilde{W}$，再通过取伴随证明$\rg A^*=\rg \widetilde{V}$。
+    \item 利用奇异值分解$A=W\Sigma V^*$，写出摩尔-彭罗斯逆$A^+$的公式。
+    \item {\bf 吉洪诺夫正则化}：证明摩尔-彭罗斯逆$A^+$可用下述极限计算：
+    \[A^{+}=\lim_{\varepsilon\to0+}(A^{*}A+\varepsilon I)^{-1}A^{*}=\lim_{\varepsilon\to0+}A^{*}(AA^{*}+\varepsilon I)^{-1}.\]
+\end{problemset}
+
+\section{正交矩阵的结构}\label{sec:orthogonal_structure}
+
+满足$\det U=1$的正交矩阵$U$常称作{\bf 旋转}。下述定理解释了这个名称的来历。
+
+\begin{theorem}\label{thm:rotation_det1}
+    令$U$是$\mathbb{R}^n$上的正交算子，并令$\det U=1$。\footnote{对一般的正交矩阵$U$，$\det U=\pm 1$。}那么存在规范正交基$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$，使得$U$关于该基的矩阵具有如下分块对角形式
+    \[
+        \begin{pNiceMatrix}[margin]
+            R_{\varphi_1}             &               &        &               & \Block{2-1}<\LARGE>{0} \\
+                                    & R_{\varphi_2} &        &               &                        \\
+                                    &               & \ddots &               &                        \\
+            \Block[b]{2-1}<\LARGE>{0} &               &        & R_{\varphi_k} &                        \\
+                                    &               &        &               & I_{n-2k}
+        \end{pNiceMatrix}.
+    \]
+    其中$R_{\varphi_k}$是$2$维旋转，\[R_{\varphi_k}=\begin{pNiceMatrix}[margin]\cos\varphi_k&-\sin\varphi_k\\\sin\varphi_k&\cos\varphi_k\end{pNiceMatrix}\]
+    $I_{n-2k}$代表大小为$(n-2k)\times (n-2k)$的恒等矩阵。
+\end{theorem}
+
+\begin{proof}
+    我们知道，如果$p$是实系数多形式，且$\lambda$是其复根（$p(\lambda)=0$），那么$\overline{\lambda}$也是$p$的根，即$p(\overline{\lambda})=0$（将$\overline{\lambda}$代入$p(z)=\sum_{k=0}^{n}a_kz^k$即可验证）。
+
+    因此，实矩阵的所有复特征值都可按$\lambda_k,\overline{\lambda}_k$成对划分。
+
+    我们知道，幺正矩阵的特征值的绝对值都是$1$，因此$U$（既为实的、又为幺正的）的所有复特征值都是以$\lambda_k=\cos\alpha_k+i\sin\alpha_k$，$\overline{\lambda_k}=\cos\alpha_k-i\sin\alpha_k$的形式成对出现。
+
+    取定一对复特征值$\lambda$和$\overline{\lambda}$，并令$\mathbf{u}\in\mathbb{C}^n$是$U$的特征向量，$U\mathbf{u}=\lambda\mathbf{u}$。那么$U\overline{\mathbf{u}}=\overline{\lambda}\overline{\mathbf{u}}$。现在将$\mathbf{u}$分成实部和虚部，即定义
+    \[\mathbf{x}:=\operatorname{Re}\mathbf{u}=(\mathbf{u}+\overline{\mathbf{u}})/2,\quad\mathbf{y}=\operatorname{Im}\mathbf{u}=(\mathbf{u}-\overline{\mathbf{u}})/(2i),\]
+    因此$\mathbf{u}=\mathbf{x}+i\mathbf{y}$（注意$\mathbf{x},\mathbf{y}$都是实向量，即各元素为实数的向量）。那么
+    \[U\mathbf{x}=U\frac{1}{2}(\mathbf{u}+\overline{\mathbf{u}})=\frac{1}{2}(\lambda\mathbf{u}+\overline{\lambda}\overline{\mathbf{u}})=\mathrm{Re}(\lambda\mathbf{u}).\]
+    类似地，
+    \[U\mathbf{y}=\frac{1}{2i}U(\mathbf{u}-\overline{\mathbf{u}})=\frac{1}{2i}(\lambda\mathbf{u}-\overline{\lambda}\overline{\mathbf{u}})=\mathrm{Im}(\lambda\mathbf{u}).\]
+    因为$\lambda=\cos\alpha+i\sin\alpha$，所以我们有
+    \begin{align*}
+        \lambda\mathbf{u}&=(\cos\alpha+i\sin\alpha)(\mathbf{x}+i\mathbf{y})\\
+        &=((\cos\alpha)\mathbf{x}-(\sin\alpha)\mathbf{y})+i((\cos\alpha)\mathbf{y}+(\sin\alpha)\mathbf{x}).
+    \end{align*}
+    因此
+    \begin{align*}
+        U\mathbf{x}&=\operatorname{Re}(\lambda\mathbf{u})=(\cos\alpha)\mathbf{x}-(\sin\alpha)\mathbf{y},\\
+        U\mathbf{y}&=\operatorname{Im}(\lambda\mathbf{u})=(\cos\alpha)\mathbf{y}+(\sin\alpha)\mathbf{x}.
+    \end{align*}
+    换言之，$U$保持由向量$\mathbf{x},\mathbf{y}$张成的$2$维子空间$E_\lambda$不变，并且限制于该子空间的$U$的矩阵是旋转矩阵
+    \[R_{-\alpha}=\begin{pNiceMatrix}[margin]\cos\alpha&\sin\alpha\\-\sin\alpha&\cos\alpha\end{pNiceMatrix}.\]
+
+    注意，向量$\mathbf{u}$和$\overline{\mathbf{u}}$（都是幺正矩阵的特征向量，并且对应于不同的特征值）是正交的，故由毕达哥拉斯定理有
+    \[\|\mathbf{x}\|=\|\mathbf{y}\|=\frac{\sqrt2}{2}\|\mathbf{u}\|.\]
+    容易验证$\mathbf{x}\perp\mathbf{y}$，因此$\mathbf{x},\mathbf{y}$是$E_\lambda$的正交基。如果将基向量$\mathbf{x},\mathbf{y}$都乘以相同的非零数，那么线性变换的矩阵不会改变。因此，不失一般性，我们可假设$\|\mathbf{x}\|=\|\mathbf{y}\|=1$，即$\mathbf{x},\mathbf{y}$是$E_\lambda$的规范正交基。
+
+    下面将规范正交向量组$\mathbf{v}_1=\mathbf{x},\mathbf{v}_2=\mathbf{y}$补全为$\mathbb{R}^n$的规范正交基。因为$UE_\lambda\subset E_\lambda$，即$E_\lambda$是$U$的不变子空间，所以$U$关于该基的矩阵具有如下分块三角形式
+    \begin{equation*}
+        \begin{pNiceArray}{c|ccc}[margin]
+            R_{-\alpha} &  & * & \\
+            \Hline
+            & & & \\
+            \mathbf{0} & & U_1 & \\
+            & & &
+        \end{pNiceArray}
+    \end{equation*}
+    其中$\mathbf{0}$代表由零构成的$(n-2)\times 2$的块。
+
+    因为旋转矩阵$R_{-\alpha}$是可逆的，所以$UE_\lambda=E_\lambda$。因此
+    \[U^*E_\lambda = U^{-1}E_\lambda = E_\lambda,\]
+    因此$U$关于该基的矩阵事实上是分块对角的：
+    \begin{equation*}
+        \begin{pNiceArray}{c|ccc}[margin]
+            R_{-\alpha} &  & \mathbf{0} & \\
+            \Hline
+            & & & \\
+            \mathbf{0} & & U_1 & \\
+            & & &
+        \end{pNiceArray}
+    \end{equation*}
+    因为$U$是幺正的，所以
+    \begin{equation*}
+        I = U^*U = \begin{pNiceArray}{c|ccc}[margin]
+            I &  & \mathbf{0} & \\
+            \Hline
+            & & & \\
+            \mathbf{0} & & U_1^*U_1 & \\
+            & & &
+        \end{pNiceArray}
+    \end{equation*}
+    则因为$U_1$是方阵，所以$U_1$也是幺正的。
+
+    如果$U_1$有复特征值，我们可以对其应用上述步骤，将其大小减少$2$，直至剩余的块只有实特征值。实特征值只能是$+1$或$-1$，因此关于某规范正交基，$U$的矩阵形如
+    \[
+        \begin{pNiceMatrix}[margin]
+            R_{-\alpha_1}             &               &        &               &        & \Block{2-1}<\LARGE>{0} \\
+                                    & R_{-\alpha_2} &        &               &        &                        \\
+                                    &               & \ddots &               &        &                        \\
+                                    &               &        & R_{-\alpha_d} &        &                        \\
+            \Block[b]{2-1}<\LARGE>{0} &               &        &               & -I_{r} &                        \\
+                                    &               &        &               &        & I_{l}                 \\
+        \end{pNiceMatrix}.
+    \]
+    其中$I_r$和$I_l$分别是大小为$r\times r$和$l\times l$的恒等矩阵。因为$\det U=1$，所以特征值$-1$的重数（即$r$）必为偶数。
+
+    注意，$2\times 2$矩阵$-I_2$可解释为旋转$\pi$。因此，上述矩阵具有定理陈述中的形式，其中$\varphi_k=-\alpha_k$或$\varphi_k = \pi$。
+\end{proof}
+
+我们给出定理 \ref{thm:rotation_det1} 的一种不同的解释。定义$T_j$是在由向量$\mathbf{v}_j,\mathbf{v}_{j+1}$张成的向量空间中旋转$\varphi_j$。那么定理 \ref{thm:rotation_det1} 其实表明，$U$是旋转$T_j,j=1,2,\dots,k$的复合。注意，因为各旋转$T_j$作用在互相正交的平面上，所以它们是可交换的，也即复合的顺序是无关紧要的。因此，该定理可解释为：
+\begin{center}
+    \fbox{$\mathbb{R}^n$上的任意旋转可表示为至多$n/2$个可交换的平面旋转的复合。}
+\end{center}
+
+如果正交矩阵的行列式是$-1$，那么其结构由下面定理描述。
+
+\begin{theorem}\label{thm:rotation_det-1}
+    令$U$是$\mathbb{R}^n$上的正交算子，并令$\det U=-1$。那么存在规范正交基$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$，使得$U$关于该基的矩阵具有如下分块对角形式
+    \[
+        \begin{pNiceMatrix}[margin]
+            R_{\varphi_1}             &               &        &               &       & \Block{2-1}<\LARGE>{0} \\
+                                    & R_{\varphi_2} &        &               &       &                        \\
+                                    &               & \ddots &               &       &                        \\
+                                    &               &        & R_{\varphi_k} &       &                        \\
+            \Block[b]{2-1}<\LARGE>{0} &               &        &               & I_{r} &                        \\
+                                    &               &        &               &       & -1                     \\
+        \end{pNiceMatrix}.
+    \]
+    其中$r=n-2k-1$，$R_{\varphi_k}$是$2$维旋转，\[R_{\varphi_k}=\begin{pNiceMatrix}[margin]\cos\varphi_k&-\sin\varphi_k\\\sin\varphi_k&\cos\varphi_k\end{pNiceMatrix}\]
+    $I_{n-2k}$代表大小为$(n-2k)\times (n-2k)$的恒等矩阵。
+\end{theorem}
+我们将证明留给读者作为习题。需要对定理 \ref{thm:rotation_det1} 的证明作出修改，而这修改是很显然的。
+
+注意，由上述定理可得，行列式为$-1$的$2\times 2$正交矩阵$U$必为反射。
+
+下面，取定规范正交基（比如$\mathbb{R}^n$的标准基）。我们称$x_j$-$x_k$平面上的旋转为{\bf 初等旋转}\footnote{这个术语并未被广泛采用。}，即仅仅改变坐标$x_j$和$x_k$，并且对这两个坐标的作用等同于平面旋转的线性变换。
+
+\begin{theorem}\label{thm:every_rot_elementary_rot}
+    任意旋转$U$（即$\det U=1$的正交变换$U$）都可表示为至多$n(n-1)/2$个初等旋转的乘积。
+\end{theorem}
+
+为证明该定理，我们需要下面这几个简单的引理。
+
+\begin{lemma}\label{lem:r2_rotation}
+    令$\mathbf{x}=(x_1,x_2)^T\in\mathbb{R}^2$。存在$\mathbb{R}^2$上的旋转$R_\alpha$，将向量$\mathbf{x}$转到$(a,0)^T$，其中$a=\sqrt{x_1^2+x_2^2}$。
+\end{lemma}
+
+该引理的证明很简单，留给读者作为习题，只需画出图形或者写出$R_\alpha$的表达式。
+
+\begin{lemma}\label{lem:rn_rotation}
+    令$\mathbf{x}=(x_1,x_2,\dots,x_n)^T\in\mathbb{R}^n$。存在$n-1$个初等旋转\linebreak $R_1,R_2,\dots,R_{n-1}$，使得$R_{n-1}\ldots R_2R_1\mathbf{x}=(a,0,0,\dots,0)^T$，其中$a=\sqrt{x_1^2+x_2^2+\dots+x_n^2}$。
+\end{lemma}
+
+\begin{proof}
+    该引理的证明思想很简单。首先用$x_{n-1}$-$x_n$平面上的初等旋转$R_1$来“消去”$\mathbf{x}$的最后一个坐标（引理 \ref{lem:r2_rotation} 保证了此旋转的存在性），然后用$x_{n-2}$-$x_{n-1}$平面上的初等旋转$R_2$来“消去”$R_1\mathbf{x}$的第$n-1$个坐标（旋转$R_2$不会改变最后一个坐标，所以$R_2R_1\mathbf{x}$的最后一个坐标保持为零），依次类推。
+
+    下面呈现正式的证明，对$n$用归纳法。$n=1$的情形是平凡的，因为$\mathbb{R}^1$中的任意向量都具有期望的形式，而$n=2$的情况由引理 \ref{lem:r2_rotation} 解决。
+
+    现假设本引理对$n-1$情形成立，要证它对$n$的情形成立。由引理 \ref{lem:r2_rotation}，存在$2\times 2$旋转矩阵$R_\alpha$，使得
+    \[R_\alpha\begin{pNiceMatrix}[margin]x_{n-1}\\x_n\end{pNiceMatrix}=\begin{pNiceMatrix}[margin]a_{n-1}\\0\end{pNiceMatrix},\]
+    其中$a_{n-1}=\sqrt{x_{n-1}^2+x_n^2}$。所以，如果定义$n\times n$初等旋转$R_1$为
+    \[R_1=\begin{pNiceMatrix}[margin]I_{n-2}&\mathbf{0}\\\mathbf{0}&R_\alpha\end{pNiceMatrix}\]
+    （$I_{n-2}$是$(n-2)\times (n-2)$恒等矩阵），那么
+    \[R_1\mathbf{x}=(x_1,x_2,\dots,x_{n-2},a_{n-1},0)^T.\]
+
+    我们假设了本引理对$n-1$情形成立，所以存在$n-2$个$\mathbb{R}^{n-1}$上的初等旋转（记其为$R_2,R_3,\dots,R_{n-1}$），将向量$(x_1,x_2,\dots,x_{n-2},a_{n-1})^T\in\mathbb{R}^{n-1}$变换为向量$(a,0,\dots,0)^T\in\mathbb{R}^{n-1}$。换言之，
+    \[R_{n-1}\dots R_3R_2(x_1,x_2,\dots,x_{n-2},a_{n-1})^T=(a,0,\dots,0)^T.\]
+
+    我们总可以假设初等旋转$R_2,R_3,\dots,R_{n-1}$作用于$\mathbb{R}^n$（只需假设它们不改变最后一个坐标）。那么
+    \[R_{n-1}\dots R_3R_2R_1\mathbf{x}=(a,0,\dots,0)^T\in\mathbb{R}^n.\]
+    下面证明$a=\sqrt{x_1^2+x_2^2+\dots+x_n^2}$。可以直接检验之，不过我们运用下面的间接论证方法：已知正交变换保持范数，并且$a\ge 0$，这样$a$就只可能是$a=\sqrt{x_1^2+x_2^2+\dots+x_n^2}$。
+\end{proof}
+
+\begin{lemma}\label{lem:elementary_rot_upper}
+    令$A$是$n\times n$实矩阵。存在初等旋转$R_1,R_2,\dots,R_N,N\le n(n-1)/2$，使得$B=R_N\dots R_2R_1A$是上三角的，此外，其对角元除了最后一个（$B_{n,n}$）外，都是非负的。
+\end{lemma}
+
+\begin{proof}
+    我们将对$n$用归纳法。$n=1$的情形是平凡的，因为可以说所有$1\times 1$矩阵都具有期望的形式。
+
+    现在考虑$n=2$的情形。令$\mathbf{a}_1$是$A$的第一列。由引理 \ref{lem:r2_rotation}，存在旋转$R$可“消去”$\mathbf{a}_1$的第二个坐标且使第一个坐标非负。于是矩阵$B=RA$具有期望的形式。
+
+    现在假设该引理对$(n-1)\times (n-1)$矩阵成立，并要证明它对$n\times n$矩阵成立。令$\mathbf{a}_1$是$n\times n$矩阵$A$的第一列。由引理 \ref{lem:rn_rotation}，可找到$n-1$个初等旋转（记为$R_1,R_2,\dots,R_{n-1}$）将$\mathbf{a}_1$变换为$(a,0,\dots,0)^T$。因此，矩阵$R_{n-1}\dots R_2R_1A$具有下面的分块三角形式
+    \[R_{n-1}\dots R_2R_1A=\begin{pNiceMatrix}[margin]
+        a & * \\ \mathbf{0} & A_1
+    \end{pNiceMatrix}\]
+    其中$A_1$是$(n-1)\times (n-1)$的块。
+
+    我们假设了该引理对$n-1$的情形成立，所以$A_1$可由至多$(n-1)(n-2)/2$个旋转变换为所需的上三角形式。注意，这些旋转作用于$\mathbb{R}^{n-1}$（只对坐标$x_2,x_3,\dots,x_n$有作用），但我们总可以假设它们作用于整个$\mathbb{R}^{n}$（只需假设它们不改变第一个坐标）。那么，这些旋转就不会改变向量$(a,0,\dots,0)^T$（$R_{n-1}\dots R_2R_1A$的第一列），因此矩阵$A$可由至多$n-1+(n-1)(n-2)/2=n(n-1)/2$个初等旋转化为所需的上三角形式。
+\end{proof}
+
+\begin{proof}[定理 \ref{thm:every_rot_elementary_rot} 的证明]
+    由引理 \ref{lem:elementary_rot_upper}，存在初等旋转$R_1,R_2,\dots,R_N$使得矩阵$U_1=R_N\dots R_2R_1U$是上三角的，并且所有对角元都是非负的（除了最后一个可能不是）。
+
+    注意，矩阵$U_1$是正交的。任意正交矩阵都是正规的，而我们知道任意正规的上三角矩阵都是对角阵。所以$U_1$是对角阵。
+
+    我们知道，正交矩阵的特征值只能是$1$或$-1$，所以$U_1$的对角线上只能有$1$或$-1$。但我们知道$U_1$的所有对角元都是非负的（除了最后一个可能不是），所以$U_1$的所有对角元（除最后一个外）都是$1$，而最后一个可能是$\pm 1$。
+
+    因为初等旋转的行列式是$1$，故$\det U_1=\det U=1$，则最后一个对角元也必为$1$。所以$U_1=I$，因此$U$可表示为一系列初等旋转的乘积$U=R_1^{-1}R_2^{-1}\dots R_N^{-1}$，此处用到了“初等旋转的逆也是初等旋转”。
+\end{proof}
+
+\section{取向}
+
+\subsection{引入}
+
+在下面的图 \ref{fig_6_1} 和 \ref{fig_6_2} 中，我们分别看到$\mathbb{R}^2$和$\mathbb{R}^3$的三个规范正交基。在每张图中，b)都可由标准基a)经旋转得到，而c)则无法由标准基a)经旋转得到。
+
+你之前可能已经听过“取向”一词，并且你大概已经知道基a)与b)的取向为正，而基c)的取向为负。你大概还了解过一些判别取向的法则，比如物理学中的右手定则。所以，如果你能{\bf 看到}基（比如说$\mathbb{R}^3$的基），你大概就能判断它的取向。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.9]{figures/fig6_6_1.pdf}
+    \caption{$\mathbb{R}^2$中的取向}
+    \label{fig_6_1}
 \end{figure}
 
-\begin{figure}[ht]
-  \centering  \includegraphics[width=0.7\linewidth]{figures/fig5.pdf}
-  \caption{$\RR^3$上的定向}
-  \label{fig:05} 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.9]{figures/fig6_6_2.pdf}
+    \caption{$\mathbb{R}^3$中的取向}
+    \label{fig_6_2}
 \end{figure}
 
-你可能以前听过“定向”(orientation)这个词，并且可能知道基 a) 和 b) 具有正定向，而基 c) 的定向是负的。你可能还知道一些确定定向的规则，例如物理学中的右手定则。所以，如果你能“看到”一组基，比如在 $\RR^3$ 中，你大概可以判断它的定向是什么。
+但是，如果只给出了向量$\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$的坐标呢？当然，你总可以绘制这些向量的图形，并据此判断取向。但这并不总是容易完成。而且，如何向计算机“解释”它呢？
 
-但如果只给出向量 $\vv_1, \vv_2, \vv_3$ 的坐标呢？当然，你可以尝试画一张图来可视化向量，然后看看定向是什么。但这并非总是一件容易的事。更重要的是，你如何“告诉”计算机呢？
+其实，有种更简单的方法，现在就给出解释。我们需要检验是否可能通过旋转$\mathbb{R}^3$的标准基$\mathbf{e}_1,\mathbf{e}_2,\mathbf{e}_3$来得到基$\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$。存在唯一的线性变换$U$使得\[U\mathbf{e}_k=\mathbf{v}_k,\quad k=1,2,3;\]
+其（关于标准基的）矩阵是各列为$\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3$的矩阵。它是正交矩阵（因为它将规范正交基变换成规范正交基），因此只需判断它是否为旋转。定理 \ref{thm:rotation_det1} 和 \ref{thm:rotation_det-1} 给出了答案：矩阵$U$是旋转矩阵，当且仅当$\det U=1$。注意，（对$3\times 3$矩阵而言）若$\det U=-1$，那么$U$是两变换的复合——关于某轴的旋转与关于旋转平面（即正交于旋转轴的平面）的反射。
 
-事实证明，有一个更简单的方法。让我们来解释一下。我们需要核验是否有可能在 $\RR^3$ 中通过旋转标准基 $\ee_1, \ee_2, \ee_3$ 来得到基 $\vv_1, \vv_2, \vv_3$ 。存在唯一一个线性变换 $U$，使得 $$U\ee_k = \vv_k,\quad k=1, 2, 3;$$
-它的矩阵（在标准基下）是由列向量 $\vv_1, \vv_2, \vv_3$ 组成的。它是一个正交矩阵（因为它将一组标准正交基变换为另一组标准正交基），所以我们需要看看它何时是旋转。定理 5.1 和 5.2 给出了答案：矩阵 $U$ 是旋转当且仅当 $\det U = 1$.~注意（对于 $3 \times 3$ 矩阵），如果 $\det U = -1$，那么 $U$ 是围绕某个轴的旋转与该旋转平面（即该轴的垂直平面）上的反射的复合。
+这就为下面的形式化定义提供了动机。
 
-这为下面的形式化定义提供了动机。
+\subsection{形式化定义}
 
-\subsection{6.2. 形式定义}
+令$\mathcal{A}$和$\mathcal{B}$是{\bf 实}向量空间$X$的两个基。如果坐标变换矩阵$[I]_\mathcal{BA}$的行列式为正，则称基$\mathcal{A}$和$\mathcal{B}$取向相同；如果坐标变换矩阵$[I]_\mathcal{BA}$的行列式为负，则称它们取向相异。
 
-设 $\A $ 和 $\B$ 是\textbf{实}向量空间 $X$ 中的两组基。如果坐标变换矩阵 $[I]_{\B,\A}$ 的行列式为正，我们说基 $\A$ 和 $\B$ 具有\textbf{相同}的定向；如果行列式为负，我们说它们具有\textbf{不同}的定向。
+注意，因为$[I]_\mathcal{AB}=[I]_\mathcal{BA}^{-1}$，所以上述定义中也可以用矩阵$[I]_\mathcal{AB}$。
 
-注意，由于 $[I]_{\A,\B} = [I]_{\B,\A}^{-1}$，我们可以在定义中使用矩阵 $[I]_{\A,\B}$.~
+$\mathbb{R}^n$中，一般假设标准基$\mathbf{e}_1,\mathbf{e}_2,\dots,\mathbf{e}_n$取向为正。在抽象的向量空间中，只需取定一个基，并假设该基取向为正即可。
 
-我们通常假设 $\RR^n$ 中的标准基 $\ee_1, \ee_2, \dots, \ee_n$ 具有正定向。在一个抽象空间中，只需要固定一组基，并令其定向为正。
+如果$\mathbb{R}^n$的规范正交基$\mathbf{v}_1,\mathbf{v}_2,\dots,\mathbf{v}_n$取向为正（即与标准基取向相同），那么定理 \ref{thm:rotation_det1} 和 \ref{thm:rotation_det-1} 就表明，基$\mathbf{v}_1,\mathbf{v}_2,\dots,\mathbf{v}_n$可由标准基通过旋转得到。
 
-如果在 $\RR^n$ 中，一组标准正交基 $\vv_1, \vv_2, \dots, \vv_n$ 具有正定向（即与标准基相同的定向），那么定理 5.1 和 5.2 说明基 $\vv_1, \vv_2, \dots, \vv_n$ 是通过一次旋转从标准基获得的。
+\subsection{基和取向的连续变换}
 
+\begin{definition*}
+    称基$\mathcal{A}=\{\mathbf{a}_1,\mathbf{a}_2,\dots,\mathbf{a}_n\}$可连续变换为基$\mathcal{B}=\{\mathbf{b}_1,\mathbf{b}_2,\dots,\mathbf{b}_n\}$，若存在连续的一族基$\mathcal{V}(t)=\{\mathbf{v}_1(t),\mathbf{v}_2(t),\dots,\mathbf{v}_n(t)\},t\in[a,b]$，使得
+    \[\mathbf{v}_k(a)=\mathbf{a}_k,\quad \mathbf{v}_k(b)=\mathbf{b}_k,\quad k=1,2,\dots,n.\]
+    “连续的一族基”意为：各向量函数$\mathbf{v}_k(t)$是连续的（它们关于某个基的坐标是连续函数），并且对于所有$t\in[a,b]$，向量组$\mathbf{v}_1(t),\mathbf{v}_2(t),\dots,\mathbf{v}_n(t)$总是基（这点很重要）。
+\end{definition*}
 
-\subsection{6.3. 基的连续变换与定向}
+注意，通过变量代换，总可假设（如有必要）$[a,b]=[0,1]$。
 
-{\heiti 定义}~~ 我们说基 $\A = \{\aaa_1, \aaa_2, \dots, \aaa_n\}$ 可以\textbf{连续地}变换为基 $\B = \{\bb_1, \bb_2, \dots, \bb_n\}$，如果存在一组基的连续族 $\mathcal{V}(t) = \{\vv_1(t), \vv_2(t), \dots, \vv_n(t)\}, t \in [a, b]$，使得 $$\vv_k(a) = \aaa_k,\quad \vv_k(b) = \bb_k,\quad k = 1, 2, \dots, n.$$
-“连续的基族”意味着向量函数 $\vv_k(t)$ 是连续的（它们在某组基下的坐标是连续函数），并且，至关重要的是，系统 $\vv_1(t), \vv_2(t), \dots, \vv_n(t)$ 在所有 $t \in [a, b]$ 都是一组基。
+\begin{theorem}\label{thm:orientation_continuous_trans}
+    两个基$\mathcal{A}=\{\mathbf{a}_1,\mathbf{a}_2,\dots,\mathbf{a}_n\}$和$\mathcal{B}=\{\mathbf{b}_1,\mathbf{b}_2,\dots,\mathbf{b}_n\}$取向相同，当且仅当其中一个基可被连续变换为另一个。
+\end{theorem}
 
-注意，通过进行变量替换，我们总可以假设（如果需要）$[a, b] = [0, 1]$.~
+\begin{proof}
+    假设基$\mathcal{A}$可连续变换为基$\mathcal{B}$，并令$\mathcal{V}(t)$为实现该变换的连续的一族基。考虑矩阵函数$V(t)$，其各列是$\mathbf{v}_k(t)$在基$\mathcal{A}$下的坐标向量$[\mathbf{v}_k(t)]_\mathcal{A}$。
 
-\begin{theorem}[\normalfont\heiti 定理 6.1\nopunct]  两组基  $\A = \{\aaa_1, \aaa_2, \dots, \aaa_n\}$ 和 $\B = \{\bb_1, \bb_2, \dots, \bb_n\}$ 具有相同定向，当且仅当其中一组基可以连续地变换为另一组基。\end{theorem}
+    显然，$V(t)$的各元素都是连续函数，且$V(a)=I,V(b)=[I]_\mathcal{AB}$。注意，因为$\mathcal{V}(t)$总是基，所以$\det V(t)$总不为零。因此，由介值定理，$\det V(a)$和$\det V(b)$符号相同。因为$\det V(a)=\det I=1$，所以\[\det [I]_\mathcal{AB}=\det V(b)>0,\]于是基$\mathcal{A}$和$\mathcal{B}$的取向相同。
 
-\begin{proof} 假设基 $\A$ 可以连续地变换为基 $\B$，设 $\mathcal{V}(t), t \in [a, b]$ 是一个连续的基族，执行这个变换。考虑一个矩阵函数 $V(t)$，其列向量是 $\vv_k(t)$ 在基 $\A$ 下的坐标向量 $[\vv_k(t)]_\A$.~
+    为证明反方向的蕴涵关系，即定理的“仅当”部分，需要证明恒等矩阵$I$能通过可逆矩阵被连续变换为任意满足$\det B>0$的矩阵。换言之，存在区间$[a,b]$上的连续矩阵函数$V(t)$，使得对所有$t\in [a,b]$，矩阵$V(t)$可逆，且有
+    \[V(a)=I,\quad V(b)=B.\]
+    我们将这个结论的证明留给读者作为习题。证法有多种，其中一种示于下面的习题 \ref{ex:6_6_2} 至 \ref{ex:6_6_5}。
+\end{proof}
 
-显然，$V(t)$ 的元素是连续函数，并且 $V(a) = I$, $V(b) = [I]_{\A,\B}$.~注意，因为 $\mathcal{V}(t)$ 始终是一组基，$\det V(t)$ 永远不为零。那么，介值定理断言 $\det V(a)$ 和 $\det V(b)$ 具有相同的符号。由于 $\det V(a) = \det I = 1$，我们可以得出 $[I]_{\A,\B}$ 的行列式 $$\det[I]_{\A,\B} = \det V(b) > 0,$$
-所以基 $\A$ 和 $\B$ 具有相同定向。
-
-为了证明反向蕴含，即定理的“仅当”部分，需要证明单位矩阵 $I$ 可以通过可逆矩阵连续地变换为任何满足 $\det B > 0$ 的矩阵 $B$.~换句话说，需要证明存在一个连续的矩阵函数 $V(t)$ 在区间 $[a, b]$ 上，使得对所有 $t \in [a, b]$ ，矩阵 $V(t)$ 是可逆的，并且 
-$$V(a) = I,\quad V(b) = B.$$
-我们将证明这个事实留给读者作为练习。有几种方法可以证明这一点，其中一种在下面的问题 6.2-6.5 中概述。\end{proof}
-
-\begin{exer} {\heiti 练习}~~
-
-6.1. 设 $R_\alpha$ 是 $\alpha$ 角的旋转，其在标准基下的矩阵为 
-$$\begin{pmatrix} \cos \alpha & -\sin \alpha \\ \sin \alpha & \cos \alpha \end{pmatrix}.$$
-求 $R_\alpha$ 在基 $\vv_1, \vv_2$，其中 $\vv_1 = \ee_2, \vv_2 = \ee_1$ 下的矩阵。
-
-6.2. 设 $$R_\alpha = \begin{pmatrix} \cos \alpha & -\sin \alpha \\ \sin \alpha & \cos \alpha \end{pmatrix}$$ 是旋转矩阵。证明 $2 \times 2$ 单位矩阵 $I_2$ 可以通过可逆矩阵连续变换为 $R_\alpha$.~
-
-6.3. 设 $U$ 是一个 $n \times n$ 正交矩阵，且 $\det U > 0$.~证明 $n \times n$ 单位矩阵 $I_n$ 可以通过可逆矩阵连续变换为 $U$.~
-{\heiti 提示：} 使用前一个问题和旋转在 $\RR^n$ 中的表示（作为平面旋转的乘积），见第 5 节。
-
-6.4. 设 $A$ 是一个 $n \times n$ 正定埃尔米特矩阵，$A = A^* > \oo$.~证明 $n \times n$ 单位矩阵 $I_n$ 可以通过可逆矩阵连续变换为 $A$.~
-{\heiti 提示：} 对于对角矩阵怎么样？
-
-6.5. 使用极分解和上面问题 6.3、6.4，完成定理 6.3 的“仅当”部分的证明。
-\end{exer}
-
-
-
+\begin{problemset}
+    \item 令$R_\alpha$是“旋转$\alpha$弧度”变换，则其关于标准基的矩阵是
+    \[\begin{pNiceMatrix}[margin]
+        \cos\alpha & -\sin\alpha \\ \sin\alpha & \cos\alpha
+    \end{pNiceMatrix}.\]求$R_\alpha$关于基$\mathbf{v}_1,\mathbf{v}_2$的矩阵，其中$\mathbf{v}_1=\mathbf{e}_2,\mathbf{v}_2=\mathbf{e}_1$。
+    \item \label{ex:6_6_2} 令$R_\alpha$是旋转矩阵\[\begin{pNiceMatrix}[margin]
+        \cos\alpha & -\sin\alpha \\ \sin\alpha & \cos\alpha
+    \end{pNiceMatrix}.\]证明：$2\times 2$恒等矩阵$I_2$可通过可逆矩阵连续变换为$R_\alpha$。
+    \item \label{ex:6_6_3} 令$U$是$n\times n$正交矩阵，并令$\det U>0$。证明：$n\times n$恒等矩阵$I_n$可通过可逆矩阵连续变换为$U$。{\bf 提示}：利用前一题的结论，以及将$\mathbb{R}^n$上的旋转表示为一系列平面旋转的乘积（见第 \ref{sec:orthogonal_structure} 节）。
+    \item \label{ex:6_6_4} 令$A$是$n\times n$正定埃尔米特矩阵，$A=A^*>0$。证明：$n\times n$恒等矩阵$I_n$可通过可逆矩阵连续变换为$A$。{\bf 提示}：如果$A$是对角矩阵呢？
+    \item \label{ex:6_6_5} 利用极分解和上述习题 \ref{ex:6_6_3}、\ref{ex:6_6_4}，完成定理 \ref{thm:orientation_continuous_trans} “仅当”部分的证明。
+\end{problemset}

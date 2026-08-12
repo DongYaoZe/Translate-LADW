@@ -112,8 +112,8 @@
 \graphicspath{{./figure/}{./figures/}{./image/}{./images/}}
 
 %---------- 设置章节目录的深度 ----------
-\setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{2}
 
 %---------- 设置章节字号 ----------
 \newcommand{\chapfont}{\fontsize{20bp}{28bp}\selectfont}
@@ -125,46 +125,43 @@
         format = \linespread{1.0}\sffamily\heiti\chapfont\centering,
         nameformat = {},
         titleformat = {},
-        numbering = false,   % 关闭章节编号
-        number = \relax,     % 不输出编号
+        numbering = true,
+        number = \arabic{chapter},
         numberformat = {},
-        aftername = {},      % 章节名前后不再加“第x章”，也不需要空格
+        aftername = {\quad},
         beforeskip = {6pt},
         afterskip = {24pt},
         %pagestyle = main,
     },
     section = {
         format = \linespread{1.0}\sffamily\heiti\zihao{-3}\raggedright,
-        numbering = false,
-        number = \relax,
         numberformat = {},
-        aftername = {},
+        aftername = {.\quad},
         beforeskip = {18pt},
         afterskip = {6pt},
     },
     subsection = {
         format = \linespread{1.0}\sffamily\heiti\zihao{4}\raggedright,
-        numbering = false,
-        number = \relax,
         numberformat = {},
-        aftername = {},
+        aftername = {.\quad},
         beforeskip = {8pt},
         afterskip = {4pt},
     },
     subsubsection = {
         format = \linespread{1.0}\sffamily\heiti\zihao{-4}\raggedright,
-        numbering = false,
-        number = \relax,
         numberformat = {},
-        aftername = {},
+        aftername = {.\quad},
         beforeskip = {8pt},
         afterskip = {3pt},
     },
     appendix = {
-        numbering = false,   % 附录也不编号；如需附录单独保留编号，改为 true 即可
-        number = \relax,
+        numbering = true,
+        number = \Alph{chapter},
     },
 }
+\renewcommand{\thesection}{\thechapter.\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
 %---------- 算法宏包及设置 ----------
 \RequirePackage{algorithm,algorithmicx}
 \RequirePackage{algpseudocode}
@@ -267,40 +264,42 @@
 % \setlength{\belowbottomsep}{0pt}
 
 %---------- 数学定理设置 ----------
-% 样式1：zhbook (楷书，用于定理、引理)
+% 定理、引理使用楷体正文；定义、命题、例、注使用正文字体。
+% 编号以 section 为单位，并共享 theorem 计数器，以匹配原书的编号体系。
 \newtheoremstyle{zhbook}{3pt}{3pt}%
 {\kaishu}{2em}{\sffamily\heiti}{.}{5pt plus 1pt minus 1pt}%
-{\ifx\relax#3\relax\thmname{#1}\thmnumber{ #2}\else\thmname{#3}\fi}% <--- 修改了这里
-
-% 样式2：zhbooknormal (正文字体，用于推论、定义等)
+{\thmname{#1}\thmnumber{ #2}\thmnote{\normalfont\,（#3）}}
 \newtheoremstyle{zhbooknormal}{3pt}{3pt}%
 {\normalfont}{2em}{\sffamily\heiti}{.}{5pt plus 1pt minus 1pt}%
-{\ifx\relax#3\relax\thmname{#1}\thmnumber{ #2}\else\thmname{#3}\fi}
+{\thmname{#1}\thmnumber{ #2}\thmnote{\normalfont\,（#3）}}
 
-%\theoremstyle{plain}
-\theoremstyle{zhbook} % 这里的环境使用楷书
-\newtheorem{theorem}{定理}[chapter]
-\newtheorem{lemma}{引理}[chapter]
+\theoremstyle{zhbook}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{引理}
 
-\theoremstyle{zhbooknormal} % 修改：切换到正文字体样式，但保留缩进和紧凑间距
-\newtheorem{corollary}{推论}[chapter]
-\newtheorem{definition}{定义}[chapter]
-\newtheorem{proposition}{命题}[chapter]
-\newtheorem{example}{例}[chapter]
-\newtheorem{remark}{注}[chapter]
-\newtheorem{exercise}{习题}[chapter]
-\newtheorem{assumption}{假设}[chapter]
-\newtheorem{axiom}{公理}[chapter]
-\newtheorem{property}{性质}[chapter]
-\newtheorem{conjecture}{猜想}[chapter]
+\theoremstyle{zhbooknormal}
+\newtheorem{corollary}[theorem]{推论}
+\newtheorem*{corollary*}{推论}
+\newtheorem{definition}[theorem]{定义}
+\newtheorem*{definition*}{定义}
+\newtheorem{proposition}[theorem]{命题}
+\newtheorem{example}[theorem]{例}
+\newtheorem*{example*}{例}
+\newtheorem{remark}[theorem]{注}
+\newtheorem*{remark*}{注}
+\newtheorem*{question*}{问题}
+\newtheorem{exercise}{习题}[section]
+\newtheorem{assumption}{假设}[section]
+\newtheorem{axiom}{公理}[section]
+\newtheorem{property}{性质}[section]
+\newtheorem{conjecture}{猜想}[section]
 %\renewcommand{\qedsymbol}{$\blacksquare$}
 \renewcommand{\proofname}{证明}
 \renewenvironment{proof}[1][\proofname]{%
     \par\pushQED{\qed}%
-    %\normalfont \topsep6\p@\@plus6\p@\relax
     \normalfont \topsep3\p@\@plus3\p@\relax
-    \trivlist\item[\hskip\labelsep\hskip2em % 修改：此处增加 \hskip2em 实现首行缩进
-    \sffamily\heiti #1\@addpunct{\,:\,}]\ignorespaces % 修改：将 \bfseries 改为 \sffamily\heiti (黑体)
+    \trivlist\item[\hskip\labelsep\hskip2em
+    \sffamily\heiti #1\@addpunct{\,:\,}]\ignorespaces
 }{%
     \popQED\endtrivlist\@endpefalse
 }
@@ -331,9 +330,9 @@
     %\setlength{\arraycolsep}{2pt}
 }
 
-%------- 公式编号带章节 ----------
-\numberwithin{equation}{chapter}
-%\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+%------- 公式编号与原书一致：按 section 重新计数 ----------
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
 
 % 重新设置公式autoref
 \renewcommand{\equationautorefname}{公式}
@@ -341,6 +340,19 @@
 %---------- 列表样式设置 ----------
 \RequirePackage{enumitem}
 \setlist{nolistsep}
+
+%---------- 习题组：按 section 独立编号 ----------
+\newlist{probenumerate}{enumerate}{2}
+\setlist[probenumerate,1]{label={\textsf{\thesection.\arabic*.}},ref={\thesection.\arabic*},leftmargin=2em}
+\setlist[probenumerate,2]{label={\alph*)},leftmargin=*}
+\newenvironment{problemset}{%
+  \par\vspace{10pt}%
+  \pdfbookmark[2]{\exerciseautorefname}{problemset-\thechapter-\thesection}%
+  \noindent{\zihao{4}\bfseries\exerciseautorefname}%
+  \begin{probenumerate}\zihao{5}%
+}{%
+  \end{probenumerate}%
+}
 
 %---------- 定义新的标题页面 ----------
 \renewcommand{\maketitle}[1][15em]{%
@@ -366,7 +378,7 @@
         }%
 
         \vspace*{0.75\baselineskip} % blank space under the title
-    
+
         \rule{\textwidth}{0.5pt}\vspace*{-\baselineskip}\vspace{3.2pt} % thin line
         \rule{\textwidth}{1.6pt}   % thick line
 

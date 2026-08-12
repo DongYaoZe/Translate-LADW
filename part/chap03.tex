@@ -1,715 +1,599 @@
 
-\chapter{第三章~~行列式}
-
-\section{1. 引言}
-
-读者可能已经遇到过行列式，至少是在微积分或代数学中遇到的 $2 \times 2$ 和 $3 \times 3$ 矩阵的行列式。对于 $2 \times 2$ 矩阵 
-$$\begin{pmatrix} a & b \\ c & d \end{pmatrix},$$
-行列式就是 $ad - bc$；$3 \times 3$ 矩阵的行列式可以通过“大卫之星”(Star of David)法则
-\footnote{
-译者注：大卫之心，即六芒星，可以将两个三角形中心重合地以反方向覆盖而得到。其名称与犹太历史上的大卫王有关。
-}
-找到。
-
-在本章中，我们想要引入 $n \times n$ 矩阵的行列式，而不是仅仅给出一个形式定义。首先我想给出一些动机，然后推导出行列式应具备的一些性质。然后，如果我们想要让这些性质同时成立，我们就别无选择，只能得到行列式的几个等价定义。
-
-从矩阵的行列式开始引入，而不是从向量组的行列式开始，因为前者更为方便：这里没有真正的区别，因为我们可以始终将向量拼接在一起（比如作为列）来构成一个矩阵。
-
-设我们有 $\RR^n$ 中的 $n$ 个向量 $\vv_1, \vv_2, \dots, \vv_n$（注意向量的数量与维数一致），我们想找到由这些向量确定的平行六面体的\textbf{$n$维体积}。
-
-由向量 $\vv_1, \vv_2, \dots, \vv_n$ 确定的平行六面体可以定义为所有向量 $\vv \in \RR^n$ 的集合，这些向量可以表示为 
-$$\vv = t_1 \vv_1 + t_2 \vv_2 + \dots + t_n \vv_n, \quad 0 \le t_k \le 1 \quad \forall k = 1, 2, \dots, n.$$
-当 $n=2$（平行四边形）和 $n=3$（平行六面体）时，这很容易可视化。那么 $n$ 维体积是什么？
-
-在维数为 2 时，它表示面积；在维数为 3 时，它表示体积；在维数为 1 时，它则是长度。
-
-最后，让我们引入一些符号。对于（列）向量组$\vv_1, \vv_2, \dots, \vv_n$，我们把它的行列式（我们将要构造的）表示为 $D(\vv_1, \vv_2, \dots, \vv_n)$.~如果我们把这些向量拼接成矩阵 $A$（$A$ 的第 $k$ 列是 $\vv_k$），那么我们将使用符号 $\det A$, 
-$$\det A = D(\vv_1, \vv_2, \dots, \vv_n).$$
-
-对于矩阵 
-$$A = \begin{pmatrix} a_{1,1} & a_{1,2} & \dots & a_{1,n} \\ a_{2,1} & a_{2,2} & \dots & a_{2,n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{n,1} & a_{n,2} & \dots & a_{n,n} \end{pmatrix},$$
-它的行列式也常常表示为
-$$
-\begin{vmatrix}
-a_{1,1} & a_{1,2} & \dots & a_{1,n} \\
-a_{2,1} & a_{2,2} & \dots & a_{2,n} \\
-\vdots & \vdots & \ddots & \vdots \\
-a_{n,1} & a_{n,2} & \dots & a_{n,n}
-\end{vmatrix}.
-$$
-
-\section{2. 行列式应具备的性质}
+%%%%%%%%%%%%%%% 行列式 %%%%%%%%%%%%%
+
+\chapter{行列式}\label{chap:Determinant}
+
+\section{引入}
+
+读者大概已在微积分或代数课中接触了行列式（至少接触过$2\times 2$与$3\times 3$矩阵的行列式）。对于$2\times 2$矩阵\index{杭@行列式（determinant）}
+\[\begin{pNiceMatrix}[margin]a&b\\c&d\end{pNiceMatrix}\]
+其行列式为$ad-bc$；$3\times 3$矩阵的行列式可用“大卫之星”法则\footnote{对于$3\times 3$行列式
+\[a = \begin{vNiceMatrix}[margin]
+  a_{1,1} & a_{1,2} & a_{1,3} \\
+  a_{2,1} & a_{2,2} & a_{2,3} \\
+  a_{3,1} & a_{3,2} & a_{3,3}
+\end{vNiceMatrix}\]
+有\[a = \underbrace{a_{1,1}a_{2,2}a_{3,3} + a_{1,2}a_{2,3}a_{3,1} + a_{2,1}a_{3,2}a_{1,3}}_{\text{三条从左上往右下的对角线上的元素之积}} - (\underbrace{a_{1,3}a_{2,2}a_{3,1} + a_{1,2}a_{2,1}a_{3,3} + a_{2,3}a_{3,2}a_{1,1}}_{\text{三条从右上往左下的对角线上的元素之积}})\]
+——译者注}求得。
+
+在本章中，我们期望引入$n\times n$矩阵的行列式。我不想仅仅给出形式化定义，而想首先给个引子，再导出行列式应具备的一些性质。接着，我们如果要使行列式具备这些性质，就必须按照若干（彼此等价的）方式来定义它，而没有别的选择。
+
+从向量组的行列式出发，会比从矩阵的行列式出发更为方便。而这两者并无实质差别——我们总能将向量（视作列向量）组合成矩阵。
+
+设我们有$\mathbb{R}^n$中的$n$个向量$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$（注意各向量的长度与向量的个数相等），并且我们想求出由这些向量所确定的平行多面体的$n$维体积。
+
+由向量$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$所确定的平行多面体，可定义为所有表示如下的向量$\mathbf{v}\in\mathbb{R}^{n}$的集合：
+\[\mathbf{v}=t_1\mathbf{v}_1+t_2\mathbf{v}_2+\cdots+t_n\mathbf{v}_n,\quad0\leq t_k\leq1\quad\forall k=1,2,\ldots,n.\]
+$n=2$与$n=3$的情况很容易可视化——分别为平行四边形和平行六面体。那么，$n$维体积是什么呢？
+
+$n=2$时，即为面积；$n=3$时，即为体积。维数为$1$时，即为长度。
+
+最后，引入一些记号。对于一组（列）向量$\mathbf{a}_{1},\mathbf{a}_{2},\ldots,\mathbf{a}_{n}$，我们记其行列式（这是我们将构造的概念）为$D(\mathbf{a}_{1},\mathbf{a}_{2},\ldots,\mathbf{a}_{n})$。如果我们将这些向量组成一个矩阵$A$（其中第$k$列为$\mathbf{a}_{k}$），那么我们使用记号$\det A$：
+\[\det A=D(\mathbf{a}_1,\mathbf{a}_2,\ldots,\mathbf{a}_n)\]
+并且，对矩阵\[A=\begin{pNiceMatrix}[margin]a_{1,1}&a_{1,2}&\ldots&a_{1,n}\\a_{2,1}&a_{2,2}&\ldots&a_{2,n}\\\vdots&\vdots&&\vdots\\a_{n,1}&a_{n,2}&\ldots&a_{n,n}\end{pNiceMatrix}\]
+其行列式常记为：
+\[\begin{vNiceMatrix}[margin]a_{1,1}&a_{1,2}&\ldots&a_{1,n}\\a_{2,1}&a_{2,2}&\ldots&a_{2,n}\\\vdots&\vdots&&\vdots\\a_{n,1}&a_{n,2}&\ldots&a_{n,n}\end{vNiceMatrix}.\]
+
+\section{行列式应具备的性质}\label{sec:determinant_prop}
+我们知道，对于$2$维和$3$维情况，平行多面体的“体积”是由{\bf “底乘高”}规则确定的：任取一向量，则高等于从这个向量到剩余向量张成的子空间的距离，底则为由剩余向量所确定的平行多面体的$(n-1)$维体积。
+
+现在，我们将此处的思想推广到更高维度。我们暂时不关心高和底的具体计算，而是说明，如果假设底和高满足一些自然的性质，那么我们就能唯一定义体积（行列式），而别无选择。
+
+\subsection{对每个自变量的线性}
+首先，如果我们将向量$\mathbf{v}_1$乘以正数$a$，那么高（即到线性张成空间$\mathcal{L}\{\mathbf{v}_{2},\ldots,\mathbf{v}_{n}\}$的距离）会被乘以$a$。如果我们允许负的高（以及负的体积）存在，那么这个性质就会对所有标量$a$都成立，因此向量组$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$的行列式$D(\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n})$就应满足\[D(\alpha\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n})=\alpha D(\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}).\]
+当然，向量$\mathbf{v}_1$并无任何特别之处，所以对于任意下标$k$都有
+\begin{equation}\label{Determinant_linear_1}
+  D(\mathbf{v}_1,\ldots,\underset{k}{\alpha\mathbf{v}_k},\ldots,\mathbf{v}_n)=\alpha D(\mathbf{v}_1,\ldots,\underset{k}{\mathbf{v}_k},\ldots,\mathbf{v}_n)
+\end{equation}
+
+接下来推导下个性质。注意到，如果我们将（某位置上的）两向量相加，那么所得结果的“高”应等于每个求和项的“高”之和，即
+\pagebreak
+\begin{align}
+  D(\mathbf{v}_1,\ldots,\underbrace{\mathbf{u}_k+\mathbf{v}_k}_k,&\ldots,\mathbf{v}_n)=\label{Determinant_linear_2}\\
+  &D(\mathbf{v}_1,\ldots,\underset{k}{\mathbf{u}_k},\ldots,\mathbf{v}_n)+D(\mathbf{v}_1,\ldots,\underset{k}{\mathbf{v}_k},\ldots,\mathbf{v}_n)\notag
+\end{align}
+换言之，上述两个性质表明，$n$个向量的行列式{\bf 对每个自变量（向量）是线性的}，意即如果固定$n-1$个向量而将剩余的那个向量视作自变量，我们就得到了一个线性函数。
+
+\begin{remark*}
+  我们已经了解到，{\bf 线性}是一个绝佳的性质，它在很多情况下都大有用处。因此，允许负的高（从而允许负的体积）存在，只是为了得到线性而付出的微不足道的代价。后续如有必要，我们总可以加上绝对值。
+
+  事实上，我们并不因允许负的高存在而有任何损失！恰恰相反，我们还收获了新信息——行列式的符号体现了向量组的取向。
+\end{remark*}
+
+\subsection{如果两向量重合，则行列式为\texorpdfstring{$0$}{0}}
+
+若$\mathbf{v}_{j}=\mathbf{v}_{k}$（$j\ne k$），那么向量$\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}$是线性相关的，因此\[\dim\operatorname{span}\{\mathbf{v}_1,\mathbf{v}_2,\ldots,\mathbf{v}_n\}<n.\]
+不过这样一来体积就一定为$0$【可这样理解：从$\mathbf{v}_j$到$\operatorname{span}\{\mathbf{v}_{r}:r\neq j\}$的距离（“高”）是$0$】。因此可以很自然地假设
+\begin{equation}\label{Determinant_0}
+  D(\mathbf{v}_1,\mathbf{v}_2,\ldots,\mathbf{v}_n)=0\quad\text{若}~\mathbf{v}_j=\mathbf{v}_k(j\neq k).
+\end{equation}
+后续我们还会用到行列式的这条性质。
+
+\begin{remark*}
+  有个更强的性质是：$D(\mathbf{v}_1,\mathbf{v}_2,\ldots,\mathbf{v}_n)=0$对于线性相关向量组$\mathbf{v}_1,\mathbf{v}_2,\ldots,\mathbf{v}_n$成立。该性质也很自然。
+
+  然而，容易从更弱的假设 \eqref{Determinant_0} 以及线性 \eqref{Determinant_linear_1} 和 \eqref{Determinant_linear_2} 推出此性质。详见命题 \ref{prop:det_0}。
+\end{remark*}
+
+\subsection{对“列替换”保持原值}
+接下来的性质看上去也很自然。它就是：如果我们取一向量（比如$\mathbf{v}_j$），并且将它加上另一向量$\mathbf{v}_k$的若干倍，那么“高”不变，因此
+\begin{align}
+  D(\mathbf{v}_1,\ldots,\underbrace{\mathbf{v}_j+\alpha\mathbf{v}_k}_j,\ldots,\underset{k}{\mathbf{v}_k},&\ldots,\mathbf{v}_n)\label{Preserve_column_replacement}\\
+  &=D(\mathbf{v}_1,\ldots,\underset{j}{\mathbf{v}_j},\ldots,\underset{k}{\mathbf{v}_k},\ldots,\mathbf{v}_n).\notag
+\end{align}
+换言之，若施加第三类{\bf 列变换}，行列式不变。
+
+不过，该性质并不独立——它是式 \eqref{Determinant_0} 以及线性 \eqref{Determinant_linear_1} 和 \eqref{Determinant_linear_2} 的简单推论。也即
+\begin{align*}
+  D(\mathbf{v}_{1},&\ldots,\underbrace{\mathbf{v}_{j}+\alpha\mathbf{v}_{k}}_{j},\ldots,\underset{k}{\mathbf{v}_k},\ldots,\mathbf{v}_{n})\\
+  &=D(\mathbf{v}_{1},\ldots,\underset{j}{\mathbf{v}_j},\ldots,\underset{k}{\mathbf{v}_k},\ldots,\mathbf{v}_{n})+\alpha D(\mathbf{v}_{1},\ldots,\underset{j}{\mathbf{v}_k},\ldots,\underset{k}{\mathbf{v}_k},\ldots,\mathbf{v}_{n})\\
+  &=D(\mathbf{v}_{1},\ldots,\underset{j}{\mathbf{v}_j},\ldots,\underset{k}{\mathbf{v}_k},\ldots,\mathbf{v}_{n});
+\end{align*}
+此处第一个等号源于线性 \eqref{Determinant_linear_1} 和 \eqref{Determinant_linear_2}，而第二个等号即源于式 \eqref{Determinant_0}。
+
+\subsection{反对称性}
+
+行列式应具备的下个性质是，如果我们交换两个向量，那么行列式变号：
+\begin{equation}\label{antisymmetry}
+  D(\mathbf{v}_1,\ldots,\underset{j}{\mathbf{v}_k},\ldots,\underset{k}{\mathbf{v}_j},\ldots,\mathbf{v}_n)=-D(\mathbf{v}_1,\ldots,\underset{j}{\mathbf{v}_j},\ldots,\underset{k}{\mathbf{v}_k},\ldots,\mathbf{v}_n).
+\end{equation}
+\begin{remark*}
+  若多变量函数在交换任意两个自变量后函数值变号，则称其是{\bf 反对称的}。
+\end{remark*}
+这个性质一眼看上去并不自然，但其可由之前的性质推导出来。即，应用性质 \eqref{Preserve_column_replacement} 三次，再利用式 \eqref{Determinant_linear_1} 即得
+\begin{align*}
+  D&(\mathbf{v}_{1},\ldots,\underset{j}{\mathbf{v}_j},\ldots,\underset{k}{\mathbf{v}_k},\ldots,\mathbf{v}_{n})\\
+  &=D(\mathbf{v}_{1},\ldots,\underset{j}{\mathbf{v}_j},\ldots,\underbrace{\mathbf{v}_{k}-\mathbf{v}_{j}}_{k},\ldots,\mathbf{v}_{n})\\
+  &=D(\mathbf{v}_{1},\ldots,\underbrace{\mathbf{v}_{j}+(\mathbf{v}_{k}-\mathbf{v}_{j})}_{j},\ldots,\underbrace{\mathbf{v}_{k}-\mathbf{v}_{j}}_{k},\ldots,\mathbf{v}_{n})\\
+  &=D(\mathbf{v}_{1},\ldots,\underset{j}{\mathbf{v}_k},\ldots,\underbrace{\mathbf{v}_{k}-\mathbf{v}_{j}}_{k},\ldots,\mathbf{v}_{n})\\
+  &=D(\mathbf{v}_{1},\ldots,\underset{j}{\mathbf{v}_k},\ldots,\underbrace{(\mathbf{v}_{k}-\mathbf{v}_{j})-\mathbf{v}_{k}}_{k},\ldots,\mathbf{v}_{n})\\
+  &=D(\mathbf{v}_1,\ldots,\underset{j}{\mathbf{v}_k},\ldots,-\underset{k}{\mathbf{v}_j},\ldots,\mathbf{v}_n)\\
+  &=-D(\mathbf{v}_{1},\ldots,\underset{j}{\mathbf{v}_k},\ldots,\underset{k}{\mathbf{v}_j},\ldots,\mathbf{v}_{n}).
+\end{align*}
+回想一下，性质 \eqref{Preserve_column_replacement} 源于 \eqref{Determinant_0} 和线性 \eqref{Determinant_linear_1}、\eqref{Determinant_linear_2}，因此反对称性 \eqref{antisymmetry} 也源于那些性质。
 
-我们知道，对于维度 2 和 3，平行六面体的“体积”由“底乘以高”法则确定：如果我们选择一个向量，那么高是该向量到由其余向量张成的子空间的距离，底是其余向量确定的平行六面体的（$n-1$ 维）体积。
+\subsection{归一化}
 
-现在让我们将这个想法推广到更高维度。我们暂时不关心如何精确地确定高和底。我们将表明，如果我们假设高和底满足某些自然性质，那么我们就别无选择，行列式就被唯一确定了。
+最后一个性质是最简单的一个。对于$\mathbb{R}^n$的标准基$\mathbf{e}_1,\mathbf{e}_2,\ldots,\mathbf{e}_n$，对应的平行多面体是$n$维单位立方体，所以
+\begin{equation}\label{normalization}
+  D(\mathbf{e}_1,\mathbf{e}_2,\ldots,\mathbf{e}_n)=1.
+\end{equation}
+用矩阵记号书写就是\[\det(I)=1\]
 
-\subsection{2.1. 关于列向量的线性性质}
+\section{构造行列式}\label{sec:construct_det}
 
-首先，如果我们把向量 $\vv_1$ 乘以一个正数 $a$，那么，高（即到线性张成 $\LL(\vv_2, \dots, \vv_n)$ 的距离）就会乘以 $a$.~如果我们允许负高度（和负体积），那么这个性质对所有标量 $a$ 都成立，因此向量组 $\vv_1, \vv_2, \dots, \vv_n$ 的行列式 $D(\vv_1, \vv_2, \dots, \vv_n)$ 应该满足
-$$
-D(\alpha \vv_1, \vv_2, \dots, \vv_n) = \alpha D(\vv_1, \vv_2, \dots, \vv_n)
-$$
-当然，向量 $\vv_1$ 没有什么特别之处，所以对于任何下标 $k$
-$$
-(2.1) \quad D(\vv_1, \dots, \alpha \underset{k}{\vv_k}, \dots, \vv_n) = \alpha D(\vv_1, \dots, \underset{k}{\vv_k}, \dots, \vv_n) 
-$$
-为了得到下一个性质，让我们注意到，如果我们将两个向量相加，那么结果的“高度”应该等于被加数“高度”的总和，即
-$$
-(2.2) \quad D(\vv_1, \dots, \underset{k}{\underbrace{\uu_k + \vv_k}}, \dots, \vv_n) =\\
-D(\vv_1, \dots, \underset{k}{\uu_k}, \dots, \vv_n) + D(\vv_1, \dots, \underset{k}{\vv_k}, \dots, \vv_n) 
-$$
-换句话说，上述两个性质表明，行列式是\textbf{每个参数（向量）的线性}，这意味着如果我们固定 $n-1$ 个向量，并将剩余向量看作一个变量（参数），我们就会得到一个线性函数。
+接下来的安排是：利用我们在第 \ref{sec:determinant_prop} 节中所确定的行列式应具备的性质，来导出行列式的其余性质（其中有些是相当复杂的）。我们将展示如何用这些性质结合我们的惯用手段——行化简——来计算行列式。
 
-{\heiti 注记}~~ 我们已经知道\textbf{线性性质}(linearity)是一个非常好的性质，在许多情况下对我们都有帮助。因此，允许负高度（以及由此而来的负体积）是获得线性的一个非常小的代价，因为我们之后总是可以取绝对值。
+然后，在第 \ref{sec:determinant_formal} 节中，我们将展示行列式（就是具有我们所需性质的一个函数）是存在且唯一的。毕竟，我们需要确保我们计算与研究的对象是存在的。
 
-实际上，通过允许负高度，我们并没有牺牲任何东西！相反，我们甚至获得了一些东西，因为行列式的符号包含了有关向量系统（定向）的一些信息。
+我们起初以几何作为引子来引入行列式及其性质，这源于考虑实向量空间$\mathbb{R}^n$中的向量，因此都只能关联到各元素为实数的矩阵。尽管如此，以下的构造都只运用代数运算（加法、乘法和除法），因而适用于各元素为复数的矩阵，甚至是各元素属于任意的域的矩阵。
 
-\subsection{2.2. 若两个向量重合，则行列式为 0}
+因此，接下来，我们不仅仅是为实矩阵构造行列式，而同样也为复矩阵（及各元素属于任意的域的矩阵）进行构造。从几何出发的引子很优美却只适用于实数情形，但在我们选定了行列式的性质（见下性质1-3）后，所有讨论都适用于一般的情形。
 
-若对于某个 $j \neq k$ 有 $\vv_j = \vv_k$，则向量 $\vv_1, \vv_2, \dots, \vv_n$ 线性相关，因此
-$$
-\dim \spanL\{\vv_1, \vv_2, \dots, \vv_n\} < n.
-$$
-此时体积必定为 0（例如，因为“高度”，即 $\vv_j$ 到 $\spanL\{\vv_r : r \neq j\}$ 的距离为 0）。因此，很自然地可以假设
-$$
-(2.3) \quad D(\vv_1, \vv_2, \dots, \vv_n) = 0 \quad \text{若对于某个 } j \neq k \text{ 有 } \vv_j = \vv_k.
-$$
-在后文中，我们将使用行列式的这一性质。
+\subsection{基本性质}\label{subsec:basic_prop}
 
-{\heiti 注记}~~ 对于线性相关的向量组 $\vv_1, \vv_2, \dots, \vv_n$ 成立 $D(\vv_1, \vv_2, \dots, \vv_n) = 0$ 这一更强的性质也是相当自然的。
+我们将采用行列式的如下基本性质：
 
-然而，该性质很容易从较弱的假设 (2.3) 以及线性性质 (2.1)、(2.2) 推导出来，详见命题 3.1。
+\begin{enumerate}
+  \item 行列式对于每列都是线性的，用向量记号表述即对于任一下标$k$，对所有标量$\alpha,\beta$都有
+  \[\begin{aligned}
+    D(\mathbf{v}_{1},\ldots,&\underbrace{\alpha\mathbf{u}_{k}+\beta\mathbf{v}_{k}}_{k},\ldots,\mathbf{v}_{n})\\&=\alpha D(\mathbf{v}_{1},\ldots,\underset{k}{\mathbf{u}_{k}},\ldots,\mathbf{v}_{n})+\beta D(\mathbf{v}_{1},\ldots,\underset{k}{\mathbf{v}_{k}},\ldots,\mathbf{v}_{n})
+  \end{aligned}\]
+  \item 行列式是{\bf 反对称的}，即如果交换两列，行列式变号；
+  \item 归一化性质：$\det I=1$。
+\end{enumerate}
 
-\subsection{2.3. “列替换”下保持不变性}
+所有这些性质都在第 \ref{sec:determinant_prop} 节中讨论了。第一个性质就是结合了 \eqref{Determinant_linear_1} 和 \eqref{Determinant_linear_2}，第二个是式 \eqref{antisymmetry}，而最后一个是式 \eqref{normalization}。注意，我们并未用性质 \eqref{Determinant_0} 和 \eqref{Preserve_column_replacement}——它们可由上面三个性质推导出来。由这三个性质就能完全定义行列式！
 
-下一个性质也看起来很自然。也就是说，如果我们取一个向量，比如 $\vv_j$，并将其加上另一个向量 $\vv_k$ 的倍数，“高度”不会改变，所以
-$$
-(2.4) \quad D(\vv_1, \dots, \underset{j}{\underbrace{\vv_j + \alpha \vv_k}}, \dots, \underset{k}{\vv_k}, \dots, \vv_n) = D(\vv_1, \dots, \underset{j}{\vv_j}, \dots, \underset{k}{\vv_k}, \dots, \vv_n)
-$$
-换句话说，如果我们应用第三种类型的\textbf{列运算}，行列式不会改变。
+\subsection{由基本性质推导出的行列式性质}
 
-然而，这个性质并不是独立的，它是 (2.3) 和线性性质 (2.1)、(2.2) 的一个简单推论。即
-$$
-\begin{aligned}
-D(\vv_1, \dots, \underset{j}{\underbrace{\vv_j + \alpha \vv_k}}, \dots, \underset{k}{\vv_k}, \dots, \vv_n) &= D(\vv_1, \dots, \underset{j}{\vv_j}, \dots, \underset{k}{\vv_k}, \dots, \vv_n) \\
-&\quad + \alpha D(\vv_1, \dots, \underset{j}{\vv_k}, \dots, \underset{k}{\vv_k}, \dots, \vv_n) \\
-&= D(\vv_1, \dots, \underset{j}{\vv_j}, \dots, \underset{k}{\vv_k}, \dots, \vv_n);
-\end{aligned}
-$$
-这里的第一个等式由线性性质 (2.1)、(2.2) 得出，第二个等式正是 (2.3)。
+接下来，$\det A=D(\mathbf{a}_{1},\mathbf{a}_{2},\ldots,\mathbf{a}_{n})$就是满足上面 \ref{subsec:basic_prop} 节中所述三个性质的函数。
 
-\subsection{2.4. 反对称性}
+\begin{proposition}\label{prop:det_0}
+  对于方阵$A$，下面结论成立：
+  \begin{enumerate}
+    \item 若$A$有一列是零，那么$\det A = 0$；
+    \item 若$A$有两列相等，那么$\det A = 0$；
+    \item 若$A$的其中一列是另一列的若干倍，那么$\det A = 0$；
+    \item 若$A$的各列线性相关，即若该矩阵不可逆，那么$\det A = 0$。
+  \end{enumerate}
+\end{proposition}
 
-行列式应该具备的另外一个性质，是如果我们交换了两个向量，行列式的符号改变一次。
-\footnote{一些具有多个变量的函数的性质，是在交换任意两个参数时会变号，这类函数称为反对称函数。}
+\begin{proof}
+  结论1由线性立即可得——如果我们将为零的列乘以零，我们并不会改变矩阵及其行列式。而由上节所述性质1，我们应得到$0$。
 
-也就是说，如果我们交换两个向量，行列式会变号：
-$$
- (2.5) \quad D(\vv_1, \dots, \underset{j}{\vv_k}, \dots, \underset{k}{\vv_j}, \dots, \vv_n) = - D(\vv_1, \dots, \underset{j}{\vv_j}, \dots, \underset{k}{\vv_k}, \dots, \vv_n)
-$$
-第一次看到时，这个性质看起来并不自然，但它可以从前面的性质推导出来。也就是说，三次应用性质 (2.4)，然后使用 (2.1)，我们得到
-\begin{align*} 
-&D(\vv_1, \dots, \underset{j}{\vv_j}, \dots, \underset{k}{\vv_k}, \dots, \vv_n) \\
-&= D(\vv_1, \dots, \underset{j}{\vv_j}, \dots, \underset{k}{\underbrace{\vv_k - \vv_j}}, \dots, \vv_n) \\ 
-&= D(\vv_1, \dots, \underset{j}{\underbrace{\vv_j + (\vv_k - \vv_j)}}, \dots, \underset{k}{\underbrace{\vv_k - \vv_j}}, \dots, \vv_n) \\ 
-&= D(\vv_1, \dots, \underset{j}{\vv_k}, \dots, \underset{k}{\underbrace{\vv_k - \vv_j}}, \dots, \vv_n) \\ 
-&= D(\vv_1, \dots, \underset{j}{\vv_k}, \dots, \underset{k}{\underbrace{(\vv_k - \vv_j) - \vv_k}}, \dots, \vv_n) \\ 
-&= D(\vv_1, \dots, \underset{j}{\vv_k}, \dots, -\underset{k}{\vv_j}, \dots, \vv_n) \\ 
-&= - D(\vv_1, \dots, \underset{j}{\vv_k}, \dots, \underset{k}{\vv_j}, \dots, \vv_n). \end{align*}
-回忆一下，性质(2.4)可以从性质(2.3)和线性性质(2.1)及性质(2.2)中得到，所以反对称性(2.5)也可以从这些性质中推得。
+  行列式的反对称性蕴涵了结论2。的确如此：如果我们交换两个相等的列，我们并没有改变向量组或矩阵（行列式的自变量），因此行列式保持不变；另一方面，交换两列会使行列式变号，因此\[\det A = -\det A,\]而该式成立仅当$\det A = 0$。
 
-\subsection{2.5. 归一化}
+  结论3是结论2和线性的一个很显然的推论。
 
-最后一个性质是最简单的。对于 $\RR^n$ 中的标准基 $\ee_1, \ee_2, \dots, \ee_n$，对应的平行六面体是 $n$ 维单位立方体，所以
-$$
-(2.6)\quad D(\ee_1, \ee_2, \dots, \ee_n) = 1.
-$$
-在矩阵表示中，这可以写成 
-$$\det (I) = 1.$$
+  为证明最后一个结论，首先我们假设第一个向量$\mathbf{v}_1$是其余向量的线性组合：\[\mathbf{v}_1=\alpha_2\mathbf{v}_2+\alpha_3\mathbf{v}_3+\cdots+\alpha_n\mathbf{v}_n=\sum_{k=2}^n\alpha_k\mathbf{v}_k.\]
+  然后由线性可知（以向量记号表示）
+  \[\begin{aligned}
+    D(\mathbf{v}_{1},\mathbf{v}_{2},\ldots,\mathbf{v}_{n})&=D\left(\bigl(\sum_{k=2}^{n}\alpha_{k}\mathbf{v}_{k}\bigr),\mathbf{v}_{2},\mathbf{v}_{3},\ldots,\mathbf{v}_{n}\right)\\
+    &=\sum_{k=2}^{n}\alpha_{k}D(\mathbf{v}_{k},\mathbf{v}_{2},\mathbf{v}_{3},\ldots,\mathbf{v}_{n})
+  \end{aligned}\]
+  求和号中的每个行列式都等于零，因为它们都含有两个相等的列。
 
+  让我们考虑一般的情况，即考虑向量组$\mathbf{v}_1,\mathbf{v}_2,\ldots,\mathbf{v}_n$线性相关的情形。那么其中有一个向量，比如说$\mathbf{v}_k$，可被表示成其他向量的线性组合。将该向量和$\mathbf{v}_1$交换，我们就得到了刚刚讨论过的情形，因此\[D(\mathbf{v}_1,\ldots,\underset{k}{\mathbf{v}_k},\ldots,\mathbf{v}_n)=-D(\mathbf{v}_k,\ldots,\underset{k}{\mathbf{v}_1},\ldots,\mathbf{v}_n)=-0=0,\]
+  故该情况中的行列式也是$0$。
+\end{proof}
 
-\section{3. 行列式的构造}
+接下来的命题推广了性质 \eqref{Preserve_column_replacement}。如我们之前所述，该性质可从我们在本节所用的行列式的三大“基本”性质推导出来。
 
-我们现在的计划是：利用我们从第 2 节认为的行列式应该具有的性质，推导出行列式的其他性质，其中一些性质非常不平凡。我们将展示如何使用这些性质通过我们熟悉的朋友——行约简来计算行列式。
+\begin{proposition}
+  如果我们向其中一列加上其余列的线性组合（并保持其余列不变），那么行列式不变。特别地，行列式在“列替换”（第三类列变换）下是保持原值的。
+\end{proposition}
 
-稍后，在第 4 节，我们将展示行列式，即具有所需性质的函数，是存在且唯一的。毕竟，我们必须确信我们正在计算和研究的对象是存在的。
+注意，此处向一列加入自身的若干倍是不允许的，我们只能加入其他列的倍数。
 
-虽然我们引入行列式及其性质的初始几何动机来自于考虑 $\RR^n$ 中的向量，因此它们只与实数项的矩阵相关，但以下所有构造只使用代数运算（加法、乘法、除法）并且适用于具有复数项的矩阵，甚至适用于具有任意域项的矩阵。
+\begin{proof}
+  取定向量$\mathbf{v}_k$，并令$\mathbf{u}$是其余向量的线性组合\[\mathbf{u}=\sum_{j\neq k}\alpha_j\mathbf{v}_j.\]
+  于是由线性可得
+  \begin{align*}
+    D(\mathbf{v}_1,\ldots,\underbrace{\mathbf{v}_k+\mathbf{u}}_k,\ldots,&\mathbf{v}_n)\\
+    &=D(\mathbf{v}_1,\ldots,\underset{k}{\mathbf{v}_k},\ldots,\mathbf{v}_n)+D(\mathbf{v}_1,\ldots,\underset{k}{\mathbf{u}},\ldots,\mathbf{v}_n),
+  \end{align*}
+  由命题 \ref{prop:det_0} 可得，最后一项等于$0$。
+\end{proof}
 
-因此，在以下内容中，我们不仅为实数矩阵构造行列式，也为复数矩阵（以及具有任意域项的矩阵）构造行列式。虽然我们最初的几何动机仅适用于实数情况，但在我们确定了行列式的性质（见本节的性质 1—3）之后，所有内容都适用于一般情况。
+\subsection{对角矩阵与三角矩阵的行列式}
 
-\subsection{3.1. 基本性质}
+下面我们准备计算几类重要的特殊矩阵的行列式。第一类是所谓的{\bf 对角}矩阵。回想一下，若方阵$A=\{a_{j,k}\}_{j,k=1}^{n}${\bf 主对角线}之外的元素全部为零，也即对于所有$j\ne k$有$a_{j,k}=0$，则称其是{\bf 对角的}。我们常用记号$\operatorname{diag}\{a_1,a_2,\dots,a_n\}$来表示对角矩阵\[\begin{pNiceMatrix}[margin]a_1&0&\ldots&0\\0&a_2&\ldots&0\\\vdots&\vdots&\ddots&0\\0&0&\ldots&a_n\end{pNiceMatrix}.\]
 
-在这一节中，我们将使用以下行列式性质：
+由于对角矩阵$\operatorname{diag}\{a_1,a_2,\dots,a_n\}$可由恒等矩阵将各列乘以常数（第$k$列乘以$a_k$）得到，所以
+\begin{center}
+  \fbox{\parbox{0.8\linewidth}{对角矩阵的行列式等于对角线上各元素的乘积：\[\det(\mathrm{diag}\{a_1,a_2,\ldots,a_n\})=a_1a_2\ldots a_n.\]}}
+\end{center}
 
-1. 行列式在每一列中都是线性的，即，在向量表示中，对于每个下标 $k$，
-$$
-D(\vv_1, \dots, \underset{k}{\underbrace{\alpha \uu_k + \beta \vv_k}}, \dots, \vv_n) = \alpha D(\vv_1, \dots, \underset{k}{\uu_k}, \dots, \vv_n) + \beta D(\vv_1, \dots, \underset{k}{\vv_k}, \dots, \vv_n)
-$$
-对所有标量 $\alpha, \beta$ 成立。
+下一类重要矩阵是所谓{\bf 三角}矩阵。若方阵$A=\{a_{j,k}\}_{j,k=1}^{n}$中所有在主对角线{\bf 之下}的元素都为$0$，即对于所有$k<j$有$a_{j,k}=0$，则称其是{\bf 上三角的}；若方阵$A$中所有在主对角线{\bf 之上}的元素都为$0$，即对于所有$j<k$有$a_{j,k}=0$，则称其是{\bf 下三角的}；若一矩阵是上三角的或是下三角的，则称其是{\bf 三角的}。\index{矩阵（matrix）!下三角$\sim$（lower triangular）}\index{矩阵（matrix）!三角$\sim$（triangular）}\index{矩阵（matrix）!上三角$\sim$（upper triangular）}\index{三角矩阵（triangular matrix）}
 
-2. 行列式是\textbf{反对称}(antisymmetric)的，即，如果我们交换两列，行列式前正负符号改变一次。
+容易看出\begin{center}
+  \fbox{\parbox{0.8\linewidth}{{\bf 三角}矩阵的行列式等于对角线上各元素的乘积：\[\det A=a_{1,1}a_{2,2}\ldots a_{n,n}.\]}}
+\end{center}
 
-3. 归一化性质：$\det I = 1$.~
+的确如此：若一个三角矩阵的主对角线上有元素为零，那么其不可逆（容易通过列变换来检验之），因此上式两端都等于零。若所有对角线上的元素都非零，那么利用列替换（第三类列变换），我们可将该矩阵转化成对角矩阵（且保持对角元不变）：对于上三角矩阵，首先将第$2,3,\dots,n$列减去第一列的适当倍数，将第一行中（除第一个元素外）全部变成$0$，然后将第$3,\dots,n$列减去第二列的适当倍数，以此类推。
 
-所有这些性质在第 2 节中都已讨论过。第一个性质只是 (2.1) 和 (2.2) 的组合。第二个是 (2.5)，最后一个是归一化性质 (2.6)。注意，我们没有使用性质 (2.3)和(2.4)：它们可以从上述三个性质中推导出来。因此，这三个性质就完全定义了行列式！
+对于下三角矩阵，则需要从左到右进行“列化简”，即首先将第$n-1,\dots,2,1$列减去最后一列的适当倍数，以此类推。
 
-\subsection{3.2.由基本性质推导出的行列式性质}
+\subsection{计算行列式}
 
-在下面的讨论中，$\det A = D(\aaa_1, \aaa_2, \dots, \aaa_n)$ 表示满足上文第 3.1 小节中性质 1–3 的一个函数。
+现在可以利用行列式的性质来进行计算：只需做列化简（即对$A^{T}$做行化简），并且记录所有会使行列式变化的列变换。好在，最常用的变换——替换，即第三类变换——不改变行列式的值。因此我们只需记录两种变换：列交换以及将列向量乘以标量。
 
-{\heiti 命题 3.1}~~ 对于方阵 $A$，以下陈述成立：
+若$A^T$的阶梯形并不是每列（每行）都有主元，那么$A$不可逆，因此$\det A = 0$。若$A$可逆，我们就会得到三角矩阵，$\det A$就是对角元的乘积，再乘以一个数用于修正“列交换”和“乘以标量”对行列式的改变。
 
-1. 如果 $A$ 有一个零列，那么 $\det A = 0$.~
+由上述算法可得，$\det A$仅当矩阵$A$不可逆时为零。将这与命题 \ref{prop:det_0} 的最后一条结合可得
+\begin{proposition}
+  $\det A=0$当且仅当$A$不可逆。等价的表述是：$\det A\ne 0$当且仅当$A$可逆。
+\end{proposition}
 
-2. 如果 $A$ 有两列相等，那么 $\det A = 0$；
+注意，尽管我们知道了如何计算行列式，但行列式还是没有定义。有人可能会问：为什么不将其定义为上述算法的结果呢？这样做的问题在于，正式而言，这样的结果是不完善的——我们并没有证明用不同的列变换会得出相同的结果。
 
-3. 如果 $A$ 的一列是另一列的倍数，那么 $\det A = 0$；
+\subsection{转置和乘积的行列式、初等矩阵的行列式}
 
-4. 如果 $A$ 的列是线性相关的，即如果矩阵不可逆，那么 $\det A = 0$.~
-
-\begin{proof} 陈述 1 由线性性质直接得出。如果我们用零乘以零列，我们不会改变矩阵及其行列式。但根据上面的性质 1，我们应该得到 0。
-
-行列式的反对称性蕴含了陈述 2。
-实际上，如果我们交换两列相等的列，我们什么也没改变，所以行列式保持不变。另一方面，交换两列改变了行列式的符号，所以 $$\det A = -\det A,$$
-这只有在 $\det A = 0$ 时才可能。
-
-陈述 3 是陈述 2 和线性性质的直接推论。
-
-要证明最后一个陈述，让我们首先假设第一个向量 $\vv_1$ 是其他向量的线性组合，$$\vv_1 = \alpha_2 \vv_2 + \alpha_3 \vv_3 + \dots + \alpha_n \vv_n = \sum_{k=2}^n \alpha_k \vv_k.$$
-那么根据线性性质，我们有（在向量表示中）
-$$
-D(\vv_1, \vv_2, \dots, \vv_n) = 
-D\begin{pmatrix}
-(\sum_{k=2}^n \alpha_k \vv_k), \vv_2, \dots, \vv_n \end{pmatrix}= \sum_{k=2}^n \alpha_k D(\vv_k, \vv_2, \dots, \vv_n)
-$$
-并且和中的每个行列式都为零，因为存在两个相等的列。
-
-现在考虑一般情况，即假设系统 $\vv_1, \vv_2, \dots, \vv_n$ 是线性相关的。那么其中一个向量，比如 $\vv_k$，可以表示为其他向量的线性组合。将此向量与 $\vv_1$ 交换，我们得到我们刚刚处理过的情况，所以 $$D(\vv_1, \dots, \underset{k}{\vv_k}, \dots, \vv_n) = -D(\vv_k, \dots, \underset{k}{\vv_1}, \dots, \vv_n) = -0 = 0,$$
-所以这种情况下的行列式也为零。\end{proof}
-
-下一个命题推广了性质 (2.3)。正如我们上面已经说过的，这个性质可以从我们本节中使用的三个“基本”性质中推导出来。
-
-{\heiti 命题 3.2}~~ 当我们向一列添加其他列的线性组合时，行列式不会改变（保持其他列不变）。特别地，行列式在“列替换”（第三类列运算）下保持不变。
-\footnote{
-把某列加上自己本身的某个倍数在这里是被禁止的。我们只能在其余非自身列上相加。
-}
-
-\begin{proof} 固定一个向量 $\vv_k$，令 $\uu$ 为其他向量的线性组合，$$\uu = \sum_{j \neq k} \alpha_j \vv_j.$$
-那么根据线性性质
-$$
-D(\vv_1, \dots, \underset{k}{\underbrace{\vv_k + \uu}}, \dots, \vv_n) = D(\vv_1, \dots, \underset{k}{\vv_k}, \dots, \vv_n) + D(\vv_1, \dots, \underset{k}{\uu}, \dots, \vv_n),
-$$
-并且根据命题 3.1，最后一项为零。\end{proof}
-
-\subsection{3.3. 对角和三角矩阵的行列式}
-
-现在我们准备计算一些重要的特殊矩阵类别的行列式。第一类是所谓的\textbf{对角}(diagonal)矩阵。让我们回顾一下，一个方阵 $A = \{a_{j,k}\}^{n}_{j,k=1}$ 称为\textbf{对角}矩阵，如果\textbf{主对角线之外}的所有项都为零，即如果 $a_{j,k} = 0$ $\forall j \neq k$.~我们将经常使用 $\diag\{a_1, a_2, \dots, a_n\}$ 来表示对角矩阵：
-$$
-\begin{pmatrix}
-a_1 & 0 & \dots & 0 \\
-0 & a_2 & \dots & 0 \\
-\vdots & \vdots & \ddots & \vdots \\
-0 & 0 & \dots & a_n
-\end{pmatrix}.
-$$
-
-由于对角矩阵 $\diag\{a_1, a_2, \dots, a_n\}$ 可以通过将第 $k$ 列乘以 $a_k$ 从单位矩阵 $I$ 得到，所以
-
-\noindent\fbox{对角矩阵的行列式等于所有对角项的乘积，
-$\det(\diag\{a_1, a_2, \dots, a_n\}) = a_1 a_2 \dots a_n.$}
-
-下一个重要类别是所谓的\textbf{三角}(triangular)矩阵。一个方阵 $A = \{a_{j,k}\}^{n}_{j,k=1}$ 称为\textbf{上三角}\index{juzhen@矩阵!shangsanjiao@上三角}矩阵，如果主对角线以下的所有项都为零，即如果 $a_{j,k} = 0$ $\forall k < j$.~一个方阵称为\textbf{下三角}\index{juzhen@矩阵!xiansanjiao@下三角}矩阵，如果主对角线以上的所有项都为零，即如果 $a_{j,k} = 0$ $\forall j < k$.~我们称矩阵为\textbf{三角}\index{juzhen@矩阵!sanjiao@三角}\index{sanjiaojuzhen@三角矩阵}矩阵，如果它是下三角或上三角矩阵。
-
-很容易看出,
-
-\noindent\fbox{
-三角矩阵的行列式等于所有对角项的乘积，
-$\det A = a_{1,1} a_{2,2} \dots a_{n,n}.$
-}
-
-实际上，如果一个三角矩阵的主对角线上有零出现，那么它就是不可逆的（这可以通过列运算很容易地核验出来），因此两边都等于零。如果所有对角项都非零，那么使用列替换（第三类列运算）可以将矩阵转化为具有相同对角项的对角矩阵：
-对于上三角矩阵，首先应该从第 $2,3,...,n$ 列减去第 1 列的适当倍数，“消去”第 1 行中的所有项，然后从第 $3,...,n$ 列减去第 2 列的适当倍数，依此类推。
-
-为了处理下三角矩阵的情况，需要从左到右进行“列约简”，即首先从最后一列开始，将适当倍数的最后一列减去第 $n-1, \dots, 2, 1$ 列，依此类推。
-
-\subsection{3.4. 计算行列式}
-
-现在我们知道如何通过使用行列式的性质来计算行列式：只需进行列约简（即对 $A^T$ 进行行约简），并注意可能会改变行列式符号的列运算。幸运的是，最常使用的运算——行替换，即第三类行运算，也不会改变行列式（见下一小节）。所以我们只需要留心列的交换和用标量乘以列。
-
-如果 $A^T$ 的阶梯形不在每一列（和每一行）都有主元，那么 $A$ 是不可逆的，因此 $\det A = 0$.~如果 $A$ 是可逆的，我们得到一个三角矩阵，而 $\det A$ 是对角项的乘积，乘以来自列交换和乘法的校正因子(correction)。
-
-上述算法暗示 $\det A$ 仅在矩阵 $A$ 不可逆时才可能为零。结合命题 3.1 的最后一个陈述，我们得到：
-
-{\heiti 命题 3.3}~~ $\det A = 0$ 当且仅当 $A$ 不可逆，或者等价地说：$\det A \neq 0$ 当且仅当 $A$ 可逆。
-
-注意，虽然我们现在知道如何计算行列式，但行列式仍然没有被定义。有人可能会问：为什么我们不将其定义为通过上述算法得到的结果？问题在于，从形式上看，这个结果并非被良好定义：我们没有证明不同的列运算顺序会得到相同的结果。
-
-\subsection{3.5. 矩阵转置和乘积的行列式~~初等矩阵的行列式}
-
-在本节中，我们将证明两个重要定理。
-
-\begin{theorem}[\normalfont\heiti 定理 3.4\nopunct] （矩阵转置的行列式）对于方阵 $A$，$$\det A = \det(A^T).$$\end{theorem}
-
-这个定理意味着，我们之前讨论过的所有关于列的陈述，相应关于行的陈述也都是正确的。特别地，行列式在\textbf{行运算}下的行为与在\textbf{列运算}下的行为相同。因此，我们可以使用行运算来计算行列式。
-
-\begin{theorem}[\normalfont\heiti 定理 3.5\nopunct] （矩阵乘积的行列式） 对于 $n \times n$ 矩阵 $A$ 和 $B$：
-$$
-\det(AB) = (\det A)(\det B).$$
+\begin{theorem}[转置的行列式]\label{thm:det_trans}
+  对于方阵$A$，\[\det A = \det(A^T).\]
 \end{theorem}
-换句话说，
 
-\fbox{矩阵乘积的行列式等于矩阵行列式的乘积。}
+该定理表明，我们上面讨论的所有关于列的结论同样适用于行。特别地，行列式在{\bf 行变换}和{\bf 列变换}下的表现是相同的。所以我们可以用行变换来计算行列式。
+
+\begin{theorem}[乘积的行列式]\label{thm:det_prod}
+  对于$n\times n$矩阵$A$和$B$有\[\det (AB) = (\det A)(\det B)\]
+  换言之
+  \begin{center}
+    \fbox{乘积的行列式等于行列式的乘积。}
+  \end{center}
+\end{theorem}
+
+两个定理的证明都要用到下述引理：
+\begin{lemma}\label{lem:elementary_det}
+  对方阵$A$和（大小相同的）初等矩阵$E$有\[\det (AE) = (\det A)(\det E)\]
+\end{lemma}
+\begin{proof}
+  完成证明只需确认这三件事：特殊（初等）矩阵的行列式（很容易计算）；右乘初等矩阵等同于做列变换；以及列变换对行列式的影响（已知）。
+
+  初等矩阵的行列式与对应的列变换效果一致，这看似是个巧合，实则不然：对于列变换，其对应的初等矩阵可通过对恒等矩阵$I$做对应的列变换来获得。因此，其行列式是$1$（$I$的行列式）乘以列变换对行列式的改变。
+
+  至此，证明就完成了。乍一看有些不可思议，但上面几段就完成了对该引理{\bf 完整而严谨}的证明！
+\end{proof}
+
+应用引理 \ref{lem:elementary_det} $N$次可得下述推论。
+
+\begin{corollary}\label{cor:det_multiply_elementary}
+  对于任意矩阵$A$，以及任意一组初等矩阵$E_1,E_2,\ldots,E_N$（所有矩阵都是$n\times n$的）\[\det(AE_1E_2\ldots E_N)=(\det A)(\det E_1)(\det E_2)\ldots(\det E_N)\]
+\end{corollary}
+\begin{lemma}\label{lem:invert_elementary_prod}
+  任意可逆矩阵都是有限个初等矩阵的乘积。
+\end{lemma}
+\begin{proof}
+  任意可逆矩阵都与单位矩阵行等价，因为单位矩阵就是它的简化阶梯形。于是存在初等矩阵 $E_1,E_2,\ldots,E_N$ 使
+  \[E_NE_{N-1}\cdots E_2E_1A=I.\]
+  因而
+  \[A=E_1^{-1}E_2^{-1}\cdots E_N^{-1}.\]
+  每个初等矩阵的逆仍是初等矩阵，所以 $A$ 的确是有限个初等矩阵的乘积。
+\end{proof}
+\begin{proof}[定理 \ref{thm:det_trans} 的证明]
+  首先，容易验证，对于任意初等矩阵都有$\det E = \det(E^T)$。注意，只需对于可逆矩阵$A$证明此定理，因为若$A$不可逆，那么$A^T$也不可逆，则两者的行列式都为零。
+
+  由引理 \ref{lem:invert_elementary_prod}，矩阵$A$可表示为若干初等矩阵的乘积\[A=E_1E_2\ldots E_N,\]
+  由推论 \ref{cor:det_multiply_elementary}，$A$的行列式等于初等矩阵的行列式之积。由于取转置只会将每个初等矩阵都变为其转置并将乘的顺序反过来，所以由推论 \ref{cor:det_multiply_elementary} 可知$\det A = \det A^T$。
+\end{proof}
+\begin{proof}[定理 \ref{thm:det_prod} 的证明]
+  首先假设$B$可逆。那么由引理 \ref{lem:invert_elementary_prod} 可得，$B$可表示为若干初等矩阵之积
+  \[B=E_1E_2\ldots E_N,\]
+  因此由推论 \ref{cor:det_multiply_elementary}
+  \[\det(AB)=(\det A)[(\det E_1)(\det E_2)\ldots(\det E_N)]=(\det A)(\det B).\]
+
+  若$B$不可逆，那么乘积$AB$也不可逆，因此该定理也就是$0=0$。
+  为证明乘积$AB=C$不可逆，假设其可逆。那么将等式$AB=C$同时左乘$C^{-1}$，可得$C^{-1}AB=I$，则$C^{-1}A$是$B$的左逆，因此$B$是左可逆的。又由于$B$是方阵，所以$B$可逆，这就出现了矛盾。
+\end{proof}
+\subsection{行列式性质总结}
+
+首先，重申一遍：{\bf 行列式只对方阵有定义！}由于我们知道了$\det A = \det (A^T)$，所以对于列成立的结论对于行也是成立的。
+\begin{enumerate}
+  \item 行列式对于各行（列）都是线性的【将其余各行（列）固定】。
+  \item 如果交换矩阵$A$的两行（列），那么行列式变号。
+  \item 对于三角矩阵（特别地，对角矩阵）而言，其行列式为对角元的乘积。特别地，$\det I = 1$。
+  \item 若矩阵$A$有零行（或零列），则$\det A = 0$。
+  \item 若$A$有两行（列）相等，那么$\det A = 0$。
+  \item 若$A$的其中一行（列）是另一些行（列）的线性组合，也即，若该矩阵不可逆，那么$\det A = 0$。
+
+  更一般地，
+  \item $\det A = 0$当且仅当$A$不可逆。或者等价地说：
+  \item $\det A \neq 0$当且仅当$A$可逆。
+  \item 若我们向矩阵$A$的一行（列）加入其余行（列）的线性组合，那么$\det A$不变。特别地，在行（列）替换下【也即在第三类行（列）变换下】，行列式保持原值。
+  \item $\det A^T = \det A$。
+  \item $\det (AB) = (\det A)(\det B)$。
+
+  最后：
+  \item 若$A$为$n\times n$矩阵，那么$\det (aA) = a^n(\det A)$。
+\end{enumerate}
+
+最后一个性质源于行列式的线性——回忆一下，要将矩阵$A$乘以$a$，我们需要将各行都乘以$a$，其中每次乘法都会将行列式乘以$a$。
+
+\begin{problemset}
+  \item 若$A$为$n\times n$矩阵，那么行列式$\det A$和$\det (5A)$有什么联系？\\{\bf 注}：$\det (5A) = 5\det A$只在$1\times 1$的平凡情形成立。
+  \item 若$A$、$B$如下，那么行列式$\det A$和$\det B$有什么联系？
+  \begin{probenumerate}
+    \item \[A=\begin{pNiceMatrix}[margin]a_1&a_2&a_3\\b_1&b_2&b_3\\c_1&c_2&c_3\end{pNiceMatrix},\quad B=\begin{pNiceMatrix}[margin]2a_1&3a_2&5a_3\\2b_1&3b_2&5b_3\\2c_1&3c_2&5c_3\end{pNiceMatrix};\]
+    \item \[A=\begin{pNiceMatrix}[margin]a_1&a_2&a_3\\b_1&b_2&b_3\\c_1&c_2&c_3\end{pNiceMatrix},\quad B=\begin{pNiceMatrix}[margin]3a_1&4a_2+5a_1&5a_3\\3b_1&4b_2+5b_1&5b_3\\3c_1&4c_2+5c_1&5c_3\end{pNiceMatrix}.\]。
+\end{probenumerate}
+  \item 利用行变换或列变换来计算下列行列式：
+  \[\begin{vNiceMatrix}[margin]0&1&2\\-1&0&-3\\2&3&0\end{vNiceMatrix},\quad\begin{vNiceMatrix}[margin]1&2&3\\4&5&6\\7&8&9\end{vNiceMatrix},\quad\begin{vNiceMatrix}[margin]1&0&-2&3\\-3&1&1&2\\0&4&-1&1\\2&3&0&1\end{vNiceMatrix},\quad\begin{vNiceMatrix}[margin]1&x\\1&y\end{vNiceMatrix}.\]
+  \item 若方阵$A$满足$A^T = -A$，则称其是斜对称的（或反对称的）。证明：若$A$是斜对称的且$n$为奇数，那么$\det A = 0$。该结论在$n$为偶数时还成立吗？
+  \item 若方阵$A$满足$A^k=\mathbf{0}$对某幂次$k$成立，则称其是{\bf 幂零的}。证明：对幂零矩阵$A$有$\det A = 0$。
+  \item 证明：若矩阵$A$和$B$相似，则$\det A = \det B$。
+  \item 若实方阵$Q$满足$Q^TQ = I$，则称其为正交的。证明：若$Q$为正交矩阵，则$\det Q = \pm 1$。
+  \item 证明：\[\begin{vNiceMatrix}[margin]1&x&x^2\\1&y&y^2\\1&z&z^2\end{vNiceMatrix}=(z-x)(z-y)(y-x).\]这是所谓范德蒙行列式的一个特例。
+  \item 设平面$\mathbb{R}^2$中的点$A$、$B$和$C$的坐标分别为$(x_1,y_1)$、$(x_2,y_2)$和$(x_3,y_3)$。证明：三角形$ABC$的面积是\[\frac{1}{2}\begin{vNiceMatrix}[margin]1&x_1&y_1\\1&x_2&y_2\\1&x_3&y_3\end{vNiceMatrix}.\]的绝对值。
+
+  {\bf 提示}：利用行变换与$2\times 2$行列式的几何意义（面积）。
+  \item 令$A$为方阵。证明分块三角矩阵\[\begin{pNiceMatrix}[margin]I&\ast\\\mathbf{0}&A\end{pNiceMatrix},\quad\begin{pNiceMatrix}[margin]A&\ast\\\mathbf{0}&I\end{pNiceMatrix},\quad\begin{pNiceMatrix}[margin]I&\mathbf{0}\\\ast&A\end{pNiceMatrix},\quad\begin{pNiceMatrix}[margin]A&\mathbf{0}\\\ast&I\end{pNiceMatrix}\]
+  的行列式都等于$\det A$。此处$\ast$为任意矩阵。
+
+  下面这几题展示了分块矩阵记号的强大用处。
+  \item \label{ex:3_3_11}利用上一题的结论证明：若$A$和$C$是方阵，那么\[\det\begin{pNiceMatrix}[margin]A&B\\\mathbf{0}&C\end{pNiceMatrix}=\det A\det C.\]
+
+  {\bf 提示}：$\left.\left(\begin{array}{cc}A&B\\\mathbf{0}&C\end{array}\right.\right)=\begin{pNiceMatrix}[margin]I&B\\\mathbf{0}&C\end{pNiceMatrix}\begin{pNiceMatrix}[margin]A&\mathbf{0}\\\mathbf{0}&I\end{pNiceMatrix}$。
+  \item 令$A$是$m\times n$矩阵，$B$是$n\times m$矩阵。证明：\[\det\begin{pNiceMatrix}[margin]\mathbf{0}&A\\-B&I\end{pNiceMatrix}=\det(AB).\]
+
+  {\bf 提示}：尽管可以通过做行变换将该矩阵转化为容易计算行列式的形式，最简单的方法还是将该矩阵右乘$\begin{pNiceMatrix}[margin]I&\mathbf{0}\\B&I\end{pNiceMatrix}$。
+\end{problemset}
+
+\section{形式化定义、行列式的存在性与唯一性}\label{sec:determinant_formal}
+
+本节我们介绍行列式的形式化定义。我们说明，满足第 \ref{sec:construct_det} 节中基本性质1、2和3的函数存在；此外，它还是唯一的，也即，我们构造行列式时没有其他选择。
+
+考虑$n\times n$矩阵$A=\{a_{j,k}\}_{j,k=1}^{n}$，并令$\mathbf{v}_1,\mathbf{v}_2,\ldots,\mathbf{v}_n$是它的列，即\[\mathbf{v}_k=\begin{pNiceMatrix}[margin]a_{1,k}\\a_{2,k}\\\vdots\\a_{n,k}\end{pNiceMatrix}=a_{1,k}\mathbf{e}_1+a_{2,k}\mathbf{e}_2+\ldots+a_{n,k}\mathbf{e}_n=\sum_{j=1}^na_{j,k}\mathbf{e}_j.\]
+利用行列式的线性，对第一列$\mathbf{v}_1$展开：
+\begin{align}
+  D(\mathbf{v}_{1},\mathbf{v}_{2},\ldots,&\mathbf{v}_{n})= \label{expand_in_v1}\\
+  &D(\sum_{j=1}^{n}a_{j,1}\mathbf{e}_{j},\mathbf{v}_{2},\ldots,\mathbf{v}_{n})=\sum_{j=1}^{n}a_{j,1}D(\mathbf{e}_{j},\mathbf{v}_{2},\ldots,\mathbf{v}_{n}).\nonumber
+\end{align}
+接着对第二列、第三列……展开，可得\[D(\mathbf{v}_1,\mathbf{v}_2,\ldots,\mathbf{v}_n)=\sum_{j_1=1}^n\sum_{j_2=1}^n\cdots\sum_{j_n=1}^na_{j_1,1}a_{j_2,2}\ldots a_{j_n,n}D(\mathbf{e}_{j_1},\mathbf{e}_{j_2},\ldots,\mathbf{e}_{j_n}).\]
+注意，我们需要对每列的求和采用不同的下标——记作$j_1,j_2,\dots,j_n$，下标$j_1$就是 \eqref{expand_in_v1} 中的下标$j$。
 
-为了证明这两个定理，我们需要先证以下引理。
+这个求和式非常长——包含$n^n$项。好在，其中有些项是零。即，如果下标$j_1,j_2,\dots,j_n$中任意两个是相同的，那么行列式$D(\mathbf{e}_{j_1},\mathbf{e}_{j_2},\ldots,\mathbf{e}_{j_n})$等于零，因为其中有两列相等。
 
-\begin{lemma}[\normalfont\heiti 引理 3.6\nopunct] 对于方阵 $A$ 和初等矩阵 $E$（要求大小相同，即同型）：
-$$
-\det(AE) = (\det A)(\det E)
-$$\end{lemma}
+因此，我们重写一下这个求和，将所有为零的项都略去。为此最便利的方法要利用\textbf{置换}的概念。非正式地说，有序集合$\{1,2,\dots,n\}$的置换是对其各元素的重排。\index{置换（permutation）}这种重排的一种简捷却正式的表示法，是用函数\[\sigma:\{1,2,\ldots,n\}\to\{1,2,\ldots,n\},\]
+其中$\sigma(1),\sigma(2),\dots,\sigma(n)$给出了集合$1,2,\ldots,n$的新顺序。换言之，置换$\sigma$将有序集合$1,2,\ldots,n$重排为$\sigma(1),\sigma(2),\dots,\sigma(n)$。
 
-\begin{proof} 证明可以通过直接检验等式两边各自的计算结果来完成：特殊矩阵的行列式很容易计算；右乘初等矩阵对应进行列运算，而列运算对行列式的作用是众所周知的。
+这样的函数$\sigma$必须是一对一（对不同的输入产生不同的输出）且满的（可取目标空间的所有值）。一对一且满的函数称为\textbf{双射}，它们给出了定义域和目标空间之间的一一对应关系。\footnote{通过双射$\sigma$表示置换还有一种典型的写法，在这种写法中，$\sigma(k)$给出了第$k$个元素经排序后的位置，则$\sigma$将$\sigma(1),\sigma(2),\dots,\sigma(n)$重排为$1,2,\ldots,n$。
 
-这可能看起来像一个幸运的巧合，即初等矩阵的行列式与其相应的列运算一致，但这并非巧合。
+\noindent 尽管在已知集合$1,2,\ldots,n$的重排结果时用第一种表示更容易写出函数，但是第二种表示更适合表达置换的复合——置换的复合与函数的复合是一致的。即，如果我们首先进行相应于函数$\sigma$的置换，再进行相应于$\tau$的置换，最终置换将对应于$\tau\circ\sigma$。}
 
-我们知道，每个列运算对应的初等矩阵，可以由对单位矩阵 $I$ 的该列加以相应列运算得到。所以，它的行列式是 $1$（$I$ 的行列式）乘以这一列运算的作用。
+插句题外话：注意，集合$\{1,2,\dots,n\}$的所有不同置换的数目恰为$n!$（这是组合数学中的知名结论）。集合$\{1,2,\dots,n\}$的所有不同置换所构成的集合将记为$\operatorname{Perm}(n)$。
 
-要论证的一切就是这样子了！读者一开始可能很难意识到，但上述段落就是对引理\textbf{完整且严谨}的证明！\end{proof}
+利用置换的概念，我们可将行列式重写为
+\[
+  \begin{aligned}
+    D(\mathbf{v}_{1},\mathbf{v}_{2},\ldots,&\mathbf{v}_{n})=\\
+    &\sum_{\sigma\in\mathrm{Perm}(n)}a_{\sigma(1),1}a_{\sigma(2),2}\ldots a_{\sigma(n),n}D(\mathbf{e}_{\sigma(1)},\mathbf{e}_{\sigma(2)},\ldots,\mathbf{e}_{\sigma(n)}).
+  \end{aligned}
+\]
+各列为$\mathbf{e}_{\sigma(1)},\mathbf{e}_{\sigma(2)},\ldots,\mathbf{e}_{\sigma(n)}$的矩阵可从恒等矩阵经有限多次列交换得到，所以行列式\[D(\mathbf{e}_{\sigma(1)},\mathbf{e}_{\sigma(2)},\ldots,\mathbf{e}_{\sigma(n)})\]
+等于$1$或$-1$，取决于列交换的次数。
 
-应用引理 3.6 $N$ 次，我们得到以下推论。
+为给出形式化的表达，我们（不严格地）定义置换$\sigma$的\textbf{符号}（记为$\operatorname{sign}\sigma$）：如果将$n$元组$1,2,\ldots,n$重排为$\sigma(1),\sigma(2),\dots,\sigma(n)$需要做偶数次交换，那么置换的符号为$1$；若交换次数为奇数，那么$\operatorname{sign}\sigma=-1$。
 
-{\heiti 推论 3.7}~~ 对于任何矩阵 $A$ 和任何初等矩阵序列 $E_1, E_2, \dots, E_N$（所有矩阵均为 $n \times n$）：
-$$
-\det(A E_1 E_2 \dots E_N) = (\det A)(\det E_1)(\det E_2) \dots (\det E_N)
-$$
+组合数学中有个知名的结论：置换的符号是定义完善的。也即，尽管从$1,2,\ldots,n$得到同一$n$元组$\sigma(1),\sigma(2),\dots,\sigma(n)$的方式有无穷多种，但是所做交换的次数要么总是偶数要么总是奇数。
 
-\begin{lemma}[\normalfont\heiti 引理 3.8\nopunct] 任何可逆矩阵都可以表示为初等矩阵的乘积。\end{lemma}
+说明这点的一种方法，是引入符号的另一种定义。令$K=K(\sigma)$是$\sigma$的\textbf{逆序数}，即满足$\sigma(j)>\sigma(k)$的数对$(j,k)$（$j,k\in \{1,2,\dots,n\},j<k$）的数量，然后观察数$K$是偶数还是奇数。若$K$为奇数，则称置换$\sigma$是\textbf{奇}置换，否则称其为\textbf{偶}置换。那么定义$\operatorname{sign}\sigma:=(-1)^{K(\sigma)}$。注意，按这种方式，$\operatorname{sign}\sigma$是定义完善的。
 
-\begin{proof} 我们知道任何可逆矩阵都可以通过行运算化为单位矩阵（其简化阶梯形和单位矩阵行等价）。所以 
-$$I = E_N E_{N-1} \dots E_2 E_1 A,$$
-因此任何可逆矩阵都可以表示为初等矩阵的乘积，
-$$A = (E_N E_{N-1} \dots E_2 E_1)^{-1} I = E_1^{-1} E_2^{-1} \dots E_{N-1}^{-1} E_N^{-1}$$
-（初等矩阵的逆也是初等矩阵）。\end{proof}
+我们要证明，$\operatorname{sign}\sigma=(-1)^{K(\sigma)}$的确可通过计算将$n$元组$1,2,\ldots,n$重排为$\sigma(1),\sigma(2),\dots,\sigma(n)$中所做交换的次数得到（如前所述）。
 
-\begin{proof}[\normalfont\heiti 定理 3.4 的证明~\nopunct] 首先，容易验证，对于初等矩阵 $E$， $\det E = \det(E^T)$.~请注意，只需为可逆矩阵 $A$ 证明该定理即可，因为如果 $A$ 不可逆，那么 $A^T$ 也不可逆，并且它们两个的行列式都为零。
-根据引理 3.8，矩阵 $A$ 可以表示为初等矩阵的乘积，
-$$A = E_1 E_2 \dots E_N,$$
-并且根据推论 3.7， $A$ 的行列式是初等矩阵行列式的乘积。由于取转置只是转置每个初等矩阵并反转它们的顺序，因此推论 3.7 蕴含了 $\det A = \det A^T$.~\end{proof}
+若$\sigma(k)=k\ \forall k$，那么\textbf{逆序数}$K(\sigma)$是$0$，所以该\textbf{恒等}置换的\textbf{符号}为$1$。并请注意，每次相邻交换（交换两相邻元素）都改变置换的符号，因为它将\textbf{逆序数}改变（增加或减少）$1$。因此，从一个置换得到另一个的过程中，如果做了偶数次相邻交换，则前后两个置换的符号相同，否则不同。
 
-\begin{proof}[\normalfont\heiti 定理 3.5 的证明~\nopunct]首先让我们假设矩阵 $B$ 是可逆的。那么引理 3.8 蕴含了 $B$ 可以表示为初等矩阵的乘积 
-$$B = E_1 E_2 \dots E_N,$$
-因此根据推论 3.7
-$$\det(AB) = (\det A)\left[(\det E_1)(\det E_2) \dots (\det E_N)\right] = (\det A)(\det B).$$
+最后，交换任意两个元素都可通过进行奇数次相邻交换完成。这就表明，交换任意两个元素都会改变置换的\textbf{符号}。所以，从$1,2,\ldots,n$得到偶置换（符号为正）总是需要进行偶数次交换，而要得到奇置换（符号为负）则需要奇数次交换。
 
-如果 $B$ 不可逆，那么乘积 $AB$ 也不可逆，而定理仅仅说明 $0 = 0$.~
+因此，我们如果希望行列式满足第 \ref{sec:construct_det} 节中基本性质1-3，就必须将其定义为
+\begin{equation}\label{formal_definition}
+  \det A=\sum_{\sigma\in\mathrm{Perm}(n)}a_{\sigma(1),1}a_{\sigma(2),2}\ldots a_{\sigma(n),n}\operatorname{sign}(\sigma),
+\end{equation}
+其中求和会遍历集合$\{1,2,\dots,n\}$的所有置换。
 
-要验证上面的乘积 $AB =: C$ 是不可逆的，就让我们假设 $C$ 是可逆的。那么将恒等式 $AB = C$ 从左边乘以 $C^{-1}$，我们得到 $C^{-1} AB = I$，所以 $C^{-1} A$ 是 $B$ 的左逆。因此 $B$ 是左可逆的，并且由于它是方阵，所以 $B$ 是可逆的。我们得到了一个矛盾。\end{proof}
+若我们将行列式定义如上，则容易检验它满足第 \ref{sec:construct_det} 节中基本性质1-3。的确，它对于每列都是线性的，因为对于每列来说，求和中的每项（乘积）都只包含该列的一个元素。
 
-\subsection{3.6. 行列式的性质总结}
+交换$A$的两列仅仅是对每个置换都额外做了一次交换，所以 \eqref{formal_definition} 的右端改变符号。最后，对于恒等矩阵$I$，\eqref{formal_definition} 的右端是$1$（仅有一项非零）。
 
-首先，让我们再说一遍，\textbf{行列式仅对方阵有定义！} 由于我们现在知道 $\det A = \det(A^T)$，我们之前关于列的所有陈述也对行成立。
+\begin{problemset}
+  \item 假设置换$\sigma$将$(1,2,3,4,5)$对应到$(5,4,1,2,3)$。
+  \begin{probenumerate}
+    \item 求出$\sigma$的符号；
+    \item $\sigma^{2}:=\sigma\circ\sigma$作用于$(1,2,3,4,5)$会得到什么？
+    \item 逆置换$\sigma^{-1}$作用于$(1,2,3,4,5)$会得到什么？
+    \item $\sigma^{-1}$的符号是什么？
+  \end{probenumerate}
+  \item 令$P$为\textbf{置换矩阵}，即包含$0$和$1$的$n\times n$矩阵，并且在每行和每列中都恰有一个$1$。
+  \begin{probenumerate}
+    \item 你能描述这个矩阵对应的线性变换吗？这就能解释其名称的来历。
+    \item 证明：$P$可逆。你可否描述$P^{-1}$？
+    \item 证明：对于某个$N>0$有\[P^N:=\underbrace{PP\ldots P}_{N~\text{个}}=I.\]
+    利用结论：置换的个数是有限的。
+  \end{probenumerate}
+  \item 为什么$(1,2,\dots,9)$的置换有偶数个，并且其中奇置换恰好占一半？\textbf{提示}：该问题用置换的知识可能很难解答，但利用行列式就很容易。
+  \item 若$\sigma$ 是奇置换，解释为何$\sigma^{2}$是偶置换，而$\sigma^{-1}$是奇置换。
+  \item 利用形式化定义 \eqref{formal_definition} 来计算$n\times n$矩阵的行列式需要多少次乘法和加法？不考虑$\operatorname{sign}\sigma$的计算过程。
+\end{problemset}
 
-1. 行列式在每个行（列）中是线性的，当其他行（列）固定不变时。
+\section{余子式展开}
 
-2. 如果我们交换矩阵 $A$ 的两行（列），行列式改变符号（正负号）。
+对$n\times n$矩阵$A=\{a_{j,k}\}_{j,k=1}^{n}$，令$A_{j,k}$表示将$A$的第$j$行和第$k$列划去后得到的$(n-1)\times (n-1)$矩阵。
 
-3. 对于三角矩阵（特别地，对角矩阵），其行列式是对角项的乘积。特别地，$\det I = 1$.~
+\begin{theorem}[行列式的余子式\footnote{本节所述“余子式”（cofactor）在国内教材中常称作“代数余子式”。——译者注}展开]
+  令$A$是$n\times n$矩阵。对每个$j,1\le j\le n$，$A$的行列式可按第$j$行展开成\index{余子式（cofactor）}
+  \[\begin{aligned}
+    &\det A\\
+    &= a_{j,1}(-1)^{j+1}\det A_{j,1}+a_{j,2}(-1)^{j+2}\det A_{j,2}+\ldots+a_{j,n}(-1)^{j+n}\det A_{j,n}\\
+    &=\sum_{k=1}^na_{j,k}(-1)^{j+k}\det A_{j,k}.
+  \end{aligned}\]
+  类似地，对每个$k,1\le k\le n$，行列式可按第$k$列展开成
+  \[\det A=\sum_{j=1}^na_{j,k}(-1)^{j+k}\det A_{j,k}.\]
+\end{theorem}
+\begin{proof}
+  首先证明按第$1$行展开的公式。然后可以通过交换第$1$、$2$行得到按第$2$行展开的公式，接着交换第$2$、$3$行可得按第$3$行展开的公式，以此类推。
 
-4. 如果矩阵 $A$ 有一个零行（或零列），则 $\det A = 0$.~
+  因为$\det A=\det A^T$，所以按列展开无需额外证明。
 
-5. 如果矩阵 $A$ 有两行（列）相等，则 $\det A = 0$.~
+  首先考虑一种特殊情况，就是第一行只有一个非零元$a_{1,1}$。对第$2,3,\dots,n$列进行列变换，可将$A$变为下三角形。则$A$的行列式可按下式计算：
+  \begin{center}
+    \fbox{\parbox{0.3\linewidth}{三角矩阵对角元的乘积}}$\times$\fbox{\parbox{0.3\linewidth}{因列变换所致行列式变化的“修正系数”}}.
+  \end{center}
+而除了第一个对角元（$a_{1,1}$）以外的所有对角元之积乘以“修正系数”，恰好是$\det A_{1,1}$。因此，在这个特例中$\det A = a_{1,1}\det A_{1,1}$。
+
+  现在考虑第一行只有一个非零元$a_{1,2}$的情况。只需交换第$1$、$2$列，即可将这种情况变为上面那种，所以这种情况的$\det A=(-1)a_{1,2}\det A_{1,2}$。
 
-6. 如果 $A$ 的某一行（列）是其他行（列）的线性组合，即如果矩阵不可逆，则 $\det A = 0$；更一般地，
+  第一行只有一个非零元$a_{1,3}$的情况，只需通过交换第$2$、$3$列，即可变为上段所述情形，所以这种情况的$\det A=a_{1,3}\det A_{1,3}$。
 
-7. $\det A = 0$ 当且仅当 $A$ 不可逆，或者等价地说
+  重复这一过程即得，当$a_{1,k}$是第一行的唯一非零元时，$\det A = (-1)^{1+k}a_{1,k}\det A_{1,k}$。\footnote{在“$a_{1,k}$是第一行的唯一非零元”这种情况下，你可能想交换第$1$列和第$k$列以将此情形转化为$a_{1,1}\ne 0$的情况。然而，当交换第$1$列和第$k$列时，我们还改变了其他列的顺序：在划掉第$k$列时，第$1$列是剩余列中的第一列；但如果交换了第$1$列和第$k$列，再划掉第$k$列（现在它是第一列了），则第$1$列是剩余列中的第$k-1$列。为了避免因考虑列的顺序而带来的麻烦，我们可以像上面那样交换第$k$与第$k-1$列，从而将现有情形转化为前一步中处理过的情形。这样做变换就不会改变剩余列的顺序。}
 
-8. $\det A \neq 0$ 当且仅当 $A$ 可逆。
+  在一般情形下，由行列式对每行的线性可得\[\det A=\det A^{(1)}+\det A^{(2)}+\cdots+\det A^{(n)}=\sum_{k=1}^n\det A^{(k)}\]
+  其中矩阵$A^{(k)}$是由$A$将除了$a_{1,k}$以外的首行元素都替换为$0$所得。我们刚刚讨论过\[\det A^{(k)}=(-1)^{1+k}a_{1,k}\det A_{1,k},\]
+  因此\[\det A=\sum_{k=1}^n(-1)^{1+k}a_{1,k}\det A_{1,k}.\]
 
-9. 如果我们将行（列）的线性组合加到某个行（列）上，行列式不改变。特别地，行列式在行（列）替换，即第三类行（列）运算下保持不变。
+  为得到按第二行的展开式，我们可以交换第一、二行并运用上述公式：行交换会导致变号，因此可得\[\det A=-\sum_{k=1}^n(-1)^{1+k}a_{2,k}\det A_{2,k}=\sum_{k=1}^n(-1)^{2+k}a_{2,k}\det A_{2,k}.\]
+  交换第$3$行和第$2$行，并按第二行展开，可得\[\det A=\sum_{k=1}^n(-1)^{3+k}a_{3,k}\det A_{3,k},\]
+  以此类推。
 
-10. $\det A^T = \det A$.~
+  要将行列式$\det A$按列展开，只需对$A^T$运用按行展开公式。
+\end{proof}
 
-11. $\det(AB) = (\det A)(\det B)$.最后，
+\begin{definition*}
+  数\[C_{j,k}=(-1)^{j+k}\det A_{j,k}\]称为{\bf 余子式}。
+\end{definition*}
 
-12. 如果 $A$ 是一个 $n \times n$ 矩阵，那么 $\det( \alpha A ) = \alpha^n \det A$.
+利用这个记号，行列式按第$j$行展开的公式可重写为\[\det A=a_{j,1}C_{j,1}+a_{j,2}C_{j,2}+\cdots+a_{j,n}C_{j,n}=\sum_{k=1}^{n}a_{j,k}C_{j,k}.\]
+类似地，按第$k$列展开的公式可重写为\[\det A=a_{1,k}C_{1,k}+a_{2,k}C_{2,k}+\ldots+a_{n,k}C_{n,k}=\sum_{j=1}^{n}a_{j,k}C_{j,k}\]
 
-最后一个性质是从行列式的线性性质质得出的，如果我们回忆起，若要将矩阵 $A$ 乘以 $\alpha$，我们必须将每一行乘以 $\alpha$，并且每次乘法都会将行列式乘以 $\alpha$.~
+\begin{remark*}
+  常用余子式展开公式作为行列式的定义。不难证明，这公式给出的量满足行列式的基本性质：归一化性质是平凡的，而反对称性的证明也很容易。然而，线性的证明有些冗长（尽管并不难）。
+\end{remark*}
+\begin{remark*}
+  尽管形式优美，但余子式展开公式并不适合计算大于$3\times 3$的矩阵的行列式。
 
-\begin{exer} {\heiti 练习}~~
+  可以算一下，利用余子式展开来计算行列式需要超过$n!$次乘法（准确地说是$\sum_{k=1}^{n-1}n!/k!$次乘法），而$n!$增长得很快。例如，对$20\times 20$矩阵进行余子式展开，需要超过$20!\approx 2.433\cdot 10^{18}$次乘法。使用每秒可进行{\bf 十亿次}乘法的计算机来计算$20!$次乘法需要超过$77$年，而计算$20\times 20$矩阵的行列式进行余子式展开所需的乘法更是需要超过$132$年\footnote{读者可借助诸如WolframAlpha之类的工具来检验这些数字。}。
 
-3.1. 如果 $A$ 是一个 $n \times n$ 矩阵，$\det(3A)$ 与 $\det A$ 有何关系？\\
-{\heiti 注记}：$\det(3A) = 3 \det A$ 仅在 $1 \times 1$ 矩阵的平凡情况下成立。
+  另一方面，利用{\bf 行化简}计算$n\times n$矩阵的行列式需要做$(n^{3}+2n-3)/3$次乘法（加法的次数也差不多）。使用每秒可进行{\bf 百万次}计算的计算机（按如今的标准来看，已经非常慢了）通过行化简来计算$100\times 100$矩阵的行列式，也只需要不到一秒钟。
 
-3.2. 下面$A$ 和 $B$ 各自的行列式之间有什么关系？
-\\
-a) $A = \begin{pmatrix} a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \\ c_1 & c_2 & c_3 \end{pmatrix}$, $\quad B = \begin{pmatrix} 2a_1 & 3a_2 & 5a_3 \\ 2b_1 & 3b_2 & 5b_3 \\ 2c_1 & 3c_2 & 5c_3 \end{pmatrix}$；
-\\
-b) $A = \begin{pmatrix} a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \\ c_1 & c_2 & c_3 \end{pmatrix}$, $\quad B = \begin{pmatrix} 3a_1 & 4a_2 + 5a_1 & 5a_3 \\ 3b_1 & 4b_2 + 5b_1 & 5b_3 \\ 3c_1 & 4c_2 + 5c_1 & 5c_3 \end{pmatrix}$.
-
-3.3. 使用列或行运算计算行列式：
-$$\begin{vmatrix} 0 & 1 & 2 \\ -1 & 0 & -3 \\ 2 & 3 & 0 \end{vmatrix},\quad \begin{vmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{vmatrix},\quad \begin{vmatrix} 1 & 0 & -2 & 3 \\ -3 & 1 & 1 & 2 \\ 0 & 4 & -1 & 1 \\ 2 & 3 & 0 & 1 \end{vmatrix},\quad \begin{vmatrix} 1 & x \\ 1 & y \end{vmatrix}.$$
-
-3.4. 一个方阵（$n \times n$）称为\textbf{反对称}(skew-symmetric)（或\textbf{反交换}）矩阵，如果 $A^T = -A$.~证明如果 $A$ 是反对称的且 $n$ 是奇数，则 $\det A = 0$.~这对偶数 $n$ 是否成立？
-
-3.5. 一个方阵称为\textbf{幂零}(nilpotent)矩阵，如果$\exists k \in \mathbb{N}_+$，使得  $A^k = \oo$ 成立。证明如果 $A$ 是幂零的，则 $\det A = 0$.~
-
-3.6. 证明如果矩阵 $A$ 和 $B$ 相似，则 $\det A = \det B$.~
-
-3.7. 一个实方阵 $Q$ 称为\textbf{正交}的，如果 $Q^T Q = I$.~证明如果 $Q$ 是正交矩阵，那么 $\det Q = \pm 1$.~
-
-3.8. 证明 
-$$\begin{vmatrix} 1 & x & x^2 \\ 1 & y & y^2 \\ 1 & z & z^2 \end{vmatrix} = (z-x)(z-y)(y-x).$$
-这是所谓的范德蒙德 (Vandermonde) 行列式的特例。
-
-3.9. 设平面 $\RR^2$ 中的点 $A, B, C$ 的坐标分别为 $(x_1, y_1), (x_2, y_2), (x_3, y_3)$.~证明三角形 $ABC$ 的面积是 
-$$\frac{1}{2}  \begin{vmatrix} 1 & x_1 & y_1 \\ 1 & x_2 & y_2 \\ 1 & x_3 & y_3 \end{vmatrix} $$
-的绝对值。{\heiti 提示}：使用行运算和 $2 \times 2$ 行列式的几何解释（面积）。
-
-3.10. 设 $A$ 和 $C$ 是方阵，证明分块三角矩阵 
-$$\begin{pmatrix} I & * \\ \oo & A \end{pmatrix},\quad \begin{pmatrix} A & * \\ \oo & I \end{pmatrix},\quad \begin{pmatrix} I & \oo \\ * & A \end{pmatrix},\quad \begin{pmatrix} A & \oo \\ * & I \end{pmatrix}$$ 
-\\的行列式都等于 $\det A$.~这里 $*$ 可以是任何东西。以下问题说明了分块矩阵表示的力量。
-
-3.11. 使用上一个问题证明，如果 $A$ 和 $C$ 是方阵，那么 
-$$\det \begin{pmatrix} A & B \\ \oo & C \end{pmatrix} = (\det A)(\det C).$$
-{\heiti 提示}：$\begin{pmatrix} A & B \\ \oo & C \end{pmatrix} = \begin{pmatrix} I & B \\ \oo & C \end{pmatrix} \begin{pmatrix} A & \oo \\ \oo & I \end{pmatrix}.$
-
-3.12. 设 $A$ 是 $m \times n$ 矩阵，$B$ 是 $n \times m$ 矩阵。证明 
-$$\det \begin{pmatrix} \oo & A \\ -B & I \end{pmatrix} = \det(AB).$$
-{\heiti 提示}：虽然可以通过对矩阵进行行运算得到行列式易于计算的形式，但最简单的方法是右乘矩阵 $\begin{pmatrix} I & \oo \\ B & I \end{pmatrix}$.\end{exer}
-
-\section{4. 行列式的正式定义~~存在性与唯一性}
-
-在本节中，我们将得到行列式的正式定义。我们表明了，确实有函数满足第 3 节中的基本性质 1, 2, 3 的存在性，而且，这样的函数是唯一的，也就是说，在构造行列式时我们别无选择。
-
-考虑一个 $n \times n$ 矩阵 $A = \{a_{j,k}\}^{n}_{j,k=1}$，并设 $\vv_1, \vv_2, \dots, \vv_n$ 是它的列，即
-$$
-\vv_k = \begin{pmatrix} a_{1,k} \\ a_{2,k} \\ \vdots \\ a_{n,k} \end{pmatrix} = a_{1,k} \ee_1 + a_{2,k} \ee_2 + \dots + a_{n,k} \ee_n = \sum_{j=1}^n a_{j,k} \ee_j
-$$
-使用行列式的线性性质，我们在第 1 列展开：
-$$
- (4.1)\quad D(\vv_1, \vv_2, \dots, \vv_n) = D(\sum_{j=1}^n a_{j,1} \ee_j, \vv_2, \dots, \vv_n) = \sum_{j=1}^n a_{j,1} D(\ee_j, \vv_2, \dots, \vv_n) 
-$$
-然后我们在第 2 列展开，然后是第 3 列，依此类推。我们得到
-$$
-D(\vv_1, \vv_2, \dots, \vv_n) = \sum_{j_1=1}^n \sum_{j_2=1}^n \dots \sum_{j_n=1}^n a_{j_1,1} a_{j_2,2} \dots a_{j_n,n} D(\ee_{j_1}, \ee_{j_2}, \dots, \ee_{j_n})
-$$
-注意，我们必须为每一列使用不同的求和下标（哑指标）：我们称它们为 $j_1, j_2, \dots, j_n$；这里 $j_1$ 的下标与 (4.1) 中的下标 $j$ 相同。
-
-这是一个巨大的求和，包含 $n^n$ 项。幸运的是，其中一些项为零。也就是说，如果 $j_1, j_2, \dots, j_n$ 中有任何两个下标相同，则行列式 $D(\ee_{j_1}, \ee_{j_2}, \dots, \ee_{j_n})$ 为零，因为这里有两个相等的列。
-
-因此，让我们重写求和，省略所有零项。最方便的方式是使用\textbf{排列}(permutation)的概念。
-非正式地说，一个有序集 $\{1, 2, \dots, n\}$ 的\textbf{排列}是其元素的重新排列。一种方便表示这种重新排列的形式是通过使用一个函数
-$$\sigma: \{1, 2, \dots, n\} \to \{1, 2, \dots, n\},$$
-其中 $\sigma(1), \sigma(2), \dots, \sigma(n)$ 给出了集合 $1, 2, \dots, n$ 的新顺序。换句话说，排列 $\sigma$ 将有序集 $1, 2, \dots, n$ 重排为 $\sigma(1), \sigma(2), \dots, \sigma(n)$.~
-
-这样的函数 $\sigma$ 必须是\textbf{单射}（对不同的自变量取不同的值）和\textbf{满射}（取到目标空间的所有可能值）。既是单射又是满射的函数称为\textbf{双射}(bijection)，它们在定义域和目标空间之间建立了一一对应关系。
-\footnote{
-还有一种常用的方式来表示交换，即用一个双射 \(\sigma\)，在这个表示中，\(\sigma(k)\) 给出元素编号 \(k\) 在排列中的新位置。在这个表示中，\(\sigma\) 会将 \(\sigma(1), \sigma(2), \ldots, \sigma(n)\) 排成 1，2，…，n 的顺序。
-
-虽然在第一种表示中写出函数比较容易（如果你知道排列的重排），但第二种更适合排列的组成：它与函数的组成是相符的。具体来说，如果我们先执行对应于函数 \(\sigma\) 的重排，然后再执行对应于 \(\tau\) 的重排，得到的排列就等于 \(\tau \circ \sigma\).
-}
-
-尽管这在此处不直接相关，但让我们注意到，在组合学中，众所周知，集合 $\{1, 2, \dots, n\}$ 的不同排列的数量恰好是 $n!$.~所有 $n$ 的排列的集合将被记为 $\text{Perm}(n)$.~
-
-
-使用排列的概念，我们可以将行列式重写为：
-$$
-D(\vv_1, \vv_2, \dots, \vv_n) = \sum_{\sigma \in \text{Perm}(n)} a_{\sigma(1),1} a_{\sigma(2),2} \dots a_{\sigma(n),n} D(\ee_{\sigma(1)}, \ee_{\sigma(2)}, \dots, \ee_{\sigma(n)})
-$$
-% 其中求和是遍历 $\{1, 2, \dots, n\}$ 的所有排列。
-矩阵 $\ee_{\sigma(1)}, \ee_{\sigma(2)}, \dots, \ee_{\sigma(n)}$ 的列可以从单位矩阵通过有限次数的列交换得到，所以行列式 
-$$D(\ee_{\sigma(1)}, \ee_{\sigma(2)}, \dots, \ee_{\sigma(n)})$$
-是 $1$ 或 $-1$，取决于列交换的次数。
-
-为了将这一点形式化，我们（非正式地）定义排列 $\sigma$ 的\textbf{符号}（记作 $\text{sign } \sigma$）为，如果将 $n$ 元组 $1, 2, \dots, n$ 重排为 $\sigma(1), \sigma(2), \dots, \sigma(n)$ 所需的交换次数是偶数，则$\text{sign}(\sigma) = 1$，如果交换次数是奇数，则 $\text{sign}(\sigma) = -1$.~
-
-这是组合学中的一个事实，符号是良好定义的，即虽然有无数种方法可以从 $1, 2, \dots, n$ 得到 $n$ 元组 $\sigma(1), \sigma(2), \dots, \sigma(n)$，但交换次数要么总是奇数，要么总是偶数。
-
-一种证明这一点的方法是引入另一种定义。设 $K(\sigma)$ 为 $\sigma$ 的\textbf{逆序对}(disorder)的数量，即满足 $\sigma(j) > \sigma(k)$ 的整数对 $(j, k)$ 的数量，其中 $j, k \in \{1, 2, \dots, n\}$, $j < k$，然后检查该数量是偶数还是奇数。我们将排列 $\sigma$ 称为\textbf{奇排列}如果 $K$ 是奇数，称为\textbf{偶排列}如果 $K$ 是偶数。然后定义 $\text{sign } \sigma := (-1)^{K(\sigma)}$；注意通过这种方式定义的 $\text{sign } \sigma$ 是明确的。
-
-我们现在想要证明 $\text{sign } \sigma = (-1)^{K(\sigma)}$ 可以通过将 $n$ 元组 $1, 2, $ $\dots, n$ 重排为 $\sigma(1), \sigma(2), \dots, \sigma(n)$ 并计算交换次数来得到，如上所述。
-
-如果 $\sigma(k) = k \ \forall k$，那么\textbf{逆序对}的数量 $K(\sigma) = 0$ ，所以这种\textbf{恒等}排列的符号是 1。还请注意，任何两个相邻元素的\textbf{置换}（仅交换两个相邻元素）会改变排列的符号，因为它会改变逆序对的数量（增加或减少 1）。因此，要从一个排列得到另一个排列，当排列具有相同的符号时，总是需要偶数次初等置换，而当符号不同时，则需要奇数次。
-
-最后，任何两个元素的交换都可以通过奇数次初等置换来实现。这意味着当两个元素被交换时，符号会改变。因此，要从 $1, 2, \dots, n$ 得到偶排列（正的符号）总是需要偶数次交换，而得到奇排列（负的符号）需要奇数次交换。
-
-因此，如果我们希望行列式满足第 3 节中的基本性质 1—3，我们必须将其定义为：
-$$
-(4.2) \quad \det A = \sum_{\sigma \in \text{Perm}(n)} a_{\sigma(1),1} a_{\sigma(2),2} \dots a_{\sigma(n),n} \text{sign}(\sigma)
-$$
-其中求和遍历集合 $\{1, 2, \dots, n\}$ 的所有排列。
-
-如果我们这样定义行列式，可以很容易地验证它满足第 3 节中的基本性质 1—3。实际上，因为每个乘积项在每一列中恰好有一个因子，
-并且对于任何两个相邻的列交换，我们得到的符号会改变，所以满足线性性质和反对称性。
-
-而且，对于单位矩阵 $I$，右侧实质上只有一项（对应于恒等排列 $\sigma(k)=k \ \forall k$），(4.2)中右侧的符号是 1，所以 $D(I)=1$.~
-
-\begin{exer} {\heiti 练习}~~
-
-4.1. 假设排列 $\sigma$ 将 $(1, 2, 3, 4, 5)$ 映射到 $(5, 4, 1, 2, 3)$.~
-\\
-a) 确定 $\sigma$ 的符号；
-\\
-b) $\sigma^2 := \sigma \circ \sigma$ 会对 $(1, 2, 3, 4, 5)$ 做什么？
-\\
-c) 逆排列 $\sigma^{-1}$ 会对 $(1, 2, 3, 4, 5)$ 做什么？
-\\
-d) $\sigma^{-1}$ 的符号是什么？
-
-4.2. 设 $P$ 是一个\textbf{排列矩阵}(permutation matrix)，即一个仅由0和1组成的 $n \times n$ 矩阵，并且每行每列恰好有一个 1。
-\\
-a) 你能描述相应的线性变换吗？这将会解释它的名称的由来。
-\\
-b) 证明 $P$ 是可逆的。你能描述 $P^{-1}$ 吗？
-\\
-c) 证明存在 $N > 0$, 
-$$P^N := \underset{N ~\rm times}{\underbrace{P P \dots P}}= I.$$
-利用排列只有有限个的事实。
-
-4.3. 为什么 $(1, 2, \dots, 9)$ 的排列有偶数个，并且其中恰好一半是奇排列？
-\\
-{\heiti 提示}：这个问题用排列来解决可能很难，但有一个非常简单的行列式解。
-
-4.4. 如果 $\sigma$ 是一个奇排列，解释为什么 $\sigma^2$ 是偶数但 $\sigma^{-1}$ 是奇数。
-
-4.5. 使用 (4.2) 的行列式形式计算一个 $n \times n$ 矩阵的行列式需要多少次乘法和加法？无需计数计算 $\text{sign } \sigma$ 所需的操作。\end{exer}
-
-
-\section{5. 代数余子式展开}
-
-对于 $n \times n$ 矩阵 $A = \{a_{j,k}\}^{n}_{j,k=1}$，设 $A_{j,k}$ 表示通过划掉第 $j$ 行和第 $k$ 列得到的 $(n-1) \times (n-1)$ 矩阵，称为余子式。
-
-\begin{theorem}[\normalfont\heiti 定理 5.\nopunct] 1（行列式的代数余子式展开）(cofactor expansion)~ 设 $A$ 是一个 $n \times n$ 矩阵。对于每个 $j$, $1 \le j \le n$，行列式 $A$ 可以按第 $j$ 行展开为：
-\begin{equation} \notag\begin{split}
-\det A =&\ a_{j,1} (-1)^{j+1} \det A_{j,1} + a_{j,2} (-1)^{j+2} \det A_{j,2} + \dots + a_{j,n} (-1)^{j+n} \det A_{j,n} \\
-=&\ \sum_{k=1}^n a_{j,k} (-1)^{j+k} \det A_{j,k}.\end{split}\end{equation}
-类似地，对于每个 $k$, $1 \le k \le n$，行列式可以按第 $k$ 列展开为：
-$$
-\det A = \sum_{j=1}^n a_{j,k} (-1)^{j+k} \det A_{j,k}.
-$$\end{theorem}
-
-\begin{proof} 我们首先证明第 1 行的展开公式。第 2 行的展开公式可以通过交换第 1 行和第 2 行从它得到。然后交换第 2 行和第 3 行，得到第 3 行的展开公式，依此类推。
-
-由于 $\det A = \det A^T$，列展开将自动跟上。
-
-让我们首先考虑一个特殊情况，即第 1 行只有一个非零项 $a_{1,1}$.~通过对第 $2,3,...,n$ 列进行列运算，我们可以将 $A$ 转化为下三角形式。那么 $A$ 的行列式可以计算为:
-
-\fbox{三角矩阵的所有对角项的乘积} $\times$ \fbox{来源于列运算的修正因子}.
-
-但是，除了 $a_{1,1}$ 之外的所有对角项的乘积（即不包括 $a_{1,1}$）乘上修正因子恰好是 $\det A_{1,1}$，所以在这种特定情况下 $\det A = a_{1,1} \det A_{1,1}$.~
-
-现在考虑第 1 行中除了 $a_{1,2}$ 外的其余项都为零的情况。这种情况可以通过交换第 1 列和第 2 列来化简到前面的情况，因此在这种情况下 $\det A = (-1)^{1+2} a_{1,2} \det A_{1,2}$.~
-
-当 $a_{1,3}$ 是第 1 行唯一非零项的情况，可以通过交换第 2 行和第 3 行来简化到前面情况，所以在这种情况下 $\det A = a_{1,3} \det A_{1,3}$.~
-
-重复这个过程，我们得到，当 $a_{1,k}$ 是第 1 行中的唯一非零项时，$\det A = (-1)^{1+k} $ $a_{1,k} \det A_{1,k}$.~
-\footnote{
-在 $a_{1,k}$ 是第 1 行中唯一非零项的情况下，这可能会诱使我们交换第 1 列和第 $k$ 列，将问题简化为 $a_{1,1} \neq 0$ 的情况。然而，当我们交换第 1 列和第 $k$ 列时，我们会改变其他列的顺序：如果我们划掉第 $k$ 列，那么第 1 列将是剩余列中的第 1 列。但是，如果我们交换第 1 列和第 $k$ 列，然后划掉第 $k$ 列（它现在是第 1 列），那么第 1 列现在将是第 $k-1$ 列。为了避免跟踪复杂的列交换，我们可以像上面那样，交换第 $k$ 列和第 $k-1$ 列，将一切简化为我们在上一步处理的情况。这样的操作不会改变其余列的顺序。
-}
-
-在一般情况下，行列式在每一行上的线性意味着
-$$\det A = \det A^{(1)} + \det A^{(2)} + \dots + \det A^{(n)} = \sum_{k=1}^n \det A^{(k)},$$
-其中矩阵 $A^{(k)}$ 是通过将 $A$ 的第 1 行中除 $a_{1,k}$ 之外的所有项替换为 0 而得到的。正如我们上面所讨论的，
-$$\det A^{(k)} = (-1)^{1+k} a_{1,k} \det A_{1,k},$$
-所以 
-$$\det A = \sum_{k=1}^n (-1)^{1+k} a_{1,k} \det A_{1,k}.$$
-
-为了得到第 2 行的展开式，我们可以交换第 1 行和第 2 行，然后应用上面的公式。行交换改变了符号，所以我们得到 $$\det A = -\sum_{k=1}^n (-1)^{1+k} a_{2,k} \det A_{2,k} = \sum_{k=1}^n (-1)^{2+k} a_{2,k} \det A_{2,k}.$$
-通过交换第 3 行和第 2 行并按第 2 行展开，我们得到公式 
-$$\det A = \sum_{k=1}^n (-1)^{3+k} a_{3,k} \det A_{3,k},$$
-依此类推。
-
-要将行列式 $\det A$ 按列展开，只需对 $A^T$ 应用行展开公式即可。\end{proof}
-
-{\heiti 定义}~~ 这些数
-$$C_{j,k} = (-1)^{j+k} \det A_{j,k}$$
-称为 $A$ 的\textbf{代数余子式}（cofactor）。
-
-使用这个符号，在第 $j$ 行展开行列式的公式可以重写为 
-$$\det A = a_{j,1} C_{j,1} + a_{j,2} C_{j,2} + \dots + a_{j,n} C_{j,n} = \sum_{k=1}^n a_{j,k} C_{j,k}.$$
-类似地，在第 $k$ 列展开可以写成 
-$$\det A = a_{1,k} C_{1,k} + a_{2,k} C_{2,k} + \dots + a_{n,k} C_{n,k} = \sum_{j=1}^n a_{j,k} C_{j,k}.$$
-
-{\heiti 注记}~~ 代数余子式展开公式经常被用作行列式的定义。不难证明由该公式给出的数满足行列式的基本性质：归一化性质是显然的，反对称性的证明也很容易。然而，线性性质的证明虽然不难，但有点繁琐。
-
-{\heiti 注记}~~ 虽然它看起来非常不错，但代数余子式展开公式不适用于直接计算大于 $3 \times 3$ 的一般矩阵的行列式。
-
-可以计算，它需要超过 $n!$ 次乘法（准确地说，需要 $\sum_{k=2}^n n!/k!$ 次乘法），而 $n!$ 的增长非常快。例如，计算一个 $20 \times 20$ 矩阵的代数余子式展开需要超过 $20! \approx 2.4 \times 10^{18}$ 次乘法。一台每秒执行十亿次乘法的计算机需要 77 年才能执行 $20!$ 次乘法；事实上，计算一个 $20 \times 20$ 矩阵的代数余子式展开所需总运算将需要 132 多年的时间来完成。
-\footnote{
-读者可以自行验证这一数字，比如使用WolframAlpha软件。
-}
-
-另一方面，使用行约简计算 $n \times n$ 矩阵的行列式需要 $(n^3 + 2n - 3) / 3$ 次乘法（以及大约相同数量的加法）。对于一台每秒执行一百万次运算（按当前标准非常慢）的计算机来说，计算 $100 \times 100$ 矩阵的行列式只需要一秒钟时间里的一小部分。
-
-只有当某一行（或列）包含很多零项时，代数余子式展开公式才会显得实用。
-
-然而，代数余子式展开公式具有重要的理论价值，正如下一节所示。
-
-\subsection{5.1. 逆矩阵的代数余子式公式}
-
-由代数余子式 $C_{j,k} = (-1)^{j+k} \det A_{j,k}$ 组成的矩阵 $C = \{C_{j,k}\}^{n}_{j,k=1}$ 称为 $A$ 的\textbf{代数余子式矩阵}(cofactor matrix)。
-
-\begin{theorem}[\normalfont\heiti 定理 5.2\nopunct]  设 $A$ 是一个可逆矩阵，并设 $C$ 是它的代数余子式矩阵。
-\footnote{
-译者注：在国内，一般记$A^*$为书中的$C^T$，读作“$A$的伴随”。但本书的$A^*$符号已经名花有主：它在后面的章节（始见于第五章第5节）中用于表示埃尔米特伴随(Hermitian adjoint).
-}
-那么
-$$
-A^{-1} = \frac{1}{\det A} C^T
-$$\end{theorem}
-
-\begin{proof} 让我们计算乘积 $AC^T$.~第 $j$ 个对角项是通过将 $A$ 的第 $j$ 行与 $C$ 的第 $j$ 列（即 $C^T$ 的第 $j$ 行）相乘得到的，所以 根据代数余子式展开公式，
-$$(AC^T)_{j,j} = a_{j,1} C_{j,1} + a_{j,2} C_{j,2} + \dots + a_{j,n} C_{j,n} = \det A,$$
-
-为了得到非对角项，我们需要将 $A$ 的第 $k$ 行与 $C^T$ 的第 $j$ 列相乘，$j \neq k$，得到 
-$$a_{k,1} C_{j,1} + a_{k,2} C_{j,2} + \dots + a_{k,n} C_{j,n}.$$
-根据代数余子式展开公式（在第 $j$ 行展开），这是将 $A$ 中第 $j$ 行替换为第 $k$ 行（而所有其他行保持不变）得到的矩阵的行列式。但是，这个矩阵的第 $j$ 行和第 $k$ 行是相同的，所以行列式为 0。因此，$AC^T$ 的所有非对角项都为零（而所有对角项都等于 $\det A$），所以 
-$$AC^T = (\det A) I.$$
-这意味着矩阵 $\frac{1}{\det A} C^T$ 是 $A$ 的右逆，由于 $A$ 是方阵，所以它是逆。\end{proof}
-
-回忆一下，对于可逆矩阵 $A$，方程 $A \xx = \bb$ 的解是 
-$$\xx = A^{-1} \bb = \frac{1}{\det A} C^T \bb,$$
-我们得到以下定理的推论。
-
-{\heiti 推论 5.3（Cramer 法则）}~~ 对于可逆矩阵 $A$，方程 $A \xx = \bb$ 的解的第 $k$ 个项由以下公式给出：
-$$
-x_k = \frac{\det B_k}{\det A},
-$$
-其中矩阵 $B_k$ 是通过将 $A$ 的第 $k$ 列替换为向量 $\bb$ 而得到的。
-
-\subsection{5.2. 逆矩阵的代数余子式公式的应用}
-
-{\heiti 例子（求 $2 \times 2$ 矩阵的逆）}~~ 代数余子式公式在求 $2 \times 2$ 矩阵 
-$$A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$$
-的逆时，确实非常有用。代数余子式仅仅是$A$中的项（$1 \times 1$ 矩阵），代数余子式矩阵是 $$\begin{pmatrix} d & -c \\ -b & a \end{pmatrix},$$
-所以逆矩阵 $A^{-1}$ 由公式给出：
-$$
-A^{-1} = \frac{1}{\det A} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}.
-$$
-
-虽然对于维数大于 3 的情况，逆矩阵的代数余子式公式看起来并不实用，但它的确具有重要的理论价值，正如下面的例子所示。
-
-{\heiti 例子（整数逆矩阵）}~~ 假设我们想构造一个具有整数项的矩阵 $A$，使得其逆也具有整数项（对这样的矩阵求逆可以出成一个很好的家庭作业：你无需处理分数）。如果 $\det A = 1$ 且其项是整数，那么逆矩阵的代数余子式公式表明了 $A^{-1}$ 也具有整数项。
-
-注意，构造一个 $\det A = 1$ 的整数矩阵很容易：可以从主对角线上为 1 的三角矩阵开始，然后应用几次行或列替换（第三类运算）来使矩阵看起来是一般的。
-
-{\heiti 例子（多项式矩阵的逆）}~~ 另一个例子是考虑一个\textbf{多项式矩阵}\index{duoxiangshijuzhen@多项式矩阵}(polynomial matrix) $A(x)$，即其项不是数字而是变量 $x$ 的多项式 $a_{j,k}(x)$.~如果 $\det A(x) \equiv 1$，那么逆矩阵 $A^{-1}(x)$ 也是一个多项式矩阵。
-
-如果 $\det A(x) = p(x) \neq 0$，则从代数余子式展开可知，$p(x)$ 是一个多项式，因此 $A^{-1}(x)$ 具有有理数项：更重要的是，$p(x)$ 是每个分母的倍数。
-
-\begin{exer} {\heiti 练习}~~
-
-5.1. 你可以使用任何方法计算行列式：
-$$\begin{vmatrix} 0 & 1 & 1 \\ 1 & 2 & -5 \\ 6 & 4 & -3 \end{vmatrix},\quad \begin{vmatrix} 1 & -2 & 3 &-12 \\ -5 & 12 & -14 & 19 \\ -9 & 22 & -20 & 31 \\ -4 & 9 & -14 & 15 \end{vmatrix}.$$
-
-5.2. 使用行（列）展开计算以下行列式。注意，你没有必要从第 1 行（列）开始展开：选择具有更多零的行（列）将简化你的计算。
-$$\begin{vmatrix} 1 & 2 & 0 \\ 1 & 1 & 5 \\ 1 & -3 & 0 \end{vmatrix},\quad\begin{vmatrix} 4 & -6 & -4 & 4 \\ 2 & 1 & 0 & 0 \\ 0 & -3 & 1 & 3 \\ -2 & 2 & -3 & -5 \end{vmatrix}.$$
-
-5.3. 对于$n \times n$矩阵 
-$$A = \begin{pmatrix} 0 & 0 & 0 & \dots & 0 & a_0 \\ -1 & 0 & 0 & \dots & 0 & a_1 \\ 0 & -1 & 0 & \dots & 0 & a_2 \\ \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\ 0 & 0 & 0 & \dots & 0 & a_{n-2} \\ 0 & 0 & 0 & \dots & -1 & a_{n-1} \end{pmatrix},$$
-计算 $\det(A + tI)$，其中 $I$ 是 $n \times n$ 单位矩阵。行展开和归纳可能是最好的方法。这时你将得到一个涉及 $a_0, a_1, \dots, a_{n-1}$ 和 $t$ 的漂亮表达式。
-
-5.4. 使用代数余子式公式计算下列矩阵的逆。$$\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}, \quad \begin{pmatrix} 19 & -17 \\ 3 & -2 \end{pmatrix}, \quad \begin{pmatrix} 1 & 0 \\ 3 & 5 \end{pmatrix}, \quad \begin{pmatrix} 1 & 1 & 0 \\ 2 & 1 & 2 \\ 0 & 1 & 1 \end{pmatrix}$$
-
-5.5. 设 $D_n$ 是 $n \times n$ 三对角矩阵
-$$
-\begin{pmatrix}
-1 & -1 &  & \dots &  &  \\
-1 & 1 & -1 & \dots &  &  \\
- & 1 & 1 & \dots &  &  \\
-\vdots & \vdots & \ddots & \ddots & \vdots & \vdots \\
- &  &  & \dots & 1 & -1 \\
- &  &  & \dots & 1 & 1
-\end{pmatrix}
-$$
-的行列式。使用代数余子式展开证明 $D_n = D_{n-1} + D_{n-2}$.~这表明数列 $D_n$ 是斐波那契数列 $1, 2, 3, 5, 8, 13, 21, \dots$.~
-
-5.6. 重新回顾范德蒙德行列式。我们的目标是证明 $(n+1) \times (n+1)$ 范德蒙德行列式的公式：
-$$
-\begin{vmatrix}
-1 & c_0 & c_0^2 & \dots & c_0^n \\
-1 & c_1 & c_1^2 & \dots & c_1^n \\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
-1 & c_n & c_n^2 & \dots & c_n^n
-\end{vmatrix} = \prod_{0 \le j < k \le n} (c_k - c_j).
-$$
-我们将使用归纳法。为此：
-\\
-a) 验证公式对 $n=1, n=2$ 成立。
-\\
-b) 将最后一行中的变量 $c_n$ 看作 $x$，并证明行列式是一个 $n$ 次多项式 $A_0 + A_1 x + A_2 x^2 + \dots + A_n x^n$，其中系数 $A_k$ 由 $c_0, c_1, \dots, c_{n-1}$决定。
-\\
-c) 证明该多项式在 $x = c_0, c_1, \dots, c_{n-1}$ 处均有零点，因此可以表示为 $A_n \cdot (x - c_0)(x - c_1) \dots (x - c_{n-1})$，其中 $A_n$ 如b)中所述。
-
-d) 假设范德蒙德行列式的公式对 $n-1$ 成立，计算 $A_n$ 并证明对 $n$ 的公式。
-
-5.7. 使用代数余子式展开来计算 $n \times n$ 矩阵的行列式需要多少次乘法？证明这个公式。\end{exer}
-
-
-\section{6. 子式与秩}
-
-对于矩阵 $A$，让我们考虑它的 $k \times k$ \textbf{子矩阵}\index{zijuzhen@子矩阵}(submatrix)，它通过选取原矩阵中的 $k$ 行和 $k$ 列得到。该矩阵的行列式称为 $k$ 阶\textbf{子式}\index{zishi@子式}(minor)。注意，一个 $m \times n$ 矩阵有 $\binom{m}{k} \cdot \binom{n}{k}$ 个不同的 $k \times k$ 子矩阵，因此它就有这么多个 $k$ 阶子式。
-
-\begin{theorem}[\normalfont\heiti 定理 6.1\nopunct] 对于一个非零矩阵 $A$，它的秩等于能使 $k$ 阶非零子式存在的最大整数 $k$.~\end{theorem}
-
-\begin{proof} 首先，让我们证明，如果 $k > \rank A$，则所有 $k$ 阶子式都为零。实际上，由于 $A$ 的列空间 $\Ran A$ 的维数是 $\rank A < k$，因此 $A$ 中任何含个数为 $k$ 的列的系统都是线性相关的。因此，对于 $A$ 的任何 $k \times k$ 子矩阵，它的列都是线性相关的，所以所有 $k$ 阶子式都为零。
-
-为了完成证明，我们需要证明存在一个非零的 $k$ 阶子式，其中 $k = \rank A$.~可能存在许多这样的子式，但也许最简单的方法是取主元行和主元列（即原始矩阵中包含主元的行和列）。这个 $k \times k$ 子矩阵具有与原始矩阵相同的主元，因此它是可逆的（每一列和每一行都有主元），并且其行列式非零。\end{proof}
-
-这个定理看起来不是很有用，因为进行行约简比计算所有子式要容易得多。然而，它同样具有重要的理论价值，正如以下推论所示。
-
-{\heiti 推论 6.2}~~ 设 $A=A(x)$ 是一个 $m \times n$ 多项式矩阵（即其项是变量 $x$ 的多项式）。那么 $\rank A(x)$ 在除了有限个可能的点之外的地方是恒定的，而在这些点上秩会变小。
-
-\begin{proof} 设 $r$ 是满足至少存在一个 $x$ 使得 $\rank A(x) = r$ 成立的最大整数。为了证明这样的 $r$ 存在，我们首先尝试 $r = \min\{m, n\}$.~如果确实存在一个 $x$ 使得 $\rank A(x) = r$，我们就找到了 $r$.~如果不是，我们则将 $r$ 替换为 $r-1$ 并重试。经过有限步操作，我们要么停止，要么得到 $0$.~因此，$r$ 是存在的。
-
-设 $x_0$ 是使得 $\rank A(x_0) = r$成立的一个点，并且设 $M$ 是一个 $k$ 阶子式，使得 $M(x_0) \neq 0$.~由于 $M(x)$ 是一个 $k \times k$ 多项式矩阵的行列式，所以可以将 $M(x)$ 看作是一个多项式。由于 $M(x_0) \neq 0$，它不是恒零的，因此它只能在有限个点处为零。所以，除了可能有限个点之外，$\rank A(x) \geq r$.~但是根据 $r$ 的定义，对于所有的 $x$，$\rank A(x) \leq r$.~\end{proof}
-
-
-\section{7. 第三章复习题}
-
-\begin{exer}
-7.1. 判断正误：
-\\
-a) 行列式只对方阵有定义。
-\\
-b) 如果 $A$ 的两行或两列相同，则 $\det A = 0$.~
-\\
-c) 如果 $B$ 是通过交换 $A$ 的两行（或两列）得到的矩阵，则 $\det B = \det A$.~
-\\
-d) 如果 $B$ 是通过将 $A$ 的某一行（列）乘以一个标量 $\alpha$ 得到的矩阵，则 $\det B = \det A$.~
-\\
-e) 如果 $B$ 是通过将 $A$ 的某一行乘以一个数加到另一行得到的矩阵，则 $\det B = \det A$.~
-\\
-f) 三角矩阵的行列式是其对角线元素的乘积。
-\\
-g) $\det(A^T) = -\det(A)$.~
-\\
-h) $\det(AB) = \det(A)\det(B)$.~
-\\
-i) 矩阵 $A$ 可逆当且仅当 $\det A \neq 0$.~
-\\
-j) 如果 $A$ 是可逆矩阵，则 $\det(A^{-1}) = 1/\det(A)$.~
-
-7.2. 设 $A$ 是一个 $n \times n$ 矩阵。$\det(3A)$, $\det(-A)$ 和 $\det(A^2)$ 与 $\det A$ 的关系是什么？
-
-7.3. 如果 $A$ 和 $A^{-1}$ 的所有元素都是整数，那么 $\det A = 3$ 是否可能？
-\\
-{\heiti 提示：} $\det(A)\det(A^{-1})$ 是什么？
-
-7.4. 设 $\vv_1, \vv_2$ 是 $\RR^2$ 中的向量，然后设 $A$ 是以 $\vv_1, \vv_2$ 为列的 $2 \times 2$ 矩阵。证明 $|\det A|$ 是由向量 $\vv_1, \vv_2$ 作为两邻边确定的平行四边形的面积。
-\\
-首先考虑 $\vv_1 = (x_1, 0)^T$ 的情况。对于一般情况 $\vv_1 = (x_1, y_1)^T$，左乘一个旋转矩阵，将向量 $\vv_1$ 变换为 $(\widetilde{x}_1, 0)^T$ 来处理。\\
-{\heiti 提示：} 旋转矩阵的行列式是什么？
-\\
-以下问题说明了行列式的符号与向量组的“定向”(orientation)之间的关系。
-
-7.5. 设 $\vv_1, \vv_2$ 是 $\RR^2$ 中的向量。证明 $D(\vv_1, \vv_2) > 0$ 当且仅当存在一个旋转矩阵 $T_\alpha$ 使得向量 $T_\alpha \vv_1$ 与 $\ee_1$ 平行（并且方向相同），且 $T_\alpha \vv_2$ 位于上半平面 （ $\ee_2$ 所在的半平面），即分量$x_2 > 0$.~\\
-{\heiti 提示：} 同样地，旋转矩阵的行列式是什么？
-
-\end{exer}
-
-
-
-
-
+  在高维情形中，只有矩阵的一行（或一列）中有很多零的时候，使用余子式展开公式才切实可行。
+\end{remark*}
+
+然而，余子式展开公式具有很大的理论意义，如下节所示。
+
+\subsection{余子式求逆公式}
+
+称矩阵$C=\{C_{j,k}\}_{j,k=1}^{n}$（各元素是给定矩阵$A$的余子式）为$A$的\textbf{余子式矩阵}。
+
+\begin{theorem}
+  令$A$为可逆矩阵，$C$为其余子式矩阵。那么\[A^{-1}=\frac{1}{\det A}C^T.\]
+\end{theorem}
+\begin{proof}
+  我们求乘积$AC^T$。它的第$j$个对角元是通过将$A$的第$j$行和$C^T$的第$j$列（也就是$C$的第$j$行）相乘得到的，因此根据余子式展开公式\[(AC^T)_{j,j}=a_{j,1}C_{j,1}+a_{j,2}C_{j,2}+\ldots+a_{j,n}C_{j,n}=\det A.\]
+
+  为了得到不在对角线上的元素，我们需要将$A$的第$k$行乘以$C^T$的第$j$列（$j\ne k$），得到\[a_{k,1}C_{j,1}+a_{k,2}C_{j,2}+\ldots+a_{k,n}C_{j,n}.\]
+  根据余子式展开公式（按第$j$行展开）可知，上式等于将$A$的第$j$行换成第$k$行（其余各行不变）所得矩阵的行列式。但这样的矩阵中第$j$行和第$k$行是相同的，因此它的行列式是$0$。因此，$AC^T$的非对角元均为零（而所有对角元等于$\det A$），因此\[AC^T=\left(\det A\right)I.\]
+  这意味着矩阵$\frac{1}{\det A}C^T$是$A$的右逆，又因为$A$可逆，所以它就是$A$的逆。
+\end{proof}
+
+回忆一下，对于可逆矩阵$A$，方程$A\mathbf{x}=\mathbf{b}$有唯一解\[\mathbf{x}=A^{-1}\mathbf{b}=\frac{1}{\det A}C^T\mathbf{b},\]从而可得上述定理的如下推论：
+\begin{corollary}[克拉默法则]
+  对于可逆矩阵$A$，方程$A\mathbf{x}=\mathbf{b}$的解的第$k$个元素由下式给出\[x_k=\frac{\det B_k}{\det A},\]其中矩阵$B_k$是由$A$将第$k$列换成向量$\mathbf{b}$得到的。
+\end{corollary}
+
+\subsection{余子式求逆公式的几例应用}
+
+\begin{example*}[求$2\times 2$矩阵的逆]
+  需要求$2\times 2$矩阵\[A=\begin{pNiceMatrix}[margin]a&b\\c&d\end{pNiceMatrix}\]的逆时，余子式公式非常好用。该矩阵的余子式可根据各元素（$1\times 1$矩阵）直接得到，则余子式矩阵是
+  \[\begin{pNiceMatrix}[margin]d&-c\\-b&a\end{pNiceMatrix},\]
+  因此逆矩阵$A^{-1}$由下式给出\[A^{-1}=\frac{1}{\det A}\begin{pNiceMatrix}[margin]d&-b\\-c&a\end{pNiceMatrix}.\]
+\end{example*}
+
+尽管余子式求逆公式对高于$3$维的情况并不实用，它仍有重要理论价值，如下面例子所示。
+
+\begin{example*}[逆的元素都是整数的矩阵]
+  假设我们想构建各元素为整数的$A$，并想使它的逆的各元素也为整数（求这种矩阵的逆会是道很好的作业题——没有分式的烦扰）。如果$\det A=1$且$A$的元素都是整数，那么余子式求逆公式就表明，$A^{-1}$的各元素也为整数。
+
+  注意，很容易构造各元素均为整数的矩阵$A$使得$\det A=1$：只需要从主对角线上都是$1$的三角矩阵开始进行若干次行替换或列替换（第三类变换），得到一个看起来很一般的矩阵即可。
+\end{example*}
+
+\begin{example*}[多项式矩阵的逆]
+  另一个例子是，考虑{\bf 多项式矩阵} $A(x)$，即各元素不是数而是关于变量$x$的多项式$a_{j,k}(x)$的矩阵。如果$\det A(x)\equiv 1$，那么逆矩阵$A^{-1}(x)$也是多项式矩阵。\index{多项式矩阵（polynomial matrix）}
+
+  如果$\det A(x)=p(x)\not\equiv 0$，那么根据余子式展开，$p(x)$是多项式，因此$A^{-1}(x)$的各元素是有理分式；并且，$p(x)$是各元素分母的多项式倍。
+\end{example*}
+
+\begin{problemset}
+  \item 求下列行列式的值，方法不限。\[\begin{vNiceMatrix}[margin]0&1&1\\1&2&-5\\6&-4&3\end{vNiceMatrix},\quad\begin{vNiceMatrix}[margin]1&-2&3&-12\\-5&12&-14&19\\-9&22&-20&31\\-4&9&-14&15\end{vNiceMatrix}.\]
+  \item 利用行（列）展开求下列行列式的值。注意，你不必使用第一行（或第一列）——选择含有很多零的行或列有助于简化计算。
+  \[\begin{vNiceMatrix}[margin]1&2&0\\1&1&5\\1&-3&0\end{vNiceMatrix},\quad\begin{vNiceMatrix}[margin]4&-6&-4&4\\2&1&0&0\\0&-3&1&3\\-2&2&-3&-5\end{vNiceMatrix}.\]
+  \item 对于$n\times n$矩阵\[A=\begin{pNiceMatrix}[margin]0&0&0&\ldots&0&a_0\\-1&0&0&\ldots&0&a_1\\0&-1&0&\ldots&0&a_2\\\vdots&\vdots&\vdots&\ddots&\vdots&\vdots\\0&0&0&\ldots&0&a_{n-2}\\0&0&0&\ldots&-1&a_{n-1}\end{pNiceMatrix}\]
+  计算$\det(A+tI)$，其中$I$是$n\times n$恒等矩阵。你应该会得到一个包含$a_0,a_1,\ldots,$ $a_{n-1}$和$t$的优美的表达式。最佳做法应该是按行展开并用归纳法。
+  \item 利用余子式公式，求出下列矩阵的逆。\[\begin{pNiceMatrix}[margin]1&2\\3&4\end{pNiceMatrix},\quad\begin{pNiceMatrix}[margin]19&-17\\3&-2\end{pNiceMatrix},\quad\begin{pNiceMatrix}[margin]1&0\\3&5\end{pNiceMatrix},\quad\begin{pNiceMatrix}[margin]1&1&0\\2&1&2\\0&1&1\end{pNiceMatrix}.\]
+  \item 令$D_n$为下列$n\times n$三对角矩阵的行列式\[\begin{pNiceMatrix}[margin]1&-1&&&0\\1&1&-1&&\\&1&\ddots&\ddots&\\&&\ddots&1&-1\\0&&&1&1\end{pNiceMatrix}.\]
+  利用余子式展开证明：$D_n=D_{n-1}+D_{n-2}$。这说明，$D_n$所成序列就是斐波那契序列$1,2,3,5,8,13,21,\ldots$。
+  \item 范德蒙行列式再讨论——目标是证明$(n+1)\times (n+1)$范德蒙行列式的如下公式\[\begin{vNiceMatrix}[margin]1&c_0&c_0^2&\ldots&c_0^n\\1&c_1&c_1^2&\ldots&c_1^n\\\vdots&\vdots&\vdots&&\vdots\\1&c_n&c_n^2&\ldots&c_n^n\end{vNiceMatrix}=\prod_{0\leq j<k\leq n}(c_k-c_j)\]
+  我们将运用归纳法。为此
+  \begin{probenumerate}
+    \item 检验：该公式适用于$n=1,n=2$的情形。
+    \item 记最后一行的变量$c_n$为$x$，并证明原行列式是$n$次多项式$A_{0}+A_{1}x+A_{2}x^{2}+\ldots+A_{n}x^{n}$，其中系数$A_k$取决于$c_{0},c_{1},\ldots,c_{n-1}$。
+    \item 证明：上问的多项式有零点$x=c_0,c_1,\ldots,c_{n-1}$，因此它可表示为$A_n\cdot(x-c_0)(x-c_1)\ldots(x-c_{n-1})$，其中$A_n$如上问所示。
+    \item 假设范德蒙行列式的公式对于$n-1$的情形成立，计算$A_n$并证明公式对$n$的情形成立。
+  \end{probenumerate}
+  \item 利用余子式展开计算$n\times n$矩阵的行列式需要做多少次乘法？求出表达式。
+\end{problemset}
+
+\section{子式与秩}
+
+对于矩阵$A$，考虑由取出其$k$行和$k$列而得到的$k\times k$\textbf{子矩阵}\index{子矩阵（submatrix）}。该矩阵的行列式称为$k$阶\textbf{子式}\index{子式（minor）}。注意，$m\times n$矩阵有$\binom{m}{k}\cdot\binom{n}{k}$个不同的$k\times k$子矩阵，因此它具有$\binom{m}{k}\cdot\binom{n}{k}$个$k$阶子式。
+
+\begin{theorem}
+  非零矩阵$A$的秩等于非零子式的最大阶数$k$。
+\end{theorem}
+\begin{proof}
+  首先证明，若$k>\rank A$，那么所有$k$阶子式都为$0$。的确如此：因为列空间$\rg A$的维数是$\rank A<k$，所以$A$的任意$k$列都是线性相关的。因此$A$的任意$k\times k$子矩阵的各列都线性相关，进而所有$k$阶子式都为$0$。
+
+  为完成证明，还需要说明$k=\rank A$阶非零子式存在。这种子式可能有很多，但要得到它，最容易的构造方法大概是，取出主行和主列（即原矩阵中包含主元的行和列）。这个$k\times k$矩阵和原矩阵的主元相同，因此它可逆（因其在每行和每列中都有主元），且行列式非零。
+\end{proof}
+
+这个定理看似不太有用，因为做行化简比起计算所有子式要容易得多。然而，它有很大的理论意义，如下面推论所示。
+
+\begin{corollary}
+  令$A=A(x)$是$m\times n$多项式矩阵（矩阵的各元素是关于$x$的多项式）。那么$\rank A(x)$对于任意$x$都是常数（除了可能在有限多个点处变小）。
+\end{corollary}
+\begin{proof}
+  令$r$为整数，其为$\rank A(x)=r$的最大值（在某点$x$处取得）。为了证明这样的$r$存在，我们从$r=\min\{m,n\}$开始。如果存在$x$满足$\rank A(x)=r$，那么我们就找到了满足条件的$r$；否则就将$r$替换成$r-1$并再次尝试。在有限多步后，我们要么停止，要么得到$0$。所以$r$存在。
+
+  令$x_0$是使得$\rank A(x_0)=r$的点，并令$M$是满足$M(x_0)\ne 0$的$r$阶子式。因为$M(x)$是$r\times r$多项式矩阵的行列式，所以$M(x)$是多项式。因为$M(x_0)\ne 0$，所以它不恒为$0$，进而它只能在有限多个点等于零。因此，$\rank A(x)\ge r$在有限多个点处之外都成立。又由$r$的定义——对于所有$x$均有$\rank A(x)\le r$，即得证。
+\end{proof}
+
+\section{第~\textup{\ref{chap:Determinant}}~章复习题}
+
+\begin{probenumerate}\zihao{5}
+  \item 判断正误：
+  \begin{probenumerate}
+    \item 行列式只对方阵有定义。
+    \item 如果$A$的两行或两列相同，那么$\det A=0$。
+    \item 如果$B$是由$A$经过交换两行（或两列）得到的，那么$\det B=\det A$。
+    \item 如果$B$是由$A$将其某行（或某列）乘以$\alpha$得到的，那么$\det B=\det A$。
+    \item 如果$B$是由$A$通过将一行的若干倍加到另一行得到的，那么$\det B=\det A$。
+    \item 三角矩阵的行列式是其对角元的积。
+    \item $\det (A^T)=-\det A$。
+    \item $\det (AB)=\det(A)\det (B)$。
+    \item 矩阵$A$可逆，当且仅当$\det A\ne 0$。
+    \item 若$A$为可逆矩阵，那么$\det (A^{-1})=1/\det(A)$。
+  \end{probenumerate}
+  \item 设$A$为$n\times n$矩阵。$\det (3A),\det (-A)$和$\det (A^{2})$与$\det A$分别是什么关系？
+  \item 若$A$和$A^{-1}$的各元素都是整数，$\det A=3$是否可能？{\bf 提示}：$\det(A)\det(A^{-1})$是多少？
+  \item 令$\mathbf{v}_1,\mathbf{v}_2$是$\mathbb{R}^2$中的向量，并令$A$是各列为$\mathbf{v}_1,\mathbf{v}_2$的$2\times 2$矩阵。证明：$|\det A|$是两边为$\mathbf{v}_1,\mathbf{v}_2$的平行四边形的面积。
+
+  首先考虑$\mathbf{v}_1=(x_1,0)^T$的情形。为推广到一般情形$\mathbf{v}_1=(x_1,y_1)^T$，将$A$左乘旋转矩阵从而将向量$\mathbf{v}_1$变换为$(\widetilde{x}_1,0)^T$。
+
+  {\bf 提示}：旋转矩阵的行列式是多少？
+\end{probenumerate}
+
+\noindent {\zihao{5} 下面这题展示了行列式的符号与一组向量的所谓{\bf 取向}之间的关系。}
+
+\begin{probenumerate}[start=5]\zihao{5}
+  \item 令$\mathbf{v}_1,\mathbf{v}_2$是$\mathbb{R}^2$中的向量。证明：$D(\mathbf{v}_1,\mathbf{v}_2)>0$，当且仅当存在旋转$T_\alpha$使得向量$T_\alpha\mathbf{v}_1$平行于$\mathbf{e}_1$（且同向）并且向量$T_\alpha\mathbf{v}_2$处于上半平面$x_2>0$中（即处于$\mathbf{e}_2$所在的半平面中）。
+
+  {\bf 提示}：旋转矩阵的行列式是多少？
+\end{probenumerate}
