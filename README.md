@@ -1,134 +1,94 @@
-# Linear Algebra Done Wrong - 中文翻译项目
+# Linear Algebra Done Wrong — 中文翻译项目
 
-[![GitHub stars](https://img.shields.io/github/stars/DongYaoZe/Translate-LADW?style=social)](https://github.com/DongYaoZe/Translate-LADW/stargazers)
-[![Fork](https://img.shields.io/github/forks/DongYaoZe/Translate-LADW?style=social)](https://github.com/DongYaoZe/Translate-LADW/network/members)
+本项目是 Sergei Treil 教授教材 **Linear Algebra Done Wrong** 的中文翻译与中文排版工程，也是南京大学匡亚明学院线性代数课程学习过程中逐步维护的一份译稿。
 
-## 📖 项目简介
+当前开发线以作者 **2026-04-30** 版本为英文内容基准，目标是在忠实数学内容和原书结构的前提下，保留译者自己的中文表达、术语习惯和必要的译者注。
 
-本项目是 Sergei Treil 教授的经典教材 **《Linear Algebra Done Wrong》** 的中文翻译版本。
+## 当前版本与来源
 
-本书是南京大学匡亚明学院线性代数课程（李耀文老师授课）的核心参考书。由于原书为英文，为帮助同学们克服语言障碍、更高效地掌握线性代数的核心思想，我发起了这个翻译项目。
+本轮 2026 校订采用以下来源规则：
 
-希望这份译稿能成为一份小小的礼物，送给每一位在知识海洋中奋力前行的同学。
+1. **英文内容权威基准**：`LADW-2026-recovered`。它是从 Sergei Treil 官方 2026-04-30 LaTeXML HTML 机械恢复出的结构化 TeX 工作稿，用于逐章、逐定理、逐公式核对。
+2. 该 recovered 源码 **不是作者公开的原始 LaTeX 源文件**。作者原始 preamble、私有宏、注释、源码换行及部分源级格式无法从 HTML 精确恢复。
+3. **中文表达来源**：本项目合并前的 `V_9.8.6` 译稿，以及直接依据上述英文基准重新翻译/校订的文字。
+4. 独立中文项目 `LADW-cn-main` **不是本开发线的正文或图片来源**。它最多只可用于最终的相似度/污染审计；不得把其中的中文句子搬入本译稿。
+5. 本轮新引入的原书插图来自官方 2026 LaTeXML 页面的恢复资产，存放在 `figures/official-2026/`。
 
-**原书信息:**
-- **书名:** Linear Algebra Done Wrong
-- **作者:** Sergei Treil
-- **原书主页:** [https://sites.google.com/a/brown.edu/sergei-treil-homepage/linear-algebra-done-wrong](https://sites.google.com/a/brown.edu/sergei-treil-homepage/linear-algebra-done-wrong)
+更完整的来源约束见 [`TRANSLATION_PROVENANCE.md`](TRANSLATION_PROVENANCE.md)。
 
----
+## 项目特点
 
-## ✨ 项目特色
+- **对应 2026 原书结构**：章节、小节、定理族、习题和公式的结构已按官方 2026 页面校准。
+- **独立中文表达**：保留原译稿的语言风格和译者注，同时直接对英文重新审校有问题的段落。
+- **自动交叉引用**：正文逐步由旧式手写编号迁移到 `\label` / `\ref` / `\eqref`，减少改版后的错号风险。
+- **专业 LaTeX 排版**：正文使用 XeLaTeX；包含目录、交叉引用、中文索引和译者习题解答附录。
+- **可审计的项目历史**：废弃的早期草稿放入 `legacy/drafts/`，不参与正式构建。
 
-- **忠于原文，力求精准**: 在翻译过程中，我们尽最大努力保留原书的精髓，力求译文准确、流畅且易于理解。
-- **专业排版**: 全文使用 `LaTeX` 进行专业排版，完美复刻原书中的所有公式和符号，提供与原版媲美的阅读体验。
-- **完全免费**: 编译好的 PDF 版本可供任何人免费下载和使用。
-- **开源共享**: 所有 `LaTeX` 源码开放，欢迎社区一同参与改进和维护。
+## 目录结构
 
----
-
-## 🚀 如何使用
-
-### 1. 直接下载 PDF
-
-您可以直接从本项目的 [Releases](https://github.com/DongYaoZe/Translate-LADW/releases) 页面下载最新编译好的 PDF 文件。
-
-**[>>> 前往下载最新版 PDF <<<](https://github.com/DongYaoZe/Translate-LADW/releases)**
-
-### 2. 自行编译
-
-如果您希望基于源码进行修改或自行编译，请按以下步骤操作：
-
-1.  **克隆仓库:**
-    ```bash
-    git clone https://github.com/DongYaoZe/Translate-LADW.git
-    cd Translate-LADW
-    ```
-
-2.  **安装 LaTeX 环境:**
-    确保您的系统中已安装了 TeX Live, MacTeX 或 MiKTeX，并支持 `XeLaTeX` 编译。
-
-3.  **编译:**
-    使用 `XeLaTeX` 编译器对主文件 `main.tex` 进行编译。通常需要编译两次以上以确保目录和交叉引用正确生成。
-    ```bash
-    xelatex main.tex
-    ```
-
----
-
-## 🤝 如何贡献
-
-我们非常欢迎并感谢任何形式的贡献！众人拾柴火焰高。
-
-您可以通过以下方式参与本项目：
-
-- **内容纠错**: 如果您在阅读中发现任何错别字、语法错误或翻译不当之处，请毫不犹豫地提交一个 [Issue](https://github.com/DongYaoZe/Translate-LADW/issues)。请在 Issue 中详细说明错误所在章节、页码以及建议的修改。
-- **翻译改进**: 对于更复杂的术语或长句，如果您有更好的翻译建议，可以 Fork 本项目，在您的分支上进行修改，然后提交一个 Pull Request。
-- **代码与排版**: 如果您对 `LaTeX` 排版有更专业的建议或改进，同样欢迎通过 Pull Request 贡献您的智慧。
-
----
-
-## ❤️ 致谢
-
-- **Sergei Treil 教授**，感谢他创作了如此优秀的教材。
-- **南京大学匡亚明学院李耀文老师**，他的课程是本项目开始的契机。
-- **[zhbook](http://haixing-hu.github.io/xelatex-zh-book/) 项目**，本项目使用了其优秀的 `LaTeX` 模板。
-- **所有关注、支持和贡献本项目的同学和朋友们**。
-
----
-
-## 📝 许可协议 (License)
-
-本项目源码采用 [MIT License](https://github.com/DongYaoZe/Translate-LADW/blob/main/LICENSE) 开源。
-
-翻译内容的版权属于原作者 Sergei Treil 和译者。本项目为非营利性质，仅供学习交流使用。严禁用于任何商业目的。
-
----
-
-## ✉️ 联系方式
-
-如有任何问题或建议，欢迎通过以下方式联系我：
-
-- **GitHub Issues**: [https://github.com/DongYaoZe/Translate-LADW/issues](https://github.com/DongYaoZe/Translate-LADW/issues)
-- **邮箱**: `251840159@smail.nju.edu.cn`
-
----
-
-
-中文书籍 LaTeX 模板
-
-**注意：** 本模板推荐安装 **texlive** 发行版，并且需要 **XeLaTeX** 编译运行！
-
-```tex
-\documentclass[openany,twoside,zihao=-4]{zhbook}
+```text
+main.tex                     主文件
+zhbook.cls                   中文书籍样式与编号设置
+part/chap01.tex ... chap09.tex  正文九章
+part/preface.tex             推荐序、译者的话、作者前言
+part/exercises.tex           译者整理的习题解答附录
+figures/                     项目插图
+figures/official-2026/       直接来自官方 2026 LaTeXML 页面的图像资产
+legacy/drafts/               不参与构建的历史草稿
+TRANSLATION_PROVENANCE.md    本轮 clean-room 翻译来源规则
 ```
 
-本模板为中文书籍 LaTeX 模板，主文件 **main.tex** 给出使用的指南和要求，也展示了论文排版中常用的例子，包括公式、定理、表格、插图、参考文献等。
+## 自行编译
 
-在线 LaTeX 编辑可以使用 [TeXPage](https://www.texpage.com/)，设置字体 (`fontset=windows`) ，XeLaTeX 编译运行，推荐使用。
+建议使用完整的 TeX Live / MacTeX / MiKTeX 环境，并确保 XeLaTeX 与索引工具可用。
 
-中文索引 (默认拼音排序) 使用 zhmakeindex, 参看文件 **索引使用说明.txt**
+最基本的正文/目录/交叉引用编译流程：
 
-```latex
-% 索引宏包与相关设置
-\usepackage[noautomatic]{imakeidx}
-\makeindex[columns=2,intoc=true,title={索~~引}]
-```
-
-TeX 文件编译顺序:
 ```bash
-xelatex main
-bibtex main
+xelatex main.tex
+xelatex main.tex
+```
+
+若需要生成索引，按本项目现有索引工具配置运行 `makeindex` / `zhmakeindex` 后，再运行两次 XeLaTeX。典型流程为：
+
+```bash
+xelatex main.tex
 makeindex main
 zhmakeindex main
-xelatex main
-xelatex main
+xelatex main.tex
+xelatex main.tex
 ```
 
-快速编辑脚本:
+本地当前用于源码审校的 Local Shell 环境没有安装 TeX 引擎，因此仓库中的本轮修改已经做静态结构检查，但最终发布前仍必须在真实 TeX 环境中完整编译并进行 PDF 视觉验收。
 
-makefiles.bat 和 makefiles.sh 包含索引生成的所有编译命令。
+## 如何贡献
 
-makezhindex.bat 和 makezhindex.sh 只包含索引生成的编译命令。
+欢迎提交：
 
-欢迎提出意见或建议。
+- 数学错误、公式/下标错误；
+- 对照英文原文发现的漏译、误译；
+- 中文表达和术语一致性建议；
+- LaTeX 编译、排版、索引与交叉引用问题；
+- 习题解答中的错误或更好的解法。
+
+对于正文翻译贡献，请尽量直接注明所依据的英文原句/所在章节，以便维护翻译来源的可追溯性。
+
+## 致谢
+
+- Sergei Treil 教授：原书作者。
+- 南京大学匡亚明学院李耀文老师：课程与反馈是项目启动和持续维护的重要契机。
+- `zhbook` 项目：本项目中文 LaTeX 版式的基础之一。
+- 所有参与勘误、反馈和改进的同学。
+
+## 许可与版权说明
+
+仓库中的模板、辅助代码等项目代码可以按仓库自身的 `LICENSE` 处理；**不要据此推断 Sergei Treil 的原作文字、公式编排或中文翻译也自动适用 MIT License**。
+
+本项目用于校订的官方 2026 页面标示原作为 **CC BY-NC-ND 3.0**。原作内容、译文及其公开发布应分别遵守适用的原作许可、作者/译者权利与必要授权。本 README 不把仓库代码许可证扩张解释为对原作或译文内容的授权。
+
+## 联系方式
+
+- GitHub 项目：`DongYaoZe/Translate-LADW`
+- 邮箱：`251840159@smail.nju.edu.cn`
+
+欢迎勘误和改进建议。

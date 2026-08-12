@@ -23,10 +23,10 @@ Done Wrong}} 翻译版}  % 副标题
 
 \author{[美]Sergei Treil~（谢尔盖·特雷尔）\\  \hspace{5em}布朗大学数学系}  % 作者姓名
 
-\bioinfo{译\hspace{2em}者}{董耀择\\\hspace{5em}南京大学匡亚明学院2025级本科生} 
+\bioinfo{译\hspace{2em}者}{董耀择\\\hspace{5em}南京大学匡亚明学院2025级本科生}
 
 \date{\today}  % 日期
-\version{9.8.6}  % 版本
+\version{10.0.0-dev}  % 同步 Linear Algebra Done Wrong 2026-04-30 版
  % 其他信息
 
 
@@ -42,7 +42,7 @@ Done Wrong}} 翻译版}  % 副标题
 \usepackage{tikz}
 \usetikzlibrary{matrix, positioning, calc}
 % 如果使用了 \resizebox 进行缩放，通常需要 graphicx 宏包（插入图片时通常已包含）
-% \usepackage{graphicx} 
+% \usepackage{graphicx}
 
 %----- 设置英文字体 -----
 %\usepackage{newtxtext}  %New TX font for text
@@ -61,6 +61,7 @@ Done Wrong}} 翻译版}  % 副标题
 %\usepackage[notcite,notref]{showkeys}
 \usepackage{listings}
 \usepackage{subfig}
+\usepackage{nicematrix}
 
 %----- 取消链接颜色和方框 -----
 %\hypersetup{hidelinks}
@@ -153,6 +154,14 @@ Done Wrong}} 翻译版}  % 副标题
 \DeclareMathOperator{\ImI}{Im}
 \DeclareMathOperator{\codim}{codim}
 \DeclareMathOperator{\sign}{sign}
+
+% 与结构化正文兼容的算子别名（保持原书记号）
+\newcommand{\tr}{\operatorname{trace}}
+\newcommand{\nul}{\operatorname{Null}}
+\renewcommand{\ker}{\operatorname{Ker}}
+\newcommand{\rg}{\operatorname{Ran}}
+\newcommand{\col}{\operatorname{Col}}
+
 % \newcommand{\rank}{\mathrm{rank}}
 % \newcommand{\Null}{\mathrm{Null}}
 % \newcommand{\Ran}{\mathrm{Ran}}
@@ -177,31 +186,31 @@ Done Wrong}} 翻译版}  % 副标题
 
 
 % --- 插入致谢页 ---
-\thispagestyle{empty}  
-\null  
-\vspace*{\stretch{1}} 
+\thispagestyle{empty}
+\null
+\vspace*{\stretch{1}}
 \begin{center}
     {To my parents.\\
-    \songti\zihao{4}  
+    \songti\zihao{4}
     谨以此书献给我的父母。
-    \\[2.2em] 
-    \hspace*{6em} ——来自译者 
+    \\[2.2em]
+    \hspace*{6em} ——来自译者
     }
 \end{center}
-\vspace*{\stretch{2}}   
-\clearpage 
+\vspace*{\stretch{2}}
+\clearpage
 
 
-\clearpage 
+\clearpage
 \thispagestyle{empty}
 \vspace*{\fill}
 
-\noindent 
+\noindent
 Copyright © Sergei Treil, 2004, 2009, 2011, 2014, 2017, 2020, 2021, 2024
 
-\vspace{1.5em} 
+\vspace{1.5em}
 
-\noindent 
+\noindent
 \begin{minipage}[c]{0.2\textwidth} % [c]表示内容垂直居中对齐，宽度为文本宽度的10%
   \includegraphics[width=\linewidth]{figures/Figure0.PNG}
 \end{minipage}%  <-- 这个百分号 % 至关重要，它能防止产生多余的空格
@@ -210,7 +219,7 @@ Copyright © Sergei Treil, 2004, 2009, 2011, 2014, 2017, 2020, 2021, 2024
 \begin{minipage}[c]{0.85\textwidth} % 宽度为文本宽度的85%
   本书基于\textit{完整署名-禁止商用-禁止演绎 3.0 许可协议}，参见 \\ \url{https://creativecommons.org/licenses/by-nc-nd/3.0/}
 \end{minipage}
-\vspace{1em} 
+\vspace{1em}
 
 \noindent
 \textbf{额外详情}：
@@ -220,7 +229,7 @@ Copyright © Sergei Treil, 2004, 2009, 2011, 2014, 2017, 2020, 2021, 2024
 \textbf{译者补充}：该译本仅用于个人学习交流，且完全开源、免费发布。本书版权归原作者所有，请勿用作其他非法、商业用途。
 % 下载后请24小时内删除。
 
-\clearpage 
+\clearpage
 
 
 
@@ -248,14 +257,14 @@ Copyright © Sergei Treil, 2004, 2009, 2011, 2014, 2017, 2020, 2021, 2024
 
 % 留白页
 \newpage
-\thispagestyle{empty} 
+\thispagestyle{empty}
 \vspace*{\stretch{1}}
-\begin{center} 
+\begin{center}
     \textit{This page intentionally left blank.}
 \end{center}
 \vspace*{\stretch{2}}
-\vfill 
-\newpage 
+\vfill
+\newpage
 
 % 生成插图清单
 % \makelof
@@ -285,13 +294,8 @@ Copyright © Sergei Treil, 2004, 2009, 2011, 2014, 2017, 2020, 2021, 2024
 
 \input{part/chap09}
 
-% \input{part/manipulate}
-
+% 历史草稿/旧题解版本已归档至 legacy/drafts，不参与正式构建。
 \input{part/exercises}
-
-% \input{part/exerGem2.5}
-
-% \input{part/exerGPT}
 
 
 %%% 参考文献 %%%%%%%
@@ -302,9 +306,8 @@ Copyright © Sergei Treil, 2004, 2009, 2011, 2014, 2017, 2020, 2021, 2024
 %----------
 % 第二种方式, 手动添加文献信息
 %\input{part/bibliography}
-%%% 附录 %%%%%
-% 添加附录, 如不需要可以注释
-% \input{part/appendix}
+%%% 附录 %%%%%%%
+% 旧 appendix 草稿已归档至 legacy/drafts/appendix.tex；其历史图片资源不完整，故不参与正式构建。
 %%%%%
 \backmatter  % 结束章节自动编号
 %% 索引  %%%%%%%%
@@ -315,5 +318,3 @@ Copyright © Sergei Treil, 2004, 2009, 2011, 2014, 2017, 2020, 2021, 2024
 
 
 \end{document}
-
-
