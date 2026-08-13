@@ -449,7 +449,7 @@ c) $(67, 13, -47)^T$, $(\pi, -7.84, 0)^T$, $(3, 0, 0)^T$.
 \end{problemset}
 
 
-\section{通过行约简求 $A^{-1}$}\label{sec:02-04}
+\section{\texorpdfstring{通过行约简求 $A^{-1}$}{通过行约简求 A 的逆矩阵}}\label{sec:02-04}
 
 正如我们在上面讨论的，可逆矩阵必须是方阵，并且其阶梯形在每一行和每一列都必须有主元。故而，可逆矩阵的简化阶梯形是单位矩阵 $I$. ~因此，
 
@@ -809,11 +809,11 @@ $$
 
 那么，为什么上述方法确实给出了基本子空间的基呢？
 
-\subsubsection{零空间 $\Ker A$}\label{sec:02-07-02-01}
+\subsubsection{\texorpdfstring{零空间 $\Ker A$}{零空间 Ker A}}\label{sec:02-07-02-01}
 
 零空间 $\Ker A$ 的情况可能是最简单的：由于我们求解了方程 $A \xx = \oo$，即找到了所有解，那么 $\Ker A$ 中的任何向量都是我们得到的向量的线性组合。因此，我们得到的向量构成了 $\Ker A$ 中的一个生成系统。要看到系统是线性无关的，我们可以让每个向量乘以相应的自由变量并将所有向量相加，见 \eqref{eq:02-07-01}。那么对于每个自由变量 $x_k$，结果向量的第 $k$ 个分量恰好是 $x_k$，再次见 \eqref{eq:02-07-01}，所以这个向量（线性组合）是 $\oo$ 的唯一方式是当所有自由变量都为 0 时。
 
-\subsubsection{列空间$\Ran A$}\label{sec:02-07-02-02}
+\subsubsection{\texorpdfstring{列空间$\Ran A$}{列空间 Ran A}}\label{sec:02-07-02-02}
 
 让我们现在解释为什么用于找到列空间 $\Ran A$ 的基的方法有效。首先，注意到$A$ 的简化阶梯形， $A_{re}$ 的\textbf{主元列}构成了 $\Ran A_{re}$ 的基（不是原始矩阵的列空间，而是其简化阶梯形列空间的基！）。由于行运算只是可逆矩阵的左乘，它们不改变线性无关性。因此，\textbf{原始矩阵} $A$ 的主元列是线性无关的。
 
@@ -827,7 +827,7 @@ $$E \vv = \alpha_1 E \vv_1 + \alpha_2 E \vv_2 + \dots + \alpha_r E \vv_r.$$
 $$\vv = \alpha_1 \vv_1 + \alpha_2 \vv_2 + \dots + \alpha_r \vv_r,$$
 因此 $A$ 的主元列确实张成了 $\Ran A$. ~
 
-\subsubsection{行空间 $\Ran A^T$}\label{sec:02-07-02-03}
+\subsubsection{\texorpdfstring{行空间 $\Ran A^T$}{行空间 Ran A^T}}\label{sec:02-07-02-03}
 
 可以很容易地看出，$A$的阶梯形 $A_e$ 的\textbf{主元行}是线性无关的。实际上，设 $\ww_1, \ww_2, \dots, \ww_r$ 是 $A_e$ 的转置（因为我们公认总是将向量垂直放置）的主元行。假设 $$\alpha_1 \ww_1 + \alpha_2 \ww_2 + \dots + \alpha_r \ww_r = \oo.$$
 考虑 $\ww_1$ 的第一个非零项。由于对于所有其他向量 $\ww_2, \ww_3, \dots, \ww_r$，相应的项等于 0（根据阶梯形的定义），我们可以得出 $\alpha_1 = 0$. ~所以我们可以消去这一项。

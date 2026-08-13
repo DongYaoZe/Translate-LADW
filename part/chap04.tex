@@ -214,7 +214,7 @@ $$\det(A - \lambda I) = (a_{1,1} - \lambda)(a_{2,2} - \lambda)\dots(a_{n,n} - \l
 
 假设向量空间 $V$ 中的算子 $A$ 具有一组由 $A$ 的特征向量组成的基 $\B = \{\bb_1, \bb_2, \dots, \bb_n\}$，其中 $\lambda_1, \lambda_2, \dots, \lambda_n$ 是相应的特征值。那么 $A$ 在此基下的矩阵是对角矩阵，对角线上的项是 $\lambda_1, \lambda_2, \dots, \lambda_n$，其余位置都是$0$，省略不写：
 \begin{equation}\label{eq:04-02-01}
-[A]_{\B\B} = \diag\{\lambda_1, \lambda_2, \dots, \lambda_n\} = \begin{pmatrix} \lambda_1 & & &{\large \oo} \\ & \lambda_2 & & \\ & & \ddots & \\ {\large \oo}& & & \lambda_n \end{pmatrix}
+[A]_{\B\B} = \diag\{\lambda_1, \lambda_2, \dots, \lambda_n\} = \begin{pmatrix} \lambda_1 & & &\oo \\ & \lambda_2 & & \\ & & \ddots & \\ \oo& & & \lambda_n \end{pmatrix}
 \end{equation}
 
 另一方面，如果一个算子 $A$ 在基 $\B = \{\bb_1, \bb_2, \dots, \bb_n\}$ 下的矩阵由 \eqref{eq:04-02-01} 给出，那么显然 $A\bb_k = \lambda_k \bb_k$，即 $\lambda_k$ 是特征值，$\bb_k$ 是相应的特征向量。
@@ -260,7 +260,7 @@ $$A = [A]_{\SSS\SSS} = S \begin{pmatrix} \lambda_1 & & & \\ & \lambda_2 & & \\ &
 $$A^N = \underset{N \text{ times} }{\underbrace{(SDS^{-1})(SDS^{-1})\dots(SDS^{-1})} }= SD^N S^{-1}.$$
 于是，计算对角矩阵的 $N$ 次幂就很容易了。
 
-\subsection{$n$ 个不同特征值的情况}\label{sec:04-02-03}
+\subsection{\texorpdfstring{$n$ 个不同特征值的情况}{n 个不同特征值的情况}}\label{sec:04-02-03}
 
 我们现在给出一个算子可对角化的非常简单的\textbf{充分}条件，见下面的推论~\ref{stmt:04-02-03}。
 
