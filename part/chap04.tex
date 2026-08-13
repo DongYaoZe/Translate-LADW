@@ -120,7 +120,7 @@ $$p(z) = a_n (z - \lambda_1)(z - \lambda_2)\dots(z - \lambda_n),$$
 特征值的几何重数不能超过其代数重数。
 \end{proposition}
 
-\begin{proof}见下面的练习 1.9。\end{proof}
+\begin{proof}见下面的习题~\ref{ex:04-01-09}。\end{proof}
 
 \subsection{迹与行列式}\label{sec:04-01-06}
 
@@ -130,7 +130,7 @@ $$p(z) = a_n (z - \lambda_1)(z - \lambda_2)\dots(z - \lambda_n),$$
 
 2. $\det A = \lambda_1 \lambda_2 \dots \lambda_n$.~\end{theorem}
 
-\begin{proof}见下面的练习 1.10, 1.11。\end{proof}
+\begin{proof}见下面的习题~\ref{ex:04-01-10}、\ref{ex:04-01-11}。\end{proof}
 
 \subsection{三角矩阵的特征值}\label{sec:04-01-07}
 
@@ -170,7 +170,7 @@ f) 相似矩阵总是具有相同的特征向量；
 \\
 g) 矩阵 $A$ 的两个特征向量之和（非零）总是 $A$ 的特征向量；
 \\
-h) 对应于同一特征值 $\lambda$ 的矩阵 $A$ 的两个特征向量之和总是算子 $A$ 的特征向量。
+h) 对应于同一特征值 $\lambda$ 的矩阵 $A$ 的两个特征向量之和（非零）总是算子 $A$ 的特征向量。
 \item \label{ex:04-01-02} 找出以下矩阵的特征多项式、特征值和特征向量：
 $$\begin{pmatrix} 4 & -5 \\ 2 & -3 \end{pmatrix},\quad \begin{pmatrix} 2 & 1 \\ -1 & 4 \end{pmatrix},\quad \begin{pmatrix} 1 & 3 & 3 \\ -3 & -5 & -3 \\ 3 & 3 & 1 \end{pmatrix}.$$
 \item \label{ex:04-01-03} 计算旋转矩阵
@@ -184,7 +184,7 @@ $$\begin{pmatrix} 1 & 2 & 5 & 67 \\ 0 & 2 & 3 & 6 \\ 0 & 0 & -2 & 5 \\ 0 & 0 & 0
 \item \label{ex:04-01-05} 证明三角矩阵的特征值（计入重数）与其对角线元素相等。
 \item \label{ex:04-01-06} 称算子 $A$ 为\textbf{幂零}(nilpotent)的，如果 $\exists k \in \mathbb{N}_+$，使得  $A^k = \oo$ 成立。证明如果 $A$ 是幂零的，那么 $\sigma(A) = \{0\}$（即 $0$ 是 $A$ 的唯一特征值）。
 \item \label{ex:04-01-07} 证明分块三角矩阵 $$\begin{pmatrix} A & * \\ \oo & B \end{pmatrix}$$
-的特征多项式（其中 $A$ 和 $B$ 是方阵）与$\det(A - \lambda I) \det(B - \lambda I)$ 相等。（使用第三章的练习 3.11）。
+的特征多项式（其中 $A$ 和 $B$ 是方阵）与$\det(A - \lambda I) \det(B - \lambda I)$ 相等。（使用第三章习题~\ref{ex:03-03-11}）。
 \item \label{ex:04-01-08} 设 $\vv_1, \vv_2, \dots, \vv_n$ 是向量空间 $V$ 中的一组基。并假设基的前 $k$ 个向量 $\vv_1, \vv_2, \dots, \vv_k$ 是算子 $A$ 的特征向量，对应于特征值 $\lambda$ （即 $A\vv_j = \lambda \vv_j, j = 1, 2, \dots, k$）。证明在该基下，算子 $A$ 的矩阵具有分块三角形式
 $$\begin{pmatrix} \lambda I_k & * \\ \oo & B \end{pmatrix},$$
 其中 $I_k$ 是 $k \times k$ 的单位矩阵， $B$ 是某个 $(n-k) \times (n-k)$ 矩阵。
@@ -403,11 +403,11 @@ $$A =\begin{pmatrix} 1 & 2 \\ 8 & 1 \end{pmatrix}= \begin{pmatrix} 1 & 1 \\ 2 & 
 $$A = \begin{pmatrix} 1 & 2 \\ -2 & 1 \end{pmatrix}.$$
 其特征多项式是
 $$\begin{vmatrix} 1-\lambda & 2 \\ -2 & 1-\lambda \end{vmatrix} = (1-\lambda)^2 + 4,$$
-特征值（特征多项式的根）是 $\lambda = 1 \pm \ii$.~对于 $\lambda = 1 + \ii$，
-$$A - \lambda I = \begin{pmatrix} 1-(1+\ii) & 2 \\ -2 & 1-(1+\ii) \end{pmatrix} = \begin{pmatrix} -\ii & 2 \\ -2 & -\ii \end{pmatrix}.$$
+特征值（特征多项式的根）是 $\lambda = 1 \pm 2\ii$.~对于 $\lambda = 1 + 2\ii$，
+$$A - \lambda I = \begin{pmatrix} 1-(1+2\ii) & 2 \\ -2 & 1-(1+2\ii) \end{pmatrix} = \begin{pmatrix} -2\ii & 2 \\ -2 & -2\ii \end{pmatrix}.$$
 这个矩阵的秩是 1，所以特征子空间 $\Ker(A - \lambda I)$ 由一个向量，例如 $(1, \ii)^T$ 张成。
 
-由于矩阵 $A$ 是实数的，我们不需要计算 $\lambda = 1 - \ii$ 的特征向量：通过取上述特征向量的复共轭，我们可以自动获得它，见下面的练习 2.2。所以，对于 $\lambda = 1 - 2\ii$，一个相应的特征向量是 $(1, -\ii)^T$，因此矩阵 $A$ 可以被对角化为
+由于矩阵 $A$ 是实数的，我们不需要计算 $\lambda = 1 - 2\ii$ 的特征向量：通过取上述特征向量的复共轭，我们可以自动获得它，见下面的习题~\ref{ex:04-02-02}。所以，对于 $\lambda = 1 - 2\ii$，一个相应的特征向量是 $(1, -\ii)^T$，因此矩阵 $A$ 可以被对角化为
 $$A = \begin{pmatrix} 1 & 1 \\ \ii & -\ii \end{pmatrix} \begin{pmatrix} 1+2\ii & 0 \\ 0 & 1-2\ii \end{pmatrix} \begin{pmatrix} 1 & 1 \\ \ii & -\ii \end{pmatrix}^{-1}.$$
 
 \subsubsection{一个不可对角化的矩阵}\label{sec:04-02-07-03}

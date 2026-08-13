@@ -777,7 +777,9 @@ $$L(V'_1,V'_2,\dots,V'_p;\FF),$$
 \end{remark*}
 
 \begin{remark*}
-注意，向量张量积的集合 $\{\vv_1 \otimes \vv_2 \otimes \dots \otimes \vv_p : \vv_k \in V_k\}$ 严格小于 $V_1 \otimes V_2 \otimes \dots \otimes V_p$，见下面的习题~\ref{ex:08-05-02}。
+如果至少有两个因子空间的维数不小于 $2$，并且其余因子空间均非零，那么纯张量的集合
+$$\{\vv_1 \otimes \vv_2 \otimes \dots \otimes \vv_p : \vv_k \in V_k\}$$
+严格小于 $V_1 \otimes V_2 \otimes \dots \otimes V_p$，见下面的习题~\ref{ex:08-05-02}。
 \end{remark*}
 
 \subsubsection{将多线性函数提升到张量积上的线性变换}\label{sec:08-05-02-01}
@@ -927,7 +929,7 @@ $$ F(\vv_1, \vv_2, \dots, \vv_p) = T(\vv_1 \otimes \vv_2 \otimes \dots \otimes \
 
 \begin{problemset}
 \item \label{ex:08-05-01} 证明向量的张量积 $\vv_1 \otimes \vv_2 \otimes \dots \otimes \vv_p$ 在每个参数 $\vv_k$ 上是线性的。
-\item \label{ex:08-05-02} 证明向量张量积的集合 $\{\vv_1 \otimes \vv_2 \otimes \dots \otimes \vv_p : \vv_k \in V_k\}$ 严格小于 $V_1 \otimes V_2 \otimes \dots \otimes V_p$.~
+\item \label{ex:08-05-02} 假设至少有两个因子空间的维数不小于 $2$，并且其余因子空间均非零。证明纯张量的集合 $\{\vv_1 \otimes \vv_2 \otimes \dots \otimes \vv_p : \vv_k \in V_k\}$ 严格小于 $V_1 \otimes V_2 \otimes \dots \otimes V_p$.~\footnote{译者注：2026-04-30 英文原文未写这些条件。无条件陈述并不成立，例如 $p=1$ 时每个张量本身就是纯张量；若除一个因子外其余因子均为一维，也会出现同样的退化情形。}
 \item \label{ex:08-05-03} 证明命题~\ref{stmt:08-05-06} 中的变换 $F$ 是唯一的。
 \end{problemset}
 

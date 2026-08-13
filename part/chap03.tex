@@ -162,7 +162,7 @@ $$
 
 \subsection{由基本性质推导出的行列式性质}\label{sec:03-03-02}
 
-在下面的讨论中，$\det A = D(\aaa_1, \aaa_2, \dots, \aaa_n)$ 表示满足上文第 3.1 小节中性质 1–3 的一个函数。
+在下面的讨论中，$\det A = D(\aaa_1, \aaa_2, \dots, \aaa_n)$ 表示满足上文第~\ref{sec:03-03-01}~小节中性质 1–3 的一个函数。
 
 \begin{proposition}\label{stmt:03-03-01}
 对于方阵 $A$，以下陈述成立：
@@ -347,11 +347,11 @@ $$\det(AB) = (\det A)\left[(\det E_1)(\det E_2) \dots (\det E_N)\right] = (\det 
 
 12. 如果 $A$ 是一个 $n \times n$ 矩阵，那么 $\det( \alpha A ) = \alpha^n \det A$.
 
-最后一个性质是从行列式的线性性质质得出的，如果我们回忆起，若要将矩阵 $A$ 乘以 $\alpha$，我们必须将每一行乘以 $\alpha$，并且每次乘法都会将行列式乘以 $\alpha$.~
+最后一个性质来自行列式的线性性质。回忆一下，若要将矩阵 $A$ 乘以 $\alpha$，必须将每一行都乘以 $\alpha$；每乘一行，行列式也随之乘以一个 $\alpha$.~
 
 \begin{problemset}
-\item \label{ex:03-03-01} 如果 $A$ 是一个 $n \times n$ 矩阵，$\det(3A)$ 与 $\det A$ 有何关系？\\
-$\det(3A) = 3 \det A$ 仅在 $1 \times 1$ 矩阵的平凡情况下成立。
+\item \label{ex:03-03-01} 如果 $A$ 是一个 $n \times n$ 矩阵，$\det(5A)$ 与 $\det A$ 有何关系？\\
+$\det(5A) = 5 \det A$ 仅在 $1 \times 1$ 矩阵的平凡情况下成立。
 \item \label{ex:03-03-02} 下面$A$ 和 $B$ 各自的行列式之间有什么关系？
 \\
 a) $A = \begin{pmatrix} a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \\ c_1 & c_2 & c_3 \end{pmatrix}$, $\quad B = \begin{pmatrix} 2a_1 & 3a_2 & 5a_3 \\ 2b_1 & 3b_2 & 5b_3 \\ 2c_1 & 3c_2 & 5c_3 \end{pmatrix}$；
@@ -369,7 +369,7 @@ $$\begin{vmatrix} 1 & x & x^2 \\ 1 & y & y^2 \\ 1 & z & z^2 \end{vmatrix} = (z-x
 \item \label{ex:03-03-09} 设平面 $\RR^2$ 中的点 $A, B, C$ 的坐标分别为 $(x_1, y_1), (x_2, y_2), (x_3, y_3)$.~证明三角形 $ABC$ 的面积是
 $$\frac{1}{2}  \begin{vmatrix} 1 & x_1 & y_1 \\ 1 & x_2 & y_2 \\ 1 & x_3 & y_3 \end{vmatrix} $$
 的绝对值。{\heiti 提示}：使用行运算和 $2 \times 2$ 行列式的几何解释（面积）。
-\item \label{ex:03-03-10} 设 $A$ 和 $C$ 是方阵，证明分块三角矩阵
+\item \label{ex:03-03-10} 设 $A$ 是方阵，证明分块三角矩阵
 $$\begin{pmatrix} I & * \\ \oo & A \end{pmatrix},\quad \begin{pmatrix} A & * \\ \oo & I \end{pmatrix},\quad \begin{pmatrix} I & \oo \\ * & A \end{pmatrix},\quad \begin{pmatrix} A & \oo \\ * & I \end{pmatrix}$$
 \\的行列式都等于 $\det A$.~这里 $*$ 可以是任何东西。以下问题说明了分块矩阵表示的力量。
 \item \label{ex:03-03-11} 使用上一个问题证明，如果 $A$ 和 $C$ 是方阵，那么
@@ -540,7 +540,7 @@ $$\det A = a_{1,k} C_{1,k} + a_{2,k} C_{2,k} + \dots + a_{n,k} C_{n,k} = \sum_{j
 虽然它看起来非常不错，但代数余子式展开公式不适用于直接计算大于 $3 \times 3$ 的一般矩阵的行列式。
 \end{remark*}
 
-可以计算，它需要超过 $n!$ 次乘法（准确地说，需要 $\sum_{k=2}^n n!/k!$ 次乘法），而 $n!$ 的增长非常快。例如，计算一个 $20 \times 20$ 矩阵的代数余子式展开需要超过 $20! \approx 2.4 \times 10^{18}$ 次乘法。一台每秒执行十亿次乘法的计算机需要 77 年才能执行 $20!$ 次乘法；事实上，计算一个 $20 \times 20$ 矩阵的代数余子式展开所需总运算将需要 132 多年的时间来完成。
+可以计算出，它需要超过 $n!$ 次乘法（准确地说，需要 $\sum_{k=1}^{n-1} n!/k!$ 次乘法），而 $n!$ 的增长非常快。例如，计算一个 $20 \times 20$ 矩阵的代数余子式展开需要超过 $20! \approx 2.433 \times 10^{18}$ 次乘法。一台每秒执行十亿次乘法的计算机需要 77 年才能执行 $20!$ 次乘法；事实上，计算一个 $20 \times 20$ 矩阵的代数余子式展开所需总运算将需要 132 多年的时间来完成。
 \footnote{
 读者可以自行验证这一数字，比如使用WolframAlpha软件。
 }
@@ -613,7 +613,7 @@ $$
 
 \begin{problemset}
 \item \label{ex:03-05-01} 你可以使用任何方法计算行列式：
-$$\begin{vmatrix} 0 & 1 & 1 \\ 1 & 2 & -5 \\ 6 & 4 & -3 \end{vmatrix},\quad \begin{vmatrix} 1 & -2 & 3 &-12 \\ -5 & 12 & -14 & 19 \\ -9 & 22 & -20 & 31 \\ -4 & 9 & -14 & 15 \end{vmatrix}.$$
+$$\begin{vmatrix} 0 & 1 & 1 \\ 1 & 2 & -5 \\ 6 & -4 & 3 \end{vmatrix},\quad \begin{vmatrix} 1 & -2 & 3 &-12 \\ -5 & 12 & -14 & 19 \\ -9 & 22 & -20 & 31 \\ -4 & 9 & -14 & 15 \end{vmatrix}.$$
 \item \label{ex:03-05-02} 使用行（列）展开计算以下行列式。注意，你没有必要从第 1 行（列）开始展开：选择具有更多零的行（列）将简化你的计算。
 $$\begin{vmatrix} 1 & 2 & 0 \\ 1 & 1 & 5 \\ 1 & -3 & 0 \end{vmatrix},\quad\begin{vmatrix} 4 & -6 & -4 & 4 \\ 2 & 1 & 0 & 0 \\ 0 & -3 & 1 & 3 \\ -2 & 2 & -3 & -5 \end{vmatrix}.$$
 \item \label{ex:03-05-03} 对于$n \times n$矩阵

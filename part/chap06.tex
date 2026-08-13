@@ -268,7 +268,7 @@ $$R_\alpha = \begin{pmatrix} \cos \alpha & -\sin \alpha \\ \sin \alpha & \cos \a
 其中 $\alpha$ 不是 $\pi$ 的整数倍。注意，在这种情况下你会得到复数特征值。
 \item \label{ex:06-02-11} \textbf{正交对角化}矩阵
 $$A = \begin{pmatrix} \cos \alpha & \sin \alpha \\ \sin \alpha & -\cos \alpha \end{pmatrix}.$$
-{\heiti 提示：} 你会得到实数特征值。此外，三角恒等式 $\sin^2 x = 2 \sin x \cos x$, $\sin^2 x = (1 - \cos 2x)/2$, $\cos^2 x = (1 + \cos 2x)/2$（应用于 $x = \alpha/2$）将有助于简化特征向量的表达式。
+{\heiti 提示：} 你会得到实数特征值。此外，三角恒等式 $\sin 2x = 2 \sin x \cos x$, $\sin^2 x = (1 - \cos 2x)/2$, $\cos^2 x = (1 + \cos 2x)/2$（应用于 $x = \alpha/2$）将有助于简化特征向量的表达式。
 \item \label{ex:06-02-12} 你能从几何上描述上一问题中矩阵 $A$ 所代表的线性变换吗？它有一个非常简单的几何解释。
 \item \label{ex:06-02-13} 证明具有模为 1 的特征值（即所有特征值满足 $|\lambda_k| = 1$）的正规算子是酉的。\\
 {\heiti 提示：} 考虑对角化。
@@ -544,7 +544,7 @@ e) 自伴随矩阵的奇异值与其特征值相等。
 \item \label{ex:06-03-08} 设 $A$ 是一个 $m \times n$ 矩阵。证明 $A^*A$ 和 $AA^*$ 的\textbf{非零}特征值（计入重数）是相同的。你能说出 $A^*A$ 的零特征值和 $AA^*$ 的零特征值何时具有相同的重数吗？
 \item \label{ex:06-03-09} 设 $s$ 是算子 $A$ 的最大奇异值，设 $\lambda$ 是 $A$ 具有最大绝对值的特征值。证明 $|\lambda| \leq s$.~
 \item \label{ex:06-03-10} 证明矩阵的秩等于其非零奇异值的数量（计入重数）。
-\item \label{ex:06-03-11} 证明算子范数 $\|A\|$ 与 弗罗贝尼乌斯 范数 $\|A\|_2$ 相等当且仅当该矩阵秩为 1。
+\item \label{ex:06-03-11} 证明对于\textbf{非零}矩阵 $A$，算子范数 $\|A\|$ 与弗罗贝尼乌斯范数 $\|A\|_2$ 相等当且仅当该矩阵秩为 1。\footnote{译者注：2026-04-30 英文原文未写“非零”。若允许 $A=0$，则两个范数同为 $0$，但 $\rank A=0$，所以原命题需要这一条件。}
 {\heiti 提示：} 上一个问题可能有所帮助。
 \item \label{ex:06-03-12} 对于矩阵 $$A = \begin{pmatrix} 2 & -3 \\ 0 & 2 \end{pmatrix},$$
 描述单位球的逆像，即所有 $\xx \in \RR^2$ 使得 $\|A\xx\| \leq 1$ 的集合。使用奇异值分解。
@@ -895,8 +895,8 @@ $$R_\alpha \begin{pmatrix} x_{n-1} \\ x_n \end{pmatrix} = \begin{pmatrix} a_{n-1
 $$R_1 = \begin{pmatrix} I_{n-2} & \oo \\ \oo & R_\alpha \end{pmatrix}$$
 （$I_{n-2}$ 是 $(n-2) \times (n-2)$ 的单位矩阵），那么 $$R_1 \xx = (x_1, x_2, \dots, x_{n-2}, a_{n-1}, 0)^T.$$
 
-我们假设引理的结论对 $n-1$ 成立，因此存在 $n-2$ 个初等旋转（我们称它们为 $R_2, R_3, \dots, R_{n-1}$），它们在 $\RR^{n-1}$ 中（仅作用于坐标 $x_1, x_2, \dots, x_{n-1}$）将向量 $(x_1, x_2, \dots, x_{n-1}, a_{n-1})^T \in \RR^{n-1}$ 变换为向量 $(a, 0, \dots, 0)^T \in \RR^{n-1}$.~换句话说，
-$$R_{n-1} \dots R_3 R_2 (x_1, x_2, \dots, x_{n-1}, a_{n-1})^T = (a, 0, \dots, 0)^T.$$
+我们假设引理的结论对 $n-1$ 成立，因此存在 $n-2$ 个初等旋转（我们称它们为 $R_2, R_3, \dots, R_{n-1}$），它们在 $\RR^{n-1}$ 中（仅作用于坐标 $x_1, x_2, \dots, x_{n-1}$）将向量 $(x_1, x_2, \dots, x_{n-2}, a_{n-1})^T \in \RR^{n-1}$ 变换为向量 $(a, 0, \dots, 0)^T \in \RR^{n-1}$.~换句话说，
+$$R_{n-1} \dots R_3 R_2 (x_1, x_2, \dots, x_{n-2}, a_{n-1})^T = (a, 0, \dots, 0)^T.$$
 
 我们可以总假设初等旋转 $R_2, R_3, \dots, R_{n-1}$ 在 $\RR^n$ 中作用，只需假设它们不改变最后一个坐标。那么 $$R_{n-1} \dots R_3 R_2 R_1 \xx = (a, 0, \dots, 0)^T \in \RR^n.$$
 
@@ -986,7 +986,7 @@ $$\begin{pmatrix} \cos \alpha & -\sin \alpha \\ \sin \alpha & \cos \alpha \end{p
 \item \label{ex:06-06-02} 设 $$R_\alpha = \begin{pmatrix} \cos \alpha & -\sin \alpha \\ \sin \alpha & \cos \alpha \end{pmatrix}$$ 是旋转矩阵。证明 $2 \times 2$ 单位矩阵 $I_2$ 可以通过可逆矩阵连续变换为 $R_\alpha$.~
 \item \label{ex:06-06-03} 设 $U$ 是一个 $n \times n$ 正交矩阵，且 $\det U > 0$.~证明 $n \times n$ 单位矩阵 $I_n$ 可以通过可逆矩阵连续变换为 $U$.~
 {\heiti 提示：} 使用前一个问题和旋转在 $\RR^n$ 中的表示（作为平面旋转的乘积），见第~\ref{sec:06-05}~节。
-\item \label{ex:06-06-04} 设 $A$ 是一个 $n \times n$ 正定埃尔米特矩阵，$A = A^* > \oo$.~证明 $n \times n$ 单位矩阵 $I_n$ 可以通过可逆矩阵连续变换为 $A$.~
+\item \label{ex:06-06-04} 设 $A$ 是一个 $n \times n$ 正定埃尔米特矩阵，$A = A^* > 0$.~证明 $n \times n$ 单位矩阵 $I_n$ 可以通过可逆矩阵连续变换为 $A$.~
 {\heiti 提示：} 对于对角矩阵怎么样？
 \item \label{ex:06-06-05} 使用极分解和上面的习题~\ref{ex:06-06-03}、\ref{ex:06-06-04}，完成定理~\ref{stmt:06-06-01} 的“仅当”部分的证明。
 
