@@ -394,7 +394,7 @@ $$\codim E=\dim X-\dim E.$$
 \begin{theorem}\label{stmt:07-04-03}  （特征值的极小极大刻画）
 
 设 $A = A^*$ 是一个 $n \times n$ 矩阵，设 $\lambda_1 \ge \lambda_2 \ge \dots \ge \lambda_n$ 是其特征值（按降序排列）。那么
-$$\lambda_k = \max_{E: \atop \dim E = k} \min_{\xx \in E \atop \|\xx\|=1} (A\xx, \xx) = \min_{F: \atop \codim F = k-1} \max_{\xx \in F \atop \|\xx\|=1} (A\xx, \xx).$$\end{theorem}
+$$\lambda_k = \max_{\substack{E:\\ \dim E = k}} \min_{\substack{\xx \in E\\ \|\xx\|=1}} (A\xx, \xx) = \min_{\substack{F:\\ \codim F = k-1}} \max_{\substack{\xx \in F\\ \|\xx\|=1}} (A\xx, \xx).$$\end{theorem}
 
 我们更详细地解释一下像 $\max \min$ 和 $\min \max$ 这样的表达式的含义。为了计算第一个表达式，我们需要考虑所有维度为 $k$ 的子空间 $E$.~对于每个这样的子空间 $E$，我们考虑所有范数为 1 的 $\xx \in E$ 的集合，并找到 $(A\xx, \xx)$ 在所有这些 $\xx$ 上的最小值。因此，对于每个子空间，我们得到一个数字，我们需要选择一个子空间 $E$ 使得该数字最大。这就是 $\max \min$.~
 
@@ -422,17 +422,17 @@ $\min \max$ 的定义类似。
 我们可以总是将特征值按降序排列，所以假设 $\lambda_1 \ge \lambda_2 \ge \dots \ge \lambda_n$.~
 
 由于 $\xx$ 属于 $E$ 和 $F$ 两个子空间，
-$$\min_{\xx \in E,\atop \|\xx\|=1} (A\xx, \xx) \le (A\xx_0, \xx_0) \le \max_{\xx \in F,\atop \|\xx\|=1} (A\xx, \xx).$$
+$$\min_{\substack{\xx \in E\\ \|\xx\|=1}} (A\xx, \xx) \le (A\xx_0, \xx_0) \le \max_{\substack{\xx \in F\\ \|\xx\|=1}} (A\xx, \xx).$$
 我们没有对子空间 $E$ 和 $F$ 做出任何除了维度之外的假设，所以上述不等式
 \begin{equation}\label{eq:07-04-02}
-\min_{\xx \in E,\atop \|\xx\|=1} (A\xx, \xx) \le \max_{\xx \in F,\atop \|\xx\|=1} (A\xx, \xx)
+\min_{\substack{\xx \in E\\ \|\xx\|=1}} (A\xx, \xx) \le \max_{\substack{\xx \in F\\ \|\xx\|=1}} (A\xx, \xx)
 \end{equation}
 对所有适当维度的 $E$ 和 $F$ 的对都成立。
 
 定义 $$E_0 := \spanL\{\ee_1, \ee_2, \dots, \ee_k\},\quad F_0 := \spanL\{\ee_k, \ee_{k+1}, \dots, \ee_n\}.$$
 
 由于对于自伴矩阵 $B$，$(B\xx, \xx)$ 在单位球体 $\{\xx : \|\xx\|=1\}$ 上的最大值和最小值分别是最大和最小特征值（在对角矩阵上很容易验证），我们得到
-$$\min_{\xx \in E_0,\atop \|\xx\|=1} (A\xx, \xx) = \max_{\xx \in F_0,\atop \|\xx\|=1} (A\xx, \xx) = \lambda_k.$$
+$$\min_{\substack{\xx \in E_0\\ \|\xx\|=1}} (A\xx, \xx) = \max_{\substack{\xx \in F_0\\ \|\xx\|=1}} (A\xx, \xx) = \lambda_k.$$
 从\eqref{eq:07-04-02}可知，对于任何子空间 $E$，$\dim E = k$，
 $$\min_{\xx \in E, \|\xx\|=1} (A\xx, \xx) \le \max_{\xx \in F_0, \|\xx\|=1} (A\xx, \xx) = \lambda_k.$$
 同理，对于任何余维度为 $k-1$ 的子空间 $F$，
@@ -449,11 +449,11 @@ $$\lambda_k \ge \mu_k \ge \lambda_{k+1},\quad k = 1, 2, \dots, n-1.$$
 
 \begin{proof}
 设 $\widetilde{X} \subset \FF^n$ 是由前 $n-1$ 组基向量张成的子空间，$\widetilde{X} = \spanL\{\ee_1, \ee_2, \dots, \ee_{n-1}\}$.~由于 $( \widetilde{A} \xx, \xx ) = ( A \xx, \xx )$ 对所有 $\xx \in \widetilde{X}$ 成立，定理~\ref{stmt:07-04-03} 暗示
-$$\mu_k = \max_{E \subset \widetilde{X},\atop \dim E = k} \min_{\xx \in E,\atop \|\xx\|=1} (A\xx, \xx).$$
+$$\mu_k = \max_{\substack{E \subset \widetilde{X}\\ \dim E = k}} \min_{\substack{\xx \in E\\ \|\xx\|=1}} (A\xx, \xx).$$
 为了得到 $\lambda_k$，我们需要在 $\FF^n$ 的所有维度为 $k$ 的子空间上取最大值（任何 $\widetilde{X}$ 的子空间都是 $\FF^n$ 的子空间）。因此，$$\mu_k \le \lambda_k.$$ （在更大集合上的最大值不会变得更小）。
 
 另一方面，$\widetilde{X}$ 中余维度为 $k-1$ 的任何子空间 $E$（这里指的是在 $\widetilde{X}$ 中的余维度）的维度是 $n-1 - (k-1) = n-k$，因此它在 $\FF^n$ 中的余维度是 $k$.~所以
-$$\mu_k = \min_{E \subset \widetilde{X},\atop \dim E = n-k} \max_{\xx \in E,\atop \|\xx\|=1} (A\xx, \xx) \ge \min_{E \subset \FF^n,\atop \dim E = n-k} \max_{\xx \in E,\atop \|\xx\|=1} (A\xx, \xx) = \lambda_{k+1}$$
+$$\mu_k = \min_{\substack{E \subset \widetilde{X}\\ \dim E = n-k}} \max_{\substack{\xx \in E\\ \|\xx\|=1}} (A\xx, \xx) \ge \min_{\substack{E \subset \FF^n\\ \dim E = n-k}} \max_{\substack{\xx \in E\\ \|\xx\|=1}} (A\xx, \xx) = \lambda_{k+1}$$
 （把取最小值的范围扩大后，最小值不会变大）。\end{proof}
 
 \begin{proof}[\normalfont\heiti 定理~\ref{stmt:07-04-02} 的证明~\nopunct]
