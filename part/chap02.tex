@@ -440,6 +440,8 @@ c) $(67, 13, -47)^T$, $(\pi, -7.84, 0)^T$, $(3, 0, 0)^T$.
 \item \label{ex:02-03-07} 证明或证伪：如果一个（$n \times n$）方阵$A$ 的列是线性无关的，那么 $A^3 = AAA$ 的行也是线性无关的。
 \item \label{ex:02-03-08} 证明，如果方程 $A \xx = \oo$ 只有唯一解（即，如果 $A$ 的阶梯形在每一列都有一个主元），那么 $A$ 是左可逆的。{\heiti 提示}：想想初等矩阵可能会有帮助。
 \\
+{\heiti 注：}正文已经证明：如果 $A$ 左可逆，那么方程 $A\xx=\oo$ 只有唯一解。本题要求证明这一命题的逆命题，而这个方向此前尚未证明。
+\\
 这可能是一个非常难的问题，因为它需要对主题有深入的理解。但是，当你理解了该做什么之后，问题就变得几乎显然了。
 \item \label{ex:02-03-09} 一个矩阵的简化阶梯形是唯一的吗？给出你的结论和理由。
 \\
@@ -536,9 +538,9 @@ $$\begin{pmatrix} 1 & 2 & 1 \\ 3 & 7 & 3 \\ 2 & 3 & 4 \end{pmatrix},\quad \begin
 向量空间 $V$ 是有限维的，当且仅当它有一个有限生成集。
 \end{proposition}
 
-假设我们有一个有限维向量空间中的向量系统，并且我们想核验它是否是基（或者它是否线性无关，或者是否完备），最简单的方法可能就是使用同构 $A: V \to \RR^n$, $n = \dim E$ 将问题转移到 $\RR^n$，在 $\RR^n$ 中，所有这些问题都可以通过行约简（研究主元）来回答。
+假设我们有一个有限维向量空间中的向量系统，并且我们想核验它是否是基（或者它是否线性无关，或者是否完备），最简单的方法可能就是使用同构 $A: V \to \FF^n$, $n = \dim V$ 将问题转移到 $\FF^n$，在 $\FF^n$ 中，所有这些问题都可以通过行约简（研究主元）来回答。
 
-请注意，如果 $\dim V = n$，那么总存在一个同构 $A: V \to \RR^n$.实际上，如果 $\dim V = n$，则存在一组基 $\vv_1, \vv_2, \dots, \vv_n \in V$，并且可以定义一个同构 $A: V \to \RR^n$ 为 $$A \vv_k = \ee_k, \quad k = 1, 2, \dots, n.$$
+请注意，如果 $\dim V = n$，那么总存在一个同构 $A: V \to \FF^n$.~实际上，如果 $\dim V = n$，则存在一组基 $\vv_1, \vv_2, \dots, \vv_n \in V$，并且可以定义一个同构 $A: V \to \FF^n$ 为 $$A \vv_k = \ee_k, \quad k = 1, 2, \dots, n.$$
 
 例如，让我们给出命题~\ref{stmt:02-03-02} 和 3.5 的两个推论如下：
 
@@ -546,15 +548,15 @@ $$\begin{pmatrix} 1 & 2 & 1 \\ 3 & 7 & 3 \\ 2 & 3 & 4 \end{pmatrix},\quad \begin
 有限维向量空间 $V$ 中的任何线性无关系统不能包含超过 $\dim V$ 个向量。
 \end{proposition}
 
-\begin{proof} 设 $\vv_1, \vv_2, \dots, \vv_m \in V$ 是$V$ 中线性无关系统，令  $A: V \to \RR^n$为一个同构 。那么 $A \vv_1, A \vv_2, \dots, A \vv_m$ 是 $\RR^n$ 中的线性无关系统，根据命题~\ref{stmt:02-03-02}， $m \le n$.\end{proof}
+\begin{proof} 设 $\vv_1, \vv_2, \dots, \vv_m \in V$ 是$V$ 中线性无关系统，令 $A: V \to \FF^n$ 为一个同构。那么 $A \vv_1, A \vv_2, \dots, A \vv_m$ 是 $\FF^n$ 中的线性无关系统，根据命题~\ref{stmt:02-03-02}， $m \le n$.\end{proof}
 
 
 \begin{proposition}\label{stmt:02-05-03}
 有限维向量空间$V$ 中的任何生成系统必须至少有 $\dim V$ 个向量。
 \end{proposition}
 
-\begin{proof} 设 $\vv_1, \vv_2, \dots, \vv_m \in V$ 是 $V$ 中的完备系统，令  $A: V \to \RR^n$为一个同构 。
-那么 $A \vv_1, A \vv_2, \dots, A \vv_m$ 是 $\RR^n$ 中的完备系统，根据命题~\ref{stmt:02-03-05}， $m \geq n$.\end{proof}
+\begin{proof} 设 $\vv_1, \vv_2, \dots, \vv_m \in V$ 是 $V$ 中的完备系统，令 $A: V \to \FF^n$ 为一个同构。
+那么 $A \vv_1, A \vv_2, \dots, A \vv_m$ 是 $\FF^n$ 中的完备系统，根据命题~\ref{stmt:02-03-05}， $m \geq n$.\end{proof}
 
 
 %命题 3.1 的陈述 2 暗示 $A$ 的阶梯形在每一行都有一个主元。由于主元数量不能超过列的数量，所以 $m \ge n$. ~
@@ -918,14 +920,14 @@ $$A^T \xx = \oo$$
 
 然后，新矩阵的非零行构成一组基。我们可以按任何我们想要的顺序排列它们，因为作为基的性质不依赖于顺序。
 
-假设现在我们有线性无关向量 $\vv_1, \vv_2, \dots, \vv_r$, $\vv_k \in \FF^n$. ~考虑以 $\vv_1^T, \vv_2^T, \dots, \vv_r^T$ 为行的矩阵 $A$，并执行行运算得到阶梯形 $A_e$. ~正如我们上面所讨论的，$A_e$ 的行可以很容易地补全为 $\RR^n$ 中的基；
+假设现在我们有线性无关向量 $\vv_1, \vv_2, \dots, \vv_r$, $\vv_k \in \FF^n$. ~考虑以 $\vv_1^T, \vv_2^T, \dots, \vv_r^T$ 为行的矩阵 $A$，并执行行运算得到阶梯形 $A_e$. ~正如我们上面所讨论的，$A_e$ 的行可以很容易地补全为 $\FF^n$ 中的基；
 结果是，能够补全 $A_e$ 的行使其成为一组基的向量，同样能够补全原始向量 $\vv_1, \vv_2, \dots, \vv_r$ 为一组基。
 
 为了证明这一点，设向量 $\vv_{r+1}, \dots, \vv_n$ 补全了 $A_e$ 的行，使其在 $\FF^n$ 中成为一组基。然后，如果我们向矩阵 $A_e$ 添加行 $\vv_{r+1}^T, \dots, \vv_n^T$，我们会得到一个可逆矩阵。称此矩阵为 $\widetilde{A}_e$，并设 $\widetilde{A}$ 是通过添加行 $\vv_{r+1}^T, \dots, \vv_n^T$ 从 $A$ 得到的矩阵。矩阵 $\widetilde{A}_e$ 可以通过行运算从 $\widetilde{A}$ 得到，所以
 $$
 \widetilde{A}_e = E \widetilde{A},
 $$
-其中 $E$ 是相应初等矩阵的乘积。那么 $\widetilde{A} = E^{-1}\widetilde{A_e}$，并且 $\widetilde{A}$ 作为可逆矩阵的乘积，也是可逆的。
+其中 $E$ 是相应初等矩阵的乘积。那么 $\widetilde{A} = E^{-1}\widetilde{A}_e$，并且 $\widetilde{A}$ 作为可逆矩阵的乘积，也是可逆的。
 
 但这表示 $\widetilde{A}$ 的行在 $\FF^n$ 中构成一组基，这正是我们所需要的。
 

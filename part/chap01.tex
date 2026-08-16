@@ -215,14 +215,15 @@ $$ p = a_0 \ee_0 + a_1 \ee_1 + \dots + a_n \ee_n .$$
 \end{example}
 
 \begin{remark}\label{stmt:01-02-04}
-如果一个向量空间 $V$ 拥有基 $\vv_1, \vv_2, \dots, \vv_n$，那么任何向量 $\vv$ 都可以由其在分解 $\vv = \sum_{k=1}^n \alpha_k \vv_k$ 中的系数唯一确定
-\footnote{这是一个非常重要的注记，将在本书中贯穿使用。它允许我们将任何关于标准列空间 $\FF^n$ 的陈述转化为关于具有基 $\vv_1, \vv_2, \dots, \vv_n$ 的向量空间 $V$ 的陈述。}。
+如果一个向量空间 $V$ 拥有基 $\vv_1, \vv_2, \dots, \vv_n$，那么任何向量 $\vv$ 都可以由其在分解 $\vv = \sum_{k=1}^n \alpha_k \vv_k$ 中的系数唯一确定。
 因此，如果我们把系数 $\alpha_k$ 堆叠成一个列向量，我们就可以像处理列向量一样处理它们，即像处理 $\FF^n$ 的元素一样（同样，这里的 $\FF$ 是 $\RR$ 或 $\CC$，但所有内容也都适用于抽象域 $\FF$）。
-\end{remark}
 
 具体来说，如果 $\vv = \sum_{k=1}^n \alpha_k \vv_k$ 且 $\ww = \sum_{k=1}^n \beta_k \vv_k$，那么
 $$ \vv + \ww = \sum_{k=1}^n \alpha_k \vv_k + \sum_{k=1}^n \beta_k \vv_k = \sum_{k=1}^n (\alpha_k + \beta_k) \vv_k. $$
 也就是说，要得到和的坐标列，只需将各个向量的坐标列相加。类似地，要得到 $\alpha \vv$ 的坐标，只需将 $\vv$ 的坐标列乘以 $\alpha$.~
+
+这是一个非常重要的注记，将在本书中贯穿使用。它允许我们将任何关于标准列空间 $\FF^n$ 的陈述转化为关于具有基 $\vv_1, \vv_2, \dots, \vv_n$ 的向量空间 $V$ 的陈述。
+\end{remark}
 
 
 
@@ -459,7 +460,7 @@ $$
 回忆一下，$A$ 的第 $k$ 列是向量 $\aaa_k$，即 $$\aaa_k = \begin{pmatrix} a_{1,k} \\ a_{2,k} \\ \vdots \\ a_{m,k} \end{pmatrix}.$$
 那么，如果我们希望 $A \xx = T(\xx)$，我们得到
 $$
-A \xx = \sum_{k=1}^n x_k \aaa_k = x_1 \begin{pmatrix} a_{1,1} \\ a_{2,1} \\ \vdots \\ a_{m,1} \end{pmatrix} + x_2 \begin{pmatrix} a_{1,2} \\ a_{2,2} \\ \vdots \\ a_{m,2} \end{pmatrix} + \dots + x_n \begin{pmatrix} a_{1,n} \\ a_{2,n} \\ \vdots \\ a_{m,n} .\end{pmatrix}
+A \xx = \sum_{k=1}^n x_k \aaa_k = x_1 \begin{pmatrix} a_{1,1} \\ a_{2,1} \\ \vdots \\ a_{m,1} \end{pmatrix} + x_2 \begin{pmatrix} a_{1,2} \\ a_{2,2} \\ \vdots \\ a_{m,2} \end{pmatrix} + \dots + x_n \begin{pmatrix} a_{1,n} \\ a_{2,n} \\ \vdots \\ a_{m,n}\end{pmatrix}.
 $$
 所以，矩阵-向量乘法应该通过以下\textbf{按列坐标规则}(column by coordinating rule)执行：
 $$\fbox{分别将矩阵的每一列乘以向量的相应坐标。}$$
@@ -858,7 +859,7 @@ $$R_\gamma = \begin{pmatrix} \cos \gamma & -\sin \gamma \\ \sin \gamma & \cos \g
 4. 行向量 $(1, 1)$ 是右可逆但不是左可逆的。列向量 $(1/2, 1/2)^T$ 是一个可能的右逆。
 
 \begin{remark}\label{stmt:01-06-02}
-可逆矩阵\textbf{必须}是方阵（之后会证明）。而且，如果一个方阵 $A$ 既有左逆又有右逆，那么它就是可逆的。所以，只需检验 $A A^{-1} = I$ 或 $A^{-1} A = I$ 中的一个即可。
+可逆矩阵\textbf{必须}是方阵（之后会证明）。而且，如果一个方阵 $A$ 有左逆或右逆中的任一个，那么它就是可逆的。所以，只需检验 $A A^{-1} = I$ 或 $A^{-1} A = I$ 中的一个即可。
 \end{remark}
 
 重申，这个事实将在后面证明\footnote{译者注：见于本书第~\ref{chap:02}~章第~\ref{sec:02-03}~节}。在此之前，我们不会使用它。我在这里呈现它只是为了阻止学生尝试错误的证明方向。

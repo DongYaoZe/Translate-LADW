@@ -1957,17 +1957,18 @@ $$ \begin{vmatrix} 1-\lambda & 3 & 3 \\ -3 & -5-\lambda & -3 \\ 0 & -2-\lambda &
 这是一个平面，基向量可选为 $\vv_2 = (1, -1, 0)^T$ 和 $\vv_3 = (1, 0, -1)^T$.~
 
 1.3. 解：
-特征多项式：
-$$ \begin{vmatrix} \cos \alpha - \lambda & -\sin \alpha \\ \sin \alpha & \cos \alpha - \lambda \end{vmatrix} = (\cos \alpha - \lambda)^2 + \sin^2 \alpha = \lambda^2 - 2\lambda \cos \alpha + (\cos^2 \alpha + \sin^2 \alpha) = \lambda^2 - 2\lambda \cos \alpha + 1 = 0 $$
-使用求根公式：
-$$ \lambda = \frac{2\cos \alpha \pm \sqrt{4\cos^2 \alpha - 4}}{2} = \cos \alpha \pm \sqrt{-\sin^2 \alpha} = \cos \alpha \pm \ii \sin \alpha = e^{\pm \ii \alpha} $$
-特征向量：
-对于 $\lambda_1 = \cos \alpha + \ii \sin \alpha$：
-$$ \begin{pmatrix} -\ii \sin \alpha & -\sin \alpha \\ \sin \alpha & -\ii \sin \alpha \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \oo \implies -\ii x - y = 0 \implies y = -\ii x $$
-取 $\vv_1 = (1, -\ii )^T$.~
-对于 $\lambda_2 = \cos \alpha - \ii  \sin \alpha$：
-同理可得 $\vv_2 = (1, \ii )^T$.~
+特征方程为
+$$ \begin{vmatrix} \cos \alpha - \lambda & -\sin \alpha \\ \sin \alpha & \cos \alpha - \lambda \end{vmatrix}
+= \lambda^2 - 2\lambda\cos\alpha + 1=0,$$
+因此特征值为
+$$\lambda_1=e^{\ii\alpha}=\cos\alpha+\ii\sin\alpha,\qquad
+\lambda_2=e^{-\ii\alpha}=\cos\alpha-\ii\sin\alpha.$$
 
+若 $\sin\alpha\neq0$，对于 $\lambda_1$，方程
+$$\begin{pmatrix}-\ii\sin\alpha&-\sin\alpha\\ \sin\alpha&-\ii\sin\alpha\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=\oo$$
+给出 $y=-\ii x$，故可取特征向量 $\vv_1=(1,-\ii)^T$.~类似地，对 $\lambda_2$ 可取 $\vv_2=(1,\ii)^T$.
+
+还需单独处理 $\sin\alpha=0$ 的退化情形。此时 $\alpha=k\pi$：若 $\alpha=2k\pi$，则 $R_\alpha=I$，唯一特征值为 $1$（代数重数 2），每个非零向量都是特征向量；若 $\alpha=(2k+1)\pi$，则 $R_\alpha=-I$，唯一特征值为 $-1$（代数重数 2），每个非零向量都是特征向量。
 1.4. 解：
 这些都是三角矩阵（上三角或下三角）。特征值即为对角线元素。\\
 1. $p(\lambda) = (1-\lambda)(2-\lambda)(-2-\lambda)(3-\lambda)$.~特征值：$1, 2, -2, 3$.~\\
@@ -3606,13 +3607,21 @@ $$ |\det A| = |\det U| \cdot |\det |A||. $$
 \textbf{e) 错误。} 它们等于特征值的\textbf{绝对值}。例如 $A = -I$，特征值 -1，奇异值 1.（若 $A$ 半正定，则命题成立）。
 
 3.8. 证明：
-设 $\lambda \neq 0$ 是 $A^*A$ 的特征值，对应特征向量 $\vv$. 即 $A^*A\vv = \lambda \vv$.
-左乘 $A$: $A(A^*A\vv) = A(\lambda \vv) \implies (AA^*)(A\vv) = \lambda (A\vv)$.
-由于 $\lambda \neq 0, \vv \neq \oo$，且 $A^*A\vv = \lambda \vv \neq \oo$，这意味着 $A\vv \neq \oo$.
-所以 $A\vv$ 是 $AA^*$ 的特征向量，特征值为 $\lambda$.
-同理可证 $AA^*$ 的非零特征值也是 $A^*A$ 的。
-零特征值的重数相同当且仅当 $A$ 是方阵 ($m=n$)。因为特征值总数分别为 $n$ 和 $m$，非零个数均为 $r = \rank(A)$，所以零特征值个数分别为 $n-r$ 和 $m-r$.
+设 $\lambda\neq0$.~记
+$$E_\lambda(A^*A)=\{\vv:A^*A\vv=\lambda\vv\},\qquad
+E_\lambda(AA^*)=\{\ww:AA^*\ww=\lambda\ww\}.$$
+如果 $\vv\in E_\lambda(A^*A)$，那么
+$$AA^*(A\vv)=A(A^*A\vv)=\lambda A\vv.$$
+由于 $\lambda\neq0$，若 $A\vv=\oo$ 则 $A^*A\vv=\oo$，与 $A^*A\vv=\lambda\vv$（$\vv\neq\oo$）矛盾。因此 $A$ 将 $E_\lambda(A^*A)$ 映入 $E_\lambda(AA^*)$。
 
+反过来，$\lambda^{-1}A^*$ 将 $E_\lambda(AA^*)$ 映入 $E_\lambda(A^*A)$，并且这两个映射互为逆：对于 $\vv\in E_\lambda(A^*A)$ 与 $\ww\in E_\lambda(AA^*)$，
+$$\lambda^{-1}A^*(A\vv)=\lambda^{-1}A^*A\vv=\vv,$$
+$$A(\lambda^{-1}A^*\ww)=\lambda^{-1}AA^*\ww=\ww.$$
+所以
+$$A:E_\lambda(A^*A)\longrightarrow E_\lambda(AA^*)$$
+是同构，两个 $\lambda$-特征空间维数相同。又因为 $A^*A$ 和 $AA^*$ 都是自伴随矩阵，二者均可对角化，因此每个特征值的几何重数等于代数重数。故它们的所有非零特征值计入重数完全相同。
+
+若 $r=\rank A$，则 $A^*A$ 和 $AA^*$ 的秩都为 $r$，所以零特征值的重数分别为 $n-r$ 和 $m-r$。因此两者零特征值的重数相同当且仅当 $m=n$.
 3.9.证明：
 最大奇异值 $s = \|A\|$（算子范数）。
 设 $\lambda$ 为任意特征值，$\vv$ 为对应单位特征向量 ($\|\vv\|=1$).
@@ -3659,21 +3668,16 @@ $$ \lambda^2 - \trace(A^*A)\lambda + \det(A^*A) = \lambda^2 - 26\lambda + (153-9
 \textbf{条件数}：$\kappa(A) = s_1 / s_2 = 3\sqrt{2} / 2\sqrt{2} = 1.5$.
 \\
 \textbf{构造例子}：
-要使不等式变为等式，我们需要“最坏情况”。
-根据误差界理论，当 $\bb$ 沿着对应于\textbf{最大}奇异值 $s_1$ 的左奇异向量 $\ww_1$ 方向，且误差 $\Delta \bb$ 沿着对应于\textbf{最小}奇异值 $s_2$ 的左奇异向量 $\ww_2$ 方向时，相对误差被最大程度放大（或者反过来，取决于公式的导数，但标准结论是：输入 $\bb$ 在“最大放大”方向，而输入误差 $\Delta \bb$ 在“最小放大”方向时，解的相对误差并不大；反之，如果 $\bb$ 在“最小放大”方向（解向量 $\xx$ 很大），而 $\Delta \bb$ 在“最大放大”方向（$\Delta \xx$ 很大），则比值最大）。
-让我们仔细检查：$\xx = A^{-1}\bb, \Delta \xx = A^{-1}\Delta \bb$.
-$\|\xx\| \ge (1/s_1) \|\bb\|$，$\|\Delta \xx\| \le (1/s_n) \|\Delta \bb\|$.
-要最大化 $\frac{\|\Delta \xx\|}{\|\xx\|}$，我们需要 $\|\Delta \xx\|$ 尽可能大（即 $\Delta \bb$ 沿 $A^{-1}$ 的最大放大方向，即对应 $A$ 的最小奇异值 $s_n$ 的方向 $\ww_n$），同时 $\|\xx\|$ 尽可能小（即 $\bb$ 沿 $A^{-1}$ 的最小放大方向，即对应 $A$ 的最大奇异值 $s_1$ 的方向 $\ww_1$）。
+要使相对误差估计取到等号，应令 $\bb$ 沿对应最大奇异值 $s_1$ 的左奇异向量方向，使 $\|A^{-1}\bb\|/\|\bb\|$ 取得最小值 $1/s_1$；同时令 $\Delta\bb$ 沿对应最小奇异值 $s_2$ 的左奇异向量方向，使 $\|A^{-1}\Delta\bb\|/\|\Delta\bb\|$ 取得最大值 $1/s_2$。
+
+计算 $A^*A$ 的单位特征向量（右奇异向量）：
+$$\vv_1=\frac{1}{\sqrt{10}}(3,1)^T,\qquad \vv_2=\frac{1}{\sqrt{10}}(1,-3)^T.$$
+相应的单位左奇异向量为
+$$\ww_1=\frac{A\vv_1}{s_1}=\frac{1}{\sqrt5}(2,1)^T,\qquad
+\ww_2=\frac{A\vv_2}{s_2}=\frac{1}{\sqrt5}(1,-2)^T.$$
 \\
-计算 $A^*A$ 的特征向量（右奇异向量 $\vv$）：
-$\lambda_1 = 18$: $\begin{pmatrix} -1 & 3 \\ 3 & -9 \end{pmatrix} \implies \vv_1 \propto (3, 1)^T$.
-$\lambda_2 = 8$: $\vv_2 \propto (1, -3)^T$ (正交于 $\vv_1$).
-计算左奇异向量 $\ww_k$ (即 $A\vv_k$ 的方向)：
-$A\vv_1 = \begin{pmatrix} 4 & 0 \\ 1 & 3 \end{pmatrix} \begin{pmatrix} 3 \\ 1 \end{pmatrix} = \begin{pmatrix} 12 \\ 6 \end{pmatrix} = 6 \begin{pmatrix} 2 \\ 1 \end{pmatrix}$. 归一化 $\ww_1 = \frac{1}{\sqrt{5}}(2, 1)^T$.
-$A\vv_2 = \begin{pmatrix} 4 & 0 \\ 1 & 3 \end{pmatrix} \begin{pmatrix} 1 \\ -3 \end{pmatrix} = \begin{pmatrix} 4 \\ -8 \end{pmatrix} = 4 \begin{pmatrix} 1 \\ -2 \end{pmatrix}$. 归一化 $\ww_2 = \frac{1}{\sqrt{5}}(1, -2)^T$.
-\\
-选取 $\bb = \ww_1 = (2, 1)^T$ (对应最大奇异值)，
-选取 $\Delta \bb = \epsilon \ww_2 = \epsilon (1, -2)^T$ (对应最小奇异值).
+选取 $\bb = \ww_1 = \frac{1}{\sqrt{5}}(2, 1)^T$（对应最大奇异值）。
+选取 $\Delta \bb = \epsilon \ww_2 = \frac{\epsilon}{\sqrt{5}}(1, -2)^T$（对应最小奇异值）。
 此时 $\xx = s_1^{-1} \vv_1$, $\|\xx\| = 1/s_1$.
 $\Delta \xx = s_2^{-1} \epsilon \vv_2$, $\|\Delta \xx\| = \epsilon/s_2$.
 LHS $= \frac{\epsilon/s_2}{1/s_1} = \epsilon \frac{s_1}{s_2}$.
@@ -3739,25 +3743,33 @@ $$ A^+ = V \Sigma^+ W^*, $$
 $$ (\Sigma^+)_{kk} = \begin{cases} 1/s_k & \text{如果 } s_k \neq 0 \\ 0 & \text{如果 } s_k = 0 \end{cases}. $$
 
 4.6. 证明：
-我们使用 SVD 代入证明第一个等式（第二个类似）。
-设 $A = W \Sigma V^*$（这里使用全 SVD 或约简 SVD 均可，使用约简 SVD 更直观，设 $r$ 为秩）。
-$A^*A = V \Sigma^2 V^*$. (注意 $W^*W = I$).
-则 $A^*A + \varepsilon I = V (\Sigma^2 + \varepsilon I) V^*$ (利用 $V$ 的酉性质 $V I V^* = I$).
-求逆：
-$$ (A^*A + \varepsilon I)^{-1} = V (\Sigma^2 + \varepsilon I)^{-1} V^*. $$
-右乘 $A^* = V \Sigma W^*$:
-$$ (A^*A + \varepsilon I)^{-1} A^* = V (\Sigma^2 + \varepsilon I)^{-1} V^* V \Sigma W^* = V [(\Sigma^2 + \varepsilon I)^{-1} \Sigma] W^*. $$
-中间的对角矩阵 $(\Sigma^2 + \varepsilon I)^{-1} \Sigma$ 的第 $k$ 个对角元素为：
-$$ \frac{s_k}{s_k^2 + \varepsilon}. $$
-当 $\varepsilon \to 0^+$ 时：\\
-如果 $s_k \neq 0$，该项趋于 $\frac{s_k}{s_k^2} = \frac{1}{s_k}$.\\
-如果 $s_k = 0$，该项始终为 $\frac{0}{0 + \varepsilon} = 0$，极限为 0.\\
-这正是 $\Sigma^+$ 的定义。
-所以，
-$$ \lim_{\varepsilon \to 0^+} V [(\Sigma^2 + \varepsilon I)^{-1} \Sigma] W^* = V \Sigma^+ W^* = A^+. $$
-得证。
+使用完整奇异值分解
+$$A=W\Sigma V^*,$$
+其中 $W$ 是 $m\times m$ 酉矩阵，$V$ 是 $n\times n$ 酉矩阵，$\Sigma$ 是 $m\times n$ 的“对角”矩阵。于是
+$$A^*A=V\Sigma^*\Sigma V^*,\qquad A^*=V\Sigma^*W^*.$$
+因此
+\begin{align*}
+(A^*A+\varepsilon I_n)^{-1}A^*
+&=V(\Sigma^*\Sigma+\varepsilon I_n)^{-1}V^*V\Sigma^*W^*\\
+&=V(\Sigma^*\Sigma+\varepsilon I_n)^{-1}\Sigma^*W^*.
+\end{align*}
+中间的 $n\times m$ 矩阵在第 $k$ 个非零奇异方向上的系数为
+$$\frac{s_k}{s_k^2+\varepsilon},$$
+当 $\varepsilon\to0^+$ 时趋于 $1/s_k$；在零奇异方向上该系数恒为 $0$。所以
+$$\lim_{\varepsilon\to0^+}(A^*A+\varepsilon I_n)^{-1}A^*
+=V\Sigma^+W^*=A^+.$$
 
-
+第二个极限完全类似。由
+$$AA^*=W\Sigma\Sigma^*W^*$$
+可得
+\begin{align*}
+A^*(AA^*+\varepsilon I_m)^{-1}
+&=V\Sigma^*W^*W(\Sigma\Sigma^*+\varepsilon I_m)^{-1}W^*\\
+&=V\Sigma^*(\Sigma\Sigma^*+\varepsilon I_m)^{-1}W^*.
+\end{align*}
+其非零奇异方向上的系数同样为 $s_k/(s_k^2+\varepsilon)$，零奇异方向上为 $0$，故
+$$\lim_{\varepsilon\to0^+}A^*(AA^*+\varepsilon I_m)^{-1}=V\Sigma^+W^*=A^+.$$
+因此两个 Tikhonov 正则化极限都等于摩尔--彭罗斯逆 $A^+$.
 \vspace{5ex}
 
 6.1. 解：
@@ -3852,7 +3864,7 @@ $M(1) = I \cdot I = I$.~
 \begin{exer}
 
 1.1. 解：
-设矩阵为 $A$.~根据定义 $L(\xx, \yy) = (A\xx, \yy) = \sum_{j,k=1}^3 A_{jk} x_j y_k$.~
+设矩阵为 $A$.~根据定义 $L(\xx, \yy) = (A\xx, \yy) = \sum_{j,k=1}^3 A_{jk} x_k y_j$.~
 按本章定义
 $$L(\xx,\yy)=\sum_{j,k}a_{j,k}x_k y_j=(A\xx,\yy),$$
 所以项 $x_k y_j$ 的系数才是 $a_{j,k}$；也就是说，$y_j$ 固定时，对各个 $x_k$ 的系数组成矩阵的第 $j$ 行。
@@ -3865,7 +3877,7 @@ $$ A = \begin{pmatrix} 1 & -5 & 8 \\ 2 & 2 & 19 \\ 14 & -3 & -2 \end{pmatrix}. $
 设 $\xx = (x_1, x_2)^T, \yy = (y_1, y_2)^T$.~
 计算行列式：
 $$ L(\xx, \yy) = \det \begin{pmatrix} x_1 & y_1 \\ x_2 & y_2 \end{pmatrix} = x_1 y_2 - x_2 y_1. $$
-我们需要找到矩阵 $A$ 使得 $L(\xx, \yy) = \sum A_{jk} x_j y_k$.~\\
+我们需要找到矩阵 $A$ 使得 $L(\xx, \yy) = \sum A_{jk} x_k y_j$.~\\
 由 $L(\xx,\yy)=\sum a_{j,k}x_k y_j$，$x_1y_2$ 的系数 $1$ 是 $a_{2,1}$，而 $x_2y_1$ 的系数 $-1$ 是 $a_{1,2}$。因此
 $$ A = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}. $$
 直接核验：$(A\xx,\yy)=-x_2y_1+x_1y_2=\det[\xx,\yy]$。
@@ -4007,59 +4019,46 @@ $$ \begin{pmatrix} 1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{pmatrix} \to x_1 + x
 \vspace{5ex}
 
 4.1. 解：
-\textbf{检查 A 的正定性}：
-计算顺序主子式（Leading Principal Minors）：
-1. $\det A_1 = 4 > 0$.
-2. $\det A_2 = \begin{vmatrix} 4 & 2 \\ 2 & 3 \end{vmatrix} = 12 - 4 = 8 > 0$.
-3. $\det A_3 = \det A = 4(6-1) - 2(4+1) + 1(-2-3) = 20 - 10 - 5 = 5 > 0$.
-因为所有顺序主子式均为正，所以 \textbf{$A$ 是正定的}。
-\\
-\textbf{检查 B 的正定性}：
-1. $\det B_1 = 3 > 0$.
-2. $\det B_2 = \begin{vmatrix} 3 & -1 \\ -1 & 4 \end{vmatrix} = 12 - 1 = 11 > 0$.
-3. $\det B_3 = \det B = 3(4-4) - (-1)(-1+4) + 2(2-8) = 0 + 3 - 12 = -9 < 0$.
-因为 $\det B < 0$，所以 \textbf{$B$ 不是正定的}（它是不定的）。
-\\
-\textbf{其他矩阵的性质}：
-由于 $A$ 是正定的，其特征值 $\lambda_i > 0$.~
-\\
-$-A$：特征值为 $-\lambda_i < 0$.~所以 \textbf{不是}正定的（它是负定的）。\\
-$A^3$：特征值为 $\lambda_i^3 > 0$.~所以 \textbf{是}正定的。\\
-$A^{-1}$：特征值为 $1/\lambda_i > 0$.~所以 \textbf{是}正定的。
-\\
-接下来涉及 $B$.~计算 $B$ 的逆（如果存在）：
-$\det B = -9 \neq 0$，所以 $B$ 可逆。
-由于 $B$ 的主子式符号为 $(+, +, -)$，根据惯性定理或特征值符号规则，它有负特征值。
-具体来说，$\det B < 0$ 且 trace $B = 8 > 0$，这意味着它至少有一个负特征值和至少一个正特征值。
-因此，$B$ 是不定的，$B^{-1}$ 也是不定的（特征值是 $B$ 特征值的倒数，符号不变）。\\
-$A+B^{-1}$：
-    我们需要具体计算。
-    $B^{-1} = \frac{1}{-9} \text{adj}(B) = \frac{-1}{9} \begin{pmatrix} 0 & -3 & -6 \\ -3 & -1 & 4 \\ -6 & 4 & 11 \end{pmatrix}$.
-    $A + B^{-1} = \begin{pmatrix} 4 & 2 & 1 \\ 2 & 3 & -1 \\ 1 & -1 & 2 \end{pmatrix} + \begin{pmatrix} 0 & 1/3 & 2/3 \\ 1/3 & 1/9 & -4/9 \\ 2/3 & -4/9 & -11/9 \end{pmatrix}$.
-    这计算比较繁琐，我们检查 $9(A + B^{-1})$ 的主子式：
-    $M = 9A + 9B^{-1} = \begin{pmatrix} 36 & 18 & 9 \\ 18 & 27 & -9 \\ 9 & -9 & 18 \end{pmatrix} + \begin{pmatrix} 0 & 3 & 6 \\ 3 & 1 & -4 \\ 6 & -4 & -11 \end{pmatrix} = \begin{pmatrix} 36 & 21 & 15 \\ 21 & 28 & -13 \\ 15 & -13 & 7 \end{pmatrix}$.
-    $M_1 = 36 > 0$.
-    $M_2 = 36(28) - 21^2 = 1008 - 441 = 567 > 0$.
-    $M_3 = \det M$.
-    显然 $\det M < 0$.
-    所以 $A + B^{-1}$ \textbf{不是}正定的。
-\\
-$A+B$：
-    $S = A+B = \begin{pmatrix} 7 & 1 & 3 \\ 1 & 7 & -3 \\ 3 & -3 & 3 \end{pmatrix}$.
-    $S_1 = 7 > 0$.
-    $S_2 = 49 - 1 = 48 > 0$.
-    $S_3 = 7(21-9) - 1(3+9) + 3(-3-21) = 84 - 12 - 72 = 0$.
-    为确认其确为半正定而不仅仅是奇异，计算特征多项式可得
-    $$\det(\lambda I-S)=\lambda(\lambda-8)(\lambda-9).$$
-    因此特征值为 $0,8,9$，所以它\textbf{不是}正定的，但确实是半正定的。
-\\
- $A-B$：
-    $D = A-B = \begin{pmatrix} 1 & 3 & -1 \\ 3 & -1 & 1 \\ -1 & 1 & 1 \end{pmatrix}$.
-    $D_1 = 1 > 0$.
-    $D_2 = -1 - 9 = -10 < 0$.
-    所以 \textbf{不是} 正定的。
+\textbf{先检查 $A$：}
+顺序主子式为
+$$\det A_1=4>0,\qquad
+\det A_2=\begin{vmatrix}4&2\\2&3\end{vmatrix}=8>0,$$
+$$\det A=4(6-1)-2(4+1)+1(-2-3)=5>0.$$
+由 Sylvester 判据，$A$ 正定。
 
+\textbf{再检查 $B$：}
+$$\det B_1=3>0,\qquad
+\det B_2=\begin{vmatrix}3&-1\\-1&4\end{vmatrix}=11>0,$$
+而
+$$\det B
+=3(8-4)-(-1)(-2+4)+2(2-8)
+=12+2-12=2>0.$$
+所以 $B$ 也正定。
 
+因此其余矩阵可判断如下：
+
+1. $-A$ 的特征值全为负，因此 $-A$ 负定，故不正定。
+
+2. $A^3$ 的特征值为 $\lambda_i^3>0$，所以 $A^3$ 正定。
+
+3. $A^{-1}$ 的特征值为 $1/\lambda_i>0$，所以 $A^{-1}$ 正定。
+
+4. $B^{-1}$ 也正定。事实上
+$$B^{-1}=\begin{pmatrix}2&-1&-3\\-1&1&2\\-3&2&11/2\end{pmatrix}.$$
+于是 $A+B^{-1}$ 是两个正定矩阵之和，因此正定。直接核验时，
+$$A+B^{-1}=\begin{pmatrix}6&1&-2\\1&4&1\\-2&1&15/2\end{pmatrix},$$
+其顺序主子式为
+$$6,\qquad23,\qquad\frac{293}{2},$$
+也全部为正。
+
+5. $A+B$ 是两个正定矩阵之和，因此正定。其顺序主子式为
+$$7,\qquad48,\qquad48.$$
+
+6. 对于
+$$A-B=\begin{pmatrix}1&3&-1\\3&-1&1\\-1&1&0\end{pmatrix},$$
+其左上 $2\times2$ 主子式的行列式为
+$$\begin{vmatrix}1&3\\3&-1\end{vmatrix}=-10<0.$$
+因此二次型限制在前两个坐标组成的子空间上已经是不定的，故 $A-B$ 不定，特别地它不是正定矩阵。
 4.2. 解： a)\textbf{正确}。$A$ 的特征值 $\lambda_i > 0 \implies \lambda_i^5 > 0$.~
 \\
 b) \textbf{错误}。$A$ 负定 $\implies \lambda_i < 0$.~但 $A^8$ 的特征值 $\lambda_i^8$ 总是正的，所以 $A^8$ 是正定的。

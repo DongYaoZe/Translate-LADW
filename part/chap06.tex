@@ -68,7 +68,7 @@
 如果我们能证明矩阵 $A_1$ 只有实数特征值，那么我们就完成了证明。确实，根据归纳假设，存在 $E = \uu_1^\perp$ 中的一组标准正交基 $\{\uu_2, \dots, \uu_n\}$，使得 $A_1$ 在该基下的矩阵是上三角矩阵，因此 $A$ 在 $\{\uu_1, \uu_2, \dots, \uu_n\}$ 基下的矩阵也是上三角矩阵。
 
 为了证明 $A_1$ 只有实数特征值，让我们注意到
-$$\det(A - \lambda I) = ( \lambda_1 - \lambda ) \det( A_1 - \lambda )$$
+$$\det(A - \lambda I) = ( \lambda_1 - \lambda ) \det( A_1 - \lambda I )$$
 （例如，通过第一行的代数余子式展开），所以 $A_1$ 的任何特征值也是 $A$ 的特征值。但是 $A$ 只有实数特征值！\end{proof}
 
 \begin{problemset}
@@ -207,7 +207,7 @@ $$\|N\xx\| = \|N^*\xx\| \quad \forall \xx \in X.$$
 (N^*N\xx, \yy) = (N\xx, N\yy) =&\   \frac{1}{4} \sum_{\alpha = \pm 1, \pm i} \alpha \|N\xx + \alpha N\yy\|^2  \\
 =&\ \frac{1}{4} \sum_{\alpha = \pm 1, \pm i} \alpha \|N(\xx + \alpha \yy)\|^2   \\
 =&\  \frac{1}{4} \sum_{\alpha = \pm 1, \pm i} \alpha \|N^*(\xx + \alpha \yy)\|^2  \\
-=&\  \frac{1}{4} \sum_{\alpha = \pm 1, \pm i} \alpha \|N^* \xx + \alpha N^* \yy)\|^2  \\
+=&\  \frac{1}{4} \sum_{\alpha = \pm 1, \pm i} \alpha \|N^* \xx + \alpha N^* \yy\|^2  \\
 =&\ (N^*\xx, N^*\yy) = (NN^*\xx, \yy).
  \end{split}
 \end{equation}
@@ -320,7 +320,7 @@ $$(A\xx, \xx) \geq 0 \quad \forall \xx \in X.$$
 
 因此，在上面的基 $\{\vv_1, \vv_2, \dots, \vv_n\}$ 下，$C$ 的矩阵是对角矩阵 $\diag\{\sqrt{\lambda_1}, \sqrt{\lambda_2}, $ $\dots, \sqrt{\lambda_n}\}$，即 $B = C$.~\end{proof}
 
-\subsection{算子的模 奇异值}\label{sec:06-03-02}
+\subsection{算子的模与极分解}\label{sec:06-03-02}
 考虑算子 $A: X \to Y$.~它的\textbf{埃尔米特平方} $A^*A$ 是作用在 $X$ 上的半正定算子。确实，$$(A^*A)^* = A^*(A^*)^* = A^*A$$
 并且 $$(A^*A\xx, \xx) = (A\xx, A\xx) = \|A\xx\|^2 \geq 0 \quad \forall \xx \in X.$$
 因此，存在（唯一）一个半正定算子 $R = \sqrt{A^*A}$.~这个算子 $R$ 被称为算子 $A$ 的\textbf{模}(modulus)，通常记为 $|A|$.~
@@ -351,7 +351,7 @@ $$A = U|A|,$$
 其中 $U$ 是酉算子。\end{theorem}
 
 \begin{remark*}
-酉算子 $U$ 通常不是唯一的。从定理的证明中可以看出，$U$ 仅在 $A$ 可逆时才唯一。
+酉算子 $U$ 通常不是唯一的。从定理的证明中可以看出，$U$ 唯一当且仅当 $A$ 可逆。
 \end{remark*}
 
 \begin{remark*}
@@ -363,8 +363,8 @@ $$A = U|A|,$$
 \begin{proof}[\normalfont\heiti 定理~\ref{stmt:06-03-05} 的证明~\nopunct]考虑向量 $\xx \in \Ran |A|$.~那么向量 $\xx$ 可以表示为 $\xx = |A|\vv$ 对于某个向量 $\vv \in X$.~
 
 定义 $U_0 \xx := A\vv$.~根据命题~\ref{stmt:06-03-03}
-$$\|U_0 \xx\| = \|A\xx\| = \||A|\vv\| = \|\xx\|,$$
-所以看起来 $U$ 是从 $\Ran |A|$ 到 $X$ 的一个等距同构。
+$$\|U_0 \xx\| = \|A\vv\| = \||A|\vv\| = \|\xx\|,$$
+所以 $U_0$ 是从 $\Ran |A|$ 到 $X$ 的一个等距同构。
 
 但首先我们需要证明 $U_0$ 是良好定义的。设 $\vv_1$ 是另一个使得 $\xx = |A|\vv_1$ 的向量。但是 $\xx = |A|\vv = |A|\vv_1$ 意味着 $\vv - \vv_1 \in \Ker |A| = \Ker A$（参见推论~\ref{stmt:06-03-04}），所以 $A\vv = A\vv_1$，这意味着 $U_0 \xx$ 是良好定义的。
 
@@ -720,10 +720,14 @@ $$A\xx_0 = \widetilde{W} \widetilde{\Sigma} \widetilde{V}^* (\widetilde{V} \wide
 
 $A\xx = P_{\Ran A} \bb$ 的一般解由
 $$\xx = \xx_0 + \yy,\quad \yy \in \Ker A$$
-给出，因此 $\xx_0$ 确实是 $A\xx = P_{\Ran A} \bb$ 的唯一最小范数解，或者等价地，是 $A\xx = \bb$ 的最小范数的最小二乘解。
+给出。又因为
+$$\xx_0 \in \Ran \widetilde{V} = \Ran A^* = (\Ker A)^\perp,$$
+所以 $\xx_0 \perp \yy$。\footnote{译者注：2026-04-30 英文恢复文本此处把 $\Ran\widetilde V$ 误写成 $\Ran\widetilde W$；按约简奇异值分解的维数以及习题~\ref{ex:06-04-04}，应为 $\Ran\widetilde V=\Ran A^*$.} 因此由勾股定理，
+$$\|\xx_0+\yy\|^2=\|\xx_0\|^2+\|\yy\|^2\geq\|\xx_0\|^2,$$
+且等号仅当 $\yy=\oo$ 时成立。因此 $\xx_0$ 确实是 $A\xx = P_{\Ran A} \bb$ 的唯一最小范数解，或者等价地，是 $A\xx = \bb$ 的最小范数最小二乘解。
 
 \begin{definition}\label{stmt:06-04-01}
-算子 $A^+ := \widetilde{V} \widetilde{\Sigma}^{-1} \widetilde{W}^*$，其中 $A = \widetilde{W} \widetilde{\Sigma} \widetilde{V}^*$ 是 $A$ 的\textbf{约简}奇异值分解，称为 $A$ 的\textbf{摩尔-彭罗斯逆}\index{moerpenroseni@摩尔-彭罗斯逆} （或\textbf{摩尔-彭罗斯伪逆}）(Moore–Penrose (pseudo)inverse)。换句话说，\textbf{摩尔-彭罗斯逆}是给出 $A\xx = \bb$ 的唯一最小二乘解的算子。
+算子 $A^+ := \widetilde{V} \widetilde{\Sigma}^{-1} \widetilde{W}^*$，其中 $A = \widetilde{W} \widetilde{\Sigma} \widetilde{V}^*$ 是 $A$ 的\textbf{约简}奇异值分解，称为 $A$ 的\textbf{摩尔-彭罗斯逆}\index{moerpenroseni@摩尔-彭罗斯逆} （或\textbf{摩尔-彭罗斯伪逆}）(Moore–Penrose (pseudo)inverse)。换句话说，\textbf{摩尔-彭罗斯逆}是给出 $A\xx = \bb$ 的唯一的最小范数最小二乘解的算子。\footnote{译者注：2026-04-30 英文恢复文本此处写作“unique least square solution”；但本节前文已说明一般最小二乘解并不唯一，唯一的是最小范数最小二乘解，因此据数学含义补出“最小范数”。}
 \end{definition}
 
 \begin{remark}\label{stmt:06-04-02}
@@ -802,9 +806,9 @@ $$R_{\phi_k} = \begin{pmatrix} \cos \phi_k & -\sin \phi_k \\ \sin \phi_k & \cos 
 
 \begin{proof} 我们知道，如果 $p$ 是一个实系数多项式，并且 $\lambda$ 是它的复根，$p(\lambda) = 0$，那么 $\overline{\lambda}$ 也是 $p$ 的根，$p(\overline{\lambda}) = 0$（这可以通过将 $\overline{\lambda}$ 代入 $p(z) = \sum_{k=0}^n a_k z^k$ 来很容易地验证）。
 
-因此，实矩阵 $A$ 的所有复特征值可以配对成 $\lambda_k, \overline{\lambda}_k$.~
+因此，实矩阵 $U$ 的所有复特征值可以配对成 $\lambda_k, \overline{\lambda}_k$.~
 
-我们知道，酉矩阵的特征值绝对值都为 1，所以 $A$ 的所有复特征值都可以写成 $\lambda_k = \cos \alpha_k + \ii \sin \alpha_k$ 和 $\overline{\lambda}_k = \cos \alpha_k - \ii \sin \alpha_k$.~
+我们知道，酉矩阵的特征值绝对值都为 1，所以 $U$ 的所有复特征值都可以写成 $\lambda_k = \cos \alpha_k + \ii \sin \alpha_k$ 和 $\overline{\lambda}_k = \cos \alpha_k - \ii \sin \alpha_k$.~
 
 固定一对复特征值 $\lambda$ 和 $\overline{\lambda}$，设 $\uu \in \CC^n$ 是 $U$ 的特征向量，$U\uu = \lambda \uu$.~那么 $U\overline{\uu} = \overline{\lambda} \overline{\uu}$.~现在，将 $\uu$ 分解为实部和虚部，即定义
 $$\xx := \ReR \uu = \frac{\uu + \overline{\uu}}{2},\quad \yy := \ImI \uu = \frac{\uu - \overline{\uu}}{2\ii}$$
@@ -865,7 +869,7 @@ $$\begin{pmatrix} R_{-\alpha_1} & & & & & \\ & R_{-\alpha_2} & & & & \\ & & \ddo
 $$\begin{pmatrix} R_{\phi_1} & & & & & \\ & R_{\phi_2} & & & & \\ & & \ddots & & & \\ & & & R_{\phi_k} & & \\ & & & & I_r & \\ & & & & & -1 \end{pmatrix},$$
 其中 $r = n - 2k - 1$，并且 $R_{\phi_k}$ 是 $2$ 维旋转矩阵，
 $$R_{\phi_k} = \begin{pmatrix} \cos \phi_k & -\sin \phi_k \\ \sin \phi_k & \cos \phi_k \end{pmatrix},$$
-而 $I_{n-2k}$ 表示 $(n-2k) \times (n-2k)$ 的单位矩阵。
+而 $I_r=I_{n-2k-1}$ 表示 $r \times r$ 的单位矩阵。
 
 我们把证明留给读者作为练习。对定理~\ref{stmt:06-05-01} 证明的修改是很明显的。
 

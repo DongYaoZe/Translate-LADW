@@ -281,6 +281,8 @@ $$\sum_{k=1}^{r-1} c_k (\lambda_k - \lambda_r) \vv_k = \oo.$$
 如果一个算子 $A: V \to V$ 恰好有 $n = \dim V$ 个不同的特征值，那么它是可对角化的。
 \end{corollary}
 
+这个结论虽然非常简单，却非常重要，后文会反复使用。请记住它。
+
 \begin{proof}对于每个特征值 $\lambda_k$，设 $\vv_k$ 是一个相应的特征向量（对每个特征值只选取一个特征向量）。根据定理~\ref{stmt:04-02-02}，系统 $\{\vv_1, \vv_2, \dots, \vv_n\}$ 是线性无关的，并且由于它恰好包含 $n = \dim V$ 个向量，所以它是一组基。\end{proof}
 
 \subsection{子空间的基（又名子空间的直和）}\label{sec:04-02-04}
@@ -356,7 +358,7 @@ $$\vv_k = \sum_{j \in \Lambda_k} c_j \bb_j.$$
 
 \subsection{可对角化判据}\label{sec:04-02-05}
 
-首先，让我们回顾一个要用到的条件。由于对角矩阵 $D = \diag\{\lambda_1, \lambda_2, \dots, \lambda_n\}$ 的特征值（计入重数）恰好是 $\lambda_1, \lambda_2, \dots, \lambda_n$，我们发现，如果一个算子 $A: V \to V$ 是可对角化的，它恰好有 $n = \dim V$ 个特征值（计入重数）。
+首先，让我们回顾可对角化的一个简单必要条件。由于对角矩阵 $D = \diag\{\lambda_1, \lambda_2, \dots, \lambda_n\}$ 的特征值（计入重数）恰好是 $\lambda_1, \lambda_2, \dots, \lambda_n$，我们发现，如果一个算子 $A: V \to V$ 是可对角化的，它恰好有 $n = \dim V$ 个特征值（计入重数）。
 
 下面的定理对实数和复数向量空间都成立（甚至对任意域上的空间也成立）。
 

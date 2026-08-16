@@ -389,12 +389,14 @@ $$(\xx, \vv_1) = \left(\sum_{j=1}^n \alpha_j \vv_j, \vv_1\right) = \sum_{j=1}^n 
 Fourier decomposition)。经典的（非抽象）傅里叶分解处理的是具体的标准正交系统（正弦和余弦，或复指数）。我们将这个公式称为“简化版本”，因为真实的傅里叶分解处理的是无限的标准正交系统。
 
 \begin{remark}\label{stmt:05-02-08}
-标准正交基的重要性在于，如果我们固定了内积空间 $V$ 中的一组标准正交基，我们就可以像处理 $\FF^n$ 中的向量一样处理该基下的坐标。具体来说，正如本书开头所讨论的（参见注记~\ref{stmt:01-02-04}），如果我们有一个具有基 $\vv_1, \vv_2, \dots, \vv_n$ 的向量空间 $V$（在域 $\FF$ 上），那么我们可以通过处理基 $\vv_1, \vv_2, \dots, \vv_n$ 下坐标向量列的标准向量运算（向量加法和标量乘法），以完全相同的方式进行。\footnote{这是一个非常重要的注记，它允许我们将关于标准内积空间 $\FF^n$ 的任何陈述转换到具有标准正交基 $\vv_1, \vv_2, \dots, \vv_n$ 的内积空间。}
-\end{remark}
+标准正交基的重要性在于，如果我们固定了内积空间 $V$ 中的一组标准正交基，我们就可以像处理 $\FF^n$ 中的向量一样处理该基下的坐标。具体来说，正如本书开头所讨论的（参见注记~\ref{stmt:01-02-04}），如果我们有一个具有基 $\vv_1, \vv_2, \dots, \vv_n$ 的向量空间 $V$（在域 $\FF$ 上），那么我们可以通过处理基 $\vv_1, \vv_2, \dots, \vv_n$ 下坐标向量列的标准向量运算（向量加法和标量乘法），以完全相同的方式进行。
 
 如习题~\ref{ex:05-02-03} 所示，如果我们有一内积空间 $V$ 中的\textbf{标准正交}基，我们可以通过取这些坐标向量列并计算这些向量列在 $\CC^n$ 或 $\RR^n$ 中的标准内积来计算 $V$ 中两个向量的内积。
 
 如下文第~\ref{sec:05-03}~节所示，任何有限维内积空间都有一组标准正交基。因此，在有限维情况下，标准内积空间 $\CC^n$（或实数情况下的 $\RR^n$）实质上是唯一的有限维内积空间。
+\end{remark}
+
+这是一个非常重要的注记，它允许我们将关于标准内积空间 $\FF^n$ 的任何陈述转换到具有标准正交基 $\vv_1, \vv_2, \dots, \vv_n$ 的内积空间。
 
 \begin{problemset}
 \item \label{ex:05-02-01} 找出 $\RR^4$ 中所有正交于向量 $(1, 1, 1, 1)^T$ 和 $(1, 2, 3, 4)^T$ 的向量。
@@ -473,7 +475,7 @@ P_E \vv = \sum_{k=1}^r \frac{(\vv, \vv_k)}{\|\vv_k\|^2} \vv_k.
 由公式 \eqref{eq:05-03-01} 可知，正交投影 $P_E$ 是一个线性变换。
 \end{remark}
 
-也可以直接从正交投影的定义和唯一性看出其线性。事实上，容易验证，对于任意向量 $\xx$ 和 $\yy$ 以及常数 $\alpha$ 和 $\beta$，向量 $\alpha \xx + \beta \yy - (\alpha P_E \xx - \beta P_E \yy)$ 与 $E$ 中的任何向量都正交，因此根据定义， $P_E(\alpha \xx + \beta \yy) = \alpha P_E \xx + \beta P_E \yy$.
+也可以直接从正交投影的定义和唯一性看出其线性。事实上，容易验证，对于任意向量 $\xx$ 和 $\yy$ 以及常数 $\alpha$ 和 $\beta$，向量 $\alpha \xx + \beta \yy - (\alpha P_E \xx + \beta P_E \yy)$ 与 $E$ 中的任何向量都正交，因此根据定义，$P_E(\alpha \xx + \beta \yy) = \alpha P_E \xx + \beta P_E \yy$.~\footnote{译者注：2026-04-30 英文恢复文本此处括号内第二项也写成减号，但这与随后得到的线性结论不一致；此处按数学关系改为加号。}
 
 \begin{remark}\label{stmt:05-03-05}
 回忆在 $\CC^n$ 和 $\RR^n$ 中内积的定义，可以从上述公式 \eqref{eq:05-03-01} 得到将 $\CC^n$ (或 $\RR^n$) 中的向量投影到 $E$ 上的正交投影矩阵 $P_E$ ，它由下式给出：
@@ -486,7 +488,7 @@ P_E = \sum_{k=1}^{r} \frac{1}{\| \vv_k \|^2} \vv_k \vv_k^*
 
 \begin{proof}[\normalfont\heiti 命题~\ref{stmt:05-03-03} 的证明~\nopunct]设
 $$\ww := \sum_{k=1}^r \alpha_k \vv_k,\quad \text{其中} \quad \alpha_k = \frac{(\vv, \vv_k)}{\|\vv_k\|^2}.$$
-我们想证明 $\vv - \ww \perp E$.~根据引理~\ref{stmt:05-02-03}，只要证明 $\vv - \ww \perp \vv_k, \quad \forall k = 1, 2, \dots, n$ 即可。计算内积，我们得到对于 $k = 1, 2, \dots, r$，
+我们想证明 $\vv - \ww \perp E$.~根据引理~\ref{stmt:05-02-03}，只要证明 $\vv - \ww \perp \vv_k, \quad \forall k = 1, 2, \dots, r$ 即可。计算内积，我们得到对于 $k = 1, 2, \dots, r$，
 \begin{equation} \notag
 \begin{split}
  (\vv - \ww, \vv_k) =&\ (\vv, \vv_k) - (\ww, \vv_k) = (\vv, \vv_k) - (\sum_{j=1}^r \alpha_j \vv_j, \vv_k)  \\
@@ -643,8 +645,8 @@ $$\|A\xx - \bb\|$$
 
 所以，为了找到最小二乘解，我们只需要解方程 $$A\xx = P_{\Ran A} \bb.$$
 
-如果我们知道 $\Ran A$ 中的一组正交基 $\{\vv_1, \vv_2, \dots, \vv_n\}$，我们可以通过公式
-$$P_{\Ran A} \bb = \sum_{k=1}^n \frac{(\bb, \vv_k)}{\|\vv_k\|^2} \vv_k$$
+如果我们知道 $\Ran A$ 中的一组正交基 $\{\vv_1, \vv_2, \dots, \vv_r\}$，其中 $r=\dim\Ran A=\rank A$，我们可以通过公式
+$$P_{\Ran A} \bb = \sum_{k=1}^r \frac{(\bb, \vv_k)}{\|\vv_k\|^2} \vv_k$$
 来找到向量 $P_{\Ran A} \bb$.~\\
 如果我们只知道 $\Ran A$ 中的一组基，我们需要使用格拉姆-施密特正交化来从它得到一组正交基。
 
@@ -654,7 +656,7 @@ $$P_{\Ran A} \bb = \sum_{k=1}^n \frac{(\bb, \vv_k)}{\|\vv_k\|^2} \vv_k$$
 
 即，$A\xx$ 是正交投影 $P_{\Ran A} \bb$ 当且仅当 $\bb - A\xx \perp \Ran A$（对所有 $\xx$，$A\xx \in \Ran A$）。
 
-如果 $\aaa_1, \aaa_2, \dots, \aaa_n$ 是 $A$ 的列，那么条件 $A \xx \perp \Ran A$ 可以重写为
+如果 $\aaa_1, \aaa_2, \dots, \aaa_n$ 是 $A$ 的列，那么条件 $\bb - A\xx \perp \Ran A$ 可以重写为
 $$\bb - A\xx \perp \aaa_k, \quad \forall k = 1, 2, \dots, n.$$
 这意味着
 $$0 = (\bb - A\xx, \aaa_k) = \aaa_k^*(\bb - A\xx), \quad \forall k = 1, 2, \dots, n.$$
@@ -886,11 +888,11 @@ $$\widetilde{A}\xx = A\xx, \quad \forall \xx \in \Ran A^*.$$
 $$A\xx = AP_{\Ran A^*}\xx = \widetilde{A}P_{\Ran A^*}\xx \quad \forall \xx \in X;$$
 这里使用了 $\xx - P_{\Ran A^*}\xx \in (\Ran A^*)^\perp = \Ker A$ 的事实。因此我们可以写成
 \begin{equation}\label{eq:05-05-01}
-A = \widetilde{A}P_{\Ran A^*} \quad \forall \xx \in X,
+A\xx = \widetilde{A}P_{\Ran A^*}\xx \quad \forall \xx \in X,
 \end{equation}
 或者等价地说，$A = \widetilde{A}P_{\Ran A^*}$.~
 
-还需注意，$\widetilde{A}: \Ran A^* \to \Ran A$ 是一个可逆变换。首先我们注意到 $\Ker \widetilde{A} = \{\oo\}$：如果 $\xx \in \Ran A^*$ 且 $\widetilde{A}\xx = A\xx = \oo$，那么 $\xx \in \Ker A = (\Ran A^*)^\perp$，所以 $\xx \in \Ran A^* \cap (\Ran A^*)^\perp$，因此 $\xx = \oo$.~然后为了证明 $\widetilde{A}$ 是满射的(surjective)，必须确保 $\widetilde{A}$ 是满射的。但这直接从 \eqref{eq:05-05-01} 得出：$$\Ran \widetilde{A} = \widetilde{A}(\Ran A^*) = A P_{\Ran A^*} X = AX = \Ran A.$$
+还需注意，$\widetilde{A}: \Ran A^* \to \Ran A$ 是一个可逆变换。首先我们注意到 $\Ker \widetilde{A} = \{\oo\}$：如果 $\xx \in \Ran A^*$ 且 $\widetilde{A}\xx = A\xx = \oo$，那么 $\xx \in \Ker A = (\Ran A^*)^\perp$，所以 $\xx \in \Ran A^* \cap (\Ran A^*)^\perp$，因此 $\xx = \oo$.~然后，为了证明 $\widetilde{A}$ 可逆，只需证明 $\widetilde{A}$ 是满射的(surjective)。但这直接从 \eqref{eq:05-05-01} 得出：$$\Ran \widetilde{A} = \widetilde{A}(\Ran A^*) = A P_{\Ran A^*} X = AX = \Ran A.$$
 
 同构 $\widetilde{A}$ 有时被称为算子 $A$ 的“本质部分”(essential part)（非标准术语）。
 
@@ -1026,8 +1028,8 @@ $$\|U\xx\|^2 = \|\sum_{k=1}^n c_k \yy_k\|^2 = \sum_{k=1}^n |c_k|^2,$$
 \end{remark*}
 
 
-\begin{proof}[\normalfont\heiti 命题~\ref{stmt:05-06-04} 的证明~\nopunct]设 $\det U = z$.~由于 $\det(U^*) = \det(U)$，见问题 5.1，我们有
-$$|z|^2 = \overline{z} = \det(U^*U) = \det I = 1,$$
+\begin{proof}[\normalfont\heiti 命题~\ref{stmt:05-06-04} 的证明~\nopunct]设 $\det U = z$.~由于 $\det(U^*) = \overline{\det(U)} = \overline z$，见问题 5.1，我们有
+$$|z|^2 = \overline{z}z = \det(U^*U) = \det I = 1,$$
 所以 $|\det U| = |z| = 1$.~陈述 1 证毕。
 
 为了证明陈述 2，我们注意到如果 $U\xx = \lambda \xx$，那么
@@ -1050,11 +1052,16 @@ $$\|U\xx\| = \|\lambda \xx\| = |\lambda|\|\xx\|,$$
 矩阵 $A$ 酉等价于一个对角矩阵当且仅当它具有一组\textbf{正交}（或标准正交）的特征向量基。
 \end{proposition}
 
-\begin{proof}设 $A$ 与对角矩阵 $D$ 酉等价，即 $A = UDU^*$.~设 $B\xx = \lambda \xx$.~那么 $AU\xx = UBU^*U\xx = U B\xx = U(\lambda \xx) = \lambda U\xx$，即 $U\xx$ 是 $A$ 的特征向量。
+\begin{proof}先作一个一般观察。设 $A = UBU^*$，并设 $B\xx = \lambda\xx$.~那么
+$$AU\xx = UBU^*U\xx = UB\xx = U(\lambda\xx) = \lambda U\xx,$$
+即 $U\xx$ 是 $A$ 的特征向量。
 
-所以，设 $A$ 具有由特征向量 $\uu_1, \uu_2, \dots, \uu_n$ 组成的\textbf{正交}基。通过将每个向量 $\uu_k$ 除以其范数（如果需要），我们可以假设系统 $\{\uu_1, \uu_2, \dots, \uu_n\}$ 是一组\textbf{标准正交}基。设 $D$ 是 $A$ 在基 $B = \{\uu_1, \uu_2, \dots, \uu_n\}$ 下的矩阵。显然，$D$ 是一个对角矩阵。
+现在设 $A$ 与对角矩阵 $D$ 酉等价，即 $A = UDU^*$.~标准基向量 $\ee_k$ 是 $D$ 的特征向量，因此根据上面的观察，$U\ee_k$ 是 $A$ 的特征向量。由于 $U$ 是酉的，系统 $\{U\ee_1,U\ee_2,\dots,U\ee_n\}$ 是一组标准正交基。因此，$A$ 具有一组由特征向量组成的标准正交基。
 
-设 $U$ 为以 $\uu_1, \uu_2, \dots, \uu_n$ 为列的矩阵。由于列向量构成了标准正交基， $U$ 是酉的。标准坐标变换公式意味着 $$A = [A]_{\SSS\SSS} = [I]_{\SSS\B}[A]_{\B\B}[I]_{\B\SSS} = UDU^{-1},$$
+反过来，设 $A$ 具有由特征向量 $\uu_1, \uu_2, \dots, \uu_n$ 组成的\textbf{正交}基。通过将每个向量 $\uu_k$ 除以其范数（如果需要），我们可以假设系统 $\{\uu_1, \uu_2, \dots, \uu_n\}$ 是一组\textbf{标准正交}基。设 $D$ 是 $A$ 在基 $\B = \{\uu_1, \uu_2, \dots, \uu_n\}$ 下的矩阵。显然，$D$ 是一个对角矩阵。
+
+设 $U$ 为以 $\uu_1, \uu_2, \dots, \uu_n$ 为列的矩阵。由于列向量构成了标准正交基，$U$ 是酉的。标准坐标变换公式意味着
+$$A = [A]_{\SSS\SSS} = [I]_{\SSS\B}[A]_{\B\B}[I]_{\B\SSS} = UDU^{-1},$$
 并且由于 $U$ 是酉的，$A = UDU^*$.~\end{proof}
 
 \begin{problemset}
@@ -1190,13 +1197,13 @@ $$T(\xx+\alpha \yy) = T(\xx) + \alpha T(\yy),$$
 \end{problemset}
 
 
-\section{复化与反复化}\label{sec:05-08}
+\section{复化与实化（去复化）}\label{sec:05-08}
 
 本节可能比本章的其余部分更抽象一些，首次阅读时可以跳过。
 
-\subsection{反复化}\label{sec:05-08-01}
+\subsection{实化（去复化）}\label{sec:05-08-01}
 
-\subsubsection{向量空间的复化}\label{sec:05-08-01-01}
+\subsubsection{向量空间的实化（去复化）}\label{sec:05-08-01-01}
 
 任何复数向量空间都可以解释为一个实向量空间：我们只需要忘记我们可以乘以复数，并且只允许乘以实数。
 
@@ -1206,7 +1213,7 @@ $$T(\xx+\alpha \yy) = T(\xx) + \alpha T(\yy),$$
 
 事实上，有两种标准的方法来排序坐标 $x_k, y_k$.~一种方法是先取所有实部，然后取所有虚部，所以排序是 $x_1, x_2, \dots, x_n, y_1, y_2, \dots, y_n$.~另一种标准选择是排序 $x_1, y_1, x_2, y_2, $ $\dots, x_n, y_n$.~本节的内容不依赖于坐标的排序选择，所以读者不必担心选择排序。
 
-\subsubsection{内积的复化}\label{sec:05-08-01-02}
+\subsubsection{内积的实化（去复化）}\label{sec:05-08-01-02}
 
 结果表明，如果我们有一个复内积（在一个复数空间中），我们可以以典型的方式从中得到一个实内积：实际上，你可能已经在不知不觉中做过了。即，考虑 $\CC^n$ 的上述例子，它典型地被对应为 $\RR^{2n}$.~设 $(\xx, \yy)_{\CC}$ 表示 $\CC^n$ 中的标准内积，$(\xx, \yy)_{\RR}$ 表示 $\RR^{2n}$ 中的标准内积（注意 $\RR^n$ 中的标准内积不依赖于坐标的排序）。那么（见下面的习题~\ref{ex:05-08-01}）
 \begin{equation}\label{eq:05-08-01}
@@ -1218,7 +1225,7 @@ $$T(\xx+\alpha \yy) = T(\xx) + \alpha T(\yy),$$
 总结一下，我们可以说，
 
 \fbox{\begin{minipage}{0.9\textwidth}
-要对一个复内积空间进行反复化，我们只需“忘记”我们可以乘以复数，即我们只允许乘以实数。被反复化空间中的典型实内积由公式 \eqref{eq:05-08-01} 给出。
+要对一个复内积空间进行实化（去复化），我们只需“忘记”我们可以乘以复数，即我们只允许乘以实数。实化（去复化）后空间中的典型实内积由公式 \eqref{eq:05-08-01} 给出。
 \end{minipage}}
 
 
@@ -1226,7 +1233,7 @@ $$T(\xx+\alpha \yy) = T(\xx) + \alpha T(\yy),$$
 任何作用在 $\CC^n$ 上的（复）线性变换（或更广泛地说，在复向量空间上）都会产生一个实线性变换：这仅仅是因为如果 $T(\alpha \xx + \beta \yy) = \alpha T \xx + \beta T \yy$ 对 $\alpha, \beta \in \CC$ 成立，那么它当然对 $\alpha, \beta \in \RR$ 也成立。
 \end{remark*}
 
-反之则不成立，即作用在 $\CC^n$ 的反复化 $\RR^{2n}$ 上的（实数）线性变换并不总是产生 $\CC^n$ 的（复数）线性变换（在抽象情况下也是一样）。
+反之则不成立，即作用在 $\CC^n$ 实化（去复化）后得到的 $\RR^{2n}$ 上的（实数）线性变换并不总是产生 $\CC^n$ 的（复数）线性变换（在抽象情况下也是一样）。
 
 例如，如果考虑 $n=1$ 的情况，那么乘以一个复数 $z$（复数空间 $\CC^1$ 中的线性变换的一般形式）被视为 $\RR^2$ 中的线性变换时，具有一个非常特殊的结构（你能描述它吗？）。
 
@@ -1265,11 +1272,11 @@ $$([\xx_1, \xx_2], [\yy_1, \yy_2])_{X_{\CC}} = (\xx_1, \yy_1)_X + (\xx_2, \yy_2)
 $$T_{\CC}[\xx_1, \xx_2] = [T\xx_1, T\xx_2].$$
 另一方面，并非所有 $X_{\CC}$ 中的线性变换都可以从 $X$ 中的变换得到；如果我们进行坐标复化，只有具有实数矩阵的变换才有效。
 
-请注意，这与第~\ref{sec:05-08-01}~节中描述的反复化情形完全相反。
+请注意，这与第~\ref{sec:05-08-01}~节中描述的实化（去复化）情形完全相反。
 
-细心的读者可能已经注意到，复化和反复化的操作不是彼此的逆。首先，空间及其复化具有相同的维度，而一个 $n$ 维空间反复化的维度为 $2n$.~此外，正如我们刚才讨论的，实数和复数线性变换之间的关系在这些情况下是完全相反的。
+细心的读者可能已经注意到，复化和实化（去复化）的操作不是彼此的逆。首先，空间及其复化具有相同的维度，而一个 $n$ 维复空间实化（去复化）后的维度为 $2n$.~此外，正如我们刚才讨论的，实数和复数线性变换之间的关系在这些情况下是完全相反的。
 
-在下一节中，我们将讨论一个操作，在某种意义上是反复化的逆。
+在下一节中，我们将讨论一个操作，在某种意义上是实化（去复化）的逆。
 
 \subsection{向实数空间引入复数结构}\label{sec:05-08-03}
 
@@ -1277,13 +1284,13 @@ $$T_{\CC}[\xx_1, \xx_2] = [T\xx_1, T\xx_2].$$
 
 \subsubsection{引入复数结构的初等方法}\label{sec:05-08-03-01}
 
-设 $X$ 是一个 $2n$ 维的实内积空间。我们想通过引入 $X$ 上的复数结构来逆转反复化过程，即对应这个空间与一个复数空间，使其反复化（见第 第~\ref{sec:05-08-01}~节）得到原始空间 $X$.~最简单的想法是固定 $X$ 中的一组标准正交基，然后将该基下的坐标分成两半。
+设 $X$ 是一个 $2n$ 维的实内积空间。我们想通过引入 $X$ 上的复数结构来逆转实化（去复化）过程，即把这个空间与一个复数空间对应起来，使后者经过实化（去复化）（见第~\ref{sec:05-08-01}~节）后得到原始空间 $X$.~最简单的想法是固定 $X$ 中的一组标准正交基，然后将该基下的坐标分成两半。
 
 我们将一半坐标（例如，坐标 $x_1, x_2, \dots, x_n$）视为复数坐标的实部，并将其余部分视为虚部。然后我们需要将实部和虚部组合起来：例如，如果我们让 $x_1, x_2, \dots, x_n$ 作为实部，$x_{n+1}, x_{n+2}, \dots, x_{2n}$ 作为虚部，那么可以定义复数坐标 $z_k = x_k + \ii x_{n+k}$.~
 
 当然，结果通常取决于标准正交基的选择，以及我们如何分割实数坐标为实部和虚部，以及如何将它们组合起来。
 
-从 第~\ref{sec:05-08-01}~节描述的反复化构造也可以看出，所有实内积空间 $X$ 上的复数结构都可以通过这种方式获得。
+从第~\ref{sec:05-08-01}~节描述的实化（去复化）构造也可以看出，所有实内积空间 $X$ 上的复数结构都可以通过这种方式获得。
 
 \subsubsection{从初等到抽象构造复数结构}\label{sec:05-08-03-02}
 
