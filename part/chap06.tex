@@ -283,7 +283,9 @@ $$A = \begin{pmatrix} \cos \alpha & \sin \alpha \\ \sin \alpha & -\cos \alpha \e
 
 \section{极分解与奇异值分解}\label{sec:06-03}
 
-\subsection{正定算子 平方根}\label{sec:06-03-01}
+\readingtip{第一次阅读可以先抓住这一条路线：$A^*A$ 找出输入端的正交方向以及伸缩量的平方；$|A|=\sqrt{A^*A}$ 只保留这些伸缩；极分解 $A=U|A|$ 把伸缩与等距部分分开；奇异值分解最终在定义域和值域各选一组标准正交基，使 $A$ 只剩彼此独立的对角伸缩。后面的记号都在为这条路线服务。}
+
+\subsection{正定算子与平方根}\label{sec:06-03-01}
 
 \begin{definition*}
 称自伴随算子 $A: X \to X$ 为\textbf{正定}的，如果
@@ -374,7 +376,7 @@ $$\|U_0 \xx\| = \|A\vv\| = \||A|\vv\| = \|\xx\|,$$
 
 很容易验证，$U = U_0 + U_1$ 是一个酉算子，并且 $A = U |A|$.\end{proof}
 
-\subsection{奇异值 施密特分解}\label{sec:06-03-03}
+\subsection{奇异值与施密特分解}\label{sec:06-03-03}
 
 \begin{definition*}
 $|A|$ 的特征值被称为 $A$ 的\textbf{奇异值}\index{qiyizhi@奇异值}(singular value)。换句话说，如果 $\lambda_1, \lambda_2, \dots, \lambda_n$ 是 $A^*A$ 的特征值，那么 $\sqrt{\lambda_1}, \sqrt{\lambda_2}, \dots, \sqrt{\lambda_n}$ 就是 $A$ 的奇异值。
@@ -460,7 +462,7 @@ A = \widetilde{W} \widetilde{\Sigma} \widetilde{V}^*,
 事实证明，总是可以写出一个类似的表示\eqref{eq:06-03-03}，用酉矩阵 $V$ 和 $W$ 来代替 $\widetilde{V}$ 和 $\widetilde{W}$，并且在许多情况下，处理这样的表示会更方便。
 为了写出这个表示，我们首先需要将系统 $\{\vv_1, \vv_2, \dots, \vv_r\}$ 和 $\{\ww_1, \ww_2, \dots, \ww_r\}$ \textbf{补全}为 $\FF^n$ 和 $\FF^m$ 中的标准正交基。
 
-回想一下，要将 $\{\vv_1, \vv_2, \dots, \vv_r\}$ 补全为 $\FF^n$ 中的标准正交基，只需在 $\operatorname{span}\{\vv_1,\dots,\vv_r\}^{\perp}$ 中取一组标准正交基 $\{\vv_{r+1}, \dots, \vv_n\}$；那么 $\{\vv_1, \vv_2, \dots, \vv_n\}$ 就是 $\FF^n$ 的一组标准正交基。这里也可把这个正交补写成 $\Ker A$。从任意一组基出发，总可以借助格拉姆-施密特正交化得到标准正交基。\footnote{译者注：2026-04-30 英文原文这里写作 $\Ker V^*$，但此时完整的酉矩阵 $V$ 尚未构造；用已给定向量组的正交补来表述更直接。}
+回想一下，要将 $\{\vv_1, \vv_2, \dots, \vv_r\}$ 补全为 $\FF^n$ 中的标准正交基，只需在 $\operatorname{span}\{\vv_1,\dots,\vv_r\}^{\perp}$ 中取一组标准正交基 $\{\vv_{r+1}, \dots, \vv_n\}$；那么 $\{\vv_1, \vv_2, \dots, \vv_n\}$ 就是 $\FF^n$ 的一组标准正交基。这里也可把这个正交补写成 $\Ker A$。从任意一组基出发，总可以借助格拉姆-施密特正交化得到标准正交基。\proofreadnote{2026-04-30 英文原文这里写作 $\Ker V^*$，但此时完整的酉矩阵 $V$ 尚未构造；用已给定向量组的正交补来表述更直接。}
 
 然后 $A$ 可以表示为
 \begin{equation}\label{eq:06-03-04}
@@ -544,7 +546,7 @@ e) 自伴随矩阵的奇异值与其特征值相等。
 \item \label{ex:06-03-08} 设 $A$ 是一个 $m \times n$ 矩阵。证明 $A^*A$ 和 $AA^*$ 的\textbf{非零}特征值（计入重数）是相同的。你能说出 $A^*A$ 的零特征值和 $AA^*$ 的零特征值何时具有相同的重数吗？
 \item \label{ex:06-03-09} 设 $s$ 是算子 $A$ 的最大奇异值，设 $\lambda$ 是 $A$ 具有最大绝对值的特征值。证明 $|\lambda| \leq s$.~
 \item \label{ex:06-03-10} 证明矩阵的秩等于其非零奇异值的数量（计入重数）。
-\item \label{ex:06-03-11} 证明对于\textbf{非零}矩阵 $A$，算子范数 $\|A\|$ 与弗罗贝尼乌斯范数 $\|A\|_2$ 相等当且仅当该矩阵秩为 1。\footnote{译者注：2026-04-30 英文原文未写“非零”。若允许 $A=0$，则两个范数同为 $0$，但 $\rank A=0$，所以原命题需要这一条件。}
+\item \label{ex:06-03-11} 证明对于\textbf{非零}矩阵 $A$，算子范数 $\|A\|$ 与弗罗贝尼乌斯范数 $\|A\|_2$ 相等当且仅当该矩阵秩为 1。\proofreadnote{2026-04-30 英文原文未写“非零”。若允许 $A=0$，则两个范数同为 $0$，但 $\rank A=0$，所以原命题需要这一条件。}
 {\heiti 提示：} 上一个问题可能有所帮助。
 \item \label{ex:06-03-12} 对于矩阵 $$A = \begin{pmatrix} 2 & -3 \\ 0 & 2 \end{pmatrix},$$
 描述单位球的逆像，即所有 $\xx \in \RR^2$ 使得 $\|A\xx\| \leq 1$ 的集合。使用奇异值分解。
@@ -722,12 +724,12 @@ $A\xx = P_{\Ran A} \bb$ 的一般解由
 $$\xx = \xx_0 + \yy,\quad \yy \in \Ker A$$
 给出。又因为
 $$\xx_0 \in \Ran \widetilde{V} = \Ran A^* = (\Ker A)^\perp,$$
-所以 $\xx_0 \perp \yy$。\footnote{译者注：2026-04-30 英文恢复文本此处把 $\Ran\widetilde V$ 误写成 $\Ran\widetilde W$；按约简奇异值分解的维数以及习题~\ref{ex:06-04-04}，应为 $\Ran\widetilde V=\Ran A^*$.} 因此由勾股定理，
+所以 $\xx_0 \perp \yy$。\proofreadnote{2026-04-30 英文恢复文本此处把 $\Ran\widetilde V$ 误写成 $\Ran\widetilde W$；按约简奇异值分解的维数以及习题~\ref{ex:06-04-04}，应为 $\Ran\widetilde V=\Ran A^*$.} 因此由勾股定理，
 $$\|\xx_0+\yy\|^2=\|\xx_0\|^2+\|\yy\|^2\geq\|\xx_0\|^2,$$
 且等号仅当 $\yy=\oo$ 时成立。因此 $\xx_0$ 确实是 $A\xx = P_{\Ran A} \bb$ 的唯一最小范数解，或者等价地，是 $A\xx = \bb$ 的最小范数最小二乘解。
 
 \begin{definition}\label{stmt:06-04-01}
-算子 $A^+ := \widetilde{V} \widetilde{\Sigma}^{-1} \widetilde{W}^*$，其中 $A = \widetilde{W} \widetilde{\Sigma} \widetilde{V}^*$ 是 $A$ 的\textbf{约简}奇异值分解，称为 $A$ 的\textbf{摩尔-彭罗斯逆}\index{moerpenroseni@摩尔-彭罗斯逆} （或\textbf{摩尔-彭罗斯伪逆}）(Moore–Penrose (pseudo)inverse)。换句话说，\textbf{摩尔-彭罗斯逆}是给出 $A\xx = \bb$ 的唯一的最小范数最小二乘解的算子。\footnote{译者注：2026-04-30 英文恢复文本此处写作“unique least square solution”；但本节前文已说明一般最小二乘解并不唯一，唯一的是最小范数最小二乘解，因此据数学含义补出“最小范数”。}
+算子 $A^+ := \widetilde{V} \widetilde{\Sigma}^{-1} \widetilde{W}^*$，其中 $A = \widetilde{W} \widetilde{\Sigma} \widetilde{V}^*$ 是 $A$ 的\textbf{约简}奇异值分解，称为 $A$ 的\textbf{摩尔-彭罗斯逆}\index{moerpenroseni@摩尔-彭罗斯逆} （或\textbf{摩尔-彭罗斯伪逆}）(Moore–Penrose (pseudo)inverse)。换句话说，\textbf{摩尔-彭罗斯逆}是给出 $A\xx = \bb$ 的唯一的最小范数最小二乘解的算子。\proofreadnote{2026-04-30 英文恢复文本此处写作“unique least square solution”；但本节前文已说明一般最小二乘解并不唯一，唯一的是最小范数最小二乘解，因此据数学含义补出“最小范数”。}
 \end{definition}
 
 \begin{remark}\label{stmt:06-04-02}

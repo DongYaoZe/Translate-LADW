@@ -9,7 +9,7 @@
 
 最后，当公式对复数和实数情况都适用时，我们将使用复数情况的公式；在实数情况下，这些公式也能给出正确的结果，尽管有时会显得稍微复杂一些。
 
-\section{\texorpdfstring{$\RR^n$ 与 $\CC^n$ 中的内积 内积空间}{R^n 与 C^n 中的内积 内积空间}}\label{sec:05-01}
+\section{\texorpdfstring{$\RR^n$ 与 $\CC^n$ 中的内积：内积空间}{R^n 与 C^n 中的内积：内积空间}}\label{sec:05-01}
 
 \subsection{\texorpdfstring{$\RR^n$ 中的内积和范数}{R^n 中的内积和范数}}\label{sec:05-01-01}
 
@@ -111,7 +111,7 @@ $$(A, B) = \trace(B^* A).$$
 
 \subsection{内积的性质}\label{sec:05-01-04}
 
-\index{neiji@内积!chouxiang@抽象}我们在本节中得到的陈述对任何抽象域上的内积空间都是成立的，而不仅仅是 $\FF^n$.~为了证明它们，我们仅使用内积的性质 1-4。
+\index{neiji@内积!chouxiang@抽象}我们在本节中得到的陈述对任意抽象内积空间都是成立的，而不仅仅是 $\FF^n$.~为了证明它们，我们仅使用内积的性质 1-4。
 
 首先，我们注意到性质 1 和 2 暗示了：
 
@@ -211,7 +211,7 @@ $$\|\uu + \vv\|^2 + \|\uu - \vv\|^2 = 2(\|\uu\|^2 + \|\vv\|^2).$$\end{lemma}
 
 在二维空间中，这个引理将平行四边形的边与其对角线的长度联系起来，这就是其名称的由来。它是平面几何中一个众所周知的结论。
 
-\subsection{范数 赋范空间}\label{sec:05-01-05}
+\subsection{范数与赋范空间}\label{sec:05-01-05}
 
 我们之前已经证明，范数 $\|\vv\|$ 满足以下性质：
 
@@ -296,7 +296,7 @@ $$B_p := \{\xx \in R^2 : \|\xx\|_p \le 1\}.$$
 \end{problemset}
 
 
-\section{正交性 正交与标准正交基}\label{sec:05-02}
+\section{正交性：正交与标准正交基}\label{sec:05-02}
 
 \begin{definition}\label{stmt:05-02-01}
 两个向量 $\uu$ 和 $\vv$ 被称为\textbf{正交}(orthogonal)（也称为\textbf{垂直}(perpendicular)）如果 $(\uu, \vv) = 0$.~我们将用 $\uu \perp \vv$ 来表示向量是正交的。
@@ -475,7 +475,7 @@ P_E \vv = \sum_{k=1}^r \frac{(\vv, \vv_k)}{\|\vv_k\|^2} \vv_k.
 由公式 \eqref{eq:05-03-01} 可知，正交投影 $P_E$ 是一个线性变换。
 \end{remark}
 
-也可以直接从正交投影的定义和唯一性看出其线性。事实上，容易验证，对于任意向量 $\xx$ 和 $\yy$ 以及常数 $\alpha$ 和 $\beta$，向量 $\alpha \xx + \beta \yy - (\alpha P_E \xx + \beta P_E \yy)$ 与 $E$ 中的任何向量都正交，因此根据定义，$P_E(\alpha \xx + \beta \yy) = \alpha P_E \xx + \beta P_E \yy$.~\footnote{译者注：2026-04-30 英文恢复文本此处括号内第二项也写成减号，但这与随后得到的线性结论不一致；此处按数学关系改为加号。}
+也可以直接从正交投影的定义和唯一性看出其线性。事实上，容易验证，对于任意向量 $\xx$ 和 $\yy$ 以及常数 $\alpha$ 和 $\beta$，向量 $\alpha \xx + \beta \yy - (\alpha P_E \xx + \beta P_E \yy)$ 与 $E$ 中的任何向量都正交，因此根据定义，$P_E(\alpha \xx + \beta \yy) = \alpha P_E \xx + \beta P_E \yy$.~\proofreadnote{2026-04-30 英文恢复文本此处括号内第二项也写成减号，但这与随后得到的线性结论不一致；此处按数学关系改为加号。}
 
 \begin{remark}\label{stmt:05-03-05}
 回忆在 $\CC^n$ 和 $\RR^n$ 中内积的定义，可以从上述公式 \eqref{eq:05-03-01} 得到将 $\CC^n$ (或 $\RR^n$) 中的向量投影到 $E$ 上的正交投影矩阵 $P_E$ ，它由下式给出：
@@ -558,7 +558,7 @@ $$\vv_3 = \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix} - \frac{3}{3} \begin{pmatrix
 
 另一方面，在进行计算时，人们可能希望避免出现分数项。办法是将向量乘以各项分母数字的最小公倍数。因此，可以将上面例子中的向量 $\vv_3$ 替换为 $(1, -2, 1)^T$.~
 
-\subsection{\texorpdfstring{正交补 正交分解 $V = E \oplus E^\perp$}{正交补 正交分解 V = E + E 的正交补}}\label{sec:05-03-03}
+\subsection{\texorpdfstring{正交补：正交分解 $V = E \oplus E^\perp$}{正交补：正交分解 V = E + E 的正交补}}\label{sec:05-03-03}
 
 \begin{definition*}
 对于子空间 $E$，其\textbf{正交补}\index{zhengjiaobu@正交补}(orthogonal complement) $E^\perp$ 是所有与 $E$ 正交的向量的集合，
@@ -621,7 +621,7 @@ a) $P+Q$ 和 $PQ$ 是什么？
 b) 证明 $P-Q$ 是它自己的逆。
 \end{problemset}
 
-\section{最小二乘解 正交投影的公式}\label{sec:05-04}
+\section{最小二乘解：正交投影的公式}\label{sec:05-04}
 正如第~\ref{chap:02}~章第~\ref{sec:02-02}~节所讨论的，方程 $$A\xx = \bb$$
 有解当且仅当 $\bb \in \Ran A$.~但对于无解的方程该怎么办？
 
@@ -918,7 +918,7 @@ b) 如果 $A\xx = \oo$ 只有平凡解，则 $A$ 是左可逆的。（你只需�
 \end{problemset}
 
 
-\section{等距同构和酉算子 酉矩阵和正交矩阵}\label{sec:05-06}
+\section{等距同构和酉算子：酉矩阵和正交矩阵}\label{sec:05-06}
 
 \subsection{基本定义}\label{sec:05-06-01}
 

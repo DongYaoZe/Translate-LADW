@@ -7,7 +7,7 @@
 
 \section{对偶空间}\label{sec:08-01}
 
-\subsection{线性泛函与对偶空间 对偶空间中的坐标变换}\label{sec:08-01-01}
+\subsection{线性泛函与对偶空间：对偶空间中的坐标变换}\label{sec:08-01-01}
 
 \begin{definition}\label{stmt:08-01-01}
 向量空间 $V$（域为 $\FF$）上的\textbf{线性泛函}\index{xianxingfanhan@线性泛函}\index{fanhan@泛函!xianxing@线性}(linear functional)是一个线性变换 $L : V \to \FF$.~
@@ -166,7 +166,7 @@ $$ a_{k,j} = \bb'_k(T \aaa_j), \quad j = 1, 2, \dots, n, \quad k = 1, 2, \dots, 
 我们考虑的第一个例子是平凡的。设 $V$ 为 $\RR^n$（或 $\CC^n$），设 $\ee_1, \ee_2, \dots, \ee_n$ 是那里的标准基。对偶空间将是 $n$ 维行向量的空间，它与 $\RR^n$（或复数情况下的 $\CC^n$）同构，那里的标准基是对偶于 $\ee_1, \ee_2, \dots, \ee_n$ 的。$( \RR^n )'$（或 $(\CC^n)'$）中的标准基是将 $\ee_1, \ee_2, \dots, \ee_n$ 分别取转置得到的 $\ee^T_1, \ee^T_2, \dots, \ee^T_n$.~
 
 \subsubsection{泰勒公式}\label{sec:08-01-04-01}
-下一个例子更有趣。让我们考虑次数最多为 $n$ 的多项式空间 $\PP_n$.~我们知道，幂函数 $\{\ee_k\}_{k=0}^n$，其中 $\ee_k(t)=t^k$，构成了该空间中的标准基。\footnote{译者注：2026-04-30 英文原文此处写作 $\mathbf e(t)=t^n$；按上下文及随后使用的 $\{\mathbf e_k\}_{k=0}^n$，应为 $\mathbf e_k(t)=t^k$。}而这组基的对偶是什么？
+下一个例子更有趣。让我们考虑次数最多为 $n$ 的多项式空间 $\PP_n$.~我们知道，幂函数 $\{\ee_k\}_{k=0}^n$，其中 $\ee_k(t)=t^k$，构成了该空间中的标准基。\proofreadnote{2026-04-30 英文原文此处写作 $\mathbf e(t)=t^n$；按上下文及随后使用的 $\{\mathbf e_k\}_{k=0}^n$，应为 $\mathbf e_k(t)=t^k$。}而这组基的对偶是什么？
 
 这个答案可能很难猜测，但一旦你知道了，验证起来就非常容易。
 也就是说，考虑线性泛函 $\ee'_k \in (\PP_n)', k = 0, 1, \dots, n$，它们对多项式 $p$ 的作用如下：
@@ -183,7 +183,7 @@ p(t) = \sum_{k=0}^n \frac{p^{(k)}(0)}{k!} t^k
 \end{equation}
 这个公式在微积分中作为多项式的泰勒公式，是众所周知的。更确切地说，这是泰勒公式的一个特殊情况，即所谓的麦克劳林公式。一般的泰勒公式
 $$p(t) = \sum_{k=0}^n \frac{p^{(k)}(a)}{k!} (t-a)^k$$
-可以对多项式 $q(\tau):=p(\tau+a)$ 应用 \eqref{eq:08-01-04}，再令 $\tau=t-a$ 得到。\footnote{译者注：2026-04-30 英文原文写作对 $p(\tau-a)$ 应用麦克劳林公式，这会在 $-a$ 而非 $a$ 处取导数；此处据公式本身改为 $p(\tau+a)$。}它也可以通过考虑幂 $(t-a)^k, k=0, 1, \dots, n$ 并以我们为 $t^k$ 找到对偶系统的相同的方式来得到。\footnote{一般的泰勒公式比这里得到的用于多项式的公式包含了更多信息：它说明任何 $n$ 次可微的函数都可以用其泰勒多项式在点 $a$ 附近进行近似。更重要的是，如果函数是 $n+1$ 次可微的，它能让我们对误差进行估计。上面多项式的公式可作为一般情况的动机和起点。}
+可以对多项式 $q(\tau):=p(\tau+a)$ 应用 \eqref{eq:08-01-04}，再令 $\tau=t-a$ 得到。\proofreadnote{2026-04-30 英文原文写作对 $p(\tau-a)$ 应用麦克劳林公式，这会在 $-a$ 而非 $a$ 处取导数；此处据公式本身改为 $p(\tau+a)$。}它也可以通过考虑幂 $(t-a)^k, k=0, 1, \dots, n$ 并以我们为 $t^k$ 找到对偶系统的相同的方式来得到。\footnote{一般的泰勒公式比这里得到的用于多项式的公式包含了更多信息：它说明任何 $n$ 次可微的函数都可以用其泰勒多项式在点 $a$ 附近进行近似。更重要的是，如果函数是 $n+1$ 次可微的，它能让我们对误差进行估计。上面多项式的公式可作为一般情况的动机和起点。}
 
 \subsubsection{拉格朗日插值}\label{sec:08-01-04-02}
 
@@ -264,7 +264,7 @@ $$ \yy = \sum_{k=1}^n (\yy, \ee_k) \ee_k = \sum_{k=1}^n \overline{L}_k \ee_k $$
 \begin{remark*}
 虽然定理的陈述不要求基，但这里提出的证明利用了 $H$ 中的一组标准正交基，尽管得到的向量 $\yy$ 不依赖于基的选择。
 \footnote{
-还可以给出另一种不依赖基的证明。这个证明可以推广到无限维情形，并利用内积空间中单位球的强凸性以及分析学中的完备性思想。\textup{（译者注：2026-04-30 英文原文此处写作 ``does need a basis''，但其随后描述的是通常的无坐标证明；据上下文改为“不依赖基”。）}
+还可以给出另一种不依赖基的证明。这个证明可以推广到无限维情形，并利用内积空间中单位球的强凸性以及分析学中的完备性思想。\textcolor{gray}{（\textit{校勘注：}2026-04-30 英文原文此处写作 ``does need a basis''，但其随后描述的是通常的无坐标证明；据上下文改为“不依赖基”。）}
 }
 这个证明的一个优点是它给出了表示向量 $\yy$ 的计算公式。
 \end{remark*}
@@ -550,7 +550,7 @@ $$x_k = \sum_{j=1}^n \widetilde{a}_{k,j} \widetilde{x}_j, \text{~~并且~~} \dif
 \end{minipage}}
 
 
-因此，因此，按照微积分中的通常变换规则，速度 $\vv$ 的坐标按向量坐标的规则变化，而一阶微分形式的系数（坐标）按线性泛函坐标的规则变化。在微分几何中，所有“速度”的集合被称为\textbf{切空间}(tangent space)，而所有一阶微分形式的集合是其对偶，被称为\textbf{余切空间}(cotangent space)。
+因此，按照微积分中的通常变换规则，速度 $\vv$ 的坐标按向量坐标的规则变化，而一阶微分形式的系数（坐标）按线性泛函坐标的规则变化。在微分几何中，所有“速度”的集合被称为\textbf{切空间}(tangent space)，而所有一阶微分形式的集合是其对偶，被称为\textbf{余切空间}(cotangent space)。
 
 
 \subsubsection{微分算子作为向量}\label{sec:08-04-02-03}
@@ -578,6 +578,8 @@ $$ \frac{\dif \Phi(\xx(t))}{\dif t} = \sum_{k=1}^n \left( \frac{\partial \Phi}{\
 坐标变换矩阵是正交的，例如，当我们从一组标准正交基改变到另一组标准正交基时。
 
 \subsubsection{爱因斯坦求和约定，度量张量}\label{sec:08-04-03-01}
+
+\readingtip{下面的记号第一次读时先固定三个锚点：上标坐标按向量的换基规则变化，下标坐标按线性泛函（余向量）的换基规则变化，Gram/度量矩阵 $G$ 负责在两者之间转换。后面的公式主要是在把这三件事系统化。}
 
 设 $\B = \{\bb_1, \bb_2, \dots, \bb_n\}$ 是实内积空间 $X$ 中的一组基，并设 $\B' = \{\bb'_1, \bb'_2, \dots, \bb'_n\}$ 是它的对偶基（我们通过里斯表示定理将对偶空间 $X'$ 与 $X$ 对应，所以 $\bb'_k$ 可以在 $X$ 中）。
 
@@ -608,7 +610,7 @@ $$ \frac{\dif \Phi(\xx(t))}{\dif t} = \sum_{k=1}^n \left( \frac{\partial \Phi}{\
 
 注意，为了计算两个向量的内积，仅知道它们的坐标是不够的。你还需要知道矩阵 $G$（通常称为度量张量）。这与爱因斯坦求和约定一致：如果我们试图将 $(\xx, \yy)$ 写成标准内积，那么表达式 $x_k y_k$ 仅仅意味着它是坐标的乘积，因为为了求和，我们需要相同的索引指标同时作为下标和上标。另一方面，表达式 \eqref{eq:08-04-04} 完全符合这个约定。
 
-\subsubsection{协变和逆变坐标 上/下指标的升降}\label{sec:08-04-03-02}
+\subsubsection{协变和逆变坐标：上/下指标的升降}\label{sec:08-04-03-02}
 
 让我们回忆一下，在实内积空间中，我们有一组基 $\{\bb_1, \bb_2, \dots, \bb_n\}$，以及它的对偶基 $\{\bb'_1, \bb'_2, \dots, \bb'_n\}$，$\bb'_k \in X$（我们通过里斯表示定理将对偶空间 $X'$ 与 $X$ 对应，所以 $\bb'_k$ 可以在 $X$ 中）。给定向量 $\xx \in X$，它可以表示为：
 \begin{equation}\label{eq:08-04-05}
@@ -682,7 +684,7 @@ $$D = \sum_{k=1}^n v_k \frac{\partial}{\partial x_k}$$
 是一个微分算子。利用链式法则，证明当我们改变基并用新坐标写出 $D$ 时，其系数 $v_k$ 按照向量的坐标变换规则变化。
 \end{problemset}
 
-\section{多线性函数 张量}\label{sec:08-05}
+\section{多线性函数：张量}\label{sec:08-05}
 
 \subsection{多线性函数}\label{sec:08-05-01}
 
@@ -752,6 +754,9 @@ $$ \alpha_{j_1, j_2, \dots, j_p} = F(\bb^{1}_{j_1}, \bb^{2}_{j_2}, \dots, \bb^{p
 另一方面，定义 $\alpha_{j_1, j_2, \dots, j_p} := F(\bb^{1}_{j_1}, \bb^{2}_{j_2}, \dots, \bb^{p}_{j_p})$ 并使用 \eqref{eq:08-05-03} 和 \eqref{eq:08-05-04}，我们可以看到等式 \eqref{eq:08-05-02} 对所有形式为 $\{\bb^{1}_{j_1}, \bb^{2}_{j_2}, \dots, \bb^{p}_{j_p}\}$ 的元组都成立。因此，表示 \eqref{eq:08-05-02} 成立，所以我们确实得到了一组基。\end{proof}
 
 \subsection{张量积}\label{sec:08-05-02}
+
+\readingtip{这一构造最核心的目的，是把“对每个输入分别线性”的多线性问题，改写成张量积空间上的普通线性问题。先抓住这个目标，再看具体定义；命题~\ref{stmt:08-05-04} 会把这种“多线性变线性”的性质精确化。}
+
 \begin{definition*}
 设 $V_1, V_2, \dots, V_p$ 是向量空间。空间
 $$V_1 \otimes V_2 \otimes \dots \otimes V_p$$
@@ -848,7 +853,7 @@ $$F(\xx_1, \xx'_2) := \langle T\xx_1, \xx'_2 \rangle,\quad \xx_1 \in X_1,\quad \
 \begin{equation}\label{eq:08-05-07}
 F(\xx_1, \xx'_2) := \langle T\xx_1, \xx'_2 \rangle
 \end{equation}
-对于所有 $\xx_1 \in X_1,\quad \xx'_2 \in X'_2$ 的选择成立。\footnote{译者注：2026-04-30 英文原文此处写作 $\mathbf{x}_1\in X_2$，但由 $F\in L(X_1,X'_2;\mathbb F)$ 以及 $T:X_1\to X_2$ 可知应为 $\mathbf{x}_1\in X_1$。}
+对于所有 $\xx_1 \in X_1,\quad \xx'_2 \in X'_2$ 的选择成立。\proofreadnote{2026-04-30 英文原文此处写作 $\mathbf{x}_1\in X_2$，但由 $F\in L(X_1,X'_2;\mathbb F)$ 以及 $T:X_1\to X_2$ 可知应为 $\mathbf{x}_1\in X_1$。}
 \end{proposition}
 
 \begin{proof}
@@ -909,7 +914,7 @@ $$ \widetilde{F}(\vv_1, \vv_2, \dots, \vv_p, \vv') = \widetilde{T}(\vv_1 \otimes
 $$\ww \otimes \vv' \in V_1 \otimes V_2 \otimes \dots \otimes V_p \otimes V'.$$
 因此，我们可以定义一个双线性泛函（张量） $G \in L(W, V'; \FF)$ 为：
 $$ G(\ww, \vv') := \widetilde{T}(\ww \otimes \vv') $$
-\footnote{译者注：2026-04-30 英文原文此式末项写作 $\mathbf{v}$，但这里 $G$ 的第二个变量属于 $V'$，且上一式为 $\mathbf{w}\otimes\mathbf{v}'$，故应为 $\mathbf{v}'$。}
+\proofreadnote{2026-04-30 英文原文此式末项写作 $\mathbf{v}$，但这里 $G$ 的第二个变量属于 $V'$，且上一式为 $\mathbf{w}\otimes\mathbf{v}'$，故应为 $\mathbf{v}'$。}
 根据命题~\ref{stmt:08-05-05}，$G$ 产生一个线性变换，即存在唯一一个线性变换 $T : W \to V$ 使得
 $$ G(\ww, \vv') = \langle T\ww, \vv' \rangle \quad \forall \ww \in W, \forall \vv' \in V' $$
 而线性变换 $T$ 通过
@@ -929,11 +934,13 @@ $$ F(\vv_1, \vv_2, \dots, \vv_p) = T(\vv_1 \otimes \vv_2 \otimes \dots \otimes \
 
 \begin{problemset}
 \item \label{ex:08-05-01} 证明向量的张量积 $\vv_1 \otimes \vv_2 \otimes \dots \otimes \vv_p$ 在每个参数 $\vv_k$ 上是线性的。
-\item \label{ex:08-05-02} 假设至少有两个因子空间的维数不小于 $2$，并且其余因子空间均非零。证明纯张量的集合 $\{\vv_1 \otimes \vv_2 \otimes \dots \otimes \vv_p : \vv_k \in V_k\}$ 严格小于 $V_1 \otimes V_2 \otimes \dots \otimes V_p$.~\footnote{译者注：2026-04-30 英文原文未写这些条件。无条件陈述并不成立，例如 $p=1$ 时每个张量本身就是纯张量；若除一个因子外其余因子均为一维，也会出现同样的退化情形。}
+\item \label{ex:08-05-02} 假设至少有两个因子空间的维数不小于 $2$，并且其余因子空间均非零。证明纯张量的集合 $\{\vv_1 \otimes \vv_2 \otimes \dots \otimes \vv_p : \vv_k \in V_k\}$ 严格小于 $V_1 \otimes V_2 \otimes \dots \otimes V_p$.~\proofreadnote{2026-04-30 英文原文未写这些条件。无条件陈述并不成立，例如 $p=1$ 时每个张量本身就是纯张量；若除一个因子外其余因子均为一维，也会出现同样的退化情形。}
 \item \label{ex:08-05-03} 证明命题~\ref{stmt:08-05-06} 中的变换 $F$ 是唯一的。
 \end{problemset}
 
 \section{张量的坐标变换公式}\label{sec:08-06}
+
+\readingtip{第一次阅读不必背最终的多指标公式。只要跟住一条规则：每个下标都按余向量的规则换基，每个上标都按向量的规则换基；一般张量的公式只是把这条规则对每一个指标分别执行。}
 
 区分多线性协变和逆变变量的主要原因是，在改变基时，它们的坐标根据不同的规则变化。因此，协变和逆变向量的项也根据不同的规则变化。
 

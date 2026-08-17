@@ -9,7 +9,7 @@
 设 $A$ 是一个方阵，其特征多项式为 $p(\lambda) = \det(A - \lambda I)$.~那么，$p(A) = \oo$.~\end{theorem}
 
 \begin{proof}[\normalfont\heiti 一个错误的证明~\nopunct]
-这个证明看起来异常简单：将 $\lambda$ 替换为 $A$ 并代入特征多项式（译者吐槽：正常人怎么会想要用一个矩阵去替换一个数的啊…这也不是特征值的定义啊…），我们得到
+这个证明看起来异常简单：将 $\lambda$ 替换为 $A$ 并代入特征多项式（译者注：把矩阵直接代入原本以标量为自变量的表达式，初看确实很可疑；这里也绝不能把这种代入与“特征值”的定义混为一谈），我们得到
 $$p(A) = \det(A - AI) = \det(\oo) = 0.$$\end{proof}
 
 但这是一个错误的证明！为了明白为什么错误，让我们分析一下定理的内容。定理说明，如果我们计算特征多项式
@@ -48,7 +48,7 @@ $$p(A) := \sum_{k=0}^n c_k A^k = c_0 I + c_1 A + \dots + c_n A^n,$$
 
 
 \begin{proof}[\normalfont\heiti 一个“标准”的证明~\nopunct]
-我们知道，见定理~\ref{stmt:06-06-01}.1，任何方阵都与一个上三角矩阵酉等价。由于对于任何多项式 $p$，我们有 $p(UAU^{-1}) = Up(A)U^{-1}$，并且酉等价矩阵的特征多项式是相同的，所以我们只需要证明该定理对于上三角矩阵成立。
+我们知道，见定理~\ref{stmt:06-01-01}，任何方阵都与一个上三角矩阵酉等价。由于对于任何多项式 $p$，我们有 $p(UAU^{-1}) = Up(A)U^{-1}$，并且酉等价矩阵的特征多项式是相同的，所以我们只需要证明该定理对于上三角矩阵成立。
 
 因此，设 $A$ 是一个上三角矩阵。我们知道三角矩阵的对角线元素与其特征值相等，所以设 $\lambda_1, \lambda_2, \dots, \lambda_n$ 是 $A$ 的特征值，按其在对角线上的顺序排列，即
 $$A = \begin{pmatrix} \lambda_1 &  & & *\\ & \lambda_2 & & \\ & & \ddots & \\\oo & & & \lambda_n \end{pmatrix}.$$
@@ -138,7 +138,7 @@ $$p(\sigma(A)) \subset \sigma(p(A))$$
 
 我们将多项式 $q(z)$ 表示为单项式的乘积：
 $$q(z) = a(z - z_1)(z - z_2) \dots (z - z_N).$$
-那么，如第 第~\ref{sec:09-02-01}~节所讨论的，我们可以将 $q(A)$ 表示为
+那么，如第~\ref{sec:09-02-01}~节所讨论的，我们可以将 $q(A)$ 表示为
 $$q(A) = a(A - z_1 I)(A - z_2 I) \dots (A - z_N I).$$
 算子 $q(A)$ 是不可逆的，因此其中一个因子 $A - z_k I$ 必须是不可逆的（因为可逆变换的乘积总是可逆的）。这意味着 $z_k \in \sigma(A)$.~
 
@@ -153,7 +153,7 @@ $$0 = q(z_k) = p(z_k) - \mu,$$
 你能不使用谱映射定理来做到这一点吗？
 \end{problemset}
 
-\section{广义特征子空间 代数重数的几何意义}\label{sec:09-03}
+\section{广义特征子空间：代数重数的几何意义}\label{sec:09-03}
 
 \subsection{不变子空间}\label{sec:09-03-01}
 
@@ -266,6 +266,8 @@ $A = \diag\{A_1, A_2, \dots, A_r\}$,
 其中 $A_k := A|_{E_k}$，$E_k = E_{\lambda_k}$.~也很容易看出（见 \eqref{eq:09-03-02}）算子 $N_k := A_k - \lambda_k I_{E_k}$ 是幂零的，$N_k^{d_k} = 0$.~
 \end{remark}
 
+\readingtip{下面证明的目标可以先用一句话记住：构造一组代数投影 $\PPP_k$，使 $\PPP_k\vv$ 从任意向量 $\vv$ 中抽取出第 $k$ 个广义特征分量，最终得到 $\vv=\sum_k\PPP_k\vv$。证明中的多项式 $p_k$、$q$ 和算子 $B$ 都是在为这些投影服务。}
+
 \begin{proof}[\normalfont\heiti 定理~\ref{stmt:09-03-04} 的证明~\nopunct]
 设 $m_k$ 是特征值 $\lambda_k$ 的重数，所以 $p(z) = \prod_{k=1}^r (z - \lambda_k)^{m_k}$ 是 $A$ 的特征多项式。定义
 $$p_k(z) = \frac{p(z)}{(z - \lambda_k)^{m_k}} = \prod_{j \neq k} (z - \lambda_j)^{m_j}.$$
@@ -328,7 +330,7 @@ $$\PPP _k \vv = \PPP _k \left( \vv_1 + \vv_2 + \dots + \vv_r \right) = \PPP _k \
 一个特征值的代数重数等于对应广义特征子空间的维数。
 \end{proposition}
 
-\begin{proof}根据注记~\ref{stmt:09-03-05}，如果我们连接广义特征子空间 $E_k = E_{\lambda_k}$ 的基得到整个空间的一组基，那么在该基下算子 $A$ 的矩阵具有块对角形式 $\diag\{A_1, A_2, \dots, A_r\}$，其中 $A_k := A|_{E_k}$.~算子 $N_k = A_k - \lambda_k I_{E_k}$ 是幂零的，所以 $\sigma(N_k) = \{0\}$.~因此，算子 $A_k$（由定义 $A_k = N_k + \lambda_k I$）的谱只包含一个特征值 $\lambda_k$，其代数重数为 $n_k = \dim E_k$.~\footnote{译者注：2026-04-30 英文原文此处写作 $A_k=N_k-\lambda_k I$，与前一句 $N_k=A_k-\lambda_k I$ 矛盾，应为加号。}重数等于 $n_k$，因为一个有限维空间 $V$ 中的算子有恰好 $\dim V$ 个特征值（计入重数），而 $A_k$ 只有一个特征值。
+\begin{proof}根据注记~\ref{stmt:09-03-05}，如果我们连接广义特征子空间 $E_k = E_{\lambda_k}$ 的基得到整个空间的一组基，那么在该基下算子 $A$ 的矩阵具有块对角形式 $\diag\{A_1, A_2, \dots, A_r\}$，其中 $A_k := A|_{E_k}$.~算子 $N_k = A_k - \lambda_k I_{E_k}$ 是幂零的，所以 $\sigma(N_k) = \{0\}$.~因此，算子 $A_k$（由定义 $A_k = N_k + \lambda_k I$）的谱只包含一个特征值 $\lambda_k$，其代数重数为 $n_k = \dim E_k$.~\proofreadnote{2026-04-30 英文原文此处写作 $A_k=N_k-\lambda_k I$，与前一句 $N_k=A_k-\lambda_k I$ 矛盾，应为加号。}重数等于 $n_k$，因为一个有限维空间 $V$ 中的算子有恰好 $\dim V$ 个特征值（计入重数），而 $A_k$ 只有一个特征值。
 
 注意，我们可以自由选择 $E_k$ 中的基，所以我们选择它们使得相应的块 $A_k$ 是上三角的。那么
 $$\det(A - \lambda I) = \prod_{k=1}^r \det(A_k - \lambda I_{E_k}) = \prod_{k=1}^r (\lambda_k - \lambda)^{n_k}.$$
@@ -439,6 +441,8 @@ $$\dim V = \rank A + \dim \Ker A = (n - r) + \dim \Ker A \geq (n - r) + r = n,$$
 \begin{theorem}\label{stmt:09-04-02}
 \index{ruoerdangbiaozhun@若尔当标准!xingmilingsuanzide@型 (幂零算子的)}\index{ruoerdiangbiaozhun@若尔当标准!jimilingsuanzide@基 (幂零算子的)}设 $A: V \to V$ 是一个幂零算子。那么 $V$ 有一组由 $A$ 的广义特征向量循环组成的集合构成的基。\end{theorem}
 
+\readingtip{如果第一次阅读只想掌握若尔当结构，可以先记住“幂零算子能够拆成若干条向量链”这一结论，并继续看后面的块矩阵和点图；下面链基存在性的归纳构造可以第二遍再细读。}
+
 \begin{proof}我们将使用 $n = \dim V$ 的归纳法。对于 $n=1$，定理是平凡的。
 
 假设定理对于任何作用在维数小于 $n$ 的空间中的算子都成立。考虑子空间 $X = \Ran A$.~
@@ -475,7 +479,7 @@ $X$ 是算子 $A$ 的一个不变子空间，所以我们可以考虑限制 $A|_
 \begin{proof}[\normalfont\heiti 定理~\ref{stmt:09-04-03} 的证明~\nopunct]
 根据定理~\ref{stmt:09-04-02}，可以找到一组由广义特征向量循环的并集构成的基。大小为 $p$ 的循环产生一个 $p \times p$ 的对角块，形式为 \eqref{eq:09-04-01}，而长度为 1 的循环对应于一个 $1 \times 1$ 的零块。我们可以将这些 $1 \times 1$ 的零块连接成一个大的零块（因为非对角线元素是 0）。\end{proof}
 
-\subsection{点图 若尔当标准型的唯一性}\label{sec:09-04-03}
+\subsection{点图：若尔当标准型的唯一性}\label{sec:09-04-03}
 
 有一种很好的方法来可视化定理~\ref{stmt:09-04-02} 和推论~\ref{stmt:09-04-03}，即所谓的\textbf{点图}。这种方法还可以让我们回答许多自然问题，例如“由推论~\ref{stmt:09-04-03} 给出的块对角表示是否是唯一的？”
 
@@ -543,7 +547,7 @@ $$\Ran(A^{p_2-1})\cap\Ker A,$$
 $$\Ran(A^{p_1-1})\cap\Ker A\subset\Ran(A^{p_2-1})\cap\Ker A,$$
 所以
 $$r_2\ge r_1=\dim\bigl(\Ran(A^{p_1-1})\cap\Ker A\bigr).$$
-事实上，从点图还可以看出 $r_2>r_1$.~\footnote{译者注：2026-04-30 英文原文此处脚注把相关空间写成 $\Ran(A^p)\cap\Ker A=\Ran(A^{p_1})\cap\Ker A$。按点图及正文的指数约定，应为：当 $p_2<p\le p_1$ 时，$\Ran(A^{p-1})\cap\Ker A=\Ran(A^{p_1-1})\cap\Ker A$。}
+事实上，从点图还可以看出 $r_2>r_1$.~\proofreadnote{2026-04-30 英文原文此处脚注把相关空间写成 $\Ran(A^p)\cap\Ker A=\Ran(A^{p_1})\cap\Ker A$。按点图及正文的指数约定，应为：当 $p_2<p\le p_1$ 时，$\Ran(A^{p-1})\cap\Ker A=\Ran(A^{p_1-1})\cap\Ker A$。}
 因此，可以把 $\Ran(A^{p_1-1})\cap\Ker A$ 中的基
 $$\vv^1_1,\vv^2_1,\dots,\vv^{r_1}_1$$
 补全为 $\Ran(A^{p_2-1})\cap\Ker A$ 的一组基

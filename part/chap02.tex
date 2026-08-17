@@ -48,7 +48,7 @@ $$
 该矩阵是通过将列 $\bb$ 连接到矩阵 $A$ 上形成的。这个矩阵称为系统的\textbf{增广矩阵}(augmented matrix)。我们通常会放一条垂直线来分隔 $A$ 和 $\bb$，以区分增广矩阵和系数矩阵。
 
 
-\section{线性方程组的求解 阶梯形与简化阶梯形}\label{sec:02-02}
+\section{线性方程组的求解：阶梯形与简化阶梯形}\label{sec:02-02}
 
 线性系统可以通过\textbf{高斯-若尔当消元法}(Gauss-Jordan elimination)（有时称为\textbf{行约简}(row reduction)）求解。通过对系统增广矩阵的行（即方程）执行运算，我们将它简化为一种简单的形式，即所谓的\textbf{阶梯形}(echelon form)。当系统处于阶梯形时，我们可以轻松地写出解。
 
@@ -324,7 +324,7 @@ $$A \xx = E^{-1} \bb_e$$
 \end{minipage}
 }
 
-\subsection{关于线性无关和基的推论 维数}\label{sec:02-03-01}
+\subsection{关于线性无关和基的推论：维数}\label{sec:02-03-01}
 
 关于向量系统在 $\FF^n$ 中是否是基、线性无关或生成系统的问题，都可以通过行约简轻松回答。
 
@@ -520,7 +520,7 @@ $$\begin{pmatrix} 1 & 2 & 1 \\ 3 & 7 & 3 \\ 2 & 3 & 4 \end{pmatrix},\quad \begin
 
 \end{problemset}
 
-\section{维数~有限维空间}\label{sec:02-05}
+\section{维数与有限维空间}\label{sec:02-05}
 
 \begin{definition*}
 向量空间 $V$ 的\textbf{维数} $\dim V$ 是基中向量的数量。
@@ -712,7 +712,7 @@ i) 任何含 $n$ 个未知数 $m$ 个方程的齐次线性方程组的解集是 
 
 \end{problemset}
 
-\section{矩阵的基本子空间 秩}\label{sec:02-07}
+\section{矩阵的基本子空间：秩}\label{sec:02-07}
 
 正如我们在第~\ref{chap:01}~章第~\ref{sec:01-07}~节中所讨论的，任何线性变换 $A: V \to W$ 都可以关联两个子空间，即它的核或零空间 $$\Ker A = \Null A := \{ \vv \in V : A \vv = \oo \} \subset V,$$
 以及它的像空间 $$\Ran A = \{ \ww \in W : \ww = A \vv \text{ 对于某个 } \vv \in V \}~~\subset W.$$
@@ -724,6 +724,8 @@ i) 任何含 $n$ 个未知数 $m$ 个方程的齐次线性方程组的解集是 
 
 四个子空间 $\Ran A$, $\Ker A$, $\Ran A^T$, $\Ker A^T$ 称为矩阵 $A$ 的\textbf{基本子空间}\index{kongjian@空间!jibenzikongjain@基本子空间}(fundamental subspaces)。
 在本节中，我们将研究它们的维数之间重要的关系。
+
+\readingtip{这里先用消元和维数关系认识四个基本子空间。到第~\ref{chap:05}~章引入内积与伴随后，它们会成对出现为正交补；第~\ref{chap:08}~章还会用零化子给出不依赖内积的纯代数解释。暂时不必提前掌握后两种观点，只要记住这四个空间会反复回来即可。}
 
 我们需要以下定义，这是线性代数的基本概念之一。
 
@@ -847,7 +849,7 @@ $$A_e = EA$$
 $$\Ran A_e^T = \Ran(A^T E^T) = A^T(\Ran E^T) = A^T(\RR^m) = \Ran A^T,$$
 所以确实 $\Ran A^T = \Ran A_e^T$.
 
-\subsection{秩定理~基本子空间的维数}\label{sec:02-07-03}
+\subsection{秩定理：基本子空间的维数}\label{sec:02-07-03}
 
 在许多应用中，我们需要找到列空间或零空间的基。例如，正如前面所示，求解齐次方程 $A \xx = \oo$ 等价于找到零空间 $\Ker A$ 的基。找到列空间的基意味着通过移除不必要的（列）向量，来从生成集中提取基。
 
@@ -995,7 +997,7 @@ $$A = \begin{pmatrix} 1 & \rm i \\ \rm i & -1 \end{pmatrix},$$
 \item \label{ex:02-07-15} 将向量 $(1, 2, -1, 2, 3)^T$, $(2, 2, 1, 5, 5)^T$, $(-1, -4, 4, 7, -11)^T$ 补全为 $\RR^5$ 的基。
 \end{problemset}
 
-\section{任意基下线性变换的表示 坐标变换公式}\label{sec:02-08}
+\section{任意基下线性变换的表示：坐标变换公式}\label{sec:02-08}
 
 我们在第一章中学到的关于线性变换及其矩阵的知识，可以很容易地推广到有限基下的抽象向量空间中的变换。在本节中，我们将区分线性变换 $T$ 和它的矩阵，原因是我们将考虑不同的基，所以线性变换可以有不同的矩阵表示。
 

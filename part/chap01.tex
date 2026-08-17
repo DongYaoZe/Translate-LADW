@@ -310,7 +310,7 @@ $$\oo = \alpha_1 \vv_1 + \alpha_2 \vv_2 + \dots + \alpha_n \vv_n = \sum_{k=1}^n 
 \begin{proof}
 我们已经知道基总是线性无关且完备的，所以命题的一个方向已经证明。
 
-让我们证明另一个方向。假设系统 $\vv_1, \vv_2, \dots, \vv_n$ 是线性和完备的。取任意向量 $\vv \in V$.~由于系统 $\vv_1, \vv_2, \dots, \vv_n$ 是线性完备的（生成的），$\vv$ 可以表示为
+让我们证明另一个方向。假设系统 $\vv_1, \vv_2, \dots, \vv_n$ 是线性无关且完备的。取任意向量 $\vv \in V$.~由于系统 $\vv_1, \vv_2, \dots, \vv_n$ 是完备的（即生成的），$\vv$ 可以表示为
 $$\vv = \alpha_1 \vv_1 + \alpha_2 \vv_2 + \dots + \alpha_n \vv_n = \sum_{k=1}^n \alpha_k \vv_k.$$
 我们只需要证明这个表示是唯一的。
 
@@ -371,7 +371,7 @@ c) $n \times n$ 反对称矩阵 ($A^T = -A$)。\index{juzhen@矩阵!fanduichen@�
 
 \end{problemset}
 
-\section{线性变换 矩阵-向量乘法}\label{sec:01-03}
+\section{线性变换：矩阵-向量乘法}\label{sec:01-03}
 
 
 从集合 $X$ 到集合 $Y$ 的\textbf{变换}
@@ -440,7 +440,7 @@ $$ T\left(\begin{pmatrix} x_1 \\ x_2 \end{pmatrix}\right) = \begin{pmatrix} x_1 
 
 
 
-\subsection{\texorpdfstring{线性变换 $\FF^n \to \FF^m$ 矩阵-向量乘法}{线性变换 F^n 到 F^m 矩阵-向量乘法}}\label{sec:01-03-02}
+\subsection{\texorpdfstring{线性变换 $\FF^n \to \FF^m$：矩阵-向量乘法}{线性变换 F^n 到 F^m：矩阵-向量乘法}}\label{sec:01-03-02}
 
 事实证明，从 $\FF^n$ 到 $\FF^m$ 的线性变换 $T$ 也能表示为一种乘法，但这不是乘标量，而是乘矩阵。我们来看看怎么做。
 
@@ -744,6 +744,8 @@ $$
 \trace A = \sum_{k=1}^n a_{k,k}
 $$
 
+\readingtip{迹在这里先作为一个容易计算的矩阵量出现。到第~\ref{chap:04}~章讨论谱理论时，它还会与特征值之和联系起来；第一次阅读先掌握定义以及下面的循环性质即可。}
+
 \begin{theorem}\label{stmt:01-05-01} 设 $A$ 和 $B$ 是大小分别为 $m \times n$ 和 $n \times m$ 的矩阵（因此两个乘积 $AB$ 和 $BA$ 都有定义）。那么
 $$
 \trace(AB) = \trace(BA).
@@ -775,7 +777,7 @@ b) 计算 $AB$, $A(3B + C)$, $B^T A$, $A(BD)$, $(AB)D$.
 
 \end{problemset}
 
-\section{可逆变换与矩阵 同构}\label{sec:01-06}
+\section{可逆变换与矩阵：同构}\label{sec:01-06}
 
 \subsection{恒等变换与单位矩阵}\label{sec:01-06-01}
 
@@ -895,7 +897,7 @@ $$A^T (A^{-1})^T = (A^{-1} A)^T = I^T = I.$$
 
 3. 如果 $A$ 可逆，那么 $A^T$ 也可逆且 $(A^T)^{-1} = (A^{-1})^T$.
 
-\subsection{同构 同构空间}\label{sec:01-06-03}
+\subsection{同构与同构空间}\label{sec:01-06-03}
 
 \textbf{可逆线性变换} $A: V \to W$ 称为\textbf{同构}(isomorphism)。我们这里没有引入任何新东西，这只是我们已经研究过的对象的另一个名称。
 
