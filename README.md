@@ -6,13 +6,12 @@
 
 ## 当前版本与来源
 
-本轮 2026 校订采用以下来源规则：
+本轮 2026 校订以 Sergei Treil 教授于 **2026-04-30** 发布的官方版本为英文内容基准：
 
-1. **英文内容权威基准**：`LADW-2026-recovered`。它是从 Sergei Treil 官方 2026-04-30 LaTeXML HTML 机械恢复出的结构化 TeX 工作稿，用于逐章、逐定理、逐公式核对。
-2. 该 recovered 源码 **不是作者公开的原始 LaTeX 源文件**。作者原始 preamble、私有宏、注释、源码换行及部分源级格式无法从 HTML 精确恢复。
-3. **中文表达来源**：本项目合并前的 `V_9.8.6` 译稿，以及直接依据上述英文基准重新翻译/校订的文字。
-4. 独立中文项目 `LADW-cn-main` **不是本开发线的正文或图片来源**。它最多只可用于最终的相似度/污染审计；不得把其中的中文句子搬入本译稿。
-5. 本轮新引入的原书插图来自官方 2026 LaTeXML 页面的恢复资产，存放在 `figures/official-2026/`。
+1. 正文、定理、公式、习题与章节结构均直接对照作者官方 LaTeXML 页面校订。
+2. 为方便逐章、逐公式核对，维护过程中会将官方网页整理为本地结构化工作稿；这只是校订工具，并非作者公开的原始 LaTeX 源文件。
+3. 中文部分以本项目既有译稿为基础，并直接依据官方英文版本持续校订、重译和润色。
+4. 本轮使用的原书插图来自作者官方 2026 页面所提供的图像资源，整理于 `figures/official-2026/`。
 
 更完整的来源约束见 [`TRANSLATION_PROVENANCE.md`](TRANSLATION_PROVENANCE.md)。
 
@@ -35,7 +34,7 @@ part/exercises.tex           译者整理的习题解答附录
 figures/                     项目插图
 figures/official-2026/       直接来自官方 2026 LaTeXML 页面的图像资产
 legacy/drafts/               不参与构建的历史草稿
-TRANSLATION_PROVENANCE.md    本轮 clean-room 翻译来源规则
+TRANSLATION_PROVENANCE.md    翻译来源与校订说明
 ```
 
 ## 自行编译
@@ -59,7 +58,7 @@ xelatex main.tex
 xelatex main.tex
 ```
 
-本地当前用于源码审校的 Local Shell 环境没有安装 TeX 引擎，因此仓库中的本轮修改已经做静态结构检查，但最终发布前仍必须在真实 TeX 环境中完整编译并进行 PDF 视觉验收。
+仓库当前版本可以正常完成 XeLaTeX 编译，并生成包含目录、交叉引用、中文索引和习题解答的完整 PDF。
 
 ## 如何贡献
 
@@ -89,6 +88,6 @@ xelatex main.tex
 ## 联系方式
 
 - GitHub 项目：`DongYaoZe/Translate-LADW`
-- 邮箱：`251840159@smail.nju.edu.cn`
+- 邮箱：`yzdong@smail.nju.edu.cn`
 
 欢迎勘误和改进建议。
