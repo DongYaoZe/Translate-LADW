@@ -11,7 +11,7 @@
 1. 正文、定理、公式、习题与章节结构均直接对照作者官方 LaTeXML 页面校订。
 2. 为方便逐章、逐公式核对，维护过程中会将官方网页整理为本地结构化工作稿；这只是校订工具，并非作者公开的原始 LaTeX 源文件。
 3. 中文部分以本项目既有译稿为基础，并直接依据官方英文版本持续校订、重译和润色。
-4. 本轮使用的原书插图来自作者官方 2026 页面所提供的图像资源，整理于 `figures/official-2026/`。
+4. 正文插图优先使用矢量 PDF / TikZ 版本；对于作者官方网页中的图形，仅将网页内容作为核对依据，不使用网页栅格化图片替代已有矢量图。
 
 更完整的来源约束见 [`TRANSLATION_PROVENANCE.md`](TRANSLATION_PROVENANCE.md)。
 
@@ -32,7 +32,6 @@ part/chap01.tex ... chap09.tex  正文九章
 part/preface.tex             推荐序、译者的话、作者前言
 part/exercises.tex           译者整理的习题解答附录
 figures/                     项目插图
-figures/official-2026/       直接来自官方 2026 LaTeXML 页面的图像资产
 legacy/drafts/               不参与构建的历史草稿
 TRANSLATION_PROVENANCE.md    翻译来源与校订说明
 ```

@@ -20,7 +20,7 @@ The aim is to preserve the translator's own Chinese expression while improving m
 
 ## Figures and structure
 
-Figures introduced during the 2026 revision come from assets published with the author's official 2026 webpages. Chapter organization, theorem families, formulas, and exercises are checked against the official version while keeping the Chinese edition's own typesetting and translator material.
+Figures corresponding to the author's diagrams are kept in vector form wherever an equivalent vector PDF or TikZ source is available. Rasterized webpage images are used for comparison only and are not substituted for existing vector publication assets. Chapter organization, theorem families, formulas, and exercises are checked against the official version while keeping the Chinese edition's own typesetting and translator material.
 
 ## Release checks
 
