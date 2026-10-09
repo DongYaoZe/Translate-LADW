@@ -80,6 +80,7 @@ xelatex main.tex
 - Sergei Treil 教授：原书作者。
 - 南京大学匡亚明学院李耀文老师：课程与反馈是项目启动和持续维护的重要契机。
 - `zhbook` 项目：本项目中文 LaTeX 版式的基础之一。
+- [OliverWu515/LADW-cn](https://github.com/OliverWu515/LADW-cn)：由 OliverWu515 维护的另一份《Linear Algebra Done Wrong》中文译本，其 README 也推荐了本项目；感谢他在 [Issue #1](https://github.com/DongYaoZe/Translate-LADW/issues/1) 中细致指出译文、排版及版本对齐问题。
 - 所有参与勘误、反馈和改进的同学。
 
 ## 许可与版权说明
@@ -91,6 +92,6 @@ xelatex main.tex
 ## 联系方式
 
 - GitHub 项目：`DongYaoZe/Translate-LADW`
-- 邮箱：`yzdong@smail.nju.edu.cn`
+- 邮箱：[yzdong@smail.nju.edu.cn](mailto:yzdong@smail.nju.edu.cn)
 
 欢迎勘误和改进建议。
