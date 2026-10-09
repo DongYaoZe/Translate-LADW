@@ -391,7 +391,7 @@ Fourier decomposition)。经典的（非抽象）傅里叶分解处理的是具�
 \begin{remark}\label{stmt:05-02-08}
 标准正交基的重要性在于，如果我们固定了内积空间 $V$ 中的一组标准正交基，我们就可以像处理 $\FF^n$ 中的向量一样处理该基下的坐标。具体来说，正如本书开头所讨论的（参见注记~\ref{stmt:01-02-04}），如果我们有一个具有基 $\vv_1, \vv_2, \dots, \vv_n$ 的向量空间 $V$（在域 $\FF$ 上），那么我们可以通过处理基 $\vv_1, \vv_2, \dots, \vv_n$ 下坐标向量列的标准向量运算（向量加法和标量乘法），以完全相同的方式进行。
 
-如习题~\ref{ex:05-02-03} 所示，如果我们有一内积空间 $V$ 中的\textbf{标准正交}基，我们可以通过取这些坐标向量列并计算这些向量列在 $\CC^n$ 或 $\RR^n$ 中的标准内积来计算 $V$ 中两个向量的内积。
+如习题~\ref{ex:05-02-04} 所示，如果我们有一内积空间 $V$ 中的\textbf{标准正交}基，我们可以通过取这些坐标向量列并计算这些向量列在 $\CC^n$ 或 $\RR^n$ 中的标准内积来计算 $V$ 中两个向量的内积。
 
 如下文第~\ref{sec:05-03}~节所示，任何有限维内积空间都有一组标准正交基。因此，在有限维情况下，标准内积空间 $\CC^n$（或实数情况下的 $\RR^n$）实质上是唯一的有限维内积空间。
 \end{remark}
@@ -400,8 +400,9 @@ Fourier decomposition)。经典的（非抽象）傅里叶分解处理的是具�
 
 \begin{problemset}
 \item \label{ex:05-02-01} 找出 $\RR^4$ 中所有正交于向量 $(1, 1, 1, 1)^T$ 和 $(1, 2, 3, 4)^T$ 的向量。
-\item \label{ex:05-02-02} 设 $A$ 是一个 $m \times n$ 实数矩阵。描述 $( \Ran A^T )^\perp$ 和 $( \Ran A )^\perp$.~
-\item \label{ex:05-02-03} 设 $\vv_1, \vv_2, \dots, \vv_n$ 是 $V$ 中的一组标准正交基。
+\item \label{ex:05-02-02} 设 $A$ 是一个 $m \times n$ 实数矩阵。分别描述：a) $\RR^n$ 中所有正交于 $\Ran A^T$ 的向量；b) $\RR^m$ 中所有正交于 $\Ran A$ 的向量。要求将各集合表示为某个矩阵的核。
+\item \label{ex:05-02-03} 设 $A$ 是一个 $m \times n$ 复数矩阵。分别描述：a) $\CC^n$ 中所有正交于 $\Ran A^T$ 的向量；b) $\CC^m$ 中所有正交于 $\Ran A$ 的向量。
+\item \label{ex:05-02-04} 设 $\vv_1, \vv_2, \dots, \vv_n$ 是 $V$ 中的一组标准正交基。
 \\
     a) 证明对于任意 $\xx = \sum_{k=1}^n \alpha_k \vv_k$, $\yy = \sum_{k=1}^n \beta_k \vv_k$，有
     $$(\xx, \yy) = \sum_{k=1}^n \alpha_k \overline{\beta_k}.$$
@@ -413,10 +414,9 @@ Fourier decomposition)。经典的（非抽象）傅里叶分解处理的是具�
 这个问题表明，如果我们有一组标准正交基，我们可以像使用 $\CC^n$ （或 $\RR^n$）中的标准坐标一样使用该基下的坐标。
 \\
 下面的问题表明，我们可以通过声明一组基为标准正交基来定义一个内积。
-\item \label{ex:05-02-04} 设 $V$ 是一个向量空间， $\vv_1, \vv_2, \dots, \vv_n$ 是 $V$ 中的一组基。对于 $\xx = \sum_{k=1}^n \alpha_k \vv_k$, $\yy = \sum_{k=1}^n \beta_k \vv_k$，定义 $\langle \xx, \yy \rangle := \sum_{k=1}^n \alpha_k \overline{\beta_k}$.~
+\item \label{ex:05-02-05} 设 $V$ 是一个向量空间， $\vv_1, \vv_2, \dots, \vv_n$ 是 $V$ 中的一组基。对于 $\xx = \sum_{k=1}^n \alpha_k \vv_k$, $\yy = \sum_{k=1}^n \beta_k \vv_k$，定义 $\langle \xx, \yy \rangle := \sum_{k=1}^n \alpha_k \overline{\beta_k}$.~
 \\
 证明 $\langle \xx, \yy \rangle$ 定义了 $V$ 上的一个内积。
-\item \label{ex:05-02-05} 设 $A$ 是一个 $m \times n$ 实矩阵。请描述 $\FF^m$ 中所有正交于 $\Ran A$ 的向量的集合。
 \end{problemset}
 
 

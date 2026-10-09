@@ -307,7 +307,7 @@ c) $\Ran \PPP _k \subset E_k$；
 d) 更进一步， $\PPP _k \vv = \vv \quad \forall \vv \in E_k$，所以实际上 $\Ran \PPP _k = E_k$.~\end{lemma}
 
 \begin{proof}第一个性质是平凡的：$$\sum_{k=1}^r \PPP _k = B^{-1} \sum_{k=1}^r p_k(A) = B^{-1} B = I.$$
-第二个性质来自 \eqref{eq:09-03-03}。实际上，$p_k(A)$ 包含因子 $(A - \lambda_j I)^{m_j}$，将其限制到 $E_j$ 上为零。因此，$p_k(A)|_{E_j} = \oo$，从而 $\PPP _k|_{E_j} = B^{-1} p_k(A)|_{E_j} = \oo$.~
+第二个性质已在引理之前得到证明：由 \eqref{eq:09-03-03} 后的推导可知，$p_k(A)|_{E_j} = \oo$（$j \neq k$），因而 $\PPP _k|_{E_j} = B^{-1}p_k(A)|_{E_j} = \oo$.~
 
 为了证明第三个性质，根据凯莱-哈密顿定理， $p(A) = \oo$.~由于 $p(z) = (z - \lambda_k)^{m_k} p_k(z)$，我们得到对于 $\ww = p_k(A)\vv$，
 $$(A - \lambda_k I)^{m_k} \ww = (A - \lambda_k I)^{m_k} p_k(A) \vv = p(A) \vv = \oo.$$

@@ -4,7 +4,7 @@ This repository contains Dong Yaoze's Chinese translation and typesetting of Ser
 
 ## Authoritative English source
 
-The current revision is checked against Sergei Treil's official **2026-04-30** version, published on the author's website through LaTeXML-generated HTML.
+The current revision is checked against Sergei Treil's official **2026-08-31** version, published on the author's website through LaTeXML-generated HTML.
 
 During maintenance, the official webpages may be converted into local structured working files to make chapter-, theorem-, formula-, and exercise-level comparison easier. These working files are editorial aids only and are **not** represented as the author's original LaTeX source.
 

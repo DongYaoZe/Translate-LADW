@@ -343,7 +343,7 @@
 
 %---------- 习题组：按 section 独立编号 ----------
 \newlist{probenumerate}{enumerate}{2}
-\setlist[probenumerate,1]{label={\textsf{\thesection.\arabic*.}},ref={\thesection.\arabic*},leftmargin=2em}
+\setlist[probenumerate,1]{label={\textsf{\thesection.\arabic*.}},ref={\thesection.\arabic*},leftmargin=*,widest=9.9.99}
 \setlist[probenumerate,2]{label={\alph*)},leftmargin=*}
 \newenvironment{problemset}{%
   \par\vspace{10pt}%
